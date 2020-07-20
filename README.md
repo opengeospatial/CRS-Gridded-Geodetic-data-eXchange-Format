@@ -16,3 +16,8 @@ The purpose of the Gridded Geodetic Data Exchange Format (GGXF) project team is 
 
 The work will be conducted under the auspices of the OGC CRS DWG in close collaboration with the CRS DWG project team developing the “Deformation Functional Model” (DFM). On completion of the work, a Standards Working Group shall be chartered and materials passed over to the SWG for finalising into a Standard.
 
+# Collaboration
+
+This is a public repository - everything is visible to anyone coming to this website. If you wish to be an active contributor with write access then you will need join github if you haven't already. Once you are signed on to github please raise a new issue with a request to be added. If you would like to be included on the Project Team page then include a brief biography and a photo. This is not required - be aware that everything on the page is visible to the public - but it is good to have faces for names!
+
+Also once you have a github id you are encouraged to click the "Watch" button at the top of this page so that you will be notified of postings in the issues log. Ideally we can capture most of the discussion in the issue logs where they will be recorded and easily searchable. We will create an issue for each major discussion topic.
