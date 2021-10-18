@@ -129,7 +129,10 @@ class GGXF:
         try:
             for group in self._data["groups"]:
                 group["_root"] = self._data
-                for grid in group["grids"]:
+                gridlist = list(group["grids"])
+                while gridlist:
+                    grid = gridlist.pop(0)
+                    gridlist.extend(grid.get("grids", []))
                     grid["affineCoeffs"] = [float(c) for c in grid["affineCoeffs"]]
                     grid["_group"] = group
                     if "gridData" in grid:
@@ -268,8 +271,8 @@ class GGXF:
         self._saveMetadata(cdfgrid, grid, exclude)
 
         # Support for nested grid possibility
-        for grid in grid.get("grids", []):
-            self._saveGridNetCdf4(cdfgroup, grid, nctypes, nparam)
+        for subgrid in grid.get("grids", []):
+            self._saveGridNetCdf4(cdfgrid, subgrid, nctypes, nparam)
 
     def _saveNetCdf4MetdataDot(
         self,
