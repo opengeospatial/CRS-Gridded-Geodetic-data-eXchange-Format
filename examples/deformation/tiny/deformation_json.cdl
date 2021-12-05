@@ -1,0 +1,135 @@
+netcdf deformation_json {
+
+// global attributes:
+		:metadata = "{\n  \"ggxfVersion\": \"1.0\",\n  \"fileName\": \"nz_linz_nzgd2000-20180701.yaml\",\n  \"version\": \"20180701\",\n  \"content\": \"deformationModel\",\n  \"remark\": \"New Zealand Deformation Model.\\nDefines the secular model (National Deformation Model)\\nand patches for significant deformation events since 2000.\\n\",\n  \"partyName\": \"Land Information New Zealand\",\n  \"deliveryPoint\": \"Level 7, Radio New Zealand House\\n155 The Terrace\\nPO Box 5501\\n\",\n  \"city\": \"Wellington\",\n  \"postalCode\": \"6145\",\n  \"electronicMailAddress\": \"customersupport@linz.govt.nz\",\n  \"onlineResourceLinkage\": \"https://www.linz.govt.nz/nzgd2000\",\n  \"publicationDate\": \"2018-07-01\",\n  \"contentApplicabilityExtent\": {\n    \"extentDescription\": \"New Zealand EEZ\",\n    \"boundingBox\": {\n      \"southBoundLatitude\": -58.0,\n      \"westBoundLongitude\": 158.0,\n      \"northBoundLatitude\": -25.0,\n      \"eastBoundLongitude\": 194.0\n    }\n  },\n  \"startDate\": \"1900-01-01\",\n  \"endDate\": \"2050-01-01\",\n  \"sourceCrsWkt\": \"GEOGCRS[\\\"NZGD2000\\\",DATUM[\\\"New Zealand Geodetic Datum 2000\\\",ELLIPSOID[\\\"GRS 1980\\\",6378137,298.2572221,LENGTHUNIT[\\\"metre\\\",1,ID[\\\"EPSG\\\",9001]],ID[\\\"EPSG\\\",7019]],ID[\\\"EPSG\\\",6167]],CS[ellipsoidal,3,ID[\\\"EPSG\\\",6423]],AXIS[\\\"Geodetic latitude (Lat)\\\",north,ANGLEUNIT[\\\"degree\\\",0.0174532925199433,ID[\\\"EPSG\\\",9102]]],AXIS[\\\"Geodetic longitude (Lon)\\\",east,ANGLEUNIT[\\\"degree\\\",0.0174532925199433,ID[\\\"EPSG\\\",9102]]],AXIS[\\\"Ellipsoidal height (h)\\\",up,LENGTHUNIT[\\\"metre\\\",1,ID[\\\"EPSG\\\",9001]]],ID[\\\"EPSG\\\",4959]]\",\n  \"targetCrsWkt\": \"GEOGCRS[\\\"ITRF96\\\", DYNAMIC[FRAMEEPOCH[1997.0]],DATUM[\\\"International Terrestrial Reference Frame 1996\\\",ELLIPSOID[\\\"GRS 1980\\\",6378137,298.2572221,LENGTHUNIT[\\\"metre\\\",1,ID[\\\"EPSG\\\",9001]],ID[\\\"EPSG\\\",7019]],ID[\\\"EPSG\\\",6654]],CS[ellipsoidal,3,ID[\\\"EPSG\\\",6423]],AXIS[\\\"Geodetic latitude (Lat)\\\",north,ANGLEUNIT[\\\"degree\\\",0.0174532925199433,ID[\\\"EPSG\\\",9102]]],AXIS[\\\"Geodetic longitude (Lon)\\\",east,ANGLEUNIT[\\\"degree\\\",0.0174532925199433,ID[\\\"EPSG\\\",9102]]],AXIS[\\\"Ellipsoidal height (h)\\\",up,LENGTHUNIT[\\\"metre\\\",1,ID[\\\"EPSG\\\",9001]]],ID[\\\"EPSG\\\",7907]]\",\n  \"interpolationCrsWkt\": \"GEOGCRS[\\\"NZGD2000\\\",DATUM[\\\"New Zealand Geodetic Datum 2000\\\",ELLIPSOID[\\\"GRS 1980\\\",6378137,298.2572221,LENGTHUNIT[\\\"metre\\\",1,ID[\\\"EPSG\\\",9001]],ID[\\\"EPSG\\\",7019]],ID[\\\"EPSG\\\",6167]],CS[ellipsoidal,2,ID[\\\"EPSG\\\",6422]],AXIS[\\\"Geodetic latitude (Lat)\\\",north],AXIS[\\\"Geodetic longitude (Lon)\\\",east],ANGLEUNIT[\\\"degree\\\",0.0174532925199433,ID[\\\"EPSG\\\",9102]],ID[\\\"EPSG\\\",4167]]\",\n  \"operationAccuracy\": 0.01,\n  \"uncertaintyMeasure\": {\n    \"horizontal\": {\n      \"name\": \"Circular error probable\",\n      \"id\": \"2CEP\"\n    },\n    \"vertical\": {\n      \"name\": \"Standard error (2-sigma)\",\n      \"id\": \"2SE\"\n    }\n  },\n  \"deformationApplicationMethod\": \"addition\"\n}" ;
+		:_NCProperties = "version=2,netcdf=4.7.4,hdf5=1.12.0," ;
+		:_SuperblockVersion = 0 ;
+		:_IsNetcdf4 = 1 ;
+		:_Format = "netCDF-4" ;
+
+group: nz_linz_vert_vel {
+  dimensions:
+  	nParam = 1 ;
+
+  // group attributes:
+  		:remark = "" ;
+  		:metadata = "{\n  \"parameters\": [\n    {\n      \"parameterName\": \"displacementUp\",\n      \"unit\": \"metre\",\n      \"unitSiRatio\": 1.0\n    }\n  ],\n  \"timeFunction\": [\n    {\n      \"type\": \"velocity\",\n      \"functionReferenceDate\": \"2000-01-01T00:00:00Z\"\n    }\n  ]\n}" ;
+
+  group: hvel {
+    dimensions:
+    	nCol = 3 ;
+    	nRow = 4 ;
+    variables:
+    	double data(nRow, nCol, nParam) ;
+    		data:_Storage = "contiguous" ;
+    		data:_Endianness = "little" ;
+
+    // group attributes:
+    		:affineCoeffs = 172.6, 0.6, 0., -41.6, 0., 0.4 ;
+    		:metadata = "{\n  \"iNodeMaximum\": 2,\n  \"jNodeMaximum\": 3\n}" ;
+    data:
+
+     data =
+  0.44,
+  0.74,
+  0.64,
+  0.12,
+  0.42,
+  0.32,
+  -0.05,
+  0.25,
+  0.15,
+  -0.08,
+  0.22,
+  0.12 ;
+    } // group hvel
+  } // group nz_linz_vert_vel
+
+group: nz_linz_hypo_eq {
+  dimensions:
+  	nParam = 3 ;
+
+  // group attributes:
+  		:remark = "Hypothetical earthquake - this is not what happened" ;
+  		:metadata = "{\n  \"remark\": \"Hypothetical earthquake - this is not what happened\",\n  \"parameters\": [\n    {\n      \"parameterName\": \"displacementEast\",\n      \"unit\": \"metre\",\n      \"unitSiRatio\": 1.0\n    },\n    {\n      \"parameterName\": \"displacementNorth\",\n      \"unit\": \"metre\",\n      \"unitSiRatio\": 1.0\n    },\n    {\n      \"parameterName\": \"displacementUp\",\n      \"unit\": \"metre\",\n      \"unitSiRatio\": 1.0\n    }\n  ],\n  \"timeFunction\": [\n    {\n      \"type\": \"piecewise\",\n      \"startDate\": \"2009-07-15T00:00:00Z\",\n      \"startScaleFactor\": -1.34,\n      \"endDate\": \"2009-07-15T00:00:00Z\",\n      \"endScaleFactor\": -0.29\n    },\n    {\n      \"type\": \"piecewise\",\n      \"startDate\": \"2009-07-15T00:00:00Z\",\n      \"startScaleFactor\": 0.0,\n      \"endDate\": \"2011-09-01T00:00:00Z\",\n      \"endScaleFactor\": 0.29\n    }\n  ]\n}" ;
+
+  group: eqdef1 {
+    dimensions:
+    	nCol = 5 ;
+    	nRow = 6 ;
+    variables:
+    	double data(nRow, nCol, nParam) ;
+    		data:_Storage = "contiguous" ;
+    		data:_Endianness = "little" ;
+
+    // group attributes:
+    		:affineCoeffs = 172.6, 0.6, 0., -41.6, 0., 0.4 ;
+    		:metadata = "{\n  \"iNodeMaximum\": 4,\n  \"jNodeMaximum\": 5\n}" ;
+    data:
+
+     data =
+  1.24, -2.08, -2.4,
+  1.84, -1.88, -2.22,
+  2.04, -1.68, -2.05,
+  1.84, -1.48, -1.87,
+  1.24, -1.28, -1.7,
+  1.06, -2.64, -1.3,
+  1.66, -2.44, -1.12,
+  1.86, -2.24, -0.95,
+  1.66, -2.04, -0.77,
+  1.06, -1.84, -0.6,
+  0.88, -2.92, -0.58,
+  1.48, -2.72, -0.41,
+  1.68, -2.52, -0.23,
+  1.48, -2.32, -0.06,
+  0.88, -2.12, 0.12,
+  0.7, -2.9, -0.25,
+  1.3, -2.7, -0.07,
+  1.5, -2.5, 0.1,
+  1.3, -2.3, 0.28,
+  0.7, -2.1, 0.45,
+  0.52, -2.6, -0.3,
+  1.12, -2.4, -0.13,
+  1.32, -2.2, 0.05,
+  1.12, -2, 0.22,
+  0.52, -1.8, 0.4,
+  0.34, -2, -0.74,
+  0.94, -1.8, -0.56,
+  1.14, -1.6, -0.39,
+  0.94, -1.4, -0.21,
+  0.34, -1.2, -0.04 ;
+    } // group eqdef1
+
+  group: eqdef2 {
+    dimensions:
+    	nCol = 5 ;
+    	nRow = 3 ;
+    variables:
+    	double data(nRow, nCol, nParam) ;
+    		data:_Storage = "contiguous" ;
+    		data:_Endianness = "little" ;
+
+    // group attributes:
+    		:affineCoeffs = 172.6, 0.3, 0., -41.2, 0., 0.2 ;
+    		:metadata = "{\n  \"parentGridName\": \"eqdef2\",\n  \"iNodeMaximum\": 4,\n  \"jNodeMaximum\": 2\n}" ;
+    data:
+
+     data =
+  1.48, -2.72, -0.41,
+  1.63, -2.62, -0.32,
+  1.68, -2.52, -0.23,
+  1.63, -2.42, -0.14,
+  1.48, -2.32, -0.06,
+  1.39, -2.74, -0.19,
+  1.54, -2.64, -0.11,
+  1.59, -2.54, -0.02,
+  1.54, -2.44, 0.07,
+  1.39, -2.34, 0.16,
+  1.3, -2.7, -0.08,
+  1.45, -2.6, 0.01,
+  1.5, -2.5, 0.1,
+  1.45, -2.4, 0.19,
+  1.3, -2.3, 0.27 ;
+    } // group eqdef2
+  } // group nz_linz_hypo_eq
+}
