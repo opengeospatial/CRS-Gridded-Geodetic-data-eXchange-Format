@@ -66,8 +66,11 @@ def main():
     options["use_compound_types"] = args.use_compound_types
     # options["simplify_1param_grid"] = args.simplify_1param_grid
 
-    ggxf = GGXF(yaml_file, options=options)
-    ggxf.save(netcdf4_file, cdl=args.dump_cdl)
+    try:
+        ggxf = GGXF(yaml_file, options=options)
+        ggxf.save(netcdf4_file, cdl=args.dump_cdl)
+    except Exception as ex:
+        print(f"Failed to compile GGXF: {ex}")
 
 
 class Error(RuntimeError):
@@ -86,8 +89,10 @@ class GGXF:
     def __init__(self, yaml_file: str = None, options: dict = None):
         self._data = None
         self._filename = None
+        self._errors = []
         self._logger = logging.getLogger("GGXF")
         self._options = options or {}
+        self._separategrids = options.get("separate_grid_data", False)
         metastyle = options.get("metadata_style", "dot0")
         if metastyle == "json":
             logging.debug("Using JSON metadata format")
@@ -126,17 +131,58 @@ class GGXF:
         startdir = os.getcwd()
         griddir = self._options.get("grid_directory", startdir)
         dirset = False
+        errcount = 0
+        gridindex = {}
+        if "gridData" in self._data:
+            for griddata in self._data["gridData"]:
+                gridindex[griddata["gridName"]] = griddata["data"]
         try:
             for group in self._data["groups"]:
                 group["_root"] = self._data
                 gridlist = list(group["grids"])
+                nparam = len(group["parameters"])
                 while gridlist:
                     grid = gridlist.pop(0)
                     gridlist.extend(grid.get("grids", []))
                     grid["affineCoeffs"] = [float(c) for c in grid["affineCoeffs"]]
                     grid["_group"] = group
-                    if "gridData" in grid:
-                        grid["gridData"] = np.array(grid["gridData"])
+                    name = grid["gridName"]
+                    ncol = grid["iNodeMaximum"] + 1
+                    nrow = grid["jNodeMaximum"] + 1
+                    griderr0 = errcount
+                    if name in gridindex:
+                        data = gridindex.pop(name)
+                        if "data" in grid or "gridDataSource" in grid:
+                            errcount += 1
+                            self._validationError(
+                                f"Grid {name}: data in gridData and in grid element"
+                            )
+                            continue
+                        grid["data"] = data
+
+                    if "data" in grid:
+                        if "gridDataSource" in grid:
+                            errcount += 1
+                            self._validationError(
+                                f"Grid {name}: data and gridDataSource defined."
+                            )
+                            continue
+                        try:
+                            grid["data"] = np.array(grid["data"])
+                        except Exception as ex:
+                            errcount += 1
+                            self._validationError(
+                                f"Grid {name}: Could not read grid data: {ex}"
+                            )
+                    elif name in gridindex:
+                        grid["data"] = np.array(gridindex[name])
+                        try:
+                            grid["data"] = np.array(grid["data"])
+                        except Exception as ex:
+                            errcount += 1
+                            self._validationError(
+                                f"Grid {name}: Could not read gridData: {ex}"
+                            )
                     elif "gridDataSource" in grid:
                         from osgeo import gdal
 
@@ -147,32 +193,158 @@ class GGXF:
                             os.chdir(griddir)
                             dirset = True
                         source = grid.pop("gridDataSource")
-                        self._logger.debug(f"Loading {source}")
-                        dataset = gdal.Open(source)
-                        gridData = dataset.ReadAsArray()
-                        gridData = np.moveaxis(gridData, 0, 2)
-                        grid["gridData"] = gridData
-                        self._logger.debug(
-                            f"Loaded grid with dimension {gridData.shape}"
-                        )
+                        try:
+                            self._logger.debug(f"Loading {source}")
+                            dataset = gdal.Open(source)
+                            gridData = dataset.ReadAsArray()
+                            self._logger.debug(
+                                f"Loaded with dimensions {gridData.shape}"
+                            )
+                            if len(gridData.shape) == 2:
+                                gridData = np.array([gridData])
+                            gridData = np.moveaxis(gridData, 0, 2)
+                            grid["data"] = gridData
+                            self._logger.debug(
+                                f"Loaded grid with dimension {gridData.shape}"
+                            )
+                        except Exception as ex:
+                            self._validationError(
+                                f"Grid {name}: Failed to load {source}: {ex}"
+                            )
+                            errcount += 1
+
                         # Get grid metadata to validate against YAML...
+                    else:
+                        self._validationError(f"Grid {name}: grid data not defined")
+                        errcount += 1
+                    if errcount == griderr0:
+                        data = grid["data"]
+                        expectedSize = nrow * ncol * nparam
+                        size = data.size
+                        if size != expectedSize:
+                            self._validationError(
+                                f"Grid {name}: size {size} different to expected {expectedSize}"
+                            )
+                            errcount += 1
+                        else:
+                            dimensions = (nrow, ncol, nparam)
+                            if data.shape != dimensions:
+                                data = data.reshape(dimensions)
+                                grid["data"] = data
+                            self._logger.debug(
+                                f"Grid {name} loaded - dimensions {data.shape}, type {data.dtype}"
+                            )
         finally:
             os.chdir(startdir)
+        for name in gridindex:
+            self._logger.info(f"Unused gridData element {name}")
+        if errcount > 0:
+            raise SchemaError(f"Failed to load grid data: {errcount} errors")
 
-    def validate(self) -> None:
+    def _validationError(self, error):
+        self._errors.append(error)
+        self._logger.error(error)
+
+    def _validateKey(
+        self, name: str, data: dict, key: str, type=None, optional: bool = False
+    ) -> bool:
+        ok = True
+        if key not in data:
+            if not optional:
+                self._validationError(f"{name}: {key} not defined")
+            return optional
+        value = data[key]
+        if type is not None and not isinstance(value, type):
+            self._validationError(f"{name}: {key} is not a {type.__name__}")
+            ok = False
+        elif type == list and len(value) == 0 and not optional:
+            self._validationError(f"{name}: {key} has no values")
+            ok = False
+        return ok
+
+    def _validateParameter(self, name: str, param: dict) -> bool:
+        ok = True
+        ok = ok and self._validateKey(name, param, "parameterName", str)
+        return ok
+
+    def _validateGrid(self, name: str, grid: dict, havegriddata: bool) -> bool:
+        ok = True
+        ok = ok and self._validateKey(name, grid, "gridName", str)
+        ok = ok and self._validateKey(name, grid, "iNodeMaximum", int)
+        ok = ok and self._validateKey(name, grid, "jNodeMaximum", int)
+        if self._validateKey(name, grid, "affineCoeffs", list):
+            coeffs = grid["affineCoeffs"]
+            if len(coeffs) != 6:
+                ok = False
+                self._validationError(f"{name}: affinceCoeffs doesn't have 6 elements")
+            else:
+                for c in coeffs:
+                    if type(c) not in (int, float):
+                        self._validateError(f"{name}: affineCoeffs must all be numeric")
+                        ok = False
+                        break
+        else:
+            ok = False
+        if "gridDataSource" in grid:
+            ok = ok and self._validateKey(name, grid, "gridDataSource", str)
+        elif not havegriddata:
+            ok = ok and self._validateKey(name, grid, "data", list)
+        return ok
+
+    def _validateGroup(self, name: str, group: dict, havegriddata: bool) -> bool:
+        ok = True
+        ok = ok and self._validateKey(name, group, "groupName", str)
+        nparam = 0
+        if self._validateKey(name, group, "parameters", list):
+            params = group["parameters"]
+            nparam = len(params)
+            for iparam, param in enumerate(params):
+                ok = ok and self._validateParameter(
+                    f"{name}: parameter {iparam+1}", param
+                )
+        else:
+            ok = False
+        if self._validateKey(name, group, "grids", list):
+            for igrid, grid in enumerate(group["grids"]):
+                ok = ok and self._validateGrid(
+                    f"{name}: grid {igrid+1}", grid, havegriddata
+                )
+        else:
+            ok = False
+        return ok
+
+    def _validateGridData(self, name: str, griddata: dict) -> bool:
+        ok = True
+        self._validateKey(name, griddata, "gridName", str)
+        self._validateKey(name, griddata, "data", list)
+        return ok
+
+    def validate(self):
         """
         Not implemented: Currently have a placeholder implementation pending a genuine schema implementation
         """
+        errcount = len(self._errors)
+        ok = True
         data = self._data
-        if "groups" not in data or not isinstance(data["groups"], list):
-            raise SchemaError("groups not defined or not a list")
-        for igroup, group in enumerate(data["groups"]):
-            if "groupName" not in group:
-                raise SchemaError(f"groupName not defined in groups[{igroup}]")
-            if "grids" not in group or not isinstance(group["grids"], list):
-                raise SchemaError(
-                    f"grids not defined or not a list in group {group['groupName']}"
+        name = "GGXF"
+        havegriddata = "gridData" in data
+        if self._validateKey(name, data, "groups", list):
+            for igroup, group in enumerate(data["groups"]):
+                ok = ok and self._validateGroup(
+                    f"Group {igroup+1}", group, havegriddata
                 )
+        else:
+            ok = False
+        if havegriddata:
+            if self._validateKey(name, data, "gridData", list):
+                for igriddata, griddata in enumerate(data["gridData"]):
+                    self._validateGridData(f"gridData {igriddata+1}", griddata)
+            else:
+                ok = False
+        if not ok:
+            raise SchemaError(
+                f"Errors in GGXF schema: {len(self._errors)-errcount} errors detected"
+            )
 
     def save(self, netcdf4_file: str, cdl: bool = False):
         self._logger.debug(f"Saving NetCDF4 grid as {netcdf4_file}")
@@ -203,7 +375,7 @@ class GGXF:
             ncparamtype = root.createCompoundType(paramtype, "ggxfParameterType")
             nctypes["ggxfParameterType"] = GGXF.RecordType(paramtype, ncparamtype)
 
-        self._saveMetadata(root, data, ["groups"])
+        self._saveMetadata(root, data, ["groups", "gridData"])
 
         # Store each of the groups
         for group in data["groups"]:
@@ -244,7 +416,7 @@ class GGXF:
     ):
         name = grid.get("gridName")
         cdfgrid = cdfgroup.createGroup(name)
-        exclude = ["gridName", "grids", "gridData", "gridDataSource", "affineCoeffs"]
+        exclude = ["gridName", "grids", "data", "gridDataSource", "affineCoeffs"]
 
         # Store group attributes
         cdfgrid.setncatts({"affineCoeffs": grid["affineCoeffs"]})
@@ -258,15 +430,10 @@ class GGXF:
         nrow = grid["jNodeMaximum"] + 1
         cdfgrid.createDimension("nCol", ncol)
         cdfgrid.createDimension("nRow", nrow)
-        dimensions = (nrow, ncol, nparam)
 
         # Store the grid data
         datavar = cdfgrid.createVariable("data", np.float64, ["nRow", "nCol", "nParam"])
-        data = grid["gridData"]
-        if data.shape != dimensions:
-            self._logger.debug(f"Reshaping grid from {data.shape} to {dimensions}")
-            data = data.reshape(dimensions)
-        datavar[:, :, :] = data
+        datavar[:, :, :] = grid["data"]
 
         self._saveMetadata(cdfgrid, grid, exclude)
 
