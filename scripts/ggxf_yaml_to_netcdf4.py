@@ -92,7 +92,6 @@ class GGXF:
         self._errors = []
         self._logger = logging.getLogger("GGXF")
         self._options = options or {}
-        self._separategrids = options.get("separate_grid_data", False)
         metastyle = options.get("metadata_style", "dot0")
         if metastyle == "json":
             logging.debug("Using JSON metadata format")
@@ -149,6 +148,7 @@ class GGXF:
                     name = grid["gridName"]
                     ncol = grid["iNodeMaximum"] + 1
                     nrow = grid["jNodeMaximum"] + 1
+                    dimensions = (nrow, ncol, nparam)
                     griderr0 = errcount
                     if name in gridindex:
                         data = gridindex.pop(name)
@@ -226,9 +226,23 @@ class GGXF:
                                 f"Grid {name}: size {size} different to expected {expectedSize}"
                             )
                             errcount += 1
+                        elif (
+                            len(data.shape) > 1
+                            and dimensions[0] != dimensions[1]
+                            and (
+                                data.shape[0] == dimensions[1]
+                                or data.shape[1] == dimensions[0]
+                            )
+                        ):
+                            self._validationError(
+                                f"Grid {name}: load grid dimensions {data.shape} do not match {dimensions} - likely transposed grid"
+                            )
+                            errcount += 1
                         else:
-                            dimensions = (nrow, ncol, nparam)
                             if data.shape != dimensions:
+                                self._logger.warning(
+                                    f"Grid {name}: reshaping from {data.shape} to {dimensions}"
+                                )
                                 data = data.reshape(dimensions)
                                 grid["data"] = data
                             self._logger.debug(
