@@ -46,7 +46,7 @@ parameter definitions supported.
 
 ## Installation
 
-This script requires installing python3 modules netCDF4, pyyaml, and numpy.  If grids are defined using a gridDataSource attribute then the gdal module is also required.  
+This script requires installing python3 modules netCDF4, pyyaml, and numpy.  If grids are defined using a dataSource attribute then the gdal module is also required.  
 
 ## Issues
 

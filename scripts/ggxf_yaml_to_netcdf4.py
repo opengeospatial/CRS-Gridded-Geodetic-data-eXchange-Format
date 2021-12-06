@@ -152,7 +152,7 @@ class GGXF:
                     griderr0 = errcount
                     if name in gridindex:
                         data = gridindex.pop(name)
-                        if "data" in grid or "gridDataSource" in grid:
+                        if "data" in grid or "dataSource" in grid:
                             errcount += 1
                             self._validationError(
                                 f"Grid {name}: data in gridData and in grid element"
@@ -161,10 +161,10 @@ class GGXF:
                         grid["data"] = data
 
                     if "data" in grid:
-                        if "gridDataSource" in grid:
+                        if "dataSource" in grid:
                             errcount += 1
                             self._validationError(
-                                f"Grid {name}: data and gridDataSource defined."
+                                f"Grid {name}: data and dataSource defined."
                             )
                             continue
                         try:
@@ -183,7 +183,7 @@ class GGXF:
                             self._validationError(
                                 f"Grid {name}: Could not read gridData: {ex}"
                             )
-                    elif "gridDataSource" in grid:
+                    elif "dataSource" in grid:
                         from osgeo import gdal
 
                         if not dirset:
@@ -192,7 +192,7 @@ class GGXF:
                             )
                             os.chdir(griddir)
                             dirset = True
-                        source = grid.pop("gridDataSource")
+                        source = grid.pop("dataSource")
                         try:
                             self._logger.debug(f"Loading {source}")
                             dataset = gdal.Open(source)
@@ -299,8 +299,8 @@ class GGXF:
                         break
         else:
             ok = False
-        if "gridDataSource" in grid:
-            ok = ok and self._validateKey(name, grid, "gridDataSource", str)
+        if "dataSource" in grid:
+            ok = ok and self._validateKey(name, grid, "dataSource", str)
         elif not havegriddata:
             ok = ok and self._validateKey(name, grid, "data", list)
         return ok
@@ -344,9 +344,7 @@ class GGXF:
         havegriddata = "gridData" in data
         if self._validateKey(name, data, "groups", list):
             for igroup, group in enumerate(data["groups"]):
-                ok = ok and self._validateGroup(
-                    f"Group {igroup}", group, havegriddata
-                )
+                ok = ok and self._validateGroup(f"Group {igroup}", group, havegriddata)
         else:
             ok = False
         if havegriddata:
@@ -430,7 +428,7 @@ class GGXF:
     ):
         name = grid.get("gridName")
         cdfgrid = cdfgroup.createGroup(name)
-        exclude = ["gridName", "grids", "data", "gridDataSource", "affineCoeffs"]
+        exclude = ["gridName", "grids", "data", "dataSource", "affineCoeffs"]
 
         # Store group attributes
         cdfgrid.setncatts({"affineCoeffs": grid["affineCoeffs"]})
