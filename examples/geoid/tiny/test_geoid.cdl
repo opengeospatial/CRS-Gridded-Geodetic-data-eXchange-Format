@@ -2,7 +2,7 @@ netcdf test_geoid {
 
 // global attributes:
 		:ggxfVersion = "1.0" ;
-		:filename = "g2018vi.gxt" ;
+		:filename = "tiny_geoid.gxt" ;
 		:content = "heightCorrectionModel" ;
 		:remark = "hybrid geoid" ;
 		:contentApplicability.boundingBox.southBoundLatitude = 17.67 ;
@@ -19,13 +19,12 @@ netcdf test_geoid {
 		:city = "Silver Spring" ;
 		:postalCode = "20910" ;
 		:country = "United States of America" ;
-		:onlineResourceLinkage = "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g2018p0.asc.zip" ;
 		:_NCProperties = "version=2,netcdf=4.7.4,hdf5=1.12.0," ;
 		:_SuperblockVersion = 0 ;
 		:_IsNetcdf4 = 1 ;
 		:_Format = "netCDF-4" ;
 
-group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
+group: Based\ on\ Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
   dimensions:
   	nParam = 1 ;
 
@@ -37,7 +36,7 @@ group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
   		:parameters.0.unitSiRatio = 1. ;
   		:interpolationMethod = "biquadratic" ;
 
-  group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
+  group: Based\ on\ Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
     dimensions:
     	nCol = 3 ;
     	nRow = 4 ;
@@ -65,6 +64,6 @@ group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
   -29.666,
   -29.709,
   -29.7522 ;
-    } // group Puerto\ Rico\ Virgin\ Islands\ GEOID18
-  } // group Puerto\ Rico\ Virgin\ Islands\ GEOID18
+    } // group Based\ on\ Puerto\ Rico\ Virgin\ Islands\ GEOID18
+  } // group Based\ on\ Puerto\ Rico\ Virgin\ Islands\ GEOID18
 }
