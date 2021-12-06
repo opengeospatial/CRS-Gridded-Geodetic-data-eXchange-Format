@@ -1,0 +1,80 @@
+ggxfVersion: "1.0"
+filename: "27to83.gxt"
+content: geographic2dOffsets
+version: "National Transformation v2_0 subset"
+publicationDate: "1995-02"
+partyName:             "Geodetic Survey Division, Natural Resources Canada"
+onlineResourceLinkage: "https://webapp.geod.nrcan.gc.ca/geod/data-donnees/transformations.php"
+licence:               "https://open.canada.ca/en/open-government-licence-canada"
+contentApplicabilityExtent:
+  boundingBox:
+    southBoundLatitude: 40.0
+    westBoundLongitude: -141.0
+    northBoundLatitude: 60.0
+    eastBoundLongitude: -88.0
+  extentDescription: "Canada south of 60°N"
+
+interpolationCrsWkt: &crs |
+    GEOGCRS["NAD27",
+      DATUM["North American Datum 1927",
+        ELLIPSOID["Clarke 1866",6378206.4,294.9786982,LENGTHUNIT["metre",1]]],
+      CS[ellipsoidal,2],
+      AXIS["Geodetic latitude (Lat)",north],
+      AXIS["Geodetic longitude (Lon)",east],
+      ANGLEUNIT["degree",0.0174532925199433]]
+
+sourceCrsWkt: *crs
+targetCrsWkt: |
+    GEOGCRS["NAD83(Original)",
+      DATUM["North American Datum 1983",
+        ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1]]],
+      CS[ellipsoidal,2],
+      AXIS["Geodetic latitude (Lat)",north],
+      AXIS["Geodetic longitude (Lon)",east],
+      ANGLEUNIT["degree",0.0174532925199433]]
+
+operationAccuracy: 1.5
+groups:
+  - groupName: "National Transformation v2_0 subset"
+    parameters:
+      - parameterName: latitudeOffset
+        angleUnit: arc-second
+        unitSiRatio: 4.84813681109536E-06
+      - parameterName: longitudeOffset
+        angleUnit: arc-second
+        unitSiRatio: 4.84813681109536E-06
+      - parameterName: latitudeOffsetUncertainty
+        lengthUnit: metre
+        unitSiRatio: 1.0
+      - parameterName: longitudeOffsetUncertainty
+        lengthUnit: metre
+        unitSiRatio: 1.0
+    uncertaintyMeasure: 2CEE
+    interpolationMethod: bilinear
+    grids:
+      - gridName: "CAwest"
+        affineCoeffs: [ 60.0, 0.0, -0.083333333333333, -142.0, 0.083333333333333, 0.0 ]
+        iNodeMaximum: 648
+        jNodeMaximum: 156
+        dataSource: NTv2:1:NTV2_0.GSB
+      - gridName: "CAeast"
+        affineCoeffs: [ 60.0, 0.0, -0.083333333333333, -88.0, 0.083333333333333, 0.0 ]
+        iNodeMaximum: 528
+        jNodeMaximum: 240
+        dataSource: NTv2:0:NTV2_0.GSB
+        grids:
+          - gridName: "ONtronto"
+            affineCoeffs: [ 46.666666667, 0.0, -0.00833333, -81.75, 0.1, 0.008333333 ]
+            iNodeMaximum: 350
+            jNodeMaximum: 510
+            dataSource: NTv2:98:NTV2_0.GSB
+          - gridName: "ONsarnia"
+            affineCoeffs: [ 43.41666667, 0.0, -0.00833333, -82.5833333, 0.1, 0.00083333 ]
+            iNodeMaximum: 100
+            jNodeMaximum: 120
+            dataSource: NTv2:94:NTV2_0.GSB
+          - gridName: "ONwinsor"
+            affineCoeffs: [ 42.41666667, 0.0, -0.00833333, -83.1666667, 0.1, 0.00833333 ]
+            iNodeMaximum: 170
+            jNodeMaximum: 60
+            dataSource: NTv2:99:NTV2_0.GSB
