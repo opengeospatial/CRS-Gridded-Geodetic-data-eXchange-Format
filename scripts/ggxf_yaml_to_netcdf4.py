@@ -314,14 +314,14 @@ class GGXF:
             nparam = len(params)
             for iparam, param in enumerate(params):
                 ok = ok and self._validateParameter(
-                    f"{name}: parameter {iparam+1}", param
+                    f"{name}: parameter {iparam}", param
                 )
         else:
             ok = False
         if self._validateKey(name, group, "grids", list):
             for igrid, grid in enumerate(group["grids"]):
                 ok = ok and self._validateGrid(
-                    f"{name}: grid {igrid+1}", grid, havegriddata
+                    f"{name}: grid {igrid}", grid, havegriddata
                 )
         else:
             ok = False
@@ -345,14 +345,14 @@ class GGXF:
         if self._validateKey(name, data, "groups", list):
             for igroup, group in enumerate(data["groups"]):
                 ok = ok and self._validateGroup(
-                    f"Group {igroup+1}", group, havegriddata
+                    f"Group {igroup}", group, havegriddata
                 )
         else:
             ok = False
         if havegriddata:
             if self._validateKey(name, data, "gridData", list):
                 for igriddata, griddata in enumerate(data["gridData"]):
-                    self._validateGridData(f"gridData {igriddata+1}", griddata)
+                    self._validateGridData(f"gridData {igriddata}", griddata)
             else:
                 ok = False
         if not ok:
