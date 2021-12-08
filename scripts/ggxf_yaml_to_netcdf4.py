@@ -64,6 +64,7 @@ def main():
     if args.metadata_style:
         options["metadata_style"] = args.metadata_style
     options["use_compound_types"] = args.use_compound_types
+    options["dtype"] = "float32"
     # options["simplify_1param_grid"] = args.simplify_1param_grid
 
     try:
@@ -110,6 +111,8 @@ class GGXF:
             )
         self._useCompoundTypes = options.get("use_compound_types", False)
         self._simplify1ParamGrids = options.get("simplify_param_grids", False)
+        dtype = options.get("dtype", "float32")
+        self._dtype = dtype = np.float64 if dtype == "float64" else np.float32
         self._saveMetadata = metafunc
         if yaml_file:
             self.loadYaml(yaml_file)
@@ -121,8 +124,8 @@ class GGXF:
             self._logger.debug(f"Loading YAML {yaml_file}")
             self._data = yaml.load(open(yaml_file).read(), Loader=yaml.SafeLoader)
             self._filename = yaml_file
-        except:
-            raise Error(f"Cannot load YAML file {yaml_file}")
+        except Exception as ex:
+            raise Error(f"Cannot load YAML file {yaml_file}: {ex}")
         self.validate()
         self.loadGrids()
 
@@ -244,7 +247,9 @@ class GGXF:
                                     f"Grid {name}: reshaping from {data.shape} to {dimensions}"
                                 )
                                 data = data.reshape(dimensions)
-                                grid["data"] = data
+                            if data.dtype != self._dtype:
+                                data = data.astype(self._dtype)
+                            grid["data"] = data
                             self._logger.debug(
                                 f"Grid {name} loaded - dimensions {data.shape}, type {data.dtype}"
                             )
@@ -444,7 +449,9 @@ class GGXF:
         cdfgrid.createDimension("nRow", nrow)
 
         # Store the grid data
-        datavar = cdfgrid.createVariable("data", np.float64, ["nRow", "nCol", "nParam"])
+        datavar = cdfgrid.createVariable(
+            "data", self._dtype, ["nRow", "nCol", "nParam"]
+        )
         datavar[:, :, :] = grid["data"]
 
         self._saveMetadata(cdfgrid, grid, exclude)
