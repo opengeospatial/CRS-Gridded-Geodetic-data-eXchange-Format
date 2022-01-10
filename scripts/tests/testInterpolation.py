@@ -120,6 +120,32 @@ class BiquadraticInterpolationTest(unittest.TestCase):
             [1.5, 4.1],
             [-0.1, -0.1],
         ]
+        gen3 = lambda x, y: max(-1, min(1, 2 * (x - 1.5)))
+        self.testgrid3 = createGrid((4, 4), [gen3])
+        self.checkfunc3 = lambda point: [
+            (point[0] - 0.5) ** 2 - 1.25
+            if point[0] < 1.5
+            else 1.25 - (point[0] - 2.5) ** 2
+        ]
+        self.testpoints3 = [
+            [0.5, 1.0],
+            [1.0, 1.0],
+            [1.45, 1.0],
+            [1.55, 1.0],
+            [2.0, 1.0],
+            [2.9, 1.0],
+        ]
+        gen4 = lambda x, y: max(-1, min(1, 2 * (y - 1.5)))
+        self.testgrid4 = createGrid((4, 4), [gen4])
+        self.checkfunc4 = lambda point: self.checkfunc3([point[1], point[0]])
+        self.testpoints4 = [
+            [1.0, 0.5],
+            [1.0, 1.0],
+            [1.0, 1.45],
+            [1.0, 1.55],
+            [1.0, 2.0],
+            [1.0, 2.9],
+        ]
 
     def test_Biquadratic1(self):
         testxy = convertTestPoints(self.testpoints)
@@ -135,6 +161,22 @@ class BiquadraticInterpolationTest(unittest.TestCase):
         for xy, point in zip(testxy, self.testpoints):
             result = GridInterpolator.biquadratic(self.testgrid2, xy)
             check = self.checkfunc2(point)
+            self.assertAlmostEqual(
+                result[0], check[0], msg=f"Biquadratic interpolation at {point}"
+            )
+
+    def test_Biquadratic3(self):
+        testxy = convertTestPoints(self.testpoints3)
+        for xy, point in zip(testxy, self.testpoints3):
+            result = GridInterpolator.biquadratic(self.testgrid3, xy)
+            check = self.checkfunc3(point)
+            self.assertAlmostEqual(
+                result[0], check[0], msg=f"Biquadratic interpolation at {point}"
+            )
+        testxy = convertTestPoints(self.testpoints4)
+        for xy, point in zip(testxy, self.testpoints4):
+            result = GridInterpolator.biquadratic(self.testgrid4, xy)
+            check = self.checkfunc4(point)
             self.assertAlmostEqual(
                 result[0], check[0], msg=f"Biquadratic interpolation at {point}"
             )
