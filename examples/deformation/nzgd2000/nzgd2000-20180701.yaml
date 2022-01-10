@@ -1,0 +1,1578 @@
+ggxfVersion: '1.0'
+fileName: nzgd2000-20180701.yaml
+version: '20180701'
+content: deformationModel
+remark: |
+  New Zealand Deformation Model.
+  Defines the secular model (National Deformation Model)
+  and patches for significant deformation events since 2000.
+partyName: Land Information New Zealand
+deliveryPoint: |
+  Level 7, Radio New Zealand House
+  155 The Terrace
+  PO Box 5501
+city: Wellington
+postalCode: '6145'
+electronicMailAddress: customersupport@linz.govt.nz
+onlineResourceLinkage: https://www.linz.govt.nz/nzgd2000
+publicationDate: '2018-07-01'
+contentApplicabilityExtents:
+  extentDescription: New Zealand EEZ
+  boundingBox:
+    southBoundLatitude: -58.0
+    westBoundLongitude: 158.0
+    northBoundLatitude: -25.0
+    eastBoundLongitude: 194.0
+startDate: '1900-01-01'
+endDate: '2050-01-01'
+sourceCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6167]],CS[ellipsoidal,3,ID["EPSG",6423]],AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]],ID["EPSG",4959]]
+targetCrsWkt: GEOGCRS["ITRF96", DYNAMIC[FRAMEEPOCH[1997.0]],DATUM["International Terrestrial Reference Frame 1996",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6654]],CS[ellipsoidal,3,ID["EPSG",6423]],AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]],ID["EPSG",7907]]
+interpolationCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6167]],CS[ellipsoidal,2,ID["EPSG",6422]],AXIS["Geodetic latitude (Lat)",north],AXIS["Geodetic longitude (Lon)",east],ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]],ID["EPSG",4167]]
+operationAccuracy: 0.01
+uncertaintyMeasure:
+  horizontal:
+    name: Circular error probable
+    id: 2CEP
+  vertical:
+    name: Standard error (2-sigma)
+    id: 2SE
+deformationApplicationMethod: addition
+groups:
+- groupName: nz_linz_nzgd2000-ndm-grid02
+  remark: |
+    Secular deformation model derived from NUVEL-1A rotation rates
+    Secular deformation model derived from GNS model 2011 V4
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: velocity
+    functionReferenceDate: '2000-01-01T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: ndm_grid_nuvel1a_eez
+    affineCoeffs: [-25.0,0.0,-0.5,158.0,0.5,0.0]
+    iNodeMaximum: 72
+    jNodeMaximum: 66
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ndm-grid02.tif
+    hierarchyRank: 1
+  - gridName: ndm_grid_igns2011_nz
+    parentGridName: ndm_grid_nuvel1a_eez
+    affineCoeffs: [-33.0,0.0,-0.1,165.5,0.1,0.0]
+    iNodeMaximum: 140
+    jNodeMaximum: 150
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ndm-grid02.tif
+    hierarchyRank: 2
+- groupName: nz_linz_nzgd2000-si20030821-grid01
+  remark: Secretary Island (Fiordland) earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2003-08-21T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_si_20030821_grid_si_L1
+    affineCoeffs: [-43.5,0.0,-0.125,165.85,0.15,0.0]
+    iNodeMaximum: 43
+    jNodeMaximum: 33
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-si20030821-grid01.tif
+    hierarchyRank: 1
+  - gridName: patch_si_20030821_grid_si_L2
+    parentGridName: patch_si_20030821_grid_si_L1
+    affineCoeffs: [-44.5,0.0,-0.03125,166.225,0.0375,0.0]
+    iNodeMaximum: 46
+    jNodeMaximum: 44
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-si20030821-grid01.tif
+    hierarchyRank: 2
+  - gridName: patch_si_20030821_grid_si_L3
+    parentGridName: patch_si_20030821_grid_si_L2
+    affineCoeffs: [-44.828125,0.0,-0.0078125,166.5625,0.009375,0.0]
+    iNodeMaximum: 92
+    jNodeMaximum: 80
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-si20030821-grid01.tif
+    hierarchyRank: 3
+- groupName: nz_linz_nzgd2000-mq20041223-grid011
+  remark: Macquarie Plate earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2004-12-23T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_mq_20041223_grid_mq_P0_L1
+    affineCoeffs: [-52.125,0.0,-0.125,168.4,0.15,0.0]
+    iNodeMaximum: 9
+    jNodeMaximum: 7
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-mq20041223-grid011.tif
+    hierarchyRank: 1
+- groupName: nz_linz_nzgd2000-mq20041223-grid012
+  remark: Macquarie Plate earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2004-12-23T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_mq_20041223_grid_mq_P1_SL2
+    affineCoeffs: [-48.25,0.0,-0.03125,158.8,0.0375,0.0]
+    iNodeMaximum: 104
+    jNodeMaximum: 136
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-mq20041223-grid012.tif
+    hierarchyRank: 1
+- groupName: nz_linz_nzgd2000-mq20041223-grid013
+  remark: Macquarie Plate earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2004-12-23T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_mq_20041223_grid_mq_P2_L1
+    affineCoeffs: [-50.125,0.0,-0.125,165.4,0.15,0.0]
+    iNodeMaximum: 10
+    jNodeMaximum: 10
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-mq20041223-grid013.tif
+    hierarchyRank: 1
+- groupName: nz_linz_nzgd2000-mq20041223-grid014
+  remark: Macquarie Plate earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2004-12-23T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_mq_20041223_grid_mq_P3_L1
+    affineCoeffs: [-49.25,0.0,-0.125,178.15,0.15,0.0]
+    iNodeMaximum: 8
+    jNodeMaximum: 7
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-mq20041223-grid014.tif
+    hierarchyRank: 1
+- groupName: nz_linz_nzgd2000-mq20041223-grid015
+  remark: Macquarie Plate earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2004-12-23T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_mq_20041223_grid_mq_P4_L1
+    affineCoeffs: [-40.125,0.0,-0.125,165.85,0.15,0.0]
+    iNodeMaximum: 69
+    jNodeMaximum: 67
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-mq20041223-grid015.tif
+    hierarchyRank: 1
+- groupName: nz_linz_nzgd2000-mq20041223-grid016
+  remark: Macquarie Plate earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2004-12-23T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_mq_20041223_grid_mq_P5_L1
+    affineCoeffs: [-47.375,0.0,-0.125,178.45,0.15,0.0]
+    iNodeMaximum: 7
+    jNodeMaximum: 6
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-mq20041223-grid016.tif
+    hierarchyRank: 1
+- groupName: nz_linz_nzgd2000-gs20071016-grid01
+  remark: Fiordland (George Sound) earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2007-10-16T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_gs_20071016_grid_gs_L1
+    affineCoeffs: [-43.75,0.0,-0.125,165.85,0.15,0.0]
+    iNodeMaximum: 36
+    jNodeMaximum: 26
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-gs20071016-grid01.tif
+    hierarchyRank: 1
+  - gridName: patch_gs_20071016_grid_gs_L2
+    parentGridName: patch_gs_20071016_grid_gs_L1
+    affineCoeffs: [-44.28125,0.0,-0.03125,166.6375,0.0375,0.0]
+    iNodeMaximum: 44
+    jNodeMaximum: 36
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-gs20071016-grid01.tif
+    hierarchyRank: 2
+  - gridName: patch_gs_20071016_grid_gs_L3
+    parentGridName: patch_gs_20071016_grid_gs_L2
+    affineCoeffs: [-44.6171875,0.0,-0.0078125,167.0875,0.009375,0.0]
+    iNodeMaximum: 53
+    jNodeMaximum: 51
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-gs20071016-grid01.tif
+    hierarchyRank: 3
+- groupName: nz_linz_nzgd2000-ds20090715-grid011
+  remark: Dusky Sound (Fiordland) earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: ramp
+    startDate: '2009-07-15T00:00:00Z'
+    startScaleFactor: -1.34
+    endDate: '2009-07-15T00:00:00Z'
+    endScaleFactor: -0.29
+  - functionName: ramp
+    startDate: '2009-07-15T00:00:00Z'
+    startScaleFactor: 0.0
+    endDate: '2011-09-01T00:00:00Z'
+    endScaleFactor: 0.29
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ds_20090715_grid_ds_P0_L1
+    affineCoeffs: [-50.125,0.0,-0.125,165.4,0.15,0.0]
+    iNodeMaximum: 10
+    jNodeMaximum: 10
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid011.tif
+    hierarchyRank: 1
+- groupName: nz_linz_nzgd2000-ds20090715-grid012
+  remark: Dusky Sound (Fiordland) earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: ramp
+    startDate: '2009-07-15T00:00:00Z'
+    startScaleFactor: -1.34
+    endDate: '2009-07-15T00:00:00Z'
+    endScaleFactor: -0.29
+  - functionName: ramp
+    startDate: '2009-07-15T00:00:00Z'
+    startScaleFactor: 0.0
+    endDate: '2011-09-01T00:00:00Z'
+    endScaleFactor: 0.29
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ds_20090715_grid_ds_P1_L1
+    affineCoeffs: [-49.25,0.0,-0.125,178.15,0.15,0.0]
+    iNodeMaximum: 5
+    jNodeMaximum: 6
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid012.tif
+    hierarchyRank: 1
+- groupName: nz_linz_nzgd2000-ds20090715-grid013
+  remark: Dusky Sound (Fiordland) earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: ramp
+    startDate: '2009-07-15T00:00:00Z'
+    startScaleFactor: -1.34
+    endDate: '2009-07-15T00:00:00Z'
+    endScaleFactor: -0.29
+  - functionName: ramp
+    startDate: '2009-07-15T00:00:00Z'
+    startScaleFactor: 0.0
+    endDate: '2011-09-01T00:00:00Z'
+    endScaleFactor: 0.29
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ds_20090715_grid_ds_P2_L1
+    affineCoeffs: [-39.625,0.0,-0.125,164.65,0.15,0.0]
+    iNodeMaximum: 84
+    jNodeMaximum: 71
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid013.tif
+    hierarchyRank: 1
+  - gridName: patch_ds_20090715_grid_ds_P2_L2
+    parentGridName: patch_ds_20090715_grid_ds_P2_L1
+    affineCoeffs: [-44.6875,0.0,-0.03125,165.2875,0.0375,0.0]
+    iNodeMaximum: 66
+    jNodeMaximum: 72
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ds20090715-grid013.tif
+    hierarchyRank: 2
+  - gridName: patch_ds_20090715_grid_ds_P2_L3
+    parentGridName: patch_ds_20090715_grid_ds_P2_L2
+    affineCoeffs: [-45.28125,0.0,-0.0078125,166.075,0.009375,0.0]
+    iNodeMaximum: 82
+    jNodeMaximum: 137
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-ds20090715-grid013.tif
+    hierarchyRank: 3
+- groupName: nz_linz_nzgd2000-ds20090715-grid014
+  remark: Dusky Sound (Fiordland) earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: ramp
+    startDate: '2009-07-15T00:00:00Z'
+    startScaleFactor: -1.34
+    endDate: '2009-07-15T00:00:00Z'
+    endScaleFactor: -0.29
+  - functionName: ramp
+    startDate: '2009-07-15T00:00:00Z'
+    startScaleFactor: 0.0
+    endDate: '2011-09-01T00:00:00Z'
+    endScaleFactor: 0.29
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ds_20090715_grid_ds_P3_L1
+    affineCoeffs: [-47.375,0.0,-0.125,178.45,0.15,0.0]
+    iNodeMaximum: 7
+    jNodeMaximum: 6
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid014.tif
+    hierarchyRank: 1
+- groupName: nz_linz_nzgd2000-c120100904-grid01
+  remark: Darfield earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2010-09-04T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_c1_20100904_grid_c1_L1
+    affineCoeffs: [-40.375,0.0,-0.125,168.1,0.15,0.0]
+    iNodeMaximum: 54
+    jNodeMaximum: 51
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-c120100904-grid01.tif
+    hierarchyRank: 1
+  - gridName: patch_c1_20100904_grid_c1_L2
+    parentGridName: patch_c1_20100904_grid_c1_L1
+    affineCoeffs: [-42.8125,0.0,-0.03125,171.1,0.0375,0.0]
+    iNodeMaximum: 58
+    jNodeMaximum: 49
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-c120100904-grid01.tif
+    hierarchyRank: 2
+  - gridName: patch_c1_20100904_grid_c1_L3
+    parentGridName: patch_c1_20100904_grid_c1_L2
+    affineCoeffs: [-43.25,0.0,-0.0078125,171.625,0.009375,0.0]
+    iNodeMaximum: 117
+    jNodeMaximum: 83
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-c120100904-grid01.tif
+    hierarchyRank: 3
+  - gridName: patch_c1_20100904_grid_c1_L4
+    parentGridName: patch_c1_20100904_grid_c1_L3
+    affineCoeffs: [-43.423828125,0.0,-0.001953125,171.8125,0.00234375,0.0]
+    iNodeMaximum: 305
+    jNodeMaximum: 140
+    dataSource: GTIFF_DIR:4:nz_linz_nzgd2000-c120100904-grid01.tif
+    hierarchyRank: 4
+- groupName: nz_linz_nzgd2000-c220110222-grid01
+  remark: Christchurch February earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2011-02-22T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_c2_20110222_grid_c2_L1
+    affineCoeffs: [-42.375,0.0,-0.125,170.8,0.15,0.0]
+    iNodeMaximum: 20
+    jNodeMaximum: 17
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-c220110222-grid01.tif
+    hierarchyRank: 1
+  - gridName: patch_c2_20110222_grid_c2_L2
+    parentGridName: patch_c2_20110222_grid_c2_L1
+    affineCoeffs: [-43.03125,0.0,-0.03125,172.0,0.0375,0.0]
+    iNodeMaximum: 37
+    jNodeMaximum: 33
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-c220110222-grid01.tif
+    hierarchyRank: 2
+  - gridName: patch_c2_20110222_grid_c2_L3
+    parentGridName: patch_c2_20110222_grid_c2_L2
+    affineCoeffs: [-43.3515625,0.0,-0.0078125,172.4125,0.009375,0.0]
+    iNodeMaximum: 61
+    jNodeMaximum: 51
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-c220110222-grid01.tif
+    hierarchyRank: 3
+  - gridName: patch_c2_20110222_grid_c2_L4
+    parentGridName: patch_c2_20110222_grid_c2_L3
+    affineCoeffs: [-43.474609375,0.0,-0.001953125,172.56015625,0.00234375,0.0]
+    iNodeMaximum: 117
+    jNodeMaximum: 80
+    dataSource: GTIFF_DIR:4:nz_linz_nzgd2000-c220110222-grid01.tif
+    hierarchyRank: 4
+- groupName: nz_linz_nzgd2000-c320110613-grid01
+  remark: Christchurch June earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2011-06-13T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_c3_20110613_grid_c3_L1
+    affineCoeffs: [-42.625,0.0,-0.125,171.4,0.15,0.0]
+    iNodeMaximum: 15
+    jNodeMaximum: 14
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-c320110613-grid01.tif
+    hierarchyRank: 1
+  - gridName: patch_c3_20110613_grid_c3_L2
+    parentGridName: patch_c3_20110613_grid_c3_L1
+    affineCoeffs: [-43.09375,0.0,-0.03125,172.15,0.0375,0.0]
+    iNodeMaximum: 32
+    jNodeMaximum: 30
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-c320110613-grid01.tif
+    hierarchyRank: 2
+  - gridName: patch_c3_20110613_grid_c3_L3
+    parentGridName: patch_c3_20110613_grid_c3_L2
+    affineCoeffs: [-43.375,0.0,-0.0078125,172.515625,0.009375,0.0]
+    iNodeMaximum: 50
+    jNodeMaximum: 47
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-c320110613-grid01.tif
+    hierarchyRank: 3
+  - gridName: patch_c3_20110613_grid_c3_L4
+    parentGridName: patch_c3_20110613_grid_c3_L3
+    affineCoeffs: [-43.484375,0.0,-0.001953125,172.65390625,0.00234375,0.0]
+    iNodeMaximum: 87
+    jNodeMaximum: 83
+    dataSource: GTIFF_DIR:4:nz_linz_nzgd2000-c320110613-grid01.tif
+    hierarchyRank: 4
+- groupName: nz_linz_nzgd2000-c420111223-grid01
+  remark: Christchurch earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2011-12-23T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_c4_20111223_grid_c4_L1
+    affineCoeffs: [-42.75,0.0,-0.125,171.55,0.15,0.0]
+    iNodeMaximum: 14
+    jNodeMaximum: 12
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-c420111223-grid01.tif
+    hierarchyRank: 1
+  - gridName: patch_c4_20111223_grid_c4_L2
+    parentGridName: patch_c4_20111223_grid_c4_L1
+    affineCoeffs: [-43.03125,0.0,-0.03125,172.1875,0.0375,0.0]
+    iNodeMaximum: 31
+    jNodeMaximum: 29
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-c420111223-grid01.tif
+    hierarchyRank: 2
+  - gridName: patch_c4_20111223_grid_c4_L3
+    parentGridName: patch_c4_20111223_grid_c4_L2
+    affineCoeffs: [-43.3125,0.0,-0.0078125,172.553125,0.009375,0.0]
+    iNodeMaximum: 51
+    jNodeMaximum: 43
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-c420111223-grid01.tif
+    hierarchyRank: 3
+  - gridName: patch_c4_20111223_grid_c4_L4
+    parentGridName: patch_c4_20111223_grid_c4_L3
+    affineCoeffs: [-43.421875,0.0,-0.001953125,172.67734375,0.00234375,0.0]
+    iNodeMaximum: 86
+    jNodeMaximum: 60
+    dataSource: GTIFF_DIR:4:nz_linz_nzgd2000-c420111223-grid01.tif
+    hierarchyRank: 4
+- groupName: nz_linz_nzgd2000-cs20130721-grid02
+  remark: Mw 6.6 Cook Strait earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2013-07-21T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_cs_20130721_grid_cs_20130721_L1
+    affineCoeffs: [-39.5,0.0,-0.125,171.55,0.15,0.0]
+    iNodeMaximum: 33
+    jNodeMaximum: 31
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-cs20130721-grid02.tif
+    hierarchyRank: 1
+  - gridName: patch_cs_20130721_grid_cs_20130721_L2
+    parentGridName: patch_cs_20130721_grid_cs_20130721_L1
+    affineCoeffs: [-41.03125,0.0,-0.03125,173.5375,0.0375,0.0]
+    iNodeMaximum: 42
+    jNodeMaximum: 36
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-cs20130721-grid02.tif
+    hierarchyRank: 2
+  - gridName: patch_cs_20130721_grid_cs_20130721_L3
+    parentGridName: patch_cs_20130721_grid_cs_20130721_L2
+    affineCoeffs: [-41.3828125,0.0,-0.0078125,173.9875,0.009375,0.0]
+    iNodeMaximum: 72
+    jNodeMaximum: 56
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-cs20130721-grid02.tif
+    hierarchyRank: 3
+  - gridName: patch_cs_20130721_grid_cs_20130721_L4
+    parentGridName: patch_cs_20130721_grid_cs_20130721_L3
+    affineCoeffs: [-41.537109375,0.0,-0.001953125,174.28984375,0.00234375,0.0]
+    iNodeMaximum: 89
+    jNodeMaximum: 67
+    dataSource: GTIFF_DIR:4:nz_linz_nzgd2000-cs20130721-grid02.tif
+    hierarchyRank: 4
+- groupName: nz_linz_nzgd2000-lg20130816-grid02
+  remark: Mw 6.6 Lake Grassmere earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2013-08-16T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_lg_20130816_grid_lg_20130816_L1
+    affineCoeffs: [-39.25,0.0,-0.125,170.95,0.15,0.0]
+    iNodeMaximum: 38
+    jNodeMaximum: 38
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-lg20130816-grid02.tif
+    hierarchyRank: 1
+  - gridName: patch_lg_20130816_grid_lg_20130816_L2
+    parentGridName: patch_lg_20130816_grid_lg_20130816_L1
+    affineCoeffs: [-41.09375,0.0,-0.03125,173.3875,0.0375,0.0]
+    iNodeMaximum: 43
+    jNodeMaximum: 39
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-lg20130816-grid02.tif
+    hierarchyRank: 2
+  - gridName: patch_lg_20130816_grid_lg_20130816_L3
+    parentGridName: patch_lg_20130816_grid_lg_20130816_L2
+    affineCoeffs: [-41.4609375,0.0,-0.0078125,173.809375,0.009375,0.0]
+    iNodeMaximum: 78
+    jNodeMaximum: 62
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-lg20130816-grid02.tif
+    hierarchyRank: 3
+  - gridName: patch_lg_20130816_grid_lg_20130816_L4
+    parentGridName: patch_lg_20130816_grid_lg_20130816_L3
+    affineCoeffs: [-41.60546875,0.0,-0.001953125,174.034375,0.00234375,0.0]
+    iNodeMaximum: 133
+    jNodeMaximum: 103
+    dataSource: GTIFF_DIR:4:nz_linz_nzgd2000-lg20130816-grid02.tif
+    hierarchyRank: 4
+- groupName: nz_linz_nzgd2000-ch20160214-grid01
+  remark: Christchurch Valentines Day earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2016-02-14T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ch_20160214_grid_ch_20160214_L1
+    affineCoeffs: [-42.875,0.0,-0.125,171.7,0.15,0.0]
+    iNodeMaximum: 13
+    jNodeMaximum: 10
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ch20160214-grid01.tif
+    hierarchyRank: 1
+  - gridName: patch_ch_20160214_grid_ch_20160214_L2
+    parentGridName: patch_ch_20160214_grid_ch_20160214_L1
+    affineCoeffs: [-43.0625,0.0,-0.03125,172.225,0.0375,0.0]
+    iNodeMaximum: 28
+    jNodeMaximum: 26
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ch20160214-grid01.tif
+    hierarchyRank: 2
+  - gridName: patch_ch_20160214_grid_ch_20160214_L3
+    parentGridName: patch_ch_20160214_grid_ch_20160214_L2
+    affineCoeffs: [-43.3203125,0.0,-0.0078125,172.553125,0.009375,0.0]
+    iNodeMaximum: 45
+    jNodeMaximum: 37
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-ch20160214-grid01.tif
+    hierarchyRank: 3
+  - gridName: patch_ch_20160214_grid_ch_20160214_L4
+    parentGridName: patch_ch_20160214_grid_ch_20160214_L3
+    affineCoeffs: [-43.408203125,0.0,-0.001953125,172.67265625,0.00234375,0.0]
+    iNodeMaximum: 78
+    jNodeMaximum: 60
+    dataSource: GTIFF_DIR:4:nz_linz_nzgd2000-ch20160214-grid01.tif
+    hierarchyRank: 4
+- groupName: nz_linz_nzgd2000-ka20161114-grid01
+  remark: |
+    Event: Kaikoura earthquake,  14 November 2016
+     Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
+     Version: Model 002, 23 June 2017
+    
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: step
+    functionReferenceDate: '2016-11-14T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L1_F
+    affineCoeffs: [-34.0,0.0,-0.125,165.85,0.15,0.0]
+    iNodeMaximum: 88
+    jNodeMaximum: 109
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid01.tif
+    hierarchyRank: 1
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L2_F
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L1_F
+    affineCoeffs: [-40.8125,0.0,-0.03125,171.925,0.0375,0.0]
+    iNodeMaximum: 94
+    jNodeMaximum: 81
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid01.tif
+    hierarchyRank: 2
+- groupName: nz_linz_nzgd2000-ka20161114-grid02
+  remark: |
+    Event: Kaikoura earthquake,  14 November 2016
+     Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
+     Version: Model 002, 23 June 2017
+    
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2016-11-14T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L2_R
+    affineCoeffs: [-41.28125,0.0,-0.03125,172.525,0.0375,0.0]
+    iNodeMaximum: 64
+    jNodeMaximum: 52
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 1
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L2_R
+    affineCoeffs: [-42.1484375,0.0,-0.0078125,172.571875,0.009375,0.0]
+    iNodeMaximum: 114
+    jNodeMaximum: 93
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 2
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+    affineCoeffs: [-42.484375,0.0,-0.001953125,172.7828125,0.00234375,0.0]
+    iNodeMaximum: 105
+    jNodeMaximum: 106
+    dataSource: GTIFF_DIR:6:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 3
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+    affineCoeffs: [-42.435546875,0.0,-0.001953125,173.00546875,0.00234375,0.0]
+    iNodeMaximum: 10
+    jNodeMaximum: 25
+    dataSource: GTIFF_DIR:7:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 4
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_02
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+    affineCoeffs: [-42.484375,0.0,-0.001953125,173.02890625,0.00234375,0.0]
+    iNodeMaximum: 105
+    jNodeMaximum: 110
+    dataSource: GTIFF_DIR:8:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 5
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_03
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+    affineCoeffs: [-42.38671875,0.0,-0.001953125,173.02890625,0.00234375,0.0]
+    iNodeMaximum: 105
+    jNodeMaximum: 50
+    dataSource: GTIFF_DIR:9:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 6
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_04
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+    affineCoeffs: [-42.484375,0.0,-0.001953125,173.275,0.00234375,0.0]
+    iNodeMaximum: 105
+    jNodeMaximum: 87
+    dataSource: GTIFF_DIR:10:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 7
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_05
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+    affineCoeffs: [-42.26953125,0.0,-0.001953125,173.275,0.00234375,0.0]
+    iNodeMaximum: 105
+    jNodeMaximum: 110
+    dataSource: GTIFF_DIR:11:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 8
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_060
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+    affineCoeffs: [-42.1484375,0.0,-0.001953125,173.47421875,0.00234375,0.0]
+    iNodeMaximum: 20
+    jNodeMaximum: 62
+    dataSource: GTIFF_DIR:12:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 9
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_080
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+    affineCoeffs: [-42.484375,0.0,-0.001953125,173.52109375,0.00234375,0.0]
+    iNodeMaximum: 51
+    jNodeMaximum: 29
+    dataSource: GTIFF_DIR:15:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 10
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_090
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+    affineCoeffs: [-42.26953125,0.0,-0.001953125,173.52109375,0.00234375,0.0]
+    iNodeMaximum: 51
+    jNodeMaximum: 110
+    dataSource: GTIFF_DIR:17:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 11
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_100
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+    affineCoeffs: [-42.1484375,0.0,-0.001953125,173.52109375,0.00234375,0.0]
+    iNodeMaximum: 51
+    jNodeMaximum: 62
+    dataSource: GTIFF_DIR:19:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 12
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L2_R
+    affineCoeffs: [-41.4609375,0.0,-0.0078125,173.153125,0.009375,0.0]
+    iNodeMaximum: 52
+    jNodeMaximum: 88
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 13
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_061
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_01
+    affineCoeffs: [-42.0546875,0.0,-0.001953125,173.47421875,0.00234375,0.0]
+    iNodeMaximum: 20
+    jNodeMaximum: 48
+    dataSource: GTIFF_DIR:13:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 14
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_07
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_01
+    affineCoeffs: [-42.044921875,0.0,-0.001953125,173.50234375,0.0023437500000014,0.0]
+    iNodeMaximum: 8
+    jNodeMaximum: 5
+    dataSource: GTIFF_DIR:14:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 15
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_101
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_01
+    affineCoeffs: [-42.0546875,0.0,-0.001953125,173.52109375,0.00234375,0.0]
+    iNodeMaximum: 51
+    jNodeMaximum: 48
+    dataSource: GTIFF_DIR:20:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 16
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_110
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_01
+    affineCoeffs: [-41.83984375,0.0,-0.001953125,173.52109375,0.00234375,0.0]
+    iNodeMaximum: 51
+    jNodeMaximum: 110
+    dataSource: GTIFF_DIR:23:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 17
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_02
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L2_R
+    affineCoeffs: [-42.1484375,0.0,-0.0078125,173.640625,0.009375,0.0]
+    iNodeMaximum: 72
+    jNodeMaximum: 62
+    dataSource: GTIFF_DIR:4:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 18
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_081
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_02
+    affineCoeffs: [-42.484375,0.0,-0.001953125,173.640625,0.00234375,0.0]
+    iNodeMaximum: 27
+    jNodeMaximum: 29
+    dataSource: GTIFF_DIR:16:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 19
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_091
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_02
+    affineCoeffs: [-42.26953125,0.0,-0.001953125,173.640625,0.00234375,0.0]
+    iNodeMaximum: 54
+    jNodeMaximum: 110
+    dataSource: GTIFF_DIR:18:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 20
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_102
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_02
+    affineCoeffs: [-42.1484375,0.0,-0.001953125,173.640625,0.00234375,0.0]
+    iNodeMaximum: 54
+    jNodeMaximum: 62
+    dataSource: GTIFF_DIR:21:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 21
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_13
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_02
+    affineCoeffs: [-42.26953125,0.0,-0.001953125,173.7671875,0.00234375,0.0]
+    iNodeMaximum: 86
+    jNodeMaximum: 94
+    dataSource: GTIFF_DIR:26:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 22
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_140
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_02
+    affineCoeffs: [-42.1484375,0.0,-0.001953125,173.7671875,0.00234375,0.0]
+    iNodeMaximum: 105
+    jNodeMaximum: 62
+    dataSource: GTIFF_DIR:27:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 23
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_170
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_02
+    affineCoeffs: [-42.1484375,0.0,-0.001953125,174.01328125,0.00234375,0.0]
+    iNodeMaximum: 61
+    jNodeMaximum: 40
+    dataSource: GTIFF_DIR:31:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 24
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L2_R
+    affineCoeffs: [-41.421875,0.0,-0.0078125,173.640625,0.009375,0.0]
+    iNodeMaximum: 113
+    jNodeMaximum: 93
+    dataSource: GTIFF_DIR:5:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 25
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_103
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+    affineCoeffs: [-42.0546875,0.0,-0.001953125,173.640625,0.00234375,0.0]
+    iNodeMaximum: 54
+    jNodeMaximum: 48
+    dataSource: GTIFF_DIR:22:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 26
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_111
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+    affineCoeffs: [-41.83984375,0.0,-0.001953125,173.640625,0.00234375,0.0]
+    iNodeMaximum: 54
+    jNodeMaximum: 110
+    dataSource: GTIFF_DIR:24:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 27
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_12
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+    affineCoeffs: [-41.822265625,0.0,-0.001953125,173.734375,0.00234375,0.0]
+    iNodeMaximum: 14
+    jNodeMaximum: 9
+    dataSource: GTIFF_DIR:25:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 28
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_141
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+    affineCoeffs: [-42.0546875,0.0,-0.001953125,173.7671875,0.00234375,0.0]
+    iNodeMaximum: 105
+    jNodeMaximum: 48
+    dataSource: GTIFF_DIR:28:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 29
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_15
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+    affineCoeffs: [-41.83984375,0.0,-0.001953125,173.7671875,0.00234375,0.0]
+    iNodeMaximum: 105
+    jNodeMaximum: 110
+    dataSource: GTIFF_DIR:29:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 30
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_16
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+    affineCoeffs: [-41.76171875,0.0,-0.001953125,173.7671875,0.00234375,0.0]
+    iNodeMaximum: 105
+    jNodeMaximum: 40
+    dataSource: GTIFF_DIR:30:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 31
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_171
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+    affineCoeffs: [-42.0546875,0.0,-0.001953125,174.01328125,0.00234375,0.0]
+    iNodeMaximum: 61
+    jNodeMaximum: 48
+    dataSource: GTIFF_DIR:32:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 32
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_18
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+    affineCoeffs: [-41.83984375,0.0,-0.001953125,174.01328125,0.00234375,0.0]
+    iNodeMaximum: 105
+    jNodeMaximum: 110
+    dataSource: GTIFF_DIR:33:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 33
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_19
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+    affineCoeffs: [-41.66015625,0.0,-0.001953125,174.01328125,0.00234375,0.0]
+    iNodeMaximum: 105
+    jNodeMaximum: 92
+    dataSource: GTIFF_DIR:34:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 34
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_20
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+    affineCoeffs: [-41.83984375,0.0,-0.001953125,174.259375,0.00234375,0.0]
+    iNodeMaximum: 58
+    jNodeMaximum: 34
+    dataSource: GTIFF_DIR:35:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 35
+  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_21
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+    affineCoeffs: [-41.626953125,0.0,-0.001953125,174.259375,0.00234375,0.0]
+    iNodeMaximum: 103
+    jNodeMaximum: 109
+    dataSource: GTIFF_DIR:36:nz_linz_nzgd2000-ka20161114-grid02.tif
+    hierarchyRank: 36
+- groupName: nz_linz_nzgd2000-ka20161114-grid03
+  remark: |
+    Event: Kaikoura earthquake,  14 November 2016
+     Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
+     Version: Model 002, 23 June 2017
+    
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2016-11-14T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L1
+    affineCoeffs: [-34.25,0.0,-0.125,166.3,0.15,0.0]
+    iNodeMaximum: 85
+    jNodeMaximum: 107
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 1
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L2
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L1
+    affineCoeffs: [-41.0625,0.0,-0.03125,172.225,0.0375,0.0]
+    iNodeMaximum: 73
+    jNodeMaximum: 66
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 2
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L2
+    affineCoeffs: [-42.1171875,0.0,-0.0078125,172.65625,0.009375,0.0]
+    iNodeMaximum: 102
+    jNodeMaximum: 88
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 3
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+    affineCoeffs: [-42.490234375,0.0,-0.001953125,172.79921875,0.00234375,0.0]
+    iNodeMaximum: 102
+    jNodeMaximum: 87
+    dataSource: GTIFF_DIR:7:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 4
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+    affineCoeffs: [-42.453125,0.0,-0.001953125,173.03828125,0.00234375,0.0]
+    iNodeMaximum: 102
+    jNodeMaximum: 104
+    dataSource: GTIFF_DIR:8:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 5
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_02
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+    affineCoeffs: [-42.353515625,0.0,-0.001953125,173.07109375,0.00234375,0.0]
+    iNodeMaximum: 88
+    jNodeMaximum: 51
+    dataSource: GTIFF_DIR:9:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 6
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_03
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+    affineCoeffs: [-42.453125,0.0,-0.001953125,173.27734375,0.00234375,0.0]
+    iNodeMaximum: 102
+    jNodeMaximum: 99
+    dataSource: GTIFF_DIR:10:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 7
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_04
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+    affineCoeffs: [-42.28125,0.0,-0.001953125,173.27734375,0.00234375,0.0]
+    iNodeMaximum: 102
+    jNodeMaximum: 88
+    dataSource: GTIFF_DIR:11:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 8
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_050
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+    affineCoeffs: [-42.1171875,0.0,-0.001953125,173.46953125,0.00234375,0.0]
+    iNodeMaximum: 20
+    jNodeMaximum: 66
+    dataSource: GTIFF_DIR:12:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 9
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_060
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+    affineCoeffs: [-42.453125,0.0,-0.001953125,173.51640625,0.00234375,0.0]
+    iNodeMaximum: 41
+    jNodeMaximum: 33
+    dataSource: GTIFF_DIR:14:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 10
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_070
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+    affineCoeffs: [-42.24609375,0.0,-0.001953125,173.51640625,0.00234375,0.0]
+    iNodeMaximum: 41
+    jNodeMaximum: 106
+    dataSource: GTIFF_DIR:16:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 11
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_080
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+    affineCoeffs: [-42.1171875,0.0,-0.001953125,173.51640625,0.00234375,0.0]
+    iNodeMaximum: 41
+    jNodeMaximum: 66
+    dataSource: GTIFF_DIR:18:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 12
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L3_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L2
+    affineCoeffs: [-41.578125,0.0,-0.0078125,173.209375,0.009375,0.0]
+    iNodeMaximum: 43
+    jNodeMaximum: 69
+    dataSource: GTIFF_DIR:4:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 13
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_051
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_01
+    affineCoeffs: [-42.0546875,0.0,-0.001953125,173.46953125,0.00234375,0.0]
+    iNodeMaximum: 20
+    jNodeMaximum: 32
+    dataSource: GTIFF_DIR:13:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 14
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_081
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_01
+    affineCoeffs: [-42.0390625,0.0,-0.001953125,173.51640625,0.00234375,0.0]
+    iNodeMaximum: 41
+    jNodeMaximum: 40
+    dataSource: GTIFF_DIR:19:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 15
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_090
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_01
+    affineCoeffs: [-41.912109375,0.0,-0.001953125,173.58671875,0.00234375,0.0]
+    iNodeMaximum: 11
+    jNodeMaximum: 65
+    dataSource: GTIFF_DIR:22:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 16
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L2
+    affineCoeffs: [-42.1171875,0.0,-0.0078125,173.6125,0.009375,0.0]
+    iNodeMaximum: 78
+    jNodeMaximum: 59
+    dataSource: GTIFF_DIR:5:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 17
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_061
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
+    affineCoeffs: [-42.453125,0.0,-0.001953125,173.6125,0.00234375,0.0]
+    iNodeMaximum: 61
+    jNodeMaximum: 33
+    dataSource: GTIFF_DIR:15:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 18
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_071
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
+    affineCoeffs: [-42.24609375,0.0,-0.001953125,173.6125,0.00234375,0.0]
+    iNodeMaximum: 61
+    jNodeMaximum: 106
+    dataSource: GTIFF_DIR:17:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 19
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_082
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
+    affineCoeffs: [-42.1171875,0.0,-0.001953125,173.6125,0.00234375,0.0]
+    iNodeMaximum: 61
+    jNodeMaximum: 66
+    dataSource: GTIFF_DIR:20:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 20
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_10
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
+    affineCoeffs: [-42.453125,0.0,-0.001953125,173.75546875,0.00234375,0.0]
+    iNodeMaximum: 6
+    jNodeMaximum: 3
+    dataSource: GTIFF_DIR:24:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 21
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_11
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
+    affineCoeffs: [-42.24609375,0.0,-0.001953125,173.75546875,0.00234375,0.0]
+    iNodeMaximum: 92
+    jNodeMaximum: 106
+    dataSource: GTIFF_DIR:25:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 22
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_120
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
+    affineCoeffs: [-42.1171875,0.0,-0.001953125,173.75546875,0.00234375,0.0]
+    iNodeMaximum: 102
+    jNodeMaximum: 66
+    dataSource: GTIFF_DIR:26:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 23
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_140
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
+    affineCoeffs: [-42.1171875,0.0,-0.001953125,173.99453125,0.00234375,0.0]
+    iNodeMaximum: 39
+    jNodeMaximum: 58
+    dataSource: GTIFF_DIR:29:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 24
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L2
+    affineCoeffs: [-41.4375,0.0,-0.0078125,173.6125,0.009375,0.0]
+    iNodeMaximum: 102
+    jNodeMaximum: 87
+    dataSource: GTIFF_DIR:6:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 25
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_083
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+    affineCoeffs: [-42.0390625,0.0,-0.001953125,173.6125,0.00234375,0.0]
+    iNodeMaximum: 61
+    jNodeMaximum: 40
+    dataSource: GTIFF_DIR:21:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 26
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_091
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+    affineCoeffs: [-41.912109375,0.0,-0.001953125,173.6125,0.00234375,0.0]
+    iNodeMaximum: 61
+    jNodeMaximum: 65
+    dataSource: GTIFF_DIR:23:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 27
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_121
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+    affineCoeffs: [-42.0390625,0.0,-0.001953125,173.75546875,0.00234375,0.0]
+    iNodeMaximum: 102
+    jNodeMaximum: 40
+    dataSource: GTIFF_DIR:27:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 28
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_13
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+    affineCoeffs: [-41.859375,0.0,-0.001953125,173.75546875,0.00234375,0.0]
+    iNodeMaximum: 102
+    jNodeMaximum: 92
+    dataSource: GTIFF_DIR:28:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 29
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_141
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+    affineCoeffs: [-42.0390625,0.0,-0.001953125,173.99453125,0.00234375,0.0]
+    iNodeMaximum: 39
+    jNodeMaximum: 40
+    dataSource: GTIFF_DIR:30:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 30
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_15
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+    affineCoeffs: [-41.83203125,0.0,-0.001953125,173.99453125,0.00234375,0.0]
+    iNodeMaximum: 102
+    jNodeMaximum: 106
+    dataSource: GTIFF_DIR:31:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 31
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_16
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+    affineCoeffs: [-41.681640625,0.0,-0.001953125,174.0859375,0.00234375,0.0]
+    iNodeMaximum: 63
+    jNodeMaximum: 77
+    dataSource: GTIFF_DIR:32:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 32
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_17
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+    affineCoeffs: [-41.83203125,0.0,-0.001953125,174.23359375,0.00234375,0.0]
+    iNodeMaximum: 55
+    jNodeMaximum: 44
+    dataSource: GTIFF_DIR:33:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 33
+  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_18
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+    affineCoeffs: [-41.626953125,0.0,-0.001953125,174.23359375,0.00234375,0.0]
+    iNodeMaximum: 100
+    jNodeMaximum: 105
+    dataSource: GTIFF_DIR:34:nz_linz_nzgd2000-ka20161114-grid03.tif
+    hierarchyRank: 34
+- groupName: nz_linz_nzgd2000-ka20161114-grid04
+  remark: |
+    Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016
+     Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
+     Version: Model 002, 23 June 2017
+    
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: ramp
+    startDate: '2016-11-14T00:00:00Z'
+    startScaleFactor: 0.0
+    endDate: '2016-12-14T00:00:00Z'
+    endScaleFactor: 1.0
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_H_L1_F
+    affineCoeffs: [-39.0,0.0,-0.125,169.6,0.15,0.0]
+    iNodeMaximum: 45
+    jNodeMaximum: 38
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid04.tif
+    hierarchyRank: 1
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_H_L2_F
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_H_L1_F
+    affineCoeffs: [-41.125,0.0,-0.03125,172.6375,0.0375,0.0]
+    iNodeMaximum: 73
+    jNodeMaximum: 58
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid04.tif
+    hierarchyRank: 2
+- groupName: nz_linz_nzgd2000-ka20161114-grid05
+  remark: |
+    Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016
+     Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
+     Version: Model 002, 23 June 2017
+    
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: ramp
+    startDate: '2016-11-14T00:00:00Z'
+    startScaleFactor: -1.0
+    endDate: '2016-12-14T00:00:00Z'
+    endScaleFactor: 0.0
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_H_L2_R
+    affineCoeffs: [-41.28125,0.0,-0.03125,172.45,0.0375,0.0]
+    iNodeMaximum: 66
+    jNodeMaximum: 55
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid05.tif
+    hierarchyRank: 1
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_H_L3_R_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_H_L2_R
+    affineCoeffs: [-42.0546875,0.0,-0.0078125,172.834375,0.009375,0.0]
+    iNodeMaximum: 92
+    jNodeMaximum: 82
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid05.tif
+    hierarchyRank: 2
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_H_L3_R_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_H_L2_R
+    affineCoeffs: [-41.5703125,0.0,-0.0078125,173.696875,0.009375,0.0]
+    iNodeMaximum: 91
+    jNodeMaximum: 124
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-ka20161114-grid05.tif
+    hierarchyRank: 3
+- groupName: nz_linz_nzgd2000-ka20161114-grid06
+  remark: |
+    Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016
+     Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
+     Version: Model 002, 23 June 2017
+    
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: ramp
+    startDate: '2016-11-14T00:00:00Z'
+    startScaleFactor: -1.0
+    endDate: '2016-12-14T00:00:00Z'
+    endScaleFactor: 0.0
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_V_L1
+    affineCoeffs: [-40.5,0.0,-0.125,171.85,0.15,0.0]
+    iNodeMaximum: 28
+    jNodeMaximum: 26
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid06.tif
+    hierarchyRank: 1
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_V_L2
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_V_L1
+    affineCoeffs: [-40.75,0.0,-0.03125,172.675,0.0375,0.0]
+    iNodeMaximum: 71
+    jNodeMaximum: 73
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid06.tif
+    hierarchyRank: 2
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_V_L3_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_V_L2
+    affineCoeffs: [-42.0546875,0.0,-0.0078125,172.84375,0.009375,0.0]
+    iNodeMaximum: 91
+    jNodeMaximum: 81
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-ka20161114-grid06.tif
+    hierarchyRank: 3
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_V_L3_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_V_L2
+    affineCoeffs: [-41.609375,0.0,-0.0078125,173.696875,0.009375,0.0]
+    iNodeMaximum: 90
+    jNodeMaximum: 118
+    dataSource: GTIFF_DIR:4:nz_linz_nzgd2000-ka20161114-grid06.tif
+    hierarchyRank: 4
+- groupName: nz_linz_nzgd2000-ka20161114-grid10
+  remark: |
+    Event: Kaikoura earthquake,  14 November 2016
+    Refinement for horizontal difference between observations and model
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: step
+    functionReferenceDate: '2016-11-14T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ka_20161114_grid_hor_refinement
+    affineCoeffs: [-38.625,0.0,-0.125,171.1,0.15,0.0]
+    iNodeMaximum: 42
+    jNodeMaximum: 39
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid10.tif
+    hierarchyRank: 1
+- groupName: nz_linz_nzgd2000-ka20161114-grid11
+  remark: Kaikoura earthquake second refinement grid - horizontal
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2016-11-14T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ka_20161114_grid_hor_refinement2
+    affineCoeffs: [-40.56,0.0,-0.015,171.5,0.02,0.0]
+    iNodeMaximum: 213
+    jNodeMaximum: 191
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid11.tif
+    hierarchyRank: 1
+- groupName: nz_linz_nzgd2000-ka20161114-grid12
+  remark: Kaikoura earthquake second refinement grid -vertical
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: reverseStep
+    functionReferenceDate: '2016-11-14T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ka_20161114_grid_vrt_refinement2
+    affineCoeffs: [-40.395,0.0,-0.015,171.9,0.02,0.0]
+    iNodeMaximum: 215
+    jNodeMaximum: 198
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid12.tif
+    hierarchyRank: 1
+- groupName: nz_linz_nzgd2000-ka20161114-grid07
+  remark: |
+    Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016
+     Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
+     Version: Model 002, 23 June 2017
+    
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: ramp
+    startDate: '2016-12-14T00:00:00Z'
+    startScaleFactor: 0.0
+    endDate: '2017-02-14T00:00:00Z'
+    endScaleFactor: 1.0
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_H_L1_F
+    affineCoeffs: [-38.875,0.0,-0.125,169.6,0.15,0.0]
+    iNodeMaximum: 45
+    jNodeMaximum: 39
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid07.tif
+    hierarchyRank: 1
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_H_L2_F
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_H_L1_F
+    affineCoeffs: [-41.0625,0.0,-0.03125,172.525,0.0375,0.0]
+    iNodeMaximum: 65
+    jNodeMaximum: 59
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid07.tif
+    hierarchyRank: 2
+- groupName: nz_linz_nzgd2000-ka20161114-grid08
+  remark: |
+    Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016
+     Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
+     Version: Model 002, 23 June 2017
+    
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: ramp
+    startDate: '2016-12-14T00:00:00Z'
+    startScaleFactor: -1.0
+    endDate: '2017-02-14T00:00:00Z'
+    endScaleFactor: 0.0
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_H_L2_R
+    affineCoeffs: [-41.28125,0.0,-0.03125,172.45,0.0375,0.0]
+    iNodeMaximum: 66
+    jNodeMaximum: 55
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid08.tif
+    hierarchyRank: 1
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_H_L3_R_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_H_L2_R
+    affineCoeffs: [-42.0,0.0,-0.0078125,172.91875,0.009375,0.0]
+    iNodeMaximum: 87
+    jNodeMaximum: 90
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid08.tif
+    hierarchyRank: 2
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_H_L3_R_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_H_L2_R
+    affineCoeffs: [-41.5546875,0.0,-0.0078125,173.734375,0.009375,0.0]
+    iNodeMaximum: 87
+    jNodeMaximum: 121
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-ka20161114-grid08.tif
+    hierarchyRank: 3
+- groupName: nz_linz_nzgd2000-ka20161114-grid09
+  remark: |
+    Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016
+     Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
+     Version: Model 002, 23 June 2017
+    
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunctions:
+  - functionName: ramp
+    startDate: '2016-12-14T00:00:00Z'
+    startScaleFactor: -1.0
+    endDate: '2017-02-14T00:00:00Z'
+    endScaleFactor: 0.0
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_V_L1
+    affineCoeffs: [-40.25,0.0,-0.125,171.4,0.15,0.0]
+    iNodeMaximum: 30
+    jNodeMaximum: 27
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid09.tif
+    hierarchyRank: 1
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_V_L2
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_V_L1
+    affineCoeffs: [-40.65625,0.0,-0.03125,172.1875,0.0375,0.0]
+    iNodeMaximum: 81
+    jNodeMaximum: 75
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid09.tif
+    hierarchyRank: 2
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_V_L3_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_V_L2
+    affineCoeffs: [-42.0703125,0.0,-0.0078125,172.825,0.009375,0.0]
+    iNodeMaximum: 91
+    jNodeMaximum: 79
+    dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-ka20161114-grid09.tif
+    hierarchyRank: 3
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_V_L3_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_V_L2
+    affineCoeffs: [-41.5859375,0.0,-0.0078125,173.678125,0.009375,0.0]
+    iNodeMaximum: 91
+    jNodeMaximum: 120
+    dataSource: GTIFF_DIR:4:nz_linz_nzgd2000-ka20161114-grid09.tif
+    hierarchyRank: 4

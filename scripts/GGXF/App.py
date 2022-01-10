@@ -1,0 +1,314 @@
+#!/usr/bin/python3
+
+import argparse
+import csv
+import json
+import logging
+import os.path
+import numpy as np
+
+from .NetCDF import Reader as NetCdfReader, Writer as NetCdfWriter, NETCDF_OPTIONS
+from .YAML import Reader as YamlReader, Writer as YamlWriter, YAML_OPTIONS
+
+
+class App:
+    @staticmethod
+    def main():
+        parser = argparse.ArgumentParser(
+            "Read, save, calculate a GGXF file",
+            epilog="This is a proof of concept implementation to evaluate encoding options.\n"
+            + 'The output is not necessarily an "authoritative" GGXF file\n\n'
+            + f"{NETCDF_OPTIONS}\n{YAML_OPTIONS}"
+            "",
+            formatter_class=argparse.RawTextHelpFormatter,
+        )
+        parser.add_argument(
+            "ggxf_file", help="Name of GGXF file to load - .yaml for YAML format"
+        )
+        parser.add_argument(
+            "-o", "--output-ggxf-file", help="Save GGXF to file - .yaml for YAML format"
+        )
+        parser.add_argument(
+            "-n",
+            "--netcdf4-option",
+            action="append",
+            help="option=value for NetCDF4 files (see below for options)",
+        )
+        parser.add_argument(
+            "-y",
+            "--yaml-option",
+            action="append",
+            help="option=value for YAML files (see below for options)",
+        )
+
+        parser.add_argument(
+            "-c",
+            "--coord-csv-file",
+            help="CSV file of points to calculate - assumes column headers with X, Y columns",
+        )
+        parser.add_argument(
+            "-e", "--epoch", type=float, help="Epoch at which to calculate GGXF"
+        )
+        parser.add_argument(
+            "--base-epoch",
+            type=float,
+            help="Base epoch for calculating change between epochs",
+        )
+        parser.add_argument(
+            "--output-csv-file",
+            help="CSV file to convert - assumes column headers with X, Y columns (default based on input)",
+        )
+        parser.add_argument(
+            "--csv-decimal-places",
+            type=int,
+            default=4,
+            help="Number of decimal places for CSV calculated values",
+        )
+
+        parser.add_argument(
+            "--csv-summary", help="Write a grid summary to the named CSV file"
+        )
+        parser.add_argument(
+            "--list-grids", action="store_true", help="Print a list of grids"
+        )
+        parser.add_argument(
+            "--dump-grid",
+            nargs=2,
+            help="Number of grid and file name to dump grid (use --list-grids to get grid numbers)",
+        )
+        parser.add_argument(
+            "-g", "--debug", action="store_true", help="Generate debugging output"
+        )
+        parser.add_argument(
+            "-v", "--verbose", action="store_true", help="More verbose output"
+        )
+
+        args = parser.parse_args()
+
+        logging.basicConfig()
+
+        if args.debug:
+            logging.getLogger().setLevel(logging.DEBUG)
+        elif args.verbose:
+            logging.getLogger().setLevel(logging.INFO)
+
+        ggxf_file = args.ggxf_file
+
+        netcdf_options = App.compileOptions(args.netcdf4_option)
+        yaml_options = App.compileOptions(args.yaml_option)
+        if ggxf_file.endswith(".yaml"):
+            ggxf = YamlReader.Read(ggxf_file, options=yaml_options)
+        else:
+            ggxf = NetCdfReader.Read(ggxf_file, options=netcdf_options)
+        if ggxf is None:
+            return
+        if args.debug:
+            ggxf.setDebug()
+        if args.csv_summary:
+            App.writeCsvGridSummary(ggxf, args.csv_summary, args.csv_decimal_places)
+        if args.list_grids:
+            App.listGrids(ggxf)
+        if args.dump_grid:
+            gridid, dumpfile = args.dump_grid
+            App.dumpGrid(ggxf, gridid, dumpfile)
+        if args.coord_csv_file:
+            App.calculateCsvPoints(
+                ggxf,
+                args.coord_csv_file,
+                args.output_csv_file,
+                epoch=args.epoch,
+                refepoch=args.base_epoch,
+                decimal_places=args.csv_decimal_places,
+            )
+        if args.output_ggxf_file:
+            output_ggxf_file = args.output_ggxf_file
+            if output_ggxf_file.endswith(".yaml"):
+                YamlWriter.Write(ggxf, output_ggxf_file, options=yaml_options)
+            else:
+
+                NetCdfWriter.Write(ggxf, output_ggxf_file, options=netcdf_options)
+
+    @staticmethod
+    def compileOptions(source):
+        options = {}
+        if source is not None:
+            for option in source:
+                if "=" in option:
+                    key, value = option.split("=", maxsplit=1)
+                    options[key] = value
+                else:
+                    options[option] = "true"
+        return options
+
+    @staticmethod
+    def calculateCsvPoints(
+        ggxf, input_csv, output_csv, epoch=None, refepoch=None, decimal_places: int = 4
+    ):
+
+        if not output_csv:
+            output_csv = os.path.splitext(input_csv)[0] + "-out.csv"
+
+        with open(input_csv) as inh, open(output_csv, "w") as outh:
+            csvin = csv.reader(inh)
+            csvout = csv.writer(outh)
+            cols = list(next(csvin))
+            xcol = None
+            ycol = None
+            for ncol, col in enumerate(cols):
+                if col.upper() == "X":
+                    xcol = ncol
+                elif col.upper() == "Y":
+                    ycol = ncol
+            if xcol is None or ycol is None:
+                logging.error(f"Input CSV {input_csv} does not have X and Y columns")
+                return
+            missingval = []
+            for param in ggxf.parameters():
+                cols.append(param.name())
+                missingval.append("")
+            csvout.writerow(cols)
+            nrow = 1
+            for row in csvin:
+                nrow += 1
+                try:
+                    output = list(row)
+                    xy = [float(row[xcol]), float(row[ycol])]
+                    value = ggxf.valueAt(xy, epoch, refepoch)
+                    if value is None:
+                        value = missingval
+                    else:
+                        value = [f"{x:.{decimal_places}f}" for x in value]
+                    output.extend(value)
+                except Exception as ex:
+                    logging.error(f"Error at row {nrow} of {input_csv}: {ex}")
+                    output = list(row)
+                    output.extend(missingval)
+                    output.append("{ex}")
+                csvout.writerow(output)
+
+    @staticmethod
+    def writeCsvGridSummary(ggxf, csv_summary_file, decimal_places=4):
+        csvcols = [
+            "id",
+            "group",
+            "grid",
+            "ngridi",
+            "ngridj",
+            "type",
+            "depth",
+            "extent_wkt",
+        ]
+        param0 = len(csvcols)
+        params = {}
+        empty = []
+        for group in ggxf.groups():
+            for param in group.parameters():
+                name = param.name()
+                if name not in params:
+                    params[name] = param0
+                    param0 += 2
+                    csvcols.append(f"{name}-min")
+                    csvcols.append(f"{name}-max")
+                    empty.extend(["", ""])
+        with open(csv_summary_file, "w") as csvh:
+            csvw = csv.writer(csvh)
+            csvw.writerow(csvcols)
+            for group in ggxf.groups():
+                groupname = group.name()
+                for grid in group.allgrids():
+                    size = grid.size()
+                    extents = grid.extents()
+                    xmin = str(extents[0][0])
+                    xmax = str(extents[1][0])
+                    ymin = str(extents[0][1])
+                    ymax = str(extents[1][1])
+                    # Assume X=lat, Y=lon
+                    wkt = f"POLYGON(({ymin} {xmin},{ymin} {xmax},{ymax} {xmax},{ymax} {xmin}, {ymin} { xmin}))"
+                    depth = 1
+                    pgrid = grid
+                    while pgrid.parent() is not None:
+                        depth += 1
+                        pgrid = pgrid.parent()
+                    summary = grid.summary()
+                    gridparams = summary["parameters"]
+                    csvrow = [
+                        grid.id(),
+                        groupname,
+                        grid.name(),
+                        str(size[0]),
+                        str(size[1]),
+                        summary["type"],
+                        depth,
+                        wkt,
+                    ]
+                    csvrow.extend(empty)
+                    for param, minmax in gridparams.items():
+                        if param in params:
+                            csvrow[
+                                params[param]
+                            ] = f"{minmax['min']:.{decimal_places}f}"
+                            csvrow[
+                                params[param] + 1
+                            ] = f"{minmax['max']:.{decimal_places}f}"
+                    csvw.writerow(csvrow)
+
+    @staticmethod
+    def listGrids(ggxf):
+        for grid in ggxf.allgrids():
+            print(f"{grid.id()}: {grid.name()}")
+
+    @staticmethod
+    def dumpGrid(ggxf, gridid, dumpfile):
+        # Want to handle also gridid="extents" to create WKT bounding boxes
+        # Need to handle output of parameters for groups with different parameter lists.
+        dgrid = None
+        grids = list(ggxf.allgrids())
+        if gridid != "all":
+            allgrids = grids
+            grids = []
+            for grid in allgrids:
+                if grid.id() == gridid or grid.name() == gridid:
+                    grids.append(grid)
+                    break
+            if not grids:
+                print(f"Grid {gridid} not defined in GGXF file")
+                return
+        with open(dumpfile, "w") as csvh:
+            csvw = csv.writer(csvh)
+            fields = ["X", "Y", "i", "j"]
+            addid = False
+            if len(grids) > 1:
+                addid = True
+                fields.insert(0, "id")
+            empty = []
+            fieldid = {}
+            for grid in grids:
+                for param in grid.group().parameters():
+                    pname = param.name()
+                    if pname not in fields:
+                        fieldid[pname] = len(fields)
+                        fields.append(pname)
+                        empty.append("")
+            csvw.writerow(fields)
+            for id, grid in enumerate(grids):
+                imax, jmax = grid.maxij()
+                data = grid.data()
+                gridid = str(id)
+                valcols = [fieldid[p.name()] for p in grid.group().parameters()]
+                for inode in range(imax + 1):
+                    for jnode in range(jmax + 1):
+                        xy = grid.calcxy([inode, jnode])
+                        vals = data[jnode, inode]
+                        row = [str(c) for c in xy]
+                        row.append(str(inode))
+                        row.append(str(jnode))
+                        if addid:
+                            row.insert(0, gridid)
+                        row.extend(empty)
+                        for vcol, val in zip(valcols, vals):
+                            row[vcol] = val
+                        csvw.writerow(row)
+
+
+if __name__ == "__main__":
+    App.main()

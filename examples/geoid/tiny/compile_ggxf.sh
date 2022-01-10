@@ -1,2 +1,3 @@
 #!/bin/sh
-python3 ../../../scripts/ggxf_yaml_to_netcdf4.py -v -d -m dot0 test_geoid.yaml test_geoid.nc
+rm -f test_geoid.gxb test_geoid.cdl
+python3 ../../../scripts/GGXF.py -v -n write_cdl=true test_geoid.yaml -o test_geoid.gxb
