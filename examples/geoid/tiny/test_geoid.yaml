@@ -1,76 +1,72 @@
 ﻿ggxfVersion: "1.0"
 filename: tiny_geoid.gxt
-content: heightCorrectionModel
+content: geoidModel
 remark: "hybrid geoid"
-contentApplicability:
+contentApplicabilityExtents:
   boundingBox:
-    southBoundLatitude: 17.67
-    westBoundLongitude: -65.09
-    northBoundLatitude: 18.42
-    eastBoundLongitude: -64.6
-  description: "US Virgin Islands - onshore."
+    southBoundLatitude: 22.5
+    westBoundLongitude: -69.0
+    northBoundLatitude: 24.6
+    eastBoundLongitude: -67.0
+  description: "Tiny example geoid."
 
 interpolationCrsWkt: |
-  GEOGCRS["NAD83 (2011)",
-    DATUM["North American Datum 1983 (2011) epoch 2010.00",
-        ELLIPSOID["GRS 1980",6378137.0,298.2572221,LENGTHUNIT["metre",1]]],
-    CS[ellipsoidal,2],
-    AXIS["Geodetic latitude (Lat)",north],
-    AXIS["Geodetic longitude (Lon)",east],
-    ANGLEUNIT["degree",0.0174532925199433]]
-
+  GEOGCS["WGS 84",
+    DATUM["WGS_1984",
+      SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],
+      AUTHORITY["EPSG","6326"]],
+    PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],
+    UNIT["degree",0.01745329251994328,AUTHORITY["EPSG","9122"]],
+    AUTHORITY["EPSG","4326"]]
 sourceCrsWkt: |
-  GEOGCRS["NAD83 (2011)",
-    DATUM["North American Datum 1983 (2011) epoch 2010.00",
-        ELLIPSOID["GRS 1980",6378137.0,298.2572221,LENGTHUNIT["metre",1]]],
-    CS[ellipsoidal,3],
-    AXIS["Geodetic latitude (Lat)",north,
-      ANGLEUNIT["degree\",0.0174532925199433]],
-    AXIS["Geodetic longitude (Lon)",east,
-      ANGLEUNIT["degree\",0.0174532925199433]],
-    AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1]]]
-
+  GEOGCS["WGS 84",
+    DATUM["WGS_1984",
+      SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],
+      AUTHORITY["EPSG","6326"]],
+    PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],
+    UNIT["degree",0.01745329251994328,AUTHORITY["EPSG","9122"]],
+    AUTHORITY["EPSG","4326"]]
 targetCrsWkt: |
-  VERTCRS["VIVD09 - NOHt",
-    VDATUM["Virgin Islands Vertical Datum of 2009"],
+  VERTCRS["VRTDTM2000",
+    VDATUM["A vertical datum"],
     CS[vertical,1],
     AXIS["Gravity-related height (H)",up],
     LENGTHUNIT["metre",1]]
 
 operationAccuracy: 0.015
-organisationName: "National Geodetic Survey, National Oceanic and Atmospheric Administration."
-deliveryPoint: "1315 East West Hwy"
-city: "Silver Spring"
-postalCode: "20910"
+organisationName: "A Hypothetical National Geodetic Survey."
+deliveryPoint: "Somewhere"
+city: "A city"
+postalCode: "99999"
 country: "United States of America"
 
 groups:
-  - groupName: "Based on Puerto Rico Virgin Islands GEOID18"
+  - groupName: "Default group"
     parameters:
       - parameterName: "geoidHeight"
         lengthUnit: "metre"
         unitSiRatio: 1.0
-    interpolationMethod: biquadratic
+    interpolationMethod: bilinear
     grids:
-      - gridName: "Based on Puerto Rico Virgin Islands GEOID18"
-        affineCoeffs: [15.0, 0.0, 1.66667, -69.0, 1.5, 0.0]
+      - gridName: "Geoid grid"
+        affineCoeffs: [22.5, 0.0, 0.7, -69.0, 1.0, 0.0]
         iNodeMaximum: 2
         jNodeMaximum: 3
 
 gridData:
-  - gridName: "Based on Puerto Rico Virgin Islands GEOID18"
+  - gridName: "Geoid grid"
     data:
       [
-        -29.2936,
-        -29.3314,
-        -29.3710,
-        -29.4121,
-        -29.4540,
-        -29.4965,
-        -29.5382,
-        -29.5807,
-        -29.6233,
-        -29.6660,
-        -29.7090,
-        -29.7522,
+        -10.5,
+        -20.5,
+        -30.5,
+        -11.5,
+        -21.5,
+        -31.5,
+        -12.5,
+        -22.5,
+        -32.5,
+        -13.5,
+        -23.5,
+        -33.5,
       ]

@@ -2,9 +2,9 @@
 
 ggxfVersion: "1.0"
 filename:    g2018vi.yaml
-content:     heightCorrectionModel
+content:     geoidModel
 remark:      "hybrid geoid"
-contentApplicability:
+contentApplicabilityExtents:
     boundingBox:
         southBoundLatitude:  17.67
         westBoundLongitude:  -65.09

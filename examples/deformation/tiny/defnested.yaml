@@ -16,7 +16,7 @@ postalCode: "6145"
 electronicMailAddress: customersupport@linz.govt.nz
 onlineResourceLinkage: https://www.linz.govt.nz/nzgd2000
 publicationDate: "2018-07-01"
-contentApplicabilityExtent:
+contentApplicabilityExtents:
   extentDescription: New Zealand EEZ
   boundingBox:
     southBoundLatitude: -58.0
@@ -41,10 +41,10 @@ groups:
   - groupName: nz_linz_vert_vel
     parameters:
       - parameterName: displacementUp
-        unit: metre
+        lengthUnit: metre
         unitSiRatio: 1.0
-    timeFunction:
-      - type: velocity
+    timeFunctions:
+      - functionName: velocity
         functionReferenceDate: "2000-01-01T00:00:00Z"
     grids:
       - gridName: hvel
@@ -62,21 +62,21 @@ groups:
     remark: Hypothetical earthquake - this is not what happened
     parameters:
       - parameterName: displacementEast
-        unit: metre
+        lengthUnit: metre
         unitSiRatio: 1.0
       - parameterName: displacementNorth
-        unit: metre
+        lengthUnit: metre
         unitSiRatio: 1.0
       - parameterName: displacementUp
-        unit: metre
+        lengthUnit: metre
         unitSiRatio: 1.0
-    timeFunction:
-      - type: piecewise
+    timeFunctions:
+      - functionName: ramp
         startDate: "2009-07-15T00:00:00Z"
         startScaleFactor: -1.34
         endDate: "2009-07-15T00:00:00Z"
         endScaleFactor: -0.29
-      - type: piecewise
+      - functionName: ramp
         startDate: "2009-07-15T00:00:00Z"
         startScaleFactor: 0.0
         endDate: "2011-09-01T00:00:00Z"

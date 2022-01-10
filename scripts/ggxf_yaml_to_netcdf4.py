@@ -450,7 +450,7 @@ class GGXF:
 
         # Store the grid data
         datavar = cdfgrid.createVariable(
-            "data", self._dtype, ["nRow", "nCol", "nParam"]
+            "data", self._dtype, ["nCol", "nRow", "nParam"]
         )
         datavar[:, :, :] = grid["data"]
 

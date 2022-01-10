@@ -3,13 +3,13 @@ netcdf VIGEOID18a {
 // global attributes:
 		:ggxfVersion = "1.0" ;
 		:filename = "g2018vi.yaml" ;
-		:content = "heightCorrectionModel" ;
+		:content = "geoidModel" ;
 		:remark = "hybrid geoid" ;
-		:contentApplicability.boundingBox.southBoundLatitude = 17.67 ;
-		:contentApplicability.boundingBox.westBoundLongitude = -65.09 ;
-		:contentApplicability.boundingBox.northBoundLatitude = 18.42 ;
-		:contentApplicability.boundingBox.eastBoundLongitude = -64.6 ;
-		:contentApplicability.description = "US Virgin Islands - onshore." ;
+		:contentApplicabilityExtents.boundingBox.southBoundLatitude = 17.67 ;
+		:contentApplicabilityExtents.boundingBox.westBoundLongitude = -65.09 ;
+		:contentApplicabilityExtents.boundingBox.northBoundLatitude = 18.42 ;
+		:contentApplicabilityExtents.boundingBox.eastBoundLongitude = -64.6 ;
+		:contentApplicabilityExtents.description = "US Virgin Islands - onshore." ;
 		:interpolationCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:sourceCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]]]\n" ;
 		:targetCrsWkt = "VERTCRS[\"VIVD09 - NOHt\",\n  VDATUM[\"Virgin Islands Vertical Datum of 2009\"],\n  CS[vertical,1],\n  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n" ;
@@ -20,17 +20,12 @@ netcdf VIGEOID18a {
 		:postalCode = "20910" ;
 		:country = "United States of America" ;
 		:onlineResourceLinkage = "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g2018p0.asc.zip" ;
-		:_NCProperties = "version=2,netcdf=4.7.4,hdf5=1.12.0," ;
-		:_SuperblockVersion = 0 ;
-		:_IsNetcdf4 = 1 ;
-		:_Format = "netCDF-4" ;
 
 group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
   dimensions:
-  	nParam = 1 ;
+  	parameter = 1 ;
 
   // group attributes:
-  		:remark = "" ;
   		:parameters.count = 1LL ;
   		:parameters.0.parameterName = "geoidHeight" ;
   		:parameters.0.lengthUnit = "metre" ;
@@ -39,18 +34,16 @@ group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
 
   group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
     dimensions:
-    	nCol = 301 ;
-    	nRow = 361 ;
+    	gridi = 301 ;
+    	gridj = 361 ;
     variables:
-    	float data(nRow, nCol, nParam) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float data(gridj, gridi, parameter) ;
 
     // group attributes:
-    		:affineCoeffs = 15., 0., 0.01666666667, -69., 0.01666666667, 0. ;
     		:iNodeMaximum = 300LL ;
     		:jNodeMaximum = 360LL ;
     		:remark = "grid starts in the bottom left (southwest)corner and works across (east)and up (north)" ;
+    		:affineCoeffs = 15., 0., 0.01666666667, -69., 0.01666666667, 0. ;
     data:
 
      data =

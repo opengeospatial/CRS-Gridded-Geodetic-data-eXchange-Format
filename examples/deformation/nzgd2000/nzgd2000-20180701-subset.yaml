@@ -1,0 +1,100 @@
+ggxfVersion: '1.0'
+fileName: nzgd2000-20180701-subset.yaml
+version: '20180701'
+content: deformationModel
+remark: |
+  New Zealand Deformation Model.
+  Defines the secular model (National Deformation Model)
+  and patches for significant deformation events since 2000.
+partyName: Land Information New Zealand
+deliveryPoint: |
+  Level 7, Radio New Zealand House
+  155 The Terrace
+  PO Box 5501
+city: Wellington
+postalCode: '6145'
+electronicMailAddress: customersupport@linz.govt.nz
+onlineResourceLinkage: https://www.linz.govt.nz/nzgd2000
+publicationDate: '2018-07-01'
+contentApplicabilityExtents:
+  extentDescription: New Zealand EEZ
+  boundingBox:
+    southBoundLatitude: -58.0
+    westBoundLongitude: 158.0
+    northBoundLatitude: -25.0
+    eastBoundLongitude: 194.0
+startDate: '1900-01-01'
+endDate: '2050-01-01'
+sourceCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6167]],CS[ellipsoidal,3,ID["EPSG",6423]],AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]],ID["EPSG",4959]]
+targetCrsWkt: GEOGCRS["ITRF96", DYNAMIC[FRAMEEPOCH[1997.0]],DATUM["International Terrestrial Reference Frame 1996",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6654]],CS[ellipsoidal,3,ID["EPSG",6423]],AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]],ID["EPSG",7907]]
+interpolationCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6167]],CS[ellipsoidal,2,ID["EPSG",6422]],AXIS["Geodetic latitude (Lat)",north],AXIS["Geodetic longitude (Lon)",east],ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]],ID["EPSG",4167]]
+operationAccuracy: 0.01
+uncertaintyMeasure:
+  horizontal:
+    name: Circular error probable
+    id: 2CEP
+  vertical:
+    name: Standard error (2-sigma)
+    id: 2SE
+deformationApplicationMethod: addition
+groups:
+- groupName: nz_linz_nzgd2000-ndm-grid02
+  remark: |
+    Secular deformation model derived from NUVEL-1A rotation rates
+    Secular deformation model derived from GNS model 2011 V4
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  timeFunction:
+  - type: velocity
+    functionReferenceDate: '2000-01-01T00:00:00Z'
+  interpolationMethod: bilinear
+  grids:
+  - gridName: ndm_grid_nuvel1a_eez
+    hierarchyRank: 2
+    affineCoeffs: [-25.0,0.0,-0.5,158.0,0.5,0.0]
+    iNodeMaximum: 72
+    jNodeMaximum: 66
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ndm-grid02.tif
+  - gridName: ndm_grid_igns2011_nz
+    parentGridName: ndm_grid_nuvel1a_eez
+    hierarchyRank: 2
+    affineCoeffs: [-33.0,0.0,-0.1,165.5,0.1,0.0]
+    iNodeMaximum: 140
+    jNodeMaximum: 150
+    dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ndm-grid02.tif
+- groupName: nz_linz_nzgd2000-ds20090715-grid011
+  remark: Dusky Sound (Fiordland) earthquake
+  parameters:
+  - lengthUnit: metre
+    parameterName: displacementEast
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementNorth
+    unitSiRatio: 1.0
+  - lengthUnit: metre
+    parameterName: displacementUp
+    unitSiRatio: 1.0
+  timeFunction:
+  - type: piecewise
+    startDate: '2009-07-15T00:00:00Z'
+    startScaleFactor: -1.34
+    endDate: '2009-07-15T00:00:00Z'
+    endScaleFactor: -0.29
+  - type: piecewise
+    startDate: '2009-07-15T00:00:00Z'
+    startScaleFactor: 0.0
+    endDate: '2011-09-01T00:00:00Z'
+    endScaleFactor: 0.29
+  interpolationMethod: bilinear
+  grids:
+  - gridName: patch_ds_20090715_grid_ds_P0_L1
+    hierarchyRank: 2
+    affineCoeffs: [-50.125,0.0,-0.125,165.4,0.15,0.0]
+    iNodeMaximum: 10
+    jNodeMaximum: 10
+    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid011.tif

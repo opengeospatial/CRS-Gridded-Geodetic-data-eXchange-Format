@@ -1,2 +1,4 @@
 #!/bin/sh
-python3 ../../../scripts/ggxf_yaml_to_netcdf4.py -v -d ca_ntv2.yaml ca_ntv2.nc
+rm -f ca_ntv2.gxb ca_ntv2.cdl
+python3 ../../../scripts/GGXF.py -v ca_ntv2.yaml -n write_cdl=true -o ca_ntv2.gxb
+# ncdump ca_ntv2.gxb > ca_ntv2.cdl

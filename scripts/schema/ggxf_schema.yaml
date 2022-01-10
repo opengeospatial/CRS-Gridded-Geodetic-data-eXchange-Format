@@ -1,0 +1,361 @@
+  # Attributes required for all content types:
+
+CommonAttributes:
+  GGXF:
+    - AttributeName: ggxfVersion
+      Type: ["1.0"]
+    - AttributeName: content
+      Type: str
+    - AttributeName: contentApplicabilityExtents
+      Type: Extents
+    - AttributeName: interpolationCrsWkt
+      Type: str
+    - AttributeName: sourceCrsWkt
+      Type: str
+    - AttributeName: targetCrsWkt
+      Type: str
+
+  Group:
+    - AttributeName: interpolationMethod
+      Type: [bilinear, bicubic, biquadratic]
+    - AttributeName: parameters
+      Type: list(Parameter)
+
+  Grid:
+    - AttributeName: iNodeMaximum
+      Type: int
+    - AttributeName: jNodeMaximum
+      Type: int
+    - AttributeName: affineCoeffs
+      Type: list(float,6)
+
+  Parameter:
+    - AttributeName: parameterName
+      Type: str
+    - AttributeName: unitSiRatio
+      Type: float
+    - AttributeChoice: 
+        AttributeChoiceName: unit
+        Attributes:
+        - AttributeName: unit
+          Type: str
+        - AttributeName: lengthUnit
+          Type: str
+        - AttributeName: angleUnit
+          Type: str
+        - AttributeName: scaleUnit
+          Type: str
+
+  Extents:
+    - AttributeName: boundingBox
+      Type: BoundingBox
+    - AttributeName: extentDescription
+      Type: str
+      # Should this be optional?
+      Optional: true
+    - AttributeName: boundingPolygonlistVars
+      Type: str
+      Optional: true
+    - AttributeName: temporalExtent
+      Type: str
+      Optional: true
+    - AttributeName: verticalExtent
+      Type: str
+      Optional: true
+
+  BoundingBox:
+    - AttributeName: southBoundLatitude
+      Type: float
+    - AttributeName: westBoundLongitude
+      Type: float
+    - AttributeName: northBoundLatitude
+      Type: float
+    - AttributeName: eastBoundLongitude
+      Type: float
+
+  TimeFunction:
+    - AttributeName: functionName
+      Type: [velocity, step, reverseStep, ramp, acceleration, exponential, logarithmic, hyperbolicTangent, cyclic]
+    - AttributeChoice:
+          AttributeChoiceName: startEpoch
+          Attributes:
+          - AttributeName: startEpoch
+            Type: float
+          - AttributeName: startDate
+            Type: str
+      Optional: true
+    - AttributeChoice:
+          AttributeChoiceName: endEpoch
+          Attributes:
+          - AttributeName: endEpoch
+            Type: float
+          - AttributeName: endDate
+            Type: str
+      Optional: true
+    - AttributeChoice:
+          AttributeChoiceName: functionReferenceEpoch
+          Attributes:
+          - AttributeName: functionReferenceEpoch
+            Type: float
+          - AttributeName: functionReferenceDate
+            Type: str
+      Optional: true
+    - AttributeName: startScaleFactor
+      Type: float
+      Optional: true
+    - AttributeName: endScaleFactor
+      Type: float
+      Optional: true
+    - AttributeName: scaleFactor
+      Type: float
+      Optional: true      
+    - AttributeName: timeConstant
+      Type: float
+      Optional: true
+    - AttributeName: decayRate
+      Type: float
+      Optional: true
+    - AttributeName: frequency
+      Type: float
+      Optional: true
+    - AttributeName: cosineScaleFactor
+      Type: float
+      Optional: true
+    - AttributeName: sineScaleFactor
+      Type: float
+      Optional: true
+
+YamlAttributes:
+    GGXF:
+    - AttributeName: groups
+      Type: list
+    - AttributeName: gridData
+      Type: list
+      Optional: true
+
+    Group:
+    - AttributeName: groupName
+      Type: str
+    - AttributeName: grids
+      Type: list
+
+    Grid:
+    - AttributeName: gridName
+      Type: str
+    - AttributeName: parentGridName
+      Type: str
+      Optional: true
+    - AttributeName: grids
+      Type: list
+      Optional: true
+    - AttributeName: data
+      # Type set to any as gets converted to numpy grid. Tested independently of schema
+      Type: any
+    - AttributeName: dataSource
+      Type: str
+      Optional: true
+
+ContentTypes:
+  - ContentType: Cartesian2dOffsets
+    ParameterSets:
+    - Parameters:
+        - eastingOffset
+        - northingOffset
+        - eastingOffsetUncertainty
+        - northingOffsetUncertainty
+    - Parameters:
+        - westingOffset
+        - northingOffset
+        - westingOffsetUncertainty
+        - northingOffsetUncertainty
+    - Parameters:
+        - eastingOffset
+        - southingOffset
+        - eastingOffsetUncertainty
+        - southingOffsetUncertainty        
+    - Parameters:
+        - westingOffset
+        - southingOffset
+        - westingOffsetUncertainty
+        - southingOffsetUncertainty        
+  - ContentType: Cartesian3dOffsets
+    ParameterSets:
+    - Parameters:
+        - eastingOffset
+        - northingOffset
+        - heightOffset
+        - eastingOffsetUncertainty
+        - northingOffsetUncertainty
+        - heightOffsetUncertainty              
+    - Parameters:
+        - westingOffset
+        - northingOffset
+        - heightOffset
+        - westingOffsetUncertainty
+        - northingOffsetUncertainty
+        - heightOffsetUncertainty              
+    - Parameters:
+        - eastingOffset
+        - southingOffset
+        - heightOffset
+        - eastingOffsetUncertainty
+        - southingOffsetUncertainty        
+        - heightOffsetUncertainty              
+    - Parameters:
+        - westingOffset
+        - southingOffset
+        - heightOffset
+        - westingOffsetUncertainty
+        - southingOffsetUncertainty   
+        - heightOffsetUncertainty
+    - Parameters:
+        - eastingOffset
+        - northingOffset
+        - depthOffset
+        - eastingOffsetUncertainty
+        - northingOffsetUncertainty
+        - depthOffsetUncertainty              
+    - Parameters:
+        - westingOffset
+        - northingOffset
+        - depthOffset
+        - westingOffsetUncertainty
+        - northingOffsetUncertainty
+        - depthOffsetUncertainty              
+    - Parameters:
+        - eastingOffset
+        - southingOffset
+        - depthOffset
+        - eastingOffsetUncertainty
+        - southingOffsetUncertainty        
+        - depthOffsetUncertainty              
+    - Parameters:
+        - westingOffset
+        - southingOffset
+        - depthOffset
+        - westingOffsetUncertainty
+        - southingOffsetUncertainty   
+        - depthOffsetUncertainty              
+
+  - ContentType: geocentricTranslations
+    ParameterSets:
+    - Parameters:
+        - geocentricXOffset
+        - geocentricYOffset
+        - geocentricZOffset
+        - geocentricXOffsetUncertainty
+        - geocentricYOffsetUncertainty
+        - geocentricZOffsetUncertainty    
+  - ContentType: geographic2dOffsets
+    ParameterSets:
+    - Parameters:
+        - latitudeOffset
+        - longitudeOffset
+        - latitudeOffsetUncertainty
+        - longitudeOffsetUncertainty    
+  - ContentType: geographic3dOffsets
+    ParameterSets:
+    - Parameters:
+        - latitudeOffset
+        - longitudeOffset
+        - ellipsoidalHeightOffset
+        - latitudeOffsetUncertainty
+        - longitudeOffsetUncertainty
+        - ellipsoidalHeightOffsetUncertainty          
+  - ContentType: verticalOffsets
+    ParameterSets:
+    - Parameters:
+        - heightOffset
+        - heightOffsetUncertainty     
+    - Parameters:
+        - depthOffset
+        - depthOffsetUncertainty                      
+  - ContentType: geoidModel
+    ParameterSets:
+    - Parameters:
+        - geoidHeight
+        - geoidHeightUncertainty
+  - ContentType: quasiGeoidModel
+    ParameterSets:
+    - Parameters:
+        - geoidHeight
+        - geoidHeightUncertainty 
+  - ContentType: deviationsOfTheVertical
+    ParameterSets:  
+    - Parameters:
+        - deviationEast
+        - deviationNorth
+        - deviationEastUncertainty
+        - deviationNorthUncertainty
+    - Parameters:
+        - deviationEastGeoid
+        - deviationNorthGeoid
+        - deviationEastGeoidUncertainty
+        - deviationNorthGeoidUncertainty
+  - ContentType: heightCorrectionModel
+    ParameterSets:
+    - Parameters:
+        - heightOffset
+        - heightOffsetUncertainty   
+  - ContentType: hydroidModel
+    Attributes:
+      Group:
+      # Should the type of tidal surface be a different parameter, rather than having "heightOffset" as a parameter
+      # (or (eg) surface height ) and the surface type as parameter.  Possible use case is a single grid with 
+      # more than one surface defined at each grid node.
+        - AttributeName: tidalSurface
+          Type: [CD, HAT, HW, HHWLT, ISLW, LAT, LW, LLWLT, MHHW, MHW, MHWST, MLLW, MLW, MLWST, MLLWST, MSL ]
+    ParameterSets:
+    # Should this also include depthOffset
+    - Parameters:
+        - heightOffset
+        - heightOffsetUncertainty
+  - ContentType: velocityModel
+    ParameterSets:
+    - Parameters:
+        - velocityEast
+        - velocityNorth
+        - velocityEastUncertainty
+        - velocityNorthUncertainty      
+    - Parameters:
+        - velocityEast
+        - velocityNorth
+        - velocityUp
+        - velocityEastUncertainty
+        - velocityNorthUncertainty
+        - velocityUpUncertainty      
+    - Parameters:
+        - velocityUp
+        - velocityUpUncertainty            
+    - Parameters:
+        - velocityX
+        - velocityY
+        - velocityZ
+        - velocityXUncertainty
+        - velocityYUncertainty
+        - velocityZUncertainty
+  - ContentType: deformationModel
+    Attributes:
+      Group:
+        - AttributeName: timeFunctions
+          Type: list
+    ParameterSets:
+    - Parameters:
+      # Not sure about uncertainty - under discussion.  
+      # Makes no sense to have displacementEastUncertainty, displacementNorthUncertainty without accounting for correlation
+      # Arguably also for adding vertical
+      # Arguably for (likely large) correlation between nodes
+      # Proposed attributes are reasonable simplification I think.
+      # For consistency with other models though would use displacementEastUncertainty, displacmentNorthUncertainty, displacementUpUncertainty
+        - displacementEast
+        - displacementNorth
+        - displacementUp
+        - horizontalDisplacementUncertainty
+        - verticalDisplacementUncertainty
+    - Parameters:
+        - displacementEast
+        - displacementNorth
+        - horizontalDisplacementUncertainty
+    - Parameters:
+        - displacementUp
+        - verticalDisplacementUncertainty
