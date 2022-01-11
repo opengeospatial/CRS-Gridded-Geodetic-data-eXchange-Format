@@ -1,74 +1,11 @@
 # Overview
 
 This directory contains experimental python 3.8+ script to test NetCDF4 encoding options for a GGXF.
-These script are intended for experimenting with the GGXF format - they are not "production ready".  
+These scripts are intended for experimenting with the GGXF format - they are not "production ready".  
 
-## ggxf_yaml_to_netcdf4.py
+## GGXF module
 
-This script converts a YAML format GGXF file to a NetCDF4 file.  This includes some alternative
-encoding options for the NetCDF4 file as the final format is under discussion.  It is intended that
-the functionality of this script is migrated into GGXF.py, described below.
-
-### Usage
-
-``` text
-Usage: Convert a YAML GGXF specification to a NetCDF4 file [-h]
-                                                           [-g GRID_DIRECTORY]
-                                                           [-m {dot0,dot1,json}]
-                                                           [-c] [-d] [-v]
-                                                           ggxf_yaml_file
-                                                           netcdf4_file
-
-positional arguments:
-  ggxf_yaml_file        Name of YAML GGXF file to load
-  netcdf4_file          NetCDF4 file to create
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -g GRID_DIRECTORY, --grid-directory GRID_DIRECTORY
-                        Directory to search for grid files
-  -m {dot0,dot1,json}, --metadata-style {dot0,dot1,json}
-                        Style for encoding metadata
-  -c, --use-compound-types
-                        Use NetCDF compound types for supported objects (very
-                        limited implementation)
-  -d, --dump-cdl        Create CDL dump of NetCDF file
-  -v, --verbose         More verbose output
-
-This is a test implementation to evaluate encoding options - the output is not
-necessarily an "authoritative" GGXF file
-
-```
-
-Currently this has provided three metadata options.  
-
-The default "dot0" style uses a dot naming convention for attributes to encode the data structure, for example "contentApplicabilityExtent.boundingBox.southBoundLatitude".  Lists are encoded with a "*attribute*.count" attribute holding the number of elements in the list, followed by "*attribute*.0", "*attribute*.1".  
-
-The "dot1" style is identical to "dot0" except that lists attributes are 1 based rather than 0 based.
-
-The "json" style encodes all GGXF attributes into a JSON formated string stored in a NetCDF "metadata"
-
-This implementation also includes a very limited test of using NetCDF4 compound data types to represent attributes.  Currently only parameter definitions supported.
-
-### Installation
-
-This script requires installing python3 modules netCDF4, pyyaml, and numpy.  If grids are defined using a dataSource attribute then the gdal module is also required.  
-
-### Issues
-
-* Integer attributes (such as list counts) are encoded with data type long long, for example "3LL".  This doesn't affect usage, but could impact on decoding with other tools.  This may be a constraint of the netCDF python library - to be investigated.
-
-* Implementation using NetCDF4 compound types is very limited.  If this option is preferred for some or all attributes this will need to be addressed.
-
-* Currently grid data are encoded as a (nrow,ncol,nparam) dimensioned variable.  One other option that has been proposed is using a separate (nrow,ncol) variable for each parameter - this is not provided as an option here.  Another option that could be implemented for grids with just one parameter is to collapse (nrow,ncol,1) dimension arrays to (nrow,ncol) arrays.
-
-* A partial JSON option implementation might be useful where genuine metadata (ie data about the data used for discovery rather than attributes such affineCoeffs that are required to calculate the grid) are encoded into a JSON formatted metadata attribute rather than encoding as CDF attributes, particularly if this matches a JSON format used for discovery/search.
-
-* Implementation - this is currently implemented as a single python script.  Once the NetCDF implementation is decided it will be better implemented with as a GGXF module with options for reading and writing both YAML and NetCDF representation, as well as schema validation.  
-
-## GGXF.py
-
-This is under development.  It is intended as a prototype python module for handling GGXF files.  Currently it has capabilities for:
+The GGXF directory contains an under development.  It is intended as a prototype python module for handling GGXF files.  There is also a placeholder script GGXF.py in the source directory which just runs the App.py script in the GGGXF directory.
 
 * Reading and writing a NetCDF4 GGXF file
 * Reading and writing a YAML format GGXF file
@@ -76,10 +13,10 @@ This is under development.  It is intended as a prototype python module for hand
 * Dumping a single grid from the GGXF file as a CSV file of coordinates and values with one row for each grid node (mainly for checking the grid layout/affine transformation is correct)
 * Adding deformation model time functions and calculating the deformation model
 * Implementing biquadratic and bicubic interpolation functions
+* Checking the GGXF content attribute to ensure the content type is correct and group parameters match the content type.
 
 Intended development includes:
 
-* Checking the GGXF content attribute to ensure the content type is correct and group parameters match the content type.
 * Handling of summation of uncertainty for deformation.  RMS?
 * Support for "no-data" value
 * ? Handling of covariance for deformation
@@ -92,11 +29,13 @@ If it is to be adapted for production use it will also require
 * A lot of documentation
 * Packaging
 
-GGXF.py includes a basic command line application for testing.  The options provided by this will change as the program is developed.  To see the command line usage run the command
+The scripts/GGXF.py runs a basic command line application for testing.  The options provided by this will change as the program is developed.  To see the command line usage run the command
 
 ``` sh
 python3 GGXF.py -h
 ```
+
+Options listed at the time of writing are:
 
 ``` text
 
