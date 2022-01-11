@@ -16,30 +16,36 @@ from GGXF import GGXF
 from GGXF.GGXF import GridInterpolator, Grid
 
 
-affine = [172.0, 0.3, 0.0, 41.5, 0.0, 0.4]
+defaultAffine = [172.0, 0.3, 0.0, 41.5, 0.0, 0.4]
 
 
-def createGrid(size, generators):
-    nparam = len(generators)
-    size = [size[1], size[0], nparam]
-    data = np.zeros(size)
-    for i in range(size[1]):
-        for j in range(size[0]):
-            for k in range(size[2]):
-                data[j, i, k] = generators[k](i, j)
+def createGrid(size, generators=None, data=None, affine=defaultAffine):
+    if generators:
+        nparam = len(generators)
+        size = [size[1], size[0], nparam]
+        data = np.zeros(size)
+        for i in range(size[1]):
+            for j in range(size[0]):
+                for k in range(size[2]):
+                    data[j, i, k] = generators[k](i, j)
+    else:
+        data = np.array(data)
+        if data.size % (size[0] * size[1]) == 0:
+            size = [size[1], size[0], data.size // (size[0] * size[1])]
+            data = data.reshape(size)
     metadata = {
         GGXF.GRID_ATTR_I_NODE_MAXIMUM: size[1] - 1,
         GGXF.GRID_ATTR_J_NODE_MAXIMUM: size[0] - 1,
         GGXF.GRID_ATTR_AFFINE_COEFFS: affine,
     }
-    grid = Grid(dummyGroup(nparam=nparam), "Test grid", metadata)
+    grid = Grid(dummyGroup(nparam=size[2]), "Test grid", metadata)
     grid.setData(data)
     # print(size)
     # print(data)
     return grid
 
 
-def convertTestPoints(testpoints):
+def convertTestPoints(testpoints, affine=defaultAffine):
     tfm = np.array(affine).reshape(2, 3)
     testxy = []
     for xy in testpoints:
@@ -180,6 +186,20 @@ class BiquadraticInterpolationTest(unittest.TestCase):
             self.assertAlmostEqual(
                 result[0], check[0], msg=f"Biquadratic interpolation at {point}"
             )
+
+    def test_Biquadratic4(self):
+        # Test based on example in NOAA Technical Memorandum NOS NGS 84 section 2
+        data = [[100.0, 107.0, 124.0], [92.0, 99.0, 94.0], [88.0, 106.0, 93.0]]
+        affine = [50.0, 25.0, 0.0, 10.0, 0.0, 10.0]
+        xy = [87.0, 17.0]
+        grid = createGrid((3, 3), data=data, affine=affine)
+        result = GridInterpolator.biquadratic(grid, xy)
+        self.assertAlmostEqual(
+            result[0],
+            100.601,
+            places=3,
+            msg=f"Biquadratic interpolation of NOAA example",
+        )
 
 
 class BicubicInterpolationTest(unittest.TestCase):
