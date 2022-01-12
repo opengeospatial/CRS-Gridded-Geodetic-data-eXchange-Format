@@ -22,6 +22,7 @@ Intended development includes:
 * ? Handling of covariance for deformation
 * ? Support for non-GGXF data in grid
 * ? Lazy loading of grid data
+* ? Consider the use of NetCDF packing for efficient storage of data (eg automatic testing of parameter range and implementing packing were suitable)
 * Test suite
 
 If it is to be adapted for production use it will also require
