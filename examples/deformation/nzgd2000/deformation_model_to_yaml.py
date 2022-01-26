@@ -387,7 +387,8 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
         group["interpolationMethod"] = "bilinear"
         groups.append(group)
         group["grids"] = pruneGrids(sm["grids"], maxdepth, maxwidth)
-        setHierarchyRank(group["grids"])
+        # hierarchyRank removed from GGXF
+        # setHierarchyRank(group["grids"])
     return gmodel
 
 
