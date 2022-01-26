@@ -73,14 +73,14 @@ groups:
     timeFunctions:
       - functionName: ramp
         startDate: "2009-07-15T00:00:00Z"
-        startScaleFactor: -1.34
         endDate: "2009-07-15T00:00:00Z"
-        endScaleFactor: -0.29
+        functionReferenceDate: "2011-09-01T00:00:00Z"
+        scaleFactor: 1.05
       - functionName: ramp
         startDate: "2009-07-15T00:00:00Z"
-        startScaleFactor: 0.0
         endDate: "2011-09-01T00:00:00Z"
-        endScaleFactor: 0.29
+        functionReferenceDate: "2011-09-01T00:00:00Z"
+        scaleFactor: 0.29
     grids:
       - gridName: eqdef1
         affineCoeffs: [172.6, 0.6, 0.0, -41.6, 0.0, 0.4]

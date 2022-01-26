@@ -54,7 +54,6 @@ class BaseTimeFunction:
             TIME_FUNCTION_TYPE_HYPERBOLIC_TANGENT: HyperbolicTangentTimeFunction,
             TIME_FUNCTION_TYPE_LOGARITHMIC: LogarithmicTimeFunction,
             TIME_FUNCTION_TYPE_RAMP: RampTimeFunction,
-            TIME_FUNCTION_TYPE_REVERSE_STEP: ReverseStepTimeFunction,
             TIME_FUNCTION_TYPE_STEP: StepTimeFunction,
             TIME_FUNCTION_TYPE_VELOCITY: VelocityTimeFunction,
         }
@@ -67,7 +66,14 @@ class BaseTimeFunction:
             raise Error(f"Unrecognized time function type {functionType}")
         return constructors[functionType](definition)
 
-    def __init__(self, functiontype: str, definition: dict, required, optional=()):
+    OptionalParams = (
+        TIME_PARAM_START_EPOCH,
+        TIME_PARAM_END_EPOCH,
+        TIME_PARAM_FUNCTION_REFERENCE_EPOCH,
+        TIME_PARAM_SCALE_FACTOR,
+    )
+
+    def __init__(self, functiontype: str, definition: dict, required):
         self._params = {}
         for sourcekey, sourcevalue in definition.items():
             # Crudely handle option of Epoch or Date representation of times
@@ -79,7 +85,7 @@ class BaseTimeFunction:
             if key.endswith("Date"):
                 key = key[:-4] + "Epoch"
                 parser = DateToEpoch
-            if key not in required and key not in optional:
+            if key not in required and key not in self.OptionalParams:
                 raise Error(
                     f"Unexpected parameter {sourcekey} in {functiontype} definition"
                 )
@@ -91,15 +97,32 @@ class BaseTimeFunction:
                 )
             self._params[key] = value
 
+        for key in required:
+            if key not in self._params:
+                raise Error(f"Missing value {key} in {functiontype} definition")
+
+        self._refEpoch = self._params.get(TIME_PARAM_FUNCTION_REFERENCE_EPOCH)
+        self._startEpoch = self._params.get(TIME_PARAM_START_EPOCH)
+        self._endEpoch = self._params.get(TIME_PARAM_END_EPOCH)
+        self._multiplier = self._params.get(TIME_PARAM_SCALE_FACTOR, 1.0)
+        self._refValue = None
+
+    def valueAt(self, epoch):
+        if self._startEpoch and epoch < self._startEpoch:
+            epoch = self._startEpoch
+        elif self._endEpoch and epoch > self._endEpoch:
+            epoch = self._endEpoch
+        value = self.refFunc(epoch) * self._multiplier
+        if self._refValue is None:
+            self._refValue = 0.0
+            if self._refEpoch is not None:
+                self._refValue = self.valueAt(self._refEpoch)
+        return value - self._refValue
+
 
 class VelocityTimeFunction(BaseTimeFunction):
 
     Params = (TIME_PARAM_FUNCTION_REFERENCE_EPOCH,)
-    OptionalParams = (
-        TIME_PARAM_START_EPOCH,
-        TIME_PARAM_END_EPOCH,
-        TIME_PARAM_SCALE_FACTOR,
-    )
 
     def __init__(self, definition):
         BaseTimeFunction.__init__(
@@ -107,28 +130,14 @@ class VelocityTimeFunction(BaseTimeFunction):
             TIME_FUNCTION_TYPE_VELOCITY,
             definition,
             self.Params,
-            self.OptionalParams,
         )
-        self._refEpoch = self._params[TIME_PARAM_FUNCTION_REFERENCE_EPOCH]
-        self._startEpoch = self._params.get(TIME_PARAM_START_EPOCH)
-        self._endEpoch = self._params.get(TIME_PARAM_END_EPOCH)
-        self._multiplier = self._params.get(TIME_PARAM_SCALE_FACTOR, 1.0)
 
-    def valueAt(self, epoch):
-        if self._startEpoch is not None and self._startEpoch > epoch:
-            epoch = self._startEpoch
-        if self._endEpoch is not None and self._endEpoch < epoch:
-            epoch = self._endEpoch
-        return (epoch - self._refEpoch) * self._multiplier
+    def refFunc(self, epoch):
+        return epoch - self._refEpoch
 
 
 class AccelerationTimeFunction:
     Params = (TIME_PARAM_FUNCTION_REFERENCE_EPOCH,)
-    OptionalParams = (
-        TIME_PARAM_SCALE_FACTOR,
-        TIME_PARAM_START_EPOCH,
-        TIME_PARAM_END_EPOCH,
-    )
 
     def __init__(self, definition):
         BaseTimeFunction.__init__(
@@ -136,65 +145,30 @@ class AccelerationTimeFunction:
             TIME_FUNCTION_TYPE_ACCELERATION,
             definition,
             self.Params,
-            self.OptionalParams,
         )
-        self._refEpoch = self._params[TIME_PARAM_FUNCTION_REFERENCE_EPOCH]
-        self._startEpoch = self._params.get(TIME_PARAM_START_EPOCH)
-        self._endEpoch = self._params.get(TIME_PARAM_END_EPOCH)
-        self._multiplier = self._params.get(TIME_PARAM_SCALE_FACTOR, 1.0)
 
-    def valueAt(self, epoch):
-        if self._startEpoch is not None and self._startEpoch > epoch:
-            epoch = self._startEpoch
-        if self._endepoch is not None and self._endEpoch < epoch:
-            epoch = self._endEpoch
+    def refFunc(self, epoch):
         epoch -= self._refEpoch
-        return epoch * epoch * self._multiplier
+        return epoch * epoch
 
 
 class StepTimeFunction(BaseTimeFunction):
-    Params = (TIME_PARAM_FUNCTION_REFERENCE_EPOCH,)
-    OptionalParams = (TIME_PARAM_SCALE_FACTOR,)
+    Params = (TIME_PARAM_EVENT_EPOCH,)
 
     def __init__(self, definition):
         BaseTimeFunction.__init__(
-            self, TIME_FUNCTION_TYPE_STEP, definition, self.Params, self.OptionalParams
+            self, TIME_FUNCTION_TYPE_STEP, definition, self.Params
         )
-        self._epoch = self._params[TIME_PARAM_FUNCTION_REFERENCE_EPOCH]
-        self._value = self._params.get(TIME_PARAM_SCALE_FACTOR, 1.0)
+        self._epoch = self._params[TIME_PARAM_EVENT_EPOCH]
 
-    def valueAt(self, epoch):
-        return self._value if epoch >= self._epoch else 0.0
-
-
-class ReverseStepTimeFunction(BaseTimeFunction):
-    Params = (TIME_PARAM_FUNCTION_REFERENCE_EPOCH,)
-    OptionalParams = (TIME_PARAM_SCALE_FACTOR,)
-
-    def __init__(self, definition):
-        BaseTimeFunction.__init__(
-            self,
-            TIME_FUNCTION_TYPE_REVERSE_STEP,
-            definition,
-            self.Params,
-            self.OptionalParams,
-        )
-        self._epoch = self._params[TIME_PARAM_FUNCTION_REFERENCE_EPOCH]
-        self._value = -1.0 * self._params.get(TIME_PARAM_SCALE_FACTOR, 1.0)
-
-    def valueAt(self, epoch):
-        return self._value if epoch < self._epoch else 0.0
+    def refFunc(self, epoch):
+        return 1.0 if epoch >= self._epoch else 0.0
 
 
 class ExponentialTimeFunction(BaseTimeFunction):
     Params = (
-        TIME_PARAM_START_EPOCH,
-        TIME_PARAM_END_SCALE_FACTOR,
-        TIME_PARAM_DECAY_RATE,
-    )
-    OptionalParams = (
-        TIME_PARAM_SCALE_FACTOR,
-        TIME_PARAM_END_EPOCH,
+        TIME_PARAM_EVENT_EPOCH,
+        TIME_PARAM_TIME_CONSTANT,
     )
 
     def __init__(self, definition):
@@ -203,28 +177,21 @@ class ExponentialTimeFunction(BaseTimeFunction):
             TIME_FUNCTION_TYPE_EXPONENTIAL,
             definition,
             self.Params,
-            self.OptionalParams,
         )
-        self._epoch = self._params[TIME_PARAM_START_EPOCH]
-        self._decay = self._params[TIME_PARAM_DECAY_RATE]
-        self._multiplier = self._params.get(TIME_PARAM_SCALE_FACTOR, 1.0)
-        self._endEpoch = self._params.get(TIME_PARAM_END_EPOCH)
+        self._epoch = self._params[TIME_PARAM_EVENT_EPOCH]
+        self._decay = self._params[TIME_PARAM_TIME_CONSTANT]
 
-    def valueAt(self, epoch):
+    def refFunc(self, epoch):
         epoch -= self._epoch
         if epoch < 0.0:
             return 0.0
-        return self._multiplier * (1.0 - math.exp(-epoch / self._decay))
+        return 1.0 - math.exp(-epoch / self._decay)
 
 
 class LogarithmicTimeFunction(BaseTimeFunction):
     Params = (
-        TIME_PARAM_START_EPOCH,
+        TIME_PARAM_EVENT_EPOCH,
         TIME_PARAM_TIME_CONSTANT,
-    )
-    OptionalParams = (
-        TIME_PARAM_SCALE_FACTOR,
-        TIME_PARAM_END_EPOCH,
     )
 
     def __init__(self, definition):
@@ -233,60 +200,48 @@ class LogarithmicTimeFunction(BaseTimeFunction):
             TIME_FUNCTION_TYPE_LOGARITHMIC,
             definition,
             self.Params,
-            self.OptionalParams,
         )
-        self._epoch = self._params[TIME_PARAM_START_EPOCH]
-        self._decay = self._params[TIME_PARAM_DECAY_RATE]
-        self._multiplier = self._params.get(TIME_PARAM_SCALE_FACTOR, 1.0)
-        self._endEpoch = self._params.get(TIME_PARAM_END_EPOCH)
+        self._epoch = self._params[TIME_PARAM_EVENT_EPOCH]
+        self._decay = self._params[TIME_PARAM_TIME_CONSTANT]
 
-    def valueAt(self, epoch):
+    def refFunc(self, epoch):
         epoch -= self._epoch
         if epoch < 0.0:
             return 0.0
-        return self._multiplier * math.log(1.0 + epoch / self._decay)
+        return math.log(1.0 + epoch / self._decay)
 
 
 class RampTimeFunction(BaseTimeFunction):
     Params = (
         TIME_PARAM_START_EPOCH,
-        TIME_PARAM_START_SCALE_FACTOR,
         TIME_PARAM_END_EPOCH,
-        TIME_PARAM_END_SCALE_FACTOR,
     )
-    OptionalParams = ()
 
     def __init__(self, definition):
         BaseTimeFunction.__init__(
-            self, TIME_FUNCTION_TYPE_RAMP, definition, self.Params, self.OptionalParams
+            self,
+            TIME_FUNCTION_TYPE_RAMP,
+            definition,
+            self.Params,
         )
         self._epoch0 = self._params[TIME_PARAM_START_EPOCH]
-        self._factor0 = self._params[TIME_PARAM_START_SCALE_FACTOR]
         self._epoch1 = self._params[TIME_PARAM_END_EPOCH]
-        self._factor1 = self._params[TIME_PARAM_END_SCALE_FACTOR]
         self._epochDiff = self._epoch1 - self._epoch0
-        self._factorDiff = self._factor1 - self._factor0
 
-    def valueAt(self, epoch):
+    def refFunc(self, epoch):
         if epoch < self._epoch0:
-            return self._factor0
+            return 0.0
         elif epoch >= self._epoch1:
-            return self._factor1
+            return 1.0
         else:
-            return (
-                self._factor0
-                + self._factorDiff * (epoch - self._epoch0) / self._epochDiff
-            )
+            return (epoch - self._epoch0) / self._epochDiff
 
 
 class CyclicTimeFunction(BaseTimeFunction):
     Params = (
         TIME_PARAM_FUNCTION_REFERENCE_EPOCH,
         TIME_PARAM_FREQUENCY,
-        TIME_PARAM_COSINE_SCALE_FACTOR,
-        TIME_PARAM_SINE_SCALE_FACTOR,
     )
-    OptionalParams = ()
 
     def __init__(self, definition):
         BaseTimeFunction.__init__(
@@ -294,25 +249,19 @@ class CyclicTimeFunction(BaseTimeFunction):
             TIME_FUNCTION_TYPE_CYCLIC,
             definition,
             self.Params,
-            self.OptionalParams,
         )
         self._refEpoch = self._params[TIME_PARAM_FUNCTION_REFERENCE_EPOCH]
         self._frequency = self.param[TIME_PARAM_FREQUENCY]
-        self._cosFactor = self.param[TIME_PARAM_COSINE_SCALE_FACTOR]
-        self._sinFactor = self.param[TIME_PARAM_SINE_SCALE_FACTOR]
 
-    def valueAt(self, epoch):
-        phase = self._frequency * (epoch - self._refEpoch) / (2.0 * math.pi)
-        return self._cosFactor * math.cos(phase) + self._sinFactor * math.sin(phase)
+    def refFunc(self, epoch):
+        return math.sin(self._frequency * (epoch - self._refEpoch) / (2.0 * math.pi))
 
 
 class HyperbolicTangentTimeFunction(BaseTimeFunction):
     Params = (
-        TIME_PARAM_START_EPOCH,
-        TIME_PARAM_END_EPOCH,
+        TIME_PARAM_EVENT_EPOCH,
         TIME_PARAM_TIME_CONSTANT,
     )
-    OptionalParams = (TIME_PARAM_SCALE_FACTOR,)
 
     def __init__(self, definition):
         BaseTimeFunction.__init__(
@@ -320,26 +269,12 @@ class HyperbolicTangentTimeFunction(BaseTimeFunction):
             TIME_FUNCTION_TYPE_HYPERBOLIC_TANGENT,
             definition,
             self.Params,
-            self.OptionalParams,
         )
-        self._epoch0 = self._params[TIME_PARAM_START_EPOCH]
-        self._epoch1 = self._params[TIME_PARAM_END_EPOCH]
-        self._refEpoch = self._epoch1 - self._epoch0
+        self._epoch = self._params[TIME_PARAM_EVENT_EPOCH]
         self._timeFactor = self._params[TIME_PARAM_TIME_CONSTANT]
-        self._amplitude = self._params.get(TIME_PARAM_SCALE_FACTOR, 1.0)
-        self._multiplier = self._amplitude / math.tanh(
-            (self._epoch1 - self._refEpoch) / self._timeFactor
-        )
 
-    def valueAt(self, epoch):
-        if epoch < self._epoch0:
-            return 0.0
-        elif epoch >= self.epoch1:
-            return self._amplitude
-        else:
-            return self._amplitude + self._multiplier * (
-                math.tanh((epoch - self._refEpoch) / self._timeFactor)
-            )
+    def refFunc(self, epoch):
+        return math.tanh((epoch - self._epoch) / self._timeFactor)
 
 
 class CompoundTimeFunction:

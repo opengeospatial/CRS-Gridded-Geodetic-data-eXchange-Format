@@ -99,14 +99,14 @@ group: nz_linz_hypo_eq {
   		:timeFunctions.count = 2LL ;
   		:timeFunctions.0.functionName = "ramp" ;
   		:timeFunctions.0.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.0.startScaleFactor = -1.34 ;
   		:timeFunctions.0.endDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.0.endScaleFactor = -0.29 ;
+  		:timeFunctions.0.functionReferenceDate = "2011-09-01T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1.05 ;
   		:timeFunctions.1.functionName = "ramp" ;
   		:timeFunctions.1.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.1.startScaleFactor = 0. ;
   		:timeFunctions.1.endDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.1.endScaleFactor = 0.29 ;
+  		:timeFunctions.1.functionReferenceDate = "2011-09-01T00:00:00Z" ;
+  		:timeFunctions.1.scaleFactor = 0.29 ;
 
   group: eqdef1 {
     dimensions:

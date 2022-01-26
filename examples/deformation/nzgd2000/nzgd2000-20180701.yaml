@@ -80,8 +80,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2003-08-21T00:00:00Z'
+  - functionName: step
+    eventDate: '2003-08-21T00:00:00Z'
+    functionReferenceDate: '2004-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_si_20030821_grid_si_L1
@@ -117,8 +118,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2004-12-23T00:00:00Z'
+  - functionName: step
+    eventDate: '2004-12-23T00:00:00Z'
+    functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_mq_20041223_grid_mq_P0_L1
@@ -140,8 +142,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2004-12-23T00:00:00Z'
+  - functionName: step
+    eventDate: '2004-12-23T00:00:00Z'
+    functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_mq_20041223_grid_mq_P1_SL2
@@ -163,8 +166,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2004-12-23T00:00:00Z'
+  - functionName: step
+    eventDate: '2004-12-23T00:00:00Z'
+    functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_mq_20041223_grid_mq_P2_L1
@@ -186,8 +190,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2004-12-23T00:00:00Z'
+  - functionName: step
+    eventDate: '2004-12-23T00:00:00Z'
+    functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_mq_20041223_grid_mq_P3_L1
@@ -209,8 +214,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2004-12-23T00:00:00Z'
+  - functionName: step
+    eventDate: '2004-12-23T00:00:00Z'
+    functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_mq_20041223_grid_mq_P4_L1
@@ -232,8 +238,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2004-12-23T00:00:00Z'
+  - functionName: step
+    eventDate: '2004-12-23T00:00:00Z'
+    functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_mq_20041223_grid_mq_P5_L1
@@ -255,8 +262,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2007-10-16T00:00:00Z'
+  - functionName: step
+    eventDate: '2007-10-16T00:00:00Z'
+    functionReferenceDate: '2008-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_gs_20071016_grid_gs_L1
@@ -294,14 +302,14 @@ groups:
   timeFunctions:
   - functionName: ramp
     startDate: '2009-07-15T00:00:00Z'
-    startScaleFactor: -1.34
     endDate: '2009-07-15T00:00:00Z'
-    endScaleFactor: -0.29
+    functionReferenceDate: '2011-09-01T00:00:00Z'
+    scaleFactor: 1.05
   - functionName: ramp
     startDate: '2009-07-15T00:00:00Z'
-    startScaleFactor: 0.0
     endDate: '2011-09-01T00:00:00Z'
-    endScaleFactor: 0.29
+    functionReferenceDate: '2011-09-01T00:00:00Z'
+    scaleFactor: 0.29
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ds_20090715_grid_ds_P0_L1
@@ -325,14 +333,14 @@ groups:
   timeFunctions:
   - functionName: ramp
     startDate: '2009-07-15T00:00:00Z'
-    startScaleFactor: -1.34
     endDate: '2009-07-15T00:00:00Z'
-    endScaleFactor: -0.29
+    functionReferenceDate: '2011-09-01T00:00:00Z'
+    scaleFactor: 1.05
   - functionName: ramp
     startDate: '2009-07-15T00:00:00Z'
-    startScaleFactor: 0.0
     endDate: '2011-09-01T00:00:00Z'
-    endScaleFactor: 0.29
+    functionReferenceDate: '2011-09-01T00:00:00Z'
+    scaleFactor: 0.29
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ds_20090715_grid_ds_P1_L1
@@ -356,14 +364,14 @@ groups:
   timeFunctions:
   - functionName: ramp
     startDate: '2009-07-15T00:00:00Z'
-    startScaleFactor: -1.34
     endDate: '2009-07-15T00:00:00Z'
-    endScaleFactor: -0.29
+    functionReferenceDate: '2011-09-01T00:00:00Z'
+    scaleFactor: 1.05
   - functionName: ramp
     startDate: '2009-07-15T00:00:00Z'
-    startScaleFactor: 0.0
     endDate: '2011-09-01T00:00:00Z'
-    endScaleFactor: 0.29
+    functionReferenceDate: '2011-09-01T00:00:00Z'
+    scaleFactor: 0.29
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ds_20090715_grid_ds_P2_L1
@@ -401,14 +409,14 @@ groups:
   timeFunctions:
   - functionName: ramp
     startDate: '2009-07-15T00:00:00Z'
-    startScaleFactor: -1.34
     endDate: '2009-07-15T00:00:00Z'
-    endScaleFactor: -0.29
+    functionReferenceDate: '2011-09-01T00:00:00Z'
+    scaleFactor: 1.05
   - functionName: ramp
     startDate: '2009-07-15T00:00:00Z'
-    startScaleFactor: 0.0
     endDate: '2011-09-01T00:00:00Z'
-    endScaleFactor: 0.29
+    functionReferenceDate: '2011-09-01T00:00:00Z'
+    scaleFactor: 0.29
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ds_20090715_grid_ds_P3_L1
@@ -430,8 +438,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2010-09-04T00:00:00Z'
+  - functionName: step
+    eventDate: '2010-09-04T00:00:00Z'
+    functionReferenceDate: '2011-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_c1_20100904_grid_c1_L1
@@ -474,8 +483,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2011-02-22T00:00:00Z'
+  - functionName: step
+    eventDate: '2011-02-22T00:00:00Z'
+    functionReferenceDate: '2012-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_c2_20110222_grid_c2_L1
@@ -518,8 +528,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2011-06-13T00:00:00Z'
+  - functionName: step
+    eventDate: '2011-06-13T00:00:00Z'
+    functionReferenceDate: '2012-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_c3_20110613_grid_c3_L1
@@ -562,8 +573,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2011-12-23T00:00:00Z'
+  - functionName: step
+    eventDate: '2011-12-23T00:00:00Z'
+    functionReferenceDate: '2012-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_c4_20111223_grid_c4_L1
@@ -606,8 +618,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2013-07-21T00:00:00Z'
+  - functionName: step
+    eventDate: '2013-07-21T00:00:00Z'
+    functionReferenceDate: '2014-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_cs_20130721_grid_cs_20130721_L1
@@ -650,8 +663,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2013-08-16T00:00:00Z'
+  - functionName: step
+    eventDate: '2013-08-16T00:00:00Z'
+    functionReferenceDate: '2014-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_lg_20130816_grid_lg_20130816_L1
@@ -694,8 +708,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2016-02-14T00:00:00Z'
+  - functionName: step
+    eventDate: '2016-02-14T00:00:00Z'
+    functionReferenceDate: '2017-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ch_20160214_grid_ch_20160214_L1
@@ -740,7 +755,7 @@ groups:
     unitSiRatio: 1.0
   timeFunctions:
   - functionName: step
-    functionReferenceDate: '2016-11-14T00:00:00Z'
+    eventDate: '2016-11-14T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114co_H_L1_F
@@ -770,8 +785,9 @@ groups:
     parameterName: displacementNorth
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2016-11-14T00:00:00Z'
+  - functionName: step
+    eventDate: '2016-11-14T00:00:00Z'
+    functionReferenceDate: '2017-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114co_H_L2_R
@@ -1036,8 +1052,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2016-11-14T00:00:00Z'
+  - functionName: step
+    eventDate: '2016-11-14T00:00:00Z'
+    functionReferenceDate: '2017-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114co_V_L1
@@ -1293,9 +1310,9 @@ groups:
   timeFunctions:
   - functionName: ramp
     startDate: '2016-11-14T00:00:00Z'
-    startScaleFactor: 0.0
     endDate: '2016-12-14T00:00:00Z'
-    endScaleFactor: 1.0
+    functionReferenceDate: '2016-11-14T00:00:00Z'
+    scaleFactor: 1.0
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114pe1_H_L1_F
@@ -1327,9 +1344,9 @@ groups:
   timeFunctions:
   - functionName: ramp
     startDate: '2016-11-14T00:00:00Z'
-    startScaleFactor: -1.0
     endDate: '2016-12-14T00:00:00Z'
-    endScaleFactor: 0.0
+    functionReferenceDate: '2016-12-14T00:00:00Z'
+    scaleFactor: 1.0
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114pe1_H_L2_R
@@ -1365,9 +1382,9 @@ groups:
   timeFunctions:
   - functionName: ramp
     startDate: '2016-11-14T00:00:00Z'
-    startScaleFactor: -1.0
     endDate: '2016-12-14T00:00:00Z'
-    endScaleFactor: 0.0
+    functionReferenceDate: '2016-12-14T00:00:00Z'
+    scaleFactor: 1.0
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114pe1_V_L1
@@ -1410,7 +1427,7 @@ groups:
     unitSiRatio: 1.0
   timeFunctions:
   - functionName: step
-    functionReferenceDate: '2016-11-14T00:00:00Z'
+    eventDate: '2016-11-14T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ka_20161114_grid_hor_refinement
@@ -1429,8 +1446,9 @@ groups:
     parameterName: displacementNorth
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2016-11-14T00:00:00Z'
+  - functionName: step
+    eventDate: '2016-11-14T00:00:00Z'
+    functionReferenceDate: '2017-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ka_20161114_grid_hor_refinement2
@@ -1446,8 +1464,9 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: reverseStep
-    functionReferenceDate: '2016-11-14T00:00:00Z'
+  - functionName: step
+    eventDate: '2016-11-14T00:00:00Z'
+    functionReferenceDate: '2017-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ka_20161114_grid_vrt_refinement2
@@ -1472,9 +1491,9 @@ groups:
   timeFunctions:
   - functionName: ramp
     startDate: '2016-12-14T00:00:00Z'
-    startScaleFactor: 0.0
     endDate: '2017-02-14T00:00:00Z'
-    endScaleFactor: 1.0
+    functionReferenceDate: '2016-12-14T00:00:00Z'
+    scaleFactor: 1.0
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114pe3_H_L1_F
@@ -1506,9 +1525,9 @@ groups:
   timeFunctions:
   - functionName: ramp
     startDate: '2016-12-14T00:00:00Z'
-    startScaleFactor: -1.0
     endDate: '2017-02-14T00:00:00Z'
-    endScaleFactor: 0.0
+    functionReferenceDate: '2017-02-14T00:00:00Z'
+    scaleFactor: 1.0
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114pe3_H_L2_R
@@ -1544,9 +1563,9 @@ groups:
   timeFunctions:
   - functionName: ramp
     startDate: '2016-12-14T00:00:00Z'
-    startScaleFactor: -1.0
     endDate: '2017-02-14T00:00:00Z'
-    endScaleFactor: 0.0
+    functionReferenceDate: '2017-02-14T00:00:00Z'
+    scaleFactor: 1.0
   interpolationMethod: bilinear
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114pe3_V_L1

@@ -197,6 +197,13 @@ def loadJsonGeoTiff(jsonfile, object_pairs_hook=OrderedDict):
     return model
 
 
+def _nextYear(epoch):
+    if re.match(r"((?:19|20)\d\d)\-", epoch):
+        year = int(epoch[:4]) + 1
+        return f"{year:04d}-01-01T00:00:00Z"
+    return epoch
+
+
 def ggxfTimeFunction(tf):
     global useramp
     tftype = tf["type"]
@@ -211,12 +218,13 @@ def ggxfTimeFunction(tf):
     elif tftype == "step":
         bf = OrderedDict()
         bf["functionName"] = "step"
-        bf["functionReferenceDate"] = params["step_epoch"]
+        bf["eventDate"] = params["step_epoch"]
         functions.append(bf)
     elif tftype == "reverse_step":
         bf = OrderedDict()
-        bf["functionName"] = "reverseStep"
-        bf["functionReferenceDate"] = params["step_epoch"]
+        bf["functionName"] = "step"
+        bf["eventDate"] = params["step_epoch"]
+        bf["functionReferenceDate"] = _nextYear(params["step_epoch"])
         functions.append(bf)
     elif tftype == "piecewise":
         model = params["model"]
@@ -234,17 +242,23 @@ def ggxfTimeFunction(tf):
                 model.append({"epoch": epochn, "scale_factor": 0.0})
         elif after != "constant":
             raise RuntimeError(f"Cannot handle piecewise after_first={after}")
-        lastsf = 0.0
+        refEpoch = None
+        for m in model:
+            if m["scale_factor"] == 0.0:
+                refEpoch = m["epoch"]
+        if refEpoch is None:
+            raise RuntimeError(
+                f"Cannot handle piecewise function with no corner point having zero scale factor"
+            )
         if ggxfTimeFunction.useramp:
             for ms, me in zip(model[:-1], model[1:]):
                 bf = OrderedDict()
                 bf["functionName"] = "ramp"
                 bf["startDate"] = ms["epoch"]
-                bf["startScaleFactor"] = ms["scale_factor"] - lastsf
                 bf["endDate"] = me["epoch"]
-                bf["endScaleFactor"] = me["scale_factor"] - lastsf
+                bf["functionReferenceDate"] = refEpoch
+                bf["scaleFactor"] = me["scale_factor"] - ms["scale_factor"]
                 functions.append(bf)
-                lastsf = me["scale_factor"]
         else:
             raise RuntimeError("piecewise function not supported by current UML")
             bf = OrderedDict()

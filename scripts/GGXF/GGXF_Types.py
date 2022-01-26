@@ -254,7 +254,6 @@ CommonAttributes = {
                     ATTRDEF_TYPE: [
                         TIME_FUNCTION_TYPE_VELOCITY,
                         TIME_FUNCTION_TYPE_STEP,
-                        TIME_FUNCTION_TYPE_REVERSE_STEP,
                         TIME_FUNCTION_TYPE_RAMP,
                         TIME_FUNCTION_TYPE_ACCELERATION,
                         TIME_FUNCTION_TYPE_EXPONENTIAL,
@@ -308,21 +307,15 @@ CommonAttributes = {
             ATTRDEF_OPTIONAL: True,
         },
         {
-            ATTRDEF_NAME: TIME_PARAM_START_SCALE_FACTOR,
+            ATTRDEF_NAME: TIME_PARAM_EVENT_EPOCH,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: TIME_PARAM_START_SCALE_FACTOR,
+                    ATTRDEF_NAME: TIME_PARAM_EVENT_EPOCH,
                     ATTRDEF_TYPE: float,
                 },
-            ],
-            ATTRDEF_OPTIONAL: True,
-        },
-        {
-            ATTRDEF_NAME: TIME_PARAM_END_SCALE_FACTOR,
-            ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: TIME_PARAM_END_SCALE_FACTOR,
-                    ATTRDEF_TYPE: float,
+                    ATTRDEF_NAME: TIME_PARAM_EVENT_DATE,
+                    ATTRDEF_TYPE: str,
                 },
             ],
             ATTRDEF_OPTIONAL: True,
@@ -348,40 +341,10 @@ CommonAttributes = {
             ATTRDEF_OPTIONAL: True,
         },
         {
-            ATTRDEF_NAME: TIME_PARAM_DECAY_RATE,
-            ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: TIME_PARAM_DECAY_RATE,
-                    ATTRDEF_TYPE: float,
-                },
-            ],
-            ATTRDEF_OPTIONAL: True,
-        },
-        {
             ATTRDEF_NAME: TIME_PARAM_FREQUENCY,
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: TIME_PARAM_FREQUENCY,
-                    ATTRDEF_TYPE: float,
-                },
-            ],
-            ATTRDEF_OPTIONAL: True,
-        },
-        {
-            ATTRDEF_NAME: TIME_PARAM_COSINE_SCALE_FACTOR,
-            ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: TIME_PARAM_COSINE_SCALE_FACTOR,
-                    ATTRDEF_TYPE: float,
-                },
-            ],
-            ATTRDEF_OPTIONAL: True,
-        },
-        {
-            ATTRDEF_NAME: TIME_PARAM_SINE_SCALE_FACTOR,
-            ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: TIME_PARAM_SINE_SCALE_FACTOR,
                     ATTRDEF_TYPE: float,
                 },
             ],
