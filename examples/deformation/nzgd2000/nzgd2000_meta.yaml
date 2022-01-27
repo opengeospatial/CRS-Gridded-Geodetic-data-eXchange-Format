@@ -1,0 +1,8 @@
+contentApplicabilityExtents:
+  extentDescription: New Zealand EEZ
+  boundingBox:
+    southBoundLatitude: -55.94
+    westBoundLongitude: 160.62
+    northBoundLatitude: -25.89
+    eastBoundLongitude: 188.77
+  boundingPolygon: '<gml:Polygon srsName="EPSG:4326"><gml:outerBoundaryIs><gml:LinearRing><gml:coordinates>168.65,-32.42 168.10,-34.98 170.07,-37.58 167.30,-40.60 162.17,-44.32 160.62,-51.17 165.11,-54.97 168.78,-55.94 173.54,-54.70 174.64,-53.26 174.48,-51.66 178.46,-53.04 182.69,-51.94 183.84,-50.45 184.00,-47.76 187.31,-46.81 188.77,-44.68 188.53,-42.93 187.23,-41.50 182.07,-40.26 182.64,-36.91 180.22,-34.59 182.66,-34.45 184.50,-33.12 185.92,-29.73 185.34,-27.47 182.29,-25.89 179.01,-27.22 177.28,-31.55 179.37,-34.32 172.97,-30.85 171.22,-30.88 168.65,-32.42</gml:coordinates></gml:LinearRing></gml:outerBoundaryIs></gml:Polygon>'

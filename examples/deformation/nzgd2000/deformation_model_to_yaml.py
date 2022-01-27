@@ -60,6 +60,11 @@ def main():
     parser.add_argument(
         "-w", "--width", type=int, help="Maximum grid nesting width in example file"
     )
+    parser.add_argument(
+        "-m",
+        "--metadata-yaml",
+        help="Name of a metadata YAML file to override defaults/values from json file",
+    )
     # parser.add_argument('-r','--use-ramp',action='store_true',help="Use ramp functions instead of piecewise")
     # parser.add_argument('-b','--use-base-time-function',action='store_true',help="Use ramp functions instead of piecewise")
 
@@ -67,13 +72,19 @@ def main():
     jsonfile = args.deformation_json_file
     yamlfile = args.ggxf_yaml_header
     if yamlfile is None:
-        yamlfile = os.path.splitext(jsonfile)[0] + ".gxb"
+        yamlfile = os.path.splitext(jsonfile)[0] + ".yaml"
+    custommeta = {}
+    if args.metadata_yaml:
+        with open(args.metadata_yaml) as mh:
+            metayaml = mh.read()
+        custommeta = yaml.load(metayaml, Loader=yaml.Loader)
     # ggxfTimeFunction.useramp=args.use_ramp
     # ggxfTimeFunction.usebasefunc=args.use_base_time_function
     smodel = loadJsonGeoTiff(jsonfile)
     gmodel = ggxfModel(
         smodel, usegroups=args.group, maxdepth=args.depth, maxwidth=args.width
     )
+    updateMetadata(gmodel, custommeta)
     dumpGGXFYaml(gmodel, yamlfile)
 
 
@@ -438,6 +449,14 @@ def dumpGGXFYaml(gmodel, yamlfile):
     yamldef = blockAffine(yamldef)
     check = yaml.load(yamldef, Loader=yaml.Loader)
     open(yamlfile, "w").write(yamldef)
+
+
+def updateMetadata(ggxf, custom):
+    for key, value in custom.items():
+        if key in ggxf and type(value) == dict and type(ggxf[key]) == dict:
+            updateMetadata(ggxf[key], value)
+        else:
+            ggxf[key] = value
 
 
 if __name__ == "__main__":
