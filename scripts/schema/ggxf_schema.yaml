@@ -120,7 +120,7 @@ CommonAttributes:
       Type: str
       Optional: true
     - AttributeName: temporalExtent
-      Type: str
+      Type: TemporalExtent
       Optional: true
     - AttributeName: verticalExtent
       Type: VerticalExtent
@@ -135,6 +135,23 @@ CommonAttributes:
       Type: float
     - AttributeName: eastBoundLongitude
       Type: float
+
+  TemporalExtent:
+    - AttributeChoice:
+          AttributeChoiceName: startEpoch
+          Attributes:
+          - AttributeName: startEpoch
+            Type: float
+          - AttributeName: startDate
+            Type: str
+      Optional: true
+    - AttributeChoice:
+          AttributeChoiceName: endEpoch
+          Attributes:
+          - AttributeName: endEpoch
+            Type: float
+          - AttributeName: endDate
+            Type: str
 
   VerticalExtent:
     - AttributeName: verticalExtentCrsID

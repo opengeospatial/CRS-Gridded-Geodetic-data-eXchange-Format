@@ -4,7 +4,7 @@ contentApplicabilityExtent:
     southBoundLatitude: -55.94
     westBoundLongitude: 160.62
     northBoundLatitude: -25.89
-    eastBoundLongitude: 188.77
+    eastBoundLongitude: -171.23
   boundingPolygon: >-
     <gml:Polygon srsName="EPSG:4167">
       <gml:exterior>

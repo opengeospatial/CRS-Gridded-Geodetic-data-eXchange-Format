@@ -10,7 +10,7 @@ contentApplicability:
         westBoundLongitude:  -65.09
         northBoundLatitude:  18.42
         eastBoundLongitude:  -64.6
-    description: "US Virgin Islands - onshore."
+    extentDescription: "US Virgin Islands - onshore."
 
 interpolationCrsWkt: |
     GEOGCRS["NAD83 (2011)",

@@ -353,28 +353,24 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
                     )
                 ),
             ),
+            (
+                "temporalExtent",
+                OrderedDict(
+                    (
+                        ("startDate", extractDate(model["time_extent"]["first"])),
+                        ("endDate", extractDate(model["time_extent"]["last"])),
+                    )
+                ),
+            ),
         )
     )
-    gmodel["startDate"] = extractDate(model["time_extent"]["first"])
-    gmodel["endDate"] = extractDate(model["time_extent"]["last"])
     gmodel["sourceCrsWkt"] = getepsg(model["source_crs"])["crsWkt"]
     gmodel["targetCrsWkt"] = getepsg(model["target_crs"])["crsWkt"]
     gmodel["interpolationCrsWkt"] = getepsg(model["definition_crs"])[
         "crsWkt"
     ]  # gridcrs is WKT in current file - ignoring
     gmodel["operationAccuracy"] = 0.01
-    gmodel["uncertaintyMeasure"] = OrderedDict(
-        (
-            (
-                "horizontal",
-                OrderedDict((("name", "Circular error probable"), ("id", "2CEP"))),
-            ),
-            (
-                "vertical",
-                OrderedDict((("name", "Standard error (2-sigma)"), ("id", "2SE"))),
-            ),
-        )
-    )
+    gmodel["uncertaintyMeasure"] = "2CEP 2SE"
     gmodel["deformationApplicationMethod"] = "addition"
     groups = []
     gmodel["groups"] = groups
@@ -453,7 +449,11 @@ def dumpGGXFYaml(gmodel, yamlfile):
 
 def updateMetadata(ggxf, custom):
     for key, value in custom.items():
-        if key in ggxf and type(value) == dict and type(ggxf[key]) == dict:
+        if (
+            key in ggxf
+            and type(value) in (dict, OrderedDict)
+            and type(ggxf[key]) in (dict, OrderedDict)
+        ):
             updateMetadata(ggxf[key], value)
         else:
             ggxf[key] = value

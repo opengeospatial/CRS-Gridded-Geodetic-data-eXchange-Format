@@ -23,19 +23,14 @@ contentApplicabilityExtent:
     westBoundLongitude: 158.0
     northBoundLatitude: -25.0
     eastBoundLongitude: 194.0
-startDate: "1900-01-01"
-endDate: "2050-01-01"
+  temporalExtent:
+    startDate: "1900-01-01"
+    endDate: "2050-01-01"
 sourceCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6167]],CS[ellipsoidal,3,ID["EPSG",6423]],AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]],ID["EPSG",4959]]
 targetCrsWkt: GEOGCRS["ITRF96", DYNAMIC[FRAMEEPOCH[1997.0]],DATUM["International Terrestrial Reference Frame 1996",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6654]],CS[ellipsoidal,3,ID["EPSG",6423]],AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]],ID["EPSG",7907]]
 interpolationCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6167]],CS[ellipsoidal,2,ID["EPSG",6422]],AXIS["Geodetic latitude (Lat)",north],AXIS["Geodetic longitude (Lon)",east],ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]],ID["EPSG",4167]]
 operationAccuracy: 0.01
-uncertaintyMeasure:
-  horizontal:
-    name: Circular error probable
-    id: 2CEP
-  vertical:
-    name: Standard error (2-sigma)
-    id: 2SE
+uncertaintyMeasure: 2CEP 2SE
 deformationApplicationMethod: addition
 groups:
   - groupName: nz_linz_vert_vel

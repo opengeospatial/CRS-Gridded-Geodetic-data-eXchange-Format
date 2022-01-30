@@ -390,7 +390,7 @@ CommonAttributes = {
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GGXF_ATTR_TEMPORAL_EXTENT,
-                    ATTRDEF_TYPE: str,
+                    ATTRDEF_TYPE: ATTRDEF_TYPE_TEMPORAL_EXTENT,
                 },
             ],
             ATTRDEF_OPTIONAL: True,
@@ -440,6 +440,35 @@ CommonAttributes = {
                 {
                     ATTRDEF_NAME: GGXF_ATTR_EAST_BOUND_LONGITUDE,
                     ATTRDEF_TYPE: float,
+                },
+            ],
+        },
+    ],
+    ATTRDEF_TYPE_TEMPORAL_EXTENT: [
+        {
+            ATTRDEF_NAME: GGXF_ATTR_START_EPOCH,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_START_EPOCH,
+                    ATTRDEF_TYPE: float,
+                },
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_START_DATE,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_END_EPOCH,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_END_EPOCH,
+                    ATTRDEF_TYPE: float,
+                },
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_END_DATE,
+                    ATTRDEF_TYPE: str,
                 },
             ],
         },

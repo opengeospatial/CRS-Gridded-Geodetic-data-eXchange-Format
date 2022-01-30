@@ -10,7 +10,7 @@ contentApplicabilityExtent:
         westBoundLongitude:  -68.0
         northBoundLatitude:  18.53
         eastBoundLongitude:  -65.0
-    description: "Puerto Rico - onshore."
+    extentDescription: "Puerto Rico - onshore."
 
 interpolationCrsWkt: |
     GEOGCRS["NAD83 (2011)",
