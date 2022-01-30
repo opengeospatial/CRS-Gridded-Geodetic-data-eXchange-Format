@@ -703,9 +703,7 @@ class BaseReader:
         self._source = None
         self._loadok = True
         self._errors = []
-        self._validator = AttributeValidator(
-            CommonAttributes, errorhandler=self.loadError
-        )
+        self._validator = AttributeValidator(CommonAttributes, errorhandler=self)
         self._logger = logging.getLogger("GGXF.BaseReader")
 
     def setSource(self, source):
@@ -738,10 +736,13 @@ class BaseReader:
                 return False
         return bool(value)
 
-    def loadError(self, message):
+    def error(self, message):
         self._logger.error(message)
         self._errors.append(message)
         self._loadok = False
+
+    def warn(self, message):
+        self._logger.warn(message)
 
     def read(self):
         raise NotImplementedError(

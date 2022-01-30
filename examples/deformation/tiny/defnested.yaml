@@ -16,7 +16,7 @@ postalCode: "6145"
 electronicMailAddress: customersupport@linz.govt.nz
 onlineResourceLinkage: https://www.linz.govt.nz/nzgd2000
 publicationDate: "2018-07-01"
-contentApplicabilityExtents:
+contentApplicabilityExtent:
   extentDescription: New Zealand EEZ
   boundingBox:
     southBoundLatitude: -58.0

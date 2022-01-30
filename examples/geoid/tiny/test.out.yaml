@@ -1,5 +1,5 @@
 ggxfVersion: '1.0'
-filename: tiny_geoid.gxt
+fileName: tiny_geoid.gxt
 content: geoidModel
 remark: hybrid geoid
 interpolationCrsWkt: "GEOGCS[\"WGS 84\",\n  DATUM[\"WGS_1984\",\n    SPHEROID[\"WGS\
@@ -20,7 +20,7 @@ deliveryPoint: Somewhere
 city: A city
 postalCode: '99999'
 country: United States of America
-contentApplicabilityExtents:
+contentApplicabilityExtent:
   boundingBox:
     southBoundLatitude: 22.5
     westBoundLongitude: -69.0

@@ -23,10 +23,19 @@ CommonAttributes = {
             ],
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_CONTENT_APPLICABILITY_EXTENTS,
+            ATTRDEF_NAME: GGXF_ATTR_FILE_NAME,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GGXF_ATTR_CONTENT_APPLICABILITY_EXTENTS,
+                    ATTRDEF_NAME: GGXF_ATTR_FILE_NAME,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_CONTENT_APPLICABILITY_EXTENT,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_CONTENT_APPLICABILITY_EXTENT,
                     ATTRDEF_TYPE: ATTRDEF_TYPE_EXTENTS,
                 },
             ],
@@ -58,6 +67,116 @@ CommonAttributes = {
                 },
             ],
         },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_LICENCE,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_LICENCE,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_OPERATION_ACCURACY,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_OPERATION_ACCURACY,
+                    ATTRDEF_TYPE: float,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_PUBLICATION_DATE,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_PUBLICATION_DATE,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_VERSION,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_VERSION,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_DIGITAL_OBJECT_IDENTIFIER,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_DIGITAL_OBJECT_IDENTIFIER,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_REMARK,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_REMARK,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_TIDE_SYSTEM,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_TIDE_SYSTEM,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_UNCERTAINTY_MEASURE,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_UNCERTAINTY_MEASURE,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_USER_DEFINED_METHOD_EXAMPLE,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_USER_DEFINED_METHOD_EXAMPLE,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_USER_DEFINED_METHOD_FORMULA,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_USER_DEFINED_METHOD_FORMULA,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_USER_DEFINED_METHOD_FORMULA_CITATION,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_USER_DEFINED_METHOD_FORMULA_CITATION,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
     ],
     ATTRDEF_TYPE_GROUP: [
         {
@@ -74,6 +193,16 @@ CommonAttributes = {
             ],
         },
         {
+            ATTRDEF_NAME: GROUP_ATTR_INTERPOLATION_METHOD_CITATION,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GROUP_ATTR_INTERPOLATION_METHOD_CITATION,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
             ATTRDEF_NAME: GROUP_ATTR_PARAMETERS,
             ATTRDEF_CHOICE: [
                 {
@@ -82,6 +211,16 @@ CommonAttributes = {
                     ATTRDEF_LIST: True,
                 },
             ],
+        },
+        {
+            ATTRDEF_NAME: GROUP_ATTR_REMARK,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GROUP_ATTR_REMARK,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
         },
     ],
     ATTRDEF_TYPE_GRID: [
@@ -104,6 +243,16 @@ CommonAttributes = {
             ],
         },
         {
+            ATTRDEF_NAME: GRID_ATTR_K_NODE_MAXIMUM,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GRID_ATTR_K_NODE_MAXIMUM,
+                    ATTRDEF_TYPE: int,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
             ATTRDEF_NAME: GRID_ATTR_AFFINE_COEFFS,
             ATTRDEF_CHOICE: [
                 {
@@ -113,6 +262,16 @@ CommonAttributes = {
                     ATTRDEF_COUNT: 6,
                 },
             ],
+        },
+        {
+            ATTRDEF_NAME: GRID_ATTR_REMARK,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GRID_ATTR_REMARK,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
         },
     ],
     ATTRDEF_TYPE_PARAMETER: [
@@ -138,7 +297,7 @@ CommonAttributes = {
             ATTRDEF_NAME: PARAM_ATTR_UNIT,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: PARAM_ATTR_UNIT,
+                    ATTRDEF_NAME: PARAM_ATTR_UNIT_NAME,
                     ATTRDEF_TYPE: str,
                 },
                 {
@@ -154,6 +313,46 @@ CommonAttributes = {
                     ATTRDEF_TYPE: str,
                 },
             ],
+        },
+        {
+            ATTRDEF_NAME: PARAM_ATTR_UNIT_TYPE,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: PARAM_ATTR_UNIT_TYPE,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: PARAM_ATTR_PARAMETER_MINIMUM_VALUE,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: PARAM_ATTR_PARAMETER_MINIMUM_VALUE,
+                    ATTRDEF_TYPE: float,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: PARAM_ATTR_PARAMETER_MAXIMUM_VALUE,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: PARAM_ATTR_PARAMETER_MAXIMUM_VALUE,
+                    ATTRDEF_TYPE: float,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: PARAM_ATTR_NO_DATA_FLAG,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: PARAM_ATTR_NO_DATA_FLAG,
+                    ATTRDEF_TYPE: None,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
         },
     ],
     ATTRDEF_TYPE_EXTENTS: [
@@ -177,10 +376,10 @@ CommonAttributes = {
             ATTRDEF_OPTIONAL: True,
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_BOUNDING_POLYGONLIST_VARS,
+            ATTRDEF_NAME: GGXF_ATTR_BOUNDING_POLYGON,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GGXF_ATTR_BOUNDING_POLYGONLIST_VARS,
+                    ATTRDEF_NAME: GGXF_ATTR_BOUNDING_POLYGON,
                     ATTRDEF_TYPE: str,
                 },
             ],
@@ -201,7 +400,7 @@ CommonAttributes = {
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT,
-                    ATTRDEF_TYPE: str,
+                    ATTRDEF_TYPE: ATTRDEF_TYPE_VERTICAL_EXTENT,
                 },
             ],
             ATTRDEF_OPTIONAL: True,
@@ -245,12 +444,42 @@ CommonAttributes = {
             ],
         },
     ],
-    ATTRDEF_TYPE_TIME_FUNCTION: [
+    ATTRDEF_TYPE_VERTICAL_EXTENT: [
         {
-            ATTRDEF_NAME: TIME_PARAM_FUNCTION_NAME,
+            ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_CRS_I_D,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: TIME_PARAM_FUNCTION_NAME,
+                    ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_CRS_I_D,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_MINIMUM,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_MINIMUM,
+                    ATTRDEF_TYPE: float,
+                },
+            ],
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_MAXIMUM,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_MAXIMUM,
+                    ATTRDEF_TYPE: float,
+                },
+            ],
+        },
+    ],
+    ATTRDEF_TYPE_TIME_FUNCTION: [
+        {
+            ATTRDEF_NAME: TIME_PARAM_FUNCTION_TYPE,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: TIME_PARAM_FUNCTION_TYPE,
                     ATTRDEF_TYPE: [
                         TIME_FUNCTION_TYPE_VELOCITY,
                         TIME_FUNCTION_TYPE_STEP,

@@ -67,7 +67,7 @@ class Reader(BaseReader):
                 ggxf = GGXF(metadata)
                 for groupname, ncgroup in root.groups.items():
                     self.loadGroup(ggxf, groupname, ncgroup)
-                ggxf.configure(errorhandler=self.loadError)
+                ggxf.configure(errorhandler=self.error)
             if not self._loadok:
                 ggxf = None
             return ggxf
@@ -96,7 +96,7 @@ class Reader(BaseReader):
             try:
                 data = np.array(ncgrid[NETCDF_VAR_GRIDDATA])
             except Exception as ex:
-                self.loadError("Cannot load data for grid {gridname}: {ex}")
+                self.error("Cannot load data for grid {gridname}: {ex}")
                 return
             grid = Grid(group, gridname, metadata, data)
             for gridname, ncsubgrid in ncgrid.groups.items():
@@ -123,7 +123,7 @@ class Reader(BaseReader):
                 meta.update(attrs)
                 attrs = meta
             except Exception as ex:
-                self.loadError(f"Failed to load JSON metadata element: {ex}")
+                self.error(f"Failed to load JSON metadata element: {ex}")
         return attrs
 
     def _interpretDotMetadata(self, attrs):
@@ -155,10 +155,10 @@ class Reader(BaseReader):
                         arrsize = int(keyval["count"])
                         arrays.append((basekey, arrsize))
                     except:
-                        self.loadError(f"Array {basekey} count is not an integer")
+                        self.error(f"Array {basekey} count is not an integer")
 
                 if basekey in attrs and not isinstance(attrs[basekey], dict):
-                    self.loadError(
+                    self.error(
                         f"Invalid duplicate attribute {basekey} and {basekey}.xxx"
                     )
                 else:
@@ -173,12 +173,12 @@ class Reader(BaseReader):
             for key in path:
                 holder = holder.get(key, {})
             if item not in holder:
-                self.loadError(f"Cannot find array {arrkey}")
+                self.error(f"Cannot find array {arrkey}")
                 continue
             arrval = holder[item]
             array = [arrval[str(i)] for i in range(arrsize + 1) if str(i) in arrval]
             if len(array) != arrsize:
-                self.loadError(
+                self.error(
                     f"Array {arrkey} does not have the correct number of items: expect {arrsize}, got {len(array)}"
                 )
             else:

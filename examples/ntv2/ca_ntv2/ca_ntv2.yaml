@@ -1,12 +1,12 @@
 ggxfVersion: "1.0"
-filename: "27to83.gxt"
+fileName: "27to83.gxt"
 content: geographic2dOffsets
 version: "National Transformation v2_0"
 publicationDate: "1995-02"
 partyName:             "Geodetic Survey Division, Natural Resources Canada"
 onlineResourceLinkage: "https://webapp.geod.nrcan.gc.ca/geod/data-donnees/transformations.php"
 licence:               "https://open.canada.ca/en/open-government-licence-canada"
-contentApplicabilityExtents:
+contentApplicabilityExtent:
   boundingBox:
     southBoundLatitude: 40.0
     westBoundLongitude: -141.0

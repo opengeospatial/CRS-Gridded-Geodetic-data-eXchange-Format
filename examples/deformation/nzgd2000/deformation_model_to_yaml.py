@@ -339,7 +339,7 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
     gmodel["publicationDate"] = extractDate(model["publication_date"])
 
     extent = model["extent"]["parameters"]["bbox"]
-    gmodel["contentApplicabilityExtents"] = OrderedDict(
+    gmodel["contentApplicabilityExtent"] = OrderedDict(
         (
             ("extentDescription", "New Zealand EEZ"),
             (

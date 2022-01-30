@@ -1,10 +1,10 @@
 ﻿# this exemplifies a file in which the grid data is directly associated with its header
 
 ggxfVersion: "1.0"
-filename:    g2018vi.yaml
+fileName:    g2018vi.yaml
 content:     geoidModel
 remark:      "hybrid geoid"
-contentApplicabilityExtents:
+contentApplicabilityExtent:
     boundingBox:
         southBoundLatitude:  17.67
         westBoundLongitude:  -65.09

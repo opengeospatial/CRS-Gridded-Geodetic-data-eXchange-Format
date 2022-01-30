@@ -1,10 +1,10 @@
 ﻿# this exemplifies a file in which all header records precede a separate block of all grid data
 
 ggxfVersion: "1.0"
-filename:    g2018pr.yaml
+fileName:    g2018pr.yaml
 content:     geoidModel
 remark:      "hybrid geoid"
-contentApplicabilityExtents:
+contentApplicabilityExtent:
     boundingBox:
         southBoundLatitude:  17.87
         westBoundLongitude:  -68.0

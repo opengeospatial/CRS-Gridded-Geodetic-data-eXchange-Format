@@ -57,11 +57,11 @@ class BaseTimeFunction:
             TIME_FUNCTION_TYPE_STEP: StepTimeFunction,
             TIME_FUNCTION_TYPE_VELOCITY: VelocityTimeFunction,
         }
-        if TIME_PARAM_FUNCTION_NAME not in definition:
+        if TIME_PARAM_FUNCTION_TYPE not in definition:
             raise Error(
-                f"Time function definition does not include {TIME_PARAM_FUNCTION_NAME}"
+                f"Time function definition does not include {TIME_PARAM_FUNCTION_TYPE}"
             )
-        functionType = definition.get(TIME_PARAM_FUNCTION_NAME)
+        functionType = definition.get(TIME_PARAM_FUNCTION_TYPE)
         if functionType not in constructors:
             raise Error(f"Unrecognized time function type {functionType}")
         return constructors[functionType](definition)
@@ -77,7 +77,7 @@ class BaseTimeFunction:
         self._params = {}
         for sourcekey, sourcevalue in definition.items():
             # Crudely handle option of Epoch or Date representation of times
-            if sourcekey == TIME_PARAM_FUNCTION_NAME:
+            if sourcekey == TIME_PARAM_FUNCTION_TYPE:
                 continue
             key = sourcekey
             value = sourcevalue

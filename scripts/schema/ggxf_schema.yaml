@@ -6,7 +6,7 @@ CommonAttributes:
       Type: ["1.0"]
     - AttributeName: content
       Type: str
-    - AttributeName: filename
+    - AttributeName: fileName
       Type: str
     - AttributeName: contentApplicabilityExtent
       Type: Extents
