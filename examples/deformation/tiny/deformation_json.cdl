@@ -12,7 +12,7 @@ group: nz_linz_vert_vel {
   	parameter = 1 ;
 
   // group attributes:
-  		:metadata = "{\n  \"parameters\": [\n    {\n      \"parameterName\": \"displacementUp\",\n      \"lengthUnit\": \"metre\",\n      \"unitSiRatio\": 1.0\n    }\n  ],\n  \"interpolationMethod\": \"bilinear\",\n  \"timeFunctions\": [\n    {\n      \"functionName\": \"velocity\",\n      \"functionReferenceDate\": \"2000-01-01T00:00:00Z\"\n    }\n  ]\n}" ;
+  		:metadata = "{\n  \"parameters\": [\n    {\n      \"parameterName\": \"displacementUp\",\n      \"lengthUnit\": \"metre\",\n      \"unitSiRatio\": 1.0\n    }\n  ],\n  \"interpolationMethod\": \"bilinear\",\n  \"timeFunctions\": [\n    {\n      \"functionType\": \"velocity\",\n      \"functionReferenceDate\": \"2000-01-01T00:00:00Z\"\n    }\n  ]\n}" ;
 
   group: hvel {
     dimensions:
@@ -49,7 +49,7 @@ group: nz_linz_hypo_eq {
   	parameter = 3 ;
 
   // group attributes:
-  		:metadata = "{\n  \"remark\": \"Hypothetical earthquake - this is not what happened\",\n  \"parameters\": [\n    {\n      \"parameterName\": \"displacementEast\",\n      \"lengthUnit\": \"metre\",\n      \"unitSiRatio\": 1.0\n    },\n    {\n      \"parameterName\": \"displacementNorth\",\n      \"lengthUnit\": \"metre\",\n      \"unitSiRatio\": 1.0\n    },\n    {\n      \"parameterName\": \"displacementUp\",\n      \"lengthUnit\": \"metre\",\n      \"unitSiRatio\": 1.0\n    }\n  ],\n  \"interpolationMethod\": \"bilinear\",\n  \"timeFunctions\": [\n    {\n      \"functionName\": \"ramp\",\n      \"startDate\": \"2009-07-15T00:00:00Z\",\n      \"endDate\": \"2009-07-15T00:00:00Z\",\n      \"functionReferenceDate\": \"2011-09-01T00:00:00Z\",\n      \"scaleFactor\": 1.05\n    },\n    {\n      \"functionName\": \"ramp\",\n      \"startDate\": \"2009-07-15T00:00:00Z\",\n      \"endDate\": \"2011-09-01T00:00:00Z\",\n      \"functionReferenceDate\": \"2011-09-01T00:00:00Z\",\n      \"scaleFactor\": 0.29\n    }\n  ]\n}" ;
+  		:metadata = "{\n  \"remark\": \"Hypothetical earthquake - this is not what happened\",\n  \"parameters\": [\n    {\n      \"parameterName\": \"displacementEast\",\n      \"lengthUnit\": \"metre\",\n      \"unitSiRatio\": 1.0\n    },\n    {\n      \"parameterName\": \"displacementNorth\",\n      \"lengthUnit\": \"metre\",\n      \"unitSiRatio\": 1.0\n    },\n    {\n      \"parameterName\": \"displacementUp\",\n      \"lengthUnit\": \"metre\",\n      \"unitSiRatio\": 1.0\n    }\n  ],\n  \"interpolationMethod\": \"bilinear\",\n  \"timeFunctions\": [\n    {\n      \"functionType\": \"ramp\",\n      \"startDate\": \"2009-07-15T00:00:00Z\",\n      \"endDate\": \"2009-07-15T00:00:00Z\",\n      \"functionReferenceDate\": \"2011-09-01T00:00:00Z\",\n      \"scaleFactor\": 1.05\n    },\n    {\n      \"functionType\": \"ramp\",\n      \"startDate\": \"2009-07-15T00:00:00Z\",\n      \"endDate\": \"2011-09-01T00:00:00Z\",\n      \"functionReferenceDate\": \"2011-09-01T00:00:00Z\",\n      \"scaleFactor\": 0.29\n    }\n  ]\n}" ;
 
   group: eqdef1 {
     dimensions:

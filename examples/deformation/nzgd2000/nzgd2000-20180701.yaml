@@ -51,7 +51,7 @@ groups:
     parameterName: displacementNorth
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: velocity
+  - functionType: velocity
     functionReferenceDate: '2000-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
@@ -79,7 +79,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2003-08-21T00:00:00Z'
     functionReferenceDate: '2004-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -114,7 +114,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2004-12-23T00:00:00Z'
     functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -137,7 +137,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2004-12-23T00:00:00Z'
     functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -160,7 +160,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2004-12-23T00:00:00Z'
     functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -183,7 +183,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2004-12-23T00:00:00Z'
     functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -206,7 +206,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2004-12-23T00:00:00Z'
     functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -229,7 +229,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2004-12-23T00:00:00Z'
     functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -252,7 +252,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2007-10-16T00:00:00Z'
     functionReferenceDate: '2008-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -287,12 +287,12 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: ramp
+  - functionType: ramp
     startDate: '2009-07-15T00:00:00Z'
     endDate: '2009-07-15T00:00:00Z'
     functionReferenceDate: '2011-09-01T00:00:00Z'
     scaleFactor: 1.05
-  - functionName: ramp
+  - functionType: ramp
     startDate: '2009-07-15T00:00:00Z'
     endDate: '2011-09-01T00:00:00Z'
     functionReferenceDate: '2011-09-01T00:00:00Z'
@@ -317,12 +317,12 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: ramp
+  - functionType: ramp
     startDate: '2009-07-15T00:00:00Z'
     endDate: '2009-07-15T00:00:00Z'
     functionReferenceDate: '2011-09-01T00:00:00Z'
     scaleFactor: 1.05
-  - functionName: ramp
+  - functionType: ramp
     startDate: '2009-07-15T00:00:00Z'
     endDate: '2011-09-01T00:00:00Z'
     functionReferenceDate: '2011-09-01T00:00:00Z'
@@ -347,12 +347,12 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: ramp
+  - functionType: ramp
     startDate: '2009-07-15T00:00:00Z'
     endDate: '2009-07-15T00:00:00Z'
     functionReferenceDate: '2011-09-01T00:00:00Z'
     scaleFactor: 1.05
-  - functionName: ramp
+  - functionType: ramp
     startDate: '2009-07-15T00:00:00Z'
     endDate: '2011-09-01T00:00:00Z'
     functionReferenceDate: '2011-09-01T00:00:00Z'
@@ -389,12 +389,12 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: ramp
+  - functionType: ramp
     startDate: '2009-07-15T00:00:00Z'
     endDate: '2009-07-15T00:00:00Z'
     functionReferenceDate: '2011-09-01T00:00:00Z'
     scaleFactor: 1.05
-  - functionName: ramp
+  - functionType: ramp
     startDate: '2009-07-15T00:00:00Z'
     endDate: '2011-09-01T00:00:00Z'
     functionReferenceDate: '2011-09-01T00:00:00Z'
@@ -419,7 +419,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2010-09-04T00:00:00Z'
     functionReferenceDate: '2011-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -460,7 +460,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2011-02-22T00:00:00Z'
     functionReferenceDate: '2012-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -501,7 +501,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2011-06-13T00:00:00Z'
     functionReferenceDate: '2012-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -542,7 +542,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2011-12-23T00:00:00Z'
     functionReferenceDate: '2012-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -583,7 +583,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2013-07-21T00:00:00Z'
     functionReferenceDate: '2014-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -624,7 +624,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2013-08-16T00:00:00Z'
     functionReferenceDate: '2014-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -665,7 +665,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2016-02-14T00:00:00Z'
     functionReferenceDate: '2017-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -707,7 +707,7 @@ groups:
     parameterName: displacementNorth
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2016-11-14T00:00:00Z'
   interpolationMethod: bilinear
   grids:
@@ -736,7 +736,7 @@ groups:
     parameterName: displacementNorth
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2016-11-14T00:00:00Z'
     functionReferenceDate: '2017-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -967,7 +967,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2016-11-14T00:00:00Z'
     functionReferenceDate: '2017-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -1189,7 +1189,7 @@ groups:
     parameterName: displacementNorth
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: ramp
+  - functionType: ramp
     startDate: '2016-11-14T00:00:00Z'
     endDate: '2016-12-14T00:00:00Z'
     functionReferenceDate: '2016-11-14T00:00:00Z'
@@ -1221,7 +1221,7 @@ groups:
     parameterName: displacementNorth
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: ramp
+  - functionType: ramp
     startDate: '2016-11-14T00:00:00Z'
     endDate: '2016-12-14T00:00:00Z'
     functionReferenceDate: '2016-12-14T00:00:00Z'
@@ -1256,7 +1256,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: ramp
+  - functionType: ramp
     startDate: '2016-11-14T00:00:00Z'
     endDate: '2016-12-14T00:00:00Z'
     functionReferenceDate: '2016-12-14T00:00:00Z'
@@ -1298,7 +1298,7 @@ groups:
     parameterName: displacementNorth
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2016-11-14T00:00:00Z'
   interpolationMethod: bilinear
   grids:
@@ -1317,7 +1317,7 @@ groups:
     parameterName: displacementNorth
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2016-11-14T00:00:00Z'
     functionReferenceDate: '2017-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -1334,7 +1334,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: step
+  - functionType: step
     eventDate: '2016-11-14T00:00:00Z'
     functionReferenceDate: '2017-01-01T00:00:00Z'
   interpolationMethod: bilinear
@@ -1358,7 +1358,7 @@ groups:
     parameterName: displacementNorth
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: ramp
+  - functionType: ramp
     startDate: '2016-12-14T00:00:00Z'
     endDate: '2017-02-14T00:00:00Z'
     functionReferenceDate: '2016-12-14T00:00:00Z'
@@ -1390,7 +1390,7 @@ groups:
     parameterName: displacementNorth
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: ramp
+  - functionType: ramp
     startDate: '2016-12-14T00:00:00Z'
     endDate: '2017-02-14T00:00:00Z'
     functionReferenceDate: '2017-02-14T00:00:00Z'
@@ -1425,7 +1425,7 @@ groups:
     parameterName: displacementUp
     unitSiRatio: 1.0
   timeFunctions:
-  - functionName: ramp
+  - functionType: ramp
     startDate: '2016-12-14T00:00:00Z'
     endDate: '2017-02-14T00:00:00Z'
     functionReferenceDate: '2017-02-14T00:00:00Z'

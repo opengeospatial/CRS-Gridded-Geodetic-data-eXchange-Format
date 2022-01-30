@@ -74,7 +74,7 @@ CommonAttributes:
       Type: float
 
   TimeFunction:
-    - AttributeName: functionName
+    - AttributeName: functionType
       Type: [velocity, step, ramp, acceleration, exponential, logarithmic, hyperbolicTangent, cyclic]
     - AttributeChoice:
           AttributeChoiceName: startEpoch

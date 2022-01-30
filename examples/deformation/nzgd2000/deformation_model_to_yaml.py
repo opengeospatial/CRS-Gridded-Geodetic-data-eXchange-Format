@@ -223,17 +223,17 @@ def ggxfTimeFunction(tf):
     functions = []
     if tftype == "velocity":
         bf = OrderedDict()
-        bf["functionName"] = "velocity"
+        bf["functionType"] = "velocity"
         bf["functionReferenceDate"] = params["reference_epoch"]
         functions.append(bf)
     elif tftype == "step":
         bf = OrderedDict()
-        bf["functionName"] = "step"
+        bf["functionType"] = "step"
         bf["eventDate"] = params["step_epoch"]
         functions.append(bf)
     elif tftype == "reverse_step":
         bf = OrderedDict()
-        bf["functionName"] = "step"
+        bf["functionType"] = "step"
         bf["eventDate"] = params["step_epoch"]
         bf["functionReferenceDate"] = _nextYear(params["step_epoch"])
         functions.append(bf)
@@ -264,7 +264,7 @@ def ggxfTimeFunction(tf):
         if ggxfTimeFunction.useramp:
             for ms, me in zip(model[:-1], model[1:]):
                 bf = OrderedDict()
-                bf["functionName"] = "ramp"
+                bf["functionType"] = "ramp"
                 bf["startDate"] = ms["epoch"]
                 bf["endDate"] = me["epoch"]
                 bf["functionReferenceDate"] = refEpoch
@@ -273,7 +273,7 @@ def ggxfTimeFunction(tf):
         else:
             raise RuntimeError("piecewise function not supported by current UML")
             bf = OrderedDict()
-            bf["functionName"] = "piecewise"
+            bf["functionType"] = "piecewise"
             bf["epochMultipliers"] = [
                 OrderedDict(
                     [("epoch", mp["epoch"]), ("multiplier", mp["scale_factor"])]

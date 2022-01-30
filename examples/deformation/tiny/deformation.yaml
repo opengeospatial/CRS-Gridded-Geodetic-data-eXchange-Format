@@ -45,7 +45,7 @@ groups:
         unitSiRatio: 1.0
     interpolationMethod: bilinear
     timeFunctions:
-      - functionName: velocity
+      - functionType: velocity
         functionReferenceDate: "2000-01-01T00:00:00Z"
     grids:
       - gridName: hvel
@@ -73,12 +73,12 @@ groups:
         unitSiRatio: 1.0
     interpolationMethod: bilinear
     timeFunctions:
-      - functionName: ramp
+      - functionType: ramp
         startDate: "2009-07-15T00:00:00Z"
         endDate: "2009-07-15T00:00:00Z"
         functionReferenceDate: "2011-09-01T00:00:00Z"
         scaleFactor: 1.05
-      - functionName: ramp
+      - functionType: ramp
         startDate: "2009-07-15T00:00:00Z"
         endDate: "2011-09-01T00:00:00Z"
         functionReferenceDate: "2011-09-01T00:00:00Z"
