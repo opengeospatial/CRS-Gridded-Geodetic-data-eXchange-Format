@@ -311,7 +311,7 @@ def extractDate(datetimestring):
 def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
     gmodel = OrderedDict()
     gmodel["ggxfVersion"] = "1.0"
-    gmodel["fileName"] = "unknown"
+    gmodel["filename"] = "unknown"
     gmodel["version"] = model["version"]
     gmodel["content"] = "deformationModel"
     gmodel["remark"] = cleanstr(model["description"])
@@ -439,7 +439,7 @@ def blockAffine(yamldef):
 
 
 def dumpGGXFYaml(gmodel, yamlfile):
-    gmodel["fileName"] = os.path.basename(yamlfile)
+    gmodel["filename"] = os.path.basename(yamlfile)
     yamldef = yaml.dump(gmodel, width=2048)
     yamldef = blockLongLines(yamldef)
     yamldef = blockAffine(yamldef)

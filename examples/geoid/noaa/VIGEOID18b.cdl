@@ -2,14 +2,14 @@ netcdf VIGEOID18b {
 
 // global attributes:
 		:ggxfVersion = "1.0" ;
-		:fileName = "g2018vi.yaml" ;
+		:filename = "g2018vi.yaml" ;
 		:content = "geoidModel" ;
 		:remark = "hybrid geoid" ;
 		:contentApplicabilityExtent.boundingBox.southBoundLatitude = 17.67 ;
 		:contentApplicabilityExtent.boundingBox.westBoundLongitude = -65.09 ;
 		:contentApplicabilityExtent.boundingBox.northBoundLatitude = 18.42 ;
 		:contentApplicabilityExtent.boundingBox.eastBoundLongitude = -64.6 ;
-		:contentApplicabilityExtent.description = "US Virgin Islands - onshore." ;
+		:contentApplicabilityExtent.extentDescription = "US Virgin Islands - onshore." ;
 		:interpolationCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:sourceCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]]]\n" ;
 		:targetCrsWkt = "VERTCRS[\"VIVD09 - NOHt\",\n  VDATUM[\"Virgin Islands Vertical Datum of 2009\"],\n  CS[vertical,1],\n  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n" ;

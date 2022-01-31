@@ -2,7 +2,7 @@ netcdf test_geoid {
 
 // global attributes:
 		:ggxfVersion = "1.0" ;
-		:fileName = "tiny_geoid.gxt" ;
+		:filename = "tiny_geoid.gxt" ;
 		:content = "geoidModel" ;
 		:remark = "hybrid geoid" ;
 		:contentApplicabilityExtent.boundingBox.southBoundLatitude = 22.5 ;

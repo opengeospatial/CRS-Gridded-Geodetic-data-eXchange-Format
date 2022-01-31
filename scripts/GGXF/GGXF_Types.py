@@ -23,10 +23,10 @@ CommonAttributes = {
             ],
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_FILE_NAME,
+            ATTRDEF_NAME: GGXF_ATTR_FILENAME,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GGXF_ATTR_FILE_NAME,
+                    ATTRDEF_NAME: GGXF_ATTR_FILENAME,
                     ATTRDEF_TYPE: str,
                 },
             ],
@@ -446,26 +446,17 @@ CommonAttributes = {
     ],
     ATTRDEF_TYPE_TEMPORAL_EXTENT: [
         {
-            ATTRDEF_NAME: GGXF_ATTR_START_EPOCH,
+            ATTRDEF_NAME: GGXF_ATTR_START_DATE,
             ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: GGXF_ATTR_START_EPOCH,
-                    ATTRDEF_TYPE: float,
-                },
                 {
                     ATTRDEF_NAME: GGXF_ATTR_START_DATE,
                     ATTRDEF_TYPE: str,
                 },
             ],
-            ATTRDEF_OPTIONAL: True,
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_END_EPOCH,
+            ATTRDEF_NAME: GGXF_ATTR_END_DATE,
             ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: GGXF_ATTR_END_EPOCH,
-                    ATTRDEF_TYPE: float,
-                },
                 {
                     ATTRDEF_NAME: GGXF_ATTR_END_DATE,
                     ATTRDEF_TYPE: str,
@@ -475,10 +466,10 @@ CommonAttributes = {
     ],
     ATTRDEF_TYPE_VERTICAL_EXTENT: [
         {
-            ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_CRS_I_D,
+            ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_CRS_WKT,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_CRS_I_D,
+                    ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_CRS_WKT,
                     ATTRDEF_TYPE: str,
                 },
             ],

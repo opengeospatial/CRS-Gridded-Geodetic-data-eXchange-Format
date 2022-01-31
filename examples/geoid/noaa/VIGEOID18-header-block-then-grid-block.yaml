@@ -1,7 +1,7 @@
 ﻿# this exemplifies a file in which all header records precede a separate block of all grid data
 
 ggxfVersion: "1.0"
-fileName:    g2018vi.yaml
+filename:    g2018vi.yaml
 content:     geoidModel
 remark:      "hybrid geoid"
 contentApplicabilityExtent:

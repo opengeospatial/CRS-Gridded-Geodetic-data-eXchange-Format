@@ -6,7 +6,7 @@ CommonAttributes:
       Type: ["1.0"]
     - AttributeName: content
       Type: str
-    - AttributeName: fileName
+    - AttributeName: filename
       Type: str
     - AttributeName: contentApplicabilityExtent
       Type: Extents
@@ -137,24 +137,13 @@ CommonAttributes:
       Type: float
 
   TemporalExtent:
-    - AttributeChoice:
-          AttributeChoiceName: startEpoch
-          Attributes:
-          - AttributeName: startEpoch
-            Type: float
-          - AttributeName: startDate
-            Type: str
-      Optional: true
-    - AttributeChoice:
-          AttributeChoiceName: endEpoch
-          Attributes:
-          - AttributeName: endEpoch
-            Type: float
-          - AttributeName: endDate
-            Type: str
+    - AttributeName: startDate
+      Type: str
+    - AttributeName: endDate
+      Type: str
 
   VerticalExtent:
-    - AttributeName: verticalExtentCrsID
+    - AttributeName: verticalExtentCrsWkt
       Type: str
       Optional: true
     - AttributeName: verticalExtentMinimum

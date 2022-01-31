@@ -1,7 +1,7 @@
 ﻿# this exemplifies a file in which the grid data is directly associated with its header
 
 ggxfVersion: "1.0"
-fileName:    g2018pr.yaml
+filename:    g2018pr.yaml
 content:     geoidModel
 remark:      "hybrid geoid"
 contentApplicabilityExtent:

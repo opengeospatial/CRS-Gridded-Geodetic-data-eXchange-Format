@@ -1,5 +1,5 @@
 ggxfVersion: '1.0'
-fileName: tiny_geoid.gxt
+filename: tiny_geoid.gxt
 content: geoidModel
 remark: hybrid geoid
 interpolationCrsWkt: "GEOGCS[\"WGS 84\",\n  DATUM[\"WGS_1984\",\n    SPHEROID[\"WGS\

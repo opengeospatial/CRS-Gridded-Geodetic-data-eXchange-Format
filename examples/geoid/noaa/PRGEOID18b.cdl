@@ -2,14 +2,14 @@ netcdf PRGEOID18b {
 
 // global attributes:
 		:ggxfVersion = "1.0" ;
-		:fileName = "g2018pr.yaml" ;
+		:filename = "g2018pr.yaml" ;
 		:content = "geoidModel" ;
 		:remark = "hybrid geoid" ;
 		:contentApplicabilityExtent.boundingBox.southBoundLatitude = 17.87 ;
 		:contentApplicabilityExtent.boundingBox.westBoundLongitude = -68. ;
 		:contentApplicabilityExtent.boundingBox.northBoundLatitude = 18.53 ;
 		:contentApplicabilityExtent.boundingBox.eastBoundLongitude = -65. ;
-		:contentApplicabilityExtent.description = "Puerto Rico - onshore." ;
+		:contentApplicabilityExtent.extentDescription = "Puerto Rico - onshore." ;
 		:interpolationCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:sourceCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]]]\n" ;
 		:targetCrsWkt = "VERTCRS[\"PRVD02 - NOHt\",\n  VDATUM[\"Puerto Rico Vertical Datum of 2002\"],\n  CS[vertical,1],\n  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n" ;
