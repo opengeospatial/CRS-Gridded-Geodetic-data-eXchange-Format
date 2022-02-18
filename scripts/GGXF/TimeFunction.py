@@ -274,7 +274,7 @@ class HyperbolicTangentTimeFunction(BaseTimeFunction):
         self._timeFactor = self._params[TIME_PARAM_TIME_CONSTANT]
 
     def refFunc(self, epoch):
-        return math.tanh((epoch - self._epoch) / self._timeFactor)
+        return (1.0+math.tanh((epoch - self._epoch) / self._timeFactor))/2.0
 
 
 class CompoundTimeFunction:
