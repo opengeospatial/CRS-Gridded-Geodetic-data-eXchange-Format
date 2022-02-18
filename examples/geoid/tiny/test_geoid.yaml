@@ -2,13 +2,13 @@
 filename: tiny_geoid.gxt
 content: geoidModel
 remark: "hybrid geoid"
-contentApplicabilityExtents:
+contentApplicabilityExtent:
   boundingBox:
     southBoundLatitude: 22.5
     westBoundLongitude: -69.0
     northBoundLatitude: 24.6
     eastBoundLongitude: -67.0
-  description: "Tiny example geoid."
+  extentDescription: "Tiny example geoid."
 
 interpolationCrsWkt: |
   GEOGCS["WGS 84",

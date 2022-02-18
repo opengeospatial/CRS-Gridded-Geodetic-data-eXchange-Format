@@ -4,13 +4,13 @@ ggxfVersion: "1.0"
 filename: g2018pr.yaml
 content: geoidModel
 remark: "hybrid geoid"
-contentApplicabilityExtents:
+contentApplicabilityExtent:
   boundingBox:
     southBoundLatitude: 17.87
     westBoundLongitude: -68.0
     northBoundLatitude: 18.53
     eastBoundLongitude: -65.0
-  description: "Puerto Rico - onshore."
+  extentDescription: "Puerto Rico - onshore."
 
 interpolationCrsWkt: |
   GEOGCRS["NAD83 (2011)",

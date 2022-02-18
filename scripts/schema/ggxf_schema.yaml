@@ -6,7 +6,9 @@ CommonAttributes:
       Type: ["1.0"]
     - AttributeName: content
       Type: str
-    - AttributeName: contentApplicabilityExtents
+    - AttributeName: filename
+      Type: str
+    - AttributeName: contentApplicabilityExtent
       Type: Extents
     - AttributeName: interpolationCrsWkt
       Type: str
@@ -14,22 +16,70 @@ CommonAttributes:
       Type: str
     - AttributeName: targetCrsWkt
       Type: str
+    - AttributeName: licence
+      Type: str
+      Optional: true
+    - AttributeName: operationAccuracy
+      Type: float
+      Optional: true
+    - AttributeName: publicationDate
+      Type: str
+      Optional: true
+    - AttributeName: version
+      Type: str
+      Optional: true
+    - AttributeName: digitalObjectIdentifier
+      Type: str
+      Optional: true
+    - AttributeName: remark
+      Type: str
+      Optional: true
+    - AttributeName: tideSystem
+      Type: str
+      Optional: true
+    - AttributeName: uncertaintyMeasure
+      Type: str
+      Optional: true
+    # - AttributeName: uncertaintyDefault
+    - AttributeName: userDefinedMethodExample
+      Type: str
+      Optional: true
+    - AttributeName: userDefinedMethodFormula
+      Type: str
+      Optional: true
+    - AttributeName: userDefinedMethodFormulaCitation
+      Type: str
+      Optional: true
 
   Group:
     - AttributeName: interpolationMethod
       Type: [bilinear, bicubic, biquadratic]
+    - AttributeName: interpolationMethodCitation
+      Type: str
+      Optional: true
     - AttributeName: parameters
       Type: list(Parameter)
+    - AttributeName: remark
+      Type: str
+      Optional: true
+    # - AttributeName: uncertaintyDefault
 
   Grid:
     - AttributeName: iNodeMaximum
       Type: int
     - AttributeName: jNodeMaximum
       Type: int
+    - AttributeName: kNodeMaximum
+      Type: int
+      Optional: true
     - AttributeName: affineCoeffs
       Type: list(float,6)
+    - AttributeName: remark
+      Type: str
+      Optional: true
 
   Parameter:
+    # What is optional in for units?
     - AttributeName: parameterName
       Type: str
     - AttributeName: unitSiRatio
@@ -37,7 +87,7 @@ CommonAttributes:
     - AttributeChoice: 
         AttributeChoiceName: unit
         Attributes:
-        - AttributeName: unit
+        - AttributeName: unitName
           Type: str
         - AttributeName: lengthUnit
           Type: str
@@ -45,6 +95,19 @@ CommonAttributes:
           Type: str
         - AttributeName: scaleUnit
           Type: str
+    - AttributeName: unitType
+      Type: str
+      Optional: true
+    - AttributeName: parameterMinimumValue
+      Type: float
+      Optional: true
+    - AttributeName: parameterMaximumValue
+      Type: float
+      Optional: true
+    - AttributeName: noDataFlag
+      Type: any
+      Optional: true
+      # Not sure what is correct here
 
   Extents:
     - AttributeName: boundingBox
@@ -53,14 +116,14 @@ CommonAttributes:
       Type: str
       # Should this be optional?
       Optional: true
-    - AttributeName: boundingPolygonlistVars
+    - AttributeName: boundingPolygon
       Type: str
       Optional: true
     - AttributeName: temporalExtent
-      Type: str
+      Type: TemporalExtent
       Optional: true
     - AttributeName: verticalExtent
-      Type: str
+      Type: VerticalExtent
       Optional: true
 
   BoundingBox:
@@ -73,9 +136,24 @@ CommonAttributes:
     - AttributeName: eastBoundLongitude
       Type: float
 
+  TemporalExtent:
+    - AttributeName: startDate
+      Type: str
+    - AttributeName: endDate
+      Type: str
+
+  VerticalExtent:
+    - AttributeName: verticalExtentCrsWkt
+      Type: str
+      Optional: true
+    - AttributeName: verticalExtentMinimum
+      Type: float
+    - AttributeName: verticalExtentMaximum
+      Type: float
+
   TimeFunction:
-    - AttributeName: functionName
-      Type: [velocity, step, reverseStep, ramp, acceleration, exponential, logarithmic, hyperbolicTangent, cyclic]
+    - AttributeName: functionType
+      Type: [velocity, step, ramp, acceleration, exponential, logarithmic, hyperbolicTangent, cyclic]
     - AttributeChoice:
           AttributeChoiceName: startEpoch
           Attributes:
@@ -100,11 +178,13 @@ CommonAttributes:
           - AttributeName: functionReferenceDate
             Type: str
       Optional: true
-    - AttributeName: startScaleFactor
-      Type: float
-      Optional: true
-    - AttributeName: endScaleFactor
-      Type: float
+    - AttributeChoice:
+        AttributeChoiceName: eventEpoch
+        Attributes:
+        - AttributeName: eventEpoch
+          Type: float
+        - AttributeName: eventDate
+          Type: str
       Optional: true
     - AttributeName: scaleFactor
       Type: float
@@ -112,16 +192,7 @@ CommonAttributes:
     - AttributeName: timeConstant
       Type: float
       Optional: true
-    - AttributeName: decayRate
-      Type: float
-      Optional: true
     - AttributeName: frequency
-      Type: float
-      Optional: true
-    - AttributeName: cosineScaleFactor
-      Type: float
-      Optional: true
-    - AttributeName: sineScaleFactor
       Type: float
       Optional: true
 

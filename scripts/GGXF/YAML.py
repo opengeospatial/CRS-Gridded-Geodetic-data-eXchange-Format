@@ -80,7 +80,7 @@ class Reader(BaseReader):
             ggxf = GGXF(ydata)
             for ygroup in ygroups:
                 self.loadGroup(ggxf, ygroup)
-            ggxf.configure(self.loadError)
+            ggxf.configure(self.error)
             if not self._loadok:
                 ggxf = None
             return ggxf
@@ -99,7 +99,7 @@ class Reader(BaseReader):
             group = Group(ggxf, groupname, ygroup)
             for ygrid in ygrids:
                 self.loadGrid(group, ygrid)
-            group.configure(self.loadError)
+            group.configure(self.error)
             ggxf.addGroup(group)
 
     def loadGrid(self, group: Group, ygrid: dict, parent: Grid = None):
@@ -126,12 +126,10 @@ class Reader(BaseReader):
             params = ygroup.get(GROUP_ATTR_PARAMETERS, [])
             nparam = len(params)
             if not nparam:
-                self.loadError(
-                    f"Group {groupname} header does not define any parameters"
-                )
+                self.error(f"Group {groupname} header does not define any parameters")
             ygrids = ygroup.get(GROUP_ATTR_GRIDS, [])
             if type(ygrids) != list or len(ygrids) == 0:
-                self.loadError(f"Group {groupname} does not define any grids")
+                self.error(f"Group {groupname} does not define any grids")
                 continue
             igrid = 0
             gridlist = []
@@ -141,17 +139,17 @@ class Reader(BaseReader):
                 igrid += 1
                 gridname = ygrid.get(GRID_ATTR_GRID_NAME)
                 if type(gridname) != str or not gridname:
-                    self.loadError(f"{gridname} does not have a name defined")
+                    self.error(f"{gridname} does not have a name defined")
                     gridname = f"Group {groupname} grid {igrid+1}"
                 if gridname in gridindex:
-                    self.loadError(f"Grid name {gridname} is duplicated")
+                    self.error(f"Grid name {gridname} is duplicated")
                 else:
                     gridindex[gridname] = ygrid
                     gridnparam[gridname] = nparam
                 if GRID_ATTR_GRIDS in ygrid:
                     subgrids = ygrid.get(GRID_ATTR_GRIDS)
                     if type(subgrids) != list:
-                        self.loadError(
+                        self.error(
                             f"Grid {gridname} {GRID_ATTR_GRIDS} attribute is not a list"
                         )
                     else:
@@ -163,14 +161,14 @@ class Reader(BaseReader):
             for igriddata, griddata in enumerate(griddatasets):
                 gridname = griddata.get(GRID_ATTR_GRID_NAME)
                 if gridname not in gridindex:
-                    self.loadError(
+                    self.error(
                         f"{GGXF_ATTR_GRID_DATA} grid {gridname} is not defined in any of the groups"
                     )
                     continue
                 ygrid = gridindex.get(gridname)
                 for key in griddata:
                     if key != GRID_ATTR_GRID_NAME and key in ygrid:
-                        self.loadError(
+                        self.error(
                             f"{key} is defined in both {GGXF_ATTR_GRID_DATA} and in the group grid"
                         )
                     else:
@@ -190,7 +188,7 @@ class Reader(BaseReader):
                 source_nparam = None
                 if GRID_ATTR_DATA_SOURCE in ygrid:
                     if GRID_ATTR_DATA in ygrid:
-                        self.loadError(
+                        self.error(
                             f"Grid {gridname} has {GRID_ATTR_DATA_SOURCE} and {GRID_ATTR_DATA}"
                         )
 
@@ -215,14 +213,14 @@ class Reader(BaseReader):
                             shape = data.shape
                             gridok = True
                         except Exception as ex:
-                            self.loadError(
+                            self.error(
                                 f"Grid {gridname}: Could not read grid data: {ex}"
                             )
                     if gridok:
                         size = data.size
                         if size != expectedSize:
                             gridok = False
-                            self.loadError(
+                            self.error(
                                 f"Grid {gridname}: size {size} different to expected {expectedSize}"
                             )
                     if gridok:
@@ -234,12 +232,12 @@ class Reader(BaseReader):
                             data.reshape(shape)
                         elif len(shape) != 3:
                             gridok = False
-                            self.loadError(
+                            self.error(
                                 f"Grid {gridname} has the wrong number of dimensions {len(shape)}"
                             )
                     if gridok and shape != expectedShape:
                         gridok = False
-                        self.loadError(
+                        self.error(
                             f"Grid {gridname}: dimensions {data.shape} does not match expected {expectedShape} - likely transposed grid"
                         )
                     if gridok:
@@ -288,7 +286,7 @@ class Reader(BaseReader):
             if GRID_ATTR_I_NODE_MAXIMUM in ygrid:
                 imax = ygrid[GRID_ATTR_I_NODE_MAXIMUM]
                 if imax != inodemax:
-                    self.loadError(
+                    self.error(
                         f"{gridname} {GRID_ATTR_I_NODE_MAXIMUM} {imax} differs from {inodemax} in {datasource}"
                     )
             else:
@@ -297,7 +295,7 @@ class Reader(BaseReader):
             if GRID_ATTR_J_NODE_MAXIMUM in ygrid:
                 imax = ygrid[GRID_ATTR_J_NODE_MAXIMUM]
                 if imax != jnodemax:
-                    self.loadError(
+                    self.error(
                         f"{gridname} {GRID_ATTR_J_NODE_MAXIMUM} {imax} differs from {jnodemax} in {datasource}"
                     )
             else:
@@ -312,7 +310,7 @@ class Reader(BaseReader):
                         YAML_OPTION_CHECK_DATASOURCE_AFFINE, False
                     )
                     if gtest:
-                        self.loadError(
+                        self.error(
                             f"{gridname} affine coefficients from {datasource} don't match: {affine}"
                         )
                     else:
@@ -324,7 +322,7 @@ class Reader(BaseReader):
 
             ygrid[GRID_ATTR_DATA] = gridData
         except Exception as ex:
-            self.loadError(f"Grid {gridname}: Failed to load {datasource}: {ex}")
+            self.error(f"Grid {gridname}: Failed to load {datasource}: {ex}")
 
 
 class Writer(BaseWriter):

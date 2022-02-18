@@ -13,6 +13,13 @@ class AttributeValidator:
     AttributeDef = namedtuple("AttributeDef", "name atype islist count")
 
     class AttributeChoice:
+        """
+        Identifies a list of alternative attributes.  Most attributes only have one choice
+        but this provides generality for eg eventDate or eventEpoch.  Each attribute is of type
+        AttributeDef providing name, atype, islist, and count.  Count is used if islist is True,
+        if it is not zero then the list must have this many values.
+        """
+
         def __init__(self, choicedef: dict):
             try:
                 self._name = choicedef[ATTRDEF_NAME]
@@ -34,6 +41,9 @@ class AttributeValidator:
         def name(self):
             return self._name
 
+        def definitions(self):
+            return self._attrdefs
+
         def update(self, attrdef):
             self._type = attrdef._type
             self._optional = attrdef._optional
@@ -44,7 +54,7 @@ class AttributeValidator:
             for attrdef in self._attrdefs:
                 if attrdef.name in attributes:
                     if adef is not None:
-                        validator.handleError(
+                        validator.error(
                             f"{context}: Attributes {adef.name} and {attrdef.name} cannot both be defined"
                         )
                         return False
@@ -53,26 +63,22 @@ class AttributeValidator:
             if adef is None:
                 if not self._optional:
                     names = " or ".join((a.name for a in self._attrdefs))
-                    validator.handleError(
-                        f"{context}: Attribute {names} must be defined"
-                    )
+                    validator.error(f"{context}: Attribute {names} must be defined")
                     return False
                 return valid
             values = attributes[adef.name]
             if adef.islist:
                 if type(values) != list:
-                    validator.handleError(
+                    validator.error(
                         f"{context}: Attribute {adef.name} must be a list of values"
                     )
                     return False
 
                 if len(values) == 0 and not self._optional:
-                    validator.handleError(
-                        f"{context}: Attribute {adef.name} has no values"
-                    )
+                    validator.error(f"{context}: Attribute {adef.name} has no values")
                     return False
                 if adef.count and len(values) != adef.count:
-                    validator.handleError(
+                    validator.error(
                         f"{context}: Attribute {adef.name} has the wrong number of items ({len(values)} instead of {adef.count})"
                     )
                     return False
@@ -83,7 +89,7 @@ class AttributeValidator:
                     continue
                 elif type(adef.atype) == list:
                     if value not in adef.atype:
-                        validator.handleError(
+                        validator.error(
                             f"{context}: Attribute value {value} is not valid for {adef.name}"
                         )
                         valid = False
@@ -91,13 +97,13 @@ class AttributeValidator:
                     if adef.atype == float and isinstance(value, int):
                         pass
                     else:
-                        validator.handleError(
+                        validator.error(
                             f"{context}: Attribute {adef.name} has the wrong type - must be {adef.atype.__name__}"
                         )
                         valid = False
                 elif type(adef.atype) == str:
                     if type(value) != dict:
-                        validator.handleError(
+                        validator.error(
                             f"{context}: Attribute {adef.name} doesn't have attributes of an {adef.atype} type"
                         )
                         valid = False
@@ -114,6 +120,7 @@ class AttributeValidator:
     class TypeDefinition:
         def __init__(self, definitions: list = []):
             self._defs = {}
+            self._attributeNames = set()
             self.update(definitions)
 
         def update(self, definitions: list):
@@ -124,11 +131,20 @@ class AttributeValidator:
                     self._defs[name].update(definition)
                 else:
                     self._defs[name] = attrdef
+            names = set()
+            for attrdef in self._defs.values():
+                for attr in attrdef.definitions():
+                    names.add(attr.name)
+            self._attributeNames = names
 
         def validate(self, attributes: dict, context, validator):
             valid = True
             for attrdef in self._defs.values():
                 valid = valid and attrdef.validate(attributes, context, validator)
+            for attrname in attributes.keys():
+                if attrname not in self._attributeNames:
+                    validator.warn(f"{context}: Non-standard attribute {attrname}")
+
             return valid
 
     def __init__(self, typedefs: dict, errorhandler=None):
@@ -141,11 +157,15 @@ class AttributeValidator:
             typedef = self.typeDefinition(objtype)
             typedef.update(objdef)
 
-    def handleError(self, message):
+    def error(self, message):
         if self._errorhandler:
-            self._errorhandler(message)
+            self._errorhandler.error(message)
         else:
             raise self.ValidationError(message)
+
+    def warn(self, message):
+        if self._errorhandler:
+            self._errorhandler.warn(message)
 
     def typeDefinition(self, objtype):
         if objtype not in self._typedefs:
@@ -154,7 +174,7 @@ class AttributeValidator:
 
     def validate(self, attributes, objtype, context=None):
         if objtype not in self._typedefs:
-            self.handleError("Cannot validate object of type {objtype}")
+            self.error("Cannot validate object of type {objtype}")
             return False
         context = context or objtype
         validationSet = self.typeDefinition(objtype)
@@ -165,7 +185,7 @@ class AttributeValidator:
         if ok:
             contentType = attributes[GGXF_ATTR_CONTENT]
             if contentType not in ContentTypes:
-                self.handleError("Invalid content type {contentType} for GGXF")
+                self.error("Invalid content type {contentType} for GGXF")
             else:
                 self.update(ContentTypes[contentType].get(ATTRDEF_ATTRIBUTES, {}))
         return ok
