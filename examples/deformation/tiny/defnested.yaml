@@ -32,8 +32,8 @@ interpolationCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",
 operationAccuracy: 0.01
 uncertaintyMeasure: 2CEP 2SE
 deformationApplicationMethod: addition
-groups:
-  - groupName: nz_linz_vert_vel
+ggxfGroups:
+  - ggxfGroupName: nz_linz_vert_vel
     parameters:
       - parameterName: displacementUp
         lengthUnit: metre
@@ -44,8 +44,8 @@ groups:
     grids:
       - gridName: hvel
         affineCoeffs: [172.6, 0.6, 0.0, -41.6, 0.0, 0.4]
-        iNodeMaximum: 2
-        jNodeMaximum: 3
+        iNodeCount: 3
+        jNodeCount: 4
         data:
           [
             [0.44, 0.74, 0.64],
@@ -53,7 +53,7 @@ groups:
             [-0.05, 0.25, 0.15],
             [-0.08, 0.22, 0.12],
           ]
-  - groupName: nz_linz_hypo_eq
+  - ggxfGroupName: nz_linz_hypo_eq
     remark: Hypothetical earthquake - this is not what happened
     parameters:
       - parameterName: displacementEast
@@ -79,8 +79,8 @@ groups:
     grids:
       - gridName: eqdef1
         affineCoeffs: [172.6, 0.6, 0.0, -41.6, 0.0, 0.4]
-        iNodeMaximum: 4
-        jNodeMaximum: 5
+        iNodeCount: 5
+        jNodeCount: 6
         data:
           [
             [
@@ -134,8 +134,8 @@ groups:
         grids:
           - gridName: eqdef2
             affineCoeffs: [172.6, 0.3, 0.0, -41.2, 0.0, 0.2]
-            iNodeMaximum: 4
-            jNodeMaximum: 2
+            iNodeCount: 5
+            jNodeCount: 3
             data:
               [
                 [

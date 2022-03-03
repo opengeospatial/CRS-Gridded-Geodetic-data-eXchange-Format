@@ -76,7 +76,7 @@ class Reader(BaseReader):
                     f"GGXF YAML file {yaml_file} missing expected metadata fields"
                 )
             self.loadGridData(ydata)
-            ygroups = ydata.pop(GGXF_ATTR_GROUPS, [])
+            ygroups = ydata.pop(GGXF_ATTR_GGXF_GROUPS, [])
             ggxf = GGXF(ydata)
             for ygroup in ygroups:
                 self.loadGroup(ggxf, ygroup)
@@ -91,9 +91,9 @@ class Reader(BaseReader):
         return ggxf
 
     def loadGroup(self, ggxf: GGXF, ygroup: dict):
-        context = f"Group {ygroup.get(GROUP_ATTR_GROUP_NAME,'unnamed')}"
+        context = f"Group {ygroup.get(GROUP_ATTR_GGXF_GROUP_NAME,'unnamed')}"
         if self.validator().validateGroupAttributes(ygroup, context=context):
-            groupname = ygroup.pop(GROUP_ATTR_GROUP_NAME, None)
+            groupname = ygroup.pop(GROUP_ATTR_GGXF_GROUP_NAME, None)
             ygrids = ygroup.pop(GROUP_ATTR_GRIDS, [])
             # Need to handle parameter validation here
             group = Group(ggxf, groupname, ygroup)
@@ -121,8 +121,8 @@ class Reader(BaseReader):
         # Build a list of grids
         gridindex = {}
         gridnparam = {}
-        for igroup, ygroup in enumerate(ydata.get(GGXF_ATTR_GROUPS, [])):
-            groupname = ygroup.get(GROUP_ATTR_GROUP_NAME, f"{igroup+1}")
+        for igroup, ygroup in enumerate(ydata.get(GGXF_ATTR_GGXF_GROUPS, [])):
+            groupname = ygroup.get(GROUP_ATTR_GGXF_GROUP_NAME, f"{igroup+1}")
             params = ygroup.get(GROUP_ATTR_PARAMETERS, [])
             nparam = len(params)
             if not nparam:
@@ -201,8 +201,8 @@ class Reader(BaseReader):
                         dirset = True
                     self.loadGdalGrid(gridname, ygrid, datasource)
                 elif nparam:
-                    ncol = ygrid.get(GRID_ATTR_J_NODE_MAXIMUM) + 1
-                    nrow = ygrid.get(GRID_ATTR_I_NODE_MAXIMUM) + 1
+                    ncol = ygrid.get(GRID_ATTR_J_NODE_COUNT)
+                    nrow = ygrid.get(GRID_ATTR_I_NODE_COUNT)
                     expectedSize = nparam * nrow * ncol
                     expectedShape = (ncol, nrow, nparam)
                     gridok = False
@@ -283,23 +283,23 @@ class Reader(BaseReader):
             gridData = np.moveaxis(gridData, 0, -1)
             self._logger.debug(f"Loaded with dimensions {gridData.shape}")
 
-            if GRID_ATTR_I_NODE_MAXIMUM in ygrid:
-                imax = ygrid[GRID_ATTR_I_NODE_MAXIMUM]
+            if GRID_ATTR_I_NODE_COUNT in ygrid:
+                imax = ygrid[GRID_ATTR_I_NODE_COUNT] - 1
                 if imax != inodemax:
                     self.error(
-                        f"{gridname} {GRID_ATTR_I_NODE_MAXIMUM} {imax} differs from {inodemax} in {datasource}"
+                        f"{gridname} {GRID_ATTR_I_NODE_COUNT} {imax} differs from {inodemax} in {datasource}"
                     )
             else:
-                ygrid[GRID_ATTR_I_NODE_MAXIMUM] = inodemax
+                ygrid[GRID_ATTR_I_NODE_COUNT] = inodemax + 1
 
-            if GRID_ATTR_J_NODE_MAXIMUM in ygrid:
-                imax = ygrid[GRID_ATTR_J_NODE_MAXIMUM]
+            if GRID_ATTR_J_NODE_COUNT in ygrid:
+                imax = ygrid[GRID_ATTR_J_NODE_COUNT] - 1
                 if imax != jnodemax:
                     self.error(
-                        f"{gridname} {GRID_ATTR_J_NODE_MAXIMUM} {imax} differs from {jnodemax} in {datasource}"
+                        f"{gridname} {GRID_ATTR_J_NODE_COUNT} {imax} differs from {jnodemax} in {datasource}"
                     )
             else:
-                ygrid[GRID_ATTR_J_NODE_MAXIMUM] = jnodemax
+                ygrid[GRID_ATTR_J_NODE_COUNT] = jnodemax + 1
 
             if GRID_ATTR_AFFINE_COEFFS in ygrid:
                 gaffine = [float(c) for c in ygrid[GRID_ATTR_AFFINE_COEFFS]]
@@ -390,7 +390,7 @@ class Writer(BaseWriter):
 
     def _writeGgxfGroup(self, dumper, group):
         ydata = group.metadata().copy()
-        ydata[GROUP_ATTR_GROUP_NAME] = group.name()
+        ydata[GROUP_ATTR_GGXF_GROUP_NAME] = group.name()
         if self._useNestedGrids:
             ydata["grids"] = group.grids()
         else:

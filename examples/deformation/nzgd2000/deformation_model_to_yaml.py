@@ -172,8 +172,8 @@ def loadGTiffGridData(source, sourceref=None, tiffdir=None):
         coeffs.extend(affine[:3])
         gdata["affineCoeffs"] = coeffs
         size = griddata["size"]
-        gdata["iNodeMaximum"] = size[0] - 1
-        gdata["jNodeMaximum"] = size[1] - 1
+        gdata["iNodeCount"] = size[0]
+        gdata["jNodeCount"] = size[1]
         # remark=gmd.get('TIFFTAG_IMAGEDESCRIPTION')
         # if remark:
         #     gdata['remark']=remark
@@ -373,7 +373,7 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
     gmodel["uncertaintyMeasure"] = "2CEP 2SE"
     gmodel["deformationApplicationMethod"] = "addition"
     groups = []
-    gmodel["groups"] = groups
+    gmodel["ggxfGroups"] = groups
     for c in model["components"]:
         sm = c["spatial_model"]
         gname = os.path.basename(sm["filename"])
@@ -382,7 +382,7 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
             print(f"Skipping component {gname}")
             continue
         group = OrderedDict()
-        group["groupName"] = gname
+        group["ggxfGroupName"] = gname
         if remark := c.get("description"):
             group["remark"] = remark
         params = [

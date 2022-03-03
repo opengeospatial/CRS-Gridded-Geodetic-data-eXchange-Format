@@ -255,7 +255,7 @@ class Writer(BaseWriter):
             nctypes["ggxfParameterType"] = GGXF.RecordType(paramtype, ncparamtype)
 
         self._saveMetadata(
-            root, ggxf.metadata(), [GGXF_ATTR_GROUPS, GGXF_ATTR_GRID_DATA]
+            root, ggxf.metadata(), [GGXF_ATTR_GGXF_GROUPS, GGXF_ATTR_GRID_DATA]
         )
 
         # Store each of the groups
@@ -265,7 +265,7 @@ class Writer(BaseWriter):
     def saveGroupNetCdf4(self, root: netCDF4.Dataset, group: dict, nctypes: dict):
         name = group.name()
         cdfgroup = root.createGroup(name)
-        exclude = [GROUP_ATTR_GROUP_NAME, GROUP_ATTR_GRIDS]
+        exclude = [GROUP_ATTR_GGXF_GROUP_NAME, GROUP_ATTR_GRIDS]
 
         # Store group attributes
         parameters = group.parameters()

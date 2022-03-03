@@ -68,10 +68,10 @@ CommonAttributes = {
             ],
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_LICENCE,
+            ATTRDEF_NAME: GGXF_ATTR_LICENSE,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GGXF_ATTR_LICENCE,
+                    ATTRDEF_NAME: GGXF_ATTR_LICENSE,
                     ATTRDEF_TYPE: str,
                 },
             ],
@@ -225,28 +225,28 @@ CommonAttributes = {
     ],
     ATTRDEF_TYPE_GRID: [
         {
-            ATTRDEF_NAME: GRID_ATTR_I_NODE_MAXIMUM,
+            ATTRDEF_NAME: GRID_ATTR_I_NODE_COUNT,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GRID_ATTR_I_NODE_MAXIMUM,
+                    ATTRDEF_NAME: GRID_ATTR_I_NODE_COUNT,
                     ATTRDEF_TYPE: int,
                 },
             ],
         },
         {
-            ATTRDEF_NAME: GRID_ATTR_J_NODE_MAXIMUM,
+            ATTRDEF_NAME: GRID_ATTR_J_NODE_COUNT,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GRID_ATTR_J_NODE_MAXIMUM,
+                    ATTRDEF_NAME: GRID_ATTR_J_NODE_COUNT,
                     ATTRDEF_TYPE: int,
                 },
             ],
         },
         {
-            ATTRDEF_NAME: GRID_ATTR_K_NODE_MAXIMUM,
+            ATTRDEF_NAME: GRID_ATTR_K_NODE_COUNT,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GRID_ATTR_K_NODE_MAXIMUM,
+                    ATTRDEF_NAME: GRID_ATTR_K_NODE_COUNT,
                     ATTRDEF_TYPE: int,
                 },
             ],
@@ -605,10 +605,10 @@ CommonAttributes = {
 YamlAttributes = {
     ATTRDEF_TYPE_GGXF: [
         {
-            ATTRDEF_NAME: GGXF_ATTR_GROUPS,
+            ATTRDEF_NAME: GGXF_ATTR_GGXF_GROUPS,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GGXF_ATTR_GROUPS,
+                    ATTRDEF_NAME: GGXF_ATTR_GGXF_GROUPS,
                     ATTRDEF_TYPE: None,
                     ATTRDEF_LIST: True,
                 },
@@ -628,10 +628,10 @@ YamlAttributes = {
     ],
     ATTRDEF_TYPE_GROUP: [
         {
-            ATTRDEF_NAME: GROUP_ATTR_GROUP_NAME,
+            ATTRDEF_NAME: GROUP_ATTR_GGXF_GROUP_NAME,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GROUP_ATTR_GROUP_NAME,
+                    ATTRDEF_NAME: GROUP_ATTR_GGXF_GROUP_NAME,
                     ATTRDEF_TYPE: str,
                 },
             ],

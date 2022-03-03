@@ -33,11 +33,11 @@ groups:
   - parameterName: geoidHeight
     lengthUnit: metre
     unitSiRatio: 1.0
-  groupName: Default group
+  ggxfGroupName: Default group
   grids:
   - 
-    iNodeMaximum: 2
-    jNodeMaximum: 3
+    iNodeCount: 3
+    jNodeCount: 4
     affineCoeffs:
     - 22.5
     - 0.0

@@ -40,8 +40,8 @@ group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
     	float data(gridj, gridi, parameter) ;
 
     // group attributes:
-    		:iNodeMaximum = 300LL ;
-    		:jNodeMaximum = 360LL ;
+    		:iNodeCount = 301LL ;
+    		:jNodeCount = 361LL ;
     		:remark = "grid starts in the bottom left (southwest)corner and works across (east)and up (north)" ;
     		:affineCoeffs = 15., 0., 0.01666666667, -69., 0.01666666667, 0. ;
     data:

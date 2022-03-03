@@ -376,8 +376,8 @@ class Grid:
         self._xy0 = coeffs[:, 0]
         self._tfm = coeffs[:, 1:]
         self._inv = np.linalg.inv(self._tfm)
-        self._imax = int(metadata[GRID_ATTR_I_NODE_MAXIMUM])
-        self._jmax = int(metadata[GRID_ATTR_J_NODE_MAXIMUM])
+        self._imax = int(metadata[GRID_ATTR_I_NODE_COUNT] - 1)
+        self._jmax = int(metadata[GRID_ATTR_J_NODE_COUNT] - 1)
         self._nparam = group.nparam()
         self._cellmax = np.array([self._imax - 1, self._jmax - 1])
         range = np.array(

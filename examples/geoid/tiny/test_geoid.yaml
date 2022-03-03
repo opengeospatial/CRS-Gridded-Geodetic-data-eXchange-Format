@@ -40,8 +40,8 @@ city: "A city"
 postalCode: "99999"
 country: "United States of America"
 
-groups:
-  - groupName: "Default group"
+ggxfGroups:
+  - ggxfGroupName: "Default group"
     parameters:
       - parameterName: "geoidHeight"
         lengthUnit: "metre"
@@ -50,8 +50,8 @@ groups:
     grids:
       - gridName: "Geoid grid"
         affineCoeffs: [22.5, 0.0, 0.7, -69.0, 1.0, 0.0]
-        iNodeMaximum: 2
-        jNodeMaximum: 3
+        iNodeCount: 3
+        jNodeCount: 4
 
 gridData:
   - gridName: "Geoid grid"

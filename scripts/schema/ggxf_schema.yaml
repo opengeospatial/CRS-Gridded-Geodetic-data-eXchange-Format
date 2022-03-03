@@ -16,7 +16,7 @@ CommonAttributes:
       Type: str
     - AttributeName: targetCrsWkt
       Type: str
-    - AttributeName: licence
+    - AttributeName: license
       Type: str
       Optional: true
     - AttributeName: operationAccuracy
@@ -65,11 +65,11 @@ CommonAttributes:
     # - AttributeName: uncertaintyDefault
 
   Grid:
-    - AttributeName: iNodeMaximum
+    - AttributeName: iNodeCount
       Type: int
-    - AttributeName: jNodeMaximum
+    - AttributeName: jNodeCount
       Type: int
-    - AttributeName: kNodeMaximum
+    - AttributeName: kNodeCount
       Type: int
       Optional: true
     - AttributeName: affineCoeffs
@@ -198,14 +198,14 @@ CommonAttributes:
 
 YamlAttributes:
     GGXF:
-    - AttributeName: groups
+    - AttributeName: ggxfGroups
       Type: list
     - AttributeName: gridData
       Type: list
       Optional: true
 
     Group:
-    - AttributeName: groupName
+    - AttributeName: ggxfGroupName
       Type: str
     - AttributeName: grids
       Type: list
