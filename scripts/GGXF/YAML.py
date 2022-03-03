@@ -374,7 +374,7 @@ class Writer(BaseWriter):
 
     def _writeGgxfHeader(self, dumper, ggxf):
         ydata = ggxf.metadata().copy()
-        ydata["groups"] = ggxf._groups
+        ydata[GGXF_ATTR_GGXF_GROUPS] = ggxf._groups
         allgrids = list(ggxf.allgrids())
         multipleGrids = len(allgrids) > 1
         self._useGridDataSection = self.getBoolOption(

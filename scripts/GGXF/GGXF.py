@@ -170,7 +170,7 @@ class GGXF:
         metadata = self.metadata().copy()
         content = metadata.pop(GGXF_ATTR_CONTENT, "undefined")
         groups = [group.summary() for group in self.groups()]
-        return {GGXF_ATTR_CONTENT: content, "metadata": metadata, "groups": groups}
+        return {GGXF_ATTR_CONTENT: content, JSON_METADATA_ATTR: metadata, GGXF_ATTR_GGXF_GROUPS: groups}
 
 
 class Group:
