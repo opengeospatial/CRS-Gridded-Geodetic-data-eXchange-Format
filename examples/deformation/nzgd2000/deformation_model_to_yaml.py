@@ -161,10 +161,10 @@ def loadGTiffGridData(source, sourceref=None, tiffdir=None):
         griddata = json.loads(result.stdout, object_pairs_hook=OrderedDict)
         md = griddata["metadata"]
         gmd = md[""]
-        gdata["gridName"] = gmd["grid_name"]
+        gdata["gridName"] = makeNameValidIdentifier(gmd["grid_name"])
         parent = gmd.get("parent_grid_name")
         if parent:
-            gdata["parentGridName"] = parent
+            gdata["parentGridName"] = makeNameValidIdentifier(parent)
         affine = list(griddata["geoTransform"])
         affine[0] += affine[1] / 2.0
         affine[3] += affine[5] / 2.0
@@ -308,6 +308,13 @@ def extractDate(datetimestring):
     return datetimestring
 
 
+def makeNameValidIdentifier(name):
+    if not re.match(r"^\w", name):
+        name = "id_" + name
+    name = re.sub(r"[^\w\-.]+", "_", name)
+    return name.lower()
+
+
 def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
     gmodel = OrderedDict()
     gmodel["ggxfVersion"] = "1.0"
@@ -382,7 +389,7 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
             print(f"Skipping component {gname}")
             continue
         group = OrderedDict()
-        group["ggxfGroupName"] = gname
+        group["ggxfGroupName"] = makeNameValidIdentifier(gname)
         if remark := c.get("description"):
             group["remark"] = remark
         params = [

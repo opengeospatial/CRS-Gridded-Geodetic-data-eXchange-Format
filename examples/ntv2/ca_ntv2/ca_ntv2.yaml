@@ -35,7 +35,7 @@ targetCrsWkt: |
 
 operationAccuracy: 1.5
 ggxfGroups:
-  - ggxfGroupName: "National Transformation v2_0"
+  - ggxfGroupName: "national_transformation_v2_0"
     parameters:
       - parameterName: latitudeOffset
         angleUnit: arc-second

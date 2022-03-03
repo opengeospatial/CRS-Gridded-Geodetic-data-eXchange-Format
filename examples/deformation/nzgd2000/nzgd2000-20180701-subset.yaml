@@ -41,7 +41,7 @@ operationAccuracy: 0.01
 uncertaintyMeasure: 2CEP 2SE
 deformationApplicationMethod: addition
 ggxfGroups:
-- ggxfGroupName: nz_linz_nzgd2000-ndm-grid02
+- ggxfGroupName: nz_linz_nzgd2000_ndm_grid02
   remark: |
     Secular deformation model derived from NUVEL-1A rotation rates
     Secular deformation model derived from GNS model 2011 V4
@@ -68,7 +68,7 @@ ggxfGroups:
     iNodeCount: 141
     jNodeCount: 151
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ndm-grid02.tif
-- ggxfGroupName: nz_linz_nzgd2000-ds20090715-grid011
+- ggxfGroupName: nz_linz_nzgd2000_ds20090715_grid011
   remark: Dusky Sound (Fiordland) earthquake
   parameters:
   - lengthUnit: metre
@@ -93,7 +93,7 @@ ggxfGroups:
     scaleFactor: 0.29
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_ds_20090715_grid_ds_P0_L1
+  - gridName: patch_ds_20090715_grid_ds_p0_l1
     affineCoeffs: [-50.125,0.0,-0.125,165.4,0.15,0.0]
     iNodeCount: 11
     jNodeCount: 11

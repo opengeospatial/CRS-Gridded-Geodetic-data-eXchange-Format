@@ -26,14 +26,14 @@ contentApplicabilityExtent:
     westBoundLongitude: -69.0
     northBoundLatitude: 24.6
     eastBoundLongitude: -67.0
-groups:
+ggxfGroups:
 - 
   interpolationMethod: bilinear
   parameters:
   - parameterName: geoidHeight
     lengthUnit: metre
     unitSiRatio: 1.0
-  ggxfGroupName: Default group
+  ggxfGroupName: default
   grids:
   - 
     iNodeCount: 3

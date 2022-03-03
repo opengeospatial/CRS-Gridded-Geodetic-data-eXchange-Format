@@ -21,7 +21,7 @@ netcdf PRGEOID18a {
 		:country = "United States of America" ;
 		:onlineResourceLinkage = "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g2018p0.asc.zip" ;
 
-group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
+group: puerto_rico_virgin_islands_geoid18 {
   dimensions:
   	parameter = 1 ;
 
@@ -32,7 +32,7 @@ group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
   		:parameters.0.unitSiRatio = 1. ;
   		:interpolationMethod = "biquadratic" ;
 
-  group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
+  group: puerto_rico_virgin_islands_geoid18 {
     dimensions:
     	gridi = 301 ;
     	gridj = 361 ;
@@ -108708,6 +108708,6 @@ group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
   -36.9098,
   -36.8657,
   -36.8197 ;
-    } // group Puerto\ Rico\ Virgin\ Islands\ GEOID18
-  } // group Puerto\ Rico\ Virgin\ Islands\ GEOID18
+    } // group puerto_rico_virgin_islands_geoid18
+  } // group puerto_rico_virgin_islands_geoid18
 }

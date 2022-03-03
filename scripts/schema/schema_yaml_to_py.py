@@ -52,7 +52,7 @@ ctypes = {}
 params = {}
 attrs = {}
 listVars = {}
-objecttypes = set()
+objecttypes = set(("UnicodeIdentifier",))
 
 
 def ucaseName(name):

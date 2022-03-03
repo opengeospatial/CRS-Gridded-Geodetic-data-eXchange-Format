@@ -632,7 +632,7 @@ YamlAttributes = {
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GROUP_ATTR_GGXF_GROUP_NAME,
-                    ATTRDEF_TYPE: str,
+                    ATTRDEF_TYPE: ATTRDEF_TYPE_UNICODE_IDENTIFIER,
                 },
             ],
         },
@@ -653,7 +653,7 @@ YamlAttributes = {
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GRID_ATTR_GRID_NAME,
-                    ATTRDEF_TYPE: str,
+                    ATTRDEF_TYPE: ATTRDEF_TYPE_UNICODE_IDENTIFIER,
                 },
             ],
         },

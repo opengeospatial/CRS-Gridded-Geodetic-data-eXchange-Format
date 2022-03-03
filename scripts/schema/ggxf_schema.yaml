@@ -206,13 +206,13 @@ YamlAttributes:
 
     Group:
     - AttributeName: ggxfGroupName
-      Type: str
+      Type: UnicodeIdentifier
     - AttributeName: grids
       Type: list
 
     Grid:
     - AttributeName: gridName
-      Type: str
+      Type: UnicodeIdentifier
     - AttributeName: parentGridName
       Type: str
       Optional: true

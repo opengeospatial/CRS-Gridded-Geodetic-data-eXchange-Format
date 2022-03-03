@@ -86,19 +86,19 @@ ggxfGroups:
     functionReferenceDate: '2004-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_si_20030821_grid_si_L1
+  - gridName: patch_si_20030821_grid_si_l1
     affineCoeffs: [-43.5,0.0,-0.125,165.85,0.15,0.0]
     iNodeCount: 44
     jNodeCount: 34
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-si20030821-grid01.tif
-  - gridName: patch_si_20030821_grid_si_L2
-    parentGridName: patch_si_20030821_grid_si_L1
+  - gridName: patch_si_20030821_grid_si_l2
+    parentGridName: patch_si_20030821_grid_si_l1
     affineCoeffs: [-44.5,0.0,-0.03125,166.225,0.0375,0.0]
     iNodeCount: 47
     jNodeCount: 45
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-si20030821-grid01.tif
-  - gridName: patch_si_20030821_grid_si_L3
-    parentGridName: patch_si_20030821_grid_si_L2
+  - gridName: patch_si_20030821_grid_si_l3
+    parentGridName: patch_si_20030821_grid_si_l2
     affineCoeffs: [-44.828125,0.0,-0.0078125,166.5625,0.009375,0.0]
     iNodeCount: 93
     jNodeCount: 81
@@ -121,7 +121,7 @@ ggxfGroups:
     functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_mq_20041223_grid_mq_P0_L1
+  - gridName: patch_mq_20041223_grid_mq_p0_l1
     affineCoeffs: [-52.125,0.0,-0.125,168.4,0.15,0.0]
     iNodeCount: 10
     jNodeCount: 8
@@ -144,7 +144,7 @@ ggxfGroups:
     functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_mq_20041223_grid_mq_P1_SL2
+  - gridName: patch_mq_20041223_grid_mq_p1_sl2
     affineCoeffs: [-48.25,0.0,-0.03125,158.8,0.0375,0.0]
     iNodeCount: 105
     jNodeCount: 137
@@ -167,7 +167,7 @@ ggxfGroups:
     functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_mq_20041223_grid_mq_P2_L1
+  - gridName: patch_mq_20041223_grid_mq_p2_l1
     affineCoeffs: [-50.125,0.0,-0.125,165.4,0.15,0.0]
     iNodeCount: 11
     jNodeCount: 11
@@ -190,7 +190,7 @@ ggxfGroups:
     functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_mq_20041223_grid_mq_P3_L1
+  - gridName: patch_mq_20041223_grid_mq_p3_l1
     affineCoeffs: [-49.25,0.0,-0.125,178.15,0.15,0.0]
     iNodeCount: 9
     jNodeCount: 8
@@ -213,7 +213,7 @@ ggxfGroups:
     functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_mq_20041223_grid_mq_P4_L1
+  - gridName: patch_mq_20041223_grid_mq_p4_l1
     affineCoeffs: [-40.125,0.0,-0.125,165.85,0.15,0.0]
     iNodeCount: 70
     jNodeCount: 68
@@ -236,7 +236,7 @@ ggxfGroups:
     functionReferenceDate: '2005-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_mq_20041223_grid_mq_P5_L1
+  - gridName: patch_mq_20041223_grid_mq_p5_l1
     affineCoeffs: [-47.375,0.0,-0.125,178.45,0.15,0.0]
     iNodeCount: 8
     jNodeCount: 7
@@ -259,19 +259,19 @@ ggxfGroups:
     functionReferenceDate: '2008-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_gs_20071016_grid_gs_L1
+  - gridName: patch_gs_20071016_grid_gs_l1
     affineCoeffs: [-43.75,0.0,-0.125,165.85,0.15,0.0]
     iNodeCount: 37
     jNodeCount: 27
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-gs20071016-grid01.tif
-  - gridName: patch_gs_20071016_grid_gs_L2
-    parentGridName: patch_gs_20071016_grid_gs_L1
+  - gridName: patch_gs_20071016_grid_gs_l2
+    parentGridName: patch_gs_20071016_grid_gs_l1
     affineCoeffs: [-44.28125,0.0,-0.03125,166.6375,0.0375,0.0]
     iNodeCount: 45
     jNodeCount: 37
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-gs20071016-grid01.tif
-  - gridName: patch_gs_20071016_grid_gs_L3
-    parentGridName: patch_gs_20071016_grid_gs_L2
+  - gridName: patch_gs_20071016_grid_gs_l3
+    parentGridName: patch_gs_20071016_grid_gs_l2
     affineCoeffs: [-44.6171875,0.0,-0.0078125,167.0875,0.009375,0.0]
     iNodeCount: 54
     jNodeCount: 52
@@ -301,7 +301,7 @@ ggxfGroups:
     scaleFactor: 0.29
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_ds_20090715_grid_ds_P0_L1
+  - gridName: patch_ds_20090715_grid_ds_p0_l1
     affineCoeffs: [-50.125,0.0,-0.125,165.4,0.15,0.0]
     iNodeCount: 11
     jNodeCount: 11
@@ -331,7 +331,7 @@ ggxfGroups:
     scaleFactor: 0.29
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_ds_20090715_grid_ds_P1_L1
+  - gridName: patch_ds_20090715_grid_ds_p1_l1
     affineCoeffs: [-49.25,0.0,-0.125,178.15,0.15,0.0]
     iNodeCount: 6
     jNodeCount: 7
@@ -361,19 +361,19 @@ ggxfGroups:
     scaleFactor: 0.29
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_ds_20090715_grid_ds_P2_L1
+  - gridName: patch_ds_20090715_grid_ds_p2_l1
     affineCoeffs: [-39.625,0.0,-0.125,164.65,0.15,0.0]
     iNodeCount: 85
     jNodeCount: 72
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid013.tif
-  - gridName: patch_ds_20090715_grid_ds_P2_L2
-    parentGridName: patch_ds_20090715_grid_ds_P2_L1
+  - gridName: patch_ds_20090715_grid_ds_p2_l2
+    parentGridName: patch_ds_20090715_grid_ds_p2_l1
     affineCoeffs: [-44.6875,0.0,-0.03125,165.2875,0.0375,0.0]
     iNodeCount: 67
     jNodeCount: 73
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ds20090715-grid013.tif
-  - gridName: patch_ds_20090715_grid_ds_P2_L3
-    parentGridName: patch_ds_20090715_grid_ds_P2_L2
+  - gridName: patch_ds_20090715_grid_ds_p2_l3
+    parentGridName: patch_ds_20090715_grid_ds_p2_l2
     affineCoeffs: [-45.28125,0.0,-0.0078125,166.075,0.009375,0.0]
     iNodeCount: 83
     jNodeCount: 138
@@ -403,7 +403,7 @@ ggxfGroups:
     scaleFactor: 0.29
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_ds_20090715_grid_ds_P3_L1
+  - gridName: patch_ds_20090715_grid_ds_p3_l1
     affineCoeffs: [-47.375,0.0,-0.125,178.45,0.15,0.0]
     iNodeCount: 8
     jNodeCount: 7
@@ -426,25 +426,25 @@ ggxfGroups:
     functionReferenceDate: '2011-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_c1_20100904_grid_c1_L1
+  - gridName: patch_c1_20100904_grid_c1_l1
     affineCoeffs: [-40.375,0.0,-0.125,168.1,0.15,0.0]
     iNodeCount: 55
     jNodeCount: 52
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-c120100904-grid01.tif
-  - gridName: patch_c1_20100904_grid_c1_L2
-    parentGridName: patch_c1_20100904_grid_c1_L1
+  - gridName: patch_c1_20100904_grid_c1_l2
+    parentGridName: patch_c1_20100904_grid_c1_l1
     affineCoeffs: [-42.8125,0.0,-0.03125,171.1,0.0375,0.0]
     iNodeCount: 59
     jNodeCount: 50
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-c120100904-grid01.tif
-  - gridName: patch_c1_20100904_grid_c1_L3
-    parentGridName: patch_c1_20100904_grid_c1_L2
+  - gridName: patch_c1_20100904_grid_c1_l3
+    parentGridName: patch_c1_20100904_grid_c1_l2
     affineCoeffs: [-43.25,0.0,-0.0078125,171.625,0.009375,0.0]
     iNodeCount: 118
     jNodeCount: 84
     dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-c120100904-grid01.tif
-  - gridName: patch_c1_20100904_grid_c1_L4
-    parentGridName: patch_c1_20100904_grid_c1_L3
+  - gridName: patch_c1_20100904_grid_c1_l4
+    parentGridName: patch_c1_20100904_grid_c1_l3
     affineCoeffs: [-43.423828125,0.0,-0.001953125,171.8125,0.00234375,0.0]
     iNodeCount: 306
     jNodeCount: 141
@@ -467,25 +467,25 @@ ggxfGroups:
     functionReferenceDate: '2012-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_c2_20110222_grid_c2_L1
+  - gridName: patch_c2_20110222_grid_c2_l1
     affineCoeffs: [-42.375,0.0,-0.125,170.8,0.15,0.0]
     iNodeCount: 21
     jNodeCount: 18
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-c220110222-grid01.tif
-  - gridName: patch_c2_20110222_grid_c2_L2
-    parentGridName: patch_c2_20110222_grid_c2_L1
+  - gridName: patch_c2_20110222_grid_c2_l2
+    parentGridName: patch_c2_20110222_grid_c2_l1
     affineCoeffs: [-43.03125,0.0,-0.03125,172.0,0.0375,0.0]
     iNodeCount: 38
     jNodeCount: 34
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-c220110222-grid01.tif
-  - gridName: patch_c2_20110222_grid_c2_L3
-    parentGridName: patch_c2_20110222_grid_c2_L2
+  - gridName: patch_c2_20110222_grid_c2_l3
+    parentGridName: patch_c2_20110222_grid_c2_l2
     affineCoeffs: [-43.3515625,0.0,-0.0078125,172.4125,0.009375,0.0]
     iNodeCount: 62
     jNodeCount: 52
     dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-c220110222-grid01.tif
-  - gridName: patch_c2_20110222_grid_c2_L4
-    parentGridName: patch_c2_20110222_grid_c2_L3
+  - gridName: patch_c2_20110222_grid_c2_l4
+    parentGridName: patch_c2_20110222_grid_c2_l3
     affineCoeffs: [-43.474609375,0.0,-0.001953125,172.56015625,0.00234375,0.0]
     iNodeCount: 118
     jNodeCount: 81
@@ -508,25 +508,25 @@ ggxfGroups:
     functionReferenceDate: '2012-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_c3_20110613_grid_c3_L1
+  - gridName: patch_c3_20110613_grid_c3_l1
     affineCoeffs: [-42.625,0.0,-0.125,171.4,0.15,0.0]
     iNodeCount: 16
     jNodeCount: 15
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-c320110613-grid01.tif
-  - gridName: patch_c3_20110613_grid_c3_L2
-    parentGridName: patch_c3_20110613_grid_c3_L1
+  - gridName: patch_c3_20110613_grid_c3_l2
+    parentGridName: patch_c3_20110613_grid_c3_l1
     affineCoeffs: [-43.09375,0.0,-0.03125,172.15,0.0375,0.0]
     iNodeCount: 33
     jNodeCount: 31
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-c320110613-grid01.tif
-  - gridName: patch_c3_20110613_grid_c3_L3
-    parentGridName: patch_c3_20110613_grid_c3_L2
+  - gridName: patch_c3_20110613_grid_c3_l3
+    parentGridName: patch_c3_20110613_grid_c3_l2
     affineCoeffs: [-43.375,0.0,-0.0078125,172.515625,0.009375,0.0]
     iNodeCount: 51
     jNodeCount: 48
     dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-c320110613-grid01.tif
-  - gridName: patch_c3_20110613_grid_c3_L4
-    parentGridName: patch_c3_20110613_grid_c3_L3
+  - gridName: patch_c3_20110613_grid_c3_l4
+    parentGridName: patch_c3_20110613_grid_c3_l3
     affineCoeffs: [-43.484375,0.0,-0.001953125,172.65390625,0.00234375,0.0]
     iNodeCount: 88
     jNodeCount: 84
@@ -549,25 +549,25 @@ ggxfGroups:
     functionReferenceDate: '2012-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_c4_20111223_grid_c4_L1
+  - gridName: patch_c4_20111223_grid_c4_l1
     affineCoeffs: [-42.75,0.0,-0.125,171.55,0.15,0.0]
     iNodeCount: 15
     jNodeCount: 13
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-c420111223-grid01.tif
-  - gridName: patch_c4_20111223_grid_c4_L2
-    parentGridName: patch_c4_20111223_grid_c4_L1
+  - gridName: patch_c4_20111223_grid_c4_l2
+    parentGridName: patch_c4_20111223_grid_c4_l1
     affineCoeffs: [-43.03125,0.0,-0.03125,172.1875,0.0375,0.0]
     iNodeCount: 32
     jNodeCount: 30
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-c420111223-grid01.tif
-  - gridName: patch_c4_20111223_grid_c4_L3
-    parentGridName: patch_c4_20111223_grid_c4_L2
+  - gridName: patch_c4_20111223_grid_c4_l3
+    parentGridName: patch_c4_20111223_grid_c4_l2
     affineCoeffs: [-43.3125,0.0,-0.0078125,172.553125,0.009375,0.0]
     iNodeCount: 52
     jNodeCount: 44
     dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-c420111223-grid01.tif
-  - gridName: patch_c4_20111223_grid_c4_L4
-    parentGridName: patch_c4_20111223_grid_c4_L3
+  - gridName: patch_c4_20111223_grid_c4_l4
+    parentGridName: patch_c4_20111223_grid_c4_l3
     affineCoeffs: [-43.421875,0.0,-0.001953125,172.67734375,0.00234375,0.0]
     iNodeCount: 87
     jNodeCount: 61
@@ -590,25 +590,25 @@ ggxfGroups:
     functionReferenceDate: '2014-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_cs_20130721_grid_cs_20130721_L1
+  - gridName: patch_cs_20130721_grid_cs_20130721_l1
     affineCoeffs: [-39.5,0.0,-0.125,171.55,0.15,0.0]
     iNodeCount: 34
     jNodeCount: 32
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-cs20130721-grid02.tif
-  - gridName: patch_cs_20130721_grid_cs_20130721_L2
-    parentGridName: patch_cs_20130721_grid_cs_20130721_L1
+  - gridName: patch_cs_20130721_grid_cs_20130721_l2
+    parentGridName: patch_cs_20130721_grid_cs_20130721_l1
     affineCoeffs: [-41.03125,0.0,-0.03125,173.5375,0.0375,0.0]
     iNodeCount: 43
     jNodeCount: 37
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-cs20130721-grid02.tif
-  - gridName: patch_cs_20130721_grid_cs_20130721_L3
-    parentGridName: patch_cs_20130721_grid_cs_20130721_L2
+  - gridName: patch_cs_20130721_grid_cs_20130721_l3
+    parentGridName: patch_cs_20130721_grid_cs_20130721_l2
     affineCoeffs: [-41.3828125,0.0,-0.0078125,173.9875,0.009375,0.0]
     iNodeCount: 73
     jNodeCount: 57
     dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-cs20130721-grid02.tif
-  - gridName: patch_cs_20130721_grid_cs_20130721_L4
-    parentGridName: patch_cs_20130721_grid_cs_20130721_L3
+  - gridName: patch_cs_20130721_grid_cs_20130721_l4
+    parentGridName: patch_cs_20130721_grid_cs_20130721_l3
     affineCoeffs: [-41.537109375,0.0,-0.001953125,174.28984375,0.00234375,0.0]
     iNodeCount: 90
     jNodeCount: 68
@@ -631,25 +631,25 @@ ggxfGroups:
     functionReferenceDate: '2014-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_lg_20130816_grid_lg_20130816_L1
+  - gridName: patch_lg_20130816_grid_lg_20130816_l1
     affineCoeffs: [-39.25,0.0,-0.125,170.95,0.15,0.0]
     iNodeCount: 39
     jNodeCount: 39
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-lg20130816-grid02.tif
-  - gridName: patch_lg_20130816_grid_lg_20130816_L2
-    parentGridName: patch_lg_20130816_grid_lg_20130816_L1
+  - gridName: patch_lg_20130816_grid_lg_20130816_l2
+    parentGridName: patch_lg_20130816_grid_lg_20130816_l1
     affineCoeffs: [-41.09375,0.0,-0.03125,173.3875,0.0375,0.0]
     iNodeCount: 44
     jNodeCount: 40
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-lg20130816-grid02.tif
-  - gridName: patch_lg_20130816_grid_lg_20130816_L3
-    parentGridName: patch_lg_20130816_grid_lg_20130816_L2
+  - gridName: patch_lg_20130816_grid_lg_20130816_l3
+    parentGridName: patch_lg_20130816_grid_lg_20130816_l2
     affineCoeffs: [-41.4609375,0.0,-0.0078125,173.809375,0.009375,0.0]
     iNodeCount: 79
     jNodeCount: 63
     dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-lg20130816-grid02.tif
-  - gridName: patch_lg_20130816_grid_lg_20130816_L4
-    parentGridName: patch_lg_20130816_grid_lg_20130816_L3
+  - gridName: patch_lg_20130816_grid_lg_20130816_l4
+    parentGridName: patch_lg_20130816_grid_lg_20130816_l3
     affineCoeffs: [-41.60546875,0.0,-0.001953125,174.034375,0.00234375,0.0]
     iNodeCount: 134
     jNodeCount: 104
@@ -672,25 +672,25 @@ ggxfGroups:
     functionReferenceDate: '2017-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_ch_20160214_grid_ch_20160214_L1
+  - gridName: patch_ch_20160214_grid_ch_20160214_l1
     affineCoeffs: [-42.875,0.0,-0.125,171.7,0.15,0.0]
     iNodeCount: 14
     jNodeCount: 11
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ch20160214-grid01.tif
-  - gridName: patch_ch_20160214_grid_ch_20160214_L2
-    parentGridName: patch_ch_20160214_grid_ch_20160214_L1
+  - gridName: patch_ch_20160214_grid_ch_20160214_l2
+    parentGridName: patch_ch_20160214_grid_ch_20160214_l1
     affineCoeffs: [-43.0625,0.0,-0.03125,172.225,0.0375,0.0]
     iNodeCount: 29
     jNodeCount: 27
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ch20160214-grid01.tif
-  - gridName: patch_ch_20160214_grid_ch_20160214_L3
-    parentGridName: patch_ch_20160214_grid_ch_20160214_L2
+  - gridName: patch_ch_20160214_grid_ch_20160214_l3
+    parentGridName: patch_ch_20160214_grid_ch_20160214_l2
     affineCoeffs: [-43.3203125,0.0,-0.0078125,172.553125,0.009375,0.0]
     iNodeCount: 46
     jNodeCount: 38
     dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-ch20160214-grid01.tif
-  - gridName: patch_ch_20160214_grid_ch_20160214_L4
-    parentGridName: patch_ch_20160214_grid_ch_20160214_L3
+  - gridName: patch_ch_20160214_grid_ch_20160214_l4
+    parentGridName: patch_ch_20160214_grid_ch_20160214_l3
     affineCoeffs: [-43.408203125,0.0,-0.001953125,172.67265625,0.00234375,0.0]
     iNodeCount: 79
     jNodeCount: 61
@@ -713,13 +713,13 @@ ggxfGroups:
     eventDate: '2016-11-14T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L1_F
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l1_f
     affineCoeffs: [-34.0,0.0,-0.125,165.85,0.15,0.0]
     iNodeCount: 89
     jNodeCount: 110
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid01.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L2_F
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L1_F
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l2_f
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l1_f
     affineCoeffs: [-40.8125,0.0,-0.03125,171.925,0.0375,0.0]
     iNodeCount: 95
     jNodeCount: 82
@@ -743,217 +743,217 @@ ggxfGroups:
     functionReferenceDate: '2017-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L2_R
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l2_r
     affineCoeffs: [-41.28125,0.0,-0.03125,172.525,0.0375,0.0]
     iNodeCount: 65
     jNodeCount: 53
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L2_R
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l2_r
     affineCoeffs: [-42.1484375,0.0,-0.0078125,172.571875,0.009375,0.0]
     iNodeCount: 115
     jNodeCount: 94
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_00
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
     affineCoeffs: [-42.484375,0.0,-0.001953125,172.7828125,0.00234375,0.0]
     iNodeCount: 106
     jNodeCount: 107
     dataSource: GTIFF_DIR:6:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_01
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
     affineCoeffs: [-42.435546875,0.0,-0.001953125,173.00546875,0.00234375,0.0]
     iNodeCount: 11
     jNodeCount: 26
     dataSource: GTIFF_DIR:7:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_02
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_02
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
     affineCoeffs: [-42.484375,0.0,-0.001953125,173.02890625,0.00234375,0.0]
     iNodeCount: 106
     jNodeCount: 111
     dataSource: GTIFF_DIR:8:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_03
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_03
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
     affineCoeffs: [-42.38671875,0.0,-0.001953125,173.02890625,0.00234375,0.0]
     iNodeCount: 106
     jNodeCount: 51
     dataSource: GTIFF_DIR:9:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_04
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_04
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
     affineCoeffs: [-42.484375,0.0,-0.001953125,173.275,0.00234375,0.0]
     iNodeCount: 106
     jNodeCount: 88
     dataSource: GTIFF_DIR:10:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_05
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_05
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
     affineCoeffs: [-42.26953125,0.0,-0.001953125,173.275,0.00234375,0.0]
     iNodeCount: 106
     jNodeCount: 111
     dataSource: GTIFF_DIR:11:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_060
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_060
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
     affineCoeffs: [-42.1484375,0.0,-0.001953125,173.47421875,0.00234375,0.0]
     iNodeCount: 21
     jNodeCount: 63
     dataSource: GTIFF_DIR:12:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_080
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_080
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
     affineCoeffs: [-42.484375,0.0,-0.001953125,173.52109375,0.00234375,0.0]
     iNodeCount: 52
     jNodeCount: 30
     dataSource: GTIFF_DIR:15:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_090
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_090
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
     affineCoeffs: [-42.26953125,0.0,-0.001953125,173.52109375,0.00234375,0.0]
     iNodeCount: 52
     jNodeCount: 111
     dataSource: GTIFF_DIR:17:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_100
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_100
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
     affineCoeffs: [-42.1484375,0.0,-0.001953125,173.52109375,0.00234375,0.0]
     iNodeCount: 52
     jNodeCount: 63
     dataSource: GTIFF_DIR:19:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_01
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L2_R
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l2_r
     affineCoeffs: [-41.4609375,0.0,-0.0078125,173.153125,0.009375,0.0]
     iNodeCount: 53
     jNodeCount: 89
     dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_061
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_01
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_061
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_01
     affineCoeffs: [-42.0546875,0.0,-0.001953125,173.47421875,0.00234375,0.0]
     iNodeCount: 21
     jNodeCount: 49
     dataSource: GTIFF_DIR:13:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_07
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_01
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_07
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_01
     affineCoeffs: [-42.044921875,0.0,-0.001953125,173.50234375,0.0023437500000014,0.0]
     iNodeCount: 9
     jNodeCount: 6
     dataSource: GTIFF_DIR:14:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_101
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_01
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_101
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_01
     affineCoeffs: [-42.0546875,0.0,-0.001953125,173.52109375,0.00234375,0.0]
     iNodeCount: 52
     jNodeCount: 49
     dataSource: GTIFF_DIR:20:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_110
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_01
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_110
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_01
     affineCoeffs: [-41.83984375,0.0,-0.001953125,173.52109375,0.00234375,0.0]
     iNodeCount: 52
     jNodeCount: 111
     dataSource: GTIFF_DIR:23:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_02
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L2_R
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_02
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l2_r
     affineCoeffs: [-42.1484375,0.0,-0.0078125,173.640625,0.009375,0.0]
     iNodeCount: 73
     jNodeCount: 63
     dataSource: GTIFF_DIR:4:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_081
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_02
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_081
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_02
     affineCoeffs: [-42.484375,0.0,-0.001953125,173.640625,0.00234375,0.0]
     iNodeCount: 28
     jNodeCount: 30
     dataSource: GTIFF_DIR:16:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_091
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_02
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_091
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_02
     affineCoeffs: [-42.26953125,0.0,-0.001953125,173.640625,0.00234375,0.0]
     iNodeCount: 55
     jNodeCount: 111
     dataSource: GTIFF_DIR:18:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_102
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_02
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_102
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_02
     affineCoeffs: [-42.1484375,0.0,-0.001953125,173.640625,0.00234375,0.0]
     iNodeCount: 55
     jNodeCount: 63
     dataSource: GTIFF_DIR:21:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_13
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_02
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_13
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_02
     affineCoeffs: [-42.26953125,0.0,-0.001953125,173.7671875,0.00234375,0.0]
     iNodeCount: 87
     jNodeCount: 95
     dataSource: GTIFF_DIR:26:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_140
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_02
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_140
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_02
     affineCoeffs: [-42.1484375,0.0,-0.001953125,173.7671875,0.00234375,0.0]
     iNodeCount: 106
     jNodeCount: 63
     dataSource: GTIFF_DIR:27:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_170
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_02
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_170
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_02
     affineCoeffs: [-42.1484375,0.0,-0.001953125,174.01328125,0.00234375,0.0]
     iNodeCount: 62
     jNodeCount: 41
     dataSource: GTIFF_DIR:31:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L2_R
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l2_r
     affineCoeffs: [-41.421875,0.0,-0.0078125,173.640625,0.009375,0.0]
     iNodeCount: 114
     jNodeCount: 94
     dataSource: GTIFF_DIR:5:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_103
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_103
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
     affineCoeffs: [-42.0546875,0.0,-0.001953125,173.640625,0.00234375,0.0]
     iNodeCount: 55
     jNodeCount: 49
     dataSource: GTIFF_DIR:22:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_111
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_111
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
     affineCoeffs: [-41.83984375,0.0,-0.001953125,173.640625,0.00234375,0.0]
     iNodeCount: 55
     jNodeCount: 111
     dataSource: GTIFF_DIR:24:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_12
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_12
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
     affineCoeffs: [-41.822265625,0.0,-0.001953125,173.734375,0.00234375,0.0]
     iNodeCount: 15
     jNodeCount: 10
     dataSource: GTIFF_DIR:25:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_141
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_141
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
     affineCoeffs: [-42.0546875,0.0,-0.001953125,173.7671875,0.00234375,0.0]
     iNodeCount: 106
     jNodeCount: 49
     dataSource: GTIFF_DIR:28:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_15
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_15
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
     affineCoeffs: [-41.83984375,0.0,-0.001953125,173.7671875,0.00234375,0.0]
     iNodeCount: 106
     jNodeCount: 111
     dataSource: GTIFF_DIR:29:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_16
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_16
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
     affineCoeffs: [-41.76171875,0.0,-0.001953125,173.7671875,0.00234375,0.0]
     iNodeCount: 106
     jNodeCount: 41
     dataSource: GTIFF_DIR:30:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_171
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_171
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
     affineCoeffs: [-42.0546875,0.0,-0.001953125,174.01328125,0.00234375,0.0]
     iNodeCount: 62
     jNodeCount: 49
     dataSource: GTIFF_DIR:32:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_18
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_18
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
     affineCoeffs: [-41.83984375,0.0,-0.001953125,174.01328125,0.00234375,0.0]
     iNodeCount: 106
     jNodeCount: 111
     dataSource: GTIFF_DIR:33:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_19
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_19
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
     affineCoeffs: [-41.66015625,0.0,-0.001953125,174.01328125,0.00234375,0.0]
     iNodeCount: 106
     jNodeCount: 93
     dataSource: GTIFF_DIR:34:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_20
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_20
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
     affineCoeffs: [-41.83984375,0.0,-0.001953125,174.259375,0.00234375,0.0]
     iNodeCount: 59
     jNodeCount: 35
     dataSource: GTIFF_DIR:35:nz_linz_nzgd2000-ka20161114-grid02.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_H_L4_R_21
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_H_L3_R_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_21
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
     affineCoeffs: [-41.626953125,0.0,-0.001953125,174.259375,0.00234375,0.0]
     iNodeCount: 104
     jNodeCount: 110
@@ -974,205 +974,205 @@ ggxfGroups:
     functionReferenceDate: '2017-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L1
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l1
     affineCoeffs: [-34.25,0.0,-0.125,166.3,0.15,0.0]
     iNodeCount: 86
     jNodeCount: 108
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L2
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L1
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l2
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l1
     affineCoeffs: [-41.0625,0.0,-0.03125,172.225,0.0375,0.0]
     iNodeCount: 74
     jNodeCount: 67
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L2
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l3_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l2
     affineCoeffs: [-42.1171875,0.0,-0.0078125,172.65625,0.009375,0.0]
     iNodeCount: 103
     jNodeCount: 89
     dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_00
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_00
     affineCoeffs: [-42.490234375,0.0,-0.001953125,172.79921875,0.00234375,0.0]
     iNodeCount: 103
     jNodeCount: 88
     dataSource: GTIFF_DIR:7:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_01
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_00
     affineCoeffs: [-42.453125,0.0,-0.001953125,173.03828125,0.00234375,0.0]
     iNodeCount: 103
     jNodeCount: 105
     dataSource: GTIFF_DIR:8:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_02
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_02
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_00
     affineCoeffs: [-42.353515625,0.0,-0.001953125,173.07109375,0.00234375,0.0]
     iNodeCount: 89
     jNodeCount: 52
     dataSource: GTIFF_DIR:9:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_03
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_03
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_00
     affineCoeffs: [-42.453125,0.0,-0.001953125,173.27734375,0.00234375,0.0]
     iNodeCount: 103
     jNodeCount: 100
     dataSource: GTIFF_DIR:10:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_04
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_04
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_00
     affineCoeffs: [-42.28125,0.0,-0.001953125,173.27734375,0.00234375,0.0]
     iNodeCount: 103
     jNodeCount: 89
     dataSource: GTIFF_DIR:11:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_050
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_050
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_00
     affineCoeffs: [-42.1171875,0.0,-0.001953125,173.46953125,0.00234375,0.0]
     iNodeCount: 21
     jNodeCount: 67
     dataSource: GTIFF_DIR:12:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_060
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_060
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_00
     affineCoeffs: [-42.453125,0.0,-0.001953125,173.51640625,0.00234375,0.0]
     iNodeCount: 42
     jNodeCount: 34
     dataSource: GTIFF_DIR:14:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_070
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_070
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_00
     affineCoeffs: [-42.24609375,0.0,-0.001953125,173.51640625,0.00234375,0.0]
     iNodeCount: 42
     jNodeCount: 107
     dataSource: GTIFF_DIR:16:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_080
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_00
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_080
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_00
     affineCoeffs: [-42.1171875,0.0,-0.001953125,173.51640625,0.00234375,0.0]
     iNodeCount: 42
     jNodeCount: 67
     dataSource: GTIFF_DIR:18:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L3_01
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L2
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l3_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l2
     affineCoeffs: [-41.578125,0.0,-0.0078125,173.209375,0.009375,0.0]
     iNodeCount: 44
     jNodeCount: 70
     dataSource: GTIFF_DIR:4:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_051
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_01
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_051
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_01
     affineCoeffs: [-42.0546875,0.0,-0.001953125,173.46953125,0.00234375,0.0]
     iNodeCount: 21
     jNodeCount: 33
     dataSource: GTIFF_DIR:13:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_081
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_01
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_081
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_01
     affineCoeffs: [-42.0390625,0.0,-0.001953125,173.51640625,0.00234375,0.0]
     iNodeCount: 42
     jNodeCount: 41
     dataSource: GTIFF_DIR:19:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_090
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_01
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_090
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_01
     affineCoeffs: [-41.912109375,0.0,-0.001953125,173.58671875,0.00234375,0.0]
     iNodeCount: 12
     jNodeCount: 66
     dataSource: GTIFF_DIR:22:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L2
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l3_02
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l2
     affineCoeffs: [-42.1171875,0.0,-0.0078125,173.6125,0.009375,0.0]
     iNodeCount: 79
     jNodeCount: 60
     dataSource: GTIFF_DIR:5:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_061
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_061
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_02
     affineCoeffs: [-42.453125,0.0,-0.001953125,173.6125,0.00234375,0.0]
     iNodeCount: 62
     jNodeCount: 34
     dataSource: GTIFF_DIR:15:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_071
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_071
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_02
     affineCoeffs: [-42.24609375,0.0,-0.001953125,173.6125,0.00234375,0.0]
     iNodeCount: 62
     jNodeCount: 107
     dataSource: GTIFF_DIR:17:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_082
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_082
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_02
     affineCoeffs: [-42.1171875,0.0,-0.001953125,173.6125,0.00234375,0.0]
     iNodeCount: 62
     jNodeCount: 67
     dataSource: GTIFF_DIR:20:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_10
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_10
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_02
     affineCoeffs: [-42.453125,0.0,-0.001953125,173.75546875,0.00234375,0.0]
     iNodeCount: 7
     jNodeCount: 4
     dataSource: GTIFF_DIR:24:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_11
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_11
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_02
     affineCoeffs: [-42.24609375,0.0,-0.001953125,173.75546875,0.00234375,0.0]
     iNodeCount: 93
     jNodeCount: 107
     dataSource: GTIFF_DIR:25:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_120
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_120
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_02
     affineCoeffs: [-42.1171875,0.0,-0.001953125,173.75546875,0.00234375,0.0]
     iNodeCount: 103
     jNodeCount: 67
     dataSource: GTIFF_DIR:26:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_140
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_02
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_140
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_02
     affineCoeffs: [-42.1171875,0.0,-0.001953125,173.99453125,0.00234375,0.0]
     iNodeCount: 40
     jNodeCount: 59
     dataSource: GTIFF_DIR:29:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L2
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l3_03
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l2
     affineCoeffs: [-41.4375,0.0,-0.0078125,173.6125,0.009375,0.0]
     iNodeCount: 103
     jNodeCount: 88
     dataSource: GTIFF_DIR:6:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_083
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_083
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_03
     affineCoeffs: [-42.0390625,0.0,-0.001953125,173.6125,0.00234375,0.0]
     iNodeCount: 62
     jNodeCount: 41
     dataSource: GTIFF_DIR:21:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_091
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_091
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_03
     affineCoeffs: [-41.912109375,0.0,-0.001953125,173.6125,0.00234375,0.0]
     iNodeCount: 62
     jNodeCount: 66
     dataSource: GTIFF_DIR:23:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_121
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_121
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_03
     affineCoeffs: [-42.0390625,0.0,-0.001953125,173.75546875,0.00234375,0.0]
     iNodeCount: 103
     jNodeCount: 41
     dataSource: GTIFF_DIR:27:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_13
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_13
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_03
     affineCoeffs: [-41.859375,0.0,-0.001953125,173.75546875,0.00234375,0.0]
     iNodeCount: 103
     jNodeCount: 93
     dataSource: GTIFF_DIR:28:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_141
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_141
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_03
     affineCoeffs: [-42.0390625,0.0,-0.001953125,173.99453125,0.00234375,0.0]
     iNodeCount: 40
     jNodeCount: 41
     dataSource: GTIFF_DIR:30:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_15
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_15
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_03
     affineCoeffs: [-41.83203125,0.0,-0.001953125,173.99453125,0.00234375,0.0]
     iNodeCount: 103
     jNodeCount: 107
     dataSource: GTIFF_DIR:31:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_16
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_16
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_03
     affineCoeffs: [-41.681640625,0.0,-0.001953125,174.0859375,0.00234375,0.0]
     iNodeCount: 64
     jNodeCount: 78
     dataSource: GTIFF_DIR:32:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_17
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_17
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_03
     affineCoeffs: [-41.83203125,0.0,-0.001953125,174.23359375,0.00234375,0.0]
     iNodeCount: 56
     jNodeCount: 45
     dataSource: GTIFF_DIR:33:nz_linz_nzgd2000-ka20161114-grid03.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114co_V_L4_18
-    parentGridName: patch_ka_20161114_grid_ka_20161114co_V_L3_03
+  - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_18
+    parentGridName: patch_ka_20161114_grid_ka_20161114co_v_l3_03
     affineCoeffs: [-41.626953125,0.0,-0.001953125,174.23359375,0.00234375,0.0]
     iNodeCount: 101
     jNodeCount: 106
@@ -1198,13 +1198,13 @@ ggxfGroups:
     scaleFactor: 1.0
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_ka_20161114_grid_ka_20161114pe1_H_L1_F
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_h_l1_f
     affineCoeffs: [-39.0,0.0,-0.125,169.6,0.15,0.0]
     iNodeCount: 46
     jNodeCount: 39
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid04.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114pe1_H_L2_F
-    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_H_L1_F
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_h_l2_f
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_h_l1_f
     affineCoeffs: [-41.125,0.0,-0.03125,172.6375,0.0375,0.0]
     iNodeCount: 74
     jNodeCount: 59
@@ -1230,19 +1230,19 @@ ggxfGroups:
     scaleFactor: 1.0
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_ka_20161114_grid_ka_20161114pe1_H_L2_R
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_h_l2_r
     affineCoeffs: [-41.28125,0.0,-0.03125,172.45,0.0375,0.0]
     iNodeCount: 67
     jNodeCount: 56
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid05.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114pe1_H_L3_R_00
-    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_H_L2_R
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_h_l2_r
     affineCoeffs: [-42.0546875,0.0,-0.0078125,172.834375,0.009375,0.0]
     iNodeCount: 93
     jNodeCount: 83
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid05.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114pe1_H_L3_R_01
-    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_H_L2_R
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_h_l2_r
     affineCoeffs: [-41.5703125,0.0,-0.0078125,173.696875,0.009375,0.0]
     iNodeCount: 92
     jNodeCount: 125
@@ -1265,25 +1265,25 @@ ggxfGroups:
     scaleFactor: 1.0
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_ka_20161114_grid_ka_20161114pe1_V_L1
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_v_l1
     affineCoeffs: [-40.5,0.0,-0.125,171.85,0.15,0.0]
     iNodeCount: 29
     jNodeCount: 27
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid06.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114pe1_V_L2
-    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_V_L1
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_v_l2
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_v_l1
     affineCoeffs: [-40.75,0.0,-0.03125,172.675,0.0375,0.0]
     iNodeCount: 72
     jNodeCount: 74
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid06.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114pe1_V_L3_00
-    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_V_L2
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_v_l3_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_v_l2
     affineCoeffs: [-42.0546875,0.0,-0.0078125,172.84375,0.009375,0.0]
     iNodeCount: 92
     jNodeCount: 82
     dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-ka20161114-grid06.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114pe1_V_L3_01
-    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_V_L2
+  - gridName: patch_ka_20161114_grid_ka_20161114pe1_v_l3_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe1_v_l2
     affineCoeffs: [-41.609375,0.0,-0.0078125,173.696875,0.009375,0.0]
     iNodeCount: 91
     jNodeCount: 119
@@ -1367,13 +1367,13 @@ ggxfGroups:
     scaleFactor: 1.0
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_ka_20161114_grid_ka_20161114pe3_H_L1_F
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_h_l1_f
     affineCoeffs: [-38.875,0.0,-0.125,169.6,0.15,0.0]
     iNodeCount: 46
     jNodeCount: 40
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid07.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114pe3_H_L2_F
-    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_H_L1_F
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_h_l2_f
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_h_l1_f
     affineCoeffs: [-41.0625,0.0,-0.03125,172.525,0.0375,0.0]
     iNodeCount: 66
     jNodeCount: 60
@@ -1399,19 +1399,19 @@ ggxfGroups:
     scaleFactor: 1.0
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_ka_20161114_grid_ka_20161114pe3_H_L2_R
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_h_l2_r
     affineCoeffs: [-41.28125,0.0,-0.03125,172.45,0.0375,0.0]
     iNodeCount: 67
     jNodeCount: 56
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid08.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114pe3_H_L3_R_00
-    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_H_L2_R
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_h_l2_r
     affineCoeffs: [-42.0,0.0,-0.0078125,172.91875,0.009375,0.0]
     iNodeCount: 88
     jNodeCount: 91
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid08.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114pe3_H_L3_R_01
-    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_H_L2_R
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_h_l2_r
     affineCoeffs: [-41.5546875,0.0,-0.0078125,173.734375,0.009375,0.0]
     iNodeCount: 88
     jNodeCount: 122
@@ -1434,25 +1434,25 @@ ggxfGroups:
     scaleFactor: 1.0
   interpolationMethod: bilinear
   grids:
-  - gridName: patch_ka_20161114_grid_ka_20161114pe3_V_L1
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_v_l1
     affineCoeffs: [-40.25,0.0,-0.125,171.4,0.15,0.0]
     iNodeCount: 31
     jNodeCount: 28
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid09.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114pe3_V_L2
-    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_V_L1
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_v_l2
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_v_l1
     affineCoeffs: [-40.65625,0.0,-0.03125,172.1875,0.0375,0.0]
     iNodeCount: 82
     jNodeCount: 76
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid09.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114pe3_V_L3_00
-    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_V_L2
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_v_l3_00
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_v_l2
     affineCoeffs: [-42.0703125,0.0,-0.0078125,172.825,0.009375,0.0]
     iNodeCount: 92
     jNodeCount: 80
     dataSource: GTIFF_DIR:3:nz_linz_nzgd2000-ka20161114-grid09.tif
-  - gridName: patch_ka_20161114_grid_ka_20161114pe3_V_L3_01
-    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_V_L2
+  - gridName: patch_ka_20161114_grid_ka_20161114pe3_v_l3_01
+    parentGridName: patch_ka_20161114_grid_ka_20161114pe3_v_l2
     affineCoeffs: [-41.5859375,0.0,-0.0078125,173.678125,0.009375,0.0]
     iNodeCount: 92
     jNodeCount: 121

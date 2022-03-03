@@ -1,2 +1,2 @@
 id,group,grid,ngridi,ngridj,type,depth,extent_wkt,geoidHeight-min,geoidHeight-max
-0:0,Puerto Rico Virgin Islands GEOID18,Puerto Rico Virgin Islands GEOID18,301,361,float32,1,"POLYGON((-69.0 14.9999999988,-69.0 21.0,-63.999999998999996 21.0,-63.999999998999996 14.9999999988, -69.0 14.9999999988))",-68.5892,-29.2936
+0:0,puerto_rico_virgin_islands_geoid18,puerto_rico_virgin_islands_geoid18,301,361,float32,1,"POLYGON((-69.0 14.9999999988,-69.0 21.0,-63.999999998999996 21.0,-63.999999998999996 14.9999999988, -69.0 14.9999999988))",-68.5892,-29.2936

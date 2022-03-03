@@ -1,6 +1,8 @@
+from re import S
 from .Constants import *
 from .GGXF_Types import ContentTypes
 from collections import namedtuple
+import re
 
 
 class AttributeValidator:
@@ -11,6 +13,9 @@ class AttributeValidator:
         pass
 
     AttributeDef = namedtuple("AttributeDef", "name atype islist count")
+
+    #    StringTypes = {"UnicodeIdentifier": lambda s: re.match(r"^[a-z]\w+$", s, re.I)}
+    StringTypes = {"UnicodeIdentifier": lambda s: not re.search(r"^[a-z_][^\S\/]*$", s)}
 
     class AttributeChoice:
         """
@@ -101,6 +106,22 @@ class AttributeValidator:
                             f"{context}: Attribute {adef.name} has the wrong type - must be {adef.atype.__name__}"
                         )
                         valid = False
+                elif (
+                    type(adef.atype) == str
+                    and adef.atype in AttributeValidator.StringTypes
+                ):
+                    if type(value) != str:
+                        validator.error(
+                            f"{context}: Attribute {adef.name} is not a string"
+                        )
+                        valid = False
+                    else:
+                        testfunc = AttributeValidator.StringTypes[adef.atype]
+                        if not testfunc(value):
+                            validator.error(
+                                f'{context}: Attribute {adef.name} value "{value}" is not a valid {adef.atype}'
+                            )
+                            valid = False
                 elif type(adef.atype) == str:
                     if type(value) != dict:
                         validator.error(

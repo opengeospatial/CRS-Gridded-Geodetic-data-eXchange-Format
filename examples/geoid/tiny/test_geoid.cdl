@@ -24,7 +24,7 @@ netcdf test_geoid {
 		:_IsNetcdf4 = 1 ;
 		:_Format = "netCDF-4" ;
 
-group: Default\ group {
+group: default {
   dimensions:
   	parameter = 1 ;
 
@@ -35,7 +35,7 @@ group: Default\ group {
   		:parameters.0.unitSiRatio = 1. ;
   		:interpolationMethod = "bilinear" ;
 
-  group: Geoid\ grid {
+  group: geoid_grid {
     dimensions:
     	gridi = 3 ;
     	gridj = 4 ;
@@ -63,6 +63,6 @@ group: Default\ group {
   -13.5,
   -23.5,
   -33.5 ;
-    } // group Geoid\ grid
-  } // group Default\ group
+    } // group geoid_grid
+  } // group default
 }
