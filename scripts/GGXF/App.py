@@ -114,8 +114,12 @@ class App:
         yaml_options = App.compileOptions(args.yaml_option)
         if ggxf_file.endswith(".yaml"):
             ggxf = YamlReader.Read(ggxf_file, options=yaml_options)
-        else:
+        elif ggxf_file.endswith(".ggxf"):
             ggxf = NetCdfReader.Read(ggxf_file, options=netcdf_options)
+        else:
+            raise RuntimeError(
+                f"GGXF filename {ggxf_file} must have extension .yaml or .ggxf (NetCDF)"
+            )
         if ggxf is None:
             return
         if args.debug:
@@ -140,9 +144,12 @@ class App:
             output_ggxf_file = args.output_ggxf_file
             if output_ggxf_file.endswith(".yaml"):
                 YamlWriter.Write(ggxf, output_ggxf_file, options=yaml_options)
-            else:
-
+            elif output_ggxf_file.endswith(".ggxf"):
                 NetCdfWriter.Write(ggxf, output_ggxf_file, options=netcdf_options)
+            else:
+                raise RuntimeError(
+                    f"GGXF output filename {output_ggxf_file} must have extension .yaml or .ggxf (NetCDF)"
+                )
 
     @staticmethod
     def compileOptions(source):
