@@ -10,7 +10,7 @@ contentApplicability:
         westBoundLongitude:  -65.09
         northBoundLatitude:  18.42
         eastBoundLongitude:  -64.6
-    description: "US Virgin Islands - onshore."
+    extentDescription: "US Virgin Islands - onshore."
 
 interpolationCrsWkt: |
     GEOGCRS["NAD83 (2011)",
@@ -47,17 +47,17 @@ postalCode:             "20910"
 country:                "United States of America"
 onlineResourceLinkage:  "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g2018p0.asc.zip"
 
-groups:
-    - groupName: "Puerto Rico Virgin Islands GEOID18"
+ggxfGroups:
+    - ggxfGroupName: "puerto_rico_virgin_islands_geoid18"
       parameters:
           - parameterName: "geoidHeight"
             lengthUnit: "metre"
             unitSiRatio: 1.0
       interpolationMethod: biquadratic
       grids:
-          - gridName: "Puerto Rico Virgin Islands GEOID18"
+          - gridName: "puerto_rico_virgin_islands_geoid18"
             affineCoeffs: [15.0, 0.0, 0.01666666667, -69.0, 0.01666666667, 0.0]
-            iNodeMaximum: 300
-            jNodeMaximum: 360
+            iNodeCount: 301
+            jNodeCount: 361
             remark: "grid starts in the bottom left (southwest)corner and works across (east)and up (north"
             dataSource: "g2018p0.asc"

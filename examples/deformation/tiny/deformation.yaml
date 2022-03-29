@@ -1,5 +1,5 @@
 ggxfVersion: "1.0"
-fileName: nz_linz_nzgd2000-20180701.yaml
+filename: nz_linz_nzgd2000-20180701.yaml
 version: "20180701"
 content: deformationModel
 remark: |
@@ -16,42 +16,37 @@ postalCode: "6145"
 electronicMailAddress: customersupport@linz.govt.nz
 onlineResourceLinkage: https://www.linz.govt.nz/nzgd2000
 publicationDate: "2018-07-01"
-contentApplicabilityExtents:
+contentApplicabilityExtent:
   extentDescription: New Zealand EEZ
   boundingBox:
     southBoundLatitude: -58.0
     westBoundLongitude: 158.0
     northBoundLatitude: -25.0
     eastBoundLongitude: 194.0
-startDate: "1900-01-01"
-endDate: "2050-01-01"
+  temporalExtent:
+    startDate: "1900-01-01"
+    endDate: "2050-01-01"
 sourceCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6167]],CS[ellipsoidal,3,ID["EPSG",6423]],AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]],ID["EPSG",4959]]
 targetCrsWkt: GEOGCRS["ITRF96", DYNAMIC[FRAMEEPOCH[1997.0]],DATUM["International Terrestrial Reference Frame 1996",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6654]],CS[ellipsoidal,3,ID["EPSG",6423]],AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]],ID["EPSG",7907]]
 interpolationCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6167]],CS[ellipsoidal,2,ID["EPSG",6422]],AXIS["Geodetic latitude (Lat)",north],AXIS["Geodetic longitude (Lon)",east],ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]],ID["EPSG",4167]]
 operationAccuracy: 0.01
-uncertaintyMeasure:
-  horizontal:
-    name: Circular error probable
-    id: 2CEP
-  vertical:
-    name: Standard error (2-sigma)
-    id: 2SE
+uncertaintyMeasure: 2CEP 2SE
 deformationApplicationMethod: addition
-groups:
-  - groupName: nz_linz_vert_vel
+ggxfGroups:
+  - ggxfGroupName: nz_linz_vert_vel
     parameters:
       - parameterName: displacementUp
         lengthUnit: metre
         unitSiRatio: 1.0
     interpolationMethod: bilinear
     timeFunctions:
-      - functionName: velocity
+      - functionType: velocity
         functionReferenceDate: "2000-01-01T00:00:00Z"
     grids:
       - gridName: hvel
         affineCoeffs: [172.6, 0.6, 0.0, -41.6, 0.0, 0.4]
-        iNodeMaximum: 2
-        jNodeMaximum: 3
+        iNodeCount: 3
+        jNodeCount: 4
         data:
           [
             [0.44, 0.74, 0.64],
@@ -59,7 +54,7 @@ groups:
             [-0.05, 0.25, 0.15],
             [-0.08, 0.22, 0.12],
           ]
-  - groupName: nz_linz_hypo_eq
+  - ggxfGroupName: nz_linz_hypo_eq
     remark: Hypothetical earthquake - this is not what happened
     parameters:
       - parameterName: displacementEast
@@ -73,21 +68,21 @@ groups:
         unitSiRatio: 1.0
     interpolationMethod: bilinear
     timeFunctions:
-      - functionName: ramp
+      - functionType: ramp
         startDate: "2009-07-15T00:00:00Z"
-        startScaleFactor: -1.34
         endDate: "2009-07-15T00:00:00Z"
-        endScaleFactor: -0.29
-      - functionName: ramp
+        functionReferenceDate: "2011-09-01T00:00:00Z"
+        scaleFactor: 1.05
+      - functionType: ramp
         startDate: "2009-07-15T00:00:00Z"
-        startScaleFactor: 0.0
         endDate: "2011-09-01T00:00:00Z"
-        endScaleFactor: 0.29
+        functionReferenceDate: "2011-09-01T00:00:00Z"
+        scaleFactor: 0.29
     grids:
       - gridName: eqdef1
         affineCoeffs: [172.6, 0.6, 0.0, -41.6, 0.0, 0.4]
-        iNodeMaximum: 4
-        jNodeMaximum: 5
+        iNodeCount: 5
+        jNodeCount: 6
         data:
           [
             [
@@ -142,8 +137,8 @@ groups:
       - gridName: eqdef2
         parentGridName: eqdef1
         affineCoeffs: [172.6, 0.3, 0.0, -41.2, 0.0, 0.2]
-        iNodeMaximum: 4
-        jNodeMaximum: 2
+        iNodeCount: 5
+        jNodeCount: 3
         data:
           [
             [

@@ -2,13 +2,13 @@
 filename: tiny_geoid.gxt
 content: geoidModel
 remark: "hybrid geoid"
-contentApplicabilityExtents:
+contentApplicabilityExtent:
   boundingBox:
     southBoundLatitude: 22.5
     westBoundLongitude: -69.0
     northBoundLatitude: 24.6
     eastBoundLongitude: -67.0
-  description: "Tiny example geoid."
+  extentDescription: "Tiny example geoid."
 
 interpolationCrsWkt: |
   GEOGCS["WGS 84",
@@ -40,21 +40,21 @@ city: "A city"
 postalCode: "99999"
 country: "United States of America"
 
-groups:
-  - groupName: "Default group"
+ggxfGroups:
+  - ggxfGroupName: default
     parameters:
       - parameterName: "geoidHeight"
         lengthUnit: "metre"
         unitSiRatio: 1.0
     interpolationMethod: bilinear
     grids:
-      - gridName: "Geoid grid"
+      - gridName: "geoid_grid"
         affineCoeffs: [22.5, 0.0, 0.7, -69.0, 1.0, 0.0]
-        iNodeMaximum: 2
-        jNodeMaximum: 3
+        iNodeCount: 3
+        jNodeCount: 4
 
 gridData:
-  - gridName: "Geoid grid"
+  - gridName: "geoid_grid"
     data:
       [
         -10.5,

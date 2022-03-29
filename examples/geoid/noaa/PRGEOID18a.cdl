@@ -5,11 +5,11 @@ netcdf PRGEOID18a {
 		:filename = "g2018pr.yaml" ;
 		:content = "geoidModel" ;
 		:remark = "hybrid geoid" ;
-		:contentApplicabilityExtents.boundingBox.southBoundLatitude = 17.87 ;
-		:contentApplicabilityExtents.boundingBox.westBoundLongitude = -68. ;
-		:contentApplicabilityExtents.boundingBox.northBoundLatitude = 18.53 ;
-		:contentApplicabilityExtents.boundingBox.eastBoundLongitude = -65. ;
-		:contentApplicabilityExtents.description = "Puerto Rico - onshore." ;
+		:contentApplicabilityExtent.boundingBox.southBoundLatitude = 17.87 ;
+		:contentApplicabilityExtent.boundingBox.westBoundLongitude = -68. ;
+		:contentApplicabilityExtent.boundingBox.northBoundLatitude = 18.53 ;
+		:contentApplicabilityExtent.boundingBox.eastBoundLongitude = -65. ;
+		:contentApplicabilityExtent.extentDescription = "Puerto Rico - onshore." ;
 		:interpolationCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:sourceCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]]]\n" ;
 		:targetCrsWkt = "VERTCRS[\"PRVD02 - NOHt\",\n  VDATUM[\"Puerto Rico Vertical Datum of 2002\"],\n  CS[vertical,1],\n  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n" ;
@@ -21,7 +21,7 @@ netcdf PRGEOID18a {
 		:country = "United States of America" ;
 		:onlineResourceLinkage = "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g2018p0.asc.zip" ;
 
-group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
+group: puerto_rico_virgin_islands_geoid18 {
   dimensions:
   	parameter = 1 ;
 
@@ -32,7 +32,7 @@ group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
   		:parameters.0.unitSiRatio = 1. ;
   		:interpolationMethod = "biquadratic" ;
 
-  group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
+  group: puerto_rico_virgin_islands_geoid18 {
     dimensions:
     	gridi = 301 ;
     	gridj = 361 ;
@@ -40,8 +40,8 @@ group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
     	float data(gridj, gridi, parameter) ;
 
     // group attributes:
-    		:iNodeMaximum = 300LL ;
-    		:jNodeMaximum = 360LL ;
+    		:iNodeCount = 301LL ;
+    		:jNodeCount = 361LL ;
     		:remark = "grid starts in the top left (northwest) corner and works across (east) and down (south)" ;
     		:affineCoeffs = 21., 0., -0.01666666667, -69., 0.01666666667, 0. ;
     data:
@@ -108708,6 +108708,6 @@ group: Puerto\ Rico\ Virgin\ Islands\ GEOID18 {
   -36.9098,
   -36.8657,
   -36.8197 ;
-    } // group Puerto\ Rico\ Virgin\ Islands\ GEOID18
-  } // group Puerto\ Rico\ Virgin\ Islands\ GEOID18
+    } // group puerto_rico_virgin_islands_geoid18
+  } // group puerto_rico_virgin_islands_geoid18
 }

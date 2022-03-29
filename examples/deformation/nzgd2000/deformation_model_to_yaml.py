@@ -60,6 +60,11 @@ def main():
     parser.add_argument(
         "-w", "--width", type=int, help="Maximum grid nesting width in example file"
     )
+    parser.add_argument(
+        "-m",
+        "--metadata-yaml",
+        help="Name of a metadata YAML file to override defaults/values from json file",
+    )
     # parser.add_argument('-r','--use-ramp',action='store_true',help="Use ramp functions instead of piecewise")
     # parser.add_argument('-b','--use-base-time-function',action='store_true',help="Use ramp functions instead of piecewise")
 
@@ -67,13 +72,19 @@ def main():
     jsonfile = args.deformation_json_file
     yamlfile = args.ggxf_yaml_header
     if yamlfile is None:
-        yamlfile = os.path.splitext(jsonfile)[0] + ".gxb"
+        yamlfile = os.path.splitext(jsonfile)[0] + ".yaml"
+    custommeta = {}
+    if args.metadata_yaml:
+        with open(args.metadata_yaml) as mh:
+            metayaml = mh.read()
+        custommeta = yaml.load(metayaml, Loader=yaml.Loader)
     # ggxfTimeFunction.useramp=args.use_ramp
     # ggxfTimeFunction.usebasefunc=args.use_base_time_function
     smodel = loadJsonGeoTiff(jsonfile)
     gmodel = ggxfModel(
         smodel, usegroups=args.group, maxdepth=args.depth, maxwidth=args.width
     )
+    updateMetadata(gmodel, custommeta)
     dumpGGXFYaml(gmodel, yamlfile)
 
 
@@ -150,10 +161,10 @@ def loadGTiffGridData(source, sourceref=None, tiffdir=None):
         griddata = json.loads(result.stdout, object_pairs_hook=OrderedDict)
         md = griddata["metadata"]
         gmd = md[""]
-        gdata["gridName"] = gmd["grid_name"]
+        gdata["gridName"] = makeNameValidIdentifier(gmd["grid_name"])
         parent = gmd.get("parent_grid_name")
         if parent:
-            gdata["parentGridName"] = parent
+            gdata["parentGridName"] = makeNameValidIdentifier(parent)
         affine = list(griddata["geoTransform"])
         affine[0] += affine[1] / 2.0
         affine[3] += affine[5] / 2.0
@@ -161,8 +172,8 @@ def loadGTiffGridData(source, sourceref=None, tiffdir=None):
         coeffs.extend(affine[:3])
         gdata["affineCoeffs"] = coeffs
         size = griddata["size"]
-        gdata["iNodeMaximum"] = size[0] - 1
-        gdata["jNodeMaximum"] = size[1] - 1
+        gdata["iNodeCount"] = size[0]
+        gdata["jNodeCount"] = size[1]
         # remark=gmd.get('TIFFTAG_IMAGEDESCRIPTION')
         # if remark:
         #     gdata['remark']=remark
@@ -197,6 +208,13 @@ def loadJsonGeoTiff(jsonfile, object_pairs_hook=OrderedDict):
     return model
 
 
+def _nextYear(epoch):
+    if re.match(r"((?:19|20)\d\d)\-", epoch):
+        year = int(epoch[:4]) + 1
+        return f"{year:04d}-01-01T00:00:00Z"
+    return epoch
+
+
 def ggxfTimeFunction(tf):
     global useramp
     tftype = tf["type"]
@@ -205,18 +223,19 @@ def ggxfTimeFunction(tf):
     functions = []
     if tftype == "velocity":
         bf = OrderedDict()
-        bf["functionName"] = "velocity"
+        bf["functionType"] = "velocity"
         bf["functionReferenceDate"] = params["reference_epoch"]
         functions.append(bf)
     elif tftype == "step":
         bf = OrderedDict()
-        bf["functionName"] = "step"
-        bf["functionReferenceDate"] = params["step_epoch"]
+        bf["functionType"] = "step"
+        bf["eventDate"] = params["step_epoch"]
         functions.append(bf)
     elif tftype == "reverse_step":
         bf = OrderedDict()
-        bf["functionName"] = "reverseStep"
-        bf["functionReferenceDate"] = params["step_epoch"]
+        bf["functionType"] = "step"
+        bf["eventDate"] = params["step_epoch"]
+        bf["functionReferenceDate"] = _nextYear(params["step_epoch"])
         functions.append(bf)
     elif tftype == "piecewise":
         model = params["model"]
@@ -234,21 +253,27 @@ def ggxfTimeFunction(tf):
                 model.append({"epoch": epochn, "scale_factor": 0.0})
         elif after != "constant":
             raise RuntimeError(f"Cannot handle piecewise after_first={after}")
-        lastsf = 0.0
+        refEpoch = None
+        for m in model:
+            if m["scale_factor"] == 0.0:
+                refEpoch = m["epoch"]
+        if refEpoch is None:
+            raise RuntimeError(
+                f"Cannot handle piecewise function with no corner point having zero scale factor"
+            )
         if ggxfTimeFunction.useramp:
             for ms, me in zip(model[:-1], model[1:]):
                 bf = OrderedDict()
-                bf["functionName"] = "ramp"
+                bf["functionType"] = "ramp"
                 bf["startDate"] = ms["epoch"]
-                bf["startScaleFactor"] = ms["scale_factor"] - lastsf
                 bf["endDate"] = me["epoch"]
-                bf["endScaleFactor"] = me["scale_factor"] - lastsf
+                bf["functionReferenceDate"] = refEpoch
+                bf["scaleFactor"] = me["scale_factor"] - ms["scale_factor"]
                 functions.append(bf)
-                lastsf = me["scale_factor"]
         else:
             raise RuntimeError("piecewise function not supported by current UML")
             bf = OrderedDict()
-            bf["functionName"] = "piecewise"
+            bf["functionType"] = "piecewise"
             bf["epochMultipliers"] = [
                 OrderedDict(
                     [("epoch", mp["epoch"]), ("multiplier", mp["scale_factor"])]
@@ -283,10 +308,17 @@ def extractDate(datetimestring):
     return datetimestring
 
 
+def makeNameValidIdentifier(name):
+    if not re.match(r"^\w", name):
+        name = "id_" + name
+    name = re.sub(r"[^\w\-.]+", "_", name)
+    return name.lower()
+
+
 def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
     gmodel = OrderedDict()
     gmodel["ggxfVersion"] = "1.0"
-    gmodel["fileName"] = "unknown"
+    gmodel["filename"] = "unknown"
     gmodel["version"] = model["version"]
     gmodel["content"] = "deformationModel"
     gmodel["remark"] = cleanstr(model["description"])
@@ -314,7 +346,7 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
     gmodel["publicationDate"] = extractDate(model["publication_date"])
 
     extent = model["extent"]["parameters"]["bbox"]
-    gmodel["contentApplicabilityExtents"] = OrderedDict(
+    gmodel["contentApplicabilityExtent"] = OrderedDict(
         (
             ("extentDescription", "New Zealand EEZ"),
             (
@@ -328,31 +360,27 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
                     )
                 ),
             ),
+            (
+                "temporalExtent",
+                OrderedDict(
+                    (
+                        ("startDate", extractDate(model["time_extent"]["first"])),
+                        ("endDate", extractDate(model["time_extent"]["last"])),
+                    )
+                ),
+            ),
         )
     )
-    gmodel["startDate"] = extractDate(model["time_extent"]["first"])
-    gmodel["endDate"] = extractDate(model["time_extent"]["last"])
     gmodel["sourceCrsWkt"] = getepsg(model["source_crs"])["crsWkt"]
     gmodel["targetCrsWkt"] = getepsg(model["target_crs"])["crsWkt"]
     gmodel["interpolationCrsWkt"] = getepsg(model["definition_crs"])[
         "crsWkt"
     ]  # gridcrs is WKT in current file - ignoring
     gmodel["operationAccuracy"] = 0.01
-    gmodel["uncertaintyMeasure"] = OrderedDict(
-        (
-            (
-                "horizontal",
-                OrderedDict((("name", "Circular error probable"), ("id", "2CEP"))),
-            ),
-            (
-                "vertical",
-                OrderedDict((("name", "Standard error (2-sigma)"), ("id", "2SE"))),
-            ),
-        )
-    )
+    gmodel["uncertaintyMeasure"] = "2CEP 2SE"
     gmodel["deformationApplicationMethod"] = "addition"
     groups = []
-    gmodel["groups"] = groups
+    gmodel["ggxfGroups"] = groups
     for c in model["components"]:
         sm = c["spatial_model"]
         gname = os.path.basename(sm["filename"])
@@ -361,7 +389,7 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
             print(f"Skipping component {gname}")
             continue
         group = OrderedDict()
-        group["groupName"] = gname
+        group["ggxfGroupName"] = makeNameValidIdentifier(gname)
         if remark := c.get("description"):
             group["remark"] = remark
         params = [
@@ -373,7 +401,8 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
         group["interpolationMethod"] = "bilinear"
         groups.append(group)
         group["grids"] = pruneGrids(sm["grids"], maxdepth, maxwidth)
-        setHierarchyRank(group["grids"])
+        # hierarchyRank removed from GGXF
+        # setHierarchyRank(group["grids"])
     return gmodel
 
 
@@ -417,12 +446,24 @@ def blockAffine(yamldef):
 
 
 def dumpGGXFYaml(gmodel, yamlfile):
-    gmodel["fileName"] = os.path.basename(yamlfile)
+    gmodel["filename"] = os.path.basename(yamlfile)
     yamldef = yaml.dump(gmodel, width=2048)
     yamldef = blockLongLines(yamldef)
     yamldef = blockAffine(yamldef)
     check = yaml.load(yamldef, Loader=yaml.Loader)
     open(yamlfile, "w").write(yamldef)
+
+
+def updateMetadata(ggxf, custom):
+    for key, value in custom.items():
+        if (
+            key in ggxf
+            and type(value) in (dict, OrderedDict)
+            and type(ggxf[key]) in (dict, OrderedDict)
+        ):
+            updateMetadata(ggxf[key], value)
+        else:
+            ggxf[key] = value
 
 
 if __name__ == "__main__":

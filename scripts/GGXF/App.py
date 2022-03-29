@@ -26,55 +26,71 @@ class App:
             "ggxf_file", help="Name of GGXF file to load - .yaml for YAML format"
         )
         parser.add_argument(
-            "-o", "--output-ggxf-file", help="Save GGXF to file - .yaml for YAML format"
+            "-o",
+            "--output-ggxf-file",
+            help="Save GGXF to file - .yaml for YAML format",
+            metavar="filename",
         )
         parser.add_argument(
             "-n",
             "--netcdf4-option",
             action="append",
-            help="option=value for NetCDF4 files (see below for options)",
+            help="Options for NetCDF4 files (see below for options)",
+            metavar="option=value",
         )
         parser.add_argument(
             "-y",
             "--yaml-option",
             action="append",
-            help="option=value for YAML files (see below for options)",
+            help="Pptions for YAML files (see below for options)",
+            metavar="option=value",
         )
 
         parser.add_argument(
             "-c",
             "--coord-csv-file",
             help="CSV file of points to calculate - assumes column headers with X, Y columns",
+            metavar="csv_filename",
         )
         parser.add_argument(
-            "-e", "--epoch", type=float, help="Epoch at which to calculate GGXF"
+            "-e",
+            "--epoch",
+            type=float,
+            help="Epoch at which to calculate GGXF",
+            metavar="epoch",
         )
         parser.add_argument(
             "--base-epoch",
             type=float,
             help="Base epoch for calculating change between epochs",
+            metavar="epoch",
         )
         parser.add_argument(
             "--output-csv-file",
             help="CSV file to convert - assumes column headers with X, Y columns (default based on input)",
+            metavar="output_ssv_filename",
         )
         parser.add_argument(
             "--csv-decimal-places",
             type=int,
             default=4,
             help="Number of decimal places for CSV calculated values",
+            metavar="csv_summary_file",
         )
 
         parser.add_argument(
-            "--csv-summary", help="Write a grid summary to the named CSV file"
+            "--csv-summary",
+            help="Write a grid summary to the named CSV file",
+            metavar="csv_summary_file",
         )
         parser.add_argument(
-            "--list-grids", action="store_true", help="Print a list of grids"
+            "--list-grids", action="store_true", help="Print a list of grids with ids"
         )
         parser.add_argument(
             "--dump-grid",
             nargs=2,
-            help="Number of grid and file name to dump grid (use --list-grids to get grid numbers)",
+            help="Dump a specific grid to a CSV file (use --list-grids to get grid ids)",
+            metavar=("grid_id", "csv_file"),
         )
         parser.add_argument(
             "-g", "--debug", action="store_true", help="Generate debugging output"

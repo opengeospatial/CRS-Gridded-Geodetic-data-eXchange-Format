@@ -170,7 +170,7 @@ class GGXF:
         metadata = self.metadata().copy()
         content = metadata.pop(GGXF_ATTR_CONTENT, "undefined")
         groups = [group.summary() for group in self.groups()]
-        return {GGXF_ATTR_CONTENT: content, "metadata": metadata, "groups": groups}
+        return {GGXF_ATTR_CONTENT: content, JSON_METADATA_ATTR: metadata, GGXF_ATTR_GGXF_GROUPS: groups}
 
 
 class Group:
@@ -376,8 +376,8 @@ class Grid:
         self._xy0 = coeffs[:, 0]
         self._tfm = coeffs[:, 1:]
         self._inv = np.linalg.inv(self._tfm)
-        self._imax = int(metadata[GRID_ATTR_I_NODE_MAXIMUM])
-        self._jmax = int(metadata[GRID_ATTR_J_NODE_MAXIMUM])
+        self._imax = int(metadata[GRID_ATTR_I_NODE_COUNT] - 1)
+        self._jmax = int(metadata[GRID_ATTR_J_NODE_COUNT] - 1)
         self._nparam = group.nparam()
         self._cellmax = np.array([self._imax - 1, self._jmax - 1])
         range = np.array(
@@ -703,9 +703,7 @@ class BaseReader:
         self._source = None
         self._loadok = True
         self._errors = []
-        self._validator = AttributeValidator(
-            CommonAttributes, errorhandler=self.loadError
-        )
+        self._validator = AttributeValidator(CommonAttributes, errorhandler=self)
         self._logger = logging.getLogger("GGXF.BaseReader")
 
     def setSource(self, source):
@@ -738,10 +736,13 @@ class BaseReader:
                 return False
         return bool(value)
 
-    def loadError(self, message):
+    def error(self, message):
         self._logger.error(message)
         self._errors.append(message)
         self._loadok = False
+
+    def warn(self, message):
+        self._logger.warn(message)
 
     def read(self):
         raise NotImplementedError(

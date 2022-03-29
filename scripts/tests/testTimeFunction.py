@@ -39,7 +39,7 @@ class TimeTest(unittest.TestCase):
 
     def test_VelocityTimeFunction(self):
         metadata = {
-            "functionName": "velocity",
+            "functionType": "velocity",
             "functionReferenceEpoch": 2003.0,
         }
         self._runtimetest(
@@ -48,7 +48,7 @@ class TimeTest(unittest.TestCase):
             ((2003.0, 0.0), (2013.0, 10.0), (1999.5, -3.5)),
         )
         metadata = {
-            "functionName": "velocity",
+            "functionType": "velocity",
             "functionReferenceDate": "2003-01-01",
         }
         self._runtimetest(
@@ -57,7 +57,7 @@ class TimeTest(unittest.TestCase):
             ((2003.0, 0.0), (2013.0, 10.0), (1999.5, -3.5)),
         )
         metadata = {
-            "functionName": "velocity",
+            "functionType": "velocity",
             "functionReferenceEpoch": "2003.0",
             "startEpoch": "2001.5",
         }
@@ -67,7 +67,7 @@ class TimeTest(unittest.TestCase):
             ((2003.0, 0.0), (2013.0, 10.0), (1999.5, -1.5)),
         )
         metadata = {
-            "functionName": "velocity",
+            "functionType": "velocity",
             "functionReferenceEpoch": "2003.0",
             "startEpoch": "2001.5",
             "endEpoch": "2005.5",

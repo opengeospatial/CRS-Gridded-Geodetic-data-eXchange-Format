@@ -26,7 +26,7 @@ attributePrefix = {
 }
 defaultAttrPrefix = "GGXF_ATTR_"
 
-listVarPrefix = {"functionName": "TIME_FUNCTION_TYPE"}
+listVarPrefix = {"functionType": "TIME_FUNCTION_TYPE"}
 
 # Constants not defined in "schema" file
 
@@ -52,7 +52,7 @@ ctypes = {}
 params = {}
 attrs = {}
 listVars = {}
-objecttypes = set()
+objecttypes = set(("UnicodeIdentifier",))
 
 
 def ucaseName(name):
