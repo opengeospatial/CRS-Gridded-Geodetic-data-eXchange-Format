@@ -1,0 +1,1525 @@
+netcdf ca_ntv2 {
+
+// global attributes:
+		:ggxfVersion = "1.0" ;
+		:filename = "27to83.gxt" ;
+		:content = "geographic2dOffsets" ;
+		:version = "National Transformation v2_0" ;
+		:publicationDate = "1995-02" ;
+		:partyName = "Geodetic Survey Division, Natural Resources Canada" ;
+		:onlineResourceLinkage = "https://webapp.geod.nrcan.gc.ca/geod/data-donnees/transformations.php" ;
+		:license = "https://open.canada.ca/en/open-government-licence-canada" ;
+		:contentApplicabilityExtent.boundingBox.southBoundLatitude = 40. ;
+		:contentApplicabilityExtent.boundingBox.westBoundLongitude = -141. ;
+		:contentApplicabilityExtent.boundingBox.northBoundLatitude = 60. ;
+		:contentApplicabilityExtent.boundingBox.eastBoundLongitude = -88. ;
+		string :contentApplicabilityExtent.extentDescription = "Canada south of 60°N" ;
+		:interpolationCrsWkt = "GEOGCRS[\"NAD27\",\n  DATUM[\"North American Datum 1927\",\n    ELLIPSOID[\"Clarke 1866\",6378206.4,294.9786982,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
+		:sourceCrsWkt = "GEOGCRS[\"NAD27\",\n  DATUM[\"North American Datum 1927\",\n    ELLIPSOID[\"Clarke 1866\",6378206.4,294.9786982,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
+		:targetCrsWkt = "GEOGCRS[\"NAD83(Original)\",\n  DATUM[\"North American Datum 1983\",\n    ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
+		:operationAccuracy = 1.5 ;
+
+group: national_transformation_v2_0 {
+  dimensions:
+  	parameter = 4 ;
+
+  // group attributes:
+  		:parameters.count = 4LL ;
+  		:parameters.0.parameterName = "latitudeOffset" ;
+  		:parameters.0.angleUnit = "arc-second" ;
+  		:parameters.0.unitSiRatio = 4.84813681109536e-06 ;
+  		:parameters.1.parameterName = "longitudeOffset" ;
+  		:parameters.1.angleUnit = "arc-second" ;
+  		:parameters.1.unitSiRatio = 4.84813681109536e-06 ;
+  		:parameters.2.parameterName = "latitudeOffsetUncertainty" ;
+  		:parameters.2.lengthUnit = "metre" ;
+  		:parameters.2.unitSiRatio = 1. ;
+  		:parameters.3.parameterName = "longitudeOffsetUncertainty" ;
+  		:parameters.3.lengthUnit = "metre" ;
+  		:parameters.3.unitSiRatio = 1. ;
+  		:uncertaintyMeasure = "2CEE" ;
+  		:interpolationMethod = "bilinear" ;
+
+  group: CAeast {
+    dimensions:
+    	gridi = 529 ;
+    	gridj = 241 ;
+    variables:
+    	float data(gridj, gridi, parameter) ;
+
+    // group attributes:
+    		:iNodeCount = 529LL ;
+    		:jNodeCount = 241LL ;
+    		:affineCoeffs = 60., 0., -0.0833333333333333, -88., 0.0833333333333333, 0. ;
+
+    group: NFstjohn {
+      dimensions:
+      	gridi = 81 ;
+      	gridj = 51 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 81LL ;
+      		:jNodeCount = 51LL ;
+      		:affineCoeffs = 47.8333333333333, 0., -0.00833333333333333, -53., 0.00833333333333333, 0. ;
+      } // group NFstjohn
+
+    group: ONkinstn {
+      dimensions:
+      	gridi = 321 ;
+      	gridj = 321 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 321LL ;
+      		:jNodeCount = 321LL ;
+      		:affineCoeffs = 46.5, 0., -0.00833333333333333, -78.8333333333333, 0.00833333333333333, 0. ;
+      } // group ONkinstn
+
+    group: ONottawa {
+      dimensions:
+      	gridi = 221 ;
+      	gridj = 201 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 221LL ;
+      		:jNodeCount = 201LL ;
+      		:affineCoeffs = 45.9166666666667, 0., -0.00833333333333333, -76.1666666666667, 0.00833333333333333, 0. ;
+      } // group ONottawa
+
+    group: ONsarnia {
+      dimensions:
+      	gridi = 101 ;
+      	gridj = 121 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 101LL ;
+      		:jNodeCount = 121LL ;
+      		:affineCoeffs = 43.4166666666667, 0., -0.00833333333333333, -82.5833333333333, 0.00833333333333333, 0. ;
+      } // group ONsarnia
+
+    group: ONsault {
+      dimensions:
+      	gridi = 351 ;
+      	gridj = 71 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 351LL ;
+      		:jNodeCount = 71LL ;
+      		:affineCoeffs = 46.6666666666667, 0., -0.00833333333333333, -84.6666666666667, 0.00833333333333333, 0. ;
+      } // group ONsault
+
+    group: ONtimins {
+      dimensions:
+      	gridi = 101 ;
+      	gridj = 41 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 101LL ;
+      		:jNodeCount = 41LL ;
+      		:affineCoeffs = 48.6666666666667, 0., -0.00833333333333333, -81.6666666666667, 0.00833333333333333, 0. ;
+      } // group ONtimins
+
+    group: ONtronto {
+      dimensions:
+      	gridi = 351 ;
+      	gridj = 511 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 351LL ;
+      		:jNodeCount = 511LL ;
+      		:affineCoeffs = 46.6666666666667, 0., -0.00833333333333333, -81.75, 0.00833333333333333, 0. ;
+      } // group ONtronto
+
+    group: ONwinsor {
+      dimensions:
+      	gridi = 171 ;
+      	gridj = 61 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 171LL ;
+      		:jNodeCount = 61LL ;
+      		:affineCoeffs = 42.4166666666667, 0., -0.00833333333333333, -83.1666666666667, 0.00833333333333333, 0. ;
+      } // group ONwinsor
+    } // group CAeast
+
+  group: CAwest {
+    dimensions:
+    	gridi = 649 ;
+    	gridj = 157 ;
+    variables:
+    	float data(gridj, gridi, parameter) ;
+
+    // group attributes:
+    		:iNodeCount = 649LL ;
+    		:jNodeCount = 157LL ;
+    		:affineCoeffs = 60., 0., -0.0833333333333333, -142., 0.0833333333333333, 0. ;
+
+    group: ALbanff {
+      dimensions:
+      	gridi = 11 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 11LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 51.25, 0., -0.00833333333333333, -115.583333333333, 0.00833333333333333, 0. ;
+      } // group ALbanff
+
+    group: ALbarhed {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 54.1666666666667, 0., -0.00833333333333333, -114.5, 0.00833333333333333, 0. ;
+      } // group ALbarhed
+
+    group: ALbonvil {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 54.3333333333333, 0., -0.00833333333333333, -110.833333333333, 0.00833333333333333, 0. ;
+      } // group ALbonvil
+
+    group: ALbowisl {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 49.9166666666667, 0., -0.00833333333333333, -111.5, 0.00833333333333333, 0. ;
+      } // group ALbowisl
+
+    group: ALbrooks {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 50.6666666666667, 0., -0.00833333333333333, -112., 0.00833333333333333, 0. ;
+      } // group ALbrooks
+
+    group: ALcalgry {
+      dimensions:
+      	gridi = 101 ;
+      	gridj = 101 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 101LL ;
+      		:jNodeCount = 101LL ;
+      		:affineCoeffs = 51.3333333333333, 0., -0.00833333333333333, -114.583333333333, 0.00833333333333333, 0. ;
+      } // group ALcalgry
+
+    group: ALcamros {
+      dimensions:
+      	gridi = 41 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 41LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 53.0833333333333, 0., -0.00833333333333333, -113., 0.00833333333333333, 0. ;
+      } // group ALcamros
+
+    group: ALcanmor {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 51.1666666666667, 0., -0.00833333333333333, -115.5, 0.00833333333333333, 0. ;
+      } // group ALcanmor
+
+    group: ALcardst {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 49.25, 0., -0.00833333333333333, -113.416666666667, 0.00833333333333333, 0. ;
+      } // group ALcardst
+
+    group: ALcarsta {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 51.6666666666667, 0., -0.00833333333333333, -114.25, 0.00833333333333333, 0. ;
+      } // group ALcarsta
+
+    group: ALclarho {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 50.0833333333333, 0., -0.00833333333333333, -113.666666666667, 0.00833333333333333, 0. ;
+      } // group ALclarho
+
+    group: ALcoldlk {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 54.5833333333333, 0., -0.00833333333333333, -110.333333333333, 0.00833333333333333, 0. ;
+      } // group ALcoldlk
+
+    group: ALcrowps {
+      dimensions:
+      	gridi = 71 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 71LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 49.75, 0., -0.00833333333333333, -114.75, 0.00833333333333333, 0. ;
+      } // group ALcrowps
+
+    group: ALdraytn {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 53.3333333333333, 0., -0.00833333333333333, -115.083333333333, 0.00833333333333333, 0. ;
+      } // group ALdraytn
+
+    group: ALdrumhl {
+      dimensions:
+      	gridi = 61 ;
+      	gridj = 41 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 61LL ;
+      		:jNodeCount = 41LL ;
+      		:affineCoeffs = 51.5833333333333, 0., -0.00833333333333333, -112.916666666667, 0.00833333333333333, 0. ;
+      } // group ALdrumhl
+
+    group: ALedmntn {
+      dimensions:
+      	gridi = 131 ;
+      	gridj = 91 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 131LL ;
+      		:jNodeCount = 91LL ;
+      		:affineCoeffs = 53.9166666666667, 0., -0.00833333333333333, -114.166666666667, 0.00833333333333333, 0. ;
+      } // group ALedmntn
+
+    group: ALedson {
+      dimensions:
+      	gridi = 41 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 41LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 53.6666666666667, 0., -0.00833333333333333, -116.583333333333, 0.00833333333333333, 0. ;
+      } // group ALedson
+
+    group: ALfairvw {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 56.1666666666667, 0., -0.00833333333333333, -118.5, 0.00833333333333333, 0. ;
+      } // group ALfairvw
+
+    group: ALftmacl {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 49.8333333333333, 0., -0.00833333333333333, -113.5, 0.00833333333333333, 0. ;
+      } // group ALftmacl
+
+    group: ALftmcmr {
+      dimensions:
+      	gridi = 61 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 61LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 56.8333333333333, 0., -0.00833333333333333, -111.583333333333, 0.00833333333333333, 0. ;
+      } // group ALftmcmr
+
+    group: ALgrcach {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 54., 0., -0.00833333333333333, -119.25, 0.00833333333333333, 0. ;
+      } // group ALgrcach
+
+    group: ALgrimsh {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 56.25, 0., -0.00833333333333333, -117.666666666667, 0.00833333333333333, 0. ;
+      } // group ALgrimsh
+
+    group: ALgrprar {
+      dimensions:
+      	gridi = 41 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 41LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 55.25, 0., -0.00833333333333333, -118.916666666667, 0.00833333333333333, 0. ;
+      } // group ALgrprar
+
+    group: ALhanna {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 51.75, 0., -0.00833333333333333, -112.083333333333, 0.00833333333333333, 0. ;
+      } // group ALhanna
+
+    group: ALhilevl {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 58.5833333333333, 0., -0.00833333333333333, -117.25, 0.00833333333333333, 0. ;
+      } // group ALhilevl
+
+    group: ALhinton {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 53.5, 0., -0.00833333333333333, -117.666666666667, 0.00833333333333333, 0. ;
+      } // group ALhinton
+
+    group: ALhiprai {
+      dimensions:
+      	gridi = 41 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 41LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 55.5, 0., -0.00833333333333333, -116.666666666667, 0.00833333333333333, 0. ;
+      } // group ALhiprai
+
+    group: ALinnsfl {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 52.1666666666667, 0., -0.00833333333333333, -114., 0.00833333333333333, 0. ;
+      } // group ALinnsfl
+
+    group: ALjasper {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 52.9166666666667, 0., -0.00833333333333333, -118.166666666667, 0.00833333333333333, 0. ;
+      } // group ALjasper
+
+    group: ALlacbic {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 54.8333333333333, 0., -0.00833333333333333, -112.083333333333, 0.00833333333333333, 0. ;
+      } // group ALlacbic
+
+    group: ALlacomb {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 52.5833333333333, 0., -0.00833333333333333, -113.833333333333, 0.00833333333333333, 0. ;
+      } // group ALlacomb
+
+    group: ALletbrg {
+      dimensions:
+      	gridi = 61 ;
+      	gridj = 41 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 61LL ;
+      		:jNodeCount = 41LL ;
+      		:affineCoeffs = 49.9166666666667, 0., -0.00833333333333333, -113., 0.00833333333333333, 0. ;
+      } // group ALletbrg
+
+    group: ALlkloui {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 51.5, 0., -0.00833333333333333, -116.25, 0.00833333333333333, 0. ;
+      } // group ALlkloui
+
+    group: ALlydmin {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 53.3333333333333, 0., -0.00833333333333333, -110.166666666667, 0.00833333333333333, 0. ;
+      } // group ALlydmin
+
+    group: ALmedhat {
+      dimensions:
+      	gridi = 41 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 41LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 50.1666666666667, 0., -0.00833333333333333, -110.833333333333, 0.00833333333333333, 0. ;
+      } // group ALmedhat
+
+    group: ALolds {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 51.9166666666667, 0., -0.00833333333333333, -114.25, 0.00833333333333333, 0. ;
+      } // group ALolds
+
+    group: ALoyen {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 51.4166666666667, 0., -0.00833333333333333, -110.583333333333, 0.00833333333333333, 0. ;
+      } // group ALoyen
+
+    group: ALpeacer {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 56.3333333333333, 0., -0.00833333333333333, -117.416666666667, 0.00833333333333333, 0. ;
+      } // group ALpeacer
+
+    group: ALpinchr {
+      dimensions:
+      	gridi = 11 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 11LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 49.5833333333333, 0., -0.00833333333333333, -114., 0.00833333333333333, 0. ;
+      } // group ALpinchr
+
+    group: ALponoka {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 52.75, 0., -0.00833333333333333, -113.666666666667, 0.00833333333333333, 0. ;
+      } // group ALponoka
+
+    group: ALraymnd {
+      dimensions:
+      	gridi = 51 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 51LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 49.5, 0., -0.00833333333333333, -113., 0.00833333333333333, 0. ;
+      } // group ALraymnd
+
+    group: ALredeer {
+      dimensions:
+      	gridi = 41 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 41LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 52.4166666666667, 0., -0.00833333333333333, -113.916666666667, 0.00833333333333333, 0. ;
+      } // group ALredeer
+
+    group: ALrockmt {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 52.5, 0., -0.00833333333333333, -115., 0.00833333333333333, 0. ;
+      } // group ALrockmt
+
+    group: ALslavlk {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 55.3333333333333, 0., -0.00833333333333333, -114.916666666667, 0.00833333333333333, 0. ;
+      } // group ALslavlk
+
+    group: ALstetlr {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 52.4166666666667, 0., -0.00833333333333333, -112.833333333333, 0.00833333333333333, 0. ;
+      } // group ALstetlr
+
+    group: ALstpaul {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 54.0833333333333, 0., -0.00833333333333333, -111.416666666667, 0.00833333333333333, 0. ;
+      } // group ALstpaul
+
+    group: ALstramr {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 51.1666666666667, 0., -0.00833333333333333, -113.5, 0.00833333333333333, 0. ;
+      } // group ALstramr
+
+    group: ALswanhi {
+      dimensions:
+      	gridi = 41 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 41LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 54.8333333333333, 0., -0.00833333333333333, -115.583333333333, 0.00833333333333333, 0. ;
+      } // group ALswanhi
+
+    group: ALtaber {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 49.9166666666667, 0., -0.00833333333333333, -112.25, 0.00833333333333333, 0. ;
+      } // group ALtaber
+
+    group: ALtrehil {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 51.75, 0., -0.00833333333333333, -113.333333333333, 0.00833333333333333, 0. ;
+      } // group ALtrehil
+
+    group: ALvegvil {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 53.5833333333333, 0., -0.00833333333333333, -112.166666666667, 0.00833333333333333, 0. ;
+      } // group ALvegvil
+
+    group: ALvermil {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 53.4166666666667, 0., -0.00833333333333333, -111., 0.00833333333333333, 0. ;
+      } // group ALvermil
+
+    group: ALwanwgt {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 52.9166666666667, 0., -0.00833333333333333, -111., 0.00833333333333333, 0. ;
+      } // group ALwanwgt
+
+    group: ALweslok {
+      dimensions:
+      	gridi = 41 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 41LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 54.25, 0., -0.00833333333333333, -114., 0.00833333333333333, 0. ;
+      } // group ALweslok
+
+    group: ALwetask {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 53., 0., -0.00833333333333333, -113.5, 0.00833333333333333, 0. ;
+      } // group ALwetask
+
+    group: ALwhitec {
+      dimensions:
+      	gridi = 41 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 41LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 54.1666666666667, 0., -0.00833333333333333, -115.833333333333, 0.00833333333333333, 0. ;
+      } // group ALwhitec
+
+    group: BCcambel {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 50.0833333333333, 0., -0.00833333333333333, -125.333333333333, 0.00833333333333333, 0. ;
+      } // group BCcambel
+
+    group: BCcranbk {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 49.5833333333333, 0., -0.00833333333333333, -115.833333333333, 0.00833333333333333, 0. ;
+      } // group BCcranbk
+
+    group: BCdawson {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 55.8333333333333, 0., -0.00833333333333333, -120.333333333333, 0.00833333333333333, 0. ;
+      } // group BCdawson
+
+    group: BCelkfrd {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 50.0833333333333, 0., -0.00833333333333333, -115., 0.00833333333333333, 0. ;
+      } // group BCelkfrd
+
+    group: BCfield {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 51.4166666666667, 0., -0.00833333333333333, -116.583333333333, 0.00833333333333333, 0. ;
+      } // group BCfield
+
+    group: BCgranil {
+      dimensions:
+      	gridi = 11 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 11LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 54.9166666666667, 0., -0.00833333333333333, -126.25, 0.00833333333333333, 0. ;
+      } // group BCgranil
+
+    group: BCkamlop {
+      dimensions:
+      	gridi = 51 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 51LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 50.75, 0., -0.00833333333333333, -120.5, 0.00833333333333333, 0. ;
+      } // group BCkamlop
+
+    group: BCkelwna {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 50.0833333333333, 0., -0.00833333333333333, -119.583333333333, 0.00833333333333333, 0. ;
+      } // group BCkelwna
+
+    group: BClogan {
+      dimensions:
+      	gridi = 11 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 11LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 50.5, 0., -0.00833333333333333, -120.833333333333, 0.00833333333333333, 0. ;
+      } // group BClogan
+
+    group: BCmacknz {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 55.4166666666667, 0., -0.00833333333333333, -123.166666666667, 0.00833333333333333, 0. ;
+      } // group BCmacknz
+
+    group: BCnanimo {
+      dimensions:
+      	gridi = 61 ;
+      	gridj = 61 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 61LL ;
+      		:jNodeCount = 61LL ;
+      		:affineCoeffs = 49.25, 0., -0.00833333333333333, -124.083333333333, 0.00833333333333333, 0. ;
+      } // group BCnanimo
+
+    group: BCnelson {
+      dimensions:
+      	gridi = 11 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 11LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 49.5833333333333, 0., -0.00833333333333333, -117.333333333333, 0.00833333333333333, 0. ;
+      } // group BCnelson
+
+    group: BCparkvl {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 49.3333333333333, 0., -0.00833333333333333, -124.416666666667, 0.00833333333333333, 0. ;
+      } // group BCparkvl
+
+    group: BCpentic {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 49.5833333333333, 0., -0.00833333333333333, -119.666666666667, 0.00833333333333333, 0. ;
+      } // group BCpentic
+
+    group: BCportal {
+      dimensions:
+      	gridi = 11 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 11LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 49.3333333333333, 0., -0.00833333333333333, -124.833333333333, 0.00833333333333333, 0. ;
+      } // group BCportal
+
+    group: BCpowell {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 49.9166666666667, 0., -0.00833333333333333, -124.583333333333, 0.00833333333333333, 0. ;
+      } // group BCpowell
+
+    group: BCprigeo {
+      dimensions:
+      	gridi = 41 ;
+      	gridj = 41 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 41LL ;
+      		:jNodeCount = 41LL ;
+      		:affineCoeffs = 54.0833333333333, 0., -0.00833333333333333, -122.916666666667, 0.00833333333333333, 0. ;
+      } // group BCprigeo
+
+    group: BCroslnd {
+      dimensions:
+      	gridi = 11 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 11LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 49.0833333333333, 0., -0.00833333333333333, -117.833333333333, 0.00833333333333333, 0. ;
+      } // group BCroslnd
+
+    group: BCtrail {
+      dimensions:
+      	gridi = 11 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 11LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 49.1666666666667, 0., -0.00833333333333333, -117.75, 0.00833333333333333, 0. ;
+      } // group BCtrail
+
+    group: BCtumblr {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 55.1666666666667, 0., -0.00833333333333333, -121.083333333333, 0.00833333333333333, 0. ;
+      } // group BCtumblr
+
+    group: BCvancvr {
+      dimensions:
+      	gridi = 131 ;
+      	gridj = 51 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 131LL ;
+      		:jNodeCount = 51LL ;
+      		:affineCoeffs = 49.4166666666667, 0., -0.00833333333333333, -123.25, 0.00833333333333333, 0. ;
+      } // group BCvancvr
+
+    group: BCvernon {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 50.3333333333333, 0., -0.00833333333333333, -119.333333333333, 0.00833333333333333, 0. ;
+      } // group BCvernon
+
+    group: BCvictor {
+      dimensions:
+      	gridi = 41 ;
+      	gridj = 51 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 41LL ;
+      		:jNodeCount = 51LL ;
+      		:affineCoeffs = 48.75, 0., -0.00833333333333333, -123.583333333333, 0.00833333333333333, 0. ;
+      } // group BCvictor
+
+    group: ONthundr {
+      dimensions:
+      	gridi = 71 ;
+      	gridj = 51 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 71LL ;
+      		:jNodeCount = 51LL ;
+      		:affineCoeffs = 48.5833333333333, 0., -0.00833333333333333, -89.5833333333333, 0.00833333333333333, 0. ;
+      } // group ONthundr
+
+    group: SAestvan {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 49.25, 0., -0.00833333333333333, -103.083333333333, 0.00833333333333333, 0. ;
+      } // group SAestvan
+
+    group: SAmelfrt {
+      dimensions:
+      	gridi = 71 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 71LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 52.9166666666667, 0., -0.00833333333333333, -104.666666666667, 0.00833333333333333, 0. ;
+      } // group SAmelfrt
+
+    group: SAmelvil {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 51., 0., -0.00833333333333333, -102.916666666667, 0.00833333333333333, 0. ;
+      } // group SAmelvil
+
+    group: SAmosjaw {
+      dimensions:
+      	gridi = 41 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 41LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 50.5, 0., -0.00833333333333333, -105.75, 0.00833333333333333, 0. ;
+      } // group SAmosjaw
+
+    group: SAnbatle {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 52.8333333333333, 0., -0.00833333333333333, -108.416666666667, 0.00833333333333333, 0. ;
+      } // group SAnbatle
+
+    group: SApralbt {
+      dimensions:
+      	gridi = 61 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 61LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 53.3333333333333, 0., -0.00833333333333333, -106., 0.00833333333333333, 0. ;
+      } // group SApralbt
+
+    group: SAregina {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 50.5833333333333, 0., -0.00833333333333333, -104.75, 0.00833333333333333, 0. ;
+      } // group SAregina
+
+    group: SAsatoon {
+      dimensions:
+      	gridi = 51 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 51LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 52.25, 0., -0.00833333333333333, -106.833333333333, 0.00833333333333333, 0. ;
+      } // group SAsatoon
+
+    group: SAswiftc {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 50.4166666666667, 0., -0.00833333333333333, -107.916666666667, 0.00833333333333333, 0. ;
+      } // group SAswiftc
+
+    group: SAweybrn {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 49.75, 0., -0.00833333333333333, -103.916666666667, 0.00833333333333333, 0. ;
+      } // group SAweybrn
+
+    group: SAyorktn {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 51.3333333333333, 0., -0.00833333333333333, -102.583333333333, 0.00833333333333333, 0. ;
+      } // group SAyorktn
+    } // group CAwest
+
+  group: CAnorth {
+    dimensions:
+    	gridi = 589 ;
+    	gridj = 181 ;
+    variables:
+    	float data(gridj, gridi, parameter) ;
+
+    // group attributes:
+    		:iNodeCount = 589LL ;
+    		:jNodeCount = 181LL ;
+    		:affineCoeffs = 75., 0., -0.0833333333333333, -142., 0.166666666666667, 0. ;
+
+    group: NWclyder {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 31 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 31LL ;
+      		:affineCoeffs = 70.5833333333333, 0., -0.00833333333333333, -68.8333333333333, 0.0166666666666667, 0. ;
+      } // group NWclyder
+
+    group: NWftgood {
+      dimensions:
+      	gridi = 21 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 21LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 66.3333333333333, 0., -0.00833333333333333, -128.833333333333, 0.0166666666666667, 0. ;
+      } // group NWftgood
+
+    group: NWhayriv {
+      dimensions:
+      	gridi = 61 ;
+      	gridj = 61 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 61LL ;
+      		:jNodeCount = 61LL ;
+      		:affineCoeffs = 61., 0., -0.00833333333333333, -116.5, 0.0166666666666667, 0. ;
+      } // group NWhayriv
+
+    group: NWinuvik {
+      dimensions:
+      	gridi = 31 ;
+      	gridj = 41 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 31LL ;
+      		:jNodeCount = 41LL ;
+      		:affineCoeffs = 68.5, 0., -0.00833333333333333, -133.833333333333, 0.0166666666666667, 0. ;
+      } // group NWinuvik
+
+    group: NWiqulit {
+      dimensions:
+      	gridi = 61 ;
+      	gridj = 61 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 61LL ;
+      		:jNodeCount = 61LL ;
+      		:affineCoeffs = 64., 0., -0.00833333333333333, -69., 0.0166666666666667, 0. ;
+      } // group NWiqulit
+
+    group: NWpondin {
+      dimensions:
+      	gridi = 41 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 41LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 72.75, 0., -0.00833333333333333, -78.1666666666667, 0.0166666666666667, 0. ;
+      } // group NWpondin
+
+    group: NWrankin {
+      dimensions:
+      	gridi = 11 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 11LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 62.9166666666667, 0., -0.00833333333333333, -92.1666666666667, 0.0166666666666667, 0. ;
+      } // group NWrankin
+
+    group: NWyellow {
+      dimensions:
+      	gridi = 11 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 11LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 62.5, 0., -0.00833333333333333, -114.5, 0.0166666666666667, 0. ;
+      } // group NWyellow
+
+    group: YUdawson {
+      dimensions:
+      	gridi = 11 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 11LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 64.1666666666667, 0., -0.00833333333333333, -139.5, 0.0166666666666667, 0. ;
+      } // group YUdawson
+
+    group: YUrossri {
+      dimensions:
+      	gridi = 11 ;
+      	gridj = 21 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 11LL ;
+      		:jNodeCount = 21LL ;
+      		:affineCoeffs = 62.0833333333333, 0., -0.00833333333333333, -132.583333333333, 0.0166666666666667, 0. ;
+      } // group YUrossri
+
+    group: YUwhiteh {
+      dimensions:
+      	gridi = 6 ;
+      	gridj = 11 ;
+      variables:
+      	float data(gridj, gridi, parameter) ;
+
+      // group attributes:
+      		:iNodeCount = 6LL ;
+      		:jNodeCount = 11LL ;
+      		:affineCoeffs = 60.75, 0., -0.00833333333333333, -135.083333333333, 0.0166666666666667, 0. ;
+      } // group YUwhiteh
+    } // group CAnorth
+
+  group: CAarctic {
+    dimensions:
+    	gridi = 295 ;
+    	gridj = 109 ;
+    variables:
+    	float data(gridj, gridi, parameter) ;
+
+    // group attributes:
+    		:iNodeCount = 295LL ;
+    		:jNodeCount = 109LL ;
+    		:affineCoeffs = 84., 0., -0.0833333333333333, -142., 0.333333333333333, 0. ;
+    } // group CAarctic
+  } // group national_transformation_v2_0
+}
