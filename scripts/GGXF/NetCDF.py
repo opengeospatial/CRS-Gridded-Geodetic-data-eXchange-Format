@@ -25,8 +25,8 @@ NETCDF_DTYPE_FLOAT64 = "float64"
 
 NETCDF_OPTION_USE_COMPOUND_TYPE = "use_compound_types"
 NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS = "simplify_1param_grids"
-NETCDF_OPTION_USE_NESTED_GRIDS = "use_nested_grids"
 NETCDF_OPTION_WRITE_CDL = "write_cdl"
+NETCDF_OPTION_WRITE_CDL_HEADER = "write_cdl_header"
 
 NETCDF_VAR_GRIDDATA = "data"
 
@@ -37,8 +37,8 @@ NETCDF_DIMENSION_NPARAM = "parameter"
 NETCDF_OPTIONS = f"""
 The following options apply to NetCDF input (I) and output (O):
 
-  "{NETCDF_OPTION_USE_NESTED_GRIDS}" (O) Generate NetCDF with nested grid definition (true or false, default true)
   "{NETCDF_OPTION_WRITE_CDL}" (O) Generate an output CDL file as well as a NetCDF file (default false)
+  "{NETCDF_OPTION_WRITE_CDL_HEADER}" (O) Only write the header information in the CDL file (default false)
   "{NETCDF_OPTION_USE_COMPOUND_TYPE}" (O) Use compound types (very limited test implementation) (default false)
 """
 # "{NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS}" (O) Grids with just one parameter are created with just 2 dimensions (default false)
@@ -217,8 +217,6 @@ class Writer(BaseWriter):
         )
         if self._useCompoundTypes:
             self._logger.warning("Using NetCDF4 compound types (experimental)")
-        self._useNestedGrids = self.getBoolOption(NETCDF_OPTION_USE_NESTED_GRIDS, True)
-        self._logger.debug(f"Using nested grid structure: {self._useNestedGrids}")
         # Not currently implemented.
         # self._simplify1ParamGrids = self.getBoolOption(
         #     NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS, False
@@ -238,15 +236,19 @@ class Writer(BaseWriter):
         root = netCDF4.Dataset(netcdf4_file, "w", format="NETCDF4")
         self.saveGgxfNetCdf4(root, ggxf)
         root.close()
-        if self.getBoolOption(NETCDF_OPTION_WRITE_CDL):
+        if self.getBoolOption(NETCDF_OPTION_WRITE_CDL) or self.getBoolOption(
+            NETCDF_OPTION_WRITE_CDL_HEADER
+        ):
             root = netCDF4.Dataset(netcdf4_file, "r", format="NETCDF4")
             cdl_file = os.path.splitext(netcdf4_file)[0] + ".cdl"
-            root.tocdl(data=True, outfile=cdl_file)
+            data = not self.getBoolOption(NETCDF_OPTION_WRITE_CDL_HEADER)
+            root.tocdl(data=data, outfile=cdl_file)
 
     def saveGgxfNetCdf4(self, root, ggxf):
         nctypes = {}
 
         # NetCDF compound types
+        exclude = [GGXF_ATTR_GGXF_GROUPS, GGXF_ATTR_GRID_DATA]
         if self._useCompoundTypes:
             paramtype = np.dtype(
                 [("parameterName", "S32"), ("unit", "S16"), ("unitSiRatio", np.float64)]
@@ -254,9 +256,16 @@ class Writer(BaseWriter):
             ncparamtype = root.createCompoundType(paramtype, "ggxfParameterType")
             nctypes["ggxfParameterType"] = GGXF.RecordType(paramtype, ncparamtype)
 
-        self._saveMetadata(
-            root, ggxf.metadata(), [GGXF_ATTR_GGXF_GROUPS, GGXF_ATTR_GRID_DATA]
-        )
+            parameters = self.parameters()
+            paramdata = [(p.name(), p.units(), p.siratio()) for p in parameters]
+            paramtype = nctypes["ggxfParameterType"]
+            paramdata = np.array(paramdata, dtype=paramtype.dtype)
+            paramvar = root.createVariable(
+                "parameters", paramtype.netcdfType, NETCDF_DIMENSION_NPARAM
+            )
+            paramvar[:] = paramdata
+            exclude.append(GGXF_ATTR_PARAMETERS)
+        self._saveMetadata(root, ggxf.metadata(), exclude)
 
         # Store each of the groups
         for group in ggxf.groups():
@@ -268,24 +277,15 @@ class Writer(BaseWriter):
         exclude = [GROUP_ATTR_GGXF_GROUP_NAME, GROUP_ATTR_GRIDS]
 
         # Store group attributes
-        parameters = group.parameters()
+        parameters = group.parameterNames()
         nparam = len(parameters)
 
         cdfgroup.createDimension(NETCDF_DIMENSION_NPARAM, nparam)
-        if self._useCompoundTypes:
-            paramdata = [(p.name(), p.units(), p.siratio()) for p in parameters]
-            paramtype = nctypes["ggxfParameterType"]
-            paramdata = np.array(paramdata, dtype=paramtype.dtype)
-            paramvar = cdfgroup.createVariable(
-                "parameters", paramtype.netcdfType, NETCDF_DIMENSION_NPARAM
-            )
-            paramvar[:] = paramdata
-            exclude.append(GROUP_ATTR_PARAMETERS)
 
         self._saveMetadata(cdfgroup, group.metadata(), exclude)
 
         # Store each of the grids
-        grids = group.grids() if self._useNestedGrids else group.allgrids()
+        grids = group.grids()
         for grid in grids:
             self.saveGridNetCdf4(cdfgroup, grid, nctypes, nparam)
 
@@ -301,12 +301,6 @@ class Writer(BaseWriter):
             GRID_ATTR_DATA_SOURCE,
             GRID_ATTR_AFFINE_COEFFS,
         ]
-
-        if grid.parent() and not self._useNestedGrids:
-            grid.metadata()[GRID_ATTR_PARENT_GRID_NAME] = grid.parent().name()
-        else:
-            exclude.append(GRID_ATTR_PARENT_GRID_NAME)
-
         # Store the grid metadata
         # affinevar=cdfgrid.createVariable('affineCoeffs',np.float64,'affine')
         # self._logger.debug(f"Filling affineCoeffs {affinevar.shape} {affinevar.datatype} from {grid['affineCoeffs']}")
@@ -328,9 +322,8 @@ class Writer(BaseWriter):
         cdfgrid.setncatts({GRID_ATTR_AFFINE_COEFFS: metadata[GRID_ATTR_AFFINE_COEFFS]})
 
         # Support for nested grid possibility
-        if self._useNestedGrids:
-            for subgrid in grid.subgrids():
-                self.saveGridNetCdf4(cdfgrid, subgrid, nctypes, nparam)
+        for subgrid in grid.subgrids():
+            self.saveGridNetCdf4(cdfgrid, subgrid, nctypes, nparam)
 
     def saveNetCdf4MetdataDot(
         self,

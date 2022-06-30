@@ -16,7 +16,6 @@ from . import GGXF_Types
 
 YAML_OPTION_GRID_DIRECTORY = "grid_directory"
 YAML_OPTION_CHECK_DATASOURCE_AFFINE = "check_datasource_affine_coeffs"
-YAML_OPTION_USE_NESTED_GRIDS = "use_nested_grids"
 YAML_OPTION_USE_GRIDDATA_SECTION = "use_griddata_section"
 YAML_OPTION_WRITE_HEADERS_ONLY = "write_headers_only"
 YAML_AFFINE_COEFF_DIFFERENCE_TOLERANCE = 1.0e-6
@@ -36,7 +35,6 @@ The following options can apply to YAML format input (I) and output (O):
 
   "{YAML_OPTION_GRID_DIRECTORY}" (I) Base directory used for external grid source names
   "{YAML_OPTION_CHECK_DATASOURCE_AFFINE}" (I) Compare affine coeffs from data source with those defined in YAML (true or false)
-  "{YAML_OPTION_USE_NESTED_GRIDS}" (O) Create nested grids in the output YAML (true or false, default true)
   "{YAML_OPTION_USE_GRIDDATA_SECTION}" (O) Use a gridData section for grid data (true or false, default true if more than one grid)
   "{YAML_OPTION_WRITE_HEADERS_ONLY} (O) Write headers only - omit the grid data"
 """
@@ -121,10 +119,11 @@ class Reader(BaseReader):
         # Build a list of grids
         gridindex = {}
         gridnparam = {}
+        ggxfnparam = len(ydata.get(GGXF_ATTR_PARAMETERS, []))
         for igroup, ygroup in enumerate(ydata.get(GGXF_ATTR_GGXF_GROUPS, [])):
             groupname = ygroup.get(GROUP_ATTR_GGXF_GROUP_NAME, f"{igroup+1}")
-            params = ygroup.get(GROUP_ATTR_PARAMETERS, [])
-            nparam = len(params)
+            params = ygroup.get(GROUP_ATTR_GROUP_PARAMETERS, [])
+            nparam = len(params) or ggxfnparam
             if not nparam:
                 self.error(f"Group {groupname} header does not define any parameters")
             ygrids = ygroup.get(GROUP_ATTR_GRIDS, [])
@@ -349,7 +348,6 @@ class Writer(BaseWriter):
         loader.add_representer(Group, self._writeGgxfGroup)
         loader.add_representer(Grid, self._writeGgxfGrid)
         loader.add_representer(np.ndarray, self._writeGridData)
-        self._useNestedGrids = self.getBoolOption(YAML_OPTION_USE_NESTED_GRIDS, True)
         self._headerOnly = self.getBoolOption(YAML_OPTION_WRITE_HEADERS_ONLY, False)
 
         with tempfile.TemporaryFile("w+") as tmph, open(yaml_file, "w") as yamlh:
@@ -391,10 +389,7 @@ class Writer(BaseWriter):
     def _writeGgxfGroup(self, dumper, group):
         ydata = group.metadata().copy()
         ydata[GROUP_ATTR_GGXF_GROUP_NAME] = group.name()
-        if self._useNestedGrids:
-            ydata["grids"] = group.grids()
-        else:
-            ydata["grids"] = list(group.allgrids())
+        ydata["grids"] = group.grids()
         return dumper.represent_mapping(YAML_GROUP_TAG, ydata)
 
     def _writeGgxfGrid(self, dumper, grid):
@@ -402,10 +397,7 @@ class Writer(BaseWriter):
         ydata[GRID_ATTR_AFFINE_COEFFS] = [
             float(c) for c in ydata[GRID_ATTR_AFFINE_COEFFS]
         ]
-        ydata.pop(GRID_ATTR_PARENT_GRID_NAME, None)
-        if not self._useNestedGrids and grid.parent() is not None:
-            ydata[GRID_ATTR_PARENT_GRID_NAME] = grid.parent().name()
-        elif len(grid.subgrids()) > 0:
+        if len(grid.subgrids()) > 0:
             ydata["grids"] = grid.subgrids()
         ydata.pop(GRID_ATTR_DATA, None)
         if not self._useGridDataSection and not self._headerOnly:

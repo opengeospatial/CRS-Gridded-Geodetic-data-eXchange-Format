@@ -23,6 +23,25 @@ CommonAttributes = {
             ],
         },
         {
+            ATTRDEF_NAME: GGXF_ATTR_TITLE,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_TITLE,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_ABSTRACT,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_ABSTRACT,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
             ATTRDEF_NAME: GGXF_ATTR_FILENAME,
             ATTRDEF_CHOICE: [
                 {
@@ -41,29 +60,61 @@ CommonAttributes = {
             ],
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_INTERPOLATION_CRS_WKT,
+            ATTRDEF_NAME: GGXF_ATTR_CONTENT_BOX,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_CONTENT_BOX,
+                    ATTRDEF_TYPE: ATTRDEF_TYPE_BOUNDING_BOX,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_PARAMETERS,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_PARAMETERS,
+                    ATTRDEF_TYPE: ATTRDEF_TYPE_PARAMETER,
+                    ATTRDEF_LIST: True,
+                },
+            ],
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_INTERPOLATION_CRS,
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GGXF_ATTR_INTERPOLATION_CRS_WKT,
                     ATTRDEF_TYPE: str,
                 },
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_INTERPOLATION_CRS_JSON,
+                    ATTRDEF_TYPE: dict,
+                },
             ],
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_SOURCE_CRS_WKT,
+            ATTRDEF_NAME: GGXF_ATTR_SOURCE_CRS,
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GGXF_ATTR_SOURCE_CRS_WKT,
                     ATTRDEF_TYPE: str,
                 },
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_SOURCE_CRS_JSON,
+                    ATTRDEF_TYPE: dict,
+                },
             ],
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_TARGET_CRS_WKT,
+            ATTRDEF_NAME: GGXF_ATTR_TARGET_CRS,
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GGXF_ATTR_TARGET_CRS_WKT,
                     ATTRDEF_TYPE: str,
+                },
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_TARGET_CRS_JSON,
+                    ATTRDEF_TYPE: dict,
                 },
             ],
         },
@@ -118,10 +169,50 @@ CommonAttributes = {
             ATTRDEF_OPTIONAL: True,
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_REMARK,
+            ATTRDEF_NAME: GGXF_ATTR_PARTY_NAME,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GGXF_ATTR_REMARK,
+                    ATTRDEF_NAME: GGXF_ATTR_PARTY_NAME,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_ELECTRONIC_MAIL_ADDRESS,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_ELECTRONIC_MAIL_ADDRESS,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_ONLINE_RESOURCE_LINKAGE,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_ONLINE_RESOURCE_LINKAGE,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_DELIVERY_POINT,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_DELIVERY_POINT,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_COMMENT,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_COMMENT,
                     ATTRDEF_TYPE: str,
                 },
             ],
@@ -142,6 +233,16 @@ CommonAttributes = {
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GGXF_ATTR_UNCERTAINTY_MEASURE,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_UNCERTAINTY_DEFAULT,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_UNCERTAINTY_DEFAULT,
                     ATTRDEF_TYPE: str,
                 },
             ],
@@ -180,6 +281,17 @@ CommonAttributes = {
     ],
     ATTRDEF_TYPE_GROUP: [
         {
+            ATTRDEF_NAME: GROUP_ATTR_GROUP_PARAMETERS,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GROUP_ATTR_GROUP_PARAMETERS,
+                    ATTRDEF_TYPE: str,
+                    ATTRDEF_LIST: True,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
             ATTRDEF_NAME: GROUP_ATTR_INTERPOLATION_METHOD,
             ATTRDEF_CHOICE: [
                 {
@@ -203,20 +315,20 @@ CommonAttributes = {
             ATTRDEF_OPTIONAL: True,
         },
         {
-            ATTRDEF_NAME: GROUP_ATTR_PARAMETERS,
+            ATTRDEF_NAME: GROUP_ATTR_COMMENT,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GROUP_ATTR_PARAMETERS,
-                    ATTRDEF_TYPE: ATTRDEF_TYPE_PARAMETER,
-                    ATTRDEF_LIST: True,
+                    ATTRDEF_NAME: GROUP_ATTR_COMMENT,
+                    ATTRDEF_TYPE: str,
                 },
             ],
+            ATTRDEF_OPTIONAL: True,
         },
         {
-            ATTRDEF_NAME: GROUP_ATTR_REMARK,
+            ATTRDEF_NAME: GROUP_ATTR_UNCERTAINTY_DEFAULT,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GROUP_ATTR_REMARK,
+                    ATTRDEF_NAME: GROUP_ATTR_UNCERTAINTY_DEFAULT,
                     ATTRDEF_TYPE: str,
                 },
             ],
@@ -264,10 +376,10 @@ CommonAttributes = {
             ],
         },
         {
-            ATTRDEF_NAME: GRID_ATTR_REMARK,
+            ATTRDEF_NAME: GRID_ATTR_COMMENT,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GRID_ATTR_REMARK,
+                    ATTRDEF_NAME: GRID_ATTR_COMMENT,
                     ATTRDEF_TYPE: str,
                 },
             ],
@@ -658,16 +770,6 @@ YamlAttributes = {
             ],
         },
         {
-            ATTRDEF_NAME: GRID_ATTR_PARENT_GRID_NAME,
-            ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: GRID_ATTR_PARENT_GRID_NAME,
-                    ATTRDEF_TYPE: str,
-                },
-            ],
-            ATTRDEF_OPTIONAL: True,
-        },
-        {
             ATTRDEF_NAME: GRID_ATTR_GRIDS,
             ATTRDEF_CHOICE: [
                 {
@@ -692,7 +794,7 @@ YamlAttributes = {
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GRID_ATTR_DATA_SOURCE,
-                    ATTRDEF_TYPE: str,
+                    ATTRDEF_TYPE: None,
                 },
             ],
             ATTRDEF_OPTIONAL: True,
@@ -900,12 +1002,6 @@ ContentTypes = {
             [GGXF_PARAMETER_GEOID_HEIGHT, GGXF_PARAMETER_GEOID_HEIGHT_UNCERTAINTY],
         ],
     },
-    GGXF_CONTENT_QUASI_GEOID_MODEL: {
-        ATTRDEF_PARAMETER_SETS: [
-            [GGXF_PARAMETER_GEOID_HEIGHT],
-            [GGXF_PARAMETER_GEOID_HEIGHT, GGXF_PARAMETER_GEOID_HEIGHT_UNCERTAINTY],
-        ],
-    },
     GGXF_CONTENT_DEVIATIONS_OF_THE_VERTICAL: {
         ATTRDEF_PARAMETER_SETS: [
             [GGXF_PARAMETER_DEVIATION_EAST, GGXF_PARAMETER_DEVIATION_NORTH],
@@ -922,12 +1018,6 @@ ContentTypes = {
                 GGXF_PARAMETER_DEVIATION_EAST_GEOID_UNCERTAINTY,
                 GGXF_PARAMETER_DEVIATION_NORTH_GEOID_UNCERTAINTY,
             ],
-        ],
-    },
-    GGXF_CONTENT_HEIGHT_CORRECTION_MODEL: {
-        ATTRDEF_PARAMETER_SETS: [
-            [GGXF_PARAMETER_HEIGHT_OFFSET],
-            [GGXF_PARAMETER_HEIGHT_OFFSET, GGXF_PARAMETER_HEIGHT_OFFSET_UNCERTAINTY],
         ],
     },
     GGXF_CONTENT_HYDROID_MODEL: {

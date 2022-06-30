@@ -68,7 +68,7 @@ class App:
         parser.add_argument(
             "--output-csv-file",
             help="CSV file to convert - assumes column headers with X, Y columns (default based on input)",
-            metavar="output_ssv_filename",
+            metavar="output_csv_filename",
         )
         parser.add_argument(
             "--csv-decimal-places",
@@ -224,15 +224,13 @@ class App:
         param0 = len(csvcols)
         params = {}
         empty = []
-        for group in ggxf.groups():
-            for param in group.parameters():
-                name = param.name()
-                if name not in params:
-                    params[name] = param0
-                    param0 += 2
-                    csvcols.append(f"{name}-min")
-                    csvcols.append(f"{name}-max")
-                    empty.extend(["", ""])
+        for param in ggxf.parameters():
+            name = param.name()
+            params[name] = param0
+            param0 += 2
+            csvcols.append(f"{name}-min")
+            csvcols.append(f"{name}-max")
+            empty.extend(["", ""])
         with open(csv_summary_file, "w") as csvh:
             csvw = csv.writer(csvh)
             csvw.writerow(csvcols)
@@ -306,8 +304,7 @@ class App:
             empty = []
             fieldid = {}
             for grid in grids:
-                for param in grid.group().parameters():
-                    pname = param.name()
+                for pname in grid.group().parameterNames():
                     if pname not in fields:
                         fieldid[pname] = len(fields)
                         fields.append(pname)
@@ -317,7 +314,7 @@ class App:
                 imax, jmax = grid.maxij()
                 data = grid.data()
                 gridid = str(id)
-                valcols = [fieldid[p.name()] for p in grid.group().parameters()]
+                valcols = [fieldid[pname] for pname in grid.group().parameterNames()]
                 for inode in range(imax + 1):
                     for jnode in range(jmax + 1):
                         xy = grid.calcxy([inode, jnode])

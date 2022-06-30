@@ -162,9 +162,6 @@ def loadGTiffGridData(source, sourceref=None, tiffdir=None):
         md = griddata["metadata"]
         gmd = md[""]
         gdata["gridName"] = makeNameValidIdentifier(gmd["grid_name"])
-        parent = gmd.get("parent_grid_name")
-        if parent:
-            gdata["parentGridName"] = makeNameValidIdentifier(parent)
         affine = list(griddata["geoTransform"])
         affine[0] += affine[1] / 2.0
         affine[3] += affine[5] / 2.0
@@ -174,9 +171,9 @@ def loadGTiffGridData(source, sourceref=None, tiffdir=None):
         size = griddata["size"]
         gdata["iNodeCount"] = size[0]
         gdata["jNodeCount"] = size[1]
-        # remark=gmd.get('TIFFTAG_IMAGEDESCRIPTION')
-        # if remark:
-        #     gdata['remark']=remark
+        # comment=gmd.get('TIFFTAG_IMAGEDESCRIPTION')
+        # if comment:
+        #     gdata['comment']=comment
         gdata["dataSource"] = sourceref or source
         for k, v in md.get("SUBDATASETS", {}).items():
             if m := re.match(r"^SUBDATASET_(\d+)_NAME", k):
@@ -321,7 +318,13 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
     gmodel["filename"] = "unknown"
     gmodel["version"] = model["version"]
     gmodel["content"] = "deformationModel"
-    gmodel["remark"] = cleanstr(model["description"])
+    description = cleanstr(model["description"])
+    abstract = ""
+    if "\n" in description:
+        description, abstract = description.split("\n", maxsplit=1)
+    gmodel["title"] = description
+    if abstract:
+        gmodel["abstract"] = abstract
     authority = OrderedDict()
     authority["partyName"] = model["authority"]["name"]
     address = model["authority"]["address"]
@@ -376,6 +379,10 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
     gmodel["interpolationCrsWkt"] = getepsg(model["definition_crs"])[
         "crsWkt"
     ]  # gridcrs is WKT in current file - ignoring
+    gmodel["parameters"] = [
+        {"parameterName": p, "lengthUnit": "metre", "unitSiRatio": 1.0}
+        for p in displacementParams["3d"]
+    ]
     gmodel["operationAccuracy"] = 0.01
     gmodel["uncertaintyMeasure"] = "2CEP 2SE"
     gmodel["deformationApplicationMethod"] = "addition"
@@ -390,13 +397,10 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
             continue
         group = OrderedDict()
         group["ggxfGroupName"] = makeNameValidIdentifier(gname)
-        if remark := c.get("description"):
-            group["remark"] = remark
-        params = [
-            {"parameterName": p, "lengthUnit": "metre", "unitSiRatio": 1.0}
-            for p in displacementParams[c["displacement_type"]]
-        ]
-        group["parameters"] = params
+        if comment := c.get("description"):
+            group["comment"] = comment
+
+        group["groupParameters"] = displacementParams[c["displacement_type"]]
         group["timeFunctions"] = ggxfTimeFunction(c["time_function"])
         group["interpolationMethod"] = "bilinear"
         groups.append(group)

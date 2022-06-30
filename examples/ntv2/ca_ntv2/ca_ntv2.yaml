@@ -1,5 +1,6 @@
 ggxfVersion: "1.0"
 filename: "27to83.gxt"
+title: "Canadian National NAD27-NAD83(Original) NTV2 transformation"
 content: geographic2dOffsets
 version: "National Transformation v2_0"
 publicationDate: "1995-02"
@@ -32,24 +33,23 @@ targetCrsWkt: |
       AXIS["Geodetic latitude (Lat)",north],
       AXIS["Geodetic longitude (Lon)",east],
       ANGLEUNIT["degree",0.0174532925199433]]
-
+parameters:
+  - parameterName: latitudeOffset
+    angleUnit: arc-second
+    unitSiRatio: 4.84813681109536E-06
+  - parameterName: longitudeOffset
+    angleUnit: arc-second
+    unitSiRatio: 4.84813681109536E-06
+  - parameterName: latitudeOffsetUncertainty
+    lengthUnit: metre
+    unitSiRatio: 1.0
+  - parameterName: longitudeOffsetUncertainty
+    lengthUnit: metre
+    unitSiRatio: 1.0
 operationAccuracy: 1.5
+uncertaintyMeasure: 2CEE
 ggxfGroups:
   - ggxfGroupName: "national_transformation_v2_0"
-    parameters:
-      - parameterName: latitudeOffset
-        angleUnit: arc-second
-        unitSiRatio: 4.84813681109536E-06
-      - parameterName: longitudeOffset
-        angleUnit: arc-second
-        unitSiRatio: 4.84813681109536E-06
-      - parameterName: latitudeOffsetUncertainty
-        lengthUnit: metre
-        unitSiRatio: 1.0
-      - parameterName: longitudeOffsetUncertainty
-        lengthUnit: metre
-        unitSiRatio: 1.0
-    uncertaintyMeasure: 2CEE
     interpolationMethod: bilinear
     grids:
       - gridName: CAeast

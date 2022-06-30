@@ -6,16 +6,42 @@ CommonAttributes:
       Type: ["1.0"]
     - AttributeName: content
       Type: str
+    - AttributeName: title
+      Type: str
+      Optional: false
+    - AttributeName: abstract
+      Type: str
+      Optional: true
     - AttributeName: filename
       Type: str
     - AttributeName: contentApplicabilityExtent
       Type: Extents
-    - AttributeName: interpolationCrsWkt
-      Type: str
-    - AttributeName: sourceCrsWkt
-      Type: str
-    - AttributeName: targetCrsWkt
-      Type: str
+    - AttributeName: contentBox
+      Type: BoundingBox
+      Optional: true
+    - AttributeName: parameters
+      Type: list(Parameter)
+    - AttributeChoice:
+        AttributeChoiceName: interpolationCrs
+        Attributes:
+        - AttributeName: interpolationCrsWkt
+          Type: str
+        - AttributeName: interpolationCrsJson
+          Type: dict
+    - AttributeChoice:
+        AttributeChoiceName: sourceCrs
+        Attributes:
+        - AttributeName: sourceCrsWkt
+          Type: str
+        - AttributeName: sourceCrsJson
+          Type: dict
+    - AttributeChoice:
+        AttributeChoiceName: targetCrs
+        Attributes:
+        - AttributeName: targetCrsWkt
+          Type: str
+        - AttributeName: targetCrsJson
+          Type: dict
     - AttributeName: license
       Type: str
       Optional: true
@@ -31,16 +57,32 @@ CommonAttributes:
     - AttributeName: digitalObjectIdentifier
       Type: str
       Optional: true
-    - AttributeName: remark
+    - AttributeName: partyName
+      Type: str
+      Optional: true
+    - AttributeName: electronicMailAddress
+      Type: str
+      Optional: true
+    - AttributeName: onlineResourceLinkage
+      Type: str
+      Optional: true
+    - AttributeName: deliveryPoint
+      Type: str
+      Optional: true
+    - AttributeName: comment
       Type: str
       Optional: true
     - AttributeName: tideSystem
+      Comment: What content types use this parameter.  Should it be contentType specific
       Type: str
       Optional: true
     - AttributeName: uncertaintyMeasure
       Type: str
       Optional: true
-    # - AttributeName: uncertaintyDefault
+    - AttributeName: uncertaintyDefault
+      Type: str
+      Optional: true
+      Comment: What type should this be?
     - AttributeName: userDefinedMethodExample
       Type: str
       Optional: true
@@ -50,19 +92,23 @@ CommonAttributes:
     - AttributeName: userDefinedMethodFormulaCitation
       Type: str
       Optional: true
+      Comment: What type should this be?
 
   Group:
+    - AttributeName: groupParameters
+      Type: list(str)
+      Optional: true
     - AttributeName: interpolationMethod
       Type: [bilinear, bicubic, biquadratic]
     - AttributeName: interpolationMethodCitation
       Type: str
       Optional: true
-    - AttributeName: parameters
-      Type: list(Parameter)
-    - AttributeName: remark
+    - AttributeName: comment
       Type: str
       Optional: true
-    # - AttributeName: uncertaintyDefault
+    - AttributeName: uncertaintyDefault
+      Type: str
+      Optional: true
 
   Grid:
     - AttributeName: iNodeCount
@@ -74,7 +120,7 @@ CommonAttributes:
       Optional: true
     - AttributeName: affineCoeffs
       Type: list(float,6)
-    - AttributeName: remark
+    - AttributeName: comment
       Type: str
       Optional: true
 
@@ -84,7 +130,8 @@ CommonAttributes:
       Type: str
     - AttributeName: unitSiRatio
       Type: float
-    - AttributeChoice: 
+    - AttributeChoice:
+        Comment: Would be much simpler to just have "unitName"
         AttributeChoiceName: unit
         Attributes:
         - AttributeName: unitName
@@ -105,16 +152,16 @@ CommonAttributes:
       Type: float
       Optional: true
     - AttributeName: noDataFlag
+      Comment: Should this also be of type float?
       Type: any
       Optional: true
-      # Not sure what is correct here
 
   Extents:
     - AttributeName: boundingBox
       Type: BoundingBox
     - AttributeName: extentDescription
+      Comment: Should this be optional
       Type: str
-      # Should this be optional?
       Optional: true
     - AttributeName: boundingPolygon
       Type: str
@@ -188,7 +235,7 @@ CommonAttributes:
       Optional: true
     - AttributeName: scaleFactor
       Type: float
-      Optional: true      
+      Optional: true
     - AttributeName: timeConstant
       Type: float
       Optional: true
@@ -213,17 +260,16 @@ YamlAttributes:
     Grid:
     - AttributeName: gridName
       Type: UnicodeIdentifier
-    - AttributeName: parentGridName
-      Type: str
-      Optional: true
     - AttributeName: grids
       Type: list
       Optional: true
     - AttributeName: data
-      # Type set to any as gets converted to numpy grid. Tested independently of schema
+      Comment: >
+         Type is "any" as gets converted to numpy grid. Tested specifically in
+         implementation rather than depending on schema definition.
       Type: any
     - AttributeName: dataSource
-      Type: str
+      Type: any
       Optional: true
 
 ContentTypes:
@@ -243,12 +289,12 @@ ContentTypes:
         - eastingOffset
         - southingOffset
         - eastingOffsetUncertainty
-        - southingOffsetUncertainty        
+        - southingOffsetUncertainty
     - Parameters:
         - westingOffset
         - southingOffset
         - westingOffsetUncertainty
-        - southingOffsetUncertainty        
+        - southingOffsetUncertainty
   - ContentType: Cartesian3dOffsets
     ParameterSets:
     - Parameters:
@@ -257,27 +303,27 @@ ContentTypes:
         - heightOffset
         - eastingOffsetUncertainty
         - northingOffsetUncertainty
-        - heightOffsetUncertainty              
+        - heightOffsetUncertainty
     - Parameters:
         - westingOffset
         - northingOffset
         - heightOffset
         - westingOffsetUncertainty
         - northingOffsetUncertainty
-        - heightOffsetUncertainty              
+        - heightOffsetUncertainty
     - Parameters:
         - eastingOffset
         - southingOffset
         - heightOffset
         - eastingOffsetUncertainty
-        - southingOffsetUncertainty        
-        - heightOffsetUncertainty              
+        - southingOffsetUncertainty
+        - heightOffsetUncertainty
     - Parameters:
         - westingOffset
         - southingOffset
         - heightOffset
         - westingOffsetUncertainty
-        - southingOffsetUncertainty   
+        - southingOffsetUncertainty
         - heightOffsetUncertainty
     - Parameters:
         - eastingOffset
@@ -285,28 +331,28 @@ ContentTypes:
         - depthOffset
         - eastingOffsetUncertainty
         - northingOffsetUncertainty
-        - depthOffsetUncertainty              
+        - depthOffsetUncertainty
     - Parameters:
         - westingOffset
         - northingOffset
         - depthOffset
         - westingOffsetUncertainty
         - northingOffsetUncertainty
-        - depthOffsetUncertainty              
+        - depthOffsetUncertainty
     - Parameters:
         - eastingOffset
         - southingOffset
         - depthOffset
         - eastingOffsetUncertainty
-        - southingOffsetUncertainty        
-        - depthOffsetUncertainty              
+        - southingOffsetUncertainty
+        - depthOffsetUncertainty
     - Parameters:
         - westingOffset
         - southingOffset
         - depthOffset
         - westingOffsetUncertainty
-        - southingOffsetUncertainty   
-        - depthOffsetUncertainty              
+        - southingOffsetUncertainty
+        - depthOffsetUncertainty
 
   - ContentType: geocentricTranslations
     ParameterSets:
@@ -316,14 +362,14 @@ ContentTypes:
         - geocentricZOffset
         - geocentricXOffsetUncertainty
         - geocentricYOffsetUncertainty
-        - geocentricZOffsetUncertainty    
+        - geocentricZOffsetUncertainty
   - ContentType: geographic2dOffsets
     ParameterSets:
     - Parameters:
         - latitudeOffset
         - longitudeOffset
         - latitudeOffsetUncertainty
-        - longitudeOffsetUncertainty    
+        - longitudeOffsetUncertainty
   - ContentType: geographic3dOffsets
     ParameterSets:
     - Parameters:
@@ -332,27 +378,29 @@ ContentTypes:
         - ellipsoidalHeightOffset
         - latitudeOffsetUncertainty
         - longitudeOffsetUncertainty
-        - ellipsoidalHeightOffsetUncertainty          
+        - ellipsoidalHeightOffsetUncertainty
   - ContentType: verticalOffsets
     ParameterSets:
     - Parameters:
         - heightOffset
-        - heightOffsetUncertainty     
+        - heightOffsetUncertainty
     - Parameters:
         - depthOffset
-        - depthOffsetUncertainty                      
+        - depthOffsetUncertainty
   - ContentType: geoidModel
+    Comment: >
+      The "quasiGeodiModel" and "heightCorrection" types are now incorporated
+      in geoidModel (not sure this is appropriate for heightCorrection).
+      So this needs a group attribute of geoidModelType?  
+      Specification suggests "(ii) The type of geoid model may be included in a comment
+      immediately following content type (see example E.2).".  But that does not get
+      included in the GGXF definition.
     ParameterSets:
     - Parameters:
         - geoidHeight
         - geoidHeightUncertainty
-  - ContentType: quasiGeoidModel
-    ParameterSets:
-    - Parameters:
-        - geoidHeight
-        - geoidHeightUncertainty 
   - ContentType: deviationsOfTheVertical
-    ParameterSets:  
+    ParameterSets:
     - Parameters:
         - deviationEast
         - deviationNorth
@@ -363,21 +411,18 @@ ContentTypes:
         - deviationNorthGeoid
         - deviationEastGeoidUncertainty
         - deviationNorthGeoidUncertainty
-  - ContentType: heightCorrectionModel
-    ParameterSets:
-    - Parameters:
-        - heightOffset
-        - heightOffsetUncertainty   
   - ContentType: hydroidModel
+    Comment:
+      Should each type of tidal surface be a different parameter, rather than having "heightOffset" as a parameter
+      (or (eg) surface height ) and the surface type as parameter.  Possible use case is a single grid with
+      more than one surface defined at each grid node.
+
+      Should the hydroidModel also support a parameter depthOffset
     Attributes:
       Group:
-      # Should the type of tidal surface be a different parameter, rather than having "heightOffset" as a parameter
-      # (or (eg) surface height ) and the surface type as parameter.  Possible use case is a single grid with 
-      # more than one surface defined at each grid node.
         - AttributeName: tidalSurface
           Type: [CD, HAT, HW, HHWLT, ISLW, LAT, LW, LLWLT, MHHW, MHW, MHWST, MLLW, MLW, MLWST, MLLWST, MSL ]
     ParameterSets:
-    # Should this also include depthOffset
     - Parameters:
         - heightOffset
         - heightOffsetUncertainty
@@ -387,17 +432,17 @@ ContentTypes:
         - velocityEast
         - velocityNorth
         - velocityEastUncertainty
-        - velocityNorthUncertainty      
+        - velocityNorthUncertainty
     - Parameters:
         - velocityEast
         - velocityNorth
         - velocityUp
         - velocityEastUncertainty
         - velocityNorthUncertainty
-        - velocityUpUncertainty      
+        - velocityUpUncertainty
     - Parameters:
         - velocityUp
-        - velocityUpUncertainty            
+        - velocityUpUncertainty
     - Parameters:
         - velocityX
         - velocityY
@@ -410,14 +455,15 @@ ContentTypes:
       Group:
         - AttributeName: timeFunctions
           Type: list
+    Comment: >
+      Not sure about uncertainty - under discussion.
+      Makes no sense to have displacementEastUncertainty, displacementNorthUncertainty without accounting for correlation
+      Arguably also for adding vertical
+      Arguably for (likely large) correlation between nodes
+      Proposed attributes are reasonable simplification I think.
+      For consistency with other models though would use displacementEastUncertainty, displacmentNorthUncertainty, displacementUpUncertainty
     ParameterSets:
     - Parameters:
-      # Not sure about uncertainty - under discussion.  
-      # Makes no sense to have displacementEastUncertainty, displacementNorthUncertainty without accounting for correlation
-      # Arguably also for adding vertical
-      # Arguably for (likely large) correlation between nodes
-      # Proposed attributes are reasonable simplification I think.
-      # For consistency with other models though would use displacementEastUncertainty, displacmentNorthUncertainty, displacementUpUncertainty
         - displacementEast
         - displacementNorth
         - displacementUp

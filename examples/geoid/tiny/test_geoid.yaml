@@ -1,7 +1,7 @@
 ﻿ggxfVersion: "1.0"
 filename: tiny_geoid.gxt
 content: geoidModel
-remark: "hybrid geoid"
+title: "hybrid geoid"
 contentApplicabilityExtent:
   boundingBox:
     southBoundLatitude: 22.5
@@ -32,7 +32,10 @@ targetCrsWkt: |
     CS[vertical,1],
     AXIS["Gravity-related height (H)",up],
     LENGTHUNIT["metre",1]]
-
+parameters:
+  - parameterName: "geoidHeight"
+    lengthUnit: "metre"
+    unitSiRatio: 1.0
 operationAccuracy: 0.015
 organisationName: "A Hypothetical National Geodetic Survey."
 deliveryPoint: "Somewhere"
@@ -42,10 +45,7 @@ country: "United States of America"
 
 ggxfGroups:
   - ggxfGroupName: default
-    parameters:
-      - parameterName: "geoidHeight"
-        lengthUnit: "metre"
-        unitSiRatio: 1.0
+
     interpolationMethod: bilinear
     grids:
       - gridName: "geoid_grid"

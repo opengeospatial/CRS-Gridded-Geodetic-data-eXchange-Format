@@ -2,8 +2,8 @@ ggxfVersion: '1.0'
 filename: nzgd2000-20180701-subset.yaml
 version: '20180701'
 content: deformationModel
-remark: |
-  New Zealand Deformation Model.
+title: New Zealand Deformation Model.
+abstract: |
   Defines the secular model (National Deformation Model)
   and patches for significant deformation events since 2000.
 partyName: Land Information New Zealand
@@ -37,21 +37,27 @@ contentApplicabilityExtent:
 sourceCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6167]],CS[ellipsoidal,3,ID["EPSG",6423]],AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]],ID["EPSG",4959]]
 targetCrsWkt: GEOGCRS["ITRF96", DYNAMIC[FRAMEEPOCH[1997.0]],DATUM["International Terrestrial Reference Frame 1996",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6654]],CS[ellipsoidal,3,ID["EPSG",6423]],AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]],ID["EPSG",7907]]
 interpolationCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6167]],CS[ellipsoidal,2,ID["EPSG",6422]],AXIS["Geodetic latitude (Lat)",north],AXIS["Geodetic longitude (Lon)",east],ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]],ID["EPSG",4167]]
+parameters:
+- lengthUnit: metre
+  parameterName: displacementEast
+  unitSiRatio: 1.0
+- lengthUnit: metre
+  parameterName: displacementNorth
+  unitSiRatio: 1.0
+- lengthUnit: metre
+  parameterName: displacementUp
+  unitSiRatio: 1.0
 operationAccuracy: 0.01
 uncertaintyMeasure: 2CEP 2SE
 deformationApplicationMethod: addition
 ggxfGroups:
-- ggxfGroupName: nz_linz_nzgd2000_ndm_grid02
-  remark: |
+- ggxfGroupName: nz_linz_nzgd2000-ndm-grid02
+  comment: |
     Secular deformation model derived from NUVEL-1A rotation rates
     Secular deformation model derived from GNS model 2011 V4
-  parameters:
-  - lengthUnit: metre
-    parameterName: displacementEast
-    unitSiRatio: 1.0
-  - lengthUnit: metre
-    parameterName: displacementNorth
-    unitSiRatio: 1.0
+  groupParameters:
+  - displacementEast
+  - displacementNorth
   timeFunctions:
   - functionType: velocity
     functionReferenceDate: '2000-01-01T00:00:00Z'
@@ -63,23 +69,16 @@ ggxfGroups:
     jNodeCount: 67
     dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ndm-grid02.tif
   - gridName: ndm_grid_igns2011_nz
-    parentGridName: ndm_grid_nuvel1a_eez
     affineCoeffs: [-33.0,0.0,-0.1,165.5,0.1,0.0]
     iNodeCount: 141
     jNodeCount: 151
     dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ndm-grid02.tif
-- ggxfGroupName: nz_linz_nzgd2000_ds20090715_grid011
-  remark: Dusky Sound (Fiordland) earthquake
-  parameters:
-  - lengthUnit: metre
-    parameterName: displacementEast
-    unitSiRatio: 1.0
-  - lengthUnit: metre
-    parameterName: displacementNorth
-    unitSiRatio: 1.0
-  - lengthUnit: metre
-    parameterName: displacementUp
-    unitSiRatio: 1.0
+- ggxfGroupName: nz_linz_nzgd2000-ds20090715-grid011
+  comment: Dusky Sound (Fiordland) earthquake
+  groupParameters:
+  - displacementEast
+  - displacementNorth
+  - displacementUp
   timeFunctions:
   - functionType: ramp
     startDate: '2009-07-15T00:00:00Z'

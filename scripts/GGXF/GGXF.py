@@ -36,60 +36,30 @@ class GGXF:
         self._needEpoch = self._content in TimeDependentContentTypes
         self._groups = []
         self._configured = False
-        self._parameters = None
+        self._singleGroup = False
         self._source = source
         self._debug = False
         self._logger = logging.getLogger("GGXF")
         self._valueat = lambda xy, epoch, refepoch: None
         if debug:
             self.setDebug()
+        self._parameters = [
+            Parameter(paramdef) for paramdef in metadata.get(GGXF_ATTR_PARAMETERS, [])
+        ]
 
     def setDebug(self, debug: bool = True):
         self._debug = debug
         self._logger.setLevel(logging.DEBUG if debug else logging.WARNING)
 
     def configure(self, errorhandler=None):
-        parameters = {}
-        if len(self._groups) == 1:
-            self._valueat = self._groups[0].valueAt
-        elif len(self._groups) > 1:
-            self._valueat = self._sumValueAt
-
+        self._singleGroup = len(self._groups) == 1
         for igroup, group in enumerate(self._groups):
             group.configure(errorhandler=errorhandler, id=f"{igroup}")
-            for parameter in group.parameters():
-                pname = parameter.name()
-                if pname not in parameters:
-                    parameters[pname] = parameter
-                else:
-                    ggxfparam = parameters[pname]
-                    if parameter.unit() != ggxfparam.unit():
-                        error = f"Inconsistent definition of parameter {pname} unit: {ggxfparam.unit()} and {parameter.unit()}"
-                        if errorhandler:
-                            errorhandler(error)
-                        else:
-                            raise Error(error)
-                    if parameter.siratio() != ggxfparam.siratio():
-                        error = f"Inconsistent definition of parameter {pname} unit: {ggxfparam.unit()} and {parameter.unit()}"
-                        if errorhandler:
-                            errorhandler(error)
-                        else:
-                            raise Error(error)
-        self._parameters = list(parameters.values())
-        # Configure mapping from group params to GGXF params
-        paramIndex = {
-            param.name(): iparam for iparam, param in enumerate(self._parameters)
-        }
-        self._groupParamMap = []
-        for group in self.groups():
-            parammap = [paramIndex[param.name()] for param in group.parameters()]
-            self._groupParamMap.append(parammap)
 
         self._nullvalue = [None for p in self._parameters]
         # Cached values for groups to use in calculation at epoch
         self._calcEpoch = None
         self._calcGroups = list(self.groups())
-        self._calcParamMap = self._groupParamMap
         self._zero = np.zeros((len(self._parameters),))
         self._configured = True
 
@@ -106,8 +76,6 @@ class GGXF:
         return self._logger
 
     def parameters(self):
-        if not self._configured:
-            self.configure()
         return self._parameters
 
     def addGroup(self, group):
@@ -133,24 +101,20 @@ class GGXF:
                 raise Error(
                     f"Cannot evaluate {self._content} without providing an epoch"
                 )
-        return self._valueat(xy, epoch, refepoch)
 
-    def _sumValueAt(self, xy, epoch=None, refepoch=None):
-        # NOTE: this does not handle RMS summation of uncertainty at the moment :-(
-        # NOTE: need to optimise away all of this for evaluating a single group
+        if self._singleGroup:
+            return self._groups[0].valueAt(xy, epoch, refepoch)
+
         if self._needEpoch:
             calcEpoch = (epoch, refepoch)
             if calcEpoch != self._calcEpoch:
                 calcGroups = []
-                calcParamMap = []
-                for igroup, group in enumerate(self.groups()):
+                for group in self.groups():
                     factor = group.timeFactorAt(epoch, refepoch)
                     if factor is not None and factor != 0.0:
                         calcGroups.append(group)
-                        calcParamMap.append(self._groupParamMap[igroup])
                 self._calcEpoch = calcEpoch
                 self._calcGroups = calcGroups
-                self._calcParamMap = calcParamMap
         if self._debug:
             self._logger.debug(
                 f"Evaluating {len(self._calcGroups)} groups with non-zero time functions"
@@ -158,19 +122,23 @@ class GGXF:
         result = self._zero.copy()
         if len(self._calcGroups) == 0:
             return result
-        for group, parammap in zip(self._calcGroups, self._calcParamMap):
+        for group in self._calcGroups:
             value = group.valueAt(xy, epoch, refepoch)
             if self._debug:
-                self._logger.debug(f"{group.name()}: {value}:  {parammap}")
+                self._logger.debug(f"{group.name()}: {value}")
             if value is not None:
-                result[parammap] += value
+                result += value
         return result
 
     def summary(self):
         metadata = self.metadata().copy()
         content = metadata.pop(GGXF_ATTR_CONTENT, "undefined")
         groups = [group.summary() for group in self.groups()]
-        return {GGXF_ATTR_CONTENT: content, JSON_METADATA_ATTR: metadata, GGXF_ATTR_GGXF_GROUPS: groups}
+        return {
+            GGXF_ATTR_CONTENT: content,
+            JSON_METADATA_ATTR: metadata,
+            GGXF_ATTR_GGXF_GROUPS: groups,
+        }
 
 
 class Group:
@@ -179,12 +147,12 @@ class Group:
         self._id = None
         self._name = groupname
         self._metadata = metadata
-        parameters = [
-            Parameter(paramdef) for paramdef in metadata.get(GROUP_ATTR_PARAMETERS, [])
-        ]
-        self._gridparameters = parameters
-        self._parameters = parameters
-        self._paramids = range(len(parameters))
+        paramnames = metadata.get(GROUP_ATTR_GROUP_PARAMETERS)
+        if paramnames is None:
+            paramnames = [p.name() for p in ggxf.parameters()]
+        self._parameterNames = paramnames
+        self._parameterMap = None
+        self._zero = None
         method = metadata.get(GROUP_ATTR_INTERPOLATION_METHOD)
         self._interpolator = GridInterpolator.getMethod(method)
         self._grids = []
@@ -208,13 +176,11 @@ class Group:
     def metadata(self):
         return self._metadata
 
-    def parameters(self):
-        if not self._configured:
-            raise Error("GGXF not configured")
-        return self._parameters
+    def parameterNames(self):
+        return self._parameterNames
 
     def nparam(self):
-        return len(self._parameters)
+        return len(self._parameterNames)
 
     def grids(self):
         if not self._configured:
@@ -238,59 +204,48 @@ class Group:
 
     def _configureParameters(self, errorhandler=None):
         ok = True
+        # map the parameter names to the GGXF parameters
+        paramnames = self._parameterNames
+        ggxfparams = [p.name() for p in self._ggxf.parameters()]
+        parammap = []
+        for name in self._parameterNames:
+            if name not in ggxfparams:
+                error = f'Invalid parameter "{name}" in {GROUP_ATTR_GROUP_PARAMETERS}'
+                if errorhandler:
+                    errorhandler(error)
+                else:
+                    raise Error(error)
+                ok = False
+            parammap.append(ggxfparams.index(name))
+        # Check the set of parameters is valid for the content type
+
         contenttype = self._ggxf.contentType()
         contentdef = ContentTypes.get(contenttype)
         validparamsets = contentdef.get(ATTRDEF_PARAMETER_SETS, [])
-        gridparams = [p.name() for p in self._gridparameters]
         paramids = None
         # Currently not supporting non GGXF parameters in a grid
         for paramset in validparamsets:
-            if len(paramset) != len(gridparams):
+            if len(paramset) != len(paramnames):
                 continue
             try:
-                paramids = [gridparams.index(param) for param in paramset]
+                paramids = [paramnames.index(param) for param in paramset]
                 break
             except ValueError:
                 paramids = None
         if paramids is None:
-            error = f"Invalid parameters ({','.join(gridparams)}) for content type {contenttype}"
+            error = f"Invalid parameters ({','.join(paramnames)}) for content type {contenttype}"
             if errorhandler:
                 errorhandler(error)
             else:
                 raise Error(error)
             ok = False
         if ok:
-            self._paramids = paramids
-            self._parameters = [self._gridparameters[i] for i in self._paramids]
+            self._parameterMap = parammap
+            self._zero = np.zeros((len(ggxfparams),))
         return ok
 
     def _configureGrids(self, errorhandler=None):
         ok = True
-        gindex = {grid.name(): grid for grid in self.allgrids()}
-        shiftedGrids = []
-        for grid in self._grids:
-            pname = grid.get(GRID_ATTR_PARENT_GRID_NAME)
-            if pname is not None:
-                pgrid = gindex.get(pname)
-                if pgrid is None:
-                    ok = False
-                    error = f"Parent grid {pname} of {grid.name()} not found"
-                    if errorhandler:
-                        errorhandler(error)
-                    else:
-                        raise Error(error)
-                    continue
-                shiftedGrids.append(grid)
-                try:
-                    pgrid.addGrid(grid)
-                except Error as ex:
-                    ok = False
-                    if errorhandler:
-                        errorhandler(str(ex))
-                    else:
-                        raise
-        for grid in shiftedGrids:
-            self._grids.remove(grid)
         for igrid, grid in enumerate(self._grids):
             if self._id:
                 grid.setId(f"{self._id}:{igrid}")
@@ -316,6 +271,9 @@ class Group:
                 return cgrid
         return None
 
+    def parameterMap(self):
+        return self._parameterMap
+
     def valueAt(self, xy, epoch=None, refepoch=None):
         if not self._configured:
             raise Error("GGXF not configured")
@@ -323,10 +281,11 @@ class Group:
         if grid is None:
             return None
         value = self._interpolator(grid, xy)
-        value = value[self._paramids]
         if self._needEpoch:
             value *= self.timeFactorAt(epoch, refepoch)
-        return value
+        result = self._zero.copy()
+        result[self._parameterMap] = value
+        return result
 
     def timeFactorAt(self, epoch: float, refepoch: float = None):
         if not self._timeFunction:
@@ -346,7 +305,7 @@ class Group:
 
     def summary(self):
         summary = self.metadata().copy()
-        summary[GROUP_ATTR_PARAMETERS] = [param.name() for param in self.parameters()]
+        summary[GROUP_ATTR_GROUP_PARAMETERS] = self.parameterNames()
         summary[GROUP_ATTR_GRIDS] = [grid.summary() for grid in self.allgrids()]
         return summary
 
@@ -431,22 +390,6 @@ class Grid:
             subgrid.setId(f"{id}:{igrid}")
 
     def addGrid(self, grid):
-        if grid._group != self._group:
-            raise Error(
-                f'Grid nesting error: Grid "{self.name()}" cannot be parent of grid "{grid.name()}" in different group'
-            )
-        pname = grid.get(GRID_ATTR_PARENT_GRID_NAME)
-        if pname is not None and pname != self._name:
-            raise Error(
-                f"Grid {grid.name()} parentName attribute conflicts with structural parent {self._name}"
-            )
-        pgrid = self
-        while pgrid is not None:
-            if pgrid == grid:
-                raise Error(
-                    f'Grid nesting error: Grid "{self.name()}" cannot be parent of its parent grid "{grid.name()}"'
-                )
-            pgrid = pgrid._parent
         gextents = grid.extents()
         if not self.contains(gextents[0]) or not self.contains(gextents[1]):
             self.logger().warn(
@@ -516,7 +459,7 @@ class Grid:
             "xmax": float(self._xmax),
             "ymax": float(self._ymax),
         }
-        params = [param.name() for param in self.group().parameters()]
+        params = self.group().parameterNames()
         dtype = str(self._data.dtype)
         pmin = self._data.min(axis=(0, 1))
         pmax = self._data.max(axis=(0, 1))

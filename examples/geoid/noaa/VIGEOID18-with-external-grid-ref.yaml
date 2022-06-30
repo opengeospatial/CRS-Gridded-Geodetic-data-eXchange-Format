@@ -3,7 +3,7 @@
 ggxfVersion: "1.0"
 filename:    g2018vi.yaml
 content:     heightCorrectionModel
-remark:      "hybrid geoid"
+title:      "hybrid geoid"
 contentApplicability:
     boundingBox:
         southBoundLatitude:  17.67
@@ -38,6 +38,10 @@ targetCrsWkt: |
       CS[vertical,1],
       AXIS["Gravity-related height (H)",up],
       LENGTHUNIT["metre",1]]
+parameters:
+    - parameterName: "geoidHeight"
+      lengthUnit: "metre"
+      unitSiRatio: 1.0
 
 operationAccuracy:      0.015
 organisationName:       "National Geodetic Survey, National Oceanic and Atmospheric Administration."
@@ -49,15 +53,11 @@ onlineResourceLinkage:  "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g
 
 ggxfGroups:
     - ggxfGroupName: "puerto_rico_virgin_islands_geoid18"
-      parameters:
-          - parameterName: "geoidHeight"
-            lengthUnit: "metre"
-            unitSiRatio: 1.0
       interpolationMethod: biquadratic
       grids:
           - gridName: "puerto_rico_virgin_islands_geoid18"
             affineCoeffs: [15.0, 0.0, 0.01666666667, -69.0, 0.01666666667, 0.0]
             iNodeCount: 301
             jNodeCount: 361
-            remark: "grid starts in the bottom left (southwest)corner and works across (east)and up (north"
+            comment: "grid starts in the bottom left (southwest)corner and works across (east)and up (north"
             dataSource: "g2018p0.asc"
