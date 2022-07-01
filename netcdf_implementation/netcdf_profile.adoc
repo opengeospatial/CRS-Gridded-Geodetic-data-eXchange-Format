@@ -48,6 +48,10 @@ A GGXF attribute can have a value that is a mapping, a set of keys each with its
 
 NOTE: It may be possible to avoid this awkward notation by using more features of NetCDF.  A NetCDF attribute can have one dimensional array values instead of a single value.  This could be used for the groupParameters attribute which is a list of strings.  It is currently used for the affineCoeffs attribute.  The NetCDF data model also includes "compound types", which are equivalent to a mapping. The GGXF parameter definition could be defined as a compound type.  The GGXF parameters attribute could be represented as a single NetCDF attribute with value a one dimensional array of values each a parameter compound type.  This is an experimental option in the current Proof of Concept NetCDF implementation.
 
+NOTE: groupParameters and affineCoeffs are currently implemented as NetCDF 1 dimensional array attributes.  In principle compound data types 
+can be stored the in 1d attribute arrays also, but this is yet to be confirmed.  This could be used for both parameters and timeFunctions. 
+There are no other remaining structured data in the GGXF, which would remove the need for flattening structures.
+
 ### Representation of grid data
 
 Each GGXF grid contains an attribute "data", which is multi-dimensional array containing the data of the parameters in the grid.  This is a single array in the GGXF logical model.  
@@ -80,9 +84,8 @@ In the NetCDF variables can be of any numeric type.  The variables may have http
 | acdd |  Represented as a NetCDF attribute. Attribute name comes from ACDD conventions defined in  https://wiki.esipfed.org/Attribute_Convention_for_Data_Discovery_1-3[Attribute Convention for Data Discovery]
 | ggxf | Represented as a NetCDF attribute. Attribute name comes from GGXF conventions.
 
-^1^ Attributes which are lists of values are implemented as described in <<section-structured-data>>
-
-^2^ The parameter attribute may be implemented as an array of parameter typed values, where the parameter type is implemented as a NetCDF compound user defined data types (similar to a C structure).
+^1^ The parameters attribute is a list of structured data items are implemented as described in <<section-structured-data>>
+This may be implemented as an array of parameter typed values, where the parameter type is implemented as a NetCDF compound user defined data types (similar to a C structure).
 | dimension | Represented as a NetCDF dimension
 | directory | Represented in the NetCDF group name used to identify the group in the NetCDF file.  (This is like a directory name file name in a file system)
 | variable |  Represented by one or more NetCDF variables.  The mapping of grid data is described in more detail in the text
@@ -113,17 +116,17 @@ In the NetCDF variables can be of any numeric type.  The variables may have http
 | ggxf     | contentBox.southBoundLatitude                                   | ggxf                   | south_bound_latitude                
 | ggxf     | contentBox.westBoundLongitude                                   | ggxf                   | west_bound_longitude                
 | ggxf     | contentBox.northBoundLatitude                                   | ggxf                   | north_bound_latitude                
-| ggxf     | contentBox.eastBoundLongitude                                   | ggxf^1,2^              | east_bound_longitude                
-| ggxf     | parameters[].parameterName                                      | ggxf^1,2^              | parameters.#.parametername          
-| ggxf     | parameters[].unitSiRatio                                        | ggxf^1,2^              | parameters.#.unitsiratio            
-| ggxf     | parameters[].unitName                                           | ggxf^1,2^              | parameters.#.unitname               
-| ggxf     | parameters[].lengthUnit                                         | ggxf^1,2^              | parameters.#.lengthunit             
-| ggxf     | parameters[].angleUnit                                          | ggxf^1,2^              | parameters.#.angleunit              
-| ggxf     | parameters[].scaleUnit                                          | ggxf^1,2^              | parameters.#.scaleunit              
-| ggxf     | parameters[].unitType                                           | ggxf^1,2^              | parameters.#.unittype               
-| ggxf     | parameters[].parameterMinimumValue                              | ggxf^1,2^              | parameters.#.parameterminimumvalue  
-| ggxf     | parameters[].parameterMaximumValue                              | ggxf^1,2^              | parameters.#.parametermaximumvalue  
-| ggxf     | parameters[].noDataFlag                                         | ggxf^1,2^              | parameters.#.nodataflag             
+| ggxf     | contentBox.eastBoundLongitude                                   | ggxf^1^                | east_bound_longitude                
+| ggxf     | parameters[].parameterName                                      | ggxf^1^                | parameters.#.parametername          
+| ggxf     | parameters[].unitSiRatio                                        | ggxf^1^                | parameters.#.unitsiratio            
+| ggxf     | parameters[].unitName                                           | ggxf^1^                | parameters.#.unitname               
+| ggxf     | parameters[].lengthUnit                                         | ggxf^1^                | parameters.#.lengthunit             
+| ggxf     | parameters[].angleUnit                                          | ggxf^1^                | parameters.#.angleunit              
+| ggxf     | parameters[].scaleUnit                                          | ggxf^1^                | parameters.#.scaleunit              
+| ggxf     | parameters[].unitType                                           | ggxf^1^                | parameters.#.unittype               
+| ggxf     | parameters[].parameterMinimumValue                              | ggxf^1^                | parameters.#.parameterminimumvalue  
+| ggxf     | parameters[].parameterMaximumValue                              | ggxf^1^                | parameters.#.parametermaximumvalue  
+| ggxf     | parameters[].noDataFlag                                         | ggxf^1^                | parameters.#.nodataflag             
 | ggxf     | interpolationCrsWkt                                             | ggxf                   | interpolation_crs                   
 | ggxf     | interpolationCrsJson                                            | ggxf                   | interpolation_crs                   
 | ggxf     | sourceCrsWkt                                                    | ggxf                   | source_crs                          
@@ -148,7 +151,7 @@ In the NetCDF variables can be of any numeric type.  The variables may have http
 | ggxf     | userDefinedMethodFormulaCitation                                | ggxf                   | user_defined_method_formula_citation
 | ggxf     | ggxfGroups                                                      | yaml                   |                                     
 | ggxf     | gridData                                                        | yaml                   |                                     
-| group    | groupParameters[]                                               | ggxf^1^                | groupParameters.#                                   
+| group    | groupParameters[]                                               | ggxf                   | groupParameters
 | group    | interpolationMethod                                             | ggxf                   | interpolation_method                
 | group    | interpolationMethodCitation                                     | ggxf                   | interpolation_method_citation       
 | group    | comment                                                         | acdd                   | comment                             

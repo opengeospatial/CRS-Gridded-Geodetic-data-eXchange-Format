@@ -250,18 +250,24 @@ class Writer(BaseWriter):
         # NetCDF compound types
         exclude = [GGXF_ATTR_GGXF_GROUPS, GGXF_ATTR_GRID_DATA]
         if self._useCompoundTypes:
+            raise RuntimeError("use_compound_types currently not working")
+            # This functionality was lost when refactoring GGXF into multiple modules
+            # It was split between creating the compound type in the root group and
+            # the variable in the GGXF group in saveGroupNetCdf4.  The code has been
+            # moved here as parameters in GGXF are now in the root group.
+            #
+            # However this isn't working yet.  This implementation is using a variable
+            # to hold parameters, but the NetCDF data model implies that they can be held
+            # in an attribute.  However this hasn't been tested yet with the python API.
             paramtype = np.dtype(
                 [("parameterName", "S32"), ("unit", "S16"), ("unitSiRatio", np.float64)]
             )
             ncparamtype = root.createCompoundType(paramtype, "ggxfParameterType")
-            nctypes["ggxfParameterType"] = GGXF.RecordType(paramtype, ncparamtype)
-
             parameters = self.parameters()
             paramdata = [(p.name(), p.units(), p.siratio()) for p in parameters]
-            paramtype = nctypes["ggxfParameterType"]
-            paramdata = np.array(paramdata, dtype=paramtype.dtype)
+            paramdata = np.array(paramdata, dtype=paramtype)
             paramvar = root.createVariable(
-                "parameters", paramtype.netcdfType, NETCDF_DIMENSION_NPARAM
+                "parameters", ncparamtype, NETCDF_DIMENSION_NPARAM
             )
             paramvar[:] = paramdata
             exclude.append(GGXF_ATTR_PARAMETERS)
@@ -340,10 +346,15 @@ class Writer(BaseWriter):
                 if key not in exclude and not key.startswith("_"):
                     self.saveNetCdf4MetdataDot(dataset, value, name + key, base=base)
         elif type(entity) == list:
-            count = int(len(entity))
-            self.saveNetCdf4MetdataDot(dataset, count, name + ".count")
-            for ival, value in enumerate(entity):
-                self.saveNetCdf4MetdataDot(dataset, value, name + f".{ival+base}")
+            listtypes = set((type(e) for e in entity))
+            # Simple lists can be held as 1 dimensional array parameters
+            if listtypes == set((str,)) or listtypes <= set((float, int)):
+                dataset.setncattr(name, entity)
+            else:
+                count = int(len(entity))
+                self.saveNetCdf4MetdataDot(dataset, count, name + ".count")
+                for ival, value in enumerate(entity):
+                    self.saveNetCdf4MetdataDot(dataset, value, name + f".{ival+base}")
         else:
             try:
                 dataset.setncattr(name, entity)
