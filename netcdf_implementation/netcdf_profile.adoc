@@ -1,0 +1,332 @@
+## NetCDF profile
+
+The https://docs.unidata.ucar.edu/netcdf-c/current/netcdf_data_model.html#enhanced_model[NetCDF-4 structure] has the following main components
+
+* NetCDF group - a structured data object which may contain other groups. 
+* NetCDF variable - an array attribute of a group with an arbitrary number of dimensions.  The size of the array is defined by NetCDF dimensions in sits direct or indirect parent groups
+* NetCDF dimension - a special integer attribute of a groupthat is used to define the dimensions of a variable.  It defined in a group and may be referenced in that group and all its direct or indirect children
+* NetCDF attribute - a named attribute which containing either a single value or a list of values.  Attributes may be assigned to groups and variables
+
+NetCDF groups are analagous to directories in a file system.  Each NetCDF file has unique "root" group.  Each group is identified by a name.  The root group is named "/".  Each group is identified by the path "<parent_path_name>/<group_name>", except that if the parent is the root group then the path is "/<group_name>".
+
+The structural elements of a GGXF file are located in a NetCDF file as follows:
+
+* GGXF file header is the NetCDF root group at _"/"_
+* GGXF group header is a NetCDF group that is a direct child of root group at _"/<ggxfGroupName>"_
+* GGXF grid headers, including the grid data, are NetCDF groups that are either children of a GGXF group header or of another GGXF grid header following the nesting structure of the grids in each GGXF group. Top level grids in the nested structure area locate at _"/<ggxfGroupName>/<gridName>"_.  
+
+A GGXF NetCDF file cannot contain NetCDF groups other than these. 
+
+NOTE: In a GGXF file the order of grids in a ggxfGroup or child grids of a grid is significant and critical to the correct selection of which grid is used in a nested grid structure.  The current implementation assumes that the order in which groups are created is the same as the order in which they will be retrieved by the NetCDF API.  Though we understand that this is the case it is not clearly documented in the API and could be altered by a higher level abstraction of the API.  This feels very fragile.  It may be better to used a numbered id for the NetCDF name of the group, for example _"grid\###"_, where _####_ are digits.  The GGXF gridName attribute would be an optional attribute of the NetCDF group.  The number of digits will be sufficient to represent the highest numbered child grid to ensure that alphabetic sorting defines the correct order.  For example if there are between 10 and 99 child grids then at least two digits will be used.  This ensures that alphabetic sorting of the grid names will be define the correct order. 
+
+The contents of each GGXF file, grid, and group are defined by attributes.  These are implemented in a NetCDF GGXF file as defined in  <<table-attribute-mapping>>.  In this table the attributes are assigned a category defined in <<table-attribute-mapping-categories>> which defines how the attribute is mapped and which NetCDF conventions the attribute names come from. 
+
+
+[[section-structured-data]]
+### Representation of structured data
+
+Some attributes such as parameters and groupParameter are structured values such as lists or mappings rather than a single scalar value.  This is represented by using a naming convention to flatten the structure into scalar attributes. 
+
+Each element of a list is represented in NetCDF by an attribute _<parent_attribute_name>.<element number>_ to the parent attribute name, where _<element_number>_ is the number of the element in the list starting at 1.  An additional attribute _<parent_attribute_name>.count_ is created with an integer value of the number of elements in the list.   For a groupParameters attribute with values "offsetNorth", " offsetEast" is represented in YAML as: 
+
+
+[listing]
+groupParameters:
+  - offsetNorth
+  - offsetEast
+
+In NetCDF this is represented by three attributes:
+
+[listing]
+groupParameters.count: 2
+groupParameters.1: "offsetNorth"
+groupParameters.2: "OffsetEast"
+
+In <<table-attribute-mapping>> this is identified by "#" in the attribute names.
+   
+A GGXF attribute can have a value that is a mapping, a set of keys each with its own value.  Each item of a mapping is represented in NetCDF by an attribute _<parent_attribute_name>.<key>_.
+
+NOTE: It may be possible to avoid this awkward notation by using more features of NetCDF.  A NetCDF attribute can have one dimensional array values instead of a single value.  This could be used for the groupParameters attribute which is a list of strings.  It is currently used for the affineCoeffs attribute.  The NetCDF data model also includes "compound types", which are equivalent to a mapping. The GGXF parameter definition could be defined as a compound type.  The GGXF parameters attribute could be represented as a single NetCDF attribute with value a one dimensional array of values each a parameter compound type.  This is an experimental option in the current Proof of Concept NetCDF implementation.
+
+### Representation of grid data
+
+Each GGXF grid contains an attribute "data", which is multi-dimensional array containing the data of the parameters in the grid.  This is a single array in the GGXF logical model.  
+
+In the NetCDF implementation this will be represented by one or more NetCDF variables.  GGXF parameters which correspond to axes of the source or target coordinate systems are combine single NetCDF variable representing a vector in that coordinate systems.  For example GGXF parameters displacementNorth, displacementEast, displacementUp are combined into a single NetCDF variable called displacement.  At each grid node this has axes (east, north, and up).
+
+The names of the axes are directions as defined for http://docs.opengeospatial.org/is/18-010r7/18-010r7.html#48[axis direction] in the OGC specification "Well-known text representation of coordinate reference systems".  These should correspond to the axis directions defined for the source and target coordinate systems except for projection coordinate systems with an origin at the north or south pole.  In this case the CRS definition will have axes ("south","south") or ("north","north"), but the GGXF axes will be defined as ("north","east") corresponding to the northing or easting axes. 
+
+For some variable types the vector axes may be a subset of the coordinate axes. For example the vector may represent horizontal deformation applying in a 3 dimensional source and target CRS.  In this case the vector will have axes ("north","east") but the source and target CRS will have axis directions ("north","east","up").
+
+The vector axes may be in a different order to the source or target CRS.
+
+The size of the NetCDF variable is defined by NetCDF dimension attributes.  Each variable will have a dimension for each interpolation coordinate axis.  These are called iNodeCount, jNodeCount, kNodeCount(for 3d interpolation grids) and are defined in the NetCDF group representing the grid. 
+
+If the GGXF group includes vector variables, then all the vector variables must have the same axes.  The NetCDF grup representing the GGXF group header will contain a dimension called axes specifying the number of axes in each vector variable, and an attribute called axes containing a one dimensional array of the names of the axes.
+
+Each NetCDF variable in a grid will therefore have dimensions (iNodeCount,jNodeCount) for variable respresenting a single GGXF parameter, or (iNodeCount,jNodeCount,axes) for a variable representing a vector of GGXF parameters.
+
+The mapping of GGXF parameter names to NetCDF variable names is defined in <<table-parameter-variable-mapping>>.  The valid NetCDF variable names and axes are listed in <<table-netcdf-content-types>>.  This includes each valid parameters and axes for the content type.  Note that the axes are listed alphabetically - each GGXF group may specify these axes in a different order.  
+
+In the NetCDF variables can be of any numeric type.  The variables may have https://docs.unidata.ucar.edu/netcdf-c/current/attribute_conventions.html#autotoc_md89[NetCDF conventional attributes]  scale_factor and add_offset to define a scale factor and offset used to facilitate packing the data into a smaller numeric type.  These should be applied by GGXF compliant software when reading a GGXF file.
+
+
+[[table-attribute-mapping-categories]]
+.Categories of NetCDF attribute mapping
+[options="header"]
+|===
+| Category | Description
+| netcdf | Represented as a NetCDF attribute. Attribute name comes from https://docs.unidata.ucar.edu/netcdf-c/current/attribute_conventions.html[NetCDF conventions]
+| acdd |  Represented as a NetCDF attribute. Attribute name comes from ACDD conventions defined in  https://wiki.esipfed.org/Attribute_Convention_for_Data_Discovery_1-3[Attribute Convention for Data Discovery]
+| ggxf | Represented as a NetCDF attribute. Attribute name comes from GGXF conventions.
+
+^1^ Attributes which are lists of values are implemented as described in <<section-structured-data>>
+
+^2^ The parameter attribute may be implemented as an array of parameter typed values, where the parameter type is implemented as a NetCDF compound user defined data types (similar to a C structure).
+| dimension | Represented as a NetCDF dimension
+| directory | Represented in the NetCDF group name used to identify the group in the NetCDF file.  (This is like a directory name file name in a file system)
+| variable |  Represented by one or more NetCDF variables.  The mapping of grid data is described in more detail in the text
+| yaml | Not represented.  The attribute  is specific to YAML format
+|===
+
+[[table-attribute-mapping]]
+.Mapping of GGXF attributes to NetCDF attributes
+[options="header"]
+|===
+| Section  | GGXF attribute                                                  | Category  | NetCDF attribute name               
+| ggxf     | ggxfVersion                                                     | netcdf                 | Conventions                         
+| ggxf     | content                                                         | ggxf                   | content                             
+| ggxf     | title                                                           | acdd                   | title                               
+| ggxf     | abstract                                                        | acdd                   | summary                             
+| ggxf     | filename                                                        | acdd                   | source_file                         
+| ggxf     | contentApplicabilityExtent.boundingBox.southBoundLatitude       | acdd                   | geospatial_lat_min                  
+| ggxf     | contentApplicabilityExtent.boundingBox.westBoundLongitude       | acdd                   | geospatial_lon_min                  
+| ggxf     | contentApplicabilityExtent.boundingBox.northBoundLatitude       | acdd                   | geospatial_lat_max                  
+| ggxf     | contentApplicabilityExtent.boundingBox.eastBoundLongitude       | acdd                   | geospatial_lon_max                  
+| ggxf     | contentApplicabilityExtent.extentDescription                    | ggxf                   | extent_description                  
+| ggxf     | contentApplicabilityExtent.boundingPolygon                      | acdd                   | geospatial_bounds                   
+| ggxf     | contentApplicabilityExtent.temporalExtent.startDate             | ggxf                   | start_date                          
+| ggxf     | contentApplicabilityExtent.temporalExtent.endDate               | ggxf                   | end_date                            
+| ggxf     | contentApplicabilityExtent.verticalExtent.verticalExtentCrsWkt  | ggxf                   | vertical_extent_crs_wkt             
+| ggxf     | contentApplicabilityExtent.verticalExtent.verticalExtentMinimum | ggxf                   | vertical_extent_minimum             
+| ggxf     | contentApplicabilityExtent.verticalExtent.verticalExtentMaximum | ggxf                   | vertical_extent_maximum             
+| ggxf     | contentBox.southBoundLatitude                                   | ggxf                   | south_bound_latitude                
+| ggxf     | contentBox.westBoundLongitude                                   | ggxf                   | west_bound_longitude                
+| ggxf     | contentBox.northBoundLatitude                                   | ggxf                   | north_bound_latitude                
+| ggxf     | contentBox.eastBoundLongitude                                   | ggxf^1,2^              | east_bound_longitude                
+| ggxf     | parameters[].parameterName                                      | ggxf^1,2^              | parameters.#.parametername          
+| ggxf     | parameters[].unitSiRatio                                        | ggxf^1,2^              | parameters.#.unitsiratio            
+| ggxf     | parameters[].unitName                                           | ggxf^1,2^              | parameters.#.unitname               
+| ggxf     | parameters[].lengthUnit                                         | ggxf^1,2^              | parameters.#.lengthunit             
+| ggxf     | parameters[].angleUnit                                          | ggxf^1,2^              | parameters.#.angleunit              
+| ggxf     | parameters[].scaleUnit                                          | ggxf^1,2^              | parameters.#.scaleunit              
+| ggxf     | parameters[].unitType                                           | ggxf^1,2^              | parameters.#.unittype               
+| ggxf     | parameters[].parameterMinimumValue                              | ggxf^1,2^              | parameters.#.parameterminimumvalue  
+| ggxf     | parameters[].parameterMaximumValue                              | ggxf^1,2^              | parameters.#.parametermaximumvalue  
+| ggxf     | parameters[].noDataFlag                                         | ggxf^1,2^              | parameters.#.nodataflag             
+| ggxf     | interpolationCrsWkt                                             | ggxf                   | interpolation_crs                   
+| ggxf     | interpolationCrsJson                                            | ggxf                   | interpolation_crs                   
+| ggxf     | sourceCrsWkt                                                    | ggxf                   | source_crs                          
+| ggxf     | sourceCrsJson                                                   | ggxf                   | source_crs                          
+| ggxf     | targetCrsWkt                                                    | ggxf                   | target_crs                          
+| ggxf     | targetCrsJson                                                   | ggxf                   | target_crs                          
+| ggxf     | license                                                         | acdd                   | license                             
+| ggxf     | operationAccuracy                                               | ggxf                   | operation_accuracy                  
+| ggxf     | publicationDate                                                 | acdd                   | date_issued                         
+| ggxf     | version                                                         | acdd                   | product_version                     
+| ggxf     | digitalObjectIdentifier                                         | ggxf                   | digital_object_identifier           
+| ggxf     | partyName                                                       | acdd                   | institution                         
+| ggxf     | electronicMailAddress                                           | acdd                   | publisher_email                     
+| ggxf     | onlineResourceLinkage                                           | acdd                   | references                          
+| ggxf     | deliveryPoint                                                   | ggxf                   | delivery_point                      
+| ggxf     | comment                                                         | acdd                   | comment                             
+| ggxf     | tideSystem                                                      | ggxf                   | tide_system                         
+| ggxf     | uncertaintyMeasure                                              | ggxf                   | uncertainty_measure                 
+| ggxf     | uncertaintyDefault                                              | ggxf                   | uncertainty_default                 
+| ggxf     | userDefinedMethodExample                                        | ggxf                   | user_defined_method_example         
+| ggxf     | userDefinedMethodFormula                                        | ggxf                   | user_defined_method_formula         
+| ggxf     | userDefinedMethodFormulaCitation                                | ggxf                   | user_defined_method_formula_citation
+| ggxf     | ggxfGroups                                                      | yaml                   |                                     
+| ggxf     | gridData                                                        | yaml                   |                                     
+| group    | groupParameters[]                                               | ggxf^1^                | groupParameters.#                                   
+| group    | interpolationMethod                                             | ggxf                   | interpolation_method                
+| group    | interpolationMethodCitation                                     | ggxf                   | interpolation_method_citation       
+| group    | comment                                                         | acdd                   | comment                             
+| group    | uncertaintyDefault                                              | ggxf                   | uncertainty_default                 
+| group    | ggxfGroupName                                                   | directory              |                                     
+| group    | grids                                                           | yaml                   |                                     
+| group    | tidalSurface                                                    | ggxf                   | tidal_surface                       
+| group    | timeFunctions                                                   | ggxf                   | time_functions                      
+| grid     | iNodeCount                                                      | dimension              | icount                              
+| grid     | jNodeCount                                                      | dimension              | jcount                              
+| grid     | kNodeCount                                                      | dimension              | kcount                              
+| grid     | affineCoeffs[]                                                  | ggxf                   | affine_coeffs                       
+| grid     | comment                                                         | acdd                   | comment                             
+| grid     | gridName                                                        | directory              |                                     
+| grid     | grids                                                           | yaml                   |                                     
+| grid     | data                                                            | variable               |                                     
+| grid     | dataSource                                                      | yaml                   |                                     
+|===
+
+
+
+[[table-parameter-variable-mapping]]
+.Mapping of GGXF parameters to NetCDF variables and axes
+[options="header"]
+|===
+| GGXF parameter | NetCDF variable | axis
+| depthOffset | offset | down
+| depthOffsetUncertainty | offsetUncertainty | down
+| deviationEast | deviation | east
+| deviationEastGeoid | deviationGeoid | east
+| deviationEastGeoidUncertainty | deviationGeoidUncertainty | east
+| deviationEastUncertainty | deviationUncertainty | east
+| deviationNorth | deviation | north
+| deviationNorthGeoid | deviationGeoid | north
+| deviationNorthGeoidUncertainty | deviationGeoidUncertainty | north
+| deviationNorthUncertainty | deviationUncertainty | north
+| displacementEast | displacement | east
+| displacementNorth | displacement | north
+| displacementUp | displacement | up
+| eastingOffset | offset | east
+| eastingOffsetUncertainty | offsetUncertainty | east
+| ellipsoidalHeightOffset | ellipsoidalOffset | up
+| ellipsoidalHeightOffsetUncertainty | ellipsoidalOffsetUncertainty | up
+| geocentricXOffset | offset | geocentricX
+| geocentricXOffsetUncertainty | offsetUncertainty | geocentricX
+| geocentricYOffset | offset | geocentricY
+| geocentricYOffsetUncertainty | offsetUncertainty | geocentricY
+| geocentricZOffset | offset | geocentricZ
+| geocentricZOffsetUncertainty | offsetUncertainty | geocentricZ
+| geoidHeight | geoid | up
+| geoidHeightUncertainty | geoidUncertainty | up
+| heightOffset | offset | up
+| heightOffsetUncertainty | offsetUncertainty | up
+| horizontalDisplacementUncertainty | horizontalDisplacementUncertainty | 
+| latitudeOffset | offset | north
+| latitudeOffsetUncertainty | offsetUncertainty | north
+| longitudeOffset | offset | east
+| longitudeOffsetUncertainty | offsetUncertainty | east
+| northingOffset | offset | north
+| northingOffsetUncertainty | offsetUncertainty | north
+| southingOffset | offset | south
+| southingOffsetUncertainty | offsetUncertainty | south
+| velocityEast | velocity | east
+| velocityEastUncertainty | velocityUncertainty | east
+| velocityNorth | velocity | north
+| velocityNorthUncertainty | velocityUncertainty | north
+| velocityUp | velocity | up
+| velocityUpUncertainty | velocityUncertainty | up
+| velocityX | velocity | geocentricX
+| velocityXUncertainty | velocityUncertainty | geocentricX
+| velocityY | velocity | geocentricY
+| velocityYUncertainty | velocityUncertainty | geocentricY
+| velocityZ | velocity | geocentricZ
+| velocityZUncertainty | velocityUncertainty | geocentricZ
+| verticalDisplacementUncertainty | verticalDisplacementUncertainty | 
+| westingOffset | offset | west
+| westingOffsetUncertainty | offsetUncertainty | west
+|===
+
+
+NOTE: Would it make sense to rename some of the GGXF attributes to have a consisent naming convention of <ggxf_parameter> = <netcdf_variable>+<axis_direction>.
+
+[[table-netcdf-content-types]]
+.NetCDF variable names and axes for each GGXF content type
+[options="header"]
+|===
+| Content type | Parameter | Axes
+| Cartesian2dOffsets | offset | east,north
+
+east,south
+
+north,west
+
+south,west
+|  | offsetUncertainty | east,north
+
+east,south
+
+north,west
+
+south,west
+| Cartesian3dOffsets | offset | down,east,north
+
+down,east,south
+
+down,north,west
+
+down,south,west
+
+east,north,up
+
+east,south,up
+
+north,up,west
+
+south,up,west
+|  | offsetUncertainty | down,east,north
+
+down,east,south
+
+down,north,west
+
+down,south,west
+
+east,north,up
+
+east,south,up
+
+north,up,west
+
+south,up,west
+| deformationModel | displacement | east,north
+
+east,north,up
+
+up
+|  | horizontalDisplacementUncertainty | 
+|  | verticalDisplacementUncertainty | 
+| deviationsOfTheVertical | deviation | east,north
+|  | deviationGeoid | east,north
+|  | deviationGeoidUncertainty | east,north
+|  | deviationUncertainty | east,north
+| geocentricTranslations | offset | geocentricX,geocentricY,geocentricZ
+|  | offsetUncertainty | geocentricX,geocentricY,geocentricZ
+| geographic2dOffsets | offset | east,north
+|  | offsetUncertainty | east,north
+| geographic3dOffsets | ellipsoidalOffset | up
+|  | ellipsoidalOffsetUncertainty | up
+|  | offset | east,north
+|  | offsetUncertainty | east,north
+| geoidModel | geoid | up
+|  | geoidUncertainty | up
+| hydroidModel | offset | up
+|  | offsetUncertainty | up
+| velocityModel | velocity | east,north
+
+east,north,up
+
+geocentricX,geocentricY,geocentricZ
+
+up
+|  | velocityUncertainty | east,north
+
+east,north,up
+
+geocentricX,geocentricY,geocentricZ
+
+up
+| verticalOffsets | offset | down
+
+up
+|  | offsetUncertainty | down
+
+up
+|===
+
+NOTE: For the deformation model it may be simpler for the moment to use displacementEastUncertainty, displacementNorthUncertainty, displacementUpUncertainty rather than horizontalUncertainty, verticalUncertainty.  However it in the future we could want to represent uncertainty with a covariance matrix.  This wouldn't be handled by the axes dimenson/attribute.  It would require another dimension and attribute, such as covarianceElements.
+
+NOTE: For geographic3dOffsets it would be more consistent to have a vector NetCDF variable with axes (east,north,up) rather than splitting horizontal offset and ellipsoid (=ellipsoidal height) offset.
+
+NOTE: In this table all parameters of all content types are vectors, though in some cases they are a vector of one dimension.  In the NetCDF these will (may, may not?) be scalar GGXF variables, ie won't have an axes dimension.
