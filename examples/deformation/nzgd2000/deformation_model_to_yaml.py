@@ -115,15 +115,17 @@ def getepsg(crdsysid):
     return OrderedDict([("crsName", name), ("crsWkt", wkt), ("crsUrl", url)])
 
 
-def pruneGrids(grids, maxdepth, maxwidth):
+def compileGrids(grids, maxdepth, maxwidth):
     idx = {}
     rootgrids = []
     for g in grids:
-        g["children"] = []
         idx[g["gridName"]] = g
     for g in grids:
         if p := g.get("parentGridName"):
-            idx[p]["children"].append(g)
+            g.pop("parentGridName")
+            grids = idx[p].get("grids", [])
+            grids.append(g)
+            idx[p]["grids"] = grids
         else:
             rootgrids.append(g)
     if maxwidth:
@@ -132,17 +134,19 @@ def pruneGrids(grids, maxdepth, maxwidth):
 
     def trimGrid(g, depth, maxdepth, maxwidth):
         usedgrids.append(g)
-        children = g.pop("children")
+        children = g.pop("grids") if "grids" in g else []
         if depth == maxdepth:
             children = []
         elif maxwidth:
             children = children[:maxwidth]
+        if children:
+            g["grids"] = children
         for c in children:
             trimGrid(c, depth + 1, maxdepth, maxwidth)
 
     for g in rootgrids:
         trimGrid(g, 1, maxdepth, maxwidth)
-    return usedgrids
+    return rootgrids
 
 
 def loadGTiffGridData(source, sourceref=None, tiffdir=None):
@@ -162,6 +166,9 @@ def loadGTiffGridData(source, sourceref=None, tiffdir=None):
         md = griddata["metadata"]
         gmd = md[""]
         gdata["gridName"] = makeNameValidIdentifier(gmd["grid_name"])
+        parent = gmd.get("parent_grid_name")
+        if parent:
+            gdata["parentGridName"] = makeNameValidIdentifier(parent)
         affine = list(griddata["geoTransform"])
         affine[0] += affine[1] / 2.0
         affine[3] += affine[5] / 2.0
@@ -400,11 +407,11 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
         if comment := c.get("description"):
             group["comment"] = comment
 
-        group["groupParameters"] = displacementParams[c["displacement_type"]]
+        group["groupParameters"] = list(displacementParams[c["displacement_type"]])
         group["timeFunctions"] = ggxfTimeFunction(c["time_function"])
         group["interpolationMethod"] = "bilinear"
         groups.append(group)
-        group["grids"] = pruneGrids(sm["grids"], maxdepth, maxwidth)
+        group["grids"] = compileGrids(sm["grids"], maxdepth, maxwidth)
         # hierarchyRank removed from GGXF
         # setHierarchyRank(group["grids"])
     return gmodel

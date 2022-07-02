@@ -81,6 +81,8 @@ class Reader(BaseReader):
         self._logger.debug(f"Loading group {groupname}")
         context = f"Group {groupname}"
         metadata = self.loadMetadata(ncgroup)
+        if "groupParameters" in metadata and type(metadata["groupParameters"]) == str:
+            metadata["groupParameters"] = [metadata["groupParameters"]]
         if not self.validator().validateGroupAttributes(metadata, context=context):
             return
         group = Group(ggxf, groupname, metadata)
