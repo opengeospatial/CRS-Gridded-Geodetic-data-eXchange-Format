@@ -11,7 +11,7 @@ CommonAttributes:
       Optional: false
     - AttributeName: abstract
       Type: str
-      Optional: true
+      Optional: false
     - AttributeName: filename
       Type: str
     - AttributeName: contentApplicabilityExtent
@@ -35,6 +35,7 @@ CommonAttributes:
           Type: str
         - AttributeName: sourceCrsJson
           Type: dict
+      Optional: true
     - AttributeChoice:
         AttributeChoiceName: targetCrs
         Attributes:
@@ -42,6 +43,7 @@ CommonAttributes:
           Type: str
         - AttributeName: targetCrsJson
           Type: dict
+      Optional: true
     - AttributeName: license
       Type: str
       Optional: true
@@ -248,7 +250,7 @@ YamlAttributes:
     - AttributeName: ggxfGroups
       Type: list
     - AttributeName: gridData
-      Type: list
+      Type: list(YamlGridData)
       Optional: true
 
     Group:
@@ -263,14 +265,27 @@ YamlAttributes:
     - AttributeName: grids
       Type: list
       Optional: true
-    - AttributeName: data
-      Comment: >
-         Type is "any" as gets converted to numpy grid. Tested specifically in
-         implementation rather than depending on schema definition.
-      Type: any
-    - AttributeName: dataSource
-      Type: any
-      Optional: true
+    - AttributeChoice:
+        AttributeChoiceName: dataSource
+        Attributes:
+        - AttributeName: data
+          Type: any
+          Comment: >
+            Type is "any" as gets converted to numpy grid. Tested specifically in
+            implementation rather than depending on schema definition.
+        - AttributeName: dataSource
+          Type: str
+
+    YamlGridData:
+    - AttributeName: gridName
+      Type: UnicodeIdentifier
+    - AttributeChoice:
+        AttributeChoiceName: dataSource
+        Attributes:
+        - AttributeName: data
+          Type: any
+        - AttributeName: dataSource
+          Type: str
 
 ContentTypes:
   - ContentType: Cartesian2dOffsets

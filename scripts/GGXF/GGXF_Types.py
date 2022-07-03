@@ -39,7 +39,6 @@ CommonAttributes = {
                     ATTRDEF_TYPE: str,
                 },
             ],
-            ATTRDEF_OPTIONAL: True,
         },
         {
             ATTRDEF_NAME: GGXF_ATTR_FILENAME,
@@ -104,6 +103,7 @@ CommonAttributes = {
                     ATTRDEF_TYPE: dict,
                 },
             ],
+            ATTRDEF_OPTIONAL: True,
         },
         {
             ATTRDEF_NAME: GGXF_ATTR_TARGET_CRS,
@@ -117,6 +117,7 @@ CommonAttributes = {
                     ATTRDEF_TYPE: dict,
                 },
             ],
+            ATTRDEF_OPTIONAL: True,
         },
         {
             ATTRDEF_NAME: GGXF_ATTR_LICENSE,
@@ -731,7 +732,7 @@ YamlAttributes = {
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GGXF_ATTR_GRID_DATA,
-                    ATTRDEF_TYPE: None,
+                    ATTRDEF_TYPE: ATTRDEF_TYPE_YAML_GRID_DATA,
                     ATTRDEF_LIST: True,
                 },
             ],
@@ -781,23 +782,41 @@ YamlAttributes = {
             ATTRDEF_OPTIONAL: True,
         },
         {
-            ATTRDEF_NAME: GRID_ATTR_DATA,
+            ATTRDEF_NAME: GRID_ATTR_DATA_SOURCE,
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GRID_ATTR_DATA,
                     ATTRDEF_TYPE: None,
                 },
+                {
+                    ATTRDEF_NAME: GRID_ATTR_DATA_SOURCE,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+        },
+    ],
+    ATTRDEF_TYPE_YAML_GRID_DATA: [
+        {
+            ATTRDEF_NAME: GGXF_ATTR_GRID_NAME,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_GRID_NAME,
+                    ATTRDEF_TYPE: ATTRDEF_TYPE_UNICODE_IDENTIFIER,
+                },
             ],
         },
         {
-            ATTRDEF_NAME: GRID_ATTR_DATA_SOURCE,
+            ATTRDEF_NAME: GGXF_ATTR_DATA_SOURCE,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GRID_ATTR_DATA_SOURCE,
+                    ATTRDEF_NAME: GGXF_ATTR_DATA,
                     ATTRDEF_TYPE: None,
                 },
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_DATA_SOURCE,
+                    ATTRDEF_TYPE: str,
+                },
             ],
-            ATTRDEF_OPTIONAL: True,
         },
     ],
 }

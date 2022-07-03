@@ -73,11 +73,11 @@ class Reader(BaseReader):
                 raise Error(
                     f"GGXF YAML file {yaml_file} missing expected metadata fields"
                 )
-            self.loadGridData(ydata)
+            gridDataSource = self.loadGridDataSection(ydata)
             ygroups = ydata.pop(GGXF_ATTR_GGXF_GROUPS, [])
             ggxf = GGXF(ydata)
             for ygroup in ygroups:
-                self.loadGroup(ggxf, ygroup)
+                self.loadGroup(ggxf, ygroup, gridDataSource)
             ggxf.configure(self.error)
             if not self._loadok:
                 ggxf = None
@@ -88,7 +88,7 @@ class Reader(BaseReader):
             ggxf = None
         return ggxf
 
-    def loadGroup(self, ggxf: GGXF, ygroup: dict):
+    def loadGroup(self, ggxf: GGXF, ygroup: dict, gridDataSource: dict):
         context = f"Group {ygroup.get(GROUP_ATTR_GGXF_GROUP_NAME,'unnamed')}"
         if self.validator().validateGroupAttributes(ygroup, context=context):
             groupname = ygroup.pop(GROUP_ATTR_GGXF_GROUP_NAME, None)
@@ -96,163 +96,74 @@ class Reader(BaseReader):
             # Need to handle parameter validation here
             group = Group(ggxf, groupname, ygroup)
             for ygrid in ygrids:
-                self.loadGrid(group, ygrid)
+                self.loadGrid(group, ygrid, gridDataSource)
             group.configure(self.error)
             ggxf.addGroup(group)
 
-    def loadGrid(self, group: Group, ygrid: dict, parent: Grid = None):
-        context = f"Grid {ygrid.get(GRID_ATTR_GRID_NAME,'unnamed')}"
+    def loadGridDataSection(self, ydata: dict):
+        gridDataSource = {}
+        sources = ydata.get(GGXF_ATTR_GRID_DATA, [])
+        for gdata in sources:
+            griddata = gdata.copy()
+            gridname = griddata.pop(GGXF_ATTR_GRID_NAME)
+            gridDataSource[gridname] = griddata
+        return gridDataSource
+
+    def loadGrid(
+        self, group: Group, ygrid: dict, gridDataSource: dict, parent: Grid = None
+    ):
+        gridname = ygrid.get(GRID_ATTR_GRID_NAME, "unnamed")
+        context = f"Grid {gridname}"
+        ygrid = ygrid.copy()
+
+        # Merge attributes from gridData section
+        if gridname in gridDataSource:
+            attr = gridDataSource.pop(gridname)
+            for key, value in attr.items():
+                if key in ygrid:
+                    self.error(
+                        f"{key} is defined in both {GGXF_ATTR_GRID_DATA} and in the group grid"
+                    )
+                ygrid[key] = value
+
+        # Load grid data. This will amend the grid definition by adding the data element
+        # and potentially the row and column count and the affine transformation
+        #
+        # Otherwise load the grid data into a numpy array
+
+        if GRID_ATTR_DATA_SOURCE in ygrid:
+            datasource = ygrid.pop(GRID_ATTR_DATA_SOURCE)
+            self.installGridFromSource(ygrid, datasource)
+
         if self.validator().validateGridAttributes(ygrid, context=context):
+            self.validateGridData(group, ygrid)
             data = ygrid.pop(GRID_ATTR_DATA, [])
             cgrids = ygrid.pop(GRID_ATTR_GRIDS, [])
             gridname = ygrid.pop(GRID_ATTR_GRID_NAME)
-            # Lost validation of affine coefficients 6 numeric
             grid = Grid(group, gridname, ygrid, data)
             for cgrid in cgrids:
-                self.loadGrid(group, cgrid, grid)
+                self.loadGrid(group, cgrid, gridDataSource, grid)
             if parent:
                 parent.addGrid(grid)
             else:
                 group.addGrid(grid)
 
-    def loadGridData(self, ydata: dict):
-        # Build a list of grids
-        gridindex = {}
-        gridnparam = {}
-        ggxfnparam = len(ydata.get(GGXF_ATTR_PARAMETERS, []))
-        for igroup, ygroup in enumerate(ydata.get(GGXF_ATTR_GGXF_GROUPS, [])):
-            groupname = ygroup.get(GROUP_ATTR_GGXF_GROUP_NAME, f"{igroup+1}")
-            params = ygroup.get(GROUP_ATTR_GROUP_PARAMETERS, [])
-            nparam = len(params) or ggxfnparam
-            if not nparam:
-                self.error(f"Group {groupname} header does not define any parameters")
-            ygrids = ygroup.get(GROUP_ATTR_GRIDS, [])
-            if type(ygrids) != list or len(ygrids) == 0:
-                self.error(f"Group {groupname} does not define any grids")
-                continue
-            igrid = 0
-            gridlist = []
-            gridlist.extend(reversed(ygrids))
-            while len(gridlist) > 0:
-                ygrid = gridlist.pop()
-                igrid += 1
-                gridname = ygrid.get(GRID_ATTR_GRID_NAME)
-                if type(gridname) != str or not gridname:
-                    self.error(f"{gridname} does not have a name defined")
-                    gridname = f"Group {groupname} grid {igrid+1}"
-                if gridname in gridindex:
-                    self.error(f"Grid name {gridname} is duplicated")
-                else:
-                    gridindex[gridname] = ygrid
-                    gridnparam[gridname] = nparam
-                if GRID_ATTR_GRIDS in ygrid:
-                    subgrids = ygrid.get(GRID_ATTR_GRIDS)
-                    if type(subgrids) != list:
-                        self.error(
-                            f"Grid {gridname} {GRID_ATTR_GRIDS} attribute is not a list"
-                        )
-                    else:
-                        gridlist.extend(reversed(subgrids))
-
-        # Copy information from the gridData section if it is defined
-        griddatasets = ydata.pop(GGXF_ATTR_GRID_DATA, None)
-        if griddatasets is not None:
-            for igriddata, griddata in enumerate(griddatasets):
-                gridname = griddata.get(GRID_ATTR_GRID_NAME)
-                if gridname not in gridindex:
-                    self.error(
-                        f"{GGXF_ATTR_GRID_DATA} grid {gridname} is not defined in any of the groups"
-                    )
-                    continue
-                ygrid = gridindex.get(gridname)
-                for key in griddata:
-                    if key != GRID_ATTR_GRID_NAME and key in ygrid:
-                        self.error(
-                            f"{key} is defined in both {GGXF_ATTR_GRID_DATA} and in the group grid"
-                        )
-                    else:
-                        ygrid[key] = griddata[key]
-
-        # Now install the grid data - this need to be converted to a numpy array
-        # If the options define a grid directory then change directory to that before
-        # trying to load the grids.
-
+    def installGridFromSource(self, ygrid: dict, datasource):
         startdir = os.getcwd()
         griddir = self.getOption(YAML_OPTION_GRID_DIRECTORY, startdir)
-        dirset = False
         try:
-            for gridname, ygrid in gridindex.items():
-                nparam = gridnparam[gridname]
-                source_data = {}
-                source_nparam = None
-                if GRID_ATTR_DATA_SOURCE in ygrid:
-                    if GRID_ATTR_DATA in ygrid:
-                        self.error(
-                            f"Grid {gridname} has {GRID_ATTR_DATA_SOURCE} and {GRID_ATTR_DATA}"
-                        )
-
-                    datasource = ygrid.pop(GRID_ATTR_DATA_SOURCE)
-                    if not dirset:
-                        self._logger.debug(
-                            f"Changing directory to {griddir} to load grids"
-                        )
-                        os.chdir(griddir)
-                        dirset = True
-                    self.loadGdalGrid(gridname, ygrid, datasource)
-                elif nparam:
-                    ncol = ygrid.get(GRID_ATTR_J_NODE_COUNT)
-                    nrow = ygrid.get(GRID_ATTR_I_NODE_COUNT)
-                    expectedSize = nparam * nrow * ncol
-                    expectedShape = (ncol, nrow, nparam)
-                    gridok = False
-                    data = ygrid.get(GRID_ATTR_DATA)
-                    if nrow and ncol and data:
-                        try:
-                            data = np.array(data)
-                            shape = data.shape
-                            gridok = True
-                        except Exception as ex:
-                            self.error(
-                                f"Grid {gridname}: Could not read grid data: {ex}"
-                            )
-                    if gridok:
-                        size = data.size
-                        if size != expectedSize:
-                            gridok = False
-                            self.error(
-                                f"Grid {gridname}: size {size} different to expected {expectedSize}"
-                            )
-                    if gridok:
-                        if len(shape) == 1:
-                            shape = expectedShape
-                            data = data.reshape(shape)
-                        elif len(shape) == 2:
-                            shape = (shape[0], shape[1], 1)
-                            data.reshape(shape)
-                        elif len(shape) != 3:
-                            gridok = False
-                            self.error(
-                                f"Grid {gridname} has the wrong number of dimensions {len(shape)}"
-                            )
-                    if gridok and shape != expectedShape:
-                        gridok = False
-                        self.error(
-                            f"Grid {gridname}: dimensions {data.shape} does not match expected {expectedShape} - likely transposed grid"
-                        )
-                    if gridok:
-                        if data.dtype != self._dtype:
-                            data = data.astype(self._dtype)
-                        ygrid[GRID_ATTR_DATA] = data
-                        self._logger.debug(
-                            f"Grid {gridname} loaded - dimensions {data.shape}, type {data.dtype}"
-                        )
+            # Currently only support GDAL grid.
+            os.chdir(griddir)
+            self.installGdalGrid(ygrid, datasource)
         finally:
             os.chdir(startdir)
 
-    def loadGdalGrid(self, gridname, ygrid, datasource):
+    def installGdalGrid(self, ygrid, datasource):
         # NOTE: This probably needs additional options for selecting bands,
         # order of interpolation coordinates, etc.
         from osgeo import gdal
+
+        gridname = ygrid.get(GRID_ATTR_GRID_NAME, "unnamed")
 
         try:
             self._logger.debug(f"Loading GDAL data from {datasource}")
@@ -322,6 +233,57 @@ class Reader(BaseReader):
             ygrid[GRID_ATTR_DATA] = gridData
         except Exception as ex:
             self.error(f"Grid {gridname}: Failed to load {datasource}: {ex}")
+
+    def validateGridData(self, group, ygrid):
+        gridname = ygrid.get(GRID_ATTR_GRID_NAME, "unnamed")
+        data = ygrid.get(GRID_ATTR_DATA)
+        if data is None:
+            return
+        nparam = group.nparam()
+        ncol = ygrid.get(GRID_ATTR_J_NODE_COUNT)
+        nrow = ygrid.get(GRID_ATTR_I_NODE_COUNT)
+        if not isinstance(data, np.ndarray):
+            try:
+                data = np.array(data)
+            except:
+                self.error("Failed to load grid {gridname} data into an array")
+                return
+
+        size = data.size
+        shape = data.shape
+        expectedSize = nparam * nrow * ncol
+        expectedShape = (ncol, nrow, nparam)
+
+        gridok = True
+        if size != expectedSize:
+            gridok = False
+            self.error(
+                f"Grid {gridname}: size {size} different to expected {expectedSize}"
+            )
+        if gridok:
+            if len(shape) == 1:
+                shape = expectedShape
+                data = data.reshape(shape)
+            elif len(shape) == 2:
+                shape = (shape[0], shape[1], 1)
+                data.reshape(shape)
+            elif len(shape) != 3:
+                gridok = False
+                self.error(
+                    f"Grid {gridname} has the wrong number of dimensions {len(shape)}"
+                )
+        if gridok and shape != expectedShape:
+            gridok = False
+            self.error(
+                f"Grid {gridname}: dimensions {data.shape} does not match expected {expectedShape} - likely transposed grid"
+            )
+        if gridok:
+            if data.dtype != self._dtype:
+                data = data.astype(self._dtype)
+            ygrid[GRID_ATTR_DATA] = data
+            self._logger.debug(
+                f"Grid {gridname} loaded - dimensions {data.shape}, type {data.dtype}"
+            )
 
 
 class Writer(BaseWriter):

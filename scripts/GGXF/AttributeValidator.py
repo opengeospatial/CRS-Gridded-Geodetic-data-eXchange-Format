@@ -195,7 +195,7 @@ class AttributeValidator:
 
     def validate(self, attributes, objtype, context=None):
         if objtype not in self._typedefs:
-            self.error("Cannot validate object of type {objtype}")
+            self.error(f"Cannot validate object of type {objtype}")
             return False
         context = context or objtype
         validationSet = self.typeDefinition(objtype)
@@ -206,7 +206,7 @@ class AttributeValidator:
         if ok:
             contentType = attributes[GGXF_ATTR_CONTENT]
             if contentType not in ContentTypes:
-                self.error("Invalid content type {contentType} for GGXF")
+                self.error(f"Invalid content type {contentType} for GGXF")
             else:
                 self.update(ContentTypes[contentType].get(ATTRDEF_ATTRIBUTES, {}))
         return ok
