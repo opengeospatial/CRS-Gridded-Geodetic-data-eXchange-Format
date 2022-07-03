@@ -1,7 +1,8 @@
 ggxfVersion: "1.0"
 filename:    d2018prvi.gxt
 content:     deviationsOfTheVertical
-title:      "hybrid defelection of the vertical model"
+title:      "hybrid deflection of the vertical model"
+abstract:      "hybrid deflection of the vertical model"
 contentApplicabilityExtent:
     boundingBox:
         southBoundLatitude:  17.67
@@ -40,7 +41,7 @@ ggxfGroups:
       grids:
           - gridName: "Puerto Rico Virgin Islands DEFLEC18"
             affineCoeffs: [15.0, 0.0, 0.01666666667, -69.0, 0.01666666667, 0.0]
-            iNodeMaximum:  301
+            iNodeCount:  301
             jNodeCount: 361
 gridData:
     - gridName: "Puerto Rico Virgin Islands DEFLEC18" 
