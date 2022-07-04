@@ -21,28 +21,13 @@ CommonAttributes:
       Optional: true
     - AttributeName: parameters
       Type: list(Parameter)
-    - AttributeChoice:
-        AttributeChoiceName: interpolationCrs
-        Attributes:
-        - AttributeName: interpolationCrsWkt
-          Type: str
-        - AttributeName: interpolationCrsJson
-          Type: dict
-    - AttributeChoice:
-        AttributeChoiceName: sourceCrs
-        Attributes:
-        - AttributeName: sourceCrsWkt
-          Type: str
-        - AttributeName: sourceCrsJson
-          Type: dict
+    - AttributeName: interpolationCrsWkt
+      Type: str
+    - AttributeName: sourceCrsWkt
+      Type: str
       Optional: true
-    - AttributeChoice:
-        AttributeChoiceName: targetCrs
-        Attributes:
-        - AttributeName: targetCrsWkt
-          Type: str
-        - AttributeName: targetCrsJson
-          Type: dict
+    - AttributeName: targetCrsWkt
+      Type: str
       Optional: true
     - AttributeName: license
       Type: str

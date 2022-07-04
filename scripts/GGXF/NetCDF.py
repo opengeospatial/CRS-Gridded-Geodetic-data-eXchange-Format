@@ -41,7 +41,7 @@ The following options apply to NetCDF input (I) and output (O):
   "{NETCDF_OPTION_WRITE_CDL_HEADER}" (O) Only write the header information in the CDL file (default false)
   "{NETCDF_OPTION_USE_COMPOUND_TYPE}" (O) Use compound types (very limited test implementation) (default false)
 """
-# "{NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS}" (O) Grids with just one parameter are created with just 2 dimensions (default false)
+#  "{NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS}" (O) Grids with just one parameter are created with just 2 dimensions (default false)
 
 
 class Reader(BaseReader):
@@ -217,9 +217,9 @@ class Writer(BaseWriter):
         self._useCompoundTypes = self.getBoolOption(
             NETCDF_OPTION_USE_COMPOUND_TYPE, False
         )
+        # Not currently implemented.
         if self._useCompoundTypes:
             self._logger.warning("Using NetCDF4 compound types (experimental)")
-        # Not currently implemented.
         # self._simplify1ParamGrids = self.getBoolOption(
         #     NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS, False
         # )

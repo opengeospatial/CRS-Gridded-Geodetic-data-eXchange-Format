@@ -79,42 +79,30 @@ CommonAttributes = {
             ],
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_INTERPOLATION_CRS,
+            ATTRDEF_NAME: GGXF_ATTR_INTERPOLATION_CRS_WKT,
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GGXF_ATTR_INTERPOLATION_CRS_WKT,
                     ATTRDEF_TYPE: str,
                 },
-                {
-                    ATTRDEF_NAME: GGXF_ATTR_INTERPOLATION_CRS_JSON,
-                    ATTRDEF_TYPE: dict,
-                },
             ],
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_SOURCE_CRS,
+            ATTRDEF_NAME: GGXF_ATTR_SOURCE_CRS_WKT,
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GGXF_ATTR_SOURCE_CRS_WKT,
                     ATTRDEF_TYPE: str,
                 },
-                {
-                    ATTRDEF_NAME: GGXF_ATTR_SOURCE_CRS_JSON,
-                    ATTRDEF_TYPE: dict,
-                },
             ],
             ATTRDEF_OPTIONAL: True,
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_TARGET_CRS,
+            ATTRDEF_NAME: GGXF_ATTR_TARGET_CRS_WKT,
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GGXF_ATTR_TARGET_CRS_WKT,
                     ATTRDEF_TYPE: str,
-                },
-                {
-                    ATTRDEF_NAME: GGXF_ATTR_TARGET_CRS_JSON,
-                    ATTRDEF_TYPE: dict,
                 },
             ],
             ATTRDEF_OPTIONAL: True,
