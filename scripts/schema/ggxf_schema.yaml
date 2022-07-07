@@ -3,7 +3,7 @@
 CommonAttributes:
   GGXF:
     - AttributeName: ggxfVersion
-      Type: ["1.0"]
+      Type: ["GGXF-1.0"]
     - AttributeName: content
       Type: str
     - AttributeName: title

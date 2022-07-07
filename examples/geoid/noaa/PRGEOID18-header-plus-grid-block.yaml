@@ -1,9 +1,10 @@
 ﻿# this exemplifies a file in which the grid data is directly associated with its header
 
-ggxfVersion: "1.0"
+ggxfVersion: "GGXF-1.0"
 filename:    g2018pr.yaml
 content:     geoidModel
 title:      "hybrid geoid"
+abstract:      "hybrid geoid"
 contentApplicabilityExtent:
     boundingBox:
         southBoundLatitude:  17.87

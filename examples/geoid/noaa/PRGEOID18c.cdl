@@ -1,10 +1,11 @@
 netcdf PRGEOID18c {
 
 // global attributes:
-		:ggxfVersion = "1.0" ;
+		:ggxfVersion = "GGXF-1.0" ;
 		:filename = "g2018pr.yaml" ;
 		:content = "geoidModel" ;
 		:title = "hybrid geoid" ;
+		:abstract = "hybrid geoid" ;
 		:contentApplicabilityExtent.boundingBox.southBoundLatitude = 17.87 ;
 		:contentApplicabilityExtent.boundingBox.westBoundLongitude = -68. ;
 		:contentApplicabilityExtent.boundingBox.northBoundLatitude = 18.53 ;

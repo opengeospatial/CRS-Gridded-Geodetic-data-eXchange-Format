@@ -1,4 +1,4 @@
-ggxfVersion: '1.0'
+ggxfVersion: "GGXF-1.0": '1.0'
 filename: nzgd2000-20180701-subset.yaml
 version: '20180701'
 content: deformationModel
@@ -49,7 +49,6 @@ parameters:
   unitSiRatio: 1.0
 operationAccuracy: 0.01
 uncertaintyMeasure: 2CEP 2SE
-deformationApplicationMethod: addition
 ggxfGroups:
 - ggxfGroupName: nz_linz_nzgd2000-ndm-grid02
   comment: |

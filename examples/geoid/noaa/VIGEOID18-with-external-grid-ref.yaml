@@ -1,9 +1,10 @@
 ﻿# this exemplifies a GGXF yaml file in which an external grid file is referenced in the grid header
 
-ggxfVersion: "1.0"
+ggxfVersion: "GGXF-1.0"
 filename:    g2018vi.yaml
 content:     heightCorrectionModel
 title:      "hybrid geoid"
+abstract:      "hybrid geoid"
 contentApplicability:
     boundingBox:
         southBoundLatitude:  17.67

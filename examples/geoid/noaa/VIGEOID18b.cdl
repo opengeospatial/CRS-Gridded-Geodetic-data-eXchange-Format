@@ -1,10 +1,11 @@
 netcdf VIGEOID18b {
 
 // global attributes:
-		:ggxfVersion = "1.0" ;
+		:ggxfVersion = "GGXF-1.0" ;
 		:filename = "g2018vi.yaml" ;
 		:content = "geoidModel" ;
 		:title = "hybrid geoid" ;
+		:abstract = "hybrid geoid" ;
 		:contentApplicabilityExtent.boundingBox.southBoundLatitude = 17.67 ;
 		:contentApplicabilityExtent.boundingBox.westBoundLongitude = -65.09 ;
 		:contentApplicabilityExtent.boundingBox.northBoundLatitude = 18.42 ;

@@ -321,7 +321,7 @@ def makeNameValidIdentifier(name):
 
 def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
     gmodel = OrderedDict()
-    gmodel["ggxfVersion"] = "1.0"
+    gmodel["ggxfVersion"] = "GGXF-1.0"
     gmodel["filename"] = "unknown"
     gmodel["version"] = model["version"]
     gmodel["content"] = "deformationModel"
@@ -392,7 +392,6 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
     ]
     gmodel["operationAccuracy"] = 0.01
     gmodel["uncertaintyMeasure"] = "2CEP 2SE"
-    gmodel["deformationApplicationMethod"] = "addition"
     groups = []
     gmodel["ggxfGroups"] = groups
     for c in model["components"]:

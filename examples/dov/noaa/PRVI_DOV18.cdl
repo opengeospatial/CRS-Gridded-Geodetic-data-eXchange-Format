@@ -1,7 +1,7 @@
 netcdf PRVI_DOV18 {
 
 // global attributes:
-		:ggxfVersion = "1.0" ;
+		:ggxfVersion = "GGXF-1.0" ;
 		:filename = "d2018prvi.gxt" ;
 		:content = "deviationsOfTheVertical" ;
 		:title = "hybrid defelection of the vertical model" ;

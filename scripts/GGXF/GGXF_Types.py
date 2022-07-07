@@ -9,7 +9,7 @@ CommonAttributes = {
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GGXF_ATTR_GGXF_VERSION,
-                    ATTRDEF_TYPE: [GGXF_VERSION_1_0],
+                    ATTRDEF_TYPE: [GGXF_VERSION_G_G_X_F_1_0],
                 },
             ],
         },

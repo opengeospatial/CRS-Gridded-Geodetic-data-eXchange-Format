@@ -1,7 +1,8 @@
-﻿ggxfVersion: "1.0"
+﻿ggxfVersion: "GGXF-1.0"
 filename: tiny_geoid.gxt
 content: geoidModel
 title: "hybrid geoid"
+abstract: "Tiny geoid for testing GGXF implementation"
 contentApplicabilityExtent:
   boundingBox:
     southBoundLatitude: 22.5

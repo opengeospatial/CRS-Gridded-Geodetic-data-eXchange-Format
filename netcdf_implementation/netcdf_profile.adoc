@@ -19,7 +19,7 @@ A GGXF NetCDF file cannot contain NetCDF groups other than these.
 
 NOTE: It could be possible to allow other groups to be embedded in a GGXF NetCDF file.  For example each GGXF group could have a "group_type" attribute that is one of "ggxf". Any group without this attribute or with an different value would be ignored.  This would be a NetCDF only attribute in GGXF.
 
-NOTE: In a GGXF file the order of grids in a ggxfGroup or child grids of a grid is significant and critical to the correct selection of which grid is used in a nested grid structure.  The current implementation assumes that the order in which groups are created is the same as the order in which they will be retrieved by the NetCDF API.  Though we understand that this is the case it is not clearly documented in the API and could be altered by a higher level abstraction of the API.  This feels very fragile.  It may be better to used a numbered id for the NetCDF name of the group, for example _"grid\\###"_, where __\###__ are digits.  The GGXF gridName attribute would be an optional attribute of the NetCDF group.  The number of digits will be sufficient to represent the highest numbered child grid to ensure that alphabetic sorting defines the correct order.  For example if there are between 10 and 99 child grids then at least two digits will be used.  This ensures that alphabetic sorting of the grid names will be define the correct order. 
+NOTE: In a GGXF file the order of grids in a ggxfGroup or child grids of a grid is significant and critical to the correct selection of which grid is used in a nested grid structure.  The current implementation assumes that the order in which groups are created is the same as the order in which they will be retrieved by the NetCDF API.  Though we understand that this is the case it is not clearly documented in the API and could be altered by a higher level abstraction of the API.  This feels very fragile.  It may be better to used a numbered id for the NetCDF name of the group, for example _"grid\\###"_, where __\###__ are digits.  The GGXF gridName attribute would be an optional attribute of the NetCDF group.  The number of digits will be sufficient to represent the highest numbered child grid to ensure that alphabetic sorting defines the correct order.  For example if there are between 10 and 99 child grids then at least two digits will be used.   
 
 The contents of each GGXF file, grid, and group are defined by attributes.  These are implemented in a NetCDF GGXF file as defined in  <<table-attribute-mapping>>.  In this table the attributes are assigned a category defined in <<table-attribute-mapping-categories>> which defines how the attribute is mapped and which NetCDF conventions the attribute names come from. 
 
@@ -98,79 +98,79 @@ This may be implemented as an array of parameter typed values, where the paramet
 .Mapping of GGXF attributes to NetCDF attributes
 [options="header"]
 |===
-| Section  | GGXF attribute                                                  | Category  | NetCDF attribute name               
-| ggxf     | ggxfVersion                                                     | netcdf                 | Conventions                         
-| ggxf     | content                                                         | ggxf                   | content                             
-| ggxf     | title                                                           | acdd                   | title                               
-| ggxf     | abstract                                                        | acdd                   | summary                             
-| ggxf     | filename                                                        | acdd                   | source_file                         
-| ggxf     | contentApplicabilityExtent.boundingBox.southBoundLatitude       | acdd                   | geospatial_lat_min                  
-| ggxf     | contentApplicabilityExtent.boundingBox.westBoundLongitude       | acdd                   | geospatial_lon_min                  
-| ggxf     | contentApplicabilityExtent.boundingBox.northBoundLatitude       | acdd                   | geospatial_lat_max                  
-| ggxf     | contentApplicabilityExtent.boundingBox.eastBoundLongitude       | acdd                   | geospatial_lon_max                  
-| ggxf     | contentApplicabilityExtent.extentDescription                    | ggxf                   | extent_description                  
-| ggxf     | contentApplicabilityExtent.boundingPolygon                      | acdd                   | geospatial_bounds                   
-| ggxf     | contentApplicabilityExtent.temporalExtent.startDate             | ggxf                   | start_date                          
-| ggxf     | contentApplicabilityExtent.temporalExtent.endDate               | ggxf                   | end_date                            
-| ggxf     | contentApplicabilityExtent.verticalExtent.verticalExtentCrsWkt  | ggxf                   | vertical_extent_crs_wkt             
-| ggxf     | contentApplicabilityExtent.verticalExtent.verticalExtentMinimum | ggxf                   | vertical_extent_minimum             
-| ggxf     | contentApplicabilityExtent.verticalExtent.verticalExtentMaximum | ggxf                   | vertical_extent_maximum             
-| ggxf     | contentBox.southBoundLatitude                                   | ggxf                   | south_bound_latitude                
-| ggxf     | contentBox.westBoundLongitude                                   | ggxf                   | west_bound_longitude                
-| ggxf     | contentBox.northBoundLatitude                                   | ggxf                   | north_bound_latitude                
-| ggxf     | contentBox.eastBoundLongitude                                   | ggxf^1^                | east_bound_longitude                
-| ggxf     | parameters[].parameterName                                      | ggxf^1^                | parameters.#.parametername          
-| ggxf     | parameters[].unitSiRatio                                        | ggxf^1^                | parameters.#.unitsiratio            
-| ggxf     | parameters[].unitName                                           | ggxf^1^                | parameters.#.unitname               
-| ggxf     | parameters[].lengthUnit                                         | ggxf^1^                | parameters.#.lengthunit             
-| ggxf     | parameters[].angleUnit                                          | ggxf^1^                | parameters.#.angleunit              
-| ggxf     | parameters[].scaleUnit                                          | ggxf^1^                | parameters.#.scaleunit              
-| ggxf     | parameters[].unitType                                           | ggxf^1^                | parameters.#.unittype               
-| ggxf     | parameters[].parameterMinimumValue                              | ggxf^1^                | parameters.#.parameterminimumvalue  
-| ggxf     | parameters[].parameterMaximumValue                              | ggxf^1^                | parameters.#.parametermaximumvalue  
-| ggxf     | parameters[].noDataFlag                                         | ggxf^1^                | parameters.#.nodataflag             
-| ggxf     | interpolationCrsWkt                                             | ggxf                   | interpolation_crs                   
-| ggxf     | interpolationCrsJson                                            | ggxf                   | interpolation_crs                   
-| ggxf     | sourceCrsWkt                                                    | ggxf                   | source_crs                          
-| ggxf     | sourceCrsJson                                                   | ggxf                   | source_crs                          
-| ggxf     | targetCrsWkt                                                    | ggxf                   | target_crs                          
-| ggxf     | targetCrsJson                                                   | ggxf                   | target_crs                          
-| ggxf     | license                                                         | acdd                   | license                             
-| ggxf     | operationAccuracy                                               | ggxf                   | operation_accuracy                  
-| ggxf     | publicationDate                                                 | acdd                   | date_issued                         
-| ggxf     | version                                                         | acdd                   | product_version                     
-| ggxf     | digitalObjectIdentifier                                         | ggxf                   | digital_object_identifier           
-| ggxf     | partyName                                                       | acdd                   | institution                         
-| ggxf     | electronicMailAddress                                           | acdd                   | publisher_email                     
-| ggxf     | onlineResourceLinkage                                           | acdd                   | references                          
-| ggxf     | deliveryPoint                                                   | ggxf                   | delivery_point                      
-| ggxf     | comment                                                         | acdd                   | comment                             
-| ggxf     | tideSystem                                                      | ggxf                   | tide_system                         
-| ggxf     | uncertaintyMeasure                                              | ggxf                   | uncertainty_measure                 
-| ggxf     | uncertaintyDefault                                              | ggxf                   | uncertainty_default                 
-| ggxf     | userDefinedMethodExample                                        | ggxf                   | user_defined_method_example         
-| ggxf     | userDefinedMethodFormula                                        | ggxf                   | user_defined_method_formula         
-| ggxf     | userDefinedMethodFormulaCitation                                | ggxf                   | user_defined_method_formula_citation
-| ggxf     | ggxfGroups                                                      | yaml                   |                                     
-| ggxf     | gridData                                                        | yaml                   |                                     
-| group    | groupParameters[]                                               | ggxf                   | groupParameters
-| group    | interpolationMethod                                             | ggxf                   | interpolation_method                
-| group    | interpolationMethodCitation                                     | ggxf                   | interpolation_method_citation       
-| group    | comment                                                         | acdd                   | comment                             
-| group    | uncertaintyDefault                                              | ggxf                   | uncertainty_default                 
-| group    | ggxfGroupName                                                   | directory              |                                     
-| group    | grids                                                           | yaml                   |                                     
-| group    | tidalSurface                                                    | ggxf                   | tidal_surface                       
-| group    | timeFunctions                                                   | ggxf                   | time_functions                      
-| grid     | iNodeCount                                                      | dimension              | icount                              
-| grid     | jNodeCount                                                      | dimension              | jcount                              
-| grid     | kNodeCount                                                      | dimension              | kcount                              
-| grid     | affineCoeffs[]                                                  | ggxf                   | affine_coeffs                       
-| grid     | comment                                                         | acdd                   | comment                             
-| grid     | gridName                                                        | directory              |                                     
-| grid     | grids                                                           | yaml                   |                                     
-| grid     | data                                                            | variable               |                                     
-| grid     | dataSource                                                      | yaml                   |                                     
+| Section | GGXF attribute | Category | NetCDF attribute name 
+| ggxf | ggxfVersion | netcdf | Conventions 
+| ggxf | content | ggxf | content 
+| ggxf | title | acdd | title 
+| ggxf | abstract | acdd | summary 
+| ggxf | filename | acdd | source_file 
+| ggxf | contentApplicabilityExtent.boundingBox.southBoundLatitude | acdd | geospatial_lat_min 
+| ggxf | contentApplicabilityExtent.boundingBox.westBoundLongitude | acdd | geospatial_lon_min 
+| ggxf | contentApplicabilityExtent.boundingBox.northBoundLatitude | acdd | geospatial_lat_max 
+| ggxf | contentApplicabilityExtent.boundingBox.eastBoundLongitude | acdd | geospatial_lon_max 
+| ggxf | contentApplicabilityExtent.extentDescription | ggxf | extent_description 
+| ggxf | contentApplicabilityExtent.boundingPolygon | acdd | geospatial_bounds 
+| ggxf | contentApplicabilityExtent.temporalExtent.startDate | ggxf | start_date 
+| ggxf | contentApplicabilityExtent.temporalExtent.endDate | ggxf | end_date 
+| ggxf | contentApplicabilityExtent.verticalExtent.verticalExtentCrsWkt | ggxf | vertical_extent_crs_wkt 
+| ggxf | contentApplicabilityExtent.verticalExtent.verticalExtentMinimum | ggxf | vertical_extent_minimum 
+| ggxf | contentApplicabilityExtent.verticalExtent.verticalExtentMaximum | ggxf | vertical_extent_maximum 
+| ggxf | contentBox.southBoundLatitude | ggxf | south_bound_latitude 
+| ggxf | contentBox.westBoundLongitude | ggxf | west_bound_longitude 
+| ggxf | contentBox.northBoundLatitude | ggxf | north_bound_latitude 
+| ggxf | contentBox.eastBoundLongitude | ggxf^1^ | east_bound_longitude 
+| ggxf | parameters[].parameterName | ggxf^1^ | parameters.#.parametername 
+| ggxf | parameters[].unitSiRatio | ggxf^1^ | parameters.#.unitsiratio 
+| ggxf | parameters[].unitName | ggxf^1^ | parameters.#.unitname 
+| ggxf | parameters[].lengthUnit | ggxf^1^ | parameters.#.lengthunit 
+| ggxf | parameters[].angleUnit | ggxf^1^ | parameters.#.angleunit 
+| ggxf | parameters[].scaleUnit | ggxf^1^ | parameters.#.scaleunit 
+| ggxf | parameters[].unitType | ggxf^1^ | parameters.#.unittype 
+| ggxf | parameters[].parameterMinimumValue | ggxf^1^ | parameters.#.parameterminimumvalue 
+| ggxf | parameters[].parameterMaximumValue | ggxf^1^ | parameters.#.parametermaximumvalue 
+| ggxf | parameters[].noDataFlag | ggxf^1^ | parameters.#.nodataflag 
+| ggxf | interpolationCrsWkt | ggxf | interpolation_crs 
+| ggxf | interpolationCrsJson | ggxf | interpolation_crs 
+| ggxf | sourceCrsWkt | ggxf | source_crs 
+| ggxf | sourceCrsJson | ggxf | source_crs 
+| ggxf | targetCrsWkt | ggxf | target_crs 
+| ggxf | targetCrsJson | ggxf | target_crs 
+| ggxf | license | acdd | license 
+| ggxf | operationAccuracy | ggxf | operation_accuracy 
+| ggxf | publicationDate | acdd | date_issued 
+| ggxf | version | acdd | product_version 
+| ggxf | digitalObjectIdentifier | ggxf | digital_object_identifier 
+| ggxf | partyName | acdd | publisher_institution 
+| ggxf | electronicMailAddress | acdd | publisher_email 
+| ggxf | onlineResourceLinkage | acdd | creator_url 
+| ggxf | deliveryPoint | ggxf | delivery_point 
+| ggxf | comment | acdd | comment 
+| ggxf | tideSystem | ggxf | tide_system 
+| ggxf | uncertaintyMeasure | ggxf | uncertainty_measure 
+| ggxf | uncertaintyDefault | ggxf | uncertainty_default 
+| ggxf | userDefinedMethodExample | ggxf | user_defined_method_example 
+| ggxf | userDefinedMethodFormula | ggxf | user_defined_method_formula 
+| ggxf | userDefinedMethodFormulaCitation | ggxf | user_defined_method_formula_citation
+| ggxf | ggxfGroups | yaml | 
+| ggxf | gridData | yaml | 
+| group | groupParameters[] | ggxf | groupParameters
+| group | interpolationMethod | ggxf | interpolation_method 
+| group | interpolationMethodCitation | ggxf | interpolation_method_citation 
+| group | comment | acdd | comment 
+| group | uncertaintyDefault | ggxf | uncertainty_default 
+| group | ggxfGroupName | directory | 
+| group | grids | yaml | 
+| group | tidalSurface | ggxf | tidal_surface 
+| group | timeFunctions | ggxf | time_functions 
+| grid | iNodeCount | dimension | icount 
+| grid | jNodeCount | dimension | jcount 
+| grid | kNodeCount | dimension | kcount 
+| grid | affineCoeffs[] | ggxf | affine_coeffs 
+| grid | comment | acdd | comment 
+| grid | gridName | directory | 
+| grid | grids | yaml | 
+| grid | data | variable | 
+| grid | dataSource | yaml | 
 |===
 
 
@@ -183,12 +183,8 @@ This may be implemented as an array of parameter typed values, where the paramet
 | depthOffset | offset | down
 | depthOffsetUncertainty | offsetUncertainty | down
 | deviationEast | deviation | east
-| deviationEastGeoid | deviationGeoid | east
-| deviationEastGeoidUncertainty | deviationGeoidUncertainty | east
 | deviationEastUncertainty | deviationUncertainty | east
 | deviationNorth | deviation | north
-| deviationNorthGeoid | deviationGeoid | north
-| deviationNorthGeoidUncertainty | deviationGeoidUncertainty | north
 | deviationNorthUncertainty | deviationUncertainty | north
 | displacementEast | displacement | east
 | displacementNorth | displacement | north
@@ -203,8 +199,8 @@ This may be implemented as an array of parameter typed values, where the paramet
 | geocentricYOffsetUncertainty | offsetUncertainty | geocentricY
 | geocentricZOffset | offset | geocentricZ
 | geocentricZOffsetUncertainty | offsetUncertainty | geocentricZ
-| geoidHeight | geoid | up
-| geoidHeightUncertainty | geoidUncertainty | up
+| geoidHeight | geoidHeight | up
+| geoidHeightUncertainty | geoidHeightUncertainty | up
 | heightOffset | offset | up
 | heightOffsetUncertainty | offsetUncertainty | up
 | horizontalDisplacementUncertainty | horizontalDisplacementUncertainty | 

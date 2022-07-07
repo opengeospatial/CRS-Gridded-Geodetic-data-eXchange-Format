@@ -1,6 +1,7 @@
-ggxfVersion: "1.0"
+ggxfVersion: "GGXF-1.0"
 filename: "27to83.gxt"
 title: "Canadian National NAD27-NAD83(Original) NTV2 transformation"
+abstract: "Canadian National NAD27-NAD83(Original) NTV2 transformation"
 content: geographic2dOffsets
 version: "National Transformation v2_0"
 publicationDate: "1995-02"

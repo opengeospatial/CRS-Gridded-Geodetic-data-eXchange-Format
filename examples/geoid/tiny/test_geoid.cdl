@@ -1,10 +1,11 @@
 netcdf test_geoid {
 
 // global attributes:
-		:ggxfVersion = "1.0" ;
+		:ggxfVersion = "GGXF-1.0" ;
 		:filename = "tiny_geoid.gxt" ;
 		:content = "geoidModel" ;
 		:title = "hybrid geoid" ;
+		:abstract = "Tiny geoid for testing GGXF implementation" ;
 		:contentApplicabilityExtent.boundingBox.southBoundLatitude = 22.5 ;
 		:contentApplicabilityExtent.boundingBox.westBoundLongitude = -69. ;
 		:contentApplicabilityExtent.boundingBox.northBoundLatitude = 24.6 ;
