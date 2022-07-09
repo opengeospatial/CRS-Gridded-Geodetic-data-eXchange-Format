@@ -37,8 +37,6 @@ ggxfGroups:
   ggxfGroupName: default
   grids:
   - 
-    iNodeCount: 3
-    jNodeCount: 4
     affineCoeffs:
     - 22.5
     - 0.0
@@ -46,6 +44,8 @@ ggxfGroups:
     - -69.0
     - 1.0
     - 0.0
+    iNodeCount: 3
+    jNodeCount: 4
     data: 
     - - -10.5
       - -20.5

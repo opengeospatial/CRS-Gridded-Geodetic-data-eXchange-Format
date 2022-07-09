@@ -1,37 +1,37 @@
 netcdf PRVI_DOV18 {
 
 // global attributes:
-		:ggxfVersion = "GGXF-1.0" ;
-		:filename = "d2018prvi.gxt" ;
+		:Conventions = "GGXF-1.0, ACDD-1.3" ;
+		:source_file = "d2018prvi.gxt" ;
 		:content = "deviationsOfTheVertical" ;
 		:title = "hybrid defelection of the vertical model" ;
-		:abstract = "hybrid defelection of the vertical model" ;
-		:contentApplicabilityExtent.boundingBox.southBoundLatitude = 17.67 ;
-		:contentApplicabilityExtent.boundingBox.westBoundLongitude = -65.09 ;
-		:contentApplicabilityExtent.boundingBox.northBoundLatitude = 18.42 ;
-		:contentApplicabilityExtent.boundingBox.eastBoundLongitude = -64.6 ;
-		:contentApplicabilityExtent.extentDescription = "US Puerto Rico and Virgin Islands - onshore." ;
-		:interpolationCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
+		:summary = "hybrid defelection of the vertical model" ;
+		:geospatial_lat_min = 17.67 ;
+		:geospatial_lon_min = -65.09 ;
+		:geospatial_lat_max = 18.42 ;
+		:geospatial_lon_max = -64.6 ;
+		:extent_description = "US Puerto Rico and Virgin Islands - onshore." ;
+		:interpolation_crs_wkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:parameters.count = 2LL ;
-		:parameters.0.parameterName = "deviationEast" ;
-		:parameters.0.angleUnit = "arc-second" ;
-		:parameters.0.unitSiRatio = 4.84813681109536e-06 ;
-		:parameters.1.parameterName = "deviationNorth" ;
-		:parameters.1.angleUnit = "arc-second" ;
-		:parameters.1.unitSiRatio = 4.84813681109536e-60 ;
-		:organisationName = "National Geodetic Survey, National Oceanic and Atmospheric Administration." ;
-		:deliveryPoint = "1315 East West Hwy" ;
+		:parameters.0.parameter_name = "deviationEast" ;
+		:parameters.0.angle_unit = "arc-second" ;
+		:parameters.0.unit_si_ratio = 4.84813681109536e-06 ;
+		:parameters.1.parameter_name = "deviationNorth" ;
+		:parameters.1.angle_unit = "arc-second" ;
+		:parameters.1.unit_si_ratio = 4.84813681109536e-60 ;
+		:organisation_name = "National Geodetic Survey, National Oceanic and Atmospheric Administration." ;
+		:delivery_point = "1315 East West Hwy" ;
 		:city = "Silver Spring" ;
-		:postalCode = "20910" ;
+		:postal_code = "20910" ;
 		:country = "United States of America" ;
-		:onlineResourceLinkage = "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g2018p0.asc.zip" ;
+		:online_resource_linkage = "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g2018p0.asc.zip" ;
 
 group: Puerto\ Rico\ Virgin\ Islands\ DEFLEC18 {
   dimensions:
   	parameter = 2 ;
 
   // group attributes:
-  		:interpolationMethod = "biquadratic" ;
+  		:interpolation_method = "biquadratic" ;
 
   group: Puerto\ Rico\ Virgin\ Islands\ DEFLEC18 {
     dimensions:
@@ -41,9 +41,9 @@ group: Puerto\ Rico\ Virgin\ Islands\ DEFLEC18 {
     	float data(gridj, gridi, parameter) ;
 
     // group attributes:
-    		:iNodeCount = 301LL ;
-    		:jNodeCount = 361LL ;
-    		:affineCoeffs = 15., 0., 0.01666666667, -69., 0.01666666667, 0. ;
+    		:affine_coeffs = 15., 0., 0.01666666667, -69., 0.01666666667, 0. ;
+    		:i_node_count = 301LL ;
+    		:j_node_count = 361LL ;
     } // group Puerto\ Rico\ Virgin\ Islands\ DEFLEC18
   } // group Puerto\ Rico\ Virgin\ Islands\ DEFLEC18
 }

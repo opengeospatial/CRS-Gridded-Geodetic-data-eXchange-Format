@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 #
-#  Script to dump a single parameter from a single grid from a NetCDF4 XYZ file to an ASCII XYZ file
+# NetCDF implementation of GGXF.
 #
 # Note: NetCDF is stored in column major order.  Ie dimensions ncol, nrow, nparam stores parameters for
 # ncol, nrow consecutively.
@@ -17,16 +17,20 @@ from .GGXF import *
 NETCDF_OPTION_METADATA_STYLE = "metadata_style"
 NETCDF_METADATA_DOT0 = "dot0"
 NETCDF_METADATA_DOT1 = "dot1"
-NETCDF_METADATA_JSON = "json"
 
 NETCDF_OPTION_GRID_DTYPE = "grid_dtype"
 NETCDF_DTYPE_FLOAT32 = "float32"
 NETCDF_DTYPE_FLOAT64 = "float64"
 
 NETCDF_OPTION_USE_COMPOUND_TYPE = "use_compound_types"
+NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES = "use_snake_case_attributes"
 NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS = "simplify_1param_grids"
 NETCDF_OPTION_WRITE_CDL = "write_cdl"
 NETCDF_OPTION_WRITE_CDL_HEADER = "write_cdl_header"
+
+NETCDF_CONVENTIONS_ATTRIBUTE = "Conventions"
+NETCDF_CONVENTIONS_VALUE = "{ggxfVersion}, ACDD-1.3"
+
 
 NETCDF_VAR_GRIDDATA = "data"
 
@@ -37,11 +41,37 @@ NETCDF_DIMENSION_NPARAM = "parameter"
 NETCDF_OPTIONS = f"""
 The following options apply to NetCDF input (I) and output (O):
 
+  "{NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES}" (O) Convert attributes to snake_case (default true)"
   "{NETCDF_OPTION_WRITE_CDL}" (O) Generate an output CDL file as well as a NetCDF file (default false)
   "{NETCDF_OPTION_WRITE_CDL_HEADER}" (O) Only write the header information in the CDL file (default false)
   "{NETCDF_OPTION_USE_COMPOUND_TYPE}" (O) Use compound types (very limited test implementation) (default false)
 """
 #  "{NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS}" (O) Grids with just one parameter are created with just 2 dimensions (default false)
+
+ACDD_AttributeMapping = {
+    "title": "title",
+    "abstract": "summary",
+    "filename": "source_file",
+    "contentApplicabilityExtent.boundingBox.southBoundLatitude": "geospatial_lat_min",
+    "contentApplicabilityExtent.boundingBox.westBoundLongitude": "geospatial_lon_min",
+    "contentApplicabilityExtent.boundingBox.northBoundLatitude": "geospatial_lat_max",
+    "contentApplicabilityExtent.boundingBox.eastBoundLongitude": "geospatial_lon_max",
+    "contentApplicabilityExtent.extentDescription": "extent_description",
+    "contentApplicabilityExtent.boundingPolygon": "geospatial_bounds",
+}
+
+ReverseACCD_AttributeMapping = {v: k for k, v in ACDD_AttributeMapping.items()}
+
+
+def _snakeCase(attr):
+    attr = re.sub(
+        r"([a-z0-9])([A-Z])", lambda m: m.group(1) + "_" + m.group(2).lower(), attr
+    )
+    return attr.lower()
+
+
+def _camelCase(attr):
+    return re.sub(r"_([a-z])", lambda m: m.group(1).upper(), attr)
 
 
 class Reader(BaseReader):
@@ -114,30 +144,40 @@ class Reader(BaseReader):
             value = source.getncattr(key)
             self._logger.debug(f"Loaded attr: {key}: {type(value)} {value}")
             attrs[key] = value
-        # Handle JSON format for metadata.
+        attrs = self._convertNumpyAttributesToNative(attrs)
+        attrs = self._mapAttributesToDotted(attrs)
         self._interpretDotMetadata(attrs)
-        if JSON_METADATA_ATTR in attrs:
-            jsonmeta = attrs.pop(JSON_METADATA_ATTR)
-            try:
-                meta = json.loads(jsonmeta)
-                if not isinstance(meta, dict):
-                    raise RuntimeError(f"{JSON_METADATA_ATTR} is not a dictionary")
-                meta.update(attrs)
-                attrs = meta
-            except Exception as ex:
-                self.error(f"Failed to load JSON metadata element: {ex}")
         return attrs
 
-    def _interpretDotMetadata(self, attrs):
+    def _mapAttributesToDotted(self, attrs):
+        mapped = {}
+        for key, value in attrs.items():
+            if key == NETCDF_CONVENTIONS_ATTRIBUTE:
+                key = GGXF_ATTR_GGXF_VERSION
+                match = re.match(r".*(GGXF\-[^,\s]+)", value)
+                value = match.group(1) if match else ""
+            elif key in ReverseACCD_AttributeMapping:
+                key = ReverseACCD_AttributeMapping[key]
+            else:
+                key = _camelCase(key)
+            mapped[key] = value
+        return mapped
+
+    def _convertNumpyAttributesToNative(self, attrs):
         # Convert numpy attributes to native python attributes
+        converted = {}
         for k, v in attrs.items():
             vtype = type(v)
             if vtype.__module__ == "numpy":
                 if vtype == np.ndarray:
-                    attrs[k] = v.tolist()
+                    converted[k] = v.tolist()
                 else:
-                    attrs[k] = v.item()
+                    converted[k] = v.item()
+            else:
+                converted[k] = v
+        return converted
 
+    def _interpretDotMetadata(self, attrs):
         arrays = []
         while True:
             compiled = {}
@@ -199,12 +239,7 @@ class Writer(BaseWriter):
 
     def write(self, ggxf, netcdf4_file: str):
         metastyle = self.getOption(NETCDF_OPTION_METADATA_STYLE, NETCDF_METADATA_DOT0)
-        if metastyle == NETCDF_METADATA_JSON:
-            self._logger.debug("Using JSON metadata format")
-            metafunc = lambda dataset, entity, exclude: self.saveNetCdf4MetdataJson(
-                dataset, entity, exclude=exclude
-            )
-        elif metastyle == NETCDF_METADATA_DOT1:
+        if metastyle == NETCDF_METADATA_DOT1:
             self._logger.debug('Using base 1 "dot" format metadata')
             metafunc = lambda dataset, entity, exclude: self.saveNetCdf4MetdataDot(
                 dataset, entity, exclude=exclude, base=1
@@ -216,6 +251,10 @@ class Writer(BaseWriter):
             )
         self._useCompoundTypes = self.getBoolOption(
             NETCDF_OPTION_USE_COMPOUND_TYPE, False
+        )
+
+        self._useSnakeCase = self.getBoolOption(
+            NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES, True
         )
         # Not currently implemented.
         if self._useCompoundTypes:
@@ -307,12 +346,8 @@ class Writer(BaseWriter):
             GRID_ATTR_GRIDS,
             GRID_ATTR_DATA,
             GRID_ATTR_DATA_SOURCE,
-            GRID_ATTR_AFFINE_COEFFS,
+            #            GRID_ATTR_AFFINE_COEFFS,
         ]
-        # Store the grid metadata
-        # affinevar=cdfgrid.createVariable('affineCoeffs',np.float64,'affine')
-        # self._logger.debug(f"Filling affineCoeffs {affinevar.shape} {affinevar.datatype} from {grid['affineCoeffs']}")
-        # affinevar[:]=np.array(grid['affineCoeffs'])
 
         size = grid.size()
         cdfgrid.createDimension(NETCDF_DIMENSION_GRIDI, size[0])
@@ -327,11 +362,20 @@ class Writer(BaseWriter):
         datavar[:, :, :] = grid.data()
         metadata = grid.metadata()
         self._saveMetadata(cdfgrid, metadata, exclude)
-        cdfgrid.setncatts({GRID_ATTR_AFFINE_COEFFS: metadata[GRID_ATTR_AFFINE_COEFFS]})
 
         # Support for nested grid possibility
         for subgrid in grid.subgrids():
             self.saveGridNetCdf4(cdfgrid, subgrid, nctypes, nparam)
+
+    def saveNetCdf4Attr(self, dataset: netCDF4.Dataset, name: str, value):
+        if name == GGXF_ATTR_GGXF_VERSION:
+            name = NETCDF_CONVENTIONS_ATTRIBUTE
+            value = NETCDF_CONVENTIONS_VALUE.replace("{ggxfVersion}", value)
+        elif name in ACDD_AttributeMapping:
+            name = ACDD_AttributeMapping[name]
+        elif self._useSnakeCase:
+            name = _snakeCase(name)
+        dataset.setncattr(name, value)
 
     def saveNetCdf4MetdataDot(
         self,
@@ -351,7 +395,7 @@ class Writer(BaseWriter):
             listtypes = set((type(e) for e in entity))
             # Simple lists can be held as 1 dimensional array parameters
             if listtypes == set((str,)) or listtypes <= set((float, int)):
-                dataset.setncattr(name, entity)
+                self.saveNetCdf4Attr(dataset, name, entity)
             else:
                 count = int(len(entity))
                 self.saveNetCdf4MetdataDot(dataset, count, name + ".count")
@@ -359,22 +403,6 @@ class Writer(BaseWriter):
                     self.saveNetCdf4MetdataDot(dataset, value, name + f".{ival+base}")
         else:
             try:
-                dataset.setncattr(name, entity)
+                self.saveNetCdf4Attr(dataset, name, entity)
             except Exception as ex:
                 raise RuntimeError(f"Cannot save {name}: {ex}")
-
-    def saveNetCdf4MetdataJson(
-        self,
-        dataset: netCDF4.Dataset,
-        entity: dict,
-        name="metadata",
-        exclude=[],
-        indent=2,
-    ):
-        value = {
-            k: v
-            for k, v in entity.items()
-            if k not in exclude and not k.startswith("_")
-        }
-        value = json.dumps(value, indent=indent)
-        dataset.setncattr(name, value)
