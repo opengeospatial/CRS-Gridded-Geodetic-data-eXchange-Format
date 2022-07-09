@@ -15,9 +15,9 @@ netcdf VIGEOID18a {
 		:source_crs_wkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]]]\n" ;
 		:target_crs_wkt = "VERTCRS[\"VIVD09 - NOHt\",\n  VDATUM[\"Virgin Islands Vertical Datum of 2009\"],\n  CS[vertical,1],\n  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n" ;
 		:parameters.count = 1LL ;
-		:parameters.0.parameter_name = "geoidHeight" ;
-		:parameters.0.length_unit = "metre" ;
-		:parameters.0.unit_si_ratio = 1. ;
+		:parameters.1.parameter_name = "geoidHeight" ;
+		:parameters.1.length_unit = "metre" ;
+		:parameters.1.unit_si_ratio = 1. ;
 		:operation_accuracy = 0.015 ;
 		:organisation_name = "National Geodetic Survey, National Oceanic and Atmospheric Administration." ;
 		:delivery_point = "1315 East West Hwy" ;

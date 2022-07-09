@@ -14,10 +14,6 @@ import numpy as np
 
 from .GGXF import *
 
-NETCDF_OPTION_METADATA_STYLE = "metadata_style"
-NETCDF_METADATA_DOT0 = "dot0"
-NETCDF_METADATA_DOT1 = "dot1"
-
 NETCDF_OPTION_GRID_DTYPE = "grid_dtype"
 NETCDF_DTYPE_FLOAT32 = "float32"
 NETCDF_DTYPE_FLOAT64 = "float64"
@@ -37,6 +33,10 @@ NETCDF_VAR_GRIDDATA = "data"
 NETCDF_DIMENSION_GRIDI = "gridi"
 NETCDF_DIMENSION_GRIDJ = "gridj"
 NETCDF_DIMENSION_NPARAM = "parameter"
+
+NETCDF_ATTR_CONTEXT_GGXF = "ggxf"
+NETCDF_ATTR_CONTEXT_GROUP = "group"
+NETCDF_ATTR_CONTEXT_GRID = "grid"
 
 NETCDF_OPTIONS = f"""
 The following options apply to NetCDF input (I) and output (O):
@@ -58,6 +58,16 @@ ACDD_AttributeMapping = {
     "contentApplicabilityExtent.boundingBox.eastBoundLongitude": "geospatial_lon_max",
     "contentApplicabilityExtent.extentDescription": "extent_description",
     "contentApplicabilityExtent.boundingPolygon": "geospatial_bounds",
+    "contentApplicabilityExtent.temporalExtent.endDate": "end_date",
+    "contentApplicabilityExtent.temporalExtent.startDate": "start_date",
+    "contentApplicabilityExtent.verticalExtent.verticalExtentCrsWkt": "vertical_extent_crs_wkt",
+    "contentApplicabilityExtent.verticalExtent.verticalExtentMaximum": "vertical_extent_maximum",
+    "contentApplicabilityExtent.verticalExtent.verticalExtentMinimum": "vertical_extent_minimum",
+    "contentApplicabilityExtent.extentDescription": "extent_description",
+    "contentBox.eastBoundLongitude": "east_bound_longitude",
+    "contentBox.northBoundLatitude": "north_bound_latitude",
+    "contentBox.southBoundLatitude": "south_bound_latitude",
+    "contentBox.westBoundLongitude": "west_bound_longitude",
 }
 
 ReverseACCD_AttributeMapping = {v: k for k, v in ACDD_AttributeMapping.items()}
@@ -92,7 +102,7 @@ class Reader(BaseReader):
         self.setSource(ggxf_file)
         try:
             root = netCDF4.Dataset(ggxf_file, "r", format="NETCDF4")
-            metadata = self.loadMetadata(root)
+            metadata = self.loadMetadata(NETCDF_ATTR_CONTEXT_GGXF, root)
             if self.validator().validateRootAttributes(metadata, context="GGXF"):
                 ggxf = GGXF(metadata)
                 for groupname, ncgroup in root.groups.items():
@@ -110,7 +120,7 @@ class Reader(BaseReader):
     def loadGroup(self, ggxf, groupname, ncgroup):
         self._logger.debug(f"Loading group {groupname}")
         context = f"Group {groupname}"
-        metadata = self.loadMetadata(ncgroup)
+        metadata = self.loadMetadata(NETCDF_ATTR_CONTEXT_GROUP, ncgroup)
         if "groupParameters" in metadata and type(metadata["groupParameters"]) == str:
             metadata["groupParameters"] = [metadata["groupParameters"]]
         if not self.validator().validateGroupAttributes(metadata, context=context):
@@ -123,7 +133,7 @@ class Reader(BaseReader):
     def loadGrid(self, group, gridname, ncgrid, parent=None):
         self._logger.debug(f"Loading grid {gridname}")
         context = f"{group.name()} {gridname}"
-        metadata = self.loadMetadata(ncgrid)
+        metadata = self.loadMetadata(NETCDF_ATTR_CONTEXT_GRID, ncgrid)
         if self.validator().validateGridAttributes(metadata, context=context):
             try:
                 data = np.array(ncgrid[NETCDF_VAR_GRIDDATA])
@@ -138,25 +148,28 @@ class Reader(BaseReader):
             else:
                 group.addGrid(grid)
 
-    def loadMetadata(self, source):
+    def loadMetadata(self, context: str, source):
         attrs = {}
         for key in source.ncattrs():
             value = source.getncattr(key)
             self._logger.debug(f"Loaded attr: {key}: {type(value)} {value}")
             attrs[key] = value
         attrs = self._convertNumpyAttributesToNative(attrs)
-        attrs = self._mapAttributesToDotted(attrs)
+        attrs = self._mapAttributesToDotted(context, attrs)
         self._interpretDotMetadata(attrs)
         return attrs
 
-    def _mapAttributesToDotted(self, attrs):
+    def _mapAttributesToDotted(self, context: str, attrs):
         mapped = {}
         for key, value in attrs.items():
             if key == NETCDF_CONVENTIONS_ATTRIBUTE:
                 key = GGXF_ATTR_GGXF_VERSION
                 match = re.match(r".*(GGXF\-[^,\s]+)", value)
                 value = match.group(1) if match else ""
-            elif key in ReverseACCD_AttributeMapping:
+            elif (
+                context == NETCDF_ATTR_CONTEXT_GGXF
+                and key in ReverseACCD_AttributeMapping
+            ):
                 key = ReverseACCD_AttributeMapping[key]
             else:
                 key = _camelCase(key)
@@ -238,21 +251,9 @@ class Writer(BaseWriter):
         self._logger = logging.getLogger("GGXF.NetCdfWriter")
 
     def write(self, ggxf, netcdf4_file: str):
-        metastyle = self.getOption(NETCDF_OPTION_METADATA_STYLE, NETCDF_METADATA_DOT0)
-        if metastyle == NETCDF_METADATA_DOT1:
-            self._logger.debug('Using base 1 "dot" format metadata')
-            metafunc = lambda dataset, entity, exclude: self.saveNetCdf4MetdataDot(
-                dataset, entity, exclude=exclude, base=1
-            )
-        else:  # Default is dot0, also used with cdf4 compound types
-            self._logger.debug('Using base 0 "dot" format metadata')
-            metafunc = lambda dataset, entity, exclude: self.saveNetCdf4MetdataDot(
-                dataset, entity, exclude=exclude, base=0
-            )
         self._useCompoundTypes = self.getBoolOption(
             NETCDF_OPTION_USE_COMPOUND_TYPE, False
         )
-
         self._useSnakeCase = self.getBoolOption(
             NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES, True
         )
@@ -269,7 +270,6 @@ class Writer(BaseWriter):
         self._dtype = dtype = (
             np.float64 if dtype == NETCDF_DTYPE_FLOAT64 else np.float32
         )
-        self._saveMetadata = metafunc
 
         self._logger.debug(f"Saving NetCDF4 grid as {netcdf4_file}")
         if os.path.isfile(netcdf4_file):
@@ -312,7 +312,9 @@ class Writer(BaseWriter):
             )
             paramvar[:] = paramdata
             exclude.append(GGXF_ATTR_PARAMETERS)
-        self._saveMetadata(root, ggxf.metadata(), exclude)
+        self.saveNetCdf4MetdataDot(
+            NETCDF_ATTR_CONTEXT_GGXF, root, ggxf.metadata(), exclude=exclude
+        )
 
         # Store each of the groups
         for group in ggxf.groups():
@@ -329,7 +331,9 @@ class Writer(BaseWriter):
 
         cdfgroup.createDimension(NETCDF_DIMENSION_NPARAM, nparam)
 
-        self._saveMetadata(cdfgroup, group.metadata(), exclude)
+        self.saveNetCdf4MetdataDot(
+            NETCDF_ATTR_CONTEXT_GROUP, cdfgroup, group.metadata(), exclude=exclude
+        )
 
         # Store each of the grids
         grids = group.grids()
@@ -361,17 +365,19 @@ class Writer(BaseWriter):
         )
         datavar[:, :, :] = grid.data()
         metadata = grid.metadata()
-        self._saveMetadata(cdfgrid, metadata, exclude)
+        self.saveNetCdf4MetdataDot(
+            NETCDF_ATTR_CONTEXT_GRID, cdfgrid, metadata, exclude=exclude
+        )
 
         # Support for nested grid possibility
         for subgrid in grid.subgrids():
             self.saveGridNetCdf4(cdfgrid, subgrid, nctypes, nparam)
 
-    def saveNetCdf4Attr(self, dataset: netCDF4.Dataset, name: str, value):
+    def saveNetCdf4Attr(self, context: str, dataset: netCDF4.Dataset, name: str, value):
         if name == GGXF_ATTR_GGXF_VERSION:
             name = NETCDF_CONVENTIONS_ATTRIBUTE
             value = NETCDF_CONVENTIONS_VALUE.replace("{ggxfVersion}", value)
-        elif name in ACDD_AttributeMapping:
+        elif context == NETCDF_ATTR_CONTEXT_GGXF and name in ACDD_AttributeMapping:
             name = ACDD_AttributeMapping[name]
         elif self._useSnakeCase:
             name = _snakeCase(name)
@@ -379,30 +385,35 @@ class Writer(BaseWriter):
 
     def saveNetCdf4MetdataDot(
         self,
+        context: str,
         dataset: netCDF4.Dataset,
         entity,
         name: str = "",
         exclude=[],
-        base: int = 0,
+        base: int = 1,
     ) -> None:
         if type(entity) == dict:
             if name != "":
                 name = name + "."
             for key, value in entity.items():
                 if key not in exclude and not key.startswith("_"):
-                    self.saveNetCdf4MetdataDot(dataset, value, name + key, base=base)
+                    self.saveNetCdf4MetdataDot(
+                        context, dataset, value, name + key, base=base
+                    )
         elif type(entity) == list:
             listtypes = set((type(e) for e in entity))
             # Simple lists can be held as 1 dimensional array parameters
             if listtypes == set((str,)) or listtypes <= set((float, int)):
-                self.saveNetCdf4Attr(dataset, name, entity)
+                self.saveNetCdf4Attr(context, dataset, name, entity)
             else:
                 count = int(len(entity))
-                self.saveNetCdf4MetdataDot(dataset, count, name + ".count")
+                self.saveNetCdf4MetdataDot(context, dataset, count, name + ".count")
                 for ival, value in enumerate(entity):
-                    self.saveNetCdf4MetdataDot(dataset, value, name + f".{ival+base}")
+                    self.saveNetCdf4MetdataDot(
+                        context, dataset, value, name + f".{ival+base}"
+                    )
         else:
             try:
-                self.saveNetCdf4Attr(dataset, name, entity)
+                self.saveNetCdf4Attr(context, dataset, name, entity)
             except Exception as ex:
                 raise RuntimeError(f"Cannot save {name}: {ex}")

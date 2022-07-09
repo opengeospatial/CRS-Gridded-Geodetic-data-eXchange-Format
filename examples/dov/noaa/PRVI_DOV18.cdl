@@ -13,12 +13,12 @@ netcdf PRVI_DOV18 {
 		:extent_description = "US Puerto Rico and Virgin Islands - onshore." ;
 		:interpolation_crs_wkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:parameters.count = 2LL ;
-		:parameters.0.parameter_name = "deviationEast" ;
-		:parameters.0.angle_unit = "arc-second" ;
-		:parameters.0.unit_si_ratio = 4.84813681109536e-06 ;
-		:parameters.1.parameter_name = "deviationNorth" ;
+		:parameters.1.parameter_name = "deviationEast" ;
 		:parameters.1.angle_unit = "arc-second" ;
-		:parameters.1.unit_si_ratio = 4.84813681109536e-60 ;
+		:parameters.1.unit_si_ratio = 4.84813681109536e-06 ;
+		:parameters.2.parameter_name = "deviationNorth" ;
+		:parameters.2.angle_unit = "arc-second" ;
+		:parameters.2.unit_si_ratio = 4.84813681109536e-60 ;
 		:organisation_name = "National Geodetic Survey, National Oceanic and Atmospheric Administration." ;
 		:delivery_point = "1315 East West Hwy" ;
 		:city = "Silver Spring" ;
