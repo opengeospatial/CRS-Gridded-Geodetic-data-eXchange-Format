@@ -24,7 +24,7 @@ netcdf PRGEOID18c {
 		:city = "Silver Spring" ;
 		:postal_code = "20910" ;
 		:country = "United States of America" ;
-		:online_resource_linkage = "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g2018p0.asc.zip" ;
+		:publisher_url = "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g2018p0.asc.zip" ;
 
 group: puerto_rico_virgin_islands_geoid18 {
   dimensions:
