@@ -125,7 +125,7 @@ class AttributeValidator:
                 elif type(adef.atype) == str:
                     if type(value) != dict:
                         validator.error(
-                            f"{context}: Attribute {adef.name} doesn't have attributes of an {adef.atype} type"
+                            f"{context}: Attribute {adef.name} (type {type(value)}) {value} doesn't have attributes of a {adef.atype} type"
                         )
                         valid = False
                     else:

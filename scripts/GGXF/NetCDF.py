@@ -41,7 +41,7 @@ NETCDF_ATTR_CONTEXT_GRID = "grid"
 NETCDF_OPTIONS = f"""
 The following options apply to NetCDF input (I) and output (O):
 
-  "{NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES}" (O) Convert attributes to snake_case (default true)"
+  "{NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES}" (O) Convert attributes to snake_case (default false)"
   "{NETCDF_OPTION_WRITE_CDL}" (O) Generate an output CDL file as well as a NetCDF file (default false)
   "{NETCDF_OPTION_WRITE_CDL_HEADER}" (O) Only write the header information in the CDL file (default false)
   "{NETCDF_OPTION_USE_COMPOUND_TYPE}" (O) Use compound types (very limited test implementation) (default false)
@@ -183,17 +183,33 @@ class Reader(BaseReader):
 
     def _convertNumpyAttributesToNative(self, attrs):
         # Convert numpy attributes to native python attributes
-        converted = {}
-        for k, v in attrs.items():
-            vtype = type(v)
-            if vtype.__module__ == "numpy":
-                if vtype == np.ndarray:
-                    converted[k] = v.tolist()
-                else:
-                    converted[k] = v.item()
+        return {k: self._convertNumpyToNative(v) for k, v in attrs.items()}
+
+    def _convertNumpyToNative(self, v):
+        vtype = type(v)
+        if vtype.__module__ == "numpy":
+            fields = v.dtype.fields
+            if vtype == np.ndarray:
+                if fields:
+                    return [self._convertNumpyToNative(vn) for vn in v]
+                v = v.tolist()
             else:
-                converted[k] = v
-        return converted
+                if fields:
+                    # Awkward handling of null value in parameter type for floating point fields
+                    # (eg parameterMinimumValue).  Remove parameters floating point parameters matching
+                    # the minimum value of their dtype.  Probably a better way to do this!
+                    result = {}
+                    for field in fields:
+                        fval = v[field]
+                        if fval.dtype.kind == "f" and fval == np.finfo(fval.dtype).min:
+                            continue
+                        result[field] = self._convertNumpyToNative(fval)
+                    v = result
+                else:
+                    v = v.item()
+                    if type(v) == bytes:
+                        v = v.decode("utf8")
+        return v
 
     def _interpretDotMetadata(self, attrs):
         arrays = []
@@ -260,7 +276,7 @@ class Writer(BaseWriter):
             NETCDF_OPTION_USE_COMPOUND_TYPE, False
         )
         self._useSnakeCase = self.getBoolOption(
-            NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES, True
+            NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES, False
         )
         # Not currently implemented.
         if self._useCompoundTypes:
@@ -295,8 +311,8 @@ class Writer(BaseWriter):
 
         # NetCDF compound types
         exclude = [GGXF_ATTR_GGXF_GROUPS, GGXF_ATTR_GRID_DATA]
+        converted = {}
         if self._useCompoundTypes:
-            raise RuntimeError("use_compound_types currently not working")
             # This functionality was lost when refactoring GGXF into multiple modules
             # It was split between creating the compound type in the root group and
             # the variable in the GGXF group in saveGroupNetCdf4.  The code has been
@@ -306,19 +322,37 @@ class Writer(BaseWriter):
             # to hold parameters, but the NetCDF data model implies that they can be held
             # in an attribute.  However this hasn't been tested yet with the python API.
             paramtype = np.dtype(
-                [("parameterName", "S32"), ("unit", "S16"), ("unitSiRatio", np.float64)]
+                [
+                    ("parameterName", "S32"),
+                    ("unitName", "S16"),
+                    ("unitSiRatio", self._dtype),
+                    ("parameterMinimumValue", self._dtype),
+                    ("parameterMaximumValue", self._dtype),
+                    ("noDataFlag", self._dtype),
+                ]
             )
             ncparamtype = root.createCompoundType(paramtype, "ggxfParameterType")
-            parameters = self.parameters()
-            paramdata = [(p.name(), p.units(), p.siratio()) for p in parameters]
+            parameters = ggxf.parameters()
+            typeinfo = np.finfo(self._dtype)
+            paramdata = [
+                (
+                    p.name(),
+                    p.unit(),
+                    p.siratio(),
+                    p.minvalue() or typeinfo.min,
+                    p.maxvalue() or typeinfo.min,
+                    p.nodataflag() or typeinfo.min,
+                )
+                for p in parameters
+            ]
             paramdata = np.array(paramdata, dtype=paramtype)
-            paramvar = root.createVariable(
-                "parameters", ncparamtype, NETCDF_DIMENSION_NPARAM
-            )
-            paramvar[:] = paramdata
-            exclude.append(GGXF_ATTR_PARAMETERS)
+            converted[GGXF_ATTR_PARAMETERS] = paramdata
         self.saveNetCdf4MetdataDot(
-            NETCDF_ATTR_CONTEXT_GGXF, root, ggxf.metadata(), exclude=exclude
+            NETCDF_ATTR_CONTEXT_GGXF,
+            root,
+            ggxf.metadata(),
+            exclude=exclude,
+            converted=converted,
         )
 
         # Store each of the groups
@@ -395,13 +429,16 @@ class Writer(BaseWriter):
         entity,
         name: str = "",
         exclude=[],
+        converted={},
         base: int = 1,
     ) -> None:
         if type(entity) == dict:
             if name != "":
                 name = name + "."
             for key, value in entity.items():
-                if key not in exclude and not key.startswith("_"):
+                if key in converted:
+                    self.saveNetCdf4Attr(context, dataset, key, converted[key])
+                elif key not in exclude and not key.startswith("_"):
                     self.saveNetCdf4MetdataDot(
                         context, dataset, value, name + key, base=base
                     )

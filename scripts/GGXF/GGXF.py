@@ -629,6 +629,9 @@ class Parameter:
             if key in PARAM_ATTRLIST_UNITNAME:
                 self._unit = value
                 break
+        self._minvalue = metadata.get(PARAM_ATTR_PARAMETER_MINIMUM_VALUE)
+        self._maxvalue = metadata.get(PARAM_ATTR_PARAMETER_MAXIMUM_VALUE)
+        self._nodataflag = metadata.get(PARAM_ATTR_NO_DATA_FLAG)
 
     def name(self):
         return self._name
@@ -638,6 +641,15 @@ class Parameter:
 
     def siratio(self):
         return self._siratio
+
+    def minvalue(self):
+        return self._minvalue
+
+    def maxvalue(self):
+        return self._maxvalue
+
+    def nodataflag(self):
+        return self._nodataflag
 
 
 class BaseReader:

@@ -11,18 +11,18 @@ netcdf VIGEOID18a {
 		:geospatial_lat_max = 18.42 ;
 		:geospatial_lon_max = -64.6 ;
 		:extent_description = "US Virgin Islands - onshore." ;
-		:interpolation_crs_wkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
-		:source_crs_wkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]]]\n" ;
-		:target_crs_wkt = "VERTCRS[\"VIVD09 - NOHt\",\n  VDATUM[\"Virgin Islands Vertical Datum of 2009\"],\n  CS[vertical,1],\n  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n" ;
+		:interpolationCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
+		:sourceCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]]]\n" ;
+		:targetCrsWkt = "VERTCRS[\"VIVD09 - NOHt\",\n  VDATUM[\"Virgin Islands Vertical Datum of 2009\"],\n  CS[vertical,1],\n  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n" ;
 		:parameters.count = 1LL ;
-		:parameters.1.parameter_name = "geoidHeight" ;
-		:parameters.1.length_unit = "metre" ;
-		:parameters.1.unit_si_ratio = 1. ;
-		:operation_accuracy = 0.015 ;
-		:organisation_name = "National Geodetic Survey, National Oceanic and Atmospheric Administration." ;
-		:delivery_point = "1315 East West Hwy" ;
+		:parameters.1.parameterName = "geoidHeight" ;
+		:parameters.1.lengthUnit = "metre" ;
+		:parameters.1.unitSiRatio = 1. ;
+		:operationAccuracy = 0.015 ;
+		:organisationName = "National Geodetic Survey, National Oceanic and Atmospheric Administration." ;
+		:deliveryPoint = "1315 East West Hwy" ;
 		:city = "Silver Spring" ;
-		:postal_code = "20910" ;
+		:postalCode = "20910" ;
 		:country = "United States of America" ;
 		:publisher_url = "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g2018p0.asc.zip" ;
 
@@ -31,7 +31,7 @@ group: puerto_rico_virgin_islands_geoid18 {
   	parameter = 1 ;
 
   // group attributes:
-  		:interpolation_method = "biquadratic" ;
+  		:interpolationMethod = "biquadratic" ;
 
   group: puerto_rico_virgin_islands_geoid18 {
     dimensions:
@@ -41,9 +41,9 @@ group: puerto_rico_virgin_islands_geoid18 {
     	float data(gridj, gridi, parameter) ;
 
     // group attributes:
-    		:affine_coeffs = 15., 0., 0.01666666667, -69., 0.01666666667, 0. ;
-    		:i_node_count = 301LL ;
-    		:j_node_count = 361LL ;
+    		:affineCoeffs = 15., 0., 0.01666666667, -69., 0.01666666667, 0. ;
+    		:iNodeCount = 301LL ;
+    		:jNodeCount = 361LL ;
     		:comment = "grid starts in the bottom left (southwest)corner and works across (east)and up (north)" ;
     data:
 

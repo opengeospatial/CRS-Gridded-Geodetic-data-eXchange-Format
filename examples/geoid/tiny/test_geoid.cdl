@@ -11,18 +11,18 @@ netcdf test_geoid {
 		:geospatial_lat_max = 24.6 ;
 		:geospatial_lon_max = -67. ;
 		:extent_description = "Tiny example geoid." ;
-		:interpolation_crs_wkt = "GEOGCS[\"WGS 84\",\n  DATUM[\"WGS_1984\",\n    SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],\n    AUTHORITY[\"EPSG\",\"6326\"]],\n  PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],\n  UNIT[\"degree\",0.01745329251994328,AUTHORITY[\"EPSG\",\"9122\"]],\n  AUTHORITY[\"EPSG\",\"4326\"]]\n" ;
-		:source_crs_wkt = "GEOGCS[\"WGS 84\",\n  DATUM[\"WGS_1984\",\n    SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],\n    AUTHORITY[\"EPSG\",\"6326\"]],\n  PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],\n  UNIT[\"degree\",0.01745329251994328,AUTHORITY[\"EPSG\",\"9122\"]],\n  AUTHORITY[\"EPSG\",\"4326\"]]\n" ;
-		:target_crs_wkt = "VERTCRS[\"VRTDTM2000\",\n  VDATUM[\"A vertical datum\"],\n  CS[vertical,1],\n  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n" ;
+		:interpolationCrsWkt = "GEOGCS[\"WGS 84\",\n  DATUM[\"WGS_1984\",\n    SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],\n    AUTHORITY[\"EPSG\",\"6326\"]],\n  PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],\n  UNIT[\"degree\",0.01745329251994328,AUTHORITY[\"EPSG\",\"9122\"]],\n  AUTHORITY[\"EPSG\",\"4326\"]]\n" ;
+		:sourceCrsWkt = "GEOGCS[\"WGS 84\",\n  DATUM[\"WGS_1984\",\n    SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],\n    AUTHORITY[\"EPSG\",\"6326\"]],\n  PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],\n  UNIT[\"degree\",0.01745329251994328,AUTHORITY[\"EPSG\",\"9122\"]],\n  AUTHORITY[\"EPSG\",\"4326\"]]\n" ;
+		:targetCrsWkt = "VERTCRS[\"VRTDTM2000\",\n  VDATUM[\"A vertical datum\"],\n  CS[vertical,1],\n  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n" ;
 		:parameters.count = 1LL ;
-		:parameters.1.parameter_name = "geoidHeight" ;
-		:parameters.1.length_unit = "metre" ;
-		:parameters.1.unit_si_ratio = 1. ;
-		:operation_accuracy = 0.015 ;
-		:organisation_name = "A Hypothetical National Geodetic Survey." ;
-		:delivery_point = "Somewhere" ;
+		:parameters.1.parameterName = "geoidHeight" ;
+		:parameters.1.lengthUnit = "metre" ;
+		:parameters.1.unitSiRatio = 1. ;
+		:operationAccuracy = 0.015 ;
+		:organisationName = "A Hypothetical National Geodetic Survey." ;
+		:deliveryPoint = "Somewhere" ;
 		:city = "A city" ;
-		:postal_code = "99999" ;
+		:postalCode = "99999" ;
 		:country = "United States of America" ;
 		:_NCProperties = "version=2,netcdf=4.7.4,hdf5=1.12.0," ;
 		:_SuperblockVersion = 0 ;
@@ -34,7 +34,7 @@ group: default {
   	parameter = 1 ;
 
   // group attributes:
-  		:interpolation_method = "bilinear" ;
+  		:interpolationMethod = "bilinear" ;
 
   group: geoid_grid {
     dimensions:
@@ -46,9 +46,9 @@ group: default {
     		data:_Endianness = "little" ;
 
     // group attributes:
-    		:affine_coeffs = 22.5, 0., 0.7, -69., 1., 0. ;
-    		:i_node_count = 3LL ;
-    		:j_node_count = 4LL ;
+    		:affineCoeffs = 22.5, 0., 0.7, -69., 1., 0. ;
+    		:iNodeCount = 3LL ;
+    		:jNodeCount = 4LL ;
     data:
 
      data =
