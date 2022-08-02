@@ -1,4 +1,15 @@
 netcdf PRVI_DOV18 {
+types:
+  compound ggxfParameterType {
+    char parameterName(32) ;
+    char parameterSet(32) ;
+    char unitName(16) ;
+    float unitSiRatio ;
+    int sourceCrsAxis ;
+    float parameterMinimumValue ;
+    float parameterMaximumValue ;
+    float noDataFlag ;
+  }; // ggxfParameterType
 
 // global attributes:
 		:Conventions = "GGXF-1.0, ACDD-1.3" ;
@@ -12,13 +23,9 @@ netcdf PRVI_DOV18 {
 		:geospatial_lon_max = -64.6 ;
 		:extent_description = "US Puerto Rico and Virgin Islands - onshore." ;
 		:interpolationCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
-		:parameters.count = 2LL ;
-		:parameters.1.parameterName = "deviationEast" ;
-		:parameters.1.angleUnit = "arc-second" ;
-		:parameters.1.unitSiRatio = 4.84813681109536e-06 ;
-		:parameters.2.parameterName = "deviationNorth" ;
-		:parameters.2.angleUnit = "arc-second" ;
-		:parameters.2.unitSiRatio = 4.84813681109536e-60 ;
+		ggxfParameterType :parameters = 
+    {{"deviationEast"}, {"deviationOfVertical"}, {"arc-second"}, 4.848137e-06, -1, -3.402823e+38, -3.402823e+38, -3.402823e+38}, 
+    {{"deviationNorth"}, {"deviationOfVertical"}, {"arc-second"}, 0, -1, -3.402823e+38, -3.402823e+38, -3.402823e+38} ;
 		:organisationName = "National Geodetic Survey, National Oceanic and Atmospheric Administration." ;
 		:deliveryPoint = "1315 East West Hwy" ;
 		:city = "Silver Spring" ;

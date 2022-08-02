@@ -115,6 +115,9 @@ CommonAttributes:
     # What is optional in for units?
     - AttributeName: parameterName
       Type: str
+    - AttributeName: parameterSet
+      Type: str
+      Optional: true
     - AttributeName: unitSiRatio
       Type: float
     - AttributeChoice:
@@ -132,6 +135,9 @@ CommonAttributes:
     - AttributeName: unitType
       Type: str
       Optional: true
+    - AttributeName: sourceCrsAxis
+      Type: int
+      Optional: true      
     - AttributeName: parameterMinimumValue
       Type: float
       Optional: true

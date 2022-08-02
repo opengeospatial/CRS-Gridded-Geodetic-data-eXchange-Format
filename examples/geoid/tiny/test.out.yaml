@@ -15,6 +15,12 @@ sourceCrsWkt: "GEOGCS[\"WGS 84\",\n  DATUM[\"WGS_1984\",\n    SPHEROID[\"WGS 84\
   ]]\n"
 targetCrsWkt: "VERTCRS[\"VRTDTM2000\",\n  VDATUM[\"A vertical datum\"],\n  CS[vertical,1],\n\
   \  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n"
+parameters:
+- parameterName: geoidHeight
+  parameterSet: ''
+  unitName: metre
+  unitSiRatio: 1.0
+  sourceCrsAxis: 2
 operationAccuracy: 0.015
 organisationName: A Hypothetical National Geodetic Survey.
 deliveryPoint: Somewhere
@@ -27,10 +33,6 @@ contentApplicabilityExtent:
     westBoundLongitude: -69.0
     northBoundLatitude: 24.6
     eastBoundLongitude: -67.0
-parameters:
-- parameterName: geoidHeight
-  lengthUnit: metre
-  unitSiRatio: 1.0
 ggxfGroups:
 - 
   interpolationMethod: bilinear

@@ -44,7 +44,7 @@ The following options apply to NetCDF input (I) and output (O):
   "{NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES}" (O) Convert attributes to snake_case (default false)"
   "{NETCDF_OPTION_WRITE_CDL}" (O) Generate an output CDL file as well as a NetCDF file (default false)
   "{NETCDF_OPTION_WRITE_CDL_HEADER}" (O) Only write the header information in the CDL file (default false)
-  "{NETCDF_OPTION_USE_COMPOUND_TYPE}" (O) Use compound types (very limited test implementation) (default false)
+  "{NETCDF_OPTION_USE_COMPOUND_TYPE}" (O) Use compound types (very limited test implementation) (default true)
 """
 #  "{NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS}" (O) Grids with just one parameter are created with just 2 dimensions (default false)
 
@@ -108,6 +108,10 @@ class Reader(BaseReader):
         try:
             root = netCDF4.Dataset(ggxf_file, "r", format="NETCDF4")
             metadata = self.loadMetadata(NETCDF_ATTR_CONTEXT_GGXF, root)
+            # Handle something in python/netcdf handling which doesn't distinguish
+            # between a list of 1 element and a scalar.
+            if isinstance(metadata.get(GGXF_ATTR_PARAMETERS), dict):
+                metadata[GGXF_ATTR_PARAMETERS] = [metadata[GGXF_ATTR_PARAMETERS]]
             if self.validator().validateRootAttributes(metadata, context="GGXF"):
                 ggxf = GGXF(metadata)
                 for groupname, ncgroup in root.groups.items():
@@ -198,10 +202,16 @@ class Reader(BaseReader):
                     # Awkward handling of null value in parameter type for floating point fields
                     # (eg parameterMinimumValue).  Remove parameters floating point parameters matching
                     # the minimum value of their dtype.  Probably a better way to do this!
+                    #
+                    # Assume integer values are actually counts so treat negative as equivalent to null.
                     result = {}
                     for field in fields:
                         fval = v[field]
                         if fval.dtype.kind == "f" and fval == np.finfo(fval.dtype).min:
+                            continue
+                        if fval.dtype.kind == "i" and fval < 0:
+                            continue
+                        if fval.dtype.kind == "S" and fval == "":
                             continue
                         result[field] = self._convertNumpyToNative(fval)
                     v = result
@@ -273,7 +283,7 @@ class Writer(BaseWriter):
 
     def write(self, ggxf, netcdf4_file: str):
         self._useCompoundTypes = self.getBoolOption(
-            NETCDF_OPTION_USE_COMPOUND_TYPE, False
+            NETCDF_OPTION_USE_COMPOUND_TYPE, True
         )
         self._useSnakeCase = self.getBoolOption(
             NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES, False
@@ -321,11 +331,17 @@ class Writer(BaseWriter):
             # However this isn't working yet.  This implementation is using a variable
             # to hold parameters, but the NetCDF data model implies that they can be held
             # in an attribute.  However this hasn't been tested yet with the python API.
+            #
+            # Note: tried i2 for sourceCrsAxis but it seemed to be packed to 4 byte quanta
+            # so failed to read back correctly
+            #
             paramtype = np.dtype(
                 [
                     ("parameterName", "S32"),
+                    ("parameterSet", "S32"),
                     ("unitName", "S16"),
                     ("unitSiRatio", self._dtype),
+                    ("sourceCrsAxis", "i4"),
                     ("parameterMinimumValue", self._dtype),
                     ("parameterMaximumValue", self._dtype),
                     ("noDataFlag", self._dtype),
@@ -336,12 +352,14 @@ class Writer(BaseWriter):
             typeinfo = np.finfo(self._dtype)
             paramdata = [
                 (
-                    p.name(),
+                    p.name().encode("utf8"),
+                    (p.set() or "").encode("utf8"),
                     p.unit(),
-                    p.siratio(),
-                    p.minvalue() or typeinfo.min,
-                    p.maxvalue() or typeinfo.min,
-                    p.nodataflag() or typeinfo.min,
+                    p.siRatio(),
+                    p.sourceCrsAxis() if p.sourceCrsAxis() is not None else -1,
+                    p.minValue() or typeinfo.min,
+                    p.maxValue() or typeinfo.min,
+                    p.noDataFlag() or typeinfo.min,
                 )
                 for p in parameters
             ]
@@ -420,6 +438,8 @@ class Writer(BaseWriter):
             name = ACDD_AttributeMapping[name]
         elif self._useSnakeCase:
             name = _snakeCase(name)
+        if type(value) == str:
+            value = value.encode("utf8")
         dataset.setncattr(name, value)
 
     def saveNetCdf4MetdataDot(

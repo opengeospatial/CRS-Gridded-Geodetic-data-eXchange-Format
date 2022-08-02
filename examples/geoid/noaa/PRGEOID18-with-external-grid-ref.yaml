@@ -41,6 +41,7 @@ targetCrsWkt: |
     LENGTHUNIT["metre",1]]
 parameters:
   - parameterName: "geoidHeight"
+    sourceCrsAxis: 2
     lengthUnit: "metre"
     unitSiRatio: 1.0
 operationAccuracy: 0.015

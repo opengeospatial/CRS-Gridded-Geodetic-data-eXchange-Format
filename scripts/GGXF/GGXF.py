@@ -623,33 +623,43 @@ class Parameter:
     def __init__(self, metadata: dict):
         self._metadata = metadata
         self._name = metadata[PARAM_ATTR_PARAMETER_NAME]
-        self._siratio = float(metadata.get(PARAM_ATTR_UNIT_SI_RATIO, 1.0))
+        paramset = metadata.get(PARAM_ATTR_PARAMETER_SET)
+        self._set = paramset or None
+        axis = metadata.get(PARAM_ATTR_SOURCE_CRS_AXIS)
+        self._sourceCrsAxis = axis if axis is not None and axis >= 0 else None
+        self._siRatio = float(metadata.get(PARAM_ATTR_UNIT_SI_RATIO, 1.0))
         self._unit = "unspecified"
         for key, value in metadata.items():
             if key in PARAM_ATTRLIST_UNITNAME:
                 self._unit = value
                 break
-        self._minvalue = metadata.get(PARAM_ATTR_PARAMETER_MINIMUM_VALUE)
-        self._maxvalue = metadata.get(PARAM_ATTR_PARAMETER_MAXIMUM_VALUE)
-        self._nodataflag = metadata.get(PARAM_ATTR_NO_DATA_FLAG)
+        self._minValue = metadata.get(PARAM_ATTR_PARAMETER_MINIMUM_VALUE)
+        self._maxValue = metadata.get(PARAM_ATTR_PARAMETER_MAXIMUM_VALUE)
+        self._noDataFlag = metadata.get(PARAM_ATTR_NO_DATA_FLAG)
 
     def name(self):
         return self._name
 
+    def set(self):
+        return self._set
+
+    def sourceCrsAxis(self):
+        return self._sourceCrsAxis
+
     def unit(self):
         return self._unit
 
-    def siratio(self):
-        return self._siratio
+    def siRatio(self):
+        return self._siRatio
 
-    def minvalue(self):
-        return self._minvalue
+    def minValue(self):
+        return self._minValue
 
-    def maxvalue(self):
-        return self._maxvalue
+    def maxValue(self):
+        return self._maxValue
 
-    def nodataflag(self):
-        return self._nodataflag
+    def noDataFlag(self):
+        return self._noDataFlag
 
 
 class BaseReader:

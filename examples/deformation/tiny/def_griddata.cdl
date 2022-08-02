@@ -1,9 +1,11 @@
-netcdf deformation_compound {
+netcdf def_griddata {
 types:
   compound ggxfParameterType {
     char parameterName(32) ;
+    char parameterSet(32) ;
     char unitName(16) ;
     float unitSiRatio ;
+    int sourceCrsAxis ;
     float parameterMinimumValue ;
     float parameterMaximumValue ;
     float noDataFlag ;
@@ -24,19 +26,19 @@ types:
 		:publisher_url = "https://www.linz.govt.nz/nzgd2000" ;
 		:date_issued = "2018-07-01" ;
 		:extent_description = "New Zealand EEZ" ;
-		:geospatial_lat_min = -58. ;
-		:geospatial_lon_min = 158. ;
-		:geospatial_lat_max = -25. ;
-		:geospatial_lon_max = 194. ;
+		:geospatial_lat_min = -55.94 ;
+		:geospatial_lon_min = 160.62 ;
+		:geospatial_lat_max = -25.89 ;
+		:geospatial_lon_max = -171.23 ;
 		:start_date = "1900-01-01" ;
 		:end_date = "2050-01-01" ;
 		:sourceCrsWkt = "GEOGCRS[\"NZGD2000\",DATUM[\"New Zealand Geodetic Datum 2000\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6167]],CS[ellipsoidal,3,ID[\"EPSG\",6423]],AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],ID[\"EPSG\",4959]]" ;
 		:targetCrsWkt = "GEOGCRS[\"ITRF96\", DYNAMIC[FRAMEEPOCH[1997.0]],DATUM[\"International Terrestrial Reference Frame 1996\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6654]],CS[ellipsoidal,3,ID[\"EPSG\",6423]],AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],ID[\"EPSG\",7907]]" ;
 		:interpolationCrsWkt = "GEOGCRS[\"NZGD2000\",DATUM[\"New Zealand Geodetic Datum 2000\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6167]],CS[ellipsoidal,2,ID[\"EPSG\",6422]],AXIS[\"Geodetic latitude (Lat)\",north],AXIS[\"Geodetic longitude (Lon)\",east],ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]],ID[\"EPSG\",4167]]" ;
 		ggxfParameterType :parameters = 
-    {{"displacementEast"}, {"metre"}, 1, -3.402823e+38, -3.402823e+38, -3.402823e+38}, 
-    {{"displacementNorth"}, {"metre"}, 1, -3.402823e+38, -3.402823e+38, -3.402823e+38}, 
-    {{"displacementUp"}, {"metre"}, 1, -3.402823e+38, -3.402823e+38, -3.402823e+38} ;
+    {{"displacementEast"}, {"displacement"}, {"metre"}, 1, 1, -3.402823e+38, -3.402823e+38, -3.402823e+38}, 
+    {{"displacementNorth"}, {"displacement"}, {"metre"}, 1, 0, -3.402823e+38, -3.402823e+38, -3.402823e+38}, 
+    {{"displacementUp"}, {"displacement"}, {"metre"}, 1, 2, -3.402823e+38, -3.402823e+38, -3.402823e+38} ;
 		:operationAccuracy = 0.01 ;
 		:uncertaintyMeasure = "2CEP 2SE" ;
 		:_NCProperties = "version=2,netcdf=4.7.4,hdf5=1.12.0," ;

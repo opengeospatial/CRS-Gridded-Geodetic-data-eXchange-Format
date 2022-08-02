@@ -386,6 +386,16 @@ CommonAttributes = {
             ],
         },
         {
+            ATTRDEF_NAME: PARAM_ATTR_PARAMETER_SET,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: PARAM_ATTR_PARAMETER_SET,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
             ATTRDEF_NAME: PARAM_ATTR_UNIT_SI_RATIO,
             ATTRDEF_CHOICE: [
                 {
@@ -421,6 +431,16 @@ CommonAttributes = {
                 {
                     ATTRDEF_NAME: PARAM_ATTR_UNIT_TYPE,
                     ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: PARAM_ATTR_SOURCE_CRS_AXIS,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: PARAM_ATTR_SOURCE_CRS_AXIS,
+                    ATTRDEF_TYPE: int,
                 },
             ],
             ATTRDEF_OPTIONAL: True,
