@@ -22,11 +22,11 @@ interpolationCrsWkt: |
 parameters:
     - parameterName: deviationEast
       parameterSet: deviationOfVertical
-      angleUnit: arc-second
+      unit: arc-second
       unitSiRatio: 4.84813681109536E-06
     - parameterName: deviationNorth
       parameterSet: deviationOfVertical
-      angleUnit: arc-second
+      unit: arc-second
       unitSiRatio: 4.84813681109536E-060
 organisationName:       "National Geodetic Survey, National Oceanic and Atmospheric Administration."
 deliveryPoint:          "1315 East West Hwy"

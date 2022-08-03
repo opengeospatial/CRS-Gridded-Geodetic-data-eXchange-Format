@@ -15,13 +15,6 @@ from .AttributeValidator import AttributeValidator
 
 JSON_METADATA_ATTR = "metadata"
 
-PARAM_ATTRLIST_UNITNAME = [
-    PARAM_ATTR_UNIT,
-    PARAM_ATTR_LENGTH_UNIT,
-    PARAM_ATTR_ANGLE_UNIT,
-    PARAM_ATTR_SCALE_UNIT,
-]
-
 
 class Error(RuntimeError):
     pass
@@ -627,12 +620,8 @@ class Parameter:
         self._set = paramset or None
         axis = metadata.get(PARAM_ATTR_SOURCE_CRS_AXIS)
         self._sourceCrsAxis = axis if axis is not None and axis >= 0 else None
+        self._unit = metadata.get(PARAM_ATTR_UNIT, "")
         self._siRatio = float(metadata.get(PARAM_ATTR_UNIT_SI_RATIO, 1.0))
-        self._unit = "unspecified"
-        for key, value in metadata.items():
-            if key in PARAM_ATTRLIST_UNITNAME:
-                self._unit = value
-                break
         self._minValue = metadata.get(PARAM_ATTR_PARAMETER_MINIMUM_VALUE)
         self._maxValue = metadata.get(PARAM_ATTR_PARAMETER_MAXIMUM_VALUE)
         self._noDataFlag = metadata.get(PARAM_ATTR_NO_DATA_FLAG)

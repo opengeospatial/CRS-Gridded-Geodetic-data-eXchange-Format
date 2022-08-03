@@ -18,7 +18,7 @@ targetCrsWkt: "VERTCRS[\"VRTDTM2000\",\n  VDATUM[\"A vertical datum\"],\n  CS[ve
 parameters:
 - parameterName: geoidHeight
   parameterSet: ''
-  unitName: metre
+  unit: metre
   unitSiRatio: 1.0
   sourceCrsAxis: 2
 operationAccuracy: 0.015

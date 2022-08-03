@@ -3,7 +3,7 @@ types:
   compound ggxfParameterType {
     char parameterName(32) ;
     char parameterSet(32) ;
-    char unitName(16) ;
+    char unit(16) ;
     float unitSiRatio ;
     int sourceCrsAxis ;
     float parameterMinimumValue ;

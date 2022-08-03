@@ -32,17 +32,17 @@ interpolationCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",
 parameters:
 - parameterName: displacementEast
   parameterSet: displacement
-  lengthUnit: metre
+  unit: metre
   unitSiRatio: 1.0
   sourceCrsAxis: 1
 - parameterName: displacementNorth
   parameterSet: displacement
-  lengthUnit: metre
+  unit: metre
   unitSiRatio: 1.0
   sourceCrsAxis: 0
 - parameterName: displacementUp
   parameterSet: displacement
-  lengthUnit: metre
+  unit: metre
   unitSiRatio: 1.0
   sourceCrsAxis: 2
 operationAccuracy: 0.01

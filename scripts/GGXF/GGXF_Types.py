@@ -408,32 +408,10 @@ CommonAttributes = {
             ATTRDEF_NAME: PARAM_ATTR_UNIT,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: PARAM_ATTR_UNIT_NAME,
-                    ATTRDEF_TYPE: str,
-                },
-                {
-                    ATTRDEF_NAME: PARAM_ATTR_LENGTH_UNIT,
-                    ATTRDEF_TYPE: str,
-                },
-                {
-                    ATTRDEF_NAME: PARAM_ATTR_ANGLE_UNIT,
-                    ATTRDEF_TYPE: str,
-                },
-                {
-                    ATTRDEF_NAME: PARAM_ATTR_SCALE_UNIT,
+                    ATTRDEF_NAME: PARAM_ATTR_UNIT,
                     ATTRDEF_TYPE: str,
                 },
             ],
-        },
-        {
-            ATTRDEF_NAME: PARAM_ATTR_UNIT_TYPE,
-            ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: PARAM_ATTR_UNIT_TYPE,
-                    ATTRDEF_TYPE: str,
-                },
-            ],
-            ATTRDEF_OPTIONAL: True,
         },
         {
             ATTRDEF_NAME: PARAM_ATTR_SOURCE_CRS_AXIS,

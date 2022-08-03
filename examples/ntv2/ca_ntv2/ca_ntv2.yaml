@@ -38,22 +38,22 @@ parameters:
   - parameterName: latitudeOffset
     parameterSet: offset
     sourceCrsAxis: 0
-    angleUnit: arc-second
+    unit: arc-second
     unitSiRatio: 4.84813681109536E-06
   - parameterName: longitudeOffset
     parameterSet: offset
     sourceCrsAxis: 1
-    angleUnit: arc-second
+    unit: arc-second
     unitSiRatio: 4.84813681109536E-06
   - parameterName: latitudeOffsetUncertainty
     parameterSet: offsetUncertainty
     sourceCrsAxis: 0
-    lengthUnit: metre
+    unit: metre
     unitSiRatio: 1.0
   - parameterName: longitudeOffsetUncertainty
     parameterSet: offsetUncertainty
     sourceCrsAxis: 1
-    lengthUnit: metre
+    unit: metre
     unitSiRatio: 1.0
 operationAccuracy: 1.5
 uncertaintyMeasure: 2CEE

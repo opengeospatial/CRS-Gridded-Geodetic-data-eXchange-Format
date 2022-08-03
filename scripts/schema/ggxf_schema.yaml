@@ -120,21 +120,8 @@ CommonAttributes:
       Optional: true
     - AttributeName: unitSiRatio
       Type: float
-    - AttributeChoice:
-        Comment: Would be much simpler to just have "unitName"
-        AttributeChoiceName: unit
-        Attributes:
-        - AttributeName: unitName
-          Type: str
-        - AttributeName: lengthUnit
-          Type: str
-        - AttributeName: angleUnit
-          Type: str
-        - AttributeName: scaleUnit
-          Type: str
-    - AttributeName: unitType
+    - AttributeName: unit
       Type: str
-      Optional: true
     - AttributeName: sourceCrsAxis
       Type: int
       Optional: true      
