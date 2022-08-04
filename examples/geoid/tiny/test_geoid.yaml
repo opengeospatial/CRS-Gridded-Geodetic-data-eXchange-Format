@@ -12,27 +12,29 @@ contentApplicabilityExtent:
   extentDescription: "Tiny example geoid."
 
 interpolationCrsWkt: |
-  GEOGCS["WGS 84",
-    DATUM["WGS_1984",
-      SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],
-      AUTHORITY["EPSG","6326"]],
-    PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],
-    UNIT["degree",0.01745329251994328,AUTHORITY["EPSG","9122"]],
-    AUTHORITY["EPSG","4326"]]
+  GEOGCRS["WGS 84 (G2139)", 
+    DYNAMIC[FRAMEEPOCH[2016.0]],
+    DATUM["World Geodetic System 1984 (G2139)",ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7030]],ID["EPSG",1309]],
+    CS[ellipsoidal,3,ID["EPSG",6423]],
+      AXIS["latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],
+      AXIS["longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],
+      AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]]
+    ,ID["EPSG",9754]]
 sourceCrsWkt: |
-  GEOGCS["WGS 84",
-    DATUM["WGS_1984",
-      SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],
-      AUTHORITY["EPSG","6326"]],
-    PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],
-    UNIT["degree",0.01745329251994328,AUTHORITY["EPSG","9122"]],
-    AUTHORITY["EPSG","4326"]]
+  GEOGCRS["WGS 84 (G2139)", 
+    DYNAMIC[FRAMEEPOCH[2016.0]],
+    DATUM["World Geodetic System 1984 (G2139)",ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7030]],ID["EPSG",1309]],
+    CS[ellipsoidal,3,ID["EPSG",6423]],
+      AXIS["latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],
+      AXIS["longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],
+      AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]]
+    ,ID["EPSG",9754]]
 targetCrsWkt: |
-  VERTCRS["VRTDTM2000",
-    VDATUM["A vertical datum"],
-    CS[vertical,1],
-    AXIS["Gravity-related height (H)",up],
-    LENGTHUNIT["metre",1]]
+   VERTCRS["Vertical datum height",
+    VDATUM["Imaginary vertical datum",ID["EPSG",1124]],
+    CS[vertical,1,ID["EPSG",6499]],
+      AXIS["Gravity-related height (H)",up],LENGTHUNIT["metre",1,ID["EPSG",9001]]
+    ,ID["EPSG",6642]]    
 parameters:
   - parameterName: "geoidHeight"
     sourceCrsAxis: 2
