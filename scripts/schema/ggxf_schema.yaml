@@ -588,14 +588,13 @@ ContentTypes:
     Group:
     - AttributeName: timeFunctions
       Type: list
-  Comment: 'Not sure about uncertainty - under discussion. Makes no sense to have
+  Comment: |
+    Not sure about uncertainty - under discussion. Makes no sense to have
     displacementEastUncertainty, displacementNorthUncertainty without accounting for
     correlation Arguably also for adding vertical Arguably for (likely large) correlation
     between nodes Proposed attributes are reasonable simplification I think. For consistency
     with other models though would use displacementEastUncertainty, displacmentNorthUncertainty,
     displacementUpUncertainty
-
-    '
   ParameterOptions:
   - ParameterSets:
       displacement:

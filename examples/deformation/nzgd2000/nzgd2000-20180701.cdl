@@ -4,7 +4,7 @@ types:
     char parameterName(32) ;
     char parameterSet(32) ;
     char unit(16) ;
-    float unitSiRatio ;
+    double unitSiRatio ;
     int sourceCrsAxis ;
     float parameterMinimumValue ;
     float parameterMaximumValue ;

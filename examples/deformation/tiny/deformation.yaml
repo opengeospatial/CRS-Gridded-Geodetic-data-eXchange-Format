@@ -48,7 +48,7 @@ parameters:
 operationAccuracy: 0.01
 uncertaintyMeasure: 2CEP 2SE
 ggxfGroups:
-  - ggxfGroupName: nz_linz_vert_vel
+  - ggxfGroupName: secular-vertical-velocity
     interpolationMethod: bilinear
     groupParameters:
       - displacementUp
@@ -56,7 +56,7 @@ ggxfGroups:
       - functionType: velocity
         functionReferenceDate: "2000-01-01T00:00:00Z"
     grids:
-      - gridName: hvel
+      - gridName: national-vertical-velocity-grid
         affineCoeffs: [172.6, 0.6, 0.0, -41.6, 0.0, 0.4]
         iNodeCount: 3
         jNodeCount: 4
@@ -67,8 +67,8 @@ ggxfGroups:
             [-0.05, 0.25, 0.15],
             [-0.08, 0.22, 0.12],
           ]
-  - ggxfGroupName: nz_linz_hypo_eq
-    comment: Hypothetical earthquake - this is not what happened
+  - ggxfGroupName: co-and-post-seismic-deformation
+    comment: Hypothetical earthquake
     interpolationMethod: bilinear
     groupParameters:
       - displacementEast
@@ -86,7 +86,7 @@ ggxfGroups:
         functionReferenceDate: "2011-09-01T00:00:00Z"
         scaleFactor: 0.29
     grids:
-      - gridName: eqdef1
+      - gridName: far-field-deformation-grid
         affineCoeffs: [172.6, 0.6, 0.0, -41.6, 0.0, 0.4]
         iNodeCount: 5
         jNodeCount: 6
@@ -141,7 +141,7 @@ ggxfGroups:
             ],
           ]
         grids:
-          - gridName: eqdef2
+          - gridName: near-field-deformation-grid
             affineCoeffs: [172.6, 0.3, 0.0, -41.2, 0.0, 0.2]
             iNodeCount: 5
             jNodeCount: 3

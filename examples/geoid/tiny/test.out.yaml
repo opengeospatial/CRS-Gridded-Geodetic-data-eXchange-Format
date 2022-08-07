@@ -23,7 +23,7 @@ targetCrsWkt: "VERTCRS[\"Vertical datum height\",\n VDATUM[\"Imaginary vertical 
   \    \n"
 parameters:
 - parameterName: geoidHeight
-  parameterSet: ''
+  parameterSet: geoidHeight
   unit: metre
   unitSiRatio: 1.0
   sourceCrsAxis: 2

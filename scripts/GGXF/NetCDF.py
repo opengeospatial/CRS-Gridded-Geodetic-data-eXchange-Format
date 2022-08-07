@@ -339,7 +339,7 @@ class Writer(BaseWriter):
                     ("parameterName", "S32"),
                     ("parameterSet", "S32"),
                     ("unit", "S16"),
-                    ("unitSiRatio", self._dtype),
+                    ("unitSiRatio", "f8"),
                     ("sourceCrsAxis", "i4"),
                     ("parameterMinimumValue", self._dtype),
                     ("parameterMaximumValue", self._dtype),

@@ -4,7 +4,7 @@ types:
     char parameterName(32) ;
     char parameterSet(32) ;
     char unit(16) ;
-    float unitSiRatio ;
+    double unitSiRatio ;
     int sourceCrsAxis ;
     float parameterMinimumValue ;
     float parameterMaximumValue ;
@@ -26,7 +26,7 @@ types:
 		:sourceCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]]]\n" ;
 		:targetCrsWkt = "VERTCRS[\"VIVD09 - NOHt\",\n  VDATUM[\"Virgin Islands Vertical Datum of 2009\"],\n  CS[vertical,1],\n  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n" ;
 		ggxfParameterType :parameters = 
-    {{"geoidHeight"}, {""}, {"metre"}, 1, 2, -3.402823e+38, -3.402823e+38, -3.402823e+38} ;
+    {{"geoidHeight"}, {"geoidHeight"}, {"metre"}, 1, 2, -3.402823e+38, -3.402823e+38, -3.402823e+38} ;
 		:operationAccuracy = 0.015 ;
 		:organisationName = "National Geodetic Survey, National Oceanic and Atmospheric Administration." ;
 		:deliveryPoint = "1315 East West Hwy" ;

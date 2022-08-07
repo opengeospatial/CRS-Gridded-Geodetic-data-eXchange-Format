@@ -46,6 +46,12 @@ class GGXF:
 
     def configure(self, errorhandler=None):
         self._singleGroup = len(self._groups) == 1
+        ggxfParamSets = ContentTypes[self._content][ATTRDEF_PARAMSET_MAP]
+        for param in self._parameters:
+            if ggxfParamSets.get(param.name()) != param.set():
+                self.logger().warn(
+                    f'Non-standard parameter set "{param.set()}" for parameter "{param.name()}"'
+                )
         for igroup, group in enumerate(self._groups):
             group.configure(errorhandler=errorhandler, id=f"{igroup}")
 
@@ -198,7 +204,7 @@ class Group:
     def _configureParameters(self, errorhandler=None):
         ok = True
         # map the parameter names to the GGXF parameters
-        paramnames = self._parameterNames
+        paramset = set(self._parameterNames)
         ggxfparams = [p.name() for p in self._ggxf.parameters()]
         parammap = []
         for name in self._parameterNames:
@@ -215,18 +221,9 @@ class Group:
         contenttype = self._ggxf.contentType()
         contentdef = ContentTypes.get(contenttype)
         validparamsets = contentdef.get(ATTRDEF_PARAMETER_SETS, [])
-        paramids = None
         # Currently not supporting non GGXF parameters in a grid
-        for paramset in validparamsets:
-            if len(paramset) != len(paramnames):
-                continue
-            try:
-                paramids = [paramnames.index(param) for param in paramset]
-                break
-            except ValueError:
-                paramids = None
-        if paramids is None:
-            error = f"Invalid parameters ({','.join(paramnames)}) for content type {contenttype}"
+        if paramset not in validparamsets:
+            error = f"Invalid parameters ({','.join(paramset)}) for content type {contenttype}"
             if errorhandler:
                 errorhandler(error)
             else:
@@ -616,8 +613,7 @@ class Parameter:
     def __init__(self, metadata: dict):
         self._metadata = metadata
         self._name = metadata[PARAM_ATTR_PARAMETER_NAME]
-        paramset = metadata.get(PARAM_ATTR_PARAMETER_SET)
-        self._set = paramset or None
+        self._set = metadata.get(PARAM_ATTR_PARAMETER_SET, self._name)
         axis = metadata.get(PARAM_ATTR_SOURCE_CRS_AXIS)
         self._sourceCrsAxis = axis if axis is not None and axis >= 0 else None
         self._unit = metadata.get(PARAM_ATTR_UNIT, "")
