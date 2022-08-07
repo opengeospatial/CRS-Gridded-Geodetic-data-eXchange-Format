@@ -30,6 +30,11 @@ YAML_GROUP_TAG = "!ggxfgroup"
 YAML_GRID_TAG = "!ggxfgrid"
 YAML_GRID_DATA_TAG = "!ggxfgriddata"
 
+
+YAML_MAX_SIMPLE_STRING_LEN = 32
+YAML_STR_SCALAR_TAG = "tag:yaml.org,2002:str"
+
+
 YAML_OPTIONS = f"""
 The following options can apply to YAML format input (I) and output (O):
 
@@ -310,6 +315,7 @@ class Writer(BaseWriter):
         loader.add_representer(Group, self._writeGgxfGroup)
         loader.add_representer(Grid, self._writeGgxfGrid)
         loader.add_representer(np.ndarray, self._writeGridData)
+        loader.add_representer(str, self._writeStr)
         self._headerOnly = self.getBoolOption(YAML_OPTION_WRITE_HEADERS_ONLY, False)
 
         with tempfile.TemporaryFile("w+") as tmph, open(yaml_file, "w") as yamlh:
@@ -373,3 +379,11 @@ class Writer(BaseWriter):
             ydata = data.reshape(shape[:2])
         ydata = ydata.tolist()
         return dumper.represent_sequence(YAML_GRID_DATA_TAG, ydata)
+
+    # This attempts to improve the format of output YAML strings (eg WKT).  Hasn't
+    # worked :-(
+    def _writeStr(self, dumper, data):
+        if "\n" in data or '"' in data or len(data) > YAML_MAX_SIMPLE_STRING_LEN:
+            print(data)
+            return dumper.represent_scalar(YAML_STR_SCALAR_TAG, data, style="literal")
+        return dumper.represent_scalar(YAML_STR_SCALAR_TAG, data)

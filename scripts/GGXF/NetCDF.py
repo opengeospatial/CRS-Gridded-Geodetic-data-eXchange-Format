@@ -5,7 +5,6 @@
 # Note: NetCDF is stored in column major order.  Ie dimensions ncol, nrow, nparam stores parameters for
 # ncol, nrow consecutively.
 
-import json
 import logging
 import os.path
 

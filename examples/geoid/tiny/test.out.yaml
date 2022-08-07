@@ -2,7 +2,7 @@ ggxfVersion: GGXF-1.0
 filename: tiny_geoid.gxt
 content: geoidModel
 title: hybrid geoid
-abstract: Tiny geoid for testing GGXF implementation
+abstract: "Tiny geoid for testing GGXF implementation"
 interpolationCrsWkt: "GEOGCRS[\"WGS 84 (G2139)\", \n  DYNAMIC[FRAMEEPOCH[2016.0]],\n\
   \  DATUM[\"World Geodetic System 1984 (G2139)\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"\
   metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7030]],ID[\"EPSG\",1309]],\n  CS[ellipsoidal,3,ID[\"\
@@ -28,7 +28,7 @@ parameters:
   unitSiRatio: 1.0
   sourceCrsAxis: 2
 operationAccuracy: 0.015
-organisationName: A Hypothetical National Geodetic Survey.
+organisationName: "A Hypothetical National Geodetic Survey."
 deliveryPoint: Somewhere
 city: A city
 postalCode: '99999'
