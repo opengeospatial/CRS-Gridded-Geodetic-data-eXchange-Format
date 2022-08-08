@@ -47,8 +47,6 @@ types:
 		:_Format = "netCDF-4" ;
 
 group: secular-vertical-velocity {
-  dimensions:
-  	parameter = 1 ;
 
   // group attributes:
   		:interpolationMethod = "bilinear" ;
@@ -62,9 +60,9 @@ group: secular-vertical-velocity {
     	gridi = 3 ;
     	gridj = 4 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = 172.6, 0.6, 0., -41.6, 0., 0.4 ;
@@ -72,25 +70,17 @@ group: secular-vertical-velocity {
     		:jNodeCount = 4LL ;
     data:
 
-     data =
-  0.44,
-  0.74,
-  0.64,
-  0.12,
-  0.42,
-  0.32,
-  -0.05,
-  0.25,
-  0.15,
-  -0.08,
-  0.22,
-  0.12 ;
+     displacement =
+  0.44, 0.74, 0.64,
+  0.12, 0.42, 0.32,
+  -0.05, 0.25, 0.15,
+  -0.08, 0.22, 0.12 ;
     } // group national-vertical-velocity-grid
   } // group secular-vertical-velocity
 
 group: co-and-post-seismic-deformation {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Hypothetical earthquake - this is not what happened" ;
@@ -113,9 +103,9 @@ group: co-and-post-seismic-deformation {
     	gridi = 5 ;
     	gridj = 6 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = 172.6, 0.6, 0., -41.6, 0., 0.4 ;
@@ -123,7 +113,7 @@ group: co-and-post-seismic-deformation {
     		:jNodeCount = 6LL ;
     data:
 
-     data =
+     displacement =
   1.24, -2.08, -2.4,
   1.84, -1.88, -2.22,
   2.04, -1.68, -2.05,
@@ -160,9 +150,9 @@ group: co-and-post-seismic-deformation {
       	gridi = 5 ;
       	gridj = 3 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 172.6, 0.3, 0., -41.2, 0., 0.2 ;
@@ -170,7 +160,7 @@ group: co-and-post-seismic-deformation {
       		:jNodeCount = 3LL ;
       data:
 
-       data =
+       displacement =
   1.48, -2.72, -0.41,
   1.63, -2.62, -0.32,
   1.68, -2.52, -0.23,

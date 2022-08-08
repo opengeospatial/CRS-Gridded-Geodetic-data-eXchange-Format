@@ -100,6 +100,7 @@ class Reader(BaseReader):
             ygrids = ygroup.pop(GROUP_ATTR_GRIDS, [])
             # Need to handle parameter validation here
             group = Group(ggxf, groupname, ygroup)
+            group.configureParameters(self.error)
             for ygrid in ygrids:
                 self.loadGrid(group, ygrid, gridDataSource)
             group.configure(self.error)
@@ -142,9 +143,10 @@ class Reader(BaseReader):
 
         if self.validator().validateGridAttributes(ygrid, context=context):
             self.validateGridData(group, ygrid)
-            data = ygrid.pop(GRID_ATTR_DATA, [])
+            gdata = ygrid.pop(GRID_ATTR_DATA, [])
             cgrids = ygrid.pop(GRID_ATTR_GRIDS, [])
             gridname = ygrid.pop(GRID_ATTR_GRID_NAME)
+            data = self.splitGridByParamSet(group, gdata)
             grid = Grid(group, gridname, ygrid, data)
             for cgrid in cgrids:
                 self.loadGrid(group, cgrid, gridDataSource, grid)
@@ -289,6 +291,12 @@ class Reader(BaseReader):
             self._logger.debug(
                 f"Grid {gridname} loaded - dimensions {data.shape}, type {data.dtype}"
             )
+
+    def splitGridByParamSet(self, group, gdata):
+        # Placeholder for representing data in sets rather than single grid
+        return gdata
+        # paramSetIndices = group.paramSetIndices()
+        # return {pset: gdata[:, :, indices] for pset, indices in paramSetIndices.items()}
 
 
 class Writer(BaseWriter):

@@ -201,7 +201,7 @@ class Group:
         self._grids.append(grid)
         self._configured = False
 
-    def _configureParameters(self, errorhandler=None):
+    def configureParameters(self, errorhandler=None):
         ok = True
         # map the parameter names to the GGXF parameters
         paramset = set(self._parameterNames)
@@ -230,6 +230,17 @@ class Group:
                 raise Error(error)
             ok = False
         if ok:
+            # parameterSetIndices is a mapping from parameter sets to the
+            # index into the parameters array for each element of the set
+            self._parameters = [self._ggxf.parameters()[i] for i in parammap]
+            paramSetIndices = {}
+            for iparam, param in enumerate(self._parameters):
+                if param.set() not in paramSetIndices:
+                    paramSetIndices[param.set()] = []
+                paramSetIndices[param.set()].append(iparam)
+            self._paramSetIndices = paramSetIndices
+            print(f"paramSetIndices {paramSetIndices}")
+
             self._parameterMap = parammap
             self._zero = np.zeros((len(ggxfparams),))
         return ok
@@ -244,8 +255,7 @@ class Group:
     def configure(self, id=None, errorhandler=None):
         if id:
             self._id = id
-        ok = self._configureParameters(errorhandler)
-        ok = ok and self._configureGrids(errorhandler)
+        ok = self._configureGrids(errorhandler)
         self._configured = ok
 
     def gridAt(self, xy):
@@ -260,6 +270,12 @@ class Group:
                     )
                 return cgrid
         return None
+
+    def parameters(self):
+        return self.parameters()
+
+    def paramSetIndices(self):
+        return self._paramSetIndices
 
     def parameterMap(self):
         return self._parameterMap

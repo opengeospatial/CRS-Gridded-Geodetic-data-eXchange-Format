@@ -49,7 +49,7 @@ types:
 
 group: nz_linz_nzgd2000-ndm-grid02 {
   dimensions:
-  	parameter = 2 ;
+  	displacement_count = 2 ;
 
   // group attributes:
   		:comment = "Secular deformation model derived from NUVEL-1A rotation rates\nSecular deformation model derived from GNS model 2011 V4\n" ;
@@ -64,9 +64,9 @@ group: nz_linz_nzgd2000-ndm-grid02 {
     	gridi = 73 ;
     	gridj = 67 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -25., 0., -0.5, 158., 0.5, 0. ;
@@ -78,9 +78,9 @@ group: nz_linz_nzgd2000-ndm-grid02 {
       	gridi = 141 ;
       	gridj = 151 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -33., 0., -0.1, 165.5, 0.1, 0. ;
@@ -92,7 +92,7 @@ group: nz_linz_nzgd2000-ndm-grid02 {
 
 group: nz_linz_nzgd2000-si20030821-grid01 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Secretary Island (Fiordland) earthquake" ;
@@ -108,9 +108,9 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
     	gridi = 44 ;
     	gridj = 34 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -43.5, 0., -0.125, 165.85, 0.15, 0. ;
@@ -122,9 +122,9 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
       	gridi = 47 ;
       	gridj = 45 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -44.5, 0., -0.03125, 166.225, 0.0375, 0. ;
@@ -136,9 +136,9 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
         	gridi = 93 ;
         	gridj = 81 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -44.828125, 0., -0.0078125, 166.5625, 0.009375, 0. ;
@@ -151,7 +151,7 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
 
 group: nz_linz_nzgd2000-mq20041223-grid011 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Macquarie Plate earthquake" ;
@@ -167,9 +167,9 @@ group: nz_linz_nzgd2000-mq20041223-grid011 {
     	gridi = 10 ;
     	gridj = 8 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -52.125, 0., -0.125, 168.4, 0.15, 0. ;
@@ -180,7 +180,7 @@ group: nz_linz_nzgd2000-mq20041223-grid011 {
 
 group: nz_linz_nzgd2000-mq20041223-grid012 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Macquarie Plate earthquake" ;
@@ -196,9 +196,9 @@ group: nz_linz_nzgd2000-mq20041223-grid012 {
     	gridi = 105 ;
     	gridj = 137 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -48.25, 0., -0.03125, 158.8, 0.0375, 0. ;
@@ -209,7 +209,7 @@ group: nz_linz_nzgd2000-mq20041223-grid012 {
 
 group: nz_linz_nzgd2000-mq20041223-grid013 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Macquarie Plate earthquake" ;
@@ -225,9 +225,9 @@ group: nz_linz_nzgd2000-mq20041223-grid013 {
     	gridi = 11 ;
     	gridj = 11 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -50.125, 0., -0.125, 165.4, 0.15, 0. ;
@@ -238,7 +238,7 @@ group: nz_linz_nzgd2000-mq20041223-grid013 {
 
 group: nz_linz_nzgd2000-mq20041223-grid014 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Macquarie Plate earthquake" ;
@@ -254,9 +254,9 @@ group: nz_linz_nzgd2000-mq20041223-grid014 {
     	gridi = 9 ;
     	gridj = 8 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -49.25, 0., -0.125, 178.15, 0.15, 0. ;
@@ -267,7 +267,7 @@ group: nz_linz_nzgd2000-mq20041223-grid014 {
 
 group: nz_linz_nzgd2000-mq20041223-grid015 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Macquarie Plate earthquake" ;
@@ -283,9 +283,9 @@ group: nz_linz_nzgd2000-mq20041223-grid015 {
     	gridi = 70 ;
     	gridj = 68 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -40.125, 0., -0.125, 165.85, 0.15, 0. ;
@@ -296,7 +296,7 @@ group: nz_linz_nzgd2000-mq20041223-grid015 {
 
 group: nz_linz_nzgd2000-mq20041223-grid016 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Macquarie Plate earthquake" ;
@@ -312,9 +312,9 @@ group: nz_linz_nzgd2000-mq20041223-grid016 {
     	gridi = 8 ;
     	gridj = 7 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -47.375, 0., -0.125, 178.45, 0.15, 0. ;
@@ -325,7 +325,7 @@ group: nz_linz_nzgd2000-mq20041223-grid016 {
 
 group: nz_linz_nzgd2000-gs20071016-grid01 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Fiordland (George Sound) earthquake" ;
@@ -341,9 +341,9 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
     	gridi = 37 ;
     	gridj = 27 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -43.75, 0., -0.125, 165.85, 0.15, 0. ;
@@ -355,9 +355,9 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
       	gridi = 45 ;
       	gridj = 37 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -44.28125, 0., -0.03125, 166.6375, 0.0375, 0. ;
@@ -369,9 +369,9 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
         	gridi = 54 ;
         	gridj = 52 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -44.6171875, 0., -0.0078125, 167.0875, 0.009375, 0. ;
@@ -384,7 +384,7 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
 
 group: nz_linz_nzgd2000-ds20090715-grid011 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
@@ -407,9 +407,9 @@ group: nz_linz_nzgd2000-ds20090715-grid011 {
     	gridi = 11 ;
     	gridj = 11 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -50.125, 0., -0.125, 165.4, 0.15, 0. ;
@@ -420,7 +420,7 @@ group: nz_linz_nzgd2000-ds20090715-grid011 {
 
 group: nz_linz_nzgd2000-ds20090715-grid012 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
@@ -443,9 +443,9 @@ group: nz_linz_nzgd2000-ds20090715-grid012 {
     	gridi = 6 ;
     	gridj = 7 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -49.25, 0., -0.125, 178.15, 0.15, 0. ;
@@ -456,7 +456,7 @@ group: nz_linz_nzgd2000-ds20090715-grid012 {
 
 group: nz_linz_nzgd2000-ds20090715-grid013 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
@@ -479,9 +479,9 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
     	gridi = 85 ;
     	gridj = 72 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -39.625, 0., -0.125, 164.65, 0.15, 0. ;
@@ -493,9 +493,9 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
       	gridi = 67 ;
       	gridj = 73 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -44.6875, 0., -0.03125, 165.2875, 0.0375, 0. ;
@@ -507,9 +507,9 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
         	gridi = 83 ;
         	gridj = 138 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -45.28125, 0., -0.0078125, 166.075, 0.009375, 0. ;
@@ -522,7 +522,7 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
 
 group: nz_linz_nzgd2000-ds20090715-grid014 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
@@ -545,9 +545,9 @@ group: nz_linz_nzgd2000-ds20090715-grid014 {
     	gridi = 8 ;
     	gridj = 7 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -47.375, 0., -0.125, 178.45, 0.15, 0. ;
@@ -558,7 +558,7 @@ group: nz_linz_nzgd2000-ds20090715-grid014 {
 
 group: nz_linz_nzgd2000-c120100904-grid01 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Darfield earthquake" ;
@@ -574,9 +574,9 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
     	gridi = 55 ;
     	gridj = 52 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -40.375, 0., -0.125, 168.1, 0.15, 0. ;
@@ -588,9 +588,9 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
       	gridi = 59 ;
       	gridj = 50 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -42.8125, 0., -0.03125, 171.1, 0.0375, 0. ;
@@ -602,9 +602,9 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
         	gridi = 118 ;
         	gridj = 84 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -43.25, 0., -0.0078125, 171.625, 0.009375, 0. ;
@@ -616,9 +616,9 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
           	gridi = 306 ;
           	gridj = 141 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi, displacement_count) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -43.423828125, 0., -0.001953125, 171.8125, 0.00234375, 0. ;
@@ -632,7 +632,7 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
 
 group: nz_linz_nzgd2000-c220110222-grid01 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Christchurch February earthquake" ;
@@ -648,9 +648,9 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
     	gridi = 21 ;
     	gridj = 18 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -42.375, 0., -0.125, 170.8, 0.15, 0. ;
@@ -662,9 +662,9 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
       	gridi = 38 ;
       	gridj = 34 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -43.03125, 0., -0.03125, 172., 0.0375, 0. ;
@@ -676,9 +676,9 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
         	gridi = 62 ;
         	gridj = 52 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -43.3515625, 0., -0.0078125, 172.4125, 0.009375, 0. ;
@@ -690,9 +690,9 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
           	gridi = 118 ;
           	gridj = 81 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi, displacement_count) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -43.474609375, 0., -0.001953125, 172.56015625, 0.00234375, 0. ;
@@ -706,7 +706,7 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
 
 group: nz_linz_nzgd2000-c320110613-grid01 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Christchurch June earthquake" ;
@@ -722,9 +722,9 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
     	gridi = 16 ;
     	gridj = 15 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -42.625, 0., -0.125, 171.4, 0.15, 0. ;
@@ -736,9 +736,9 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
       	gridi = 33 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -43.09375, 0., -0.03125, 172.15, 0.0375, 0. ;
@@ -750,9 +750,9 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
         	gridi = 51 ;
         	gridj = 48 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -43.375, 0., -0.0078125, 172.515625, 0.009375, 0. ;
@@ -764,9 +764,9 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
           	gridi = 88 ;
           	gridj = 84 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi, displacement_count) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -43.484375, 0., -0.001953125, 172.65390625, 0.00234375, 0. ;
@@ -780,7 +780,7 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
 
 group: nz_linz_nzgd2000-c420111223-grid01 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Christchurch earthquake" ;
@@ -796,9 +796,9 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
     	gridi = 15 ;
     	gridj = 13 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -42.75, 0., -0.125, 171.55, 0.15, 0. ;
@@ -810,9 +810,9 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
       	gridi = 32 ;
       	gridj = 30 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -43.03125, 0., -0.03125, 172.1875, 0.0375, 0. ;
@@ -824,9 +824,9 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
         	gridi = 52 ;
         	gridj = 44 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -43.3125, 0., -0.0078125, 172.553125, 0.009375, 0. ;
@@ -838,9 +838,9 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
           	gridi = 87 ;
           	gridj = 61 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi, displacement_count) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -43.421875, 0., -0.001953125, 172.67734375, 0.00234375, 0. ;
@@ -854,7 +854,7 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
 
 group: nz_linz_nzgd2000-cs20130721-grid02 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Mw 6.6 Cook Strait earthquake" ;
@@ -870,9 +870,9 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
     	gridi = 34 ;
     	gridj = 32 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -39.5, 0., -0.125, 171.55, 0.15, 0. ;
@@ -884,9 +884,9 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
       	gridi = 43 ;
       	gridj = 37 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -41.03125, 0., -0.03125, 173.5375, 0.0375, 0. ;
@@ -898,9 +898,9 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
         	gridi = 73 ;
         	gridj = 57 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -41.3828125, 0., -0.0078125, 173.9875, 0.009375, 0. ;
@@ -912,9 +912,9 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
           	gridi = 90 ;
           	gridj = 68 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi, displacement_count) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -41.537109375, 0., -0.001953125, 174.28984375, 0.00234375, 0. ;
@@ -928,7 +928,7 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
 
 group: nz_linz_nzgd2000-lg20130816-grid02 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Mw 6.6 Lake Grassmere earthquake" ;
@@ -944,9 +944,9 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
     	gridi = 39 ;
     	gridj = 39 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -39.25, 0., -0.125, 170.95, 0.15, 0. ;
@@ -958,9 +958,9 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
       	gridi = 44 ;
       	gridj = 40 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -41.09375, 0., -0.03125, 173.3875, 0.0375, 0. ;
@@ -972,9 +972,9 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
         	gridi = 79 ;
         	gridj = 63 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -41.4609375, 0., -0.0078125, 173.809375, 0.009375, 0. ;
@@ -986,9 +986,9 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
           	gridi = 134 ;
           	gridj = 104 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi, displacement_count) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -41.60546875, 0., -0.001953125, 174.034375, 0.00234375, 0. ;
@@ -1002,7 +1002,7 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
 
 group: nz_linz_nzgd2000-ch20160214-grid01 {
   dimensions:
-  	parameter = 3 ;
+  	displacement_count = 3 ;
 
   // group attributes:
   		:comment = "Christchurch Valentines Day earthquake" ;
@@ -1018,9 +1018,9 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
     	gridi = 14 ;
     	gridj = 11 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -42.875, 0., -0.125, 171.7, 0.15, 0. ;
@@ -1032,9 +1032,9 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
       	gridi = 29 ;
       	gridj = 27 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -43.0625, 0., -0.03125, 172.225, 0.0375, 0. ;
@@ -1046,9 +1046,9 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
         	gridi = 46 ;
         	gridj = 38 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -43.3203125, 0., -0.0078125, 172.553125, 0.009375, 0. ;
@@ -1060,9 +1060,9 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
           	gridi = 79 ;
           	gridj = 61 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi, displacement_count) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -43.408203125, 0., -0.001953125, 172.67265625, 0.00234375, 0. ;
@@ -1076,7 +1076,7 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
 
 group: nz_linz_nzgd2000-ka20161114-grid01 {
   dimensions:
-  	parameter = 2 ;
+  	displacement_count = 2 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
@@ -1091,9 +1091,9 @@ group: nz_linz_nzgd2000-ka20161114-grid01 {
     	gridi = 89 ;
     	gridj = 110 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -34., 0., -0.125, 165.85, 0.15, 0. ;
@@ -1105,9 +1105,9 @@ group: nz_linz_nzgd2000-ka20161114-grid01 {
       	gridi = 95 ;
       	gridj = 82 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -40.8125, 0., -0.03125, 171.925, 0.0375, 0. ;
@@ -1119,7 +1119,7 @@ group: nz_linz_nzgd2000-ka20161114-grid01 {
 
 group: nz_linz_nzgd2000-ka20161114-grid02 {
   dimensions:
-  	parameter = 2 ;
+  	displacement_count = 2 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
@@ -1135,9 +1135,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
     	gridi = 65 ;
     	gridj = 53 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -41.28125, 0., -0.03125, 172.525, 0.0375, 0. ;
@@ -1149,9 +1149,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
       	gridi = 115 ;
       	gridj = 94 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -42.1484375, 0., -0.0078125, 172.571875, 0.009375, 0. ;
@@ -1163,9 +1163,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 106 ;
         	gridj = 107 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.484375, 0., -0.001953125, 172.7828125, 0.00234375, 0. ;
@@ -1178,9 +1178,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 11 ;
         	gridj = 26 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.435546875, 0., -0.001953125, 173.00546875, 0.00234375, 0. ;
@@ -1193,9 +1193,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 106 ;
         	gridj = 111 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.02890625, 0.00234375, 0. ;
@@ -1208,9 +1208,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 106 ;
         	gridj = 51 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.38671875, 0., -0.001953125, 173.02890625, 0.00234375, 0. ;
@@ -1223,9 +1223,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 106 ;
         	gridj = 88 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.275, 0.00234375, 0. ;
@@ -1238,9 +1238,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 106 ;
         	gridj = 111 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.275, 0.00234375, 0. ;
@@ -1253,9 +1253,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 21 ;
         	gridj = 63 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.47421875, 0.00234375, 0. ;
@@ -1268,9 +1268,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 52 ;
         	gridj = 30 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
@@ -1283,9 +1283,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 52 ;
         	gridj = 111 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
@@ -1298,9 +1298,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 52 ;
         	gridj = 63 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
@@ -1314,9 +1314,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
       	gridi = 53 ;
       	gridj = 89 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -41.4609375, 0., -0.0078125, 173.153125, 0.009375, 0. ;
@@ -1328,9 +1328,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 21 ;
         	gridj = 49 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.47421875, 0.00234375, 0. ;
@@ -1343,9 +1343,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 9 ;
         	gridj = 6 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.044921875, 0., -0.001953125, 173.50234375, 0.0023437500000014, 0. ;
@@ -1358,9 +1358,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 52 ;
         	gridj = 49 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
@@ -1373,9 +1373,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 52 ;
         	gridj = 111 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
@@ -1389,9 +1389,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
       	gridi = 73 ;
       	gridj = 63 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -42.1484375, 0., -0.0078125, 173.640625, 0.009375, 0. ;
@@ -1403,9 +1403,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 28 ;
         	gridj = 30 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
@@ -1418,9 +1418,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 55 ;
         	gridj = 111 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
@@ -1433,9 +1433,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 55 ;
         	gridj = 63 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
@@ -1448,9 +1448,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 87 ;
         	gridj = 95 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
@@ -1463,9 +1463,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 106 ;
         	gridj = 63 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
@@ -1478,9 +1478,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 62 ;
         	gridj = 41 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
@@ -1494,9 +1494,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
       	gridi = 114 ;
       	gridj = 94 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -41.421875, 0., -0.0078125, 173.640625, 0.009375, 0. ;
@@ -1508,9 +1508,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 55 ;
         	gridj = 49 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
@@ -1523,9 +1523,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 55 ;
         	gridj = 111 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
@@ -1538,9 +1538,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 15 ;
         	gridj = 10 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -41.822265625, 0., -0.001953125, 173.734375, 0.00234375, 0. ;
@@ -1553,9 +1553,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 106 ;
         	gridj = 49 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
@@ -1568,9 +1568,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 106 ;
         	gridj = 111 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
@@ -1583,9 +1583,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 106 ;
         	gridj = 41 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -41.76171875, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
@@ -1598,9 +1598,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 62 ;
         	gridj = 49 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
@@ -1613,9 +1613,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 106 ;
         	gridj = 111 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
@@ -1628,9 +1628,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 106 ;
         	gridj = 93 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -41.66015625, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
@@ -1643,9 +1643,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 59 ;
         	gridj = 35 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 174.259375, 0.00234375, 0. ;
@@ -1658,9 +1658,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	gridi = 104 ;
         	gridj = 110 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi, displacement_count) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -41.626953125, 0., -0.001953125, 174.259375, 0.00234375, 0. ;
@@ -1672,8 +1672,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
   } // group nz_linz_nzgd2000-ka20161114-grid02
 
 group: nz_linz_nzgd2000-ka20161114-grid03 {
-  dimensions:
-  	parameter = 1 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
@@ -1689,9 +1687,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
     	gridi = 86 ;
     	gridj = 108 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -34.25, 0., -0.125, 166.3, 0.15, 0. ;
@@ -1703,9 +1701,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
       	gridi = 74 ;
       	gridj = 67 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -41.0625, 0., -0.03125, 172.225, 0.0375, 0. ;
@@ -1717,9 +1715,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
         	gridi = 103 ;
         	gridj = 89 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.1171875, 0., -0.0078125, 172.65625, 0.009375, 0. ;
@@ -1731,9 +1729,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 103 ;
           	gridj = 88 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.490234375, 0., -0.001953125, 172.79921875, 0.00234375, 0. ;
@@ -1746,9 +1744,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 103 ;
           	gridj = 105 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.03828125, 0.00234375, 0. ;
@@ -1761,9 +1759,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 89 ;
           	gridj = 52 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.353515625, 0., -0.001953125, 173.07109375, 0.00234375, 0. ;
@@ -1776,9 +1774,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 103 ;
           	gridj = 100 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.27734375, 0.00234375, 0. ;
@@ -1791,9 +1789,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 103 ;
           	gridj = 89 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.28125, 0., -0.001953125, 173.27734375, 0.00234375, 0. ;
@@ -1806,9 +1804,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 21 ;
           	gridj = 67 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.46953125, 0.00234375, 0. ;
@@ -1821,9 +1819,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 42 ;
           	gridj = 34 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
@@ -1836,9 +1834,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 42 ;
           	gridj = 107 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.24609375, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
@@ -1851,9 +1849,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 42 ;
           	gridj = 67 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
@@ -1867,9 +1865,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
         	gridi = 44 ;
         	gridj = 70 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -41.578125, 0., -0.0078125, 173.209375, 0.009375, 0. ;
@@ -1881,9 +1879,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 21 ;
           	gridj = 33 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.46953125, 0.00234375, 0. ;
@@ -1896,9 +1894,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 42 ;
           	gridj = 41 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
@@ -1911,9 +1909,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 12 ;
           	gridj = 66 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -41.912109375, 0., -0.001953125, 173.58671875, 0.00234375, 0. ;
@@ -1927,9 +1925,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
         	gridi = 79 ;
         	gridj = 60 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.1171875, 0., -0.0078125, 173.6125, 0.009375, 0. ;
@@ -1941,9 +1939,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 62 ;
           	gridj = 34 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
@@ -1956,9 +1954,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 62 ;
           	gridj = 107 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.24609375, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
@@ -1971,9 +1969,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 62 ;
           	gridj = 67 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
@@ -1986,9 +1984,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 7 ;
           	gridj = 4 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
@@ -2001,9 +1999,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 93 ;
           	gridj = 107 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.24609375, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
@@ -2016,9 +2014,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 103 ;
           	gridj = 67 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
@@ -2031,9 +2029,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 40 ;
           	gridj = 59 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.99453125, 0.00234375, 0. ;
@@ -2047,9 +2045,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
         	gridi = 103 ;
         	gridj = 88 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -41.4375, 0., -0.0078125, 173.6125, 0.009375, 0. ;
@@ -2061,9 +2059,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 62 ;
           	gridj = 41 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
@@ -2076,9 +2074,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 62 ;
           	gridj = 66 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -41.912109375, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
@@ -2091,9 +2089,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 103 ;
           	gridj = 41 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
@@ -2106,9 +2104,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 103 ;
           	gridj = 93 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -41.859375, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
@@ -2121,9 +2119,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 40 ;
           	gridj = 41 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.99453125, 0.00234375, 0. ;
@@ -2136,9 +2134,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 103 ;
           	gridj = 107 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -41.83203125, 0., -0.001953125, 173.99453125, 0.00234375, 0. ;
@@ -2151,9 +2149,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 64 ;
           	gridj = 78 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -41.681640625, 0., -0.001953125, 174.0859375, 0.00234375, 0. ;
@@ -2166,9 +2164,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 56 ;
           	gridj = 45 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -41.83203125, 0., -0.001953125, 174.23359375, 0.00234375, 0. ;
@@ -2181,9 +2179,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	gridi = 101 ;
           	gridj = 106 ;
           variables:
-          	float data(gridj, gridi, parameter) ;
-          		data:_Storage = "contiguous" ;
-          		data:_Endianness = "little" ;
+          	float displacement(gridj, gridi) ;
+          		displacement:_Storage = "contiguous" ;
+          		displacement:_Endianness = "little" ;
 
           // group attributes:
           		:affineCoeffs = -41.626953125, 0., -0.001953125, 174.23359375, 0.00234375, 0. ;
@@ -2197,7 +2195,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
 group: nz_linz_nzgd2000-ka20161114-grid04 {
   dimensions:
-  	parameter = 2 ;
+  	displacement_count = 2 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
@@ -2215,9 +2213,9 @@ group: nz_linz_nzgd2000-ka20161114-grid04 {
     	gridi = 46 ;
     	gridj = 39 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -39., 0., -0.125, 169.6, 0.15, 0. ;
@@ -2229,9 +2227,9 @@ group: nz_linz_nzgd2000-ka20161114-grid04 {
       	gridi = 74 ;
       	gridj = 59 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -41.125, 0., -0.03125, 172.6375, 0.0375, 0. ;
@@ -2243,7 +2241,7 @@ group: nz_linz_nzgd2000-ka20161114-grid04 {
 
 group: nz_linz_nzgd2000-ka20161114-grid05 {
   dimensions:
-  	parameter = 2 ;
+  	displacement_count = 2 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
@@ -2261,9 +2259,9 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
     	gridi = 67 ;
     	gridj = 56 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -41.28125, 0., -0.03125, 172.45, 0.0375, 0. ;
@@ -2275,9 +2273,9 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
       	gridi = 93 ;
       	gridj = 83 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -42.0546875, 0., -0.0078125, 172.834375, 0.009375, 0. ;
@@ -2290,9 +2288,9 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
       	gridi = 92 ;
       	gridj = 125 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -41.5703125, 0., -0.0078125, 173.696875, 0.009375, 0. ;
@@ -2303,8 +2301,6 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
   } // group nz_linz_nzgd2000-ka20161114-grid05
 
 group: nz_linz_nzgd2000-ka20161114-grid06 {
-  dimensions:
-  	parameter = 1 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
@@ -2322,9 +2318,9 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
     	gridi = 29 ;
     	gridj = 27 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -40.5, 0., -0.125, 171.85, 0.15, 0. ;
@@ -2336,9 +2332,9 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
       	gridi = 72 ;
       	gridj = 74 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -40.75, 0., -0.03125, 172.675, 0.0375, 0. ;
@@ -2350,9 +2346,9 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
         	gridi = 92 ;
         	gridj = 82 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.0078125, 172.84375, 0.009375, 0. ;
@@ -2365,9 +2361,9 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
         	gridi = 91 ;
         	gridj = 119 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -41.609375, 0., -0.0078125, 173.696875, 0.009375, 0. ;
@@ -2380,7 +2376,7 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
 
 group: nz_linz_nzgd2000-ka20161114-grid10 {
   dimensions:
-  	parameter = 2 ;
+  	displacement_count = 2 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake,  14 November 2016\nRefinement for horizontal difference between observations and model\n" ;
@@ -2395,9 +2391,9 @@ group: nz_linz_nzgd2000-ka20161114-grid10 {
     	gridi = 43 ;
     	gridj = 40 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -38.625, 0., -0.125, 171.1, 0.15, 0. ;
@@ -2408,7 +2404,7 @@ group: nz_linz_nzgd2000-ka20161114-grid10 {
 
 group: nz_linz_nzgd2000-ka20161114-grid11 {
   dimensions:
-  	parameter = 2 ;
+  	displacement_count = 2 ;
 
   // group attributes:
   		:comment = "Kaikoura earthquake second refinement grid - horizontal" ;
@@ -2424,9 +2420,9 @@ group: nz_linz_nzgd2000-ka20161114-grid11 {
     	gridi = 214 ;
     	gridj = 192 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -40.56, 0., -0.015, 171.5, 0.02, 0. ;
@@ -2436,8 +2432,6 @@ group: nz_linz_nzgd2000-ka20161114-grid11 {
   } // group nz_linz_nzgd2000-ka20161114-grid11
 
 group: nz_linz_nzgd2000-ka20161114-grid12 {
-  dimensions:
-  	parameter = 1 ;
 
   // group attributes:
   		:comment = "Kaikoura earthquake second refinement grid -vertical" ;
@@ -2453,9 +2447,9 @@ group: nz_linz_nzgd2000-ka20161114-grid12 {
     	gridi = 216 ;
     	gridj = 199 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -40.395, 0., -0.015, 171.9, 0.02, 0. ;
@@ -2466,7 +2460,7 @@ group: nz_linz_nzgd2000-ka20161114-grid12 {
 
 group: nz_linz_nzgd2000-ka20161114-grid07 {
   dimensions:
-  	parameter = 2 ;
+  	displacement_count = 2 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
@@ -2484,9 +2478,9 @@ group: nz_linz_nzgd2000-ka20161114-grid07 {
     	gridi = 46 ;
     	gridj = 40 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -38.875, 0., -0.125, 169.6, 0.15, 0. ;
@@ -2498,9 +2492,9 @@ group: nz_linz_nzgd2000-ka20161114-grid07 {
       	gridi = 66 ;
       	gridj = 60 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -41.0625, 0., -0.03125, 172.525, 0.0375, 0. ;
@@ -2512,7 +2506,7 @@ group: nz_linz_nzgd2000-ka20161114-grid07 {
 
 group: nz_linz_nzgd2000-ka20161114-grid08 {
   dimensions:
-  	parameter = 2 ;
+  	displacement_count = 2 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
@@ -2530,9 +2524,9 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
     	gridi = 67 ;
     	gridj = 56 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi, displacement_count) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -41.28125, 0., -0.03125, 172.45, 0.0375, 0. ;
@@ -2544,9 +2538,9 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
       	gridi = 88 ;
       	gridj = 91 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -42., 0., -0.0078125, 172.91875, 0.009375, 0. ;
@@ -2559,9 +2553,9 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
       	gridi = 88 ;
       	gridj = 122 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi, displacement_count) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -41.5546875, 0., -0.0078125, 173.734375, 0.009375, 0. ;
@@ -2572,8 +2566,6 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
   } // group nz_linz_nzgd2000-ka20161114-grid08
 
 group: nz_linz_nzgd2000-ka20161114-grid09 {
-  dimensions:
-  	parameter = 1 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
@@ -2591,9 +2583,9 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
     	gridi = 31 ;
     	gridj = 28 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float displacement(gridj, gridi) ;
+    		displacement:_Storage = "contiguous" ;
+    		displacement:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = -40.25, 0., -0.125, 171.4, 0.15, 0. ;
@@ -2605,9 +2597,9 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
       	gridi = 82 ;
       	gridj = 76 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float displacement(gridj, gridi) ;
+      		displacement:_Storage = "contiguous" ;
+      		displacement:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = -40.65625, 0., -0.03125, 172.1875, 0.0375, 0. ;
@@ -2619,9 +2611,9 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
         	gridi = 92 ;
         	gridj = 80 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -42.0703125, 0., -0.0078125, 172.825, 0.009375, 0. ;
@@ -2634,9 +2626,9 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
         	gridi = 92 ;
         	gridj = 121 ;
         variables:
-        	float data(gridj, gridi, parameter) ;
-        		data:_Storage = "contiguous" ;
-        		data:_Endianness = "little" ;
+        	float displacement(gridj, gridi) ;
+        		displacement:_Storage = "contiguous" ;
+        		displacement:_Endianness = "little" ;
 
         // group attributes:
         		:affineCoeffs = -41.5859375, 0., -0.0078125, 173.678125, 0.009375, 0. ;

@@ -44,7 +44,8 @@ types:
 
 group: national_transformation_v2_0 {
   dimensions:
-  	parameter = 4 ;
+  	offset_count = 2 ;
+  	offsetUncertainty_count = 2 ;
 
   // group attributes:
   		:interpolationMethod = "bilinear" ;
@@ -54,9 +55,12 @@ group: national_transformation_v2_0 {
     	gridi = 529 ;
     	gridj = 241 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float offset(gridj, gridi, offset_count) ;
+    		offset:_Storage = "contiguous" ;
+    		offset:_Endianness = "little" ;
+    	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+    		offsetUncertainty:_Storage = "contiguous" ;
+    		offsetUncertainty:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = 60., 0., -0.0833333333333333, -88., 0.0833333333333333, 0. ;
@@ -68,9 +72,12 @@ group: national_transformation_v2_0 {
       	gridi = 81 ;
       	gridj = 51 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 47.8333333333333, 0., -0.00833333333333333, -53., 0.00833333333333333, 0. ;
@@ -83,9 +90,12 @@ group: national_transformation_v2_0 {
       	gridi = 321 ;
       	gridj = 321 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 46.5, 0., -0.00833333333333333, -78.8333333333333, 0.00833333333333333, 0. ;
@@ -98,9 +108,12 @@ group: national_transformation_v2_0 {
       	gridi = 221 ;
       	gridj = 201 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 45.9166666666667, 0., -0.00833333333333333, -76.1666666666667, 0.00833333333333333, 0. ;
@@ -113,9 +126,12 @@ group: national_transformation_v2_0 {
       	gridi = 101 ;
       	gridj = 121 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 43.4166666666667, 0., -0.00833333333333333, -82.5833333333333, 0.00833333333333333, 0. ;
@@ -128,9 +144,12 @@ group: national_transformation_v2_0 {
       	gridi = 351 ;
       	gridj = 71 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 46.6666666666667, 0., -0.00833333333333333, -84.6666666666667, 0.00833333333333333, 0. ;
@@ -143,9 +162,12 @@ group: national_transformation_v2_0 {
       	gridi = 101 ;
       	gridj = 41 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 48.6666666666667, 0., -0.00833333333333333, -81.6666666666667, 0.00833333333333333, 0. ;
@@ -158,9 +180,12 @@ group: national_transformation_v2_0 {
       	gridi = 351 ;
       	gridj = 511 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 46.6666666666667, 0., -0.00833333333333333, -81.75, 0.00833333333333333, 0. ;
@@ -173,9 +198,12 @@ group: national_transformation_v2_0 {
       	gridi = 171 ;
       	gridj = 61 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 42.4166666666667, 0., -0.00833333333333333, -83.1666666666667, 0.00833333333333333, 0. ;
@@ -189,9 +217,12 @@ group: national_transformation_v2_0 {
     	gridi = 649 ;
     	gridj = 157 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float offset(gridj, gridi, offset_count) ;
+    		offset:_Storage = "contiguous" ;
+    		offset:_Endianness = "little" ;
+    	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+    		offsetUncertainty:_Storage = "contiguous" ;
+    		offsetUncertainty:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = 60., 0., -0.0833333333333333, -142., 0.0833333333333333, 0. ;
@@ -203,9 +234,12 @@ group: national_transformation_v2_0 {
       	gridi = 11 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 51.25, 0., -0.00833333333333333, -115.583333333333, 0.00833333333333333, 0. ;
@@ -218,9 +252,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 54.1666666666667, 0., -0.00833333333333333, -114.5, 0.00833333333333333, 0. ;
@@ -233,9 +270,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 54.3333333333333, 0., -0.00833333333333333, -110.833333333333, 0.00833333333333333, 0. ;
@@ -248,9 +288,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.9166666666667, 0., -0.00833333333333333, -111.5, 0.00833333333333333, 0. ;
@@ -263,9 +306,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 50.6666666666667, 0., -0.00833333333333333, -112., 0.00833333333333333, 0. ;
@@ -278,9 +324,12 @@ group: national_transformation_v2_0 {
       	gridi = 101 ;
       	gridj = 101 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 51.3333333333333, 0., -0.00833333333333333, -114.583333333333, 0.00833333333333333, 0. ;
@@ -293,9 +342,12 @@ group: national_transformation_v2_0 {
       	gridi = 41 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 53.0833333333333, 0., -0.00833333333333333, -113., 0.00833333333333333, 0. ;
@@ -308,9 +360,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 51.1666666666667, 0., -0.00833333333333333, -115.5, 0.00833333333333333, 0. ;
@@ -323,9 +378,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.25, 0., -0.00833333333333333, -113.416666666667, 0.00833333333333333, 0. ;
@@ -338,9 +396,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 51.6666666666667, 0., -0.00833333333333333, -114.25, 0.00833333333333333, 0. ;
@@ -353,9 +414,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 50.0833333333333, 0., -0.00833333333333333, -113.666666666667, 0.00833333333333333, 0. ;
@@ -368,9 +432,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 54.5833333333333, 0., -0.00833333333333333, -110.333333333333, 0.00833333333333333, 0. ;
@@ -383,9 +450,12 @@ group: national_transformation_v2_0 {
       	gridi = 71 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.75, 0., -0.00833333333333333, -114.75, 0.00833333333333333, 0. ;
@@ -398,9 +468,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 53.3333333333333, 0., -0.00833333333333333, -115.083333333333, 0.00833333333333333, 0. ;
@@ -413,9 +486,12 @@ group: national_transformation_v2_0 {
       	gridi = 61 ;
       	gridj = 41 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 51.5833333333333, 0., -0.00833333333333333, -112.916666666667, 0.00833333333333333, 0. ;
@@ -428,9 +504,12 @@ group: national_transformation_v2_0 {
       	gridi = 131 ;
       	gridj = 91 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 53.9166666666667, 0., -0.00833333333333333, -114.166666666667, 0.00833333333333333, 0. ;
@@ -443,9 +522,12 @@ group: national_transformation_v2_0 {
       	gridi = 41 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 53.6666666666667, 0., -0.00833333333333333, -116.583333333333, 0.00833333333333333, 0. ;
@@ -458,9 +540,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 56.1666666666667, 0., -0.00833333333333333, -118.5, 0.00833333333333333, 0. ;
@@ -473,9 +558,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.8333333333333, 0., -0.00833333333333333, -113.5, 0.00833333333333333, 0. ;
@@ -488,9 +576,12 @@ group: national_transformation_v2_0 {
       	gridi = 61 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 56.8333333333333, 0., -0.00833333333333333, -111.583333333333, 0.00833333333333333, 0. ;
@@ -503,9 +594,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 54., 0., -0.00833333333333333, -119.25, 0.00833333333333333, 0. ;
@@ -518,9 +612,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 56.25, 0., -0.00833333333333333, -117.666666666667, 0.00833333333333333, 0. ;
@@ -533,9 +630,12 @@ group: national_transformation_v2_0 {
       	gridi = 41 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 55.25, 0., -0.00833333333333333, -118.916666666667, 0.00833333333333333, 0. ;
@@ -548,9 +648,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 51.75, 0., -0.00833333333333333, -112.083333333333, 0.00833333333333333, 0. ;
@@ -563,9 +666,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 58.5833333333333, 0., -0.00833333333333333, -117.25, 0.00833333333333333, 0. ;
@@ -578,9 +684,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 53.5, 0., -0.00833333333333333, -117.666666666667, 0.00833333333333333, 0. ;
@@ -593,9 +702,12 @@ group: national_transformation_v2_0 {
       	gridi = 41 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 55.5, 0., -0.00833333333333333, -116.666666666667, 0.00833333333333333, 0. ;
@@ -608,9 +720,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 52.1666666666667, 0., -0.00833333333333333, -114., 0.00833333333333333, 0. ;
@@ -623,9 +738,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 52.9166666666667, 0., -0.00833333333333333, -118.166666666667, 0.00833333333333333, 0. ;
@@ -638,9 +756,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 54.8333333333333, 0., -0.00833333333333333, -112.083333333333, 0.00833333333333333, 0. ;
@@ -653,9 +774,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 52.5833333333333, 0., -0.00833333333333333, -113.833333333333, 0.00833333333333333, 0. ;
@@ -668,9 +792,12 @@ group: national_transformation_v2_0 {
       	gridi = 61 ;
       	gridj = 41 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.9166666666667, 0., -0.00833333333333333, -113., 0.00833333333333333, 0. ;
@@ -683,9 +810,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 51.5, 0., -0.00833333333333333, -116.25, 0.00833333333333333, 0. ;
@@ -698,9 +828,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 53.3333333333333, 0., -0.00833333333333333, -110.166666666667, 0.00833333333333333, 0. ;
@@ -713,9 +846,12 @@ group: national_transformation_v2_0 {
       	gridi = 41 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 50.1666666666667, 0., -0.00833333333333333, -110.833333333333, 0.00833333333333333, 0. ;
@@ -728,9 +864,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 51.9166666666667, 0., -0.00833333333333333, -114.25, 0.00833333333333333, 0. ;
@@ -743,9 +882,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 51.4166666666667, 0., -0.00833333333333333, -110.583333333333, 0.00833333333333333, 0. ;
@@ -758,9 +900,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 56.3333333333333, 0., -0.00833333333333333, -117.416666666667, 0.00833333333333333, 0. ;
@@ -773,9 +918,12 @@ group: national_transformation_v2_0 {
       	gridi = 11 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.5833333333333, 0., -0.00833333333333333, -114., 0.00833333333333333, 0. ;
@@ -788,9 +936,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 52.75, 0., -0.00833333333333333, -113.666666666667, 0.00833333333333333, 0. ;
@@ -803,9 +954,12 @@ group: national_transformation_v2_0 {
       	gridi = 51 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.5, 0., -0.00833333333333333, -113., 0.00833333333333333, 0. ;
@@ -818,9 +972,12 @@ group: national_transformation_v2_0 {
       	gridi = 41 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 52.4166666666667, 0., -0.00833333333333333, -113.916666666667, 0.00833333333333333, 0. ;
@@ -833,9 +990,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 52.5, 0., -0.00833333333333333, -115., 0.00833333333333333, 0. ;
@@ -848,9 +1008,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 55.3333333333333, 0., -0.00833333333333333, -114.916666666667, 0.00833333333333333, 0. ;
@@ -863,9 +1026,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 52.4166666666667, 0., -0.00833333333333333, -112.833333333333, 0.00833333333333333, 0. ;
@@ -878,9 +1044,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 54.0833333333333, 0., -0.00833333333333333, -111.416666666667, 0.00833333333333333, 0. ;
@@ -893,9 +1062,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 51.1666666666667, 0., -0.00833333333333333, -113.5, 0.00833333333333333, 0. ;
@@ -908,9 +1080,12 @@ group: national_transformation_v2_0 {
       	gridi = 41 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 54.8333333333333, 0., -0.00833333333333333, -115.583333333333, 0.00833333333333333, 0. ;
@@ -923,9 +1098,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.9166666666667, 0., -0.00833333333333333, -112.25, 0.00833333333333333, 0. ;
@@ -938,9 +1116,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 51.75, 0., -0.00833333333333333, -113.333333333333, 0.00833333333333333, 0. ;
@@ -953,9 +1134,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 53.5833333333333, 0., -0.00833333333333333, -112.166666666667, 0.00833333333333333, 0. ;
@@ -968,9 +1152,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 53.4166666666667, 0., -0.00833333333333333, -111., 0.00833333333333333, 0. ;
@@ -983,9 +1170,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 52.9166666666667, 0., -0.00833333333333333, -111., 0.00833333333333333, 0. ;
@@ -998,9 +1188,12 @@ group: national_transformation_v2_0 {
       	gridi = 41 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 54.25, 0., -0.00833333333333333, -114., 0.00833333333333333, 0. ;
@@ -1013,9 +1206,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 53., 0., -0.00833333333333333, -113.5, 0.00833333333333333, 0. ;
@@ -1028,9 +1224,12 @@ group: national_transformation_v2_0 {
       	gridi = 41 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 54.1666666666667, 0., -0.00833333333333333, -115.833333333333, 0.00833333333333333, 0. ;
@@ -1043,9 +1242,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 50.0833333333333, 0., -0.00833333333333333, -125.333333333333, 0.00833333333333333, 0. ;
@@ -1058,9 +1260,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.5833333333333, 0., -0.00833333333333333, -115.833333333333, 0.00833333333333333, 0. ;
@@ -1073,9 +1278,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 55.8333333333333, 0., -0.00833333333333333, -120.333333333333, 0.00833333333333333, 0. ;
@@ -1088,9 +1296,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 50.0833333333333, 0., -0.00833333333333333, -115., 0.00833333333333333, 0. ;
@@ -1103,9 +1314,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 51.4166666666667, 0., -0.00833333333333333, -116.583333333333, 0.00833333333333333, 0. ;
@@ -1118,9 +1332,12 @@ group: national_transformation_v2_0 {
       	gridi = 11 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 54.9166666666667, 0., -0.00833333333333333, -126.25, 0.00833333333333333, 0. ;
@@ -1133,9 +1350,12 @@ group: national_transformation_v2_0 {
       	gridi = 51 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 50.75, 0., -0.00833333333333333, -120.5, 0.00833333333333333, 0. ;
@@ -1148,9 +1368,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 50.0833333333333, 0., -0.00833333333333333, -119.583333333333, 0.00833333333333333, 0. ;
@@ -1163,9 +1386,12 @@ group: national_transformation_v2_0 {
       	gridi = 11 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 50.5, 0., -0.00833333333333333, -120.833333333333, 0.00833333333333333, 0. ;
@@ -1178,9 +1404,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 55.4166666666667, 0., -0.00833333333333333, -123.166666666667, 0.00833333333333333, 0. ;
@@ -1193,9 +1422,12 @@ group: national_transformation_v2_0 {
       	gridi = 61 ;
       	gridj = 61 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.25, 0., -0.00833333333333333, -124.083333333333, 0.00833333333333333, 0. ;
@@ -1208,9 +1440,12 @@ group: national_transformation_v2_0 {
       	gridi = 11 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.5833333333333, 0., -0.00833333333333333, -117.333333333333, 0.00833333333333333, 0. ;
@@ -1223,9 +1458,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.3333333333333, 0., -0.00833333333333333, -124.416666666667, 0.00833333333333333, 0. ;
@@ -1238,9 +1476,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.5833333333333, 0., -0.00833333333333333, -119.666666666667, 0.00833333333333333, 0. ;
@@ -1253,9 +1494,12 @@ group: national_transformation_v2_0 {
       	gridi = 11 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.3333333333333, 0., -0.00833333333333333, -124.833333333333, 0.00833333333333333, 0. ;
@@ -1268,9 +1512,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.9166666666667, 0., -0.00833333333333333, -124.583333333333, 0.00833333333333333, 0. ;
@@ -1283,9 +1530,12 @@ group: national_transformation_v2_0 {
       	gridi = 41 ;
       	gridj = 41 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 54.0833333333333, 0., -0.00833333333333333, -122.916666666667, 0.00833333333333333, 0. ;
@@ -1298,9 +1548,12 @@ group: national_transformation_v2_0 {
       	gridi = 11 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.0833333333333, 0., -0.00833333333333333, -117.833333333333, 0.00833333333333333, 0. ;
@@ -1313,9 +1566,12 @@ group: national_transformation_v2_0 {
       	gridi = 11 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.1666666666667, 0., -0.00833333333333333, -117.75, 0.00833333333333333, 0. ;
@@ -1328,9 +1584,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 55.1666666666667, 0., -0.00833333333333333, -121.083333333333, 0.00833333333333333, 0. ;
@@ -1343,9 +1602,12 @@ group: national_transformation_v2_0 {
       	gridi = 131 ;
       	gridj = 51 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.4166666666667, 0., -0.00833333333333333, -123.25, 0.00833333333333333, 0. ;
@@ -1358,9 +1620,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 50.3333333333333, 0., -0.00833333333333333, -119.333333333333, 0.00833333333333333, 0. ;
@@ -1373,9 +1638,12 @@ group: national_transformation_v2_0 {
       	gridi = 41 ;
       	gridj = 51 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 48.75, 0., -0.00833333333333333, -123.583333333333, 0.00833333333333333, 0. ;
@@ -1388,9 +1656,12 @@ group: national_transformation_v2_0 {
       	gridi = 71 ;
       	gridj = 51 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 48.5833333333333, 0., -0.00833333333333333, -89.5833333333333, 0.00833333333333333, 0. ;
@@ -1403,9 +1674,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.25, 0., -0.00833333333333333, -103.083333333333, 0.00833333333333333, 0. ;
@@ -1418,9 +1692,12 @@ group: national_transformation_v2_0 {
       	gridi = 71 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 52.9166666666667, 0., -0.00833333333333333, -104.666666666667, 0.00833333333333333, 0. ;
@@ -1433,9 +1710,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 51., 0., -0.00833333333333333, -102.916666666667, 0.00833333333333333, 0. ;
@@ -1448,9 +1728,12 @@ group: national_transformation_v2_0 {
       	gridi = 41 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 50.5, 0., -0.00833333333333333, -105.75, 0.00833333333333333, 0. ;
@@ -1463,9 +1746,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 52.8333333333333, 0., -0.00833333333333333, -108.416666666667, 0.00833333333333333, 0. ;
@@ -1478,9 +1764,12 @@ group: national_transformation_v2_0 {
       	gridi = 61 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 53.3333333333333, 0., -0.00833333333333333, -106., 0.00833333333333333, 0. ;
@@ -1493,9 +1782,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 50.5833333333333, 0., -0.00833333333333333, -104.75, 0.00833333333333333, 0. ;
@@ -1508,9 +1800,12 @@ group: national_transformation_v2_0 {
       	gridi = 51 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 52.25, 0., -0.00833333333333333, -106.833333333333, 0.00833333333333333, 0. ;
@@ -1523,9 +1818,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 50.4166666666667, 0., -0.00833333333333333, -107.916666666667, 0.00833333333333333, 0. ;
@@ -1538,9 +1836,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 49.75, 0., -0.00833333333333333, -103.916666666667, 0.00833333333333333, 0. ;
@@ -1553,9 +1854,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 51.3333333333333, 0., -0.00833333333333333, -102.583333333333, 0.00833333333333333, 0. ;
@@ -1569,9 +1873,12 @@ group: national_transformation_v2_0 {
     	gridi = 589 ;
     	gridj = 181 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float offset(gridj, gridi, offset_count) ;
+    		offset:_Storage = "contiguous" ;
+    		offset:_Endianness = "little" ;
+    	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+    		offsetUncertainty:_Storage = "contiguous" ;
+    		offsetUncertainty:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = 75., 0., -0.0833333333333333, -142., 0.166666666666667, 0. ;
@@ -1583,9 +1890,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 31 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 70.5833333333333, 0., -0.00833333333333333, -68.8333333333333, 0.0166666666666667, 0. ;
@@ -1598,9 +1908,12 @@ group: national_transformation_v2_0 {
       	gridi = 21 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 66.3333333333333, 0., -0.00833333333333333, -128.833333333333, 0.0166666666666667, 0. ;
@@ -1613,9 +1926,12 @@ group: national_transformation_v2_0 {
       	gridi = 61 ;
       	gridj = 61 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 61., 0., -0.00833333333333333, -116.5, 0.0166666666666667, 0. ;
@@ -1628,9 +1944,12 @@ group: national_transformation_v2_0 {
       	gridi = 31 ;
       	gridj = 41 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 68.5, 0., -0.00833333333333333, -133.833333333333, 0.0166666666666667, 0. ;
@@ -1643,9 +1962,12 @@ group: national_transformation_v2_0 {
       	gridi = 61 ;
       	gridj = 61 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 64., 0., -0.00833333333333333, -69., 0.0166666666666667, 0. ;
@@ -1658,9 +1980,12 @@ group: national_transformation_v2_0 {
       	gridi = 41 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 72.75, 0., -0.00833333333333333, -78.1666666666667, 0.0166666666666667, 0. ;
@@ -1673,9 +1998,12 @@ group: national_transformation_v2_0 {
       	gridi = 11 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 62.9166666666667, 0., -0.00833333333333333, -92.1666666666667, 0.0166666666666667, 0. ;
@@ -1688,9 +2016,12 @@ group: national_transformation_v2_0 {
       	gridi = 11 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 62.5, 0., -0.00833333333333333, -114.5, 0.0166666666666667, 0. ;
@@ -1703,9 +2034,12 @@ group: national_transformation_v2_0 {
       	gridi = 11 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 64.1666666666667, 0., -0.00833333333333333, -139.5, 0.0166666666666667, 0. ;
@@ -1718,9 +2052,12 @@ group: national_transformation_v2_0 {
       	gridi = 11 ;
       	gridj = 21 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 62.0833333333333, 0., -0.00833333333333333, -132.583333333333, 0.0166666666666667, 0. ;
@@ -1733,9 +2070,12 @@ group: national_transformation_v2_0 {
       	gridi = 6 ;
       	gridj = 11 ;
       variables:
-      	float data(gridj, gridi, parameter) ;
-      		data:_Storage = "contiguous" ;
-      		data:_Endianness = "little" ;
+      	float offset(gridj, gridi, offset_count) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
       		:affineCoeffs = 60.75, 0., -0.00833333333333333, -135.083333333333, 0.0166666666666667, 0. ;
@@ -1749,9 +2089,12 @@ group: national_transformation_v2_0 {
     	gridi = 295 ;
     	gridj = 109 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float offset(gridj, gridi, offset_count) ;
+    		offset:_Storage = "contiguous" ;
+    		offset:_Endianness = "little" ;
+    	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+    		offsetUncertainty:_Storage = "contiguous" ;
+    		offsetUncertainty:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = 84., 0., -0.0833333333333333, -142., 0.333333333333333, 0. ;

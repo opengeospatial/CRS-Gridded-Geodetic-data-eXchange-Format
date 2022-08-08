@@ -35,7 +35,7 @@ types:
 
 group: Puerto\ Rico\ Virgin\ Islands\ DEFLEC18 {
   dimensions:
-  	parameter = 2 ;
+  	deviation_count = 2 ;
 
   // group attributes:
   		:interpolationMethod = "biquadratic" ;
@@ -45,7 +45,7 @@ group: Puerto\ Rico\ Virgin\ Islands\ DEFLEC18 {
     	gridi = 301 ;
     	gridj = 361 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
+    	float deviation(gridj, gridi, deviation_count) ;
 
     // group attributes:
     		:affineCoeffs = 15., 0., 0.01666666667, -69., 0.01666666667, 0. ;
