@@ -44,21 +44,21 @@ types:
 
 group: national_transformation_v2_0 {
   dimensions:
-  	offset_count = 2 ;
-  	offsetUncertainty_count = 2 ;
+  	offsetCount = 2 ;
+  	offsetUncertaintyCount = 2 ;
 
   // group attributes:
   		:interpolationMethod = "bilinear" ;
 
   group: CAeast {
     dimensions:
-    	gridi = 529 ;
-    	gridj = 241 ;
+    	iNodeCount = 529 ;
+    	jNodeCount = 241 ;
     variables:
-    	float offset(gridj, gridi, offset_count) ;
+    	float offset(jNodeCount, iNodeCount, offsetCount) ;
     		offset:_Storage = "contiguous" ;
     		offset:_Endianness = "little" ;
-    	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+    	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
     		offsetUncertainty:_Storage = "contiguous" ;
     		offsetUncertainty:_Endianness = "little" ;
 
@@ -66,16 +66,17 @@ group: national_transformation_v2_0 {
     		:affineCoeffs = 60., 0., -0.0833333333333333, -88., 0.0833333333333333, 0. ;
     		:iNodeCount = 529LL ;
     		:jNodeCount = 241LL ;
+    		:gridPriority = 1LL ;
 
     group: NFstjohn {
       dimensions:
-      	gridi = 81 ;
-      	gridj = 51 ;
+      	iNodeCount = 81 ;
+      	jNodeCount = 51 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -83,17 +84,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 47.8333333333333, 0., -0.00833333333333333, -53., 0.00833333333333333, 0. ;
       		:iNodeCount = 81LL ;
       		:jNodeCount = 51LL ;
+      		:gridPriority = 1LL ;
       } // group NFstjohn
 
     group: ONkinstn {
       dimensions:
-      	gridi = 321 ;
-      	gridj = 321 ;
+      	iNodeCount = 321 ;
+      	jNodeCount = 321 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -101,17 +103,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 46.5, 0., -0.00833333333333333, -78.8333333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 321LL ;
       		:jNodeCount = 321LL ;
+      		:gridPriority = 2LL ;
       } // group ONkinstn
 
     group: ONottawa {
       dimensions:
-      	gridi = 221 ;
-      	gridj = 201 ;
+      	iNodeCount = 221 ;
+      	jNodeCount = 201 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -119,17 +122,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 45.9166666666667, 0., -0.00833333333333333, -76.1666666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 221LL ;
       		:jNodeCount = 201LL ;
+      		:gridPriority = 3LL ;
       } // group ONottawa
 
     group: ONsarnia {
       dimensions:
-      	gridi = 101 ;
-      	gridj = 121 ;
+      	iNodeCount = 101 ;
+      	jNodeCount = 121 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -137,17 +141,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 43.4166666666667, 0., -0.00833333333333333, -82.5833333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 101LL ;
       		:jNodeCount = 121LL ;
+      		:gridPriority = 4LL ;
       } // group ONsarnia
 
     group: ONsault {
       dimensions:
-      	gridi = 351 ;
-      	gridj = 71 ;
+      	iNodeCount = 351 ;
+      	jNodeCount = 71 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -155,17 +160,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 46.6666666666667, 0., -0.00833333333333333, -84.6666666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 351LL ;
       		:jNodeCount = 71LL ;
+      		:gridPriority = 5LL ;
       } // group ONsault
 
     group: ONtimins {
       dimensions:
-      	gridi = 101 ;
-      	gridj = 41 ;
+      	iNodeCount = 101 ;
+      	jNodeCount = 41 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -173,17 +179,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 48.6666666666667, 0., -0.00833333333333333, -81.6666666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 101LL ;
       		:jNodeCount = 41LL ;
+      		:gridPriority = 6LL ;
       } // group ONtimins
 
     group: ONtronto {
       dimensions:
-      	gridi = 351 ;
-      	gridj = 511 ;
+      	iNodeCount = 351 ;
+      	jNodeCount = 511 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -191,17 +198,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 46.6666666666667, 0., -0.00833333333333333, -81.75, 0.00833333333333333, 0. ;
       		:iNodeCount = 351LL ;
       		:jNodeCount = 511LL ;
+      		:gridPriority = 7LL ;
       } // group ONtronto
 
     group: ONwinsor {
       dimensions:
-      	gridi = 171 ;
-      	gridj = 61 ;
+      	iNodeCount = 171 ;
+      	jNodeCount = 61 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -209,18 +217,19 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 42.4166666666667, 0., -0.00833333333333333, -83.1666666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 171LL ;
       		:jNodeCount = 61LL ;
+      		:gridPriority = 8LL ;
       } // group ONwinsor
     } // group CAeast
 
   group: CAwest {
     dimensions:
-    	gridi = 649 ;
-    	gridj = 157 ;
+    	iNodeCount = 649 ;
+    	jNodeCount = 157 ;
     variables:
-    	float offset(gridj, gridi, offset_count) ;
+    	float offset(jNodeCount, iNodeCount, offsetCount) ;
     		offset:_Storage = "contiguous" ;
     		offset:_Endianness = "little" ;
-    	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+    	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
     		offsetUncertainty:_Storage = "contiguous" ;
     		offsetUncertainty:_Endianness = "little" ;
 
@@ -228,16 +237,17 @@ group: national_transformation_v2_0 {
     		:affineCoeffs = 60., 0., -0.0833333333333333, -142., 0.0833333333333333, 0. ;
     		:iNodeCount = 649LL ;
     		:jNodeCount = 157LL ;
+    		:gridPriority = 2LL ;
 
     group: ALbanff {
       dimensions:
-      	gridi = 11 ;
-      	gridj = 21 ;
+      	iNodeCount = 11 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -245,17 +255,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 51.25, 0., -0.00833333333333333, -115.583333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 11LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 1LL ;
       } // group ALbanff
 
     group: ALbarhed {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 11 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -263,17 +274,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 54.1666666666667, 0., -0.00833333333333333, -114.5, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 2LL ;
       } // group ALbarhed
 
     group: ALbonvil {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -281,17 +293,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 54.3333333333333, 0., -0.00833333333333333, -110.833333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 3LL ;
       } // group ALbonvil
 
     group: ALbowisl {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 11 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -299,17 +312,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.9166666666667, 0., -0.00833333333333333, -111.5, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 4LL ;
       } // group ALbowisl
 
     group: ALbrooks {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -317,17 +331,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 50.6666666666667, 0., -0.00833333333333333, -112., 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 5LL ;
       } // group ALbrooks
 
     group: ALcalgry {
       dimensions:
-      	gridi = 101 ;
-      	gridj = 101 ;
+      	iNodeCount = 101 ;
+      	jNodeCount = 101 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -335,17 +350,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 51.3333333333333, 0., -0.00833333333333333, -114.583333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 101LL ;
       		:jNodeCount = 101LL ;
+      		:gridPriority = 6LL ;
       } // group ALcalgry
 
     group: ALcamros {
       dimensions:
-      	gridi = 41 ;
-      	gridj = 31 ;
+      	iNodeCount = 41 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -353,17 +369,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 53.0833333333333, 0., -0.00833333333333333, -113., 0.00833333333333333, 0. ;
       		:iNodeCount = 41LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 7LL ;
       } // group ALcamros
 
     group: ALcanmor {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -371,17 +388,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 51.1666666666667, 0., -0.00833333333333333, -115.5, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 8LL ;
       } // group ALcanmor
 
     group: ALcardst {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 11 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -389,17 +407,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.25, 0., -0.00833333333333333, -113.416666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 9LL ;
       } // group ALcardst
 
     group: ALcarsta {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -407,17 +426,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 51.6666666666667, 0., -0.00833333333333333, -114.25, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 10LL ;
       } // group ALcarsta
 
     group: ALclarho {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -425,17 +445,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 50.0833333333333, 0., -0.00833333333333333, -113.666666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 11LL ;
       } // group ALclarho
 
     group: ALcoldlk {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 31 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -443,17 +464,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 54.5833333333333, 0., -0.00833333333333333, -110.333333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 12LL ;
       } // group ALcoldlk
 
     group: ALcrowps {
       dimensions:
-      	gridi = 71 ;
-      	gridj = 31 ;
+      	iNodeCount = 71 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -461,17 +483,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.75, 0., -0.00833333333333333, -114.75, 0.00833333333333333, 0. ;
       		:iNodeCount = 71LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 13LL ;
       } // group ALcrowps
 
     group: ALdraytn {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 31 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -479,17 +502,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 53.3333333333333, 0., -0.00833333333333333, -115.083333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 14LL ;
       } // group ALdraytn
 
     group: ALdrumhl {
       dimensions:
-      	gridi = 61 ;
-      	gridj = 41 ;
+      	iNodeCount = 61 ;
+      	jNodeCount = 41 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -497,17 +521,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 51.5833333333333, 0., -0.00833333333333333, -112.916666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 61LL ;
       		:jNodeCount = 41LL ;
+      		:gridPriority = 15LL ;
       } // group ALdrumhl
 
     group: ALedmntn {
       dimensions:
-      	gridi = 131 ;
-      	gridj = 91 ;
+      	iNodeCount = 131 ;
+      	jNodeCount = 91 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -515,17 +540,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 53.9166666666667, 0., -0.00833333333333333, -114.166666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 131LL ;
       		:jNodeCount = 91LL ;
+      		:gridPriority = 16LL ;
       } // group ALedmntn
 
     group: ALedson {
       dimensions:
-      	gridi = 41 ;
-      	gridj = 21 ;
+      	iNodeCount = 41 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -533,17 +559,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 53.6666666666667, 0., -0.00833333333333333, -116.583333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 41LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 17LL ;
       } // group ALedson
 
     group: ALfairvw {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -551,17 +578,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 56.1666666666667, 0., -0.00833333333333333, -118.5, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 18LL ;
       } // group ALfairvw
 
     group: ALftmacl {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -569,17 +597,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.8333333333333, 0., -0.00833333333333333, -113.5, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 19LL ;
       } // group ALftmacl
 
     group: ALftmcmr {
       dimensions:
-      	gridi = 61 ;
-      	gridj = 31 ;
+      	iNodeCount = 61 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -587,17 +616,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 56.8333333333333, 0., -0.00833333333333333, -111.583333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 61LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 20LL ;
       } // group ALftmcmr
 
     group: ALgrcach {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -605,17 +635,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 54., 0., -0.00833333333333333, -119.25, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 21LL ;
       } // group ALgrcach
 
     group: ALgrimsh {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -623,17 +654,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 56.25, 0., -0.00833333333333333, -117.666666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 22LL ;
       } // group ALgrimsh
 
     group: ALgrprar {
       dimensions:
-      	gridi = 41 ;
-      	gridj = 21 ;
+      	iNodeCount = 41 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -641,17 +673,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 55.25, 0., -0.00833333333333333, -118.916666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 41LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 23LL ;
       } // group ALgrprar
 
     group: ALhanna {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -659,17 +692,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 51.75, 0., -0.00833333333333333, -112.083333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 24LL ;
       } // group ALhanna
 
     group: ALhilevl {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -677,17 +711,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 58.5833333333333, 0., -0.00833333333333333, -117.25, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 25LL ;
       } // group ALhilevl
 
     group: ALhinton {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -695,17 +730,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 53.5, 0., -0.00833333333333333, -117.666666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 26LL ;
       } // group ALhinton
 
     group: ALhiprai {
       dimensions:
-      	gridi = 41 ;
-      	gridj = 21 ;
+      	iNodeCount = 41 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -713,17 +749,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 55.5, 0., -0.00833333333333333, -116.666666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 41LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 27LL ;
       } // group ALhiprai
 
     group: ALinnsfl {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 31 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -731,17 +768,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 52.1666666666667, 0., -0.00833333333333333, -114., 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 28LL ;
       } // group ALinnsfl
 
     group: ALjasper {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 11 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -749,17 +787,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 52.9166666666667, 0., -0.00833333333333333, -118.166666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 29LL ;
       } // group ALjasper
 
     group: ALlacbic {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -767,17 +806,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 54.8333333333333, 0., -0.00833333333333333, -112.083333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 30LL ;
       } // group ALlacbic
 
     group: ALlacomb {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 11 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -785,17 +825,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 52.5833333333333, 0., -0.00833333333333333, -113.833333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 31LL ;
       } // group ALlacomb
 
     group: ALletbrg {
       dimensions:
-      	gridi = 61 ;
-      	gridj = 41 ;
+      	iNodeCount = 61 ;
+      	jNodeCount = 41 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -803,17 +844,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.9166666666667, 0., -0.00833333333333333, -113., 0.00833333333333333, 0. ;
       		:iNodeCount = 61LL ;
       		:jNodeCount = 41LL ;
+      		:gridPriority = 32LL ;
       } // group ALletbrg
 
     group: ALlkloui {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -821,17 +863,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 51.5, 0., -0.00833333333333333, -116.25, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 33LL ;
       } // group ALlkloui
 
     group: ALlydmin {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -839,17 +882,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 53.3333333333333, 0., -0.00833333333333333, -110.166666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 34LL ;
       } // group ALlydmin
 
     group: ALmedhat {
       dimensions:
-      	gridi = 41 ;
-      	gridj = 31 ;
+      	iNodeCount = 41 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -857,17 +901,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 50.1666666666667, 0., -0.00833333333333333, -110.833333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 41LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 35LL ;
       } // group ALmedhat
 
     group: ALolds {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -875,17 +920,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 51.9166666666667, 0., -0.00833333333333333, -114.25, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 36LL ;
       } // group ALolds
 
     group: ALoyen {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -893,17 +939,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 51.4166666666667, 0., -0.00833333333333333, -110.583333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 37LL ;
       } // group ALoyen
 
     group: ALpeacer {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 31 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -911,17 +958,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 56.3333333333333, 0., -0.00833333333333333, -117.416666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 38LL ;
       } // group ALpeacer
 
     group: ALpinchr {
       dimensions:
-      	gridi = 11 ;
-      	gridj = 21 ;
+      	iNodeCount = 11 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -929,17 +977,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.5833333333333, 0., -0.00833333333333333, -114., 0.00833333333333333, 0. ;
       		:iNodeCount = 11LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 39LL ;
       } // group ALpinchr
 
     group: ALponoka {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -947,17 +996,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 52.75, 0., -0.00833333333333333, -113.666666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 40LL ;
       } // group ALponoka
 
     group: ALraymnd {
       dimensions:
-      	gridi = 51 ;
-      	gridj = 21 ;
+      	iNodeCount = 51 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -965,17 +1015,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.5, 0., -0.00833333333333333, -113., 0.00833333333333333, 0. ;
       		:iNodeCount = 51LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 41LL ;
       } // group ALraymnd
 
     group: ALredeer {
       dimensions:
-      	gridi = 41 ;
-      	gridj = 31 ;
+      	iNodeCount = 41 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -983,17 +1034,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 52.4166666666667, 0., -0.00833333333333333, -113.916666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 41LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 42LL ;
       } // group ALredeer
 
     group: ALrockmt {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 31 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1001,17 +1053,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 52.5, 0., -0.00833333333333333, -115., 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 43LL ;
       } // group ALrockmt
 
     group: ALslavlk {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1019,17 +1072,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 55.3333333333333, 0., -0.00833333333333333, -114.916666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 44LL ;
       } // group ALslavlk
 
     group: ALstetlr {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1037,17 +1091,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 52.4166666666667, 0., -0.00833333333333333, -112.833333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 45LL ;
       } // group ALstetlr
 
     group: ALstpaul {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1055,17 +1110,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 54.0833333333333, 0., -0.00833333333333333, -111.416666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 46LL ;
       } // group ALstpaul
 
     group: ALstramr {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1073,17 +1129,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 51.1666666666667, 0., -0.00833333333333333, -113.5, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 47LL ;
       } // group ALstramr
 
     group: ALswanhi {
       dimensions:
-      	gridi = 41 ;
-      	gridj = 21 ;
+      	iNodeCount = 41 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1091,17 +1148,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 54.8333333333333, 0., -0.00833333333333333, -115.583333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 41LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 48LL ;
       } // group ALswanhi
 
     group: ALtaber {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1109,17 +1167,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.9166666666667, 0., -0.00833333333333333, -112.25, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 49LL ;
       } // group ALtaber
 
     group: ALtrehil {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1127,17 +1186,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 51.75, 0., -0.00833333333333333, -113.333333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 50LL ;
       } // group ALtrehil
 
     group: ALvegvil {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1145,17 +1205,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 53.5833333333333, 0., -0.00833333333333333, -112.166666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 51LL ;
       } // group ALvegvil
 
     group: ALvermil {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1163,17 +1224,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 53.4166666666667, 0., -0.00833333333333333, -111., 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 52LL ;
       } // group ALvermil
 
     group: ALwanwgt {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1181,17 +1243,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 52.9166666666667, 0., -0.00833333333333333, -111., 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 53LL ;
       } // group ALwanwgt
 
     group: ALweslok {
       dimensions:
-      	gridi = 41 ;
-      	gridj = 21 ;
+      	iNodeCount = 41 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1199,17 +1262,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 54.25, 0., -0.00833333333333333, -114., 0.00833333333333333, 0. ;
       		:iNodeCount = 41LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 54LL ;
       } // group ALweslok
 
     group: ALwetask {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1217,17 +1281,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 53., 0., -0.00833333333333333, -113.5, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 55LL ;
       } // group ALwetask
 
     group: ALwhitec {
       dimensions:
-      	gridi = 41 ;
-      	gridj = 11 ;
+      	iNodeCount = 41 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1235,17 +1300,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 54.1666666666667, 0., -0.00833333333333333, -115.833333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 41LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 56LL ;
       } // group ALwhitec
 
     group: BCcambel {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1253,17 +1319,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 50.0833333333333, 0., -0.00833333333333333, -125.333333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 57LL ;
       } // group BCcambel
 
     group: BCcranbk {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1271,17 +1338,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.5833333333333, 0., -0.00833333333333333, -115.833333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 58LL ;
       } // group BCcranbk
 
     group: BCdawson {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1289,17 +1357,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 55.8333333333333, 0., -0.00833333333333333, -120.333333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 59LL ;
       } // group BCdawson
 
     group: BCelkfrd {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 11 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1307,17 +1376,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 50.0833333333333, 0., -0.00833333333333333, -115., 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 60LL ;
       } // group BCelkfrd
 
     group: BCfield {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 11 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1325,17 +1395,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 51.4166666666667, 0., -0.00833333333333333, -116.583333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 61LL ;
       } // group BCfield
 
     group: BCgranil {
       dimensions:
-      	gridi = 11 ;
-      	gridj = 11 ;
+      	iNodeCount = 11 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1343,17 +1414,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 54.9166666666667, 0., -0.00833333333333333, -126.25, 0.00833333333333333, 0. ;
       		:iNodeCount = 11LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 62LL ;
       } // group BCgranil
 
     group: BCkamlop {
       dimensions:
-      	gridi = 51 ;
-      	gridj = 21 ;
+      	iNodeCount = 51 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1361,17 +1433,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 50.75, 0., -0.00833333333333333, -120.5, 0.00833333333333333, 0. ;
       		:iNodeCount = 51LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 63LL ;
       } // group BCkamlop
 
     group: BCkelwna {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 31 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1379,17 +1452,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 50.0833333333333, 0., -0.00833333333333333, -119.583333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 64LL ;
       } // group BCkelwna
 
     group: BClogan {
       dimensions:
-      	gridi = 11 ;
-      	gridj = 11 ;
+      	iNodeCount = 11 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1397,17 +1471,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 50.5, 0., -0.00833333333333333, -120.833333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 11LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 65LL ;
       } // group BClogan
 
     group: BCmacknz {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1415,17 +1490,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 55.4166666666667, 0., -0.00833333333333333, -123.166666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 66LL ;
       } // group BCmacknz
 
     group: BCnanimo {
       dimensions:
-      	gridi = 61 ;
-      	gridj = 61 ;
+      	iNodeCount = 61 ;
+      	jNodeCount = 61 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1433,17 +1509,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.25, 0., -0.00833333333333333, -124.083333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 61LL ;
       		:jNodeCount = 61LL ;
+      		:gridPriority = 67LL ;
       } // group BCnanimo
 
     group: BCnelson {
       dimensions:
-      	gridi = 11 ;
-      	gridj = 21 ;
+      	iNodeCount = 11 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1451,17 +1528,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.5833333333333, 0., -0.00833333333333333, -117.333333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 11LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 68LL ;
       } // group BCnelson
 
     group: BCparkvl {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 11 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1469,17 +1547,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.3333333333333, 0., -0.00833333333333333, -124.416666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 69LL ;
       } // group BCparkvl
 
     group: BCpentic {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1487,17 +1566,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.5833333333333, 0., -0.00833333333333333, -119.666666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 70LL ;
       } // group BCpentic
 
     group: BCportal {
       dimensions:
-      	gridi = 11 ;
-      	gridj = 21 ;
+      	iNodeCount = 11 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1505,17 +1585,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.3333333333333, 0., -0.00833333333333333, -124.833333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 11LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 71LL ;
       } // group BCportal
 
     group: BCpowell {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1523,17 +1604,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.9166666666667, 0., -0.00833333333333333, -124.583333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 72LL ;
       } // group BCpowell
 
     group: BCprigeo {
       dimensions:
-      	gridi = 41 ;
-      	gridj = 41 ;
+      	iNodeCount = 41 ;
+      	jNodeCount = 41 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1541,17 +1623,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 54.0833333333333, 0., -0.00833333333333333, -122.916666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 41LL ;
       		:jNodeCount = 41LL ;
+      		:gridPriority = 73LL ;
       } // group BCprigeo
 
     group: BCroslnd {
       dimensions:
-      	gridi = 11 ;
-      	gridj = 11 ;
+      	iNodeCount = 11 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1559,17 +1642,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.0833333333333, 0., -0.00833333333333333, -117.833333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 11LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 74LL ;
       } // group BCroslnd
 
     group: BCtrail {
       dimensions:
-      	gridi = 11 ;
-      	gridj = 11 ;
+      	iNodeCount = 11 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1577,17 +1661,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.1666666666667, 0., -0.00833333333333333, -117.75, 0.00833333333333333, 0. ;
       		:iNodeCount = 11LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 75LL ;
       } // group BCtrail
 
     group: BCtumblr {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 11 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1595,17 +1680,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 55.1666666666667, 0., -0.00833333333333333, -121.083333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 76LL ;
       } // group BCtumblr
 
     group: BCvancvr {
       dimensions:
-      	gridi = 131 ;
-      	gridj = 51 ;
+      	iNodeCount = 131 ;
+      	jNodeCount = 51 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1613,17 +1699,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.4166666666667, 0., -0.00833333333333333, -123.25, 0.00833333333333333, 0. ;
       		:iNodeCount = 131LL ;
       		:jNodeCount = 51LL ;
+      		:gridPriority = 77LL ;
       } // group BCvancvr
 
     group: BCvernon {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1631,17 +1718,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 50.3333333333333, 0., -0.00833333333333333, -119.333333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 78LL ;
       } // group BCvernon
 
     group: BCvictor {
       dimensions:
-      	gridi = 41 ;
-      	gridj = 51 ;
+      	iNodeCount = 41 ;
+      	jNodeCount = 51 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1649,17 +1737,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 48.75, 0., -0.00833333333333333, -123.583333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 41LL ;
       		:jNodeCount = 51LL ;
+      		:gridPriority = 79LL ;
       } // group BCvictor
 
     group: ONthundr {
       dimensions:
-      	gridi = 71 ;
-      	gridj = 51 ;
+      	iNodeCount = 71 ;
+      	jNodeCount = 51 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1667,17 +1756,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 48.5833333333333, 0., -0.00833333333333333, -89.5833333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 71LL ;
       		:jNodeCount = 51LL ;
+      		:gridPriority = 80LL ;
       } // group ONthundr
 
     group: SAestvan {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1685,17 +1775,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.25, 0., -0.00833333333333333, -103.083333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 81LL ;
       } // group SAestvan
 
     group: SAmelfrt {
       dimensions:
-      	gridi = 71 ;
-      	gridj = 21 ;
+      	iNodeCount = 71 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1703,17 +1794,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 52.9166666666667, 0., -0.00833333333333333, -104.666666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 71LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 82LL ;
       } // group SAmelfrt
 
     group: SAmelvil {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1721,17 +1813,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 51., 0., -0.00833333333333333, -102.916666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 83LL ;
       } // group SAmelvil
 
     group: SAmosjaw {
       dimensions:
-      	gridi = 41 ;
-      	gridj = 21 ;
+      	iNodeCount = 41 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1739,17 +1832,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 50.5, 0., -0.00833333333333333, -105.75, 0.00833333333333333, 0. ;
       		:iNodeCount = 41LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 84LL ;
       } // group SAmosjaw
 
     group: SAnbatle {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1757,17 +1851,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 52.8333333333333, 0., -0.00833333333333333, -108.416666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 85LL ;
       } // group SAnbatle
 
     group: SApralbt {
       dimensions:
-      	gridi = 61 ;
-      	gridj = 31 ;
+      	iNodeCount = 61 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1775,17 +1870,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 53.3333333333333, 0., -0.00833333333333333, -106., 0.00833333333333333, 0. ;
       		:iNodeCount = 61LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 86LL ;
       } // group SApralbt
 
     group: SAregina {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 31 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1793,17 +1889,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 50.5833333333333, 0., -0.00833333333333333, -104.75, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 87LL ;
       } // group SAregina
 
     group: SAsatoon {
       dimensions:
-      	gridi = 51 ;
-      	gridj = 31 ;
+      	iNodeCount = 51 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1811,17 +1908,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 52.25, 0., -0.00833333333333333, -106.833333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 51LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 88LL ;
       } // group SAsatoon
 
     group: SAswiftc {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 31 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1829,17 +1927,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 50.4166666666667, 0., -0.00833333333333333, -107.916666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 89LL ;
       } // group SAswiftc
 
     group: SAweybrn {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1847,17 +1946,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 49.75, 0., -0.00833333333333333, -103.916666666667, 0.00833333333333333, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 90LL ;
       } // group SAweybrn
 
     group: SAyorktn {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 21 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1865,18 +1965,19 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 51.3333333333333, 0., -0.00833333333333333, -102.583333333333, 0.00833333333333333, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 91LL ;
       } // group SAyorktn
     } // group CAwest
 
   group: CAnorth {
     dimensions:
-    	gridi = 589 ;
-    	gridj = 181 ;
+    	iNodeCount = 589 ;
+    	jNodeCount = 181 ;
     variables:
-    	float offset(gridj, gridi, offset_count) ;
+    	float offset(jNodeCount, iNodeCount, offsetCount) ;
     		offset:_Storage = "contiguous" ;
     		offset:_Endianness = "little" ;
-    	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+    	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
     		offsetUncertainty:_Storage = "contiguous" ;
     		offsetUncertainty:_Endianness = "little" ;
 
@@ -1884,16 +1985,17 @@ group: national_transformation_v2_0 {
     		:affineCoeffs = 75., 0., -0.0833333333333333, -142., 0.166666666666667, 0. ;
     		:iNodeCount = 589LL ;
     		:jNodeCount = 181LL ;
+    		:gridPriority = 3LL ;
 
     group: NWclyder {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 31 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 31 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1901,17 +2003,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 70.5833333333333, 0., -0.00833333333333333, -68.8333333333333, 0.0166666666666667, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 1LL ;
       } // group NWclyder
 
     group: NWftgood {
       dimensions:
-      	gridi = 21 ;
-      	gridj = 21 ;
+      	iNodeCount = 21 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1919,17 +2022,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 66.3333333333333, 0., -0.00833333333333333, -128.833333333333, 0.0166666666666667, 0. ;
       		:iNodeCount = 21LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 2LL ;
       } // group NWftgood
 
     group: NWhayriv {
       dimensions:
-      	gridi = 61 ;
-      	gridj = 61 ;
+      	iNodeCount = 61 ;
+      	jNodeCount = 61 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1937,17 +2041,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 61., 0., -0.00833333333333333, -116.5, 0.0166666666666667, 0. ;
       		:iNodeCount = 61LL ;
       		:jNodeCount = 61LL ;
+      		:gridPriority = 3LL ;
       } // group NWhayriv
 
     group: NWinuvik {
       dimensions:
-      	gridi = 31 ;
-      	gridj = 41 ;
+      	iNodeCount = 31 ;
+      	jNodeCount = 41 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1955,17 +2060,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 68.5, 0., -0.00833333333333333, -133.833333333333, 0.0166666666666667, 0. ;
       		:iNodeCount = 31LL ;
       		:jNodeCount = 41LL ;
+      		:gridPriority = 4LL ;
       } // group NWinuvik
 
     group: NWiqulit {
       dimensions:
-      	gridi = 61 ;
-      	gridj = 61 ;
+      	iNodeCount = 61 ;
+      	jNodeCount = 61 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1973,17 +2079,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 64., 0., -0.00833333333333333, -69., 0.0166666666666667, 0. ;
       		:iNodeCount = 61LL ;
       		:jNodeCount = 61LL ;
+      		:gridPriority = 5LL ;
       } // group NWiqulit
 
     group: NWpondin {
       dimensions:
-      	gridi = 41 ;
-      	gridj = 21 ;
+      	iNodeCount = 41 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -1991,17 +2098,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 72.75, 0., -0.00833333333333333, -78.1666666666667, 0.0166666666666667, 0. ;
       		:iNodeCount = 41LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 6LL ;
       } // group NWpondin
 
     group: NWrankin {
       dimensions:
-      	gridi = 11 ;
-      	gridj = 21 ;
+      	iNodeCount = 11 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -2009,17 +2117,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 62.9166666666667, 0., -0.00833333333333333, -92.1666666666667, 0.0166666666666667, 0. ;
       		:iNodeCount = 11LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 7LL ;
       } // group NWrankin
 
     group: NWyellow {
       dimensions:
-      	gridi = 11 ;
-      	gridj = 11 ;
+      	iNodeCount = 11 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -2027,17 +2136,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 62.5, 0., -0.00833333333333333, -114.5, 0.0166666666666667, 0. ;
       		:iNodeCount = 11LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 8LL ;
       } // group NWyellow
 
     group: YUdawson {
       dimensions:
-      	gridi = 11 ;
-      	gridj = 21 ;
+      	iNodeCount = 11 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -2045,17 +2155,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 64.1666666666667, 0., -0.00833333333333333, -139.5, 0.0166666666666667, 0. ;
       		:iNodeCount = 11LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 9LL ;
       } // group YUdawson
 
     group: YUrossri {
       dimensions:
-      	gridi = 11 ;
-      	gridj = 21 ;
+      	iNodeCount = 11 ;
+      	jNodeCount = 21 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -2063,17 +2174,18 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 62.0833333333333, 0., -0.00833333333333333, -132.583333333333, 0.0166666666666667, 0. ;
       		:iNodeCount = 11LL ;
       		:jNodeCount = 21LL ;
+      		:gridPriority = 10LL ;
       } // group YUrossri
 
     group: YUwhiteh {
       dimensions:
-      	gridi = 6 ;
-      	gridj = 11 ;
+      	iNodeCount = 6 ;
+      	jNodeCount = 11 ;
       variables:
-      	float offset(gridj, gridi, offset_count) ;
+      	float offset(jNodeCount, iNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -2081,18 +2193,19 @@ group: national_transformation_v2_0 {
       		:affineCoeffs = 60.75, 0., -0.00833333333333333, -135.083333333333, 0.0166666666666667, 0. ;
       		:iNodeCount = 6LL ;
       		:jNodeCount = 11LL ;
+      		:gridPriority = 11LL ;
       } // group YUwhiteh
     } // group CAnorth
 
   group: CAarctic {
     dimensions:
-    	gridi = 295 ;
-    	gridj = 109 ;
+    	iNodeCount = 295 ;
+    	jNodeCount = 109 ;
     variables:
-    	float offset(gridj, gridi, offset_count) ;
+    	float offset(jNodeCount, iNodeCount, offsetCount) ;
     		offset:_Storage = "contiguous" ;
     		offset:_Endianness = "little" ;
-    	float offsetUncertainty(gridj, gridi, offsetUncertainty_count) ;
+    	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
     		offsetUncertainty:_Storage = "contiguous" ;
     		offsetUncertainty:_Endianness = "little" ;
 
@@ -2100,6 +2213,7 @@ group: national_transformation_v2_0 {
     		:affineCoeffs = 84., 0., -0.0833333333333333, -142., 0.333333333333333, 0. ;
     		:iNodeCount = 295LL ;
     		:jNodeCount = 109LL ;
+    		:gridPriority = 4LL ;
     } // group CAarctic
   } // group national_transformation_v2_0
 }

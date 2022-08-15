@@ -45,10 +45,10 @@ group: default {
 
   group: geoid_grid {
     dimensions:
-    	gridi = 3 ;
-    	gridj = 4 ;
+    	iNodeCount = 3 ;
+    	jNodeCount = 4 ;
     variables:
-    	float geoidHeight(gridj, gridi) ;
+    	float geoidHeight(jNodeCount, iNodeCount) ;
     		geoidHeight:_Storage = "contiguous" ;
     		geoidHeight:_Endianness = "little" ;
 
@@ -56,6 +56,7 @@ group: default {
     		:affineCoeffs = 22.5, 0., 0.7, -69., 1., 0. ;
     		:iNodeCount = 3LL ;
     		:jNodeCount = 4LL ;
+    		:gridPriority = 1LL ;
     data:
 
      geoidHeight =

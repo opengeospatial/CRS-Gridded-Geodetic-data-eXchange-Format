@@ -35,22 +35,23 @@ types:
 
 group: Puerto\ Rico\ Virgin\ Islands\ DEFLEC18 {
   dimensions:
-  	deviation_count = 2 ;
+  	deviationCount = 2 ;
 
   // group attributes:
   		:interpolationMethod = "biquadratic" ;
 
   group: Puerto\ Rico\ Virgin\ Islands\ DEFLEC18 {
     dimensions:
-    	gridi = 301 ;
-    	gridj = 361 ;
+    	iNodeCount = 301 ;
+    	jNodeCount = 361 ;
     variables:
-    	float deviation(gridj, gridi, deviation_count) ;
+    	float deviation(jNodeCount, iNodeCount, deviationCount) ;
 
     // group attributes:
     		:affineCoeffs = 15., 0., 0.01666666667, -69., 0.01666666667, 0. ;
     		:iNodeCount = 301LL ;
     		:jNodeCount = 361LL ;
+    		:gridPriority = 1LL ;
     } // group Puerto\ Rico\ Virgin\ Islands\ DEFLEC18
   } // group Puerto\ Rico\ Virgin\ Islands\ DEFLEC18
 }

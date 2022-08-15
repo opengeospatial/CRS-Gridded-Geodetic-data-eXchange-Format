@@ -49,7 +49,7 @@ types:
 
 group: nz_linz_nzgd2000-ndm-grid02 {
   dimensions:
-  	displacement_count = 2 ;
+  	displacementCount = 2 ;
 
   // group attributes:
   		:comment = "Secular deformation model derived from NUVEL-1A rotation rates\nSecular deformation model derived from GNS model 2011 V4\n" ;
@@ -61,10 +61,10 @@ group: nz_linz_nzgd2000-ndm-grid02 {
 
   group: ndm_grid_nuvel1a_eez {
     dimensions:
-    	gridi = 73 ;
-    	gridj = 67 ;
+    	iNodeCount = 73 ;
+    	jNodeCount = 67 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -72,13 +72,14 @@ group: nz_linz_nzgd2000-ndm-grid02 {
     		:affineCoeffs = -25., 0., -0.5, 158., 0.5, 0. ;
     		:iNodeCount = 73LL ;
     		:jNodeCount = 67LL ;
+    		:gridPriority = 1LL ;
 
     group: ndm_grid_igns2011_nz {
       dimensions:
-      	gridi = 141 ;
-      	gridj = 151 ;
+      	iNodeCount = 141 ;
+      	jNodeCount = 151 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -86,13 +87,14 @@ group: nz_linz_nzgd2000-ndm-grid02 {
       		:affineCoeffs = -33., 0., -0.1, 165.5, 0.1, 0. ;
       		:iNodeCount = 141LL ;
       		:jNodeCount = 151LL ;
+      		:gridPriority = 1LL ;
       } // group ndm_grid_igns2011_nz
     } // group ndm_grid_nuvel1a_eez
   } // group nz_linz_nzgd2000-ndm-grid02
 
 group: nz_linz_nzgd2000-si20030821-grid01 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Secretary Island (Fiordland) earthquake" ;
@@ -105,10 +107,10 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
 
   group: patch_si_20030821_grid_si_l1 {
     dimensions:
-    	gridi = 44 ;
-    	gridj = 34 ;
+    	iNodeCount = 44 ;
+    	jNodeCount = 34 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -116,13 +118,14 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
     		:affineCoeffs = -43.5, 0., -0.125, 165.85, 0.15, 0. ;
     		:iNodeCount = 44LL ;
     		:jNodeCount = 34LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_si_20030821_grid_si_l2 {
       dimensions:
-      	gridi = 47 ;
-      	gridj = 45 ;
+      	iNodeCount = 47 ;
+      	jNodeCount = 45 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -130,13 +133,14 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
       		:affineCoeffs = -44.5, 0., -0.03125, 166.225, 0.0375, 0. ;
       		:iNodeCount = 47LL ;
       		:jNodeCount = 45LL ;
+      		:gridPriority = 1LL ;
 
       group: patch_si_20030821_grid_si_l3 {
         dimensions:
-        	gridi = 93 ;
-        	gridj = 81 ;
+        	iNodeCount = 93 ;
+        	jNodeCount = 81 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -144,6 +148,7 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
         		:affineCoeffs = -44.828125, 0., -0.0078125, 166.5625, 0.009375, 0. ;
         		:iNodeCount = 93LL ;
         		:jNodeCount = 81LL ;
+        		:gridPriority = 1LL ;
         } // group patch_si_20030821_grid_si_l3
       } // group patch_si_20030821_grid_si_l2
     } // group patch_si_20030821_grid_si_l1
@@ -151,7 +156,7 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
 
 group: nz_linz_nzgd2000-mq20041223-grid011 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Macquarie Plate earthquake" ;
@@ -164,10 +169,10 @@ group: nz_linz_nzgd2000-mq20041223-grid011 {
 
   group: patch_mq_20041223_grid_mq_p0_l1 {
     dimensions:
-    	gridi = 10 ;
-    	gridj = 8 ;
+    	iNodeCount = 10 ;
+    	jNodeCount = 8 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -175,12 +180,13 @@ group: nz_linz_nzgd2000-mq20041223-grid011 {
     		:affineCoeffs = -52.125, 0., -0.125, 168.4, 0.15, 0. ;
     		:iNodeCount = 10LL ;
     		:jNodeCount = 8LL ;
+    		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p0_l1
   } // group nz_linz_nzgd2000-mq20041223-grid011
 
 group: nz_linz_nzgd2000-mq20041223-grid012 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Macquarie Plate earthquake" ;
@@ -193,10 +199,10 @@ group: nz_linz_nzgd2000-mq20041223-grid012 {
 
   group: patch_mq_20041223_grid_mq_p1_sl2 {
     dimensions:
-    	gridi = 105 ;
-    	gridj = 137 ;
+    	iNodeCount = 105 ;
+    	jNodeCount = 137 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -204,12 +210,13 @@ group: nz_linz_nzgd2000-mq20041223-grid012 {
     		:affineCoeffs = -48.25, 0., -0.03125, 158.8, 0.0375, 0. ;
     		:iNodeCount = 105LL ;
     		:jNodeCount = 137LL ;
+    		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p1_sl2
   } // group nz_linz_nzgd2000-mq20041223-grid012
 
 group: nz_linz_nzgd2000-mq20041223-grid013 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Macquarie Plate earthquake" ;
@@ -222,10 +229,10 @@ group: nz_linz_nzgd2000-mq20041223-grid013 {
 
   group: patch_mq_20041223_grid_mq_p2_l1 {
     dimensions:
-    	gridi = 11 ;
-    	gridj = 11 ;
+    	iNodeCount = 11 ;
+    	jNodeCount = 11 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -233,12 +240,13 @@ group: nz_linz_nzgd2000-mq20041223-grid013 {
     		:affineCoeffs = -50.125, 0., -0.125, 165.4, 0.15, 0. ;
     		:iNodeCount = 11LL ;
     		:jNodeCount = 11LL ;
+    		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p2_l1
   } // group nz_linz_nzgd2000-mq20041223-grid013
 
 group: nz_linz_nzgd2000-mq20041223-grid014 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Macquarie Plate earthquake" ;
@@ -251,10 +259,10 @@ group: nz_linz_nzgd2000-mq20041223-grid014 {
 
   group: patch_mq_20041223_grid_mq_p3_l1 {
     dimensions:
-    	gridi = 9 ;
-    	gridj = 8 ;
+    	iNodeCount = 9 ;
+    	jNodeCount = 8 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -262,12 +270,13 @@ group: nz_linz_nzgd2000-mq20041223-grid014 {
     		:affineCoeffs = -49.25, 0., -0.125, 178.15, 0.15, 0. ;
     		:iNodeCount = 9LL ;
     		:jNodeCount = 8LL ;
+    		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p3_l1
   } // group nz_linz_nzgd2000-mq20041223-grid014
 
 group: nz_linz_nzgd2000-mq20041223-grid015 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Macquarie Plate earthquake" ;
@@ -280,10 +289,10 @@ group: nz_linz_nzgd2000-mq20041223-grid015 {
 
   group: patch_mq_20041223_grid_mq_p4_l1 {
     dimensions:
-    	gridi = 70 ;
-    	gridj = 68 ;
+    	iNodeCount = 70 ;
+    	jNodeCount = 68 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -291,12 +300,13 @@ group: nz_linz_nzgd2000-mq20041223-grid015 {
     		:affineCoeffs = -40.125, 0., -0.125, 165.85, 0.15, 0. ;
     		:iNodeCount = 70LL ;
     		:jNodeCount = 68LL ;
+    		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p4_l1
   } // group nz_linz_nzgd2000-mq20041223-grid015
 
 group: nz_linz_nzgd2000-mq20041223-grid016 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Macquarie Plate earthquake" ;
@@ -309,10 +319,10 @@ group: nz_linz_nzgd2000-mq20041223-grid016 {
 
   group: patch_mq_20041223_grid_mq_p5_l1 {
     dimensions:
-    	gridi = 8 ;
-    	gridj = 7 ;
+    	iNodeCount = 8 ;
+    	jNodeCount = 7 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -320,12 +330,13 @@ group: nz_linz_nzgd2000-mq20041223-grid016 {
     		:affineCoeffs = -47.375, 0., -0.125, 178.45, 0.15, 0. ;
     		:iNodeCount = 8LL ;
     		:jNodeCount = 7LL ;
+    		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p5_l1
   } // group nz_linz_nzgd2000-mq20041223-grid016
 
 group: nz_linz_nzgd2000-gs20071016-grid01 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Fiordland (George Sound) earthquake" ;
@@ -338,10 +349,10 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
 
   group: patch_gs_20071016_grid_gs_l1 {
     dimensions:
-    	gridi = 37 ;
-    	gridj = 27 ;
+    	iNodeCount = 37 ;
+    	jNodeCount = 27 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -349,13 +360,14 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
     		:affineCoeffs = -43.75, 0., -0.125, 165.85, 0.15, 0. ;
     		:iNodeCount = 37LL ;
     		:jNodeCount = 27LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_gs_20071016_grid_gs_l2 {
       dimensions:
-      	gridi = 45 ;
-      	gridj = 37 ;
+      	iNodeCount = 45 ;
+      	jNodeCount = 37 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -363,13 +375,14 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
       		:affineCoeffs = -44.28125, 0., -0.03125, 166.6375, 0.0375, 0. ;
       		:iNodeCount = 45LL ;
       		:jNodeCount = 37LL ;
+      		:gridPriority = 1LL ;
 
       group: patch_gs_20071016_grid_gs_l3 {
         dimensions:
-        	gridi = 54 ;
-        	gridj = 52 ;
+        	iNodeCount = 54 ;
+        	jNodeCount = 52 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -377,6 +390,7 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
         		:affineCoeffs = -44.6171875, 0., -0.0078125, 167.0875, 0.009375, 0. ;
         		:iNodeCount = 54LL ;
         		:jNodeCount = 52LL ;
+        		:gridPriority = 1LL ;
         } // group patch_gs_20071016_grid_gs_l3
       } // group patch_gs_20071016_grid_gs_l2
     } // group patch_gs_20071016_grid_gs_l1
@@ -384,7 +398,7 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
 
 group: nz_linz_nzgd2000-ds20090715-grid011 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
@@ -404,10 +418,10 @@ group: nz_linz_nzgd2000-ds20090715-grid011 {
 
   group: patch_ds_20090715_grid_ds_p0_l1 {
     dimensions:
-    	gridi = 11 ;
-    	gridj = 11 ;
+    	iNodeCount = 11 ;
+    	jNodeCount = 11 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -415,12 +429,13 @@ group: nz_linz_nzgd2000-ds20090715-grid011 {
     		:affineCoeffs = -50.125, 0., -0.125, 165.4, 0.15, 0. ;
     		:iNodeCount = 11LL ;
     		:jNodeCount = 11LL ;
+    		:gridPriority = 1LL ;
     } // group patch_ds_20090715_grid_ds_p0_l1
   } // group nz_linz_nzgd2000-ds20090715-grid011
 
 group: nz_linz_nzgd2000-ds20090715-grid012 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
@@ -440,10 +455,10 @@ group: nz_linz_nzgd2000-ds20090715-grid012 {
 
   group: patch_ds_20090715_grid_ds_p1_l1 {
     dimensions:
-    	gridi = 6 ;
-    	gridj = 7 ;
+    	iNodeCount = 6 ;
+    	jNodeCount = 7 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -451,12 +466,13 @@ group: nz_linz_nzgd2000-ds20090715-grid012 {
     		:affineCoeffs = -49.25, 0., -0.125, 178.15, 0.15, 0. ;
     		:iNodeCount = 6LL ;
     		:jNodeCount = 7LL ;
+    		:gridPriority = 1LL ;
     } // group patch_ds_20090715_grid_ds_p1_l1
   } // group nz_linz_nzgd2000-ds20090715-grid012
 
 group: nz_linz_nzgd2000-ds20090715-grid013 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
@@ -476,10 +492,10 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
 
   group: patch_ds_20090715_grid_ds_p2_l1 {
     dimensions:
-    	gridi = 85 ;
-    	gridj = 72 ;
+    	iNodeCount = 85 ;
+    	jNodeCount = 72 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -487,13 +503,14 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
     		:affineCoeffs = -39.625, 0., -0.125, 164.65, 0.15, 0. ;
     		:iNodeCount = 85LL ;
     		:jNodeCount = 72LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_ds_20090715_grid_ds_p2_l2 {
       dimensions:
-      	gridi = 67 ;
-      	gridj = 73 ;
+      	iNodeCount = 67 ;
+      	jNodeCount = 73 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -501,13 +518,14 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
       		:affineCoeffs = -44.6875, 0., -0.03125, 165.2875, 0.0375, 0. ;
       		:iNodeCount = 67LL ;
       		:jNodeCount = 73LL ;
+      		:gridPriority = 1LL ;
 
       group: patch_ds_20090715_grid_ds_p2_l3 {
         dimensions:
-        	gridi = 83 ;
-        	gridj = 138 ;
+        	iNodeCount = 83 ;
+        	jNodeCount = 138 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -515,6 +533,7 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
         		:affineCoeffs = -45.28125, 0., -0.0078125, 166.075, 0.009375, 0. ;
         		:iNodeCount = 83LL ;
         		:jNodeCount = 138LL ;
+        		:gridPriority = 1LL ;
         } // group patch_ds_20090715_grid_ds_p2_l3
       } // group patch_ds_20090715_grid_ds_p2_l2
     } // group patch_ds_20090715_grid_ds_p2_l1
@@ -522,7 +541,7 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
 
 group: nz_linz_nzgd2000-ds20090715-grid014 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
@@ -542,10 +561,10 @@ group: nz_linz_nzgd2000-ds20090715-grid014 {
 
   group: patch_ds_20090715_grid_ds_p3_l1 {
     dimensions:
-    	gridi = 8 ;
-    	gridj = 7 ;
+    	iNodeCount = 8 ;
+    	jNodeCount = 7 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -553,12 +572,13 @@ group: nz_linz_nzgd2000-ds20090715-grid014 {
     		:affineCoeffs = -47.375, 0., -0.125, 178.45, 0.15, 0. ;
     		:iNodeCount = 8LL ;
     		:jNodeCount = 7LL ;
+    		:gridPriority = 1LL ;
     } // group patch_ds_20090715_grid_ds_p3_l1
   } // group nz_linz_nzgd2000-ds20090715-grid014
 
 group: nz_linz_nzgd2000-c120100904-grid01 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Darfield earthquake" ;
@@ -571,10 +591,10 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
 
   group: patch_c1_20100904_grid_c1_l1 {
     dimensions:
-    	gridi = 55 ;
-    	gridj = 52 ;
+    	iNodeCount = 55 ;
+    	jNodeCount = 52 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -582,13 +602,14 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
     		:affineCoeffs = -40.375, 0., -0.125, 168.1, 0.15, 0. ;
     		:iNodeCount = 55LL ;
     		:jNodeCount = 52LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_c1_20100904_grid_c1_l2 {
       dimensions:
-      	gridi = 59 ;
-      	gridj = 50 ;
+      	iNodeCount = 59 ;
+      	jNodeCount = 50 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -596,13 +617,14 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
       		:affineCoeffs = -42.8125, 0., -0.03125, 171.1, 0.0375, 0. ;
       		:iNodeCount = 59LL ;
       		:jNodeCount = 50LL ;
+      		:gridPriority = 1LL ;
 
       group: patch_c1_20100904_grid_c1_l3 {
         dimensions:
-        	gridi = 118 ;
-        	gridj = 84 ;
+        	iNodeCount = 118 ;
+        	jNodeCount = 84 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -610,13 +632,14 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
         		:affineCoeffs = -43.25, 0., -0.0078125, 171.625, 0.009375, 0. ;
         		:iNodeCount = 118LL ;
         		:jNodeCount = 84LL ;
+        		:gridPriority = 1LL ;
 
         group: patch_c1_20100904_grid_c1_l4 {
           dimensions:
-          	gridi = 306 ;
-          	gridj = 141 ;
+          	iNodeCount = 306 ;
+          	jNodeCount = 141 ;
           variables:
-          	float displacement(gridj, gridi, displacement_count) ;
+          	float displacement(jNodeCount, iNodeCount, displacementCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -624,6 +647,7 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
           		:affineCoeffs = -43.423828125, 0., -0.001953125, 171.8125, 0.00234375, 0. ;
           		:iNodeCount = 306LL ;
           		:jNodeCount = 141LL ;
+          		:gridPriority = 1LL ;
           } // group patch_c1_20100904_grid_c1_l4
         } // group patch_c1_20100904_grid_c1_l3
       } // group patch_c1_20100904_grid_c1_l2
@@ -632,7 +656,7 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
 
 group: nz_linz_nzgd2000-c220110222-grid01 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Christchurch February earthquake" ;
@@ -645,10 +669,10 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
 
   group: patch_c2_20110222_grid_c2_l1 {
     dimensions:
-    	gridi = 21 ;
-    	gridj = 18 ;
+    	iNodeCount = 21 ;
+    	jNodeCount = 18 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -656,13 +680,14 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
     		:affineCoeffs = -42.375, 0., -0.125, 170.8, 0.15, 0. ;
     		:iNodeCount = 21LL ;
     		:jNodeCount = 18LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_c2_20110222_grid_c2_l2 {
       dimensions:
-      	gridi = 38 ;
-      	gridj = 34 ;
+      	iNodeCount = 38 ;
+      	jNodeCount = 34 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -670,13 +695,14 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
       		:affineCoeffs = -43.03125, 0., -0.03125, 172., 0.0375, 0. ;
       		:iNodeCount = 38LL ;
       		:jNodeCount = 34LL ;
+      		:gridPriority = 1LL ;
 
       group: patch_c2_20110222_grid_c2_l3 {
         dimensions:
-        	gridi = 62 ;
-        	gridj = 52 ;
+        	iNodeCount = 62 ;
+        	jNodeCount = 52 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -684,13 +710,14 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
         		:affineCoeffs = -43.3515625, 0., -0.0078125, 172.4125, 0.009375, 0. ;
         		:iNodeCount = 62LL ;
         		:jNodeCount = 52LL ;
+        		:gridPriority = 1LL ;
 
         group: patch_c2_20110222_grid_c2_l4 {
           dimensions:
-          	gridi = 118 ;
-          	gridj = 81 ;
+          	iNodeCount = 118 ;
+          	jNodeCount = 81 ;
           variables:
-          	float displacement(gridj, gridi, displacement_count) ;
+          	float displacement(jNodeCount, iNodeCount, displacementCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -698,6 +725,7 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
           		:affineCoeffs = -43.474609375, 0., -0.001953125, 172.56015625, 0.00234375, 0. ;
           		:iNodeCount = 118LL ;
           		:jNodeCount = 81LL ;
+          		:gridPriority = 1LL ;
           } // group patch_c2_20110222_grid_c2_l4
         } // group patch_c2_20110222_grid_c2_l3
       } // group patch_c2_20110222_grid_c2_l2
@@ -706,7 +734,7 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
 
 group: nz_linz_nzgd2000-c320110613-grid01 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Christchurch June earthquake" ;
@@ -719,10 +747,10 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
 
   group: patch_c3_20110613_grid_c3_l1 {
     dimensions:
-    	gridi = 16 ;
-    	gridj = 15 ;
+    	iNodeCount = 16 ;
+    	jNodeCount = 15 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -730,13 +758,14 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
     		:affineCoeffs = -42.625, 0., -0.125, 171.4, 0.15, 0. ;
     		:iNodeCount = 16LL ;
     		:jNodeCount = 15LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_c3_20110613_grid_c3_l2 {
       dimensions:
-      	gridi = 33 ;
-      	gridj = 31 ;
+      	iNodeCount = 33 ;
+      	jNodeCount = 31 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -744,13 +773,14 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
       		:affineCoeffs = -43.09375, 0., -0.03125, 172.15, 0.0375, 0. ;
       		:iNodeCount = 33LL ;
       		:jNodeCount = 31LL ;
+      		:gridPriority = 1LL ;
 
       group: patch_c3_20110613_grid_c3_l3 {
         dimensions:
-        	gridi = 51 ;
-        	gridj = 48 ;
+        	iNodeCount = 51 ;
+        	jNodeCount = 48 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -758,13 +788,14 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
         		:affineCoeffs = -43.375, 0., -0.0078125, 172.515625, 0.009375, 0. ;
         		:iNodeCount = 51LL ;
         		:jNodeCount = 48LL ;
+        		:gridPriority = 1LL ;
 
         group: patch_c3_20110613_grid_c3_l4 {
           dimensions:
-          	gridi = 88 ;
-          	gridj = 84 ;
+          	iNodeCount = 88 ;
+          	jNodeCount = 84 ;
           variables:
-          	float displacement(gridj, gridi, displacement_count) ;
+          	float displacement(jNodeCount, iNodeCount, displacementCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -772,6 +803,7 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
           		:affineCoeffs = -43.484375, 0., -0.001953125, 172.65390625, 0.00234375, 0. ;
           		:iNodeCount = 88LL ;
           		:jNodeCount = 84LL ;
+          		:gridPriority = 1LL ;
           } // group patch_c3_20110613_grid_c3_l4
         } // group patch_c3_20110613_grid_c3_l3
       } // group patch_c3_20110613_grid_c3_l2
@@ -780,7 +812,7 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
 
 group: nz_linz_nzgd2000-c420111223-grid01 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Christchurch earthquake" ;
@@ -793,10 +825,10 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
 
   group: patch_c4_20111223_grid_c4_l1 {
     dimensions:
-    	gridi = 15 ;
-    	gridj = 13 ;
+    	iNodeCount = 15 ;
+    	jNodeCount = 13 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -804,13 +836,14 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
     		:affineCoeffs = -42.75, 0., -0.125, 171.55, 0.15, 0. ;
     		:iNodeCount = 15LL ;
     		:jNodeCount = 13LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_c4_20111223_grid_c4_l2 {
       dimensions:
-      	gridi = 32 ;
-      	gridj = 30 ;
+      	iNodeCount = 32 ;
+      	jNodeCount = 30 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -818,13 +851,14 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
       		:affineCoeffs = -43.03125, 0., -0.03125, 172.1875, 0.0375, 0. ;
       		:iNodeCount = 32LL ;
       		:jNodeCount = 30LL ;
+      		:gridPriority = 1LL ;
 
       group: patch_c4_20111223_grid_c4_l3 {
         dimensions:
-        	gridi = 52 ;
-        	gridj = 44 ;
+        	iNodeCount = 52 ;
+        	jNodeCount = 44 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -832,13 +866,14 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
         		:affineCoeffs = -43.3125, 0., -0.0078125, 172.553125, 0.009375, 0. ;
         		:iNodeCount = 52LL ;
         		:jNodeCount = 44LL ;
+        		:gridPriority = 1LL ;
 
         group: patch_c4_20111223_grid_c4_l4 {
           dimensions:
-          	gridi = 87 ;
-          	gridj = 61 ;
+          	iNodeCount = 87 ;
+          	jNodeCount = 61 ;
           variables:
-          	float displacement(gridj, gridi, displacement_count) ;
+          	float displacement(jNodeCount, iNodeCount, displacementCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -846,6 +881,7 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
           		:affineCoeffs = -43.421875, 0., -0.001953125, 172.67734375, 0.00234375, 0. ;
           		:iNodeCount = 87LL ;
           		:jNodeCount = 61LL ;
+          		:gridPriority = 1LL ;
           } // group patch_c4_20111223_grid_c4_l4
         } // group patch_c4_20111223_grid_c4_l3
       } // group patch_c4_20111223_grid_c4_l2
@@ -854,7 +890,7 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
 
 group: nz_linz_nzgd2000-cs20130721-grid02 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Mw 6.6 Cook Strait earthquake" ;
@@ -867,10 +903,10 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
 
   group: patch_cs_20130721_grid_cs_20130721_l1 {
     dimensions:
-    	gridi = 34 ;
-    	gridj = 32 ;
+    	iNodeCount = 34 ;
+    	jNodeCount = 32 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -878,13 +914,14 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
     		:affineCoeffs = -39.5, 0., -0.125, 171.55, 0.15, 0. ;
     		:iNodeCount = 34LL ;
     		:jNodeCount = 32LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_cs_20130721_grid_cs_20130721_l2 {
       dimensions:
-      	gridi = 43 ;
-      	gridj = 37 ;
+      	iNodeCount = 43 ;
+      	jNodeCount = 37 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -892,13 +929,14 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
       		:affineCoeffs = -41.03125, 0., -0.03125, 173.5375, 0.0375, 0. ;
       		:iNodeCount = 43LL ;
       		:jNodeCount = 37LL ;
+      		:gridPriority = 1LL ;
 
       group: patch_cs_20130721_grid_cs_20130721_l3 {
         dimensions:
-        	gridi = 73 ;
-        	gridj = 57 ;
+        	iNodeCount = 73 ;
+        	jNodeCount = 57 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -906,13 +944,14 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
         		:affineCoeffs = -41.3828125, 0., -0.0078125, 173.9875, 0.009375, 0. ;
         		:iNodeCount = 73LL ;
         		:jNodeCount = 57LL ;
+        		:gridPriority = 1LL ;
 
         group: patch_cs_20130721_grid_cs_20130721_l4 {
           dimensions:
-          	gridi = 90 ;
-          	gridj = 68 ;
+          	iNodeCount = 90 ;
+          	jNodeCount = 68 ;
           variables:
-          	float displacement(gridj, gridi, displacement_count) ;
+          	float displacement(jNodeCount, iNodeCount, displacementCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -920,6 +959,7 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
           		:affineCoeffs = -41.537109375, 0., -0.001953125, 174.28984375, 0.00234375, 0. ;
           		:iNodeCount = 90LL ;
           		:jNodeCount = 68LL ;
+          		:gridPriority = 1LL ;
           } // group patch_cs_20130721_grid_cs_20130721_l4
         } // group patch_cs_20130721_grid_cs_20130721_l3
       } // group patch_cs_20130721_grid_cs_20130721_l2
@@ -928,7 +968,7 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
 
 group: nz_linz_nzgd2000-lg20130816-grid02 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Mw 6.6 Lake Grassmere earthquake" ;
@@ -941,10 +981,10 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
 
   group: patch_lg_20130816_grid_lg_20130816_l1 {
     dimensions:
-    	gridi = 39 ;
-    	gridj = 39 ;
+    	iNodeCount = 39 ;
+    	jNodeCount = 39 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -952,13 +992,14 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
     		:affineCoeffs = -39.25, 0., -0.125, 170.95, 0.15, 0. ;
     		:iNodeCount = 39LL ;
     		:jNodeCount = 39LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_lg_20130816_grid_lg_20130816_l2 {
       dimensions:
-      	gridi = 44 ;
-      	gridj = 40 ;
+      	iNodeCount = 44 ;
+      	jNodeCount = 40 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -966,13 +1007,14 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
       		:affineCoeffs = -41.09375, 0., -0.03125, 173.3875, 0.0375, 0. ;
       		:iNodeCount = 44LL ;
       		:jNodeCount = 40LL ;
+      		:gridPriority = 1LL ;
 
       group: patch_lg_20130816_grid_lg_20130816_l3 {
         dimensions:
-        	gridi = 79 ;
-        	gridj = 63 ;
+        	iNodeCount = 79 ;
+        	jNodeCount = 63 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -980,13 +1022,14 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
         		:affineCoeffs = -41.4609375, 0., -0.0078125, 173.809375, 0.009375, 0. ;
         		:iNodeCount = 79LL ;
         		:jNodeCount = 63LL ;
+        		:gridPriority = 1LL ;
 
         group: patch_lg_20130816_grid_lg_20130816_l4 {
           dimensions:
-          	gridi = 134 ;
-          	gridj = 104 ;
+          	iNodeCount = 134 ;
+          	jNodeCount = 104 ;
           variables:
-          	float displacement(gridj, gridi, displacement_count) ;
+          	float displacement(jNodeCount, iNodeCount, displacementCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -994,6 +1037,7 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
           		:affineCoeffs = -41.60546875, 0., -0.001953125, 174.034375, 0.00234375, 0. ;
           		:iNodeCount = 134LL ;
           		:jNodeCount = 104LL ;
+          		:gridPriority = 1LL ;
           } // group patch_lg_20130816_grid_lg_20130816_l4
         } // group patch_lg_20130816_grid_lg_20130816_l3
       } // group patch_lg_20130816_grid_lg_20130816_l2
@@ -1002,7 +1046,7 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
 
 group: nz_linz_nzgd2000-ch20160214-grid01 {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Christchurch Valentines Day earthquake" ;
@@ -1015,10 +1059,10 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
 
   group: patch_ch_20160214_grid_ch_20160214_l1 {
     dimensions:
-    	gridi = 14 ;
-    	gridj = 11 ;
+    	iNodeCount = 14 ;
+    	jNodeCount = 11 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -1026,13 +1070,14 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
     		:affineCoeffs = -42.875, 0., -0.125, 171.7, 0.15, 0. ;
     		:iNodeCount = 14LL ;
     		:jNodeCount = 11LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_ch_20160214_grid_ch_20160214_l2 {
       dimensions:
-      	gridi = 29 ;
-      	gridj = 27 ;
+      	iNodeCount = 29 ;
+      	jNodeCount = 27 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -1040,13 +1085,14 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
       		:affineCoeffs = -43.0625, 0., -0.03125, 172.225, 0.0375, 0. ;
       		:iNodeCount = 29LL ;
       		:jNodeCount = 27LL ;
+      		:gridPriority = 1LL ;
 
       group: patch_ch_20160214_grid_ch_20160214_l3 {
         dimensions:
-        	gridi = 46 ;
-        	gridj = 38 ;
+        	iNodeCount = 46 ;
+        	jNodeCount = 38 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1054,13 +1100,14 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
         		:affineCoeffs = -43.3203125, 0., -0.0078125, 172.553125, 0.009375, 0. ;
         		:iNodeCount = 46LL ;
         		:jNodeCount = 38LL ;
+        		:gridPriority = 1LL ;
 
         group: patch_ch_20160214_grid_ch_20160214_l4 {
           dimensions:
-          	gridi = 79 ;
-          	gridj = 61 ;
+          	iNodeCount = 79 ;
+          	jNodeCount = 61 ;
           variables:
-          	float displacement(gridj, gridi, displacement_count) ;
+          	float displacement(jNodeCount, iNodeCount, displacementCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1068,6 +1115,7 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
           		:affineCoeffs = -43.408203125, 0., -0.001953125, 172.67265625, 0.00234375, 0. ;
           		:iNodeCount = 79LL ;
           		:jNodeCount = 61LL ;
+          		:gridPriority = 1LL ;
           } // group patch_ch_20160214_grid_ch_20160214_l4
         } // group patch_ch_20160214_grid_ch_20160214_l3
       } // group patch_ch_20160214_grid_ch_20160214_l2
@@ -1076,7 +1124,7 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
 
 group: nz_linz_nzgd2000-ka20161114-grid01 {
   dimensions:
-  	displacement_count = 2 ;
+  	displacementCount = 2 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
@@ -1088,10 +1136,10 @@ group: nz_linz_nzgd2000-ka20161114-grid01 {
 
   group: patch_ka_20161114_grid_ka_20161114co_h_l1_f {
     dimensions:
-    	gridi = 89 ;
-    	gridj = 110 ;
+    	iNodeCount = 89 ;
+    	jNodeCount = 110 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -1099,13 +1147,14 @@ group: nz_linz_nzgd2000-ka20161114-grid01 {
     		:affineCoeffs = -34., 0., -0.125, 165.85, 0.15, 0. ;
     		:iNodeCount = 89LL ;
     		:jNodeCount = 110LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114co_h_l2_f {
       dimensions:
-      	gridi = 95 ;
-      	gridj = 82 ;
+      	iNodeCount = 95 ;
+      	jNodeCount = 82 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -1113,13 +1162,14 @@ group: nz_linz_nzgd2000-ka20161114-grid01 {
       		:affineCoeffs = -40.8125, 0., -0.03125, 171.925, 0.0375, 0. ;
       		:iNodeCount = 95LL ;
       		:jNodeCount = 82LL ;
+      		:gridPriority = 1LL ;
       } // group patch_ka_20161114_grid_ka_20161114co_h_l2_f
     } // group patch_ka_20161114_grid_ka_20161114co_h_l1_f
   } // group nz_linz_nzgd2000-ka20161114-grid01
 
 group: nz_linz_nzgd2000-ka20161114-grid02 {
   dimensions:
-  	displacement_count = 2 ;
+  	displacementCount = 2 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
@@ -1132,10 +1182,10 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
   group: patch_ka_20161114_grid_ka_20161114co_h_l2_r {
     dimensions:
-    	gridi = 65 ;
-    	gridj = 53 ;
+    	iNodeCount = 65 ;
+    	jNodeCount = 53 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -1143,13 +1193,14 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
     		:affineCoeffs = -41.28125, 0., -0.03125, 172.525, 0.0375, 0. ;
     		:iNodeCount = 65LL ;
     		:jNodeCount = 53LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00 {
       dimensions:
-      	gridi = 115 ;
-      	gridj = 94 ;
+      	iNodeCount = 115 ;
+      	jNodeCount = 94 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -1157,13 +1208,14 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
       		:affineCoeffs = -42.1484375, 0., -0.0078125, 172.571875, 0.009375, 0. ;
       		:iNodeCount = 115LL ;
       		:jNodeCount = 94LL ;
+      		:gridPriority = 1LL ;
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_00 {
         dimensions:
-        	gridi = 106 ;
-        	gridj = 107 ;
+        	iNodeCount = 106 ;
+        	jNodeCount = 107 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1171,14 +1223,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.484375, 0., -0.001953125, 172.7828125, 0.00234375, 0. ;
         		:iNodeCount = 106LL ;
         		:jNodeCount = 107LL ;
+        		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_00
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_01 {
         dimensions:
-        	gridi = 11 ;
-        	gridj = 26 ;
+        	iNodeCount = 11 ;
+        	jNodeCount = 26 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1186,14 +1239,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.435546875, 0., -0.001953125, 173.00546875, 0.00234375, 0. ;
         		:iNodeCount = 11LL ;
         		:jNodeCount = 26LL ;
+        		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_01
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_02 {
         dimensions:
-        	gridi = 106 ;
-        	gridj = 111 ;
+        	iNodeCount = 106 ;
+        	jNodeCount = 111 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1201,14 +1255,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.02890625, 0.00234375, 0. ;
         		:iNodeCount = 106LL ;
         		:jNodeCount = 111LL ;
+        		:gridPriority = 3LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_02
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_03 {
         dimensions:
-        	gridi = 106 ;
-        	gridj = 51 ;
+        	iNodeCount = 106 ;
+        	jNodeCount = 51 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1216,14 +1271,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.38671875, 0., -0.001953125, 173.02890625, 0.00234375, 0. ;
         		:iNodeCount = 106LL ;
         		:jNodeCount = 51LL ;
+        		:gridPriority = 4LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_03
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_04 {
         dimensions:
-        	gridi = 106 ;
-        	gridj = 88 ;
+        	iNodeCount = 106 ;
+        	jNodeCount = 88 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1231,14 +1287,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.275, 0.00234375, 0. ;
         		:iNodeCount = 106LL ;
         		:jNodeCount = 88LL ;
+        		:gridPriority = 5LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_04
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_05 {
         dimensions:
-        	gridi = 106 ;
-        	gridj = 111 ;
+        	iNodeCount = 106 ;
+        	jNodeCount = 111 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1246,14 +1303,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.275, 0.00234375, 0. ;
         		:iNodeCount = 106LL ;
         		:jNodeCount = 111LL ;
+        		:gridPriority = 6LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_05
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_060 {
         dimensions:
-        	gridi = 21 ;
-        	gridj = 63 ;
+        	iNodeCount = 21 ;
+        	jNodeCount = 63 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1261,14 +1319,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.47421875, 0.00234375, 0. ;
         		:iNodeCount = 21LL ;
         		:jNodeCount = 63LL ;
+        		:gridPriority = 7LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_060
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_080 {
         dimensions:
-        	gridi = 52 ;
-        	gridj = 30 ;
+        	iNodeCount = 52 ;
+        	jNodeCount = 30 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1276,14 +1335,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
         		:iNodeCount = 52LL ;
         		:jNodeCount = 30LL ;
+        		:gridPriority = 8LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_080
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_090 {
         dimensions:
-        	gridi = 52 ;
-        	gridj = 111 ;
+        	iNodeCount = 52 ;
+        	jNodeCount = 111 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1291,14 +1351,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
         		:iNodeCount = 52LL ;
         		:jNodeCount = 111LL ;
+        		:gridPriority = 9LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_090
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_100 {
         dimensions:
-        	gridi = 52 ;
-        	gridj = 63 ;
+        	iNodeCount = 52 ;
+        	jNodeCount = 63 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1306,15 +1367,16 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
         		:iNodeCount = 52LL ;
         		:jNodeCount = 63LL ;
+        		:gridPriority = 10LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_100
       } // group patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
 
     group: patch_ka_20161114_grid_ka_20161114co_h_l3_r_01 {
       dimensions:
-      	gridi = 53 ;
-      	gridj = 89 ;
+      	iNodeCount = 53 ;
+      	jNodeCount = 89 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -1322,13 +1384,14 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
       		:affineCoeffs = -41.4609375, 0., -0.0078125, 173.153125, 0.009375, 0. ;
       		:iNodeCount = 53LL ;
       		:jNodeCount = 89LL ;
+      		:gridPriority = 2LL ;
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_061 {
         dimensions:
-        	gridi = 21 ;
-        	gridj = 49 ;
+        	iNodeCount = 21 ;
+        	jNodeCount = 49 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1336,14 +1399,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.47421875, 0.00234375, 0. ;
         		:iNodeCount = 21LL ;
         		:jNodeCount = 49LL ;
+        		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_061
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_07 {
         dimensions:
-        	gridi = 9 ;
-        	gridj = 6 ;
+        	iNodeCount = 9 ;
+        	jNodeCount = 6 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1351,14 +1415,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.044921875, 0., -0.001953125, 173.50234375, 0.0023437500000014, 0. ;
         		:iNodeCount = 9LL ;
         		:jNodeCount = 6LL ;
+        		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_07
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_101 {
         dimensions:
-        	gridi = 52 ;
-        	gridj = 49 ;
+        	iNodeCount = 52 ;
+        	jNodeCount = 49 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1366,14 +1431,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
         		:iNodeCount = 52LL ;
         		:jNodeCount = 49LL ;
+        		:gridPriority = 3LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_101
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_110 {
         dimensions:
-        	gridi = 52 ;
-        	gridj = 111 ;
+        	iNodeCount = 52 ;
+        	jNodeCount = 111 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1381,15 +1447,16 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
         		:iNodeCount = 52LL ;
         		:jNodeCount = 111LL ;
+        		:gridPriority = 4LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_110
       } // group patch_ka_20161114_grid_ka_20161114co_h_l3_r_01
 
     group: patch_ka_20161114_grid_ka_20161114co_h_l3_r_02 {
       dimensions:
-      	gridi = 73 ;
-      	gridj = 63 ;
+      	iNodeCount = 73 ;
+      	jNodeCount = 63 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -1397,13 +1464,14 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
       		:affineCoeffs = -42.1484375, 0., -0.0078125, 173.640625, 0.009375, 0. ;
       		:iNodeCount = 73LL ;
       		:jNodeCount = 63LL ;
+      		:gridPriority = 3LL ;
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_081 {
         dimensions:
-        	gridi = 28 ;
-        	gridj = 30 ;
+        	iNodeCount = 28 ;
+        	jNodeCount = 30 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1411,14 +1479,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
         		:iNodeCount = 28LL ;
         		:jNodeCount = 30LL ;
+        		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_081
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_091 {
         dimensions:
-        	gridi = 55 ;
-        	gridj = 111 ;
+        	iNodeCount = 55 ;
+        	jNodeCount = 111 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1426,14 +1495,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
         		:iNodeCount = 55LL ;
         		:jNodeCount = 111LL ;
+        		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_091
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_102 {
         dimensions:
-        	gridi = 55 ;
-        	gridj = 63 ;
+        	iNodeCount = 55 ;
+        	jNodeCount = 63 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1441,14 +1511,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
         		:iNodeCount = 55LL ;
         		:jNodeCount = 63LL ;
+        		:gridPriority = 3LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_102
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_13 {
         dimensions:
-        	gridi = 87 ;
-        	gridj = 95 ;
+        	iNodeCount = 87 ;
+        	jNodeCount = 95 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1456,14 +1527,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
         		:iNodeCount = 87LL ;
         		:jNodeCount = 95LL ;
+        		:gridPriority = 4LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_13
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_140 {
         dimensions:
-        	gridi = 106 ;
-        	gridj = 63 ;
+        	iNodeCount = 106 ;
+        	jNodeCount = 63 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1471,14 +1543,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
         		:iNodeCount = 106LL ;
         		:jNodeCount = 63LL ;
+        		:gridPriority = 5LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_140
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_170 {
         dimensions:
-        	gridi = 62 ;
-        	gridj = 41 ;
+        	iNodeCount = 62 ;
+        	jNodeCount = 41 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1486,15 +1559,16 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
         		:iNodeCount = 62LL ;
         		:jNodeCount = 41LL ;
+        		:gridPriority = 6LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_170
       } // group patch_ka_20161114_grid_ka_20161114co_h_l3_r_02
 
     group: patch_ka_20161114_grid_ka_20161114co_h_l3_r_03 {
       dimensions:
-      	gridi = 114 ;
-      	gridj = 94 ;
+      	iNodeCount = 114 ;
+      	jNodeCount = 94 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -1502,13 +1576,14 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
       		:affineCoeffs = -41.421875, 0., -0.0078125, 173.640625, 0.009375, 0. ;
       		:iNodeCount = 114LL ;
       		:jNodeCount = 94LL ;
+      		:gridPriority = 4LL ;
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_103 {
         dimensions:
-        	gridi = 55 ;
-        	gridj = 49 ;
+        	iNodeCount = 55 ;
+        	jNodeCount = 49 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1516,14 +1591,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
         		:iNodeCount = 55LL ;
         		:jNodeCount = 49LL ;
+        		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_103
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_111 {
         dimensions:
-        	gridi = 55 ;
-        	gridj = 111 ;
+        	iNodeCount = 55 ;
+        	jNodeCount = 111 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1531,14 +1607,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
         		:iNodeCount = 55LL ;
         		:jNodeCount = 111LL ;
+        		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_111
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_12 {
         dimensions:
-        	gridi = 15 ;
-        	gridj = 10 ;
+        	iNodeCount = 15 ;
+        	jNodeCount = 10 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1546,14 +1623,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -41.822265625, 0., -0.001953125, 173.734375, 0.00234375, 0. ;
         		:iNodeCount = 15LL ;
         		:jNodeCount = 10LL ;
+        		:gridPriority = 3LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_12
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_141 {
         dimensions:
-        	gridi = 106 ;
-        	gridj = 49 ;
+        	iNodeCount = 106 ;
+        	jNodeCount = 49 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1561,14 +1639,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
         		:iNodeCount = 106LL ;
         		:jNodeCount = 49LL ;
+        		:gridPriority = 4LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_141
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_15 {
         dimensions:
-        	gridi = 106 ;
-        	gridj = 111 ;
+        	iNodeCount = 106 ;
+        	jNodeCount = 111 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1576,14 +1655,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
         		:iNodeCount = 106LL ;
         		:jNodeCount = 111LL ;
+        		:gridPriority = 5LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_15
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_16 {
         dimensions:
-        	gridi = 106 ;
-        	gridj = 41 ;
+        	iNodeCount = 106 ;
+        	jNodeCount = 41 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1591,14 +1671,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -41.76171875, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
         		:iNodeCount = 106LL ;
         		:jNodeCount = 41LL ;
+        		:gridPriority = 6LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_16
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_171 {
         dimensions:
-        	gridi = 62 ;
-        	gridj = 49 ;
+        	iNodeCount = 62 ;
+        	jNodeCount = 49 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1606,14 +1687,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
         		:iNodeCount = 62LL ;
         		:jNodeCount = 49LL ;
+        		:gridPriority = 7LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_171
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_18 {
         dimensions:
-        	gridi = 106 ;
-        	gridj = 111 ;
+        	iNodeCount = 106 ;
+        	jNodeCount = 111 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1621,14 +1703,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
         		:iNodeCount = 106LL ;
         		:jNodeCount = 111LL ;
+        		:gridPriority = 8LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_18
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_19 {
         dimensions:
-        	gridi = 106 ;
-        	gridj = 93 ;
+        	iNodeCount = 106 ;
+        	jNodeCount = 93 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1636,14 +1719,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -41.66015625, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
         		:iNodeCount = 106LL ;
         		:jNodeCount = 93LL ;
+        		:gridPriority = 9LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_19
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_20 {
         dimensions:
-        	gridi = 59 ;
-        	gridj = 35 ;
+        	iNodeCount = 59 ;
+        	jNodeCount = 35 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1651,14 +1735,15 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 174.259375, 0.00234375, 0. ;
         		:iNodeCount = 59LL ;
         		:jNodeCount = 35LL ;
+        		:gridPriority = 10LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_20
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_21 {
         dimensions:
-        	gridi = 104 ;
-        	gridj = 110 ;
+        	iNodeCount = 104 ;
+        	jNodeCount = 110 ;
         variables:
-        	float displacement(gridj, gridi, displacement_count) ;
+        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1666,6 +1751,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         		:affineCoeffs = -41.626953125, 0., -0.001953125, 174.259375, 0.00234375, 0. ;
         		:iNodeCount = 104LL ;
         		:jNodeCount = 110LL ;
+        		:gridPriority = 11LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_21
       } // group patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
     } // group patch_ka_20161114_grid_ka_20161114co_h_l2_r
@@ -1684,10 +1770,10 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
   group: patch_ka_20161114_grid_ka_20161114co_v_l1 {
     dimensions:
-    	gridi = 86 ;
-    	gridj = 108 ;
+    	iNodeCount = 86 ;
+    	jNodeCount = 108 ;
     variables:
-    	float displacement(gridj, gridi) ;
+    	float displacement(jNodeCount, iNodeCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -1695,13 +1781,14 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
     		:affineCoeffs = -34.25, 0., -0.125, 166.3, 0.15, 0. ;
     		:iNodeCount = 86LL ;
     		:jNodeCount = 108LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114co_v_l2 {
       dimensions:
-      	gridi = 74 ;
-      	gridj = 67 ;
+      	iNodeCount = 74 ;
+      	jNodeCount = 67 ;
       variables:
-      	float displacement(gridj, gridi) ;
+      	float displacement(jNodeCount, iNodeCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -1709,13 +1796,14 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
       		:affineCoeffs = -41.0625, 0., -0.03125, 172.225, 0.0375, 0. ;
       		:iNodeCount = 74LL ;
       		:jNodeCount = 67LL ;
+      		:gridPriority = 1LL ;
 
       group: patch_ka_20161114_grid_ka_20161114co_v_l3_00 {
         dimensions:
-        	gridi = 103 ;
-        	gridj = 89 ;
+        	iNodeCount = 103 ;
+        	jNodeCount = 89 ;
         variables:
-        	float displacement(gridj, gridi) ;
+        	float displacement(jNodeCount, iNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1723,13 +1811,14 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
         		:affineCoeffs = -42.1171875, 0., -0.0078125, 172.65625, 0.009375, 0. ;
         		:iNodeCount = 103LL ;
         		:jNodeCount = 89LL ;
+        		:gridPriority = 1LL ;
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_00 {
           dimensions:
-          	gridi = 103 ;
-          	gridj = 88 ;
+          	iNodeCount = 103 ;
+          	jNodeCount = 88 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1737,14 +1826,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.490234375, 0., -0.001953125, 172.79921875, 0.00234375, 0. ;
           		:iNodeCount = 103LL ;
           		:jNodeCount = 88LL ;
+          		:gridPriority = 1LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_00
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_01 {
           dimensions:
-          	gridi = 103 ;
-          	gridj = 105 ;
+          	iNodeCount = 103 ;
+          	jNodeCount = 105 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1752,14 +1842,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.03828125, 0.00234375, 0. ;
           		:iNodeCount = 103LL ;
           		:jNodeCount = 105LL ;
+          		:gridPriority = 2LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_01
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_02 {
           dimensions:
-          	gridi = 89 ;
-          	gridj = 52 ;
+          	iNodeCount = 89 ;
+          	jNodeCount = 52 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1767,14 +1858,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.353515625, 0., -0.001953125, 173.07109375, 0.00234375, 0. ;
           		:iNodeCount = 89LL ;
           		:jNodeCount = 52LL ;
+          		:gridPriority = 3LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_02
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_03 {
           dimensions:
-          	gridi = 103 ;
-          	gridj = 100 ;
+          	iNodeCount = 103 ;
+          	jNodeCount = 100 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1782,14 +1874,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.27734375, 0.00234375, 0. ;
           		:iNodeCount = 103LL ;
           		:jNodeCount = 100LL ;
+          		:gridPriority = 4LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_03
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_04 {
           dimensions:
-          	gridi = 103 ;
-          	gridj = 89 ;
+          	iNodeCount = 103 ;
+          	jNodeCount = 89 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1797,14 +1890,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.28125, 0., -0.001953125, 173.27734375, 0.00234375, 0. ;
           		:iNodeCount = 103LL ;
           		:jNodeCount = 89LL ;
+          		:gridPriority = 5LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_04
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_050 {
           dimensions:
-          	gridi = 21 ;
-          	gridj = 67 ;
+          	iNodeCount = 21 ;
+          	jNodeCount = 67 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1812,14 +1906,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.46953125, 0.00234375, 0. ;
           		:iNodeCount = 21LL ;
           		:jNodeCount = 67LL ;
+          		:gridPriority = 6LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_050
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_060 {
           dimensions:
-          	gridi = 42 ;
-          	gridj = 34 ;
+          	iNodeCount = 42 ;
+          	jNodeCount = 34 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1827,14 +1922,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
           		:iNodeCount = 42LL ;
           		:jNodeCount = 34LL ;
+          		:gridPriority = 7LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_060
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_070 {
           dimensions:
-          	gridi = 42 ;
-          	gridj = 107 ;
+          	iNodeCount = 42 ;
+          	jNodeCount = 107 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1842,14 +1938,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.24609375, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
           		:iNodeCount = 42LL ;
           		:jNodeCount = 107LL ;
+          		:gridPriority = 8LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_070
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_080 {
           dimensions:
-          	gridi = 42 ;
-          	gridj = 67 ;
+          	iNodeCount = 42 ;
+          	jNodeCount = 67 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1857,15 +1954,16 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
           		:iNodeCount = 42LL ;
           		:jNodeCount = 67LL ;
+          		:gridPriority = 9LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_080
         } // group patch_ka_20161114_grid_ka_20161114co_v_l3_00
 
       group: patch_ka_20161114_grid_ka_20161114co_v_l3_01 {
         dimensions:
-        	gridi = 44 ;
-        	gridj = 70 ;
+        	iNodeCount = 44 ;
+        	jNodeCount = 70 ;
         variables:
-        	float displacement(gridj, gridi) ;
+        	float displacement(jNodeCount, iNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1873,13 +1971,14 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
         		:affineCoeffs = -41.578125, 0., -0.0078125, 173.209375, 0.009375, 0. ;
         		:iNodeCount = 44LL ;
         		:jNodeCount = 70LL ;
+        		:gridPriority = 2LL ;
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_051 {
           dimensions:
-          	gridi = 21 ;
-          	gridj = 33 ;
+          	iNodeCount = 21 ;
+          	jNodeCount = 33 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1887,14 +1986,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.46953125, 0.00234375, 0. ;
           		:iNodeCount = 21LL ;
           		:jNodeCount = 33LL ;
+          		:gridPriority = 1LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_051
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_081 {
           dimensions:
-          	gridi = 42 ;
-          	gridj = 41 ;
+          	iNodeCount = 42 ;
+          	jNodeCount = 41 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1902,14 +2002,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
           		:iNodeCount = 42LL ;
           		:jNodeCount = 41LL ;
+          		:gridPriority = 2LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_081
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_090 {
           dimensions:
-          	gridi = 12 ;
-          	gridj = 66 ;
+          	iNodeCount = 12 ;
+          	jNodeCount = 66 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1917,15 +2018,16 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -41.912109375, 0., -0.001953125, 173.58671875, 0.00234375, 0. ;
           		:iNodeCount = 12LL ;
           		:jNodeCount = 66LL ;
+          		:gridPriority = 3LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_090
         } // group patch_ka_20161114_grid_ka_20161114co_v_l3_01
 
       group: patch_ka_20161114_grid_ka_20161114co_v_l3_02 {
         dimensions:
-        	gridi = 79 ;
-        	gridj = 60 ;
+        	iNodeCount = 79 ;
+        	jNodeCount = 60 ;
         variables:
-        	float displacement(gridj, gridi) ;
+        	float displacement(jNodeCount, iNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1933,13 +2035,14 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
         		:affineCoeffs = -42.1171875, 0., -0.0078125, 173.6125, 0.009375, 0. ;
         		:iNodeCount = 79LL ;
         		:jNodeCount = 60LL ;
+        		:gridPriority = 3LL ;
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_061 {
           dimensions:
-          	gridi = 62 ;
-          	gridj = 34 ;
+          	iNodeCount = 62 ;
+          	jNodeCount = 34 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1947,14 +2050,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
           		:iNodeCount = 62LL ;
           		:jNodeCount = 34LL ;
+          		:gridPriority = 1LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_061
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_071 {
           dimensions:
-          	gridi = 62 ;
-          	gridj = 107 ;
+          	iNodeCount = 62 ;
+          	jNodeCount = 107 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1962,14 +2066,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.24609375, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
           		:iNodeCount = 62LL ;
           		:jNodeCount = 107LL ;
+          		:gridPriority = 2LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_071
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_082 {
           dimensions:
-          	gridi = 62 ;
-          	gridj = 67 ;
+          	iNodeCount = 62 ;
+          	jNodeCount = 67 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1977,14 +2082,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
           		:iNodeCount = 62LL ;
           		:jNodeCount = 67LL ;
+          		:gridPriority = 3LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_082
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_10 {
           dimensions:
-          	gridi = 7 ;
-          	gridj = 4 ;
+          	iNodeCount = 7 ;
+          	jNodeCount = 4 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1992,14 +2098,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
           		:iNodeCount = 7LL ;
           		:jNodeCount = 4LL ;
+          		:gridPriority = 4LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_10
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_11 {
           dimensions:
-          	gridi = 93 ;
-          	gridj = 107 ;
+          	iNodeCount = 93 ;
+          	jNodeCount = 107 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -2007,14 +2114,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.24609375, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
           		:iNodeCount = 93LL ;
           		:jNodeCount = 107LL ;
+          		:gridPriority = 5LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_11
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_120 {
           dimensions:
-          	gridi = 103 ;
-          	gridj = 67 ;
+          	iNodeCount = 103 ;
+          	jNodeCount = 67 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -2022,14 +2130,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
           		:iNodeCount = 103LL ;
           		:jNodeCount = 67LL ;
+          		:gridPriority = 6LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_120
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_140 {
           dimensions:
-          	gridi = 40 ;
-          	gridj = 59 ;
+          	iNodeCount = 40 ;
+          	jNodeCount = 59 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -2037,15 +2146,16 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.99453125, 0.00234375, 0. ;
           		:iNodeCount = 40LL ;
           		:jNodeCount = 59LL ;
+          		:gridPriority = 7LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_140
         } // group patch_ka_20161114_grid_ka_20161114co_v_l3_02
 
       group: patch_ka_20161114_grid_ka_20161114co_v_l3_03 {
         dimensions:
-        	gridi = 103 ;
-        	gridj = 88 ;
+        	iNodeCount = 103 ;
+        	jNodeCount = 88 ;
         variables:
-        	float displacement(gridj, gridi) ;
+        	float displacement(jNodeCount, iNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -2053,13 +2163,14 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
         		:affineCoeffs = -41.4375, 0., -0.0078125, 173.6125, 0.009375, 0. ;
         		:iNodeCount = 103LL ;
         		:jNodeCount = 88LL ;
+        		:gridPriority = 4LL ;
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_083 {
           dimensions:
-          	gridi = 62 ;
-          	gridj = 41 ;
+          	iNodeCount = 62 ;
+          	jNodeCount = 41 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -2067,14 +2178,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
           		:iNodeCount = 62LL ;
           		:jNodeCount = 41LL ;
+          		:gridPriority = 1LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_083
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_091 {
           dimensions:
-          	gridi = 62 ;
-          	gridj = 66 ;
+          	iNodeCount = 62 ;
+          	jNodeCount = 66 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -2082,14 +2194,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -41.912109375, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
           		:iNodeCount = 62LL ;
           		:jNodeCount = 66LL ;
+          		:gridPriority = 2LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_091
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_121 {
           dimensions:
-          	gridi = 103 ;
-          	gridj = 41 ;
+          	iNodeCount = 103 ;
+          	jNodeCount = 41 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -2097,14 +2210,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
           		:iNodeCount = 103LL ;
           		:jNodeCount = 41LL ;
+          		:gridPriority = 3LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_121
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_13 {
           dimensions:
-          	gridi = 103 ;
-          	gridj = 93 ;
+          	iNodeCount = 103 ;
+          	jNodeCount = 93 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -2112,14 +2226,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -41.859375, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
           		:iNodeCount = 103LL ;
           		:jNodeCount = 93LL ;
+          		:gridPriority = 4LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_13
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_141 {
           dimensions:
-          	gridi = 40 ;
-          	gridj = 41 ;
+          	iNodeCount = 40 ;
+          	jNodeCount = 41 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -2127,14 +2242,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.99453125, 0.00234375, 0. ;
           		:iNodeCount = 40LL ;
           		:jNodeCount = 41LL ;
+          		:gridPriority = 5LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_141
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_15 {
           dimensions:
-          	gridi = 103 ;
-          	gridj = 107 ;
+          	iNodeCount = 103 ;
+          	jNodeCount = 107 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -2142,14 +2258,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -41.83203125, 0., -0.001953125, 173.99453125, 0.00234375, 0. ;
           		:iNodeCount = 103LL ;
           		:jNodeCount = 107LL ;
+          		:gridPriority = 6LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_15
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_16 {
           dimensions:
-          	gridi = 64 ;
-          	gridj = 78 ;
+          	iNodeCount = 64 ;
+          	jNodeCount = 78 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -2157,14 +2274,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -41.681640625, 0., -0.001953125, 174.0859375, 0.00234375, 0. ;
           		:iNodeCount = 64LL ;
           		:jNodeCount = 78LL ;
+          		:gridPriority = 7LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_16
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_17 {
           dimensions:
-          	gridi = 56 ;
-          	gridj = 45 ;
+          	iNodeCount = 56 ;
+          	jNodeCount = 45 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -2172,14 +2290,15 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -41.83203125, 0., -0.001953125, 174.23359375, 0.00234375, 0. ;
           		:iNodeCount = 56LL ;
           		:jNodeCount = 45LL ;
+          		:gridPriority = 8LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_17
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_18 {
           dimensions:
-          	gridi = 101 ;
-          	gridj = 106 ;
+          	iNodeCount = 101 ;
+          	jNodeCount = 106 ;
           variables:
-          	float displacement(gridj, gridi) ;
+          	float displacement(jNodeCount, iNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -2187,6 +2306,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           		:affineCoeffs = -41.626953125, 0., -0.001953125, 174.23359375, 0.00234375, 0. ;
           		:iNodeCount = 101LL ;
           		:jNodeCount = 106LL ;
+          		:gridPriority = 9LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_18
         } // group patch_ka_20161114_grid_ka_20161114co_v_l3_03
       } // group patch_ka_20161114_grid_ka_20161114co_v_l2
@@ -2195,7 +2315,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
 group: nz_linz_nzgd2000-ka20161114-grid04 {
   dimensions:
-  	displacement_count = 2 ;
+  	displacementCount = 2 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
@@ -2210,10 +2330,10 @@ group: nz_linz_nzgd2000-ka20161114-grid04 {
 
   group: patch_ka_20161114_grid_ka_20161114pe1_h_l1_f {
     dimensions:
-    	gridi = 46 ;
-    	gridj = 39 ;
+    	iNodeCount = 46 ;
+    	jNodeCount = 39 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2221,13 +2341,14 @@ group: nz_linz_nzgd2000-ka20161114-grid04 {
     		:affineCoeffs = -39., 0., -0.125, 169.6, 0.15, 0. ;
     		:iNodeCount = 46LL ;
     		:jNodeCount = 39LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe1_h_l2_f {
       dimensions:
-      	gridi = 74 ;
-      	gridj = 59 ;
+      	iNodeCount = 74 ;
+      	jNodeCount = 59 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2235,13 +2356,14 @@ group: nz_linz_nzgd2000-ka20161114-grid04 {
       		:affineCoeffs = -41.125, 0., -0.03125, 172.6375, 0.0375, 0. ;
       		:iNodeCount = 74LL ;
       		:jNodeCount = 59LL ;
+      		:gridPriority = 1LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe1_h_l2_f
     } // group patch_ka_20161114_grid_ka_20161114pe1_h_l1_f
   } // group nz_linz_nzgd2000-ka20161114-grid04
 
 group: nz_linz_nzgd2000-ka20161114-grid05 {
   dimensions:
-  	displacement_count = 2 ;
+  	displacementCount = 2 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
@@ -2256,10 +2378,10 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
 
   group: patch_ka_20161114_grid_ka_20161114pe1_h_l2_r {
     dimensions:
-    	gridi = 67 ;
-    	gridj = 56 ;
+    	iNodeCount = 67 ;
+    	jNodeCount = 56 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2267,13 +2389,14 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
     		:affineCoeffs = -41.28125, 0., -0.03125, 172.45, 0.0375, 0. ;
     		:iNodeCount = 67LL ;
     		:jNodeCount = 56LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_00 {
       dimensions:
-      	gridi = 93 ;
-      	gridj = 83 ;
+      	iNodeCount = 93 ;
+      	jNodeCount = 83 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2281,14 +2404,15 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
       		:affineCoeffs = -42.0546875, 0., -0.0078125, 172.834375, 0.009375, 0. ;
       		:iNodeCount = 93LL ;
       		:jNodeCount = 83LL ;
+      		:gridPriority = 1LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_00
 
     group: patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_01 {
       dimensions:
-      	gridi = 92 ;
-      	gridj = 125 ;
+      	iNodeCount = 92 ;
+      	jNodeCount = 125 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2296,6 +2420,7 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
       		:affineCoeffs = -41.5703125, 0., -0.0078125, 173.696875, 0.009375, 0. ;
       		:iNodeCount = 92LL ;
       		:jNodeCount = 125LL ;
+      		:gridPriority = 2LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_01
     } // group patch_ka_20161114_grid_ka_20161114pe1_h_l2_r
   } // group nz_linz_nzgd2000-ka20161114-grid05
@@ -2315,10 +2440,10 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
 
   group: patch_ka_20161114_grid_ka_20161114pe1_v_l1 {
     dimensions:
-    	gridi = 29 ;
-    	gridj = 27 ;
+    	iNodeCount = 29 ;
+    	jNodeCount = 27 ;
     variables:
-    	float displacement(gridj, gridi) ;
+    	float displacement(jNodeCount, iNodeCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2326,13 +2451,14 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
     		:affineCoeffs = -40.5, 0., -0.125, 171.85, 0.15, 0. ;
     		:iNodeCount = 29LL ;
     		:jNodeCount = 27LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe1_v_l2 {
       dimensions:
-      	gridi = 72 ;
-      	gridj = 74 ;
+      	iNodeCount = 72 ;
+      	jNodeCount = 74 ;
       variables:
-      	float displacement(gridj, gridi) ;
+      	float displacement(jNodeCount, iNodeCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2340,13 +2466,14 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
       		:affineCoeffs = -40.75, 0., -0.03125, 172.675, 0.0375, 0. ;
       		:iNodeCount = 72LL ;
       		:jNodeCount = 74LL ;
+      		:gridPriority = 1LL ;
 
       group: patch_ka_20161114_grid_ka_20161114pe1_v_l3_00 {
         dimensions:
-        	gridi = 92 ;
-        	gridj = 82 ;
+        	iNodeCount = 92 ;
+        	jNodeCount = 82 ;
         variables:
-        	float displacement(gridj, gridi) ;
+        	float displacement(jNodeCount, iNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -2354,14 +2481,15 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
         		:affineCoeffs = -42.0546875, 0., -0.0078125, 172.84375, 0.009375, 0. ;
         		:iNodeCount = 92LL ;
         		:jNodeCount = 82LL ;
+        		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114pe1_v_l3_00
 
       group: patch_ka_20161114_grid_ka_20161114pe1_v_l3_01 {
         dimensions:
-        	gridi = 91 ;
-        	gridj = 119 ;
+        	iNodeCount = 91 ;
+        	jNodeCount = 119 ;
         variables:
-        	float displacement(gridj, gridi) ;
+        	float displacement(jNodeCount, iNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -2369,6 +2497,7 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
         		:affineCoeffs = -41.609375, 0., -0.0078125, 173.696875, 0.009375, 0. ;
         		:iNodeCount = 91LL ;
         		:jNodeCount = 119LL ;
+        		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114pe1_v_l3_01
       } // group patch_ka_20161114_grid_ka_20161114pe1_v_l2
     } // group patch_ka_20161114_grid_ka_20161114pe1_v_l1
@@ -2376,7 +2505,7 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
 
 group: nz_linz_nzgd2000-ka20161114-grid10 {
   dimensions:
-  	displacement_count = 2 ;
+  	displacementCount = 2 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake,  14 November 2016\nRefinement for horizontal difference between observations and model\n" ;
@@ -2388,10 +2517,10 @@ group: nz_linz_nzgd2000-ka20161114-grid10 {
 
   group: patch_ka_20161114_grid_hor_refinement {
     dimensions:
-    	gridi = 43 ;
-    	gridj = 40 ;
+    	iNodeCount = 43 ;
+    	jNodeCount = 40 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2399,12 +2528,13 @@ group: nz_linz_nzgd2000-ka20161114-grid10 {
     		:affineCoeffs = -38.625, 0., -0.125, 171.1, 0.15, 0. ;
     		:iNodeCount = 43LL ;
     		:jNodeCount = 40LL ;
+    		:gridPriority = 1LL ;
     } // group patch_ka_20161114_grid_hor_refinement
   } // group nz_linz_nzgd2000-ka20161114-grid10
 
 group: nz_linz_nzgd2000-ka20161114-grid11 {
   dimensions:
-  	displacement_count = 2 ;
+  	displacementCount = 2 ;
 
   // group attributes:
   		:comment = "Kaikoura earthquake second refinement grid - horizontal" ;
@@ -2417,10 +2547,10 @@ group: nz_linz_nzgd2000-ka20161114-grid11 {
 
   group: patch_ka_20161114_grid_hor_refinement2 {
     dimensions:
-    	gridi = 214 ;
-    	gridj = 192 ;
+    	iNodeCount = 214 ;
+    	jNodeCount = 192 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2428,6 +2558,7 @@ group: nz_linz_nzgd2000-ka20161114-grid11 {
     		:affineCoeffs = -40.56, 0., -0.015, 171.5, 0.02, 0. ;
     		:iNodeCount = 214LL ;
     		:jNodeCount = 192LL ;
+    		:gridPriority = 1LL ;
     } // group patch_ka_20161114_grid_hor_refinement2
   } // group nz_linz_nzgd2000-ka20161114-grid11
 
@@ -2444,10 +2575,10 @@ group: nz_linz_nzgd2000-ka20161114-grid12 {
 
   group: patch_ka_20161114_grid_vrt_refinement2 {
     dimensions:
-    	gridi = 216 ;
-    	gridj = 199 ;
+    	iNodeCount = 216 ;
+    	jNodeCount = 199 ;
     variables:
-    	float displacement(gridj, gridi) ;
+    	float displacement(jNodeCount, iNodeCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2455,12 +2586,13 @@ group: nz_linz_nzgd2000-ka20161114-grid12 {
     		:affineCoeffs = -40.395, 0., -0.015, 171.9, 0.02, 0. ;
     		:iNodeCount = 216LL ;
     		:jNodeCount = 199LL ;
+    		:gridPriority = 1LL ;
     } // group patch_ka_20161114_grid_vrt_refinement2
   } // group nz_linz_nzgd2000-ka20161114-grid12
 
 group: nz_linz_nzgd2000-ka20161114-grid07 {
   dimensions:
-  	displacement_count = 2 ;
+  	displacementCount = 2 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
@@ -2475,10 +2607,10 @@ group: nz_linz_nzgd2000-ka20161114-grid07 {
 
   group: patch_ka_20161114_grid_ka_20161114pe3_h_l1_f {
     dimensions:
-    	gridi = 46 ;
-    	gridj = 40 ;
+    	iNodeCount = 46 ;
+    	jNodeCount = 40 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2486,13 +2618,14 @@ group: nz_linz_nzgd2000-ka20161114-grid07 {
     		:affineCoeffs = -38.875, 0., -0.125, 169.6, 0.15, 0. ;
     		:iNodeCount = 46LL ;
     		:jNodeCount = 40LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe3_h_l2_f {
       dimensions:
-      	gridi = 66 ;
-      	gridj = 60 ;
+      	iNodeCount = 66 ;
+      	jNodeCount = 60 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2500,13 +2633,14 @@ group: nz_linz_nzgd2000-ka20161114-grid07 {
       		:affineCoeffs = -41.0625, 0., -0.03125, 172.525, 0.0375, 0. ;
       		:iNodeCount = 66LL ;
       		:jNodeCount = 60LL ;
+      		:gridPriority = 1LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe3_h_l2_f
     } // group patch_ka_20161114_grid_ka_20161114pe3_h_l1_f
   } // group nz_linz_nzgd2000-ka20161114-grid07
 
 group: nz_linz_nzgd2000-ka20161114-grid08 {
   dimensions:
-  	displacement_count = 2 ;
+  	displacementCount = 2 ;
 
   // group attributes:
   		:comment = "Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
@@ -2521,10 +2655,10 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
 
   group: patch_ka_20161114_grid_ka_20161114pe3_h_l2_r {
     dimensions:
-    	gridi = 67 ;
-    	gridj = 56 ;
+    	iNodeCount = 67 ;
+    	jNodeCount = 56 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2532,13 +2666,14 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
     		:affineCoeffs = -41.28125, 0., -0.03125, 172.45, 0.0375, 0. ;
     		:iNodeCount = 67LL ;
     		:jNodeCount = 56LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_00 {
       dimensions:
-      	gridi = 88 ;
-      	gridj = 91 ;
+      	iNodeCount = 88 ;
+      	jNodeCount = 91 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2546,14 +2681,15 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
       		:affineCoeffs = -42., 0., -0.0078125, 172.91875, 0.009375, 0. ;
       		:iNodeCount = 88LL ;
       		:jNodeCount = 91LL ;
+      		:gridPriority = 1LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_00
 
     group: patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_01 {
       dimensions:
-      	gridi = 88 ;
-      	gridj = 122 ;
+      	iNodeCount = 88 ;
+      	jNodeCount = 122 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2561,6 +2697,7 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
       		:affineCoeffs = -41.5546875, 0., -0.0078125, 173.734375, 0.009375, 0. ;
       		:iNodeCount = 88LL ;
       		:jNodeCount = 122LL ;
+      		:gridPriority = 2LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_01
     } // group patch_ka_20161114_grid_ka_20161114pe3_h_l2_r
   } // group nz_linz_nzgd2000-ka20161114-grid08
@@ -2580,10 +2717,10 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
 
   group: patch_ka_20161114_grid_ka_20161114pe3_v_l1 {
     dimensions:
-    	gridi = 31 ;
-    	gridj = 28 ;
+    	iNodeCount = 31 ;
+    	jNodeCount = 28 ;
     variables:
-    	float displacement(gridj, gridi) ;
+    	float displacement(jNodeCount, iNodeCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2591,13 +2728,14 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
     		:affineCoeffs = -40.25, 0., -0.125, 171.4, 0.15, 0. ;
     		:iNodeCount = 31LL ;
     		:jNodeCount = 28LL ;
+    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe3_v_l2 {
       dimensions:
-      	gridi = 82 ;
-      	gridj = 76 ;
+      	iNodeCount = 82 ;
+      	jNodeCount = 76 ;
       variables:
-      	float displacement(gridj, gridi) ;
+      	float displacement(jNodeCount, iNodeCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2605,13 +2743,14 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
       		:affineCoeffs = -40.65625, 0., -0.03125, 172.1875, 0.0375, 0. ;
       		:iNodeCount = 82LL ;
       		:jNodeCount = 76LL ;
+      		:gridPriority = 1LL ;
 
       group: patch_ka_20161114_grid_ka_20161114pe3_v_l3_00 {
         dimensions:
-        	gridi = 92 ;
-        	gridj = 80 ;
+        	iNodeCount = 92 ;
+        	jNodeCount = 80 ;
         variables:
-        	float displacement(gridj, gridi) ;
+        	float displacement(jNodeCount, iNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -2619,14 +2758,15 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
         		:affineCoeffs = -42.0703125, 0., -0.0078125, 172.825, 0.009375, 0. ;
         		:iNodeCount = 92LL ;
         		:jNodeCount = 80LL ;
+        		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114pe3_v_l3_00
 
       group: patch_ka_20161114_grid_ka_20161114pe3_v_l3_01 {
         dimensions:
-        	gridi = 92 ;
-        	gridj = 121 ;
+        	iNodeCount = 92 ;
+        	jNodeCount = 121 ;
         variables:
-        	float displacement(gridj, gridi) ;
+        	float displacement(jNodeCount, iNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -2634,6 +2774,7 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
         		:affineCoeffs = -41.5859375, 0., -0.0078125, 173.678125, 0.009375, 0. ;
         		:iNodeCount = 92LL ;
         		:jNodeCount = 121LL ;
+        		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114pe3_v_l3_01
       } // group patch_ka_20161114_grid_ka_20161114pe3_v_l2
     } // group patch_ka_20161114_grid_ka_20161114pe3_v_l1

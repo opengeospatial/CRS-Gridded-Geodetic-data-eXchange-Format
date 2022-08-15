@@ -239,7 +239,6 @@ class Group:
                     paramSetIndices[param.set()] = []
                 paramSetIndices[param.set()].append(iparam)
             self._paramSetIndices = paramSetIndices
-            print(f"paramSetIndices {paramSetIndices}")
 
             self._parameterMap = parammap
             self._zero = np.zeros((len(ggxfparams),))

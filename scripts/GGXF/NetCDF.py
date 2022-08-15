@@ -27,10 +27,10 @@ NETCDF_CONVENTIONS_ATTRIBUTE = "Conventions"
 NETCDF_CONVENTIONS_VALUE = "{ggxfVersion}, ACDD-1.3"
 
 
-NETCDF_VAR_GRIDDATA = "data"
+NETCDF_DIMENSION_GRIDI = "iNodeCount"
+NETCDF_DIMENSION_GRIDJ = "jNodeCount"
 
-NETCDF_DIMENSION_GRIDI = "gridi"
-NETCDF_DIMENSION_GRIDJ = "gridj"
+NETCDF_GRIDORDER_ATTRIBUTE = "gridPriority"
 
 NETCDF_ATTR_CONTEXT_GGXF = "ggxf"
 NETCDF_ATTR_CONTEXT_GROUP = "group"
@@ -113,7 +113,8 @@ class Reader(BaseReader):
             if self.validator().validateRootAttributes(metadata, context="GGXF"):
                 ggxf = GGXF(metadata)
                 for groupname, ncgroup in root.groups.items():
-                    self.loadGroup(ggxf, groupname, ncgroup)
+                    group = self.loadGroup(ggxf, groupname, ncgroup)
+                    ggxf.addGroup(group)
                 ggxf.configure(errorhandler=self.error)
             if not self._loadok:
                 ggxf = None
@@ -134,14 +135,27 @@ class Reader(BaseReader):
             return
         group = Group(ggxf, groupname, metadata)
         group.configureParameters(self.error)
-        for gridname, ncgrid in ncgroup.groups.items():
-            self.loadGrid(group, gridname, ncgrid)
-        ggxf.addGroup(group)
+        self.addGrids(group, ncgroup, group)
+        return group
 
-    def loadGrid(self, group, gridname, ncgrid, parent=None):
+    def addGrids(self, group, ncgroup, target):
+        gridlist = []
+        for gridname, ncgrid in ncgroup.groups.items():
+            (ngrid, grid) = self.loadGrid(group, gridname, ncgrid)
+            if grid is not None:
+                gridlist.append((ngrid, grid))
+        gridlist.sort(key=lambda g: g[0])
+        for gd in gridlist:
+            target.addGrid(gd[1])
+
+    def loadGrid(self, group, gridname, ncgrid):
         self._logger.debug(f"Loading grid {gridname}")
         context = f"{group.name()} {gridname}"
         metadata = self.loadMetadata(NETCDF_ATTR_CONTEXT_GRID, ncgrid)
+        ngrid = 0
+        grid = None
+        if NETCDF_GRIDORDER_ATTRIBUTE in metadata:
+            ngrid = metadata.pop(NETCDF_GRIDORDER_ATTRIBUTE)
         if self.validator().validateGridAttributes(metadata, context=context):
             # Initial handling of sets in NetCDF reader/writer, mapping to/from
             # single array
@@ -162,20 +176,13 @@ class Reader(BaseReader):
                 else:
                     data = np.concatenate([data, sdata], axis=-1)
                 indices.extend(pindices)
-            print(f"Indicies {indices}")
             irange = np.array(range(len(indices)))
             reverseIndices = irange.copy()
             reverseIndices[indices] = irange
-            print(f"reverseIndices {reverseIndices}")
             data = data[:, :, reverseIndices]
-
             grid = Grid(group, gridname, metadata, data)
-            for gridname, ncsubgrid in ncgrid.groups.items():
-                self.loadGrid(group, gridname, ncsubgrid, grid)
-            if parent:
-                parent.addGrid(grid)
-            else:
-                group.addGrid(grid)
+            self.addGrids(group, ncgrid, grid)
+        return (ngrid, grid)
 
     def loadMetadata(self, context: str, source):
         attrs = {}
@@ -408,7 +415,7 @@ class Writer(BaseWriter):
 
         for pset, pindices in group.paramSetIndices().items():
             if len(pindices) > 1:
-                cdfgroup.createDimension(f"{pset}_count", len(pindices))
+                cdfgroup.createDimension(f"{pset}Count", len(pindices))
 
         self.saveNetCdf4MetdataDot(
             NETCDF_ATTR_CONTEXT_GROUP, cdfgroup, group.metadata(), exclude=exclude
@@ -416,8 +423,8 @@ class Writer(BaseWriter):
 
         # Store each of the grids
         grids = group.grids()
-        for grid in grids:
-            self.saveGridNetCdf4(cdfgroup, group, grid, nctypes, nparam)
+        for igrid, grid in enumerate(grids):
+            self.saveGridNetCdf4(cdfgroup, group, grid, nctypes, nparam, igrid + 1)
 
     def saveGridNetCdf4(
         self,
@@ -426,6 +433,7 @@ class Writer(BaseWriter):
         grid: dict,
         nctypes: dict,
         nparam: int,
+        ngrid: int,
     ):
         name = grid.name()
         cdfgrid = cdfgroup.createGroup(name)
@@ -446,7 +454,7 @@ class Writer(BaseWriter):
         for pset, pindices in group.paramSetIndices().items():
             dimensions = [NETCDF_DIMENSION_GRIDJ, NETCDF_DIMENSION_GRIDI]
             if len(pindices) > 1:
-                dimensions.append(f"{pset}_count")
+                dimensions.append(f"{pset}Count")
 
             datavar = cdfgrid.createVariable(
                 pset,
@@ -457,14 +465,15 @@ class Writer(BaseWriter):
                 datavar[:, :, :] = grid.data()[:, :, pindices]
             else:
                 datavar[:, :] = grid.data()[:, :, pindices[0]]
-        metadata = grid.metadata()
+        metadata = grid.metadata().copy()
+        metadata[NETCDF_GRIDORDER_ATTRIBUTE] = ngrid
         self.saveNetCdf4MetdataDot(
             NETCDF_ATTR_CONTEXT_GRID, cdfgrid, metadata, exclude=exclude
         )
 
         # Support for nested grid possibility
-        for subgrid in grid.subgrids():
-            self.saveGridNetCdf4(cdfgrid, group, subgrid, nctypes, nparam)
+        for igrid, subgrid in enumerate(grid.subgrids()):
+            self.saveGridNetCdf4(cdfgrid, group, subgrid, nctypes, nparam, igrid + 1)
 
     def saveNetCdf4Attr(self, context: str, dataset: netCDF4.Dataset, name: str, value):
         if name == GGXF_ATTR_GGXF_VERSION:

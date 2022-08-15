@@ -42,16 +42,17 @@ group: puerto_rico_virgin_islands_geoid18 {
 
   group: puerto_rico_virgin_islands_geoid18 {
     dimensions:
-    	gridi = 301 ;
-    	gridj = 361 ;
+    	iNodeCount = 301 ;
+    	jNodeCount = 361 ;
     variables:
-    	float geoidHeight(gridj, gridi) ;
+    	float geoidHeight(jNodeCount, iNodeCount) ;
 
     // group attributes:
     		:affineCoeffs = 21., 0., -0.01666666667, -69., 0.01666666667, 0. ;
     		:iNodeCount = 301LL ;
     		:jNodeCount = 361LL ;
     		:comment = "grid starts in the top left (northwest) corner and works across (east) and down (south)" ;
+    		:gridPriority = 1LL ;
     data:
 
      geoidHeight =

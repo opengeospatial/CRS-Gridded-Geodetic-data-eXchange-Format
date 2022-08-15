@@ -57,10 +57,10 @@ group: secular-vertical-velocity {
 
   group: national-vertical-velocity-grid {
     dimensions:
-    	gridi = 3 ;
-    	gridj = 4 ;
+    	iNodeCount = 3 ;
+    	jNodeCount = 4 ;
     variables:
-    	float displacement(gridj, gridi) ;
+    	float displacement(jNodeCount, iNodeCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -68,6 +68,7 @@ group: secular-vertical-velocity {
     		:affineCoeffs = 172.6, 0.6, 0., -41.6, 0., 0.4 ;
     		:iNodeCount = 3LL ;
     		:jNodeCount = 4LL ;
+    		:gridPriority = 1LL ;
     data:
 
      displacement =
@@ -80,7 +81,7 @@ group: secular-vertical-velocity {
 
 group: co-and-post-seismic-deformation {
   dimensions:
-  	displacement_count = 3 ;
+  	displacementCount = 3 ;
 
   // group attributes:
   		:comment = "Hypothetical earthquake" ;
@@ -100,10 +101,10 @@ group: co-and-post-seismic-deformation {
 
   group: far-field-deformation-grid {
     dimensions:
-    	gridi = 5 ;
-    	gridj = 6 ;
+    	iNodeCount = 5 ;
+    	jNodeCount = 6 ;
     variables:
-    	float displacement(gridj, gridi, displacement_count) ;
+    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -111,6 +112,7 @@ group: co-and-post-seismic-deformation {
     		:affineCoeffs = 172.6, 0.6, 0., -41.6, 0., 0.4 ;
     		:iNodeCount = 5LL ;
     		:jNodeCount = 6LL ;
+    		:gridPriority = 1LL ;
     data:
 
      displacement =
@@ -147,10 +149,10 @@ group: co-and-post-seismic-deformation {
 
     group: near-field-deformation-grid {
       dimensions:
-      	gridi = 5 ;
-      	gridj = 3 ;
+      	iNodeCount = 5 ;
+      	jNodeCount = 3 ;
       variables:
-      	float displacement(gridj, gridi, displacement_count) ;
+      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -158,6 +160,7 @@ group: co-and-post-seismic-deformation {
       		:affineCoeffs = 172.6, 0.3, 0., -41.2, 0., 0.2 ;
       		:iNodeCount = 5LL ;
       		:jNodeCount = 3LL ;
+      		:gridPriority = 1LL ;
       data:
 
        displacement =
