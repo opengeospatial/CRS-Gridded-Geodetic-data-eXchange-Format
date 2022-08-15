@@ -392,6 +392,5 @@ class Writer(BaseWriter):
     # worked :-(
     def _writeStr(self, dumper, data):
         if "\n" in data or '"' in data or len(data) > YAML_MAX_SIMPLE_STRING_LEN:
-            print(data)
             return dumper.represent_scalar(YAML_STR_SCALAR_TAG, data, style="literal")
         return dumper.represent_scalar(YAML_STR_SCALAR_TAG, data)

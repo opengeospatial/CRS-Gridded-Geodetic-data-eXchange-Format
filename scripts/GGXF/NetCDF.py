@@ -156,17 +156,20 @@ class Reader(BaseReader):
         grid = None
         if NETCDF_GRIDORDER_ATTRIBUTE in metadata:
             ngrid = metadata.pop(NETCDF_GRIDORDER_ATTRIBUTE)
-        if self.validator().validateGridAttributes(metadata, context=context):
-            # Initial handling of sets in NetCDF reader/writer, mapping to/from
-            # single array
-            data = None
-            indices = []
+
+        # Handling of sets in NetCDF reader/writer, mapping to/from
+        # single array.  Implemented in NetCDF reader as short term
+        # approach.  Ultimately want parameter sets in GGXF definition
+        # to support lazy loading of grids.
+        data = None
+        indices = []
+        try:
             for pset, pindices in group.paramSetIndices().items():
                 try:
                     sdata = np.array(ncgrid[pset])
                 except Exception as ex:
                     self.error(
-                        "Cannot load data for grid {gridname} parameter set {pset}: {ex}"
+                        f"Cannot load data for grid {gridname} parameter set {pset}: {ex}"
                     )
                     return
                 if len(sdata.shape) == 2:
@@ -180,6 +183,12 @@ class Reader(BaseReader):
             reverseIndices = irange.copy()
             reverseIndices[indices] = irange
             data = data[:, :, reverseIndices]
+        except Exception as ex:
+            self.error(f"Cannot compile grid data for grid {gridname}: {ex}")
+        metadata[GRID_ATTR_I_NODE_COUNT] = data.shape[1]
+        metadata[GRID_ATTR_J_NODE_COUNT] = data.shape[0]
+
+        if self.validator().validateGridAttributes(metadata, context=context):
             grid = Grid(group, gridname, metadata, data)
             self.addGrids(group, ncgrid, grid)
         return (ngrid, grid)
@@ -442,6 +451,8 @@ class Writer(BaseWriter):
             GRID_ATTR_GRIDS,
             GRID_ATTR_DATA,
             GRID_ATTR_DATA_SOURCE,
+            GRID_ATTR_I_NODE_COUNT,
+            GRID_ATTR_J_NODE_COUNT,
             #            GRID_ATTR_AFFINE_COEFFS,
         ]
 

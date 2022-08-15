@@ -49,8 +49,6 @@ group: Puerto\ Rico\ Virgin\ Islands\ DEFLEC18 {
 
     // group attributes:
     		:affineCoeffs = 15., 0., 0.01666666667, -69., 0.01666666667, 0. ;
-    		:iNodeCount = 301LL ;
-    		:jNodeCount = 361LL ;
     		:gridPriority = 1LL ;
     } // group Puerto\ Rico\ Virgin\ Islands\ DEFLEC18
   } // group Puerto\ Rico\ Virgin\ Islands\ DEFLEC18

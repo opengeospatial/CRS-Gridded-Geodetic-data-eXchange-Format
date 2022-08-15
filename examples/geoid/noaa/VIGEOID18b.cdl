@@ -49,8 +49,6 @@ group: puerto_rico_virgin_islands_geoid18 {
 
     // group attributes:
     		:affineCoeffs = 15., 0., 0.01666666667, -69., 0.01666666667, 0. ;
-    		:iNodeCount = 301LL ;
-    		:jNodeCount = 361LL ;
     		:comment = "grid starts in the bottom left (southwest)corner and works across (east)and up (north)" ;
     		:gridPriority = 1LL ;
     data:

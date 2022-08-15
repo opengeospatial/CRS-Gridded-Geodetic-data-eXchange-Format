@@ -70,8 +70,6 @@ group: nz_linz_nzgd2000-ndm-grid02 {
 
     // group attributes:
     		:affineCoeffs = -25., 0., -0.5, 158., 0.5, 0. ;
-    		:iNodeCount = 73LL ;
-    		:jNodeCount = 67LL ;
     		:gridPriority = 1LL ;
 
     group: ndm_grid_igns2011_nz {
@@ -85,8 +83,6 @@ group: nz_linz_nzgd2000-ndm-grid02 {
 
       // group attributes:
       		:affineCoeffs = -33., 0., -0.1, 165.5, 0.1, 0. ;
-      		:iNodeCount = 141LL ;
-      		:jNodeCount = 151LL ;
       		:gridPriority = 1LL ;
       } // group ndm_grid_igns2011_nz
     } // group ndm_grid_nuvel1a_eez
@@ -116,8 +112,6 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
 
     // group attributes:
     		:affineCoeffs = -43.5, 0., -0.125, 165.85, 0.15, 0. ;
-    		:iNodeCount = 44LL ;
-    		:jNodeCount = 34LL ;
     		:gridPriority = 1LL ;
 
     group: patch_si_20030821_grid_si_l2 {
@@ -131,8 +125,6 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
 
       // group attributes:
       		:affineCoeffs = -44.5, 0., -0.03125, 166.225, 0.0375, 0. ;
-      		:iNodeCount = 47LL ;
-      		:jNodeCount = 45LL ;
       		:gridPriority = 1LL ;
 
       group: patch_si_20030821_grid_si_l3 {
@@ -146,8 +138,6 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
 
         // group attributes:
         		:affineCoeffs = -44.828125, 0., -0.0078125, 166.5625, 0.009375, 0. ;
-        		:iNodeCount = 93LL ;
-        		:jNodeCount = 81LL ;
         		:gridPriority = 1LL ;
         } // group patch_si_20030821_grid_si_l3
       } // group patch_si_20030821_grid_si_l2
@@ -178,8 +168,6 @@ group: nz_linz_nzgd2000-mq20041223-grid011 {
 
     // group attributes:
     		:affineCoeffs = -52.125, 0., -0.125, 168.4, 0.15, 0. ;
-    		:iNodeCount = 10LL ;
-    		:jNodeCount = 8LL ;
     		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p0_l1
   } // group nz_linz_nzgd2000-mq20041223-grid011
@@ -208,8 +196,6 @@ group: nz_linz_nzgd2000-mq20041223-grid012 {
 
     // group attributes:
     		:affineCoeffs = -48.25, 0., -0.03125, 158.8, 0.0375, 0. ;
-    		:iNodeCount = 105LL ;
-    		:jNodeCount = 137LL ;
     		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p1_sl2
   } // group nz_linz_nzgd2000-mq20041223-grid012
@@ -238,8 +224,6 @@ group: nz_linz_nzgd2000-mq20041223-grid013 {
 
     // group attributes:
     		:affineCoeffs = -50.125, 0., -0.125, 165.4, 0.15, 0. ;
-    		:iNodeCount = 11LL ;
-    		:jNodeCount = 11LL ;
     		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p2_l1
   } // group nz_linz_nzgd2000-mq20041223-grid013
@@ -268,8 +252,6 @@ group: nz_linz_nzgd2000-mq20041223-grid014 {
 
     // group attributes:
     		:affineCoeffs = -49.25, 0., -0.125, 178.15, 0.15, 0. ;
-    		:iNodeCount = 9LL ;
-    		:jNodeCount = 8LL ;
     		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p3_l1
   } // group nz_linz_nzgd2000-mq20041223-grid014
@@ -298,8 +280,6 @@ group: nz_linz_nzgd2000-mq20041223-grid015 {
 
     // group attributes:
     		:affineCoeffs = -40.125, 0., -0.125, 165.85, 0.15, 0. ;
-    		:iNodeCount = 70LL ;
-    		:jNodeCount = 68LL ;
     		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p4_l1
   } // group nz_linz_nzgd2000-mq20041223-grid015
@@ -328,8 +308,6 @@ group: nz_linz_nzgd2000-mq20041223-grid016 {
 
     // group attributes:
     		:affineCoeffs = -47.375, 0., -0.125, 178.45, 0.15, 0. ;
-    		:iNodeCount = 8LL ;
-    		:jNodeCount = 7LL ;
     		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p5_l1
   } // group nz_linz_nzgd2000-mq20041223-grid016
@@ -358,8 +336,6 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
 
     // group attributes:
     		:affineCoeffs = -43.75, 0., -0.125, 165.85, 0.15, 0. ;
-    		:iNodeCount = 37LL ;
-    		:jNodeCount = 27LL ;
     		:gridPriority = 1LL ;
 
     group: patch_gs_20071016_grid_gs_l2 {
@@ -373,8 +349,6 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
 
       // group attributes:
       		:affineCoeffs = -44.28125, 0., -0.03125, 166.6375, 0.0375, 0. ;
-      		:iNodeCount = 45LL ;
-      		:jNodeCount = 37LL ;
       		:gridPriority = 1LL ;
 
       group: patch_gs_20071016_grid_gs_l3 {
@@ -388,8 +362,6 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
 
         // group attributes:
         		:affineCoeffs = -44.6171875, 0., -0.0078125, 167.0875, 0.009375, 0. ;
-        		:iNodeCount = 54LL ;
-        		:jNodeCount = 52LL ;
         		:gridPriority = 1LL ;
         } // group patch_gs_20071016_grid_gs_l3
       } // group patch_gs_20071016_grid_gs_l2
@@ -427,8 +399,6 @@ group: nz_linz_nzgd2000-ds20090715-grid011 {
 
     // group attributes:
     		:affineCoeffs = -50.125, 0., -0.125, 165.4, 0.15, 0. ;
-    		:iNodeCount = 11LL ;
-    		:jNodeCount = 11LL ;
     		:gridPriority = 1LL ;
     } // group patch_ds_20090715_grid_ds_p0_l1
   } // group nz_linz_nzgd2000-ds20090715-grid011
@@ -464,8 +434,6 @@ group: nz_linz_nzgd2000-ds20090715-grid012 {
 
     // group attributes:
     		:affineCoeffs = -49.25, 0., -0.125, 178.15, 0.15, 0. ;
-    		:iNodeCount = 6LL ;
-    		:jNodeCount = 7LL ;
     		:gridPriority = 1LL ;
     } // group patch_ds_20090715_grid_ds_p1_l1
   } // group nz_linz_nzgd2000-ds20090715-grid012
@@ -501,8 +469,6 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
 
     // group attributes:
     		:affineCoeffs = -39.625, 0., -0.125, 164.65, 0.15, 0. ;
-    		:iNodeCount = 85LL ;
-    		:jNodeCount = 72LL ;
     		:gridPriority = 1LL ;
 
     group: patch_ds_20090715_grid_ds_p2_l2 {
@@ -516,8 +482,6 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
 
       // group attributes:
       		:affineCoeffs = -44.6875, 0., -0.03125, 165.2875, 0.0375, 0. ;
-      		:iNodeCount = 67LL ;
-      		:jNodeCount = 73LL ;
       		:gridPriority = 1LL ;
 
       group: patch_ds_20090715_grid_ds_p2_l3 {
@@ -531,8 +495,6 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
 
         // group attributes:
         		:affineCoeffs = -45.28125, 0., -0.0078125, 166.075, 0.009375, 0. ;
-        		:iNodeCount = 83LL ;
-        		:jNodeCount = 138LL ;
         		:gridPriority = 1LL ;
         } // group patch_ds_20090715_grid_ds_p2_l3
       } // group patch_ds_20090715_grid_ds_p2_l2
@@ -570,8 +532,6 @@ group: nz_linz_nzgd2000-ds20090715-grid014 {
 
     // group attributes:
     		:affineCoeffs = -47.375, 0., -0.125, 178.45, 0.15, 0. ;
-    		:iNodeCount = 8LL ;
-    		:jNodeCount = 7LL ;
     		:gridPriority = 1LL ;
     } // group patch_ds_20090715_grid_ds_p3_l1
   } // group nz_linz_nzgd2000-ds20090715-grid014
@@ -600,8 +560,6 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
 
     // group attributes:
     		:affineCoeffs = -40.375, 0., -0.125, 168.1, 0.15, 0. ;
-    		:iNodeCount = 55LL ;
-    		:jNodeCount = 52LL ;
     		:gridPriority = 1LL ;
 
     group: patch_c1_20100904_grid_c1_l2 {
@@ -615,8 +573,6 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
 
       // group attributes:
       		:affineCoeffs = -42.8125, 0., -0.03125, 171.1, 0.0375, 0. ;
-      		:iNodeCount = 59LL ;
-      		:jNodeCount = 50LL ;
       		:gridPriority = 1LL ;
 
       group: patch_c1_20100904_grid_c1_l3 {
@@ -630,8 +586,6 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
 
         // group attributes:
         		:affineCoeffs = -43.25, 0., -0.0078125, 171.625, 0.009375, 0. ;
-        		:iNodeCount = 118LL ;
-        		:jNodeCount = 84LL ;
         		:gridPriority = 1LL ;
 
         group: patch_c1_20100904_grid_c1_l4 {
@@ -645,8 +599,6 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
 
           // group attributes:
           		:affineCoeffs = -43.423828125, 0., -0.001953125, 171.8125, 0.00234375, 0. ;
-          		:iNodeCount = 306LL ;
-          		:jNodeCount = 141LL ;
           		:gridPriority = 1LL ;
           } // group patch_c1_20100904_grid_c1_l4
         } // group patch_c1_20100904_grid_c1_l3
@@ -678,8 +630,6 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
 
     // group attributes:
     		:affineCoeffs = -42.375, 0., -0.125, 170.8, 0.15, 0. ;
-    		:iNodeCount = 21LL ;
-    		:jNodeCount = 18LL ;
     		:gridPriority = 1LL ;
 
     group: patch_c2_20110222_grid_c2_l2 {
@@ -693,8 +643,6 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
 
       // group attributes:
       		:affineCoeffs = -43.03125, 0., -0.03125, 172., 0.0375, 0. ;
-      		:iNodeCount = 38LL ;
-      		:jNodeCount = 34LL ;
       		:gridPriority = 1LL ;
 
       group: patch_c2_20110222_grid_c2_l3 {
@@ -708,8 +656,6 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
 
         // group attributes:
         		:affineCoeffs = -43.3515625, 0., -0.0078125, 172.4125, 0.009375, 0. ;
-        		:iNodeCount = 62LL ;
-        		:jNodeCount = 52LL ;
         		:gridPriority = 1LL ;
 
         group: patch_c2_20110222_grid_c2_l4 {
@@ -723,8 +669,6 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
 
           // group attributes:
           		:affineCoeffs = -43.474609375, 0., -0.001953125, 172.56015625, 0.00234375, 0. ;
-          		:iNodeCount = 118LL ;
-          		:jNodeCount = 81LL ;
           		:gridPriority = 1LL ;
           } // group patch_c2_20110222_grid_c2_l4
         } // group patch_c2_20110222_grid_c2_l3
@@ -756,8 +700,6 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
 
     // group attributes:
     		:affineCoeffs = -42.625, 0., -0.125, 171.4, 0.15, 0. ;
-    		:iNodeCount = 16LL ;
-    		:jNodeCount = 15LL ;
     		:gridPriority = 1LL ;
 
     group: patch_c3_20110613_grid_c3_l2 {
@@ -771,8 +713,6 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
 
       // group attributes:
       		:affineCoeffs = -43.09375, 0., -0.03125, 172.15, 0.0375, 0. ;
-      		:iNodeCount = 33LL ;
-      		:jNodeCount = 31LL ;
       		:gridPriority = 1LL ;
 
       group: patch_c3_20110613_grid_c3_l3 {
@@ -786,8 +726,6 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
 
         // group attributes:
         		:affineCoeffs = -43.375, 0., -0.0078125, 172.515625, 0.009375, 0. ;
-        		:iNodeCount = 51LL ;
-        		:jNodeCount = 48LL ;
         		:gridPriority = 1LL ;
 
         group: patch_c3_20110613_grid_c3_l4 {
@@ -801,8 +739,6 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
 
           // group attributes:
           		:affineCoeffs = -43.484375, 0., -0.001953125, 172.65390625, 0.00234375, 0. ;
-          		:iNodeCount = 88LL ;
-          		:jNodeCount = 84LL ;
           		:gridPriority = 1LL ;
           } // group patch_c3_20110613_grid_c3_l4
         } // group patch_c3_20110613_grid_c3_l3
@@ -834,8 +770,6 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
 
     // group attributes:
     		:affineCoeffs = -42.75, 0., -0.125, 171.55, 0.15, 0. ;
-    		:iNodeCount = 15LL ;
-    		:jNodeCount = 13LL ;
     		:gridPriority = 1LL ;
 
     group: patch_c4_20111223_grid_c4_l2 {
@@ -849,8 +783,6 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
 
       // group attributes:
       		:affineCoeffs = -43.03125, 0., -0.03125, 172.1875, 0.0375, 0. ;
-      		:iNodeCount = 32LL ;
-      		:jNodeCount = 30LL ;
       		:gridPriority = 1LL ;
 
       group: patch_c4_20111223_grid_c4_l3 {
@@ -864,8 +796,6 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
 
         // group attributes:
         		:affineCoeffs = -43.3125, 0., -0.0078125, 172.553125, 0.009375, 0. ;
-        		:iNodeCount = 52LL ;
-        		:jNodeCount = 44LL ;
         		:gridPriority = 1LL ;
 
         group: patch_c4_20111223_grid_c4_l4 {
@@ -879,8 +809,6 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
 
           // group attributes:
           		:affineCoeffs = -43.421875, 0., -0.001953125, 172.67734375, 0.00234375, 0. ;
-          		:iNodeCount = 87LL ;
-          		:jNodeCount = 61LL ;
           		:gridPriority = 1LL ;
           } // group patch_c4_20111223_grid_c4_l4
         } // group patch_c4_20111223_grid_c4_l3
@@ -912,8 +840,6 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
 
     // group attributes:
     		:affineCoeffs = -39.5, 0., -0.125, 171.55, 0.15, 0. ;
-    		:iNodeCount = 34LL ;
-    		:jNodeCount = 32LL ;
     		:gridPriority = 1LL ;
 
     group: patch_cs_20130721_grid_cs_20130721_l2 {
@@ -927,8 +853,6 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
 
       // group attributes:
       		:affineCoeffs = -41.03125, 0., -0.03125, 173.5375, 0.0375, 0. ;
-      		:iNodeCount = 43LL ;
-      		:jNodeCount = 37LL ;
       		:gridPriority = 1LL ;
 
       group: patch_cs_20130721_grid_cs_20130721_l3 {
@@ -942,8 +866,6 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.3828125, 0., -0.0078125, 173.9875, 0.009375, 0. ;
-        		:iNodeCount = 73LL ;
-        		:jNodeCount = 57LL ;
         		:gridPriority = 1LL ;
 
         group: patch_cs_20130721_grid_cs_20130721_l4 {
@@ -957,8 +879,6 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
 
           // group attributes:
           		:affineCoeffs = -41.537109375, 0., -0.001953125, 174.28984375, 0.00234375, 0. ;
-          		:iNodeCount = 90LL ;
-          		:jNodeCount = 68LL ;
           		:gridPriority = 1LL ;
           } // group patch_cs_20130721_grid_cs_20130721_l4
         } // group patch_cs_20130721_grid_cs_20130721_l3
@@ -990,8 +910,6 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
 
     // group attributes:
     		:affineCoeffs = -39.25, 0., -0.125, 170.95, 0.15, 0. ;
-    		:iNodeCount = 39LL ;
-    		:jNodeCount = 39LL ;
     		:gridPriority = 1LL ;
 
     group: patch_lg_20130816_grid_lg_20130816_l2 {
@@ -1005,8 +923,6 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
 
       // group attributes:
       		:affineCoeffs = -41.09375, 0., -0.03125, 173.3875, 0.0375, 0. ;
-      		:iNodeCount = 44LL ;
-      		:jNodeCount = 40LL ;
       		:gridPriority = 1LL ;
 
       group: patch_lg_20130816_grid_lg_20130816_l3 {
@@ -1020,8 +936,6 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.4609375, 0., -0.0078125, 173.809375, 0.009375, 0. ;
-        		:iNodeCount = 79LL ;
-        		:jNodeCount = 63LL ;
         		:gridPriority = 1LL ;
 
         group: patch_lg_20130816_grid_lg_20130816_l4 {
@@ -1035,8 +949,6 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
 
           // group attributes:
           		:affineCoeffs = -41.60546875, 0., -0.001953125, 174.034375, 0.00234375, 0. ;
-          		:iNodeCount = 134LL ;
-          		:jNodeCount = 104LL ;
           		:gridPriority = 1LL ;
           } // group patch_lg_20130816_grid_lg_20130816_l4
         } // group patch_lg_20130816_grid_lg_20130816_l3
@@ -1068,8 +980,6 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
 
     // group attributes:
     		:affineCoeffs = -42.875, 0., -0.125, 171.7, 0.15, 0. ;
-    		:iNodeCount = 14LL ;
-    		:jNodeCount = 11LL ;
     		:gridPriority = 1LL ;
 
     group: patch_ch_20160214_grid_ch_20160214_l2 {
@@ -1083,8 +993,6 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
 
       // group attributes:
       		:affineCoeffs = -43.0625, 0., -0.03125, 172.225, 0.0375, 0. ;
-      		:iNodeCount = 29LL ;
-      		:jNodeCount = 27LL ;
       		:gridPriority = 1LL ;
 
       group: patch_ch_20160214_grid_ch_20160214_l3 {
@@ -1098,8 +1006,6 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
 
         // group attributes:
         		:affineCoeffs = -43.3203125, 0., -0.0078125, 172.553125, 0.009375, 0. ;
-        		:iNodeCount = 46LL ;
-        		:jNodeCount = 38LL ;
         		:gridPriority = 1LL ;
 
         group: patch_ch_20160214_grid_ch_20160214_l4 {
@@ -1113,8 +1019,6 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
 
           // group attributes:
           		:affineCoeffs = -43.408203125, 0., -0.001953125, 172.67265625, 0.00234375, 0. ;
-          		:iNodeCount = 79LL ;
-          		:jNodeCount = 61LL ;
           		:gridPriority = 1LL ;
           } // group patch_ch_20160214_grid_ch_20160214_l4
         } // group patch_ch_20160214_grid_ch_20160214_l3
@@ -1145,8 +1049,6 @@ group: nz_linz_nzgd2000-ka20161114-grid01 {
 
     // group attributes:
     		:affineCoeffs = -34., 0., -0.125, 165.85, 0.15, 0. ;
-    		:iNodeCount = 89LL ;
-    		:jNodeCount = 110LL ;
     		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114co_h_l2_f {
@@ -1160,8 +1062,6 @@ group: nz_linz_nzgd2000-ka20161114-grid01 {
 
       // group attributes:
       		:affineCoeffs = -40.8125, 0., -0.03125, 171.925, 0.0375, 0. ;
-      		:iNodeCount = 95LL ;
-      		:jNodeCount = 82LL ;
       		:gridPriority = 1LL ;
       } // group patch_ka_20161114_grid_ka_20161114co_h_l2_f
     } // group patch_ka_20161114_grid_ka_20161114co_h_l1_f
@@ -1191,8 +1091,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
     // group attributes:
     		:affineCoeffs = -41.28125, 0., -0.03125, 172.525, 0.0375, 0. ;
-    		:iNodeCount = 65LL ;
-    		:jNodeCount = 53LL ;
     		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00 {
@@ -1206,8 +1104,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
       // group attributes:
       		:affineCoeffs = -42.1484375, 0., -0.0078125, 172.571875, 0.009375, 0. ;
-      		:iNodeCount = 115LL ;
-      		:jNodeCount = 94LL ;
       		:gridPriority = 1LL ;
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_00 {
@@ -1221,8 +1117,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.484375, 0., -0.001953125, 172.7828125, 0.00234375, 0. ;
-        		:iNodeCount = 106LL ;
-        		:jNodeCount = 107LL ;
         		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_00
 
@@ -1237,8 +1131,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.435546875, 0., -0.001953125, 173.00546875, 0.00234375, 0. ;
-        		:iNodeCount = 11LL ;
-        		:jNodeCount = 26LL ;
         		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_01
 
@@ -1253,8 +1145,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.02890625, 0.00234375, 0. ;
-        		:iNodeCount = 106LL ;
-        		:jNodeCount = 111LL ;
         		:gridPriority = 3LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_02
 
@@ -1269,8 +1159,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.38671875, 0., -0.001953125, 173.02890625, 0.00234375, 0. ;
-        		:iNodeCount = 106LL ;
-        		:jNodeCount = 51LL ;
         		:gridPriority = 4LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_03
 
@@ -1285,8 +1173,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.275, 0.00234375, 0. ;
-        		:iNodeCount = 106LL ;
-        		:jNodeCount = 88LL ;
         		:gridPriority = 5LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_04
 
@@ -1301,8 +1187,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.275, 0.00234375, 0. ;
-        		:iNodeCount = 106LL ;
-        		:jNodeCount = 111LL ;
         		:gridPriority = 6LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_05
 
@@ -1317,8 +1201,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.47421875, 0.00234375, 0. ;
-        		:iNodeCount = 21LL ;
-        		:jNodeCount = 63LL ;
         		:gridPriority = 7LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_060
 
@@ -1333,8 +1215,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
-        		:iNodeCount = 52LL ;
-        		:jNodeCount = 30LL ;
         		:gridPriority = 8LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_080
 
@@ -1349,8 +1229,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
-        		:iNodeCount = 52LL ;
-        		:jNodeCount = 111LL ;
         		:gridPriority = 9LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_090
 
@@ -1365,8 +1243,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
-        		:iNodeCount = 52LL ;
-        		:jNodeCount = 63LL ;
         		:gridPriority = 10LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_100
       } // group patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
@@ -1382,8 +1258,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
       // group attributes:
       		:affineCoeffs = -41.4609375, 0., -0.0078125, 173.153125, 0.009375, 0. ;
-      		:iNodeCount = 53LL ;
-      		:jNodeCount = 89LL ;
       		:gridPriority = 2LL ;
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_061 {
@@ -1397,8 +1271,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.47421875, 0.00234375, 0. ;
-        		:iNodeCount = 21LL ;
-        		:jNodeCount = 49LL ;
         		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_061
 
@@ -1413,8 +1285,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.044921875, 0., -0.001953125, 173.50234375, 0.0023437500000014, 0. ;
-        		:iNodeCount = 9LL ;
-        		:jNodeCount = 6LL ;
         		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_07
 
@@ -1429,8 +1299,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
-        		:iNodeCount = 52LL ;
-        		:jNodeCount = 49LL ;
         		:gridPriority = 3LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_101
 
@@ -1445,8 +1313,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
-        		:iNodeCount = 52LL ;
-        		:jNodeCount = 111LL ;
         		:gridPriority = 4LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_110
       } // group patch_ka_20161114_grid_ka_20161114co_h_l3_r_01
@@ -1462,8 +1328,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
       // group attributes:
       		:affineCoeffs = -42.1484375, 0., -0.0078125, 173.640625, 0.009375, 0. ;
-      		:iNodeCount = 73LL ;
-      		:jNodeCount = 63LL ;
       		:gridPriority = 3LL ;
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_081 {
@@ -1477,8 +1341,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
-        		:iNodeCount = 28LL ;
-        		:jNodeCount = 30LL ;
         		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_081
 
@@ -1493,8 +1355,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
-        		:iNodeCount = 55LL ;
-        		:jNodeCount = 111LL ;
         		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_091
 
@@ -1509,8 +1369,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
-        		:iNodeCount = 55LL ;
-        		:jNodeCount = 63LL ;
         		:gridPriority = 3LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_102
 
@@ -1525,8 +1383,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
-        		:iNodeCount = 87LL ;
-        		:jNodeCount = 95LL ;
         		:gridPriority = 4LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_13
 
@@ -1541,8 +1397,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
-        		:iNodeCount = 106LL ;
-        		:jNodeCount = 63LL ;
         		:gridPriority = 5LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_140
 
@@ -1557,8 +1411,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
-        		:iNodeCount = 62LL ;
-        		:jNodeCount = 41LL ;
         		:gridPriority = 6LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_170
       } // group patch_ka_20161114_grid_ka_20161114co_h_l3_r_02
@@ -1574,8 +1426,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
       // group attributes:
       		:affineCoeffs = -41.421875, 0., -0.0078125, 173.640625, 0.009375, 0. ;
-      		:iNodeCount = 114LL ;
-      		:jNodeCount = 94LL ;
       		:gridPriority = 4LL ;
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_103 {
@@ -1589,8 +1439,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
-        		:iNodeCount = 55LL ;
-        		:jNodeCount = 49LL ;
         		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_103
 
@@ -1605,8 +1453,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
-        		:iNodeCount = 55LL ;
-        		:jNodeCount = 111LL ;
         		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_111
 
@@ -1621,8 +1467,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.822265625, 0., -0.001953125, 173.734375, 0.00234375, 0. ;
-        		:iNodeCount = 15LL ;
-        		:jNodeCount = 10LL ;
         		:gridPriority = 3LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_12
 
@@ -1637,8 +1481,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
-        		:iNodeCount = 106LL ;
-        		:jNodeCount = 49LL ;
         		:gridPriority = 4LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_141
 
@@ -1653,8 +1495,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
-        		:iNodeCount = 106LL ;
-        		:jNodeCount = 111LL ;
         		:gridPriority = 5LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_15
 
@@ -1669,8 +1509,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.76171875, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
-        		:iNodeCount = 106LL ;
-        		:jNodeCount = 41LL ;
         		:gridPriority = 6LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_16
 
@@ -1685,8 +1523,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
-        		:iNodeCount = 62LL ;
-        		:jNodeCount = 49LL ;
         		:gridPriority = 7LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_171
 
@@ -1701,8 +1537,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
-        		:iNodeCount = 106LL ;
-        		:jNodeCount = 111LL ;
         		:gridPriority = 8LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_18
 
@@ -1717,8 +1551,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.66015625, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
-        		:iNodeCount = 106LL ;
-        		:jNodeCount = 93LL ;
         		:gridPriority = 9LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_19
 
@@ -1733,8 +1565,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 174.259375, 0.00234375, 0. ;
-        		:iNodeCount = 59LL ;
-        		:jNodeCount = 35LL ;
         		:gridPriority = 10LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_20
 
@@ -1749,8 +1579,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.626953125, 0., -0.001953125, 174.259375, 0.00234375, 0. ;
-        		:iNodeCount = 104LL ;
-        		:jNodeCount = 110LL ;
         		:gridPriority = 11LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_21
       } // group patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
@@ -1779,8 +1607,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
     // group attributes:
     		:affineCoeffs = -34.25, 0., -0.125, 166.3, 0.15, 0. ;
-    		:iNodeCount = 86LL ;
-    		:jNodeCount = 108LL ;
     		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114co_v_l2 {
@@ -1794,8 +1620,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
       // group attributes:
       		:affineCoeffs = -41.0625, 0., -0.03125, 172.225, 0.0375, 0. ;
-      		:iNodeCount = 74LL ;
-      		:jNodeCount = 67LL ;
       		:gridPriority = 1LL ;
 
       group: patch_ka_20161114_grid_ka_20161114co_v_l3_00 {
@@ -1809,8 +1633,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
         // group attributes:
         		:affineCoeffs = -42.1171875, 0., -0.0078125, 172.65625, 0.009375, 0. ;
-        		:iNodeCount = 103LL ;
-        		:jNodeCount = 89LL ;
         		:gridPriority = 1LL ;
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_00 {
@@ -1824,8 +1646,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.490234375, 0., -0.001953125, 172.79921875, 0.00234375, 0. ;
-          		:iNodeCount = 103LL ;
-          		:jNodeCount = 88LL ;
           		:gridPriority = 1LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_00
 
@@ -1840,8 +1660,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.03828125, 0.00234375, 0. ;
-          		:iNodeCount = 103LL ;
-          		:jNodeCount = 105LL ;
           		:gridPriority = 2LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_01
 
@@ -1856,8 +1674,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.353515625, 0., -0.001953125, 173.07109375, 0.00234375, 0. ;
-          		:iNodeCount = 89LL ;
-          		:jNodeCount = 52LL ;
           		:gridPriority = 3LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_02
 
@@ -1872,8 +1688,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.27734375, 0.00234375, 0. ;
-          		:iNodeCount = 103LL ;
-          		:jNodeCount = 100LL ;
           		:gridPriority = 4LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_03
 
@@ -1888,8 +1702,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.28125, 0., -0.001953125, 173.27734375, 0.00234375, 0. ;
-          		:iNodeCount = 103LL ;
-          		:jNodeCount = 89LL ;
           		:gridPriority = 5LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_04
 
@@ -1904,8 +1716,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.46953125, 0.00234375, 0. ;
-          		:iNodeCount = 21LL ;
-          		:jNodeCount = 67LL ;
           		:gridPriority = 6LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_050
 
@@ -1920,8 +1730,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
-          		:iNodeCount = 42LL ;
-          		:jNodeCount = 34LL ;
           		:gridPriority = 7LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_060
 
@@ -1936,8 +1744,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.24609375, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
-          		:iNodeCount = 42LL ;
-          		:jNodeCount = 107LL ;
           		:gridPriority = 8LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_070
 
@@ -1952,8 +1758,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
-          		:iNodeCount = 42LL ;
-          		:jNodeCount = 67LL ;
           		:gridPriority = 9LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_080
         } // group patch_ka_20161114_grid_ka_20161114co_v_l3_00
@@ -1969,8 +1773,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
         // group attributes:
         		:affineCoeffs = -41.578125, 0., -0.0078125, 173.209375, 0.009375, 0. ;
-        		:iNodeCount = 44LL ;
-        		:jNodeCount = 70LL ;
         		:gridPriority = 2LL ;
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_051 {
@@ -1984,8 +1786,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.46953125, 0.00234375, 0. ;
-          		:iNodeCount = 21LL ;
-          		:jNodeCount = 33LL ;
           		:gridPriority = 1LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_051
 
@@ -2000,8 +1800,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
-          		:iNodeCount = 42LL ;
-          		:jNodeCount = 41LL ;
           		:gridPriority = 2LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_081
 
@@ -2016,8 +1814,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -41.912109375, 0., -0.001953125, 173.58671875, 0.00234375, 0. ;
-          		:iNodeCount = 12LL ;
-          		:jNodeCount = 66LL ;
           		:gridPriority = 3LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_090
         } // group patch_ka_20161114_grid_ka_20161114co_v_l3_01
@@ -2033,8 +1829,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
         // group attributes:
         		:affineCoeffs = -42.1171875, 0., -0.0078125, 173.6125, 0.009375, 0. ;
-        		:iNodeCount = 79LL ;
-        		:jNodeCount = 60LL ;
         		:gridPriority = 3LL ;
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_061 {
@@ -2048,8 +1842,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
-          		:iNodeCount = 62LL ;
-          		:jNodeCount = 34LL ;
           		:gridPriority = 1LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_061
 
@@ -2064,8 +1856,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.24609375, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
-          		:iNodeCount = 62LL ;
-          		:jNodeCount = 107LL ;
           		:gridPriority = 2LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_071
 
@@ -2080,8 +1870,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
-          		:iNodeCount = 62LL ;
-          		:jNodeCount = 67LL ;
           		:gridPriority = 3LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_082
 
@@ -2096,8 +1884,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
-          		:iNodeCount = 7LL ;
-          		:jNodeCount = 4LL ;
           		:gridPriority = 4LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_10
 
@@ -2112,8 +1898,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.24609375, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
-          		:iNodeCount = 93LL ;
-          		:jNodeCount = 107LL ;
           		:gridPriority = 5LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_11
 
@@ -2128,8 +1912,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
-          		:iNodeCount = 103LL ;
-          		:jNodeCount = 67LL ;
           		:gridPriority = 6LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_120
 
@@ -2144,8 +1926,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.99453125, 0.00234375, 0. ;
-          		:iNodeCount = 40LL ;
-          		:jNodeCount = 59LL ;
           		:gridPriority = 7LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_140
         } // group patch_ka_20161114_grid_ka_20161114co_v_l3_02
@@ -2161,8 +1941,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
         // group attributes:
         		:affineCoeffs = -41.4375, 0., -0.0078125, 173.6125, 0.009375, 0. ;
-        		:iNodeCount = 103LL ;
-        		:jNodeCount = 88LL ;
         		:gridPriority = 4LL ;
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_083 {
@@ -2176,8 +1954,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
-          		:iNodeCount = 62LL ;
-          		:jNodeCount = 41LL ;
           		:gridPriority = 1LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_083
 
@@ -2192,8 +1968,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -41.912109375, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
-          		:iNodeCount = 62LL ;
-          		:jNodeCount = 66LL ;
           		:gridPriority = 2LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_091
 
@@ -2208,8 +1982,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
-          		:iNodeCount = 103LL ;
-          		:jNodeCount = 41LL ;
           		:gridPriority = 3LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_121
 
@@ -2224,8 +1996,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -41.859375, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
-          		:iNodeCount = 103LL ;
-          		:jNodeCount = 93LL ;
           		:gridPriority = 4LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_13
 
@@ -2240,8 +2010,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.99453125, 0.00234375, 0. ;
-          		:iNodeCount = 40LL ;
-          		:jNodeCount = 41LL ;
           		:gridPriority = 5LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_141
 
@@ -2256,8 +2024,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -41.83203125, 0., -0.001953125, 173.99453125, 0.00234375, 0. ;
-          		:iNodeCount = 103LL ;
-          		:jNodeCount = 107LL ;
           		:gridPriority = 6LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_15
 
@@ -2272,8 +2038,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -41.681640625, 0., -0.001953125, 174.0859375, 0.00234375, 0. ;
-          		:iNodeCount = 64LL ;
-          		:jNodeCount = 78LL ;
           		:gridPriority = 7LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_16
 
@@ -2288,8 +2052,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -41.83203125, 0., -0.001953125, 174.23359375, 0.00234375, 0. ;
-          		:iNodeCount = 56LL ;
-          		:jNodeCount = 45LL ;
           		:gridPriority = 8LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_17
 
@@ -2304,8 +2066,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -41.626953125, 0., -0.001953125, 174.23359375, 0.00234375, 0. ;
-          		:iNodeCount = 101LL ;
-          		:jNodeCount = 106LL ;
           		:gridPriority = 9LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_18
         } // group patch_ka_20161114_grid_ka_20161114co_v_l3_03
@@ -2339,8 +2099,6 @@ group: nz_linz_nzgd2000-ka20161114-grid04 {
 
     // group attributes:
     		:affineCoeffs = -39., 0., -0.125, 169.6, 0.15, 0. ;
-    		:iNodeCount = 46LL ;
-    		:jNodeCount = 39LL ;
     		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe1_h_l2_f {
@@ -2354,8 +2112,6 @@ group: nz_linz_nzgd2000-ka20161114-grid04 {
 
       // group attributes:
       		:affineCoeffs = -41.125, 0., -0.03125, 172.6375, 0.0375, 0. ;
-      		:iNodeCount = 74LL ;
-      		:jNodeCount = 59LL ;
       		:gridPriority = 1LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe1_h_l2_f
     } // group patch_ka_20161114_grid_ka_20161114pe1_h_l1_f
@@ -2387,8 +2143,6 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
 
     // group attributes:
     		:affineCoeffs = -41.28125, 0., -0.03125, 172.45, 0.0375, 0. ;
-    		:iNodeCount = 67LL ;
-    		:jNodeCount = 56LL ;
     		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_00 {
@@ -2402,8 +2156,6 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
 
       // group attributes:
       		:affineCoeffs = -42.0546875, 0., -0.0078125, 172.834375, 0.009375, 0. ;
-      		:iNodeCount = 93LL ;
-      		:jNodeCount = 83LL ;
       		:gridPriority = 1LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_00
 
@@ -2418,8 +2170,6 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
 
       // group attributes:
       		:affineCoeffs = -41.5703125, 0., -0.0078125, 173.696875, 0.009375, 0. ;
-      		:iNodeCount = 92LL ;
-      		:jNodeCount = 125LL ;
       		:gridPriority = 2LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_01
     } // group patch_ka_20161114_grid_ka_20161114pe1_h_l2_r
@@ -2449,8 +2199,6 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
 
     // group attributes:
     		:affineCoeffs = -40.5, 0., -0.125, 171.85, 0.15, 0. ;
-    		:iNodeCount = 29LL ;
-    		:jNodeCount = 27LL ;
     		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe1_v_l2 {
@@ -2464,8 +2212,6 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
 
       // group attributes:
       		:affineCoeffs = -40.75, 0., -0.03125, 172.675, 0.0375, 0. ;
-      		:iNodeCount = 72LL ;
-      		:jNodeCount = 74LL ;
       		:gridPriority = 1LL ;
 
       group: patch_ka_20161114_grid_ka_20161114pe1_v_l3_00 {
@@ -2479,8 +2225,6 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.0078125, 172.84375, 0.009375, 0. ;
-        		:iNodeCount = 92LL ;
-        		:jNodeCount = 82LL ;
         		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114pe1_v_l3_00
 
@@ -2495,8 +2239,6 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
 
         // group attributes:
         		:affineCoeffs = -41.609375, 0., -0.0078125, 173.696875, 0.009375, 0. ;
-        		:iNodeCount = 91LL ;
-        		:jNodeCount = 119LL ;
         		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114pe1_v_l3_01
       } // group patch_ka_20161114_grid_ka_20161114pe1_v_l2
@@ -2526,8 +2268,6 @@ group: nz_linz_nzgd2000-ka20161114-grid10 {
 
     // group attributes:
     		:affineCoeffs = -38.625, 0., -0.125, 171.1, 0.15, 0. ;
-    		:iNodeCount = 43LL ;
-    		:jNodeCount = 40LL ;
     		:gridPriority = 1LL ;
     } // group patch_ka_20161114_grid_hor_refinement
   } // group nz_linz_nzgd2000-ka20161114-grid10
@@ -2556,8 +2296,6 @@ group: nz_linz_nzgd2000-ka20161114-grid11 {
 
     // group attributes:
     		:affineCoeffs = -40.56, 0., -0.015, 171.5, 0.02, 0. ;
-    		:iNodeCount = 214LL ;
-    		:jNodeCount = 192LL ;
     		:gridPriority = 1LL ;
     } // group patch_ka_20161114_grid_hor_refinement2
   } // group nz_linz_nzgd2000-ka20161114-grid11
@@ -2584,8 +2322,6 @@ group: nz_linz_nzgd2000-ka20161114-grid12 {
 
     // group attributes:
     		:affineCoeffs = -40.395, 0., -0.015, 171.9, 0.02, 0. ;
-    		:iNodeCount = 216LL ;
-    		:jNodeCount = 199LL ;
     		:gridPriority = 1LL ;
     } // group patch_ka_20161114_grid_vrt_refinement2
   } // group nz_linz_nzgd2000-ka20161114-grid12
@@ -2616,8 +2352,6 @@ group: nz_linz_nzgd2000-ka20161114-grid07 {
 
     // group attributes:
     		:affineCoeffs = -38.875, 0., -0.125, 169.6, 0.15, 0. ;
-    		:iNodeCount = 46LL ;
-    		:jNodeCount = 40LL ;
     		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe3_h_l2_f {
@@ -2631,8 +2365,6 @@ group: nz_linz_nzgd2000-ka20161114-grid07 {
 
       // group attributes:
       		:affineCoeffs = -41.0625, 0., -0.03125, 172.525, 0.0375, 0. ;
-      		:iNodeCount = 66LL ;
-      		:jNodeCount = 60LL ;
       		:gridPriority = 1LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe3_h_l2_f
     } // group patch_ka_20161114_grid_ka_20161114pe3_h_l1_f
@@ -2664,8 +2396,6 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
 
     // group attributes:
     		:affineCoeffs = -41.28125, 0., -0.03125, 172.45, 0.0375, 0. ;
-    		:iNodeCount = 67LL ;
-    		:jNodeCount = 56LL ;
     		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_00 {
@@ -2679,8 +2409,6 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
 
       // group attributes:
       		:affineCoeffs = -42., 0., -0.0078125, 172.91875, 0.009375, 0. ;
-      		:iNodeCount = 88LL ;
-      		:jNodeCount = 91LL ;
       		:gridPriority = 1LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_00
 
@@ -2695,8 +2423,6 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
 
       // group attributes:
       		:affineCoeffs = -41.5546875, 0., -0.0078125, 173.734375, 0.009375, 0. ;
-      		:iNodeCount = 88LL ;
-      		:jNodeCount = 122LL ;
       		:gridPriority = 2LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_01
     } // group patch_ka_20161114_grid_ka_20161114pe3_h_l2_r
@@ -2726,8 +2452,6 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
 
     // group attributes:
     		:affineCoeffs = -40.25, 0., -0.125, 171.4, 0.15, 0. ;
-    		:iNodeCount = 31LL ;
-    		:jNodeCount = 28LL ;
     		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe3_v_l2 {
@@ -2741,8 +2465,6 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
 
       // group attributes:
       		:affineCoeffs = -40.65625, 0., -0.03125, 172.1875, 0.0375, 0. ;
-      		:iNodeCount = 82LL ;
-      		:jNodeCount = 76LL ;
       		:gridPriority = 1LL ;
 
       group: patch_ka_20161114_grid_ka_20161114pe3_v_l3_00 {
@@ -2756,8 +2478,6 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
 
         // group attributes:
         		:affineCoeffs = -42.0703125, 0., -0.0078125, 172.825, 0.009375, 0. ;
-        		:iNodeCount = 92LL ;
-        		:jNodeCount = 80LL ;
         		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114pe3_v_l3_00
 
@@ -2772,8 +2492,6 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
 
         // group attributes:
         		:affineCoeffs = -41.5859375, 0., -0.0078125, 173.678125, 0.009375, 0. ;
-        		:iNodeCount = 92LL ;
-        		:jNodeCount = 121LL ;
         		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114pe3_v_l3_01
       } // group patch_ka_20161114_grid_ka_20161114pe3_v_l2
