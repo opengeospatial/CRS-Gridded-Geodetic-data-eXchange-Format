@@ -2,7 +2,7 @@
 title: "NZ hypothetical velocity grid"
 abstract: "Hypotherical example to illustrate secular motion described through velocities."
 filename: "NZ hypothetical velocity grid.gxt"
-content: velocityGrid
+content: velocityModel
 version: "2011"
 comment: |
     The parent grid describes secular deformation derived from NUVEL-1A rotation rates.
@@ -67,14 +67,13 @@ ggxfGroups:
         affineCoeffs: [ -25.0, 0.0, -0.5, 158.0, 0.5, 0.0 ]
         iNodeCount: 73
         jNodeCount: 67
-        data: [ 0.023004, 0.051255, ... -0.059495, 0.033768,
-                 :         :              :          :
-               -0.017214, 0.026107, ... -0.033665, 0.033706 ]
+        data: [ 0.023004, 0.051255, -0.059495, 0.033768,
+               -0.017214, 0.026107, -0.033665, 0.033706 ]
+        grids:
             - gridName: "grid_igns2011_nz"
               affineCoeffs: [ -33.0, 0.0, -0.1, 165.5, 0.1, 0.0 ]
               iNodeCount: 141
               jNodeCount: 151
-              data: [ 0.01239, 0.04615, ...  0.00702, 0.03462,
-                          :        :             :        :
-                      -0.02301, 0.03381, ... -0.03692, 0.03216 ]
+              data: [ 0.01239, 0.04615,  0.00702, 0.03462,
+                      -0.02301, 0.03381, -0.03692, 0.03216 ]
 

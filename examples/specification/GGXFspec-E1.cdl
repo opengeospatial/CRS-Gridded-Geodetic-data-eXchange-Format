@@ -1,0 +1,73 @@
+netcdf GGXFspec-E1 {
+types:
+  compound ggxfParameterType {
+    char parameterName(32) ;
+    char parameterSet(32) ;
+    char unit(16) ;
+    double unitSiRatio ;
+    int sourceCrsAxis ;
+    float parameterMinimumValue ;
+    float parameterMaximumValue ;
+    float noDataFlag ;
+  }; // ggxfParameterType
+
+// global attributes:
+		:Conventions = "GGXF-1.0, ACDD-1.3" ;
+		:title = "Catalino Canyon transformation version 2022-06" ;
+		:summary = "Example transformation constructed for purposes of illustration." ;
+		:source_file = "Catalano_Canyon.yaml" ;
+		:content = "geographic2dOffsets" ;
+		:extent_description = "Italy - Mediterranean Sea west of Sardinia - Catalano Canyon." ;
+		:geospatial_lat_min = 39.9 ;
+		:geospatial_lon_min = 7.6 ;
+		:geospatial_lat_max = 40.15 ;
+		:geospatial_lon_max = 7.87 ;
+		:geospatial_bounds = "exterior:\n  linearRing:\n    posList: [ 40.09, 7.72, 40.12, 7.71, 39.92, 7.84, 39.93, 7.64, 40.05, 7.64,\n               40.09, 7.72 ]\n" ;
+		:interpolationCrsWkt = "GEOGCRS[\"ED50\",\n  DATUM[\"European Datum 1950\",\n    ELLIPSOID[\"International 1924\",6378388,297,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
+		:sourceCrsWkt = "GEOGCRS[\"ED50\",\n  DATUM[\"European Datum 1950\",\n    ELLIPSOID[\"International 1924\",6378388,297,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
+		:targetCrsWkt = "GEOGCRS[\"ETRF2000\",\n  DATUM[\"European Terrestrial Reference Frame 2000\",\n    ELLIPSOID[\"GRS 1980\",6378137,298.257222101,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
+		:operationAccuracy = 2LL ;
+		ggxfParameterType :parameters = 
+    {{"latitudeOffset"}, {"offset"}, {"arc-second"}, 4.84813681109536e-06, 0, -3.402823e+38, -3.402823e+38, -3.402823e+38}, 
+    {{"longitudeOffset"}, {"offset"}, {"arc-second"}, 4.84813681109536e-06, 1, -3.402823e+38, -3.402823e+38, -3.402823e+38} ;
+		:_NCProperties = "version=2,netcdf=4.7.4,hdf5=1.12.0," ;
+		:_SuperblockVersion = 0 ;
+		:_IsNetcdf4 = 1 ;
+		:_Format = "netCDF-4" ;
+
+group: Catalano_Canyon {
+  dimensions:
+  	offsetCount = 2 ;
+
+  // group attributes:
+  		:interpolationMethod = "bilinear" ;
+
+  group: South {
+    dimensions:
+    	iNodeCount = 5 ;
+    	jNodeCount = 3 ;
+    variables:
+    	float offset(jNodeCount, iNodeCount, offsetCount) ;
+    		offset:_Storage = "contiguous" ;
+    		offset:_Endianness = "little" ;
+
+    // group attributes:
+    		:affineCoeffs = 40., 0., -0.05, 7.6, 0.0666666666666667, 0. ;
+    		:gridPriority = 1LL ;
+    } // group South
+
+  group: North {
+    dimensions:
+    	iNodeCount = 3 ;
+    	jNodeCount = 4 ;
+    variables:
+    	float offset(jNodeCount, iNodeCount, offsetCount) ;
+    		offset:_Storage = "contiguous" ;
+    		offset:_Endianness = "little" ;
+
+    // group attributes:
+    		:affineCoeffs = 40.15, 0., -0.05, 7.6, 0.1, 0. ;
+    		:gridPriority = 2LL ;
+    } // group North
+  } // group Catalano_Canyon
+}
