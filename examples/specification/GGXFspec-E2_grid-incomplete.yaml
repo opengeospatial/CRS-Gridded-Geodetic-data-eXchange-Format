@@ -1,0 +1,77 @@
+﻿ggxfVersion: "GGXF-1.0"
+title: "South African geoid 2010"
+abstract: "Model for converting ellipsoidal heights determined using NGI's TrigNet to orthometric heights on the South African Land Levelling Datum, to an accuracy of 10 cm (design requirements). Accuracy is 7cm absolute and relative <2cm + GNSS related error."
+filename: "SAGEOID2010.yaml"
+content: geoidModel
+comment: "hybrid geoid"
+contentApplicabilityExtent:
+    boundingBox:            
+        southBoundLatitude:  -34.89
+        westBoundLongitude:   16.45
+        northBoundLatitude:  -22.13
+        eastBoundLongitude:   32.96
+    extentDescription: "South Africa - mainland onshore."
+
+interpolationCrsWkt: |
+    GEOGCRS["ITRF2005",
+      DYNAMIC[FRAMEEPOCH[2000.0]],
+        DATUM["International Terrestrial Reference Frame 2005",
+          ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1]]],
+      CS[ellipsoidal,2],
+      AXIS["Geodetic latitude (Lat)",north],
+      AXIS["Geodetic longitude (Lon)",east],
+      ANGLEUNIT["degree",0.0174532925199433]]
+
+sourceCrsWkt: |
+    GEOGCRS["ITRF2005",
+      DYNAMIC[FRAMEEPOCH[2000.0]],
+        TRF["International Terrestrial Reference Frame 2005",
+          ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1]]],
+      CS[ellipsoidal,3],
+      AXIS["Geodetic latitude (Lat)",north,
+        ANGLEUNIT["degree",0.0174532925199433]],
+      AXIS["Geodetic longitude (Lon)",east,
+        ANGLEUNIT["degree",0.0174532925199433]],
+      AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1]]]
+
+targetCrsWkt: |
+    VERTCRS["VI LLD height",
+      VDATUM["South Africa Land Levelling Datum"],
+      CS[vertical,1],
+      AXIS["Gravity-related height (H)",up],
+      LENGTHUNIT["metre",1]]
+
+operationAccuracy:      0.07
+
+organisationName:       "Chief Directorate: National Geospatial Information"
+deliveryPoint:          "Private Bag X10"
+city:                   "Mowbray"
+postalCode:             "7705"
+country:                "South Africa"
+onlineResourceLinkage:  "ftp://ftp.trignet.co.za/South_African_Geoid"
+
+parameters:
+    - parameterName: geoidHeight
+      parameterSet: "geoidHeight"
+      sourceCrsAxis: 2
+      unit: metre
+      unitSiRatio: 1.0
+
+ggxfGroups:
+    - ggxfGroupName: "SA geoid 2010"
+      interpolationMethod: bilinear
+      grids:
+          - gridName: "SA geoid 2010"
+            affineCoeffs: [-22.0, 0.0, -0.04166666667, 16.0, 0.04166666667, 0.0]
+            iNodeCount: 409
+            jNodeCount: 313
+            data:
+[ 30.136, 30.158, ... 13.591,      13.526, ...  3.816,  3.826,      
+  30.194, 30.198, ... 13.674,      13.615, ...  3.926,  3.896,   
+    :       :           :            :           :       :
+  33.958, 34.062, ... 25.452,      25.417, ... 16.143, 15.909,   
+  33.888, 34.839, ... 25.640,      25.583, ... 16.309, 16.074,    
+    :       :           :            :           :       :
+  26.050, 26.114, ... 26.630,      26.609, ... 29.725, 29.768,  
+  26.055, 26.121, ... 26.618,      26.599, ... 29.745, 29.789 ] 
+

@@ -1,0 +1,80 @@
+﻿ggxfVersion: "GGXF-1.0"
+title: "NZ hypothetical velocity grid"
+abstract: "Hypotherical example to illustrate secular motion described through velocities."
+filename: "NZ hypothetical velocity grid.gxt"
+content: velocityGrid
+version: "2011"
+comment: |
+    The parent grid describes secular deformation derived from NUVEL-1A rotation rates.
+    The child grid describes secular deformation derived from the GNS model 2011 v4.
+
+contentApplicabilityExtent:
+  extentDescription: "New Zealand onshore and EEZ."
+  boundingBox:
+    southBoundLatitude: -55.95
+    westBoundLongitude: 160.6
+    northBoundLatitude: -25.88
+    eastBoundLongitude: -171.2
+
+interpolationCrsWkt: |
+    GEOGCRS["NZGD2000",
+      DATUM["New Zealand Geodetic Datum 2000",
+        ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1]]],
+      CS[ellipsoidal,2],
+      AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433]],
+      AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433]],
+    ID["EPSG",4167,URI["http://www.opengis.net/def/crs/epsg/0/4167"]]]
+
+sourceCrsWkt: |
+    GEOGCRS["NZGD2000",
+      DATUM["New Zealand Geodetic Datum 2000",
+        ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1]]],
+      CS[ellipsoidal,3],
+      AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433]],
+      AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433]],
+      AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1]],
+    ID["EPSG",4959,URI["http://www.opengis.net/def/crs/epsg/0/4959"]]]
+
+targetCrsWkt: |
+    GEOGCRS["ITRF96", 
+      DYNAMIC[FRAMEEPOCH[1997.0]],
+      TRF["International Terrestrial Reference Frame 1996",
+        ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1]]],
+      CS[ellipsoidal,3],
+      AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433]],
+      AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433]],
+      AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1]]]
+      ID["EPSG",7907,URI["http://www.opengis.net/def/crs/epsg/0/7907"]]]
+
+operationAccuracy: 0.01
+parameters:
+      - parameterName: velocityEast
+        parameterSet: "velocity"
+        sourceCrsAxis: 1
+        unit: m/yr
+        unitSiRatio: 3.16887651727315E-08
+      - parameterName: velocityNorth
+        parameterSet: "velocity"
+        sourceCrsAxis: 0
+        unit: m/yr
+        unitSiRatio: 3.16887651727315E-08
+
+ggxfGroups:
+  - ggxfGroupName: "national_velocity_model"
+    interpolationMethod: bilinear
+    grids:
+      - gridName: "grid_nuvel1a_eez"
+        affineCoeffs: [ -25.0, 0.0, -0.5, 158.0, 0.5, 0.0 ]
+        iNodeCount: 73
+        jNodeCount: 67
+        data: [ 0.023004, 0.051255, ... -0.059495, 0.033768,
+                 :         :              :          :
+               -0.017214, 0.026107, ... -0.033665, 0.033706 ]
+            - gridName: "grid_igns2011_nz"
+              affineCoeffs: [ -33.0, 0.0, -0.1, 165.5, 0.1, 0.0 ]
+              iNodeCount: 141
+              jNodeCount: 151
+              data: [ 0.01239, 0.04615, ...  0.00702, 0.03462,
+                          :        :             :        :
+                      -0.02301, 0.03381, ... -0.03692, 0.03216 ]
+

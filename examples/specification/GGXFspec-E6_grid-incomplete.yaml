@@ -1,0 +1,60 @@
+﻿ggxfVersion: "GGXF-1.0"
+title:       "PRVI DOV 2018"
+abstract:    "PRVI hybrid deflection model. Deflections are at the Earth's surface"
+content:     deviationsOfTheVertical
+filename:    d2018prvi.yaml
+contentApplicabilityExtent:
+    extentDescription: "US Puerto Rico and Virgin Islands - onshore."
+    boundingBox:
+        southBoundLatitude:  17.67
+        westBoundLongitude:  -65.09
+        northBoundLatitude:  18.42
+        eastBoundLongitude:  -64.6
+
+organisationName:      "National Geodetic Survey, National Oceanic and Atmospheric Administration"
+deliveryPoint:         "1315 East West Hwy"
+city:                  "Silver Spring"
+postalCode:            "20910"
+country:               "United States of America"
+onlineResourceLinkage: "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g2018p0.asc.zip"
+
+interpolationCrsWkt: |
+    GEOGCRS["NAD83 (2011)",
+      DATUM["North American Datum 1983 (2011) epoch 2010.00",
+          ELLIPSOID["GRS 1980",6378137.0,298.2572221,LENGTHUNIT["metre",1]]],
+      CS[ellipsoidal,2],
+      AXIS["Geodetic latitude (Lat)",north],
+      AXIS["Geodetic longitude (Lon)",east],
+      ANGLEUNIT["degree",0.0174532925199433]]
+
+parameters:
+      parameterName: deviationEast
+      unit: arc-second
+      unitSiRatio: 4.84813681109536E-06
+      parameterName: deviationNorth
+      unit: arc-second
+      unitSiRatio: 4.84813681109536E-06
+
+ggxfGroups:
+    - ggxfGroupName: "Puerto Rico Virgin Islands DEFLEC18"
+      interpolationMethod: biquadratic
+      grids:
+          - gridName: "Puerto Rico Virgin Islands DEFLEC18"
+            affineCoeffs: [15.0, 0.0, 0.01666666667, -69.0, 0.01666666667, 0.0]
+            iNodeCount:  301
+            jNodeCount: 361
+            data: []
+
+          data: [ 1.00, -2.70, 1.20, -2.50, 1.40, -2.30, 1.60, -2.10, 1.80, -1.90, 
+                  1.20, -2.74, 1.40, -2.52, 1.65, -2.31, 1.83, -2.13, 2.00, -1.92, 
+                  1.40, -2.78, 1.80, -2.53, 2.00, -2.33, 2.10, -2.14, 2.20, -1.93 ] 
+
+        - gridName: "North"
+          affineCoeffs: [ 40.15, 0.0, -0.05, 7.6, 0.1, 0.0 ]
+          iNodeMaximum: 2
+          jNodeMaximum: 3
+          data: [ 0.86, -2.62, 1.06, -2.34, 1.20, -2.04, 
+                  0.91, -2.64, 1.13, -2.36, 1.30, -2.06, 
+                  0.95, -2.66, 1.20, -2.38, 1.50, -2.08, 
+                  1.00, -2.70, 1.30, -2.40, 1.60, -2.10 ]
+
