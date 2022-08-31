@@ -41,7 +41,8 @@ targetCrsWkt: |
     LENGTHUNIT["metre",1]]
 parameters:
   - parameterName: "geoidHeight"
-    lengthUnit: "metre"
+    sourceCrsAxis: 2
+    unit: "metre"
     unitSiRatio: 1.0
 operationAccuracy: 0.015
 organisationName: "National Geodetic Survey, National Oceanic and Atmospheric Administration."

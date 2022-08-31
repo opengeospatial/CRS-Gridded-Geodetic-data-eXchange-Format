@@ -11,59 +11,49 @@ netcdf test_geoid {
 		:geospatial_lat_max = 24.6 ;
 		:geospatial_lon_max = -67. ;
 		:extent_description = "Tiny example geoid." ;
-		:interpolation_crs_wkt = "GEOGCS[\"WGS 84\",\n  DATUM[\"WGS_1984\",\n    SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],\n    AUTHORITY[\"EPSG\",\"6326\"]],\n  PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],\n  UNIT[\"degree\",0.01745329251994328,AUTHORITY[\"EPSG\",\"9122\"]],\n  AUTHORITY[\"EPSG\",\"4326\"]]\n" ;
-		:source_crs_wkt = "GEOGCS[\"WGS 84\",\n  DATUM[\"WGS_1984\",\n    SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],\n    AUTHORITY[\"EPSG\",\"6326\"]],\n  PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],\n  UNIT[\"degree\",0.01745329251994328,AUTHORITY[\"EPSG\",\"9122\"]],\n  AUTHORITY[\"EPSG\",\"4326\"]]\n" ;
-		:target_crs_wkt = "VERTCRS[\"VRTDTM2000\",\n  VDATUM[\"A vertical datum\"],\n  CS[vertical,1],\n  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n" ;
+		:interpolationCrsWkt = "GEOGCRS[\"WGS 84 (G2139)\", \n  DYNAMIC[FRAMEEPOCH[2016.0]],\n  DATUM[\"World Geodetic System 1984 (G2139)\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7030]],ID[\"EPSG\",1309]],\n  CS[ellipsoidal,3,ID[\"EPSG\",6423]],\n    AXIS[\"latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],\n    AXIS[\"longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],\n    AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]\n  ,ID[\"EPSG\",9754]]\n" ;
+		:sourceCrsWkt = "GEOGCRS[\"WGS 84 (G2139)\", \n  DYNAMIC[FRAMEEPOCH[2016.0]],\n  DATUM[\"World Geodetic System 1984 (G2139)\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7030]],ID[\"EPSG\",1309]],\n  CS[ellipsoidal,3,ID[\"EPSG\",6423]],\n    AXIS[\"latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],\n    AXIS[\"longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],\n    AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]\n  ,ID[\"EPSG\",9754]]\n" ;
+		:targetCrsWkt = "VERTCRS[\"Vertical datum height\",\n VDATUM[\"Imaginary vertical datum\",ID[\"EPSG\",1124]],\n CS[vertical,1,ID[\"EPSG\",6499]],\n   AXIS[\"Gravity-related height (H)\",up],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]\n ,ID[\"EPSG\",6642]]    \n" ;
 		:parameters.count = 1LL ;
-		:parameters.1.parameter_name = "geoidHeight" ;
-		:parameters.1.length_unit = "metre" ;
-		:parameters.1.unit_si_ratio = 1. ;
-		:operation_accuracy = 0.015 ;
-		:organisation_name = "A Hypothetical National Geodetic Survey." ;
-		:delivery_point = "Somewhere" ;
+		:parameters.1.parameterName = "geoidHeight" ;
+		:parameters.1.sourceCrsAxis = 2LL ;
+		:parameters.1.unit = "metre" ;
+		:parameters.1.unitSiRatio = 1. ;
+		:operationAccuracy = 0.015 ;
+		:organisationName = "A Hypothetical National Geodetic Survey." ;
+		:deliveryPoint = "Somewhere" ;
 		:city = "A city" ;
-		:postal_code = "99999" ;
+		:postalCode = "99999" ;
 		:country = "United States of America" ;
-		:_NCProperties = "version=2,netcdf=4.7.4,hdf5=1.12.0," ;
-		:_SuperblockVersion = 0 ;
+		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
+		:_SuperblockVersion = 2 ;
 		:_IsNetcdf4 = 1 ;
 		:_Format = "netCDF-4" ;
 
 group: default {
-  dimensions:
-  	parameter = 1 ;
 
   // group attributes:
-  		:interpolation_method = "bilinear" ;
+  		:interpolationMethod = "bilinear" ;
 
   group: geoid_grid {
     dimensions:
-    	gridi = 3 ;
-    	gridj = 4 ;
+    	iNodeCount = 3 ;
+    	jNodeCount = 4 ;
     variables:
-    	float data(gridj, gridi, parameter) ;
-    		data:_Storage = "contiguous" ;
-    		data:_Endianness = "little" ;
+    	float geoidHeight(jNodeCount, iNodeCount) ;
+    		geoidHeight:_Storage = "contiguous" ;
+    		geoidHeight:_Endianness = "little" ;
 
     // group attributes:
-    		:affine_coeffs = 22.5, 0., 0.7, -69., 1., 0. ;
-    		:i_node_count = 3LL ;
-    		:j_node_count = 4LL ;
+    		:affineCoeffs = 22.5, 0., 0.7, -69., 1., 0. ;
+    		:gridPriority = 1LL ;
     data:
 
-     data =
-  -10.5,
-  -20.5,
-  -30.5,
-  -11.5,
-  -21.5,
-  -31.5,
-  -12.5,
-  -22.5,
-  -32.5,
-  -13.5,
-  -23.5,
-  -33.5 ;
+     geoidHeight =
+  -10.5, -20.5, -30.5,
+  -11.5, -21.5, -31.5,
+  -12.5, -22.5, -32.5,
+  -13.5, -23.5, -33.5 ;
     } // group geoid_grid
   } // group default
 }

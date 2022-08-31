@@ -11,11 +11,13 @@ import yaml
 import re
 
 infile = "ggxf_schema.yaml"
+ctfile = "ggxf_content_types.yaml"
 typefile = "GGXF_Types.py"
 constfile = "Constants.py"
 
 contentTypePrefix = "GGXF_CONTENT_"
 paramPrefix = "GGXF_PARAMETER_"
+paramSetPrefix = "GGXF_PARAMETER_SET_"
 
 attributePrefix = {
     "GGXF": "GGXF_ATTR_",
@@ -40,6 +42,7 @@ TimeDependentContentTypes = [
 attrdefs = {
     "ATTRDEF_ATTRIBUTES": "Attributes",
     "ATTRDEF_PARAMETER_SETS": "ParameterSets",
+    "ATTRDEF_PARAMSET_MAP": "ParameterSetMap",
     "ATTRDEF_CHOICE": "Choice",
     "ATTRDEF_NAME": "Name",
     "ATTRDEF_TYPE": "Type",
@@ -181,17 +184,35 @@ with open(infile) as yh, open(typefile, "w") as pyh:
         ctype = f"{contentTypePrefix}{ucaseName(ctypestr)}"
         ctypes[ctype] = ctypestr
         pyh.write(f"  {ctype}: {{\n    ATTRDEF_PARAMETER_SETS: [\n")
-        for ps in cdata.get("ParameterSets", {}):
-            psparams = {
-                f"{paramPrefix}{ucaseName(p)}": p for p in ps.get("Parameters", [])
-            }
-            params.update(psparams)
-            plistu = list(psparams.keys())
-            plist = [p for p in plistu if not p.endswith("_UNCERTAINTY")]
-            pyh.write(f"      [{','.join(plist)}],\n")
-            if len(plistu) > len(plist):
-                pyh.write(f"      [{','.join(plistu)}],\n")
+        parameterSetMap = {}
+        parameterListOptions = {}
+        for po in cdata.get("ParameterOptions", {}):
+            plist = [[]]
+            for ps, psdef in po["ParameterSets"].items():
+                pslist = []
+                psvar = f"{paramSetPrefix}{ucaseName(ps)}"
+                params[psvar] = ps
+                for p in psdef["Parameters"]:
+                    if ps != parameterSetMap.get(p, ps):
+                        raise RuntimeError(
+                            f"Error in content type {ctypestr}: Inconsistent parameter set for {p}, {parameterSetMap.get(p)}/{ps}"
+                        )
+                    pvar = f"{paramPrefix}{ucaseName(p)}"
+                    params[pvar] = p
+                    parameterSetMap[pvar] = psvar
+                    pslist.append(pvar)
+                plist2 = [pl + pslist for pl in plist]
+                if psdef.get("Optional", False):
+                    plist.extend(plist2)
+                else:
+                    plist = plist2
+            for pl in plist:
+                pyh.write("        {" + ",".join(pl) + "},\n")
         pyh.write(f"      ],\n")
+        pyh.write(f"    ATTRDEF_PARAMSET_MAP: {{\n")
+        for p in sorted(parameterSetMap):
+            pyh.write(f"        {p}: {parameterSetMap[p]},\n")
+        pyh.write("        },\n")
         if "Attributes" in cdata:
             attributes = readAttributes(cdata["Attributes"])
             pyh.write("    ATTRDEF_ATTRIBUTES: ")

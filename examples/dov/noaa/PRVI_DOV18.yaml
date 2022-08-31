@@ -21,10 +21,12 @@ interpolationCrsWkt: |
       ANGLEUNIT["degree",0.0174532925199433]]
 parameters:
     - parameterName: deviationEast
-      angleUnit: arc-second
+      parameterSet: deviation
+      unit: arc-second
       unitSiRatio: 4.84813681109536E-06
     - parameterName: deviationNorth
-      angleUnit: arc-second
+      parameterSet: deviation
+      unit: arc-second
       unitSiRatio: 4.84813681109536E-060
 organisationName:       "National Geodetic Survey, National Oceanic and Atmospheric Administration."
 deliveryPoint:          "1315 East West Hwy"

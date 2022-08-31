@@ -38,15 +38,21 @@ sourceCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",ELLIPSO
 targetCrsWkt: GEOGCRS["ITRF96", DYNAMIC[FRAMEEPOCH[1997.0]],DATUM["International Terrestrial Reference Frame 1996",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6654]],CS[ellipsoidal,3,ID["EPSG",6423]],AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]],ID["EPSG",7907]]
 interpolationCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6167]],CS[ellipsoidal,2,ID["EPSG",6422]],AXIS["Geodetic latitude (Lat)",north],AXIS["Geodetic longitude (Lon)",east],ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]],ID["EPSG",4167]]
 parameters:
-- lengthUnit: metre
-  parameterName: displacementEast
+- parameterName: displacementEast
+  parameterSet: displacement
+  unit: metre
   unitSiRatio: 1.0
-- lengthUnit: metre
-  parameterName: displacementNorth
+  sourceCrsAxis: 1
+- parameterName: displacementNorth
+  parameterSet: displacement
+  unit: metre
   unitSiRatio: 1.0
-- lengthUnit: metre
-  parameterName: displacementUp
+  sourceCrsAxis: 0
+- parameterName: displacementUp
+  parameterSet: displacement
+  unit: metre
   unitSiRatio: 1.0
+  sourceCrsAxis: 2
 operationAccuracy: 0.01
 uncertaintyMeasure: 2CEP 2SE
 ggxfGroups:

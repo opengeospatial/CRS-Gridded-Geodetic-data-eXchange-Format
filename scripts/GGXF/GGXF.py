@@ -15,13 +15,6 @@ from .AttributeValidator import AttributeValidator
 
 JSON_METADATA_ATTR = "metadata"
 
-PARAM_ATTRLIST_UNITNAME = [
-    PARAM_ATTR_UNIT,
-    PARAM_ATTR_LENGTH_UNIT,
-    PARAM_ATTR_ANGLE_UNIT,
-    PARAM_ATTR_SCALE_UNIT,
-]
-
 
 class Error(RuntimeError):
     pass
@@ -53,6 +46,12 @@ class GGXF:
 
     def configure(self, errorhandler=None):
         self._singleGroup = len(self._groups) == 1
+        ggxfParamSets = ContentTypes[self._content][ATTRDEF_PARAMSET_MAP]
+        for param in self._parameters:
+            if ggxfParamSets.get(param.name()) != param.set():
+                self.logger().warn(
+                    f'Non-standard parameter set "{param.set()}" for parameter "{param.name()}"'
+                )
         for igroup, group in enumerate(self._groups):
             group.configure(errorhandler=errorhandler, id=f"{igroup}")
 
@@ -202,10 +201,10 @@ class Group:
         self._grids.append(grid)
         self._configured = False
 
-    def _configureParameters(self, errorhandler=None):
+    def configureParameters(self, errorhandler=None):
         ok = True
         # map the parameter names to the GGXF parameters
-        paramnames = self._parameterNames
+        paramset = set(self._parameterNames)
         ggxfparams = [p.name() for p in self._ggxf.parameters()]
         parammap = []
         for name in self._parameterNames:
@@ -222,24 +221,25 @@ class Group:
         contenttype = self._ggxf.contentType()
         contentdef = ContentTypes.get(contenttype)
         validparamsets = contentdef.get(ATTRDEF_PARAMETER_SETS, [])
-        paramids = None
         # Currently not supporting non GGXF parameters in a grid
-        for paramset in validparamsets:
-            if len(paramset) != len(paramnames):
-                continue
-            try:
-                paramids = [paramnames.index(param) for param in paramset]
-                break
-            except ValueError:
-                paramids = None
-        if paramids is None:
-            error = f"Invalid parameters ({','.join(paramnames)}) for content type {contenttype}"
+        if paramset not in validparamsets:
+            error = f"Invalid parameters ({','.join(paramset)}) for content type {contenttype}"
             if errorhandler:
                 errorhandler(error)
             else:
                 raise Error(error)
             ok = False
         if ok:
+            # parameterSetIndices is a mapping from parameter sets to the
+            # index into the parameters array for each element of the set
+            self._parameters = [self._ggxf.parameters()[i] for i in parammap]
+            paramSetIndices = {}
+            for iparam, param in enumerate(self._parameters):
+                if param.set() not in paramSetIndices:
+                    paramSetIndices[param.set()] = []
+                paramSetIndices[param.set()].append(iparam)
+            self._paramSetIndices = paramSetIndices
+
             self._parameterMap = parammap
             self._zero = np.zeros((len(ggxfparams),))
         return ok
@@ -254,8 +254,7 @@ class Group:
     def configure(self, id=None, errorhandler=None):
         if id:
             self._id = id
-        ok = self._configureParameters(errorhandler)
-        ok = ok and self._configureGrids(errorhandler)
+        ok = self._configureGrids(errorhandler)
         self._configured = ok
 
     def gridAt(self, xy):
@@ -270,6 +269,12 @@ class Group:
                     )
                 return cgrid
         return None
+
+    def parameters(self):
+        return self.parameters()
+
+    def paramSetIndices(self):
+        return self._paramSetIndices
 
     def parameterMap(self):
         return self._parameterMap
@@ -623,21 +628,38 @@ class Parameter:
     def __init__(self, metadata: dict):
         self._metadata = metadata
         self._name = metadata[PARAM_ATTR_PARAMETER_NAME]
-        self._siratio = float(metadata.get(PARAM_ATTR_UNIT_SI_RATIO, 1.0))
-        self._unit = "unspecified"
-        for key, value in metadata.items():
-            if key in PARAM_ATTRLIST_UNITNAME:
-                self._unit = value
-                break
+        self._set = metadata.get(PARAM_ATTR_PARAMETER_SET, self._name)
+        axis = metadata.get(PARAM_ATTR_SOURCE_CRS_AXIS)
+        self._sourceCrsAxis = axis if axis is not None and axis >= 0 else None
+        self._unit = metadata.get(PARAM_ATTR_UNIT, "")
+        self._siRatio = float(metadata.get(PARAM_ATTR_UNIT_SI_RATIO, 1.0))
+        self._minValue = metadata.get(PARAM_ATTR_PARAMETER_MINIMUM_VALUE)
+        self._maxValue = metadata.get(PARAM_ATTR_PARAMETER_MAXIMUM_VALUE)
+        self._noDataFlag = metadata.get(PARAM_ATTR_NO_DATA_FLAG)
 
     def name(self):
         return self._name
 
+    def set(self):
+        return self._set
+
+    def sourceCrsAxis(self):
+        return self._sourceCrsAxis
+
     def unit(self):
         return self._unit
 
-    def siratio(self):
-        return self._siratio
+    def siRatio(self):
+        return self._siRatio
+
+    def minValue(self):
+        return self._minValue
+
+    def maxValue(self):
+        return self._maxValue
+
+    def noDataFlag(self):
+        return self._noDataFlag
 
 
 class BaseReader:

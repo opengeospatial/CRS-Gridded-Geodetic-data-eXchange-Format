@@ -9,29 +9,20 @@ import argparse
 import yaml
 import re
 import subprocess
-from collections import OrderedDict
 from urllib import request
 
-
-def represent_ordereddict(dumper, data):
-    value = []
-
-    for item_key, item_value in data.items():
-        node_key = dumper.represent_data(item_key)
-        node_value = dumper.represent_data(item_value)
-
-        value.append((node_key, node_value))
-
-    return yaml.nodes.MappingNode("tag:yaml.org,2002:map", value)
-
-
-yaml.add_representer(OrderedDict, represent_ordereddict)
 
 displacementParams = {
     "none": [],
     "horizontal": ["displacementEast", "displacementNorth"],
     "vertical": ["displacementUp"],
     "3d": ["displacementEast", "displacementNorth", "displacementUp"],
+}
+
+displacementAxisDirections = {
+    "displacementEast": "east",
+    "displacementNorth": "north",
+    "displacementUp": "up",
 }
 
 uncertaintyParams = {"none": []}
@@ -112,7 +103,7 @@ def getepsg(crdsysid):
                     pass
                 pass
     name = re.match(r"\s*\w+CRS\[\"([^\"]*)\"", wkt).group(1)
-    return OrderedDict([("crsName", name), ("crsWkt", wkt), ("crsUrl", url)])
+    return {"crsName": name, "crsWkt": wkt, "crsUrl": url}
 
 
 def compileGrids(grids, maxdepth, maxwidth):
@@ -158,11 +149,11 @@ def loadGTiffGridData(source, sourceref=None, tiffdir=None):
         raise RuntimeError(
             f"Failed to load GeoTiff {result.returncode}: {result.stderr}"
         )
-    gdata = OrderedDict()
+    gdata = {}
     subgrids = []
     crsdef = ""
     try:
-        griddata = json.loads(result.stdout, object_pairs_hook=OrderedDict)
+        griddata = json.loads(result.stdout)
         md = griddata["metadata"]
         gmd = md[""]
         gdata["gridName"] = makeNameValidIdentifier(gmd["grid_name"])
@@ -192,8 +183,8 @@ def loadGTiffGridData(source, sourceref=None, tiffdir=None):
     return gdata, subgrids, crsdef
 
 
-def loadJsonGeoTiff(jsonfile, object_pairs_hook=OrderedDict):
-    model = json.loads(open(jsonfile).read(), object_pairs_hook=OrderedDict)
+def loadJsonGeoTiff(jsonfile):
+    model = json.loads(open(jsonfile).read())
     tiffdir = os.path.dirname(jsonfile)
     grids = []
     for c in model["components"]:
@@ -223,20 +214,20 @@ def ggxfTimeFunction(tf):
     global useramp
     tftype = tf["type"]
     params = tf["parameters"]
-    gtf = OrderedDict()
+    gtf = {}
     functions = []
     if tftype == "velocity":
-        bf = OrderedDict()
+        bf = {}
         bf["functionType"] = "velocity"
         bf["functionReferenceDate"] = params["reference_epoch"]
         functions.append(bf)
     elif tftype == "step":
-        bf = OrderedDict()
+        bf = {}
         bf["functionType"] = "step"
         bf["eventDate"] = params["step_epoch"]
         functions.append(bf)
     elif tftype == "reverse_step":
-        bf = OrderedDict()
+        bf = {}
         bf["functionType"] = "step"
         bf["eventDate"] = params["step_epoch"]
         bf["functionReferenceDate"] = _nextYear(params["step_epoch"])
@@ -267,7 +258,7 @@ def ggxfTimeFunction(tf):
             )
         if ggxfTimeFunction.useramp:
             for ms, me in zip(model[:-1], model[1:]):
-                bf = OrderedDict()
+                bf = {}
                 bf["functionType"] = "ramp"
                 bf["startDate"] = ms["epoch"]
                 bf["endDate"] = me["epoch"]
@@ -276,13 +267,10 @@ def ggxfTimeFunction(tf):
                 functions.append(bf)
         else:
             raise RuntimeError("piecewise function not supported by current UML")
-            bf = OrderedDict()
+            bf = {}
             bf["functionType"] = "piecewise"
             bf["epochMultipliers"] = [
-                OrderedDict(
-                    [("epoch", mp["epoch"]), ("multiplier", mp["scale_factor"])]
-                )
-                for mp in model
+                {"epoch": mp["epoch"], "multiplier": mp["scale_factor"]} for mp in model
             ]
             functions.append(bf)
     if ggxfTimeFunction.usebasefunc:
@@ -319,8 +307,17 @@ def makeNameValidIdentifier(name):
     return name.lower()
 
 
+def wktAxisFromDirection(wkt):
+    return {
+        match.group(1): naxis
+        for naxis, match in enumerate(
+            re.finditer(r"AXIS\[\s*\"[^\"]*\"\s*\,\s*(\w+)\s*\,", wkt)
+        )
+    }
+
+
 def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
-    gmodel = OrderedDict()
+    gmodel = {}
     gmodel["ggxfVersion"] = "GGXF-1.0"
     gmodel["filename"] = "unknown"
     gmodel["version"] = model["version"]
@@ -332,7 +329,7 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
     gmodel["title"] = description
     if abstract:
         gmodel["abstract"] = abstract
-    authority = OrderedDict()
+    authority = {}
     authority["partyName"] = model["authority"]["name"]
     address = model["authority"]["address"]
     address = address.replace("\r\n", "\n")
@@ -356,38 +353,33 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
     gmodel["publicationDate"] = extractDate(model["publication_date"])
 
     extent = model["extent"]["parameters"]["bbox"]
-    gmodel["contentApplicabilityExtent"] = OrderedDict(
-        (
-            ("extentDescription", "New Zealand EEZ"),
-            (
-                "boundingBox",
-                OrderedDict(
-                    (
-                        ("southBoundLatitude", extent[1]),
-                        ("westBoundLongitude", extent[0]),
-                        ("northBoundLatitude", extent[3]),
-                        ("eastBoundLongitude", extent[2]),
-                    )
-                ),
-            ),
-            (
-                "temporalExtent",
-                OrderedDict(
-                    (
-                        ("startDate", extractDate(model["time_extent"]["first"])),
-                        ("endDate", extractDate(model["time_extent"]["last"])),
-                    )
-                ),
-            ),
-        )
-    )
+    gmodel["contentApplicabilityExtent"] = {
+        "extentDescription": "New Zealand EEZ",
+        "boundingBox": {
+            "southBoundLatitude": extent[1],
+            "westBoundLongitude": extent[0],
+            "northBoundLatitude": extent[3],
+            "eastBoundLongitude": extent[2],
+        },
+        "temporalExtent": {
+            "startDate": extractDate(model["time_extent"]["first"]),
+            "endDate": extractDate(model["time_extent"]["last"]),
+        },
+    }
     gmodel["sourceCrsWkt"] = getepsg(model["source_crs"])["crsWkt"]
     gmodel["targetCrsWkt"] = getepsg(model["target_crs"])["crsWkt"]
     gmodel["interpolationCrsWkt"] = getepsg(model["definition_crs"])[
         "crsWkt"
     ]  # gridcrs is WKT in current file - ignoring
+    directionAxes = wktAxisFromDirection(gmodel["sourceCrsWkt"])
     gmodel["parameters"] = [
-        {"parameterName": p, "lengthUnit": "metre", "unitSiRatio": 1.0}
+        {
+            "parameterName": p,
+            "parameterSet": "displacement",
+            "lengthUnit": "metre",
+            "unitSiRatio": 1.0,
+            "sourceCrsAxis": directionAxes[displacementAxisDirections[p]],
+        }
         for p in displacementParams["3d"]
     ]
     gmodel["operationAccuracy"] = 0.01
@@ -401,7 +393,7 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
         if usegroups and gname not in usegroups:
             print(f"Skipping component {gname}")
             continue
-        group = OrderedDict()
+        group = {}
         group["ggxfGroupName"] = makeNameValidIdentifier(gname)
         if comment := c.get("description"):
             group["comment"] = comment
@@ -457,7 +449,7 @@ def blockAffine(yamldef):
 
 def dumpGGXFYaml(gmodel, yamlfile):
     gmodel["filename"] = os.path.basename(yamlfile)
-    yamldef = yaml.dump(gmodel, width=2048)
+    yamldef = yaml.dump(gmodel, width=2048, sort_keys=False)
     yamldef = blockLongLines(yamldef)
     yamldef = blockAffine(yamldef)
     check = yaml.load(yamldef, Loader=yaml.Loader)
@@ -466,11 +458,7 @@ def dumpGGXFYaml(gmodel, yamlfile):
 
 def updateMetadata(ggxf, custom):
     for key, value in custom.items():
-        if (
-            key in ggxf
-            and type(value) in (dict, OrderedDict)
-            and type(ggxf[key]) in (dict, OrderedDict)
-        ):
+        if key in ggxf and type(value) == dict and type(ggxf[key]) == dict:
             updateMetadata(ggxf[key], value)
         else:
             ggxf[key] = value

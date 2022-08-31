@@ -5,7 +5,6 @@
 # Note: NetCDF is stored in column major order.  Ie dimensions ncol, nrow, nparam stores parameters for
 # ncol, nrow consecutively.
 
-import json
 import logging
 import os.path
 
@@ -28,11 +27,10 @@ NETCDF_CONVENTIONS_ATTRIBUTE = "Conventions"
 NETCDF_CONVENTIONS_VALUE = "{ggxfVersion}, ACDD-1.3"
 
 
-NETCDF_VAR_GRIDDATA = "data"
+NETCDF_DIMENSION_GRIDI = "iNodeCount"
+NETCDF_DIMENSION_GRIDJ = "jNodeCount"
 
-NETCDF_DIMENSION_GRIDI = "gridi"
-NETCDF_DIMENSION_GRIDJ = "gridj"
-NETCDF_DIMENSION_NPARAM = "parameter"
+NETCDF_GRIDORDER_ATTRIBUTE = "gridPriority"
 
 NETCDF_ATTR_CONTEXT_GGXF = "ggxf"
 NETCDF_ATTR_CONTEXT_GROUP = "group"
@@ -41,7 +39,7 @@ NETCDF_ATTR_CONTEXT_GRID = "grid"
 NETCDF_OPTIONS = f"""
 The following options apply to NetCDF input (I) and output (O):
 
-  "{NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES}" (O) Convert attributes to snake_case (default true)"
+  "{NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES}" (O) Convert attributes to snake_case (default false)"
   "{NETCDF_OPTION_WRITE_CDL}" (O) Generate an output CDL file as well as a NetCDF file (default false)
   "{NETCDF_OPTION_WRITE_CDL_HEADER}" (O) Only write the header information in the CDL file (default false)
   "{NETCDF_OPTION_USE_COMPOUND_TYPE}" (O) Use compound types (very limited test implementation) (default false)
@@ -108,10 +106,15 @@ class Reader(BaseReader):
         try:
             root = netCDF4.Dataset(ggxf_file, "r", format="NETCDF4")
             metadata = self.loadMetadata(NETCDF_ATTR_CONTEXT_GGXF, root)
+            # Handle something in python/netcdf handling which doesn't distinguish
+            # between a list of 1 element and a scalar.
+            if isinstance(metadata.get(GGXF_ATTR_PARAMETERS), dict):
+                metadata[GGXF_ATTR_PARAMETERS] = [metadata[GGXF_ATTR_PARAMETERS]]
             if self.validator().validateRootAttributes(metadata, context="GGXF"):
                 ggxf = GGXF(metadata)
                 for groupname, ncgroup in root.groups.items():
-                    self.loadGroup(ggxf, groupname, ncgroup)
+                    group = self.loadGroup(ggxf, groupname, ncgroup)
+                    ggxf.addGroup(group)
                 ggxf.configure(errorhandler=self.error)
             if not self._loadok:
                 ggxf = None
@@ -131,27 +134,64 @@ class Reader(BaseReader):
         if not self.validator().validateGroupAttributes(metadata, context=context):
             return
         group = Group(ggxf, groupname, metadata)
-        for gridname, ncgrid in ncgroup.groups.items():
-            self.loadGrid(group, gridname, ncgrid)
-        ggxf.addGroup(group)
+        group.configureParameters(self.error)
+        self.addGrids(group, ncgroup, group)
+        return group
 
-    def loadGrid(self, group, gridname, ncgrid, parent=None):
+    def addGrids(self, group, ncgroup, target):
+        gridlist = []
+        for gridname, ncgrid in ncgroup.groups.items():
+            (ngrid, grid) = self.loadGrid(group, gridname, ncgrid)
+            if grid is not None:
+                gridlist.append((ngrid, grid))
+        gridlist.sort(key=lambda g: g[0])
+        for gd in gridlist:
+            target.addGrid(gd[1])
+
+    def loadGrid(self, group, gridname, ncgrid):
         self._logger.debug(f"Loading grid {gridname}")
         context = f"{group.name()} {gridname}"
         metadata = self.loadMetadata(NETCDF_ATTR_CONTEXT_GRID, ncgrid)
+        ngrid = 0
+        grid = None
+        if NETCDF_GRIDORDER_ATTRIBUTE in metadata:
+            ngrid = metadata.pop(NETCDF_GRIDORDER_ATTRIBUTE)
+
+        # Handling of sets in NetCDF reader/writer, mapping to/from
+        # single array.  Implemented in NetCDF reader as short term
+        # approach.  Ultimately want parameter sets in GGXF definition
+        # to support lazy loading of grids.
+        data = None
+        indices = []
+        try:
+            for pset, pindices in group.paramSetIndices().items():
+                try:
+                    sdata = np.array(ncgrid[pset])
+                except Exception as ex:
+                    self.error(
+                        f"Cannot load data for grid {gridname} parameter set {pset}: {ex}"
+                    )
+                    return
+                if len(sdata.shape) == 2:
+                    sdata = sdata.reshape([*sdata.shape, 1])
+                if data is None:
+                    data = sdata
+                else:
+                    data = np.concatenate([data, sdata], axis=-1)
+                indices.extend(pindices)
+            irange = np.array(range(len(indices)))
+            reverseIndices = irange.copy()
+            reverseIndices[indices] = irange
+            data = data[:, :, reverseIndices]
+        except Exception as ex:
+            self.error(f"Cannot compile grid data for grid {gridname}: {ex}")
+        metadata[GRID_ATTR_I_NODE_COUNT] = data.shape[1]
+        metadata[GRID_ATTR_J_NODE_COUNT] = data.shape[0]
+
         if self.validator().validateGridAttributes(metadata, context=context):
-            try:
-                data = np.array(ncgrid[NETCDF_VAR_GRIDDATA])
-            except Exception as ex:
-                self.error("Cannot load data for grid {gridname}: {ex}")
-                return
             grid = Grid(group, gridname, metadata, data)
-            for gridname, ncsubgrid in ncgrid.groups.items():
-                self.loadGrid(group, gridname, ncsubgrid, grid)
-            if parent:
-                parent.addGrid(grid)
-            else:
-                group.addGrid(grid)
+            self.addGrids(group, ncgrid, grid)
+        return (ngrid, grid)
 
     def loadMetadata(self, context: str, source):
         attrs = {}
@@ -183,17 +223,39 @@ class Reader(BaseReader):
 
     def _convertNumpyAttributesToNative(self, attrs):
         # Convert numpy attributes to native python attributes
-        converted = {}
-        for k, v in attrs.items():
-            vtype = type(v)
-            if vtype.__module__ == "numpy":
-                if vtype == np.ndarray:
-                    converted[k] = v.tolist()
-                else:
-                    converted[k] = v.item()
+        return {k: self._convertNumpyToNative(v) for k, v in attrs.items()}
+
+    def _convertNumpyToNative(self, v):
+        vtype = type(v)
+        if vtype.__module__ == "numpy":
+            fields = v.dtype.fields
+            if vtype == np.ndarray:
+                if fields:
+                    return [self._convertNumpyToNative(vn) for vn in v]
+                v = v.tolist()
             else:
-                converted[k] = v
-        return converted
+                if fields:
+                    # Awkward handling of null value in parameter type for floating point fields
+                    # (eg parameterMinimumValue).  Remove parameters floating point parameters matching
+                    # the minimum value of their dtype.  Probably a better way to do this!
+                    #
+                    # Assume integer values are actually counts so treat negative as equivalent to null.
+                    result = {}
+                    for field in fields:
+                        fval = v[field]
+                        if fval.dtype.kind == "f" and fval == np.finfo(fval.dtype).min:
+                            continue
+                        if fval.dtype.kind == "i" and fval < 0:
+                            continue
+                        if fval.dtype.kind == "S" and fval == "":
+                            continue
+                        result[field] = self._convertNumpyToNative(fval)
+                    v = result
+                else:
+                    v = v.item()
+                    if type(v) == bytes:
+                        v = v.decode("utf8")
+        return v
 
     def _interpretDotMetadata(self, attrs):
         arrays = []
@@ -260,7 +322,7 @@ class Writer(BaseWriter):
             NETCDF_OPTION_USE_COMPOUND_TYPE, False
         )
         self._useSnakeCase = self.getBoolOption(
-            NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES, True
+            NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES, False
         )
         # Not currently implemented.
         if self._useCompoundTypes:
@@ -295,8 +357,8 @@ class Writer(BaseWriter):
 
         # NetCDF compound types
         exclude = [GGXF_ATTR_GGXF_GROUPS, GGXF_ATTR_GRID_DATA]
+        converted = {}
         if self._useCompoundTypes:
-            raise RuntimeError("use_compound_types currently not working")
             # This functionality was lost when refactoring GGXF into multiple modules
             # It was split between creating the compound type in the root group and
             # the variable in the GGXF group in saveGroupNetCdf4.  The code has been
@@ -305,20 +367,46 @@ class Writer(BaseWriter):
             # However this isn't working yet.  This implementation is using a variable
             # to hold parameters, but the NetCDF data model implies that they can be held
             # in an attribute.  However this hasn't been tested yet with the python API.
+            #
+            # Note: tried i2 for sourceCrsAxis but it seemed to be packed to 4 byte quanta
+            # so failed to read back correctly
+            #
             paramtype = np.dtype(
-                [("parameterName", "S32"), ("unit", "S16"), ("unitSiRatio", np.float64)]
+                [
+                    ("parameterName", "S32"),
+                    ("parameterSet", "S32"),
+                    ("unit", "S16"),
+                    ("unitSiRatio", "f8"),
+                    ("sourceCrsAxis", "i4"),
+                    ("parameterMinimumValue", self._dtype),
+                    ("parameterMaximumValue", self._dtype),
+                    ("noDataFlag", self._dtype),
+                ]
             )
             ncparamtype = root.createCompoundType(paramtype, "ggxfParameterType")
-            parameters = self.parameters()
-            paramdata = [(p.name(), p.units(), p.siratio()) for p in parameters]
+            parameters = ggxf.parameters()
+            typeinfo = np.finfo(self._dtype)
+            paramdata = [
+                (
+                    p.name().encode("utf8"),
+                    (p.set() or "").encode("utf8"),
+                    p.unit(),
+                    p.siRatio(),
+                    p.sourceCrsAxis() if p.sourceCrsAxis() is not None else -1,
+                    p.minValue() or typeinfo.min,
+                    p.maxValue() or typeinfo.min,
+                    p.noDataFlag() or typeinfo.min,
+                )
+                for p in parameters
+            ]
             paramdata = np.array(paramdata, dtype=paramtype)
-            paramvar = root.createVariable(
-                "parameters", ncparamtype, NETCDF_DIMENSION_NPARAM
-            )
-            paramvar[:] = paramdata
-            exclude.append(GGXF_ATTR_PARAMETERS)
+            converted[GGXF_ATTR_PARAMETERS] = paramdata
         self.saveNetCdf4MetdataDot(
-            NETCDF_ATTR_CONTEXT_GGXF, root, ggxf.metadata(), exclude=exclude
+            NETCDF_ATTR_CONTEXT_GGXF,
+            root,
+            ggxf.metadata(),
+            exclude=exclude,
+            converted=converted,
         )
 
         # Store each of the groups
@@ -334,7 +422,9 @@ class Writer(BaseWriter):
         parameters = group.parameterNames()
         nparam = len(parameters)
 
-        cdfgroup.createDimension(NETCDF_DIMENSION_NPARAM, nparam)
+        for pset, pindices in group.paramSetIndices().items():
+            if len(pindices) > 1:
+                cdfgroup.createDimension(f"{pset}Count", len(pindices))
 
         self.saveNetCdf4MetdataDot(
             NETCDF_ATTR_CONTEXT_GROUP, cdfgroup, group.metadata(), exclude=exclude
@@ -342,11 +432,17 @@ class Writer(BaseWriter):
 
         # Store each of the grids
         grids = group.grids()
-        for grid in grids:
-            self.saveGridNetCdf4(cdfgroup, grid, nctypes, nparam)
+        for igrid, grid in enumerate(grids):
+            self.saveGridNetCdf4(cdfgroup, group, grid, nctypes, nparam, igrid + 1)
 
     def saveGridNetCdf4(
-        self, cdfgroup: netCDF4.Group, grid: dict, nctypes: dict, nparam: int
+        self,
+        cdfgroup: netCDF4.Group,
+        group: dict,
+        grid: dict,
+        nctypes: dict,
+        nparam: int,
+        ngrid: int,
     ):
         name = grid.name()
         cdfgrid = cdfgroup.createGroup(name)
@@ -355,6 +451,8 @@ class Writer(BaseWriter):
             GRID_ATTR_GRIDS,
             GRID_ATTR_DATA,
             GRID_ATTR_DATA_SOURCE,
+            GRID_ATTR_I_NODE_COUNT,
+            GRID_ATTR_J_NODE_COUNT,
             #            GRID_ATTR_AFFINE_COEFFS,
         ]
 
@@ -363,20 +461,30 @@ class Writer(BaseWriter):
         cdfgrid.createDimension(NETCDF_DIMENSION_GRIDJ, size[1])
 
         # Store the grid data
-        datavar = cdfgrid.createVariable(
-            NETCDF_VAR_GRIDDATA,
-            self._dtype,
-            [NETCDF_DIMENSION_GRIDJ, NETCDF_DIMENSION_GRIDI, NETCDF_DIMENSION_NPARAM],
-        )
-        datavar[:, :, :] = grid.data()
-        metadata = grid.metadata()
+
+        for pset, pindices in group.paramSetIndices().items():
+            dimensions = [NETCDF_DIMENSION_GRIDJ, NETCDF_DIMENSION_GRIDI]
+            if len(pindices) > 1:
+                dimensions.append(f"{pset}Count")
+
+            datavar = cdfgrid.createVariable(
+                pset,
+                self._dtype,
+                dimensions,
+            )
+            if len(pindices) > 1:
+                datavar[:, :, :] = grid.data()[:, :, pindices]
+            else:
+                datavar[:, :] = grid.data()[:, :, pindices[0]]
+        metadata = grid.metadata().copy()
+        metadata[NETCDF_GRIDORDER_ATTRIBUTE] = ngrid
         self.saveNetCdf4MetdataDot(
             NETCDF_ATTR_CONTEXT_GRID, cdfgrid, metadata, exclude=exclude
         )
 
         # Support for nested grid possibility
-        for subgrid in grid.subgrids():
-            self.saveGridNetCdf4(cdfgrid, subgrid, nctypes, nparam)
+        for igrid, subgrid in enumerate(grid.subgrids()):
+            self.saveGridNetCdf4(cdfgrid, group, subgrid, nctypes, nparam, igrid + 1)
 
     def saveNetCdf4Attr(self, context: str, dataset: netCDF4.Dataset, name: str, value):
         if name == GGXF_ATTR_GGXF_VERSION:
@@ -386,6 +494,8 @@ class Writer(BaseWriter):
             name = ACDD_AttributeMapping[name]
         elif self._useSnakeCase:
             name = _snakeCase(name)
+        if type(value) == str:
+            value = value.encode("utf8")
         dataset.setncattr(name, value)
 
     def saveNetCdf4MetdataDot(
@@ -395,13 +505,16 @@ class Writer(BaseWriter):
         entity,
         name: str = "",
         exclude=[],
+        converted={},
         base: int = 1,
     ) -> None:
         if type(entity) == dict:
             if name != "":
                 name = name + "."
             for key, value in entity.items():
-                if key not in exclude and not key.startswith("_"):
+                if key in converted:
+                    self.saveNetCdf4Attr(context, dataset, key, converted[key])
+                elif key not in exclude and not key.startswith("_"):
                     self.saveNetCdf4MetdataDot(
                         context, dataset, value, name + key, base=base
                     )

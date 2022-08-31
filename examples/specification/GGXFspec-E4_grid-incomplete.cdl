@@ -1,0 +1,71 @@
+netcdf GGXFspec-E4_grid-incomplete {
+
+// global attributes:
+		:Conventions = "GGXF-1.0, ACDD-1.3" ;
+		:title = "NZ hypothetical velocity grid" ;
+		:summary = "Hypotherical example to illustrate secular motion described through velocities." ;
+		:source_file = "NZ hypothetical velocity grid.gxt" ;
+		:content = "velocityModel" ;
+		:product_version = "2011" ;
+		:comment = "The parent grid describes secular deformation derived from NUVEL-1A rotation rates.\nThe child grid describes secular deformation derived from the GNS model 2011 v4.\n" ;
+		:extent_description = "New Zealand onshore and EEZ." ;
+		:geospatial_lat_min = -55.95 ;
+		:geospatial_lon_min = 160.6 ;
+		:geospatial_lat_max = -25.88 ;
+		:geospatial_lon_max = -171.2 ;
+		:interpolationCrsWkt = "GEOGCRS[\"NZGD2000\",\n  DATUM[\"New Zealand Geodetic Datum 2000\",\n    ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433]],\nID[\"EPSG\",4167,URI[\"http://www.opengis.net/def/crs/epsg/0/4167\"]]]\n" ;
+		:sourceCrsWkt = "GEOGCRS[\"NZGD2000\",\n  DATUM[\"New Zealand Geodetic Datum 2000\",\n    ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]],\nID[\"EPSG\",4959,URI[\"http://www.opengis.net/def/crs/epsg/0/4959\"]]]\n" ;
+		:targetCrsWkt = "GEOGCRS[\"ITRF96\", \n  DYNAMIC[FRAMEEPOCH[1997.0]],\n  TRF[\"International Terrestrial Reference Frame 1996\",\n    ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]]]\n  ID[\"EPSG\",7907,URI[\"http://www.opengis.net/def/crs/epsg/0/7907\"]]]\n" ;
+		:operationAccuracy = 0.01 ;
+		:parameters.count = 2LL ;
+		:parameters.1.parameterName = "velocityEast" ;
+		:parameters.1.parameterSet = "velocity" ;
+		:parameters.1.sourceCrsAxis = 1LL ;
+		:parameters.1.unit = "m/yr" ;
+		:parameters.1.unitSiRatio = 3.16887651727315e-08 ;
+		:parameters.2.parameterName = "velocityNorth" ;
+		:parameters.2.parameterSet = "velocity" ;
+		:parameters.2.sourceCrsAxis = 0LL ;
+		:parameters.2.unit = "m/yr" ;
+		:parameters.2.unitSiRatio = 3.16887651727315e-08 ;
+		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
+		:_SuperblockVersion = 2 ;
+		:_IsNetcdf4 = 1 ;
+		:_Format = "netCDF-4" ;
+
+group: national_velocity_model {
+  dimensions:
+  	velocityCount = 2 ;
+
+  // group attributes:
+  		:interpolationMethod = "bilinear" ;
+
+  group: grid_nuvel1a_eez {
+    dimensions:
+    	iNodeCount = 73 ;
+    	jNodeCount = 67 ;
+    variables:
+    	float velocity(jNodeCount, iNodeCount, velocityCount) ;
+    		velocity:_Storage = "contiguous" ;
+    		velocity:_Endianness = "little" ;
+
+    // group attributes:
+    		:affineCoeffs = -25., 0., -0.5, 158., 0.5, 0. ;
+    		:gridPriority = 1LL ;
+
+    group: grid_igns2011_nz {
+      dimensions:
+      	iNodeCount = 141 ;
+      	jNodeCount = 151 ;
+      variables:
+      	float velocity(jNodeCount, iNodeCount, velocityCount) ;
+      		velocity:_Storage = "contiguous" ;
+      		velocity:_Endianness = "little" ;
+
+      // group attributes:
+      		:affineCoeffs = -33., 0., -0.1, 165.5, 0.1, 0. ;
+      		:gridPriority = 1LL ;
+      } // group grid_igns2011_nz
+    } // group grid_nuvel1a_eez
+  } // group national_velocity_model
+}

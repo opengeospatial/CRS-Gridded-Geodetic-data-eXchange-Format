@@ -18,6 +18,8 @@ YAML_OPTION_GRID_DIRECTORY = "grid_directory"
 YAML_OPTION_CHECK_DATASOURCE_AFFINE = "check_datasource_affine_coeffs"
 YAML_OPTION_USE_GRIDDATA_SECTION = "use_griddata_section"
 YAML_OPTION_WRITE_HEADERS_ONLY = "write_headers_only"
+# Option for testing yaml headers without requiring valid grid data
+YAML_OPTION_CREATE_DUMMY_GRID_DATA = "create_dummy_grid_data"
 YAML_AFFINE_COEFF_DIFFERENCE_TOLERANCE = 1.0e-6
 
 YAML_OPTION_GRID_DTYPE = "grid_dtype"
@@ -29,6 +31,11 @@ YAML_GGXF_TAG = "!ggxf"
 YAML_GROUP_TAG = "!ggxfgroup"
 YAML_GRID_TAG = "!ggxfgrid"
 YAML_GRID_DATA_TAG = "!ggxfgriddata"
+
+
+YAML_MAX_SIMPLE_STRING_LEN = 32
+YAML_STR_SCALAR_TAG = "tag:yaml.org,2002:str"
+
 
 YAML_OPTIONS = f"""
 The following options can apply to YAML format input (I) and output (O):
@@ -53,6 +60,9 @@ class Reader(BaseReader):
         BaseReader.__init__(self, options)
         dtype = self.getOption(YAML_OPTION_GRID_DTYPE, YAML_DTYPE_FLOAT32)
         self._dtype = dtype = np.float64 if dtype == YAML_DTYPE_FLOAT64 else np.float32
+        self._useDummyGridData = self.getBoolOption(
+            YAML_OPTION_CREATE_DUMMY_GRID_DATA, False
+        )
         self._logger = logging.getLogger("GGXF.YamlReader")
         self.validator().update(GGXF_Types.YamlAttributes)
 
@@ -95,6 +105,7 @@ class Reader(BaseReader):
             ygrids = ygroup.pop(GROUP_ATTR_GRIDS, [])
             # Need to handle parameter validation here
             group = Group(ggxf, groupname, ygroup)
+            group.configureParameters(self.error)
             for ygrid in ygrids:
                 self.loadGrid(group, ygrid, gridDataSource)
             group.configure(self.error)
@@ -108,6 +119,14 @@ class Reader(BaseReader):
             gridname = griddata.pop(GGXF_ATTR_GRID_NAME)
             gridDataSource[gridname] = griddata
         return gridDataSource
+
+    def installDummyGrid(self, group: Group, ygrid: dict):
+        nparam = group.nparam()
+        ncol = ygrid.get(GRID_ATTR_J_NODE_COUNT, 1)
+        nrow = ygrid.get(GRID_ATTR_I_NODE_COUNT, 1)
+        if GRID_ATTR_DATA_SOURCE in ygrid:
+            ygrid.pop(GRID_ATTR_DATA_SOURCE)
+        ygrid[GRID_ATTR_DATA] = np.zeros((ncol, nrow, nparam))
 
     def loadGrid(
         self, group: Group, ygrid: dict, gridDataSource: dict, parent: Grid = None
@@ -130,6 +149,8 @@ class Reader(BaseReader):
         # and potentially the row and column count and the affine transformation
         #
         # Otherwise load the grid data into a numpy array
+        if self._useDummyGridData:
+            self.installDummyGrid(group, ygrid)
 
         if GRID_ATTR_DATA_SOURCE in ygrid:
             datasource = ygrid.pop(GRID_ATTR_DATA_SOURCE)
@@ -137,9 +158,10 @@ class Reader(BaseReader):
 
         if self.validator().validateGridAttributes(ygrid, context=context):
             self.validateGridData(group, ygrid)
-            data = ygrid.pop(GRID_ATTR_DATA, [])
+            gdata = ygrid.pop(GRID_ATTR_DATA, [])
             cgrids = ygrid.pop(GRID_ATTR_GRIDS, [])
             gridname = ygrid.pop(GRID_ATTR_GRID_NAME)
+            data = self.splitGridByParamSet(group, gdata)
             grid = Grid(group, gridname, ygrid, data)
             for cgrid in cgrids:
                 self.loadGrid(group, cgrid, gridDataSource, grid)
@@ -285,6 +307,12 @@ class Reader(BaseReader):
                 f"Grid {gridname} loaded - dimensions {data.shape}, type {data.dtype}"
             )
 
+    def splitGridByParamSet(self, group, gdata):
+        # Placeholder for representing data in sets rather than single grid
+        return gdata
+        # paramSetIndices = group.paramSetIndices()
+        # return {pset: gdata[:, :, indices] for pset, indices in paramSetIndices.items()}
+
 
 class Writer(BaseWriter):
     # PyYAML has an annoying trait of adding tags.  While it makes the YAML loader "safe"
@@ -310,6 +338,7 @@ class Writer(BaseWriter):
         loader.add_representer(Group, self._writeGgxfGroup)
         loader.add_representer(Grid, self._writeGgxfGrid)
         loader.add_representer(np.ndarray, self._writeGridData)
+        loader.add_representer(str, self._writeStr)
         self._headerOnly = self.getBoolOption(YAML_OPTION_WRITE_HEADERS_ONLY, False)
 
         with tempfile.TemporaryFile("w+") as tmph, open(yaml_file, "w") as yamlh:
@@ -373,3 +402,10 @@ class Writer(BaseWriter):
             ydata = data.reshape(shape[:2])
         ydata = ydata.tolist()
         return dumper.represent_sequence(YAML_GRID_DATA_TAG, ydata)
+
+    # This attempts to improve the format of output YAML strings (eg WKT).  Hasn't
+    # worked :-(
+    def _writeStr(self, dumper, data):
+        if "\n" in data or '"' in data or len(data) > YAML_MAX_SIMPLE_STRING_LEN:
+            return dumper.represent_scalar(YAML_STR_SCALAR_TAG, data, style="literal")
+        return dumper.represent_scalar(YAML_STR_SCALAR_TAG, data)
