@@ -18,6 +18,8 @@ YAML_OPTION_GRID_DIRECTORY = "grid_directory"
 YAML_OPTION_CHECK_DATASOURCE_AFFINE = "check_datasource_affine_coeffs"
 YAML_OPTION_USE_GRIDDATA_SECTION = "use_griddata_section"
 YAML_OPTION_WRITE_HEADERS_ONLY = "write_headers_only"
+# Option for testing yaml headers without requiring valid grid data
+YAML_OPTION_CREATE_DUMMY_GRID_DATA = "create_dummy_grid_data"
 YAML_AFFINE_COEFF_DIFFERENCE_TOLERANCE = 1.0e-6
 
 YAML_OPTION_GRID_DTYPE = "grid_dtype"
@@ -58,6 +60,9 @@ class Reader(BaseReader):
         BaseReader.__init__(self, options)
         dtype = self.getOption(YAML_OPTION_GRID_DTYPE, YAML_DTYPE_FLOAT32)
         self._dtype = dtype = np.float64 if dtype == YAML_DTYPE_FLOAT64 else np.float32
+        self._useDummyGridData = self.getBoolOption(
+            YAML_OPTION_CREATE_DUMMY_GRID_DATA, False
+        )
         self._logger = logging.getLogger("GGXF.YamlReader")
         self.validator().update(GGXF_Types.YamlAttributes)
 
@@ -115,6 +120,14 @@ class Reader(BaseReader):
             gridDataSource[gridname] = griddata
         return gridDataSource
 
+    def installDummyGrid(self, group: Group, ygrid: dict):
+        nparam = group.nparam()
+        ncol = ygrid.get(GRID_ATTR_J_NODE_COUNT, 1)
+        nrow = ygrid.get(GRID_ATTR_I_NODE_COUNT, 1)
+        if GRID_ATTR_DATA_SOURCE in ygrid:
+            ygrid.pop(GRID_ATTR_DATA_SOURCE)
+        ygrid[GRID_ATTR_DATA] = np.zeros((ncol, nrow, nparam))
+
     def loadGrid(
         self, group: Group, ygrid: dict, gridDataSource: dict, parent: Grid = None
     ):
@@ -136,6 +149,8 @@ class Reader(BaseReader):
         # and potentially the row and column count and the affine transformation
         #
         # Otherwise load the grid data into a numpy array
+        if self._useDummyGridData:
+            self.installDummyGrid(group, ygrid)
 
         if GRID_ATTR_DATA_SOURCE in ygrid:
             datasource = ygrid.pop(GRID_ATTR_DATA_SOURCE)

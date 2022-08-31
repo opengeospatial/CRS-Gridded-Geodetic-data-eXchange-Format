@@ -1,15 +1,4 @@
 netcdf GGXFspec-E1_parameterSet-removed {
-types:
-  compound ggxfParameterType {
-    char parameterName(32) ;
-    char parameterSet(32) ;
-    char unit(16) ;
-    double unitSiRatio ;
-    int sourceCrsAxis ;
-    float parameterMinimumValue ;
-    float parameterMaximumValue ;
-    float noDataFlag ;
-  }; // ggxfParameterType
 
 // global attributes:
 		:Conventions = "GGXF-1.0, ACDD-1.3" ;
@@ -27,11 +16,17 @@ types:
 		:sourceCrsWkt = "GEOGCRS[\"ED50\",\n  DATUM[\"European Datum 1950\",\n    ELLIPSOID[\"International 1924\",6378388,297,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:targetCrsWkt = "GEOGCRS[\"ETRF2000\",\n  DATUM[\"European Terrestrial Reference Frame 2000\",\n    ELLIPSOID[\"GRS 1980\",6378137,298.257222101,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:operationAccuracy = 2LL ;
-		ggxfParameterType :parameters = 
-    {{"latitudeOffset"}, {"latitudeOffset"}, {"arc-second"}, 4.84813681109536e-06, 0, -3.402823e+38, -3.402823e+38, -3.402823e+38}, 
-    {{"longitudeOffset"}, {"longitudeOffset"}, {"arc-second"}, 4.84813681109536e-06, 1, -3.402823e+38, -3.402823e+38, -3.402823e+38} ;
-		:_NCProperties = "version=2,netcdf=4.7.4,hdf5=1.12.0," ;
-		:_SuperblockVersion = 0 ;
+		:parameters.count = 2LL ;
+		:parameters.1.parameterName = "latitudeOffset" ;
+		:parameters.1.sourceCrsAxis = 0LL ;
+		:parameters.1.unit = "arc-second" ;
+		:parameters.1.unitSiRatio = 4.84813681109536e-06 ;
+		:parameters.2.parameterName = "longitudeOffset" ;
+		:parameters.2.sourceCrsAxis = 1LL ;
+		:parameters.2.unit = "arc-second" ;
+		:parameters.2.unitSiRatio = 4.84813681109536e-06 ;
+		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
+		:_SuperblockVersion = 2 ;
 		:_IsNetcdf4 = 1 ;
 		:_Format = "netCDF-4" ;
 

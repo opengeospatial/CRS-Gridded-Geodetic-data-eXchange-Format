@@ -21,12 +21,6 @@ targetCrsWkt: "VERTCRS[\"Vertical datum height\",\n VDATUM[\"Imaginary vertical 
   ,ID[\"EPSG\",1124]],\n CS[vertical,1,ID[\"EPSG\",6499]],\n   AXIS[\"Gravity-related\
   \ height (H)\",up],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]\n ,ID[\"EPSG\",6642]]\
   \    \n"
-parameters:
-- parameterName: geoidHeight
-  parameterSet: geoidHeight
-  unit: metre
-  unitSiRatio: 1.0
-  sourceCrsAxis: 2
 operationAccuracy: 0.015
 organisationName: "A Hypothetical National Geodetic Survey."
 deliveryPoint: Somewhere
@@ -39,6 +33,11 @@ contentApplicabilityExtent:
     westBoundLongitude: -69.0
     northBoundLatitude: 24.6
     eastBoundLongitude: -67.0
+parameters:
+- parameterName: geoidHeight
+  sourceCrsAxis: 2
+  unit: metre
+  unitSiRatio: 1.0
 ggxfGroups:
 - 
   interpolationMethod: bilinear

@@ -1,15 +1,4 @@
 netcdf ca_ntv2 {
-types:
-  compound ggxfParameterType {
-    char parameterName(32) ;
-    char parameterSet(32) ;
-    char unit(16) ;
-    double unitSiRatio ;
-    int sourceCrsAxis ;
-    float parameterMinimumValue ;
-    float parameterMaximumValue ;
-    float noDataFlag ;
-  }; // ggxfParameterType
 
 // global attributes:
 		:Conventions = "GGXF-1.0, ACDD-1.3" ;
@@ -30,15 +19,31 @@ types:
 		:interpolationCrsWkt = "GEOGCRS[\"NAD27\",\n  DATUM[\"North American Datum 1927\",\n    ELLIPSOID[\"Clarke 1866\",6378206.4,294.9786982,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:sourceCrsWkt = "GEOGCRS[\"NAD27\",\n  DATUM[\"North American Datum 1927\",\n    ELLIPSOID[\"Clarke 1866\",6378206.4,294.9786982,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:targetCrsWkt = "GEOGCRS[\"NAD83(Original)\",\n  DATUM[\"North American Datum 1983\",\n    ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
-		ggxfParameterType :parameters = 
-    {{"latitudeOffset"}, {"offset"}, {"arc-second"}, 4.84813681109536e-06, 0, -3.402823e+38, -3.402823e+38, -3.402823e+38}, 
-    {{"longitudeOffset"}, {"offset"}, {"arc-second"}, 4.84813681109536e-06, 1, -3.402823e+38, -3.402823e+38, -3.402823e+38}, 
-    {{"latitudeOffsetUncertainty"}, {"offsetUncertainty"}, {"metre"}, 1, 0, -3.402823e+38, -3.402823e+38, -3.402823e+38}, 
-    {{"longitudeOffsetUncertainty"}, {"offsetUncertainty"}, {"metre"}, 1, 1, -3.402823e+38, -3.402823e+38, -3.402823e+38} ;
+		:parameters.count = 4LL ;
+		:parameters.1.parameterName = "latitudeOffset" ;
+		:parameters.1.parameterSet = "offset" ;
+		:parameters.1.sourceCrsAxis = 0LL ;
+		:parameters.1.unit = "arc-second" ;
+		:parameters.1.unitSiRatio = 4.84813681109536e-06 ;
+		:parameters.2.parameterName = "longitudeOffset" ;
+		:parameters.2.parameterSet = "offset" ;
+		:parameters.2.sourceCrsAxis = 1LL ;
+		:parameters.2.unit = "arc-second" ;
+		:parameters.2.unitSiRatio = 4.84813681109536e-06 ;
+		:parameters.3.parameterName = "latitudeOffsetUncertainty" ;
+		:parameters.3.parameterSet = "offsetUncertainty" ;
+		:parameters.3.sourceCrsAxis = 0LL ;
+		:parameters.3.unit = "metre" ;
+		:parameters.3.unitSiRatio = 1. ;
+		:parameters.4.parameterName = "longitudeOffsetUncertainty" ;
+		:parameters.4.parameterSet = "offsetUncertainty" ;
+		:parameters.4.sourceCrsAxis = 1LL ;
+		:parameters.4.unit = "metre" ;
+		:parameters.4.unitSiRatio = 1. ;
 		:operationAccuracy = 1.5 ;
 		:uncertaintyMeasure = "2CEE" ;
-		:_NCProperties = "version=2,netcdf=4.7.4,hdf5=1.12.0," ;
-		:_SuperblockVersion = 0 ;
+		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
+		:_SuperblockVersion = 2 ;
 		:_IsNetcdf4 = 1 ;
 		:_Format = "netCDF-4" ;
 

@@ -1,15 +1,4 @@
 netcdf nzgd2000-20180701 {
-types:
-  compound ggxfParameterType {
-    char parameterName(32) ;
-    char parameterSet(32) ;
-    char unit(16) ;
-    double unitSiRatio ;
-    int sourceCrsAxis ;
-    float parameterMinimumValue ;
-    float parameterMaximumValue ;
-    float noDataFlag ;
-  }; // ggxfParameterType
 
 // global attributes:
 		:Conventions = "GGXF-1.0, ACDD-1.3" ;
@@ -36,14 +25,26 @@ types:
 		:sourceCrsWkt = "GEOGCRS[\"NZGD2000\",DATUM[\"New Zealand Geodetic Datum 2000\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6167]],CS[ellipsoidal,3,ID[\"EPSG\",6423]],AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],ID[\"EPSG\",4959]]" ;
 		:targetCrsWkt = "GEOGCRS[\"ITRF96\", DYNAMIC[FRAMEEPOCH[1997.0]],DATUM[\"International Terrestrial Reference Frame 1996\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6654]],CS[ellipsoidal,3,ID[\"EPSG\",6423]],AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],ID[\"EPSG\",7907]]" ;
 		:interpolationCrsWkt = "GEOGCRS[\"NZGD2000\",DATUM[\"New Zealand Geodetic Datum 2000\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6167]],CS[ellipsoidal,2,ID[\"EPSG\",6422]],AXIS[\"Geodetic latitude (Lat)\",north],AXIS[\"Geodetic longitude (Lon)\",east],ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]],ID[\"EPSG\",4167]]" ;
-		ggxfParameterType :parameters = 
-    {{"displacementEast"}, {"displacement"}, {"metre"}, 1, 1, -3.402823e+38, -3.402823e+38, -3.402823e+38}, 
-    {{"displacementNorth"}, {"displacement"}, {"metre"}, 1, 0, -3.402823e+38, -3.402823e+38, -3.402823e+38}, 
-    {{"displacementUp"}, {"displacement"}, {"metre"}, 1, 2, -3.402823e+38, -3.402823e+38, -3.402823e+38} ;
+		:parameters.count = 3LL ;
+		:parameters.1.parameterName = "displacementEast" ;
+		:parameters.1.parameterSet = "displacement" ;
+		:parameters.1.unit = "metre" ;
+		:parameters.1.unitSiRatio = 1. ;
+		:parameters.1.sourceCrsAxis = 1LL ;
+		:parameters.2.parameterName = "displacementNorth" ;
+		:parameters.2.parameterSet = "displacement" ;
+		:parameters.2.unit = "metre" ;
+		:parameters.2.unitSiRatio = 1. ;
+		:parameters.2.sourceCrsAxis = 0LL ;
+		:parameters.3.parameterName = "displacementUp" ;
+		:parameters.3.parameterSet = "displacement" ;
+		:parameters.3.unit = "metre" ;
+		:parameters.3.unitSiRatio = 1. ;
+		:parameters.3.sourceCrsAxis = 2LL ;
 		:operationAccuracy = 0.01 ;
 		:uncertaintyMeasure = "2CEP 2SE" ;
-		:_NCProperties = "version=2,netcdf=4.7.4,hdf5=1.12.0," ;
-		:_SuperblockVersion = 0 ;
+		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
+		:_SuperblockVersion = 2 ;
 		:_IsNetcdf4 = 1 ;
 		:_Format = "netCDF-4" ;
 
