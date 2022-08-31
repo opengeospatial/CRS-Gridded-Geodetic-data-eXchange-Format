@@ -25,7 +25,7 @@ class GGXF:
         self._metadata = metadata
         self._content = metadata[GGXF_ATTR_CONTENT]
         if self._content not in ContentTypes:
-            raise Error("Invalid content type {self._content} for GGXF file")
+            raise Error(f"Invalid content type {self._content} for GGXF file")
         self._needEpoch = self._content in TimeDependentContentTypes
         self._groups = []
         self._configured = False

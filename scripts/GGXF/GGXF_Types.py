@@ -354,6 +354,16 @@ CommonAttributes = {
             ATTRDEF_OPTIONAL: True,
         },
         {
+            ATTRDEF_NAME: GRID_ATTR_GRID_PRIORITY,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GRID_ATTR_GRID_PRIORITY,
+                    ATTRDEF_TYPE: int,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
             ATTRDEF_NAME: GRID_ATTR_AFFINE_COEFFS,
             ATTRDEF_CHOICE: [
                 {

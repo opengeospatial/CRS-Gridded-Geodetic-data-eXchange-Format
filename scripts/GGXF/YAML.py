@@ -149,6 +149,7 @@ class Reader(BaseReader):
         # and potentially the row and column count and the affine transformation
         #
         # Otherwise load the grid data into a numpy array
+
         if self._useDummyGridData:
             self.installDummyGrid(group, ygrid)
 

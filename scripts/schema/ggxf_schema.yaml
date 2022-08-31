@@ -105,6 +105,9 @@ CommonAttributes:
     - AttributeName: kNodeCount
       Type: int
       Optional: true
+    - AttributeName: gridPriority
+      Type: int
+      Optional: true
     - AttributeName: affineCoeffs
       Type: list(float,6)
     - AttributeName: comment
