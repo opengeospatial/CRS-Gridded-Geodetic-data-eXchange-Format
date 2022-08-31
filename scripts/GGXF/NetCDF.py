@@ -42,7 +42,7 @@ The following options apply to NetCDF input (I) and output (O):
   "{NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES}" (O) Convert attributes to snake_case (default false)"
   "{NETCDF_OPTION_WRITE_CDL}" (O) Generate an output CDL file as well as a NetCDF file (default false)
   "{NETCDF_OPTION_WRITE_CDL_HEADER}" (O) Only write the header information in the CDL file (default false)
-  "{NETCDF_OPTION_USE_COMPOUND_TYPE}" (O) Use compound types (very limited test implementation) (default true)
+  "{NETCDF_OPTION_USE_COMPOUND_TYPE}" (O) Use compound types (very limited test implementation) (default false)
 """
 #  "{NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS}" (O) Grids with just one parameter are created with just 2 dimensions (default false)
 
@@ -319,7 +319,7 @@ class Writer(BaseWriter):
 
     def write(self, ggxf, netcdf4_file: str):
         self._useCompoundTypes = self.getBoolOption(
-            NETCDF_OPTION_USE_COMPOUND_TYPE, True
+            NETCDF_OPTION_USE_COMPOUND_TYPE, False
         )
         self._useSnakeCase = self.getBoolOption(
             NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES, False
