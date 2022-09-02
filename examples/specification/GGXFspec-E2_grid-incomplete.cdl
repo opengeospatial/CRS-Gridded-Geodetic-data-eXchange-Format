@@ -49,7 +49,6 @@ group: SA\ geoid\ 2010 {
 
     // group attributes:
     		:affineCoeffs = -22., 0., -0.04166666667, 16., 0.04166666667, 0. ;
-    		:gridPriority = 1LL ;
     } // group SA\ geoid\ 2010
   } // group SA\ geoid\ 2010
 }

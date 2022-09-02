@@ -69,7 +69,6 @@ group: nz_linz_nzgd2000-ndm-grid02 {
     // group attributes:
     		:comment = "Secular deformation model derived from NUVEL-1A rotation rates" ;
     		:affineCoeffs = -25., 0., -0.5, 158., 0.5, 0. ;
-    		:gridPriority = 1LL ;
 
     group: ndm_grid_igns2011_nz {
       dimensions:
@@ -86,7 +85,6 @@ group: nz_linz_nzgd2000-ndm-grid02 {
       // group attributes:
       		:comment = "Secular deformation model derived from GNS model 2011 V4" ;
       		:affineCoeffs = -33., 0., -0.1, 165.5, 0.1, 0. ;
-      		:gridPriority = 1LL ;
       } // group ndm_grid_igns2011_nz
     } // group ndm_grid_nuvel1a_eez
   } // group nz_linz_nzgd2000-ndm-grid02
@@ -126,7 +124,6 @@ group: nz_linz_nzgd2000-ds20090715-grid011 {
 
     // group attributes:
     		:affineCoeffs = -50.125, 0., -0.125, 165.4, 0.15, 0. ;
-    		:gridPriority = 1LL ;
     } // group patch_ds_20090715_grid_ds_P0_L1
   } // group nz_linz_nzgd2000-ds20090715-grid011
 }

@@ -67,7 +67,6 @@ group: secular-vertical-velocity {
 
     // group attributes:
     		:affineCoeffs = 172.6, 0.6, 0., -41.6, 0., 0.4 ;
-    		:gridPriority = 1LL ;
     data:
 
      displacement =
@@ -109,7 +108,6 @@ group: co-and-post-seismic-deformation {
 
     // group attributes:
     		:affineCoeffs = 172.6, 0.6, 0., -41.6, 0., 0.4 ;
-    		:gridPriority = 1LL ;
     data:
 
      displacement =
@@ -155,7 +153,6 @@ group: co-and-post-seismic-deformation {
 
       // group attributes:
       		:affineCoeffs = 172.6, 0.3, 0., -41.2, 0., 0.2 ;
-      		:gridPriority = 1LL ;
       data:
 
        displacement =

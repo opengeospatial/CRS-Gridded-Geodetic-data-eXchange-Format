@@ -389,8 +389,8 @@ class Writer(BaseWriter):
         ydata[GRID_ATTR_AFFINE_COEFFS] = [
             float(c) for c in ydata[GRID_ATTR_AFFINE_COEFFS]
         ]
-        if len(grid.subgrids()) > 0:
-            ydata["grids"] = grid.subgrids()
+        if len(grid.grids()) > 0:
+            ydata["grids"] = grid.grids()
         ydata.pop(GRID_ATTR_DATA, None)
         if not self._useGridDataSection and not self._headerOnly:
             ydata[GRID_ATTR_DATA] = grid.data()

@@ -51,7 +51,6 @@ group: national_velocity_model {
 
     // group attributes:
     		:affineCoeffs = -25., 0., -0.5, 158., 0.5, 0. ;
-    		:gridPriority = 1LL ;
 
     group: grid_igns2011_nz {
       dimensions:
@@ -64,7 +63,6 @@ group: national_velocity_model {
 
       // group attributes:
       		:affineCoeffs = -33., 0., -0.1, 165.5, 0.1, 0. ;
-      		:gridPriority = 1LL ;
       } // group grid_igns2011_nz
     } // group grid_nuvel1a_eez
   } // group national_velocity_model

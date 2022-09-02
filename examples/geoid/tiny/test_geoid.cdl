@@ -46,7 +46,6 @@ group: default {
 
     // group attributes:
     		:affineCoeffs = 22.5, 0., 0.7, -69., 1., 0. ;
-    		:gridPriority = 1LL ;
     data:
 
      geoidHeight =

@@ -421,8 +421,7 @@ class Writer(BaseWriter):
         )
 
         # Store each of the grids
-        grids = group.grids()
-        for grid in enumerate(grids):
+        for grid in group.grids():
             self.saveGridNetCdf4(cdfgroup, group, grid, nctypes, nparam)
 
     def saveGridNetCdf4(
@@ -471,7 +470,7 @@ class Writer(BaseWriter):
         )
 
         # Support for nested grid possibility
-        for subgrid in enumerate(grid.subgrids()):
+        for subgrid in grid.grids():
             self.saveGridNetCdf4(cdfgrid, group, subgrid, nctypes, nparam)
 
     def saveNetCdf4Attr(self, context: str, dataset: netCDF4.Dataset, name: str, value):

@@ -50,7 +50,6 @@ group: Catalano_Canyon {
 
     // group attributes:
     		:affineCoeffs = 40., 0., -0.05, 7.6, 0.0666666666666667, 0. ;
-    		:gridPriority = 1LL ;
     } // group South
 
   group: North {
@@ -64,7 +63,6 @@ group: Catalano_Canyon {
 
     // group attributes:
     		:affineCoeffs = 40.15, 0., -0.05, 7.6, 0.1, 0. ;
-    		:gridPriority = 2LL ;
     } // group North
   } // group Catalano_Canyon
 }
