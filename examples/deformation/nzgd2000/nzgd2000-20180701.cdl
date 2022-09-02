@@ -26,21 +26,21 @@ netcdf nzgd2000-20180701 {
 		:targetCrsWkt = "GEOGCRS[\"ITRF96\", DYNAMIC[FRAMEEPOCH[1997.0]],DATUM[\"International Terrestrial Reference Frame 1996\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6654]],CS[ellipsoidal,3,ID[\"EPSG\",6423]],AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],ID[\"EPSG\",7907]]" ;
 		:interpolationCrsWkt = "GEOGCRS[\"NZGD2000\",DATUM[\"New Zealand Geodetic Datum 2000\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6167]],CS[ellipsoidal,2,ID[\"EPSG\",6422]],AXIS[\"Geodetic latitude (Lat)\",north],AXIS[\"Geodetic longitude (Lon)\",east],ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]],ID[\"EPSG\",4167]]" ;
 		:parameters.count = 3LL ;
-		:parameters.1.parameterName = "displacementEast" ;
+		:parameters.0.parameterName = "displacementEast" ;
+		:parameters.0.parameterSet = "displacement" ;
+		:parameters.0.unit = "metre" ;
+		:parameters.0.unitSiRatio = 1. ;
+		:parameters.0.sourceCrsAxis = 1LL ;
+		:parameters.1.parameterName = "displacementNorth" ;
 		:parameters.1.parameterSet = "displacement" ;
 		:parameters.1.unit = "metre" ;
 		:parameters.1.unitSiRatio = 1. ;
-		:parameters.1.sourceCrsAxis = 1LL ;
-		:parameters.2.parameterName = "displacementNorth" ;
+		:parameters.1.sourceCrsAxis = 0LL ;
+		:parameters.2.parameterName = "displacementUp" ;
 		:parameters.2.parameterSet = "displacement" ;
 		:parameters.2.unit = "metre" ;
 		:parameters.2.unitSiRatio = 1. ;
-		:parameters.2.sourceCrsAxis = 0LL ;
-		:parameters.3.parameterName = "displacementUp" ;
-		:parameters.3.parameterSet = "displacement" ;
-		:parameters.3.unit = "metre" ;
-		:parameters.3.unitSiRatio = 1. ;
-		:parameters.3.sourceCrsAxis = 2LL ;
+		:parameters.2.sourceCrsAxis = 2LL ;
 		:operationAccuracy = 0.01 ;
 		:uncertaintyMeasure = "2CEP 2SE" ;
 		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
@@ -56,8 +56,8 @@ group: nz_linz_nzgd2000-ndm-grid02 {
   		:comment = "Secular deformation model derived from NUVEL-1A rotation rates\nSecular deformation model derived from GNS model 2011 V4\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "velocity" ;
-  		:timeFunctions.1.functionReferenceDate = "2000-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "velocity" ;
+  		:timeFunctions.0.functionReferenceDate = "2000-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: ndm_grid_nuvel1a_eez {
@@ -95,9 +95,9 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
   		:comment = "Secretary Island (Fiordland) earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2003-08-21T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2004-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2003-08-21T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2004-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_si_20030821_grid_si_l1 {
@@ -148,9 +148,9 @@ group: nz_linz_nzgd2000-mq20041223-grid011 {
   		:comment = "Macquarie Plate earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2004-12-23T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2005-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2004-12-23T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2005-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_mq_20041223_grid_mq_p0_l1 {
@@ -175,9 +175,9 @@ group: nz_linz_nzgd2000-mq20041223-grid012 {
   		:comment = "Macquarie Plate earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2004-12-23T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2005-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2004-12-23T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2005-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_mq_20041223_grid_mq_p1_sl2 {
@@ -202,9 +202,9 @@ group: nz_linz_nzgd2000-mq20041223-grid013 {
   		:comment = "Macquarie Plate earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2004-12-23T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2005-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2004-12-23T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2005-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_mq_20041223_grid_mq_p2_l1 {
@@ -229,9 +229,9 @@ group: nz_linz_nzgd2000-mq20041223-grid014 {
   		:comment = "Macquarie Plate earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2004-12-23T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2005-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2004-12-23T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2005-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_mq_20041223_grid_mq_p3_l1 {
@@ -256,9 +256,9 @@ group: nz_linz_nzgd2000-mq20041223-grid015 {
   		:comment = "Macquarie Plate earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2004-12-23T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2005-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2004-12-23T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2005-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_mq_20041223_grid_mq_p4_l1 {
@@ -283,9 +283,9 @@ group: nz_linz_nzgd2000-mq20041223-grid016 {
   		:comment = "Macquarie Plate earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2004-12-23T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2005-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2004-12-23T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2005-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_mq_20041223_grid_mq_p5_l1 {
@@ -310,9 +310,9 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
   		:comment = "Fiordland (George Sound) earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2007-10-16T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2008-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2007-10-16T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2008-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_gs_20071016_grid_gs_l1 {
@@ -363,16 +363,16 @@ group: nz_linz_nzgd2000-ds20090715-grid011 {
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 2LL ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2011-09-01T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1.05 ;
   		:timeFunctions.1.functionType = "ramp" ;
   		:timeFunctions.1.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.1.endDate = "2011-09-01T00:00:00Z" ;
   		:timeFunctions.1.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1.05 ;
-  		:timeFunctions.2.functionType = "ramp" ;
-  		:timeFunctions.2.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.2.endDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.scaleFactor = 0.29 ;
+  		:timeFunctions.1.scaleFactor = 0.29 ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ds_20090715_grid_ds_p0_l1 {
@@ -397,16 +397,16 @@ group: nz_linz_nzgd2000-ds20090715-grid012 {
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 2LL ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2011-09-01T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1.05 ;
   		:timeFunctions.1.functionType = "ramp" ;
   		:timeFunctions.1.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.1.endDate = "2011-09-01T00:00:00Z" ;
   		:timeFunctions.1.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1.05 ;
-  		:timeFunctions.2.functionType = "ramp" ;
-  		:timeFunctions.2.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.2.endDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.scaleFactor = 0.29 ;
+  		:timeFunctions.1.scaleFactor = 0.29 ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ds_20090715_grid_ds_p1_l1 {
@@ -431,16 +431,16 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 2LL ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2011-09-01T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1.05 ;
   		:timeFunctions.1.functionType = "ramp" ;
   		:timeFunctions.1.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.1.endDate = "2011-09-01T00:00:00Z" ;
   		:timeFunctions.1.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1.05 ;
-  		:timeFunctions.2.functionType = "ramp" ;
-  		:timeFunctions.2.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.2.endDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.scaleFactor = 0.29 ;
+  		:timeFunctions.1.scaleFactor = 0.29 ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ds_20090715_grid_ds_p2_l1 {
@@ -491,16 +491,16 @@ group: nz_linz_nzgd2000-ds20090715-grid014 {
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 2LL ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2011-09-01T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1.05 ;
   		:timeFunctions.1.functionType = "ramp" ;
   		:timeFunctions.1.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.1.endDate = "2011-09-01T00:00:00Z" ;
   		:timeFunctions.1.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1.05 ;
-  		:timeFunctions.2.functionType = "ramp" ;
-  		:timeFunctions.2.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.2.endDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.scaleFactor = 0.29 ;
+  		:timeFunctions.1.scaleFactor = 0.29 ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ds_20090715_grid_ds_p3_l1 {
@@ -525,9 +525,9 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
   		:comment = "Darfield earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2010-09-04T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2011-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2010-09-04T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2011-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_c1_20100904_grid_c1_l1 {
@@ -591,9 +591,9 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
   		:comment = "Christchurch February earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2011-02-22T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2012-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2011-02-22T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2012-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_c2_20110222_grid_c2_l1 {
@@ -657,9 +657,9 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
   		:comment = "Christchurch June earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2011-06-13T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2012-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2011-06-13T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2012-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_c3_20110613_grid_c3_l1 {
@@ -723,9 +723,9 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
   		:comment = "Christchurch earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2011-12-23T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2012-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2011-12-23T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2012-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_c4_20111223_grid_c4_l1 {
@@ -789,9 +789,9 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
   		:comment = "Mw 6.6 Cook Strait earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2013-07-21T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2014-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2013-07-21T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2014-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_cs_20130721_grid_cs_20130721_l1 {
@@ -855,9 +855,9 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
   		:comment = "Mw 6.6 Lake Grassmere earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2013-08-16T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2014-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2013-08-16T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2014-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_lg_20130816_grid_lg_20130816_l1 {
@@ -921,9 +921,9 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
   		:comment = "Christchurch Valentines Day earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2016-02-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2017-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2016-02-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2017-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ch_20160214_grid_ch_20160214_l1 {
@@ -987,8 +987,8 @@ group: nz_linz_nzgd2000-ka20161114-grid01 {
   		:comment = "Event: Kaikoura earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2016-11-14T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114co_h_l1_f {
@@ -1026,9 +1026,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
   		:comment = "Event: Kaikoura earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2017-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2017-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114co_h_l2_r {
@@ -1506,9 +1506,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
   		:comment = "Event: Kaikoura earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		:groupParameters = "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2017-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2017-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114co_v_l1 {
@@ -1962,11 +1962,11 @@ group: nz_linz_nzgd2000-ka20161114-grid04 {
   		:comment = "Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "ramp" ;
-  		:timeFunctions.1.startDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1. ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1. ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114pe1_h_l1_f {
@@ -2004,11 +2004,11 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
   		:comment = "Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "ramp" ;
-  		:timeFunctions.1.startDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1. ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1. ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114pe1_h_l2_r {
@@ -2057,11 +2057,11 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
   		:comment = "Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		:groupParameters = "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "ramp" ;
-  		:timeFunctions.1.startDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1. ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1. ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114pe1_v_l1 {
@@ -2125,8 +2125,8 @@ group: nz_linz_nzgd2000-ka20161114-grid10 {
   		:comment = "Event: Kaikoura earthquake,  14 November 2016\nRefinement for horizontal difference between observations and model\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2016-11-14T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_hor_refinement {
@@ -2151,9 +2151,9 @@ group: nz_linz_nzgd2000-ka20161114-grid11 {
   		:comment = "Kaikoura earthquake second refinement grid - horizontal" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2017-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2017-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_hor_refinement2 {
@@ -2176,9 +2176,9 @@ group: nz_linz_nzgd2000-ka20161114-grid12 {
   		:comment = "Kaikoura earthquake second refinement grid -vertical" ;
   		:groupParameters = "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2017-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2017-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_vrt_refinement2 {
@@ -2203,11 +2203,11 @@ group: nz_linz_nzgd2000-ka20161114-grid07 {
   		:comment = "Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "ramp" ;
-  		:timeFunctions.1.startDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2017-02-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1. ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2017-02-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1. ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114pe3_h_l1_f {
@@ -2245,11 +2245,11 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
   		:comment = "Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "ramp" ;
-  		:timeFunctions.1.startDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2017-02-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2017-02-14T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1. ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2017-02-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2017-02-14T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1. ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114pe3_h_l2_r {
@@ -2298,11 +2298,11 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
   		:comment = "Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		:groupParameters = "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "ramp" ;
-  		:timeFunctions.1.startDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2017-02-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2017-02-14T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1. ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2017-02-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2017-02-14T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1. ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114pe3_v_l1 {

@@ -493,7 +493,7 @@ class Writer(BaseWriter):
         name: str = "",
         exclude=[],
         converted={},
-        base: int = 1,
+        base: int = 0,
     ) -> None:
         if type(entity) == dict:
             if name != "":

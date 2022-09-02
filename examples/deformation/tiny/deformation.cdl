@@ -25,21 +25,21 @@ netcdf deformation {
 		:targetCrsWkt = "GEOGCRS[\"ITRF96\", DYNAMIC[FRAMEEPOCH[1997.0]],DATUM[\"International Terrestrial Reference Frame 1996\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6654]],CS[ellipsoidal,3,ID[\"EPSG\",6423]],AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],ID[\"EPSG\",7907]]" ;
 		:interpolationCrsWkt = "GEOGCRS[\"NZGD2000\",DATUM[\"New Zealand Geodetic Datum 2000\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6167]],CS[ellipsoidal,2,ID[\"EPSG\",6422]],AXIS[\"Geodetic latitude (Lat)\",north],AXIS[\"Geodetic longitude (Lon)\",east],ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]],ID[\"EPSG\",4167]]" ;
 		:parameters.count = 3LL ;
-		:parameters.1.parameterName = "displacementEast" ;
+		:parameters.0.parameterName = "displacementEast" ;
+		:parameters.0.parameterSet = "displacement" ;
+		:parameters.0.unit = "metre" ;
+		:parameters.0.unitSiRatio = 1. ;
+		:parameters.0.sourceCrsAxis = 1LL ;
+		:parameters.1.parameterName = "displacementNorth" ;
 		:parameters.1.parameterSet = "displacement" ;
 		:parameters.1.unit = "metre" ;
 		:parameters.1.unitSiRatio = 1. ;
-		:parameters.1.sourceCrsAxis = 1LL ;
-		:parameters.2.parameterName = "displacementNorth" ;
+		:parameters.1.sourceCrsAxis = 0LL ;
+		:parameters.2.parameterName = "displacementUp" ;
 		:parameters.2.parameterSet = "displacement" ;
 		:parameters.2.unit = "metre" ;
 		:parameters.2.unitSiRatio = 1. ;
-		:parameters.2.sourceCrsAxis = 0LL ;
-		:parameters.3.parameterName = "displacementUp" ;
-		:parameters.3.parameterSet = "displacement" ;
-		:parameters.3.unit = "metre" ;
-		:parameters.3.unitSiRatio = 1. ;
-		:parameters.3.sourceCrsAxis = 2LL ;
+		:parameters.2.sourceCrsAxis = 2LL ;
 		:operationAccuracy = 0.01 ;
 		:uncertaintyMeasure = "2CEP 2SE" ;
 		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
@@ -53,8 +53,8 @@ group: secular-vertical-velocity {
   		:interpolationMethod = "bilinear" ;
   		:groupParameters = "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "velocity" ;
-  		:timeFunctions.1.functionReferenceDate = "2000-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "velocity" ;
+  		:timeFunctions.0.functionReferenceDate = "2000-01-01T00:00:00Z" ;
 
   group: national-vertical-velocity-grid {
     dimensions:
@@ -86,16 +86,16 @@ group: co-and-post-seismic-deformation {
   		:interpolationMethod = "bilinear" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 2LL ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2011-09-01T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1.05 ;
   		:timeFunctions.1.functionType = "ramp" ;
   		:timeFunctions.1.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.1.endDate = "2011-09-01T00:00:00Z" ;
   		:timeFunctions.1.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1.05 ;
-  		:timeFunctions.2.functionType = "ramp" ;
-  		:timeFunctions.2.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.2.endDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.scaleFactor = 0.29 ;
+  		:timeFunctions.1.scaleFactor = 0.29 ;
 
   group: far-field-deformation-grid {
     dimensions:

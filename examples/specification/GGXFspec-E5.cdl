@@ -27,21 +27,21 @@ netcdf GGXFspec-E5 {
 		:operationAccuracy = 0.01 ;
 		:uncertaintyMeasure = "- horizontal: 2CEP\n- vertical: 2SE\n" ;
 		:parameters.count = 3LL ;
-		:parameters.1.parameterName = "displacementEast" ;
+		:parameters.0.parameterName = "displacementEast" ;
+		:parameters.0.parameterSet = "displacement" ;
+		:parameters.0.sourceCrsAxis = 1LL ;
+		:parameters.0.unit = "metre" ;
+		:parameters.0.unitSiRatio = 1. ;
+		:parameters.1.parameterName = "displacementNorth" ;
 		:parameters.1.parameterSet = "displacement" ;
-		:parameters.1.sourceCrsAxis = 1LL ;
+		:parameters.1.sourceCrsAxis = 0LL ;
 		:parameters.1.unit = "metre" ;
 		:parameters.1.unitSiRatio = 1. ;
-		:parameters.2.parameterName = "displacementNorth" ;
+		:parameters.2.parameterName = "displacementUp" ;
 		:parameters.2.parameterSet = "displacement" ;
-		:parameters.2.sourceCrsAxis = 0LL ;
+		:parameters.2.sourceCrsAxis = 2LL ;
 		:parameters.2.unit = "metre" ;
 		:parameters.2.unitSiRatio = 1. ;
-		:parameters.3.parameterName = "displacementUp" ;
-		:parameters.3.parameterSet = "displacement" ;
-		:parameters.3.sourceCrsAxis = 2LL ;
-		:parameters.3.unit = "metre" ;
-		:parameters.3.unitSiRatio = 1. ;
 		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
 		:_SuperblockVersion = 2 ;
 		:_IsNetcdf4 = 1 ;
@@ -56,8 +56,8 @@ group: nz_linz_nzgd2000-ndm-grid02 {
   		:interpolationMethod = "bilinear" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "velocity" ;
-  		:timeFunctions.1.functionReferenceDate = "2000-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "velocity" ;
+  		:timeFunctions.0.functionReferenceDate = "2000-01-01T00:00:00Z" ;
 
   group: ndm_grid_nuvel1a_eez {
     dimensions:
@@ -97,16 +97,16 @@ group: nz_linz_nzgd2000-ds20090715-grid011 {
   		:interpolationMethod = "bilinear" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 2LL ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startEpoch = 2009.536 ;
+  		:timeFunctions.0.endEpoch = 2009.536 ;
+  		:timeFunctions.0.functionReferenceEpoch = 2011.666 ;
+  		:timeFunctions.0.scaleFactor = 1.05 ;
   		:timeFunctions.1.functionType = "ramp" ;
   		:timeFunctions.1.startEpoch = 2009.536 ;
-  		:timeFunctions.1.endEpoch = 2009.536 ;
+  		:timeFunctions.1.endEpoch = 2011.666 ;
   		:timeFunctions.1.functionReferenceEpoch = 2011.666 ;
-  		:timeFunctions.1.scaleFactor = 1.05 ;
-  		:timeFunctions.2.functionType = "ramp" ;
-  		:timeFunctions.2.startEpoch = 2009.536 ;
-  		:timeFunctions.2.endEpoch = 2011.666 ;
-  		:timeFunctions.2.functionReferenceEpoch = 2011.666 ;
-  		:timeFunctions.2.scaleFactor = 0.29 ;
+  		:timeFunctions.1.scaleFactor = 0.29 ;
 
   group: patch_ds_20090715_grid_ds_P0_L1 {
     dimensions:

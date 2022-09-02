@@ -19,12 +19,12 @@ netcdf GGXFspec-E6_grid-incomplete {
 		:publisher_url = "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g2018p0.asc.zip" ;
 		:interpolationCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:parameters.count = 2LL ;
-		:parameters.1.parameterName = "deviationEast" ;
+		:parameters.0.parameterName = "deviationEast" ;
+		:parameters.0.unit = "arc-second" ;
+		:parameters.0.unitSiRatio = 4.84813681109536e-06 ;
+		:parameters.1.parameterName = "deviationNorth" ;
 		:parameters.1.unit = "arc-second" ;
 		:parameters.1.unitSiRatio = 4.84813681109536e-06 ;
-		:parameters.2.parameterName = "deviationNorth" ;
-		:parameters.2.unit = "arc-second" ;
-		:parameters.2.unitSiRatio = 4.84813681109536e-06 ;
 		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
 		:_SuperblockVersion = 2 ;
 		:_IsNetcdf4 = 1 ;

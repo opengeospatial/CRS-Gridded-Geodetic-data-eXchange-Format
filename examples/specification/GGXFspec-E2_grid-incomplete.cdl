@@ -23,11 +23,11 @@ netcdf GGXFspec-E2_grid-incomplete {
 		:country = "South Africa" ;
 		:publisher_url = "ftp://ftp.trignet.co.za/South_African_Geoid" ;
 		:parameters.count = 1LL ;
-		:parameters.1.parameterName = "geoidHeight" ;
-		:parameters.1.parameterSet = "geoidHeight" ;
-		:parameters.1.sourceCrsAxis = 2LL ;
-		:parameters.1.unit = "metre" ;
-		:parameters.1.unitSiRatio = 1. ;
+		:parameters.0.parameterName = "geoidHeight" ;
+		:parameters.0.parameterSet = "geoidHeight" ;
+		:parameters.0.sourceCrsAxis = 2LL ;
+		:parameters.0.unit = "metre" ;
+		:parameters.0.unitSiRatio = 1. ;
 		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
 		:_SuperblockVersion = 2 ;
 		:_IsNetcdf4 = 1 ;
