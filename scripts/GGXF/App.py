@@ -206,7 +206,7 @@ class App:
                     logging.error(f"Error at row {nrow} of {input_csv}: {ex}")
                     output = list(row)
                     output.extend(missingval)
-                    output.append("{ex}")
+                    output.append(f"{ex}")
                 csvout.writerow(output)
 
     @staticmethod

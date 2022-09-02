@@ -53,8 +53,8 @@ class GGXF:
                 self.logger().warn(
                     f'Non-standard parameter set "{param.set()}" for parameter "{param.name()}"'
                 )
-        for group in self._groups:
-            group.configure(errorhandler=errorhandler)
+        for igroup, group in enumerate(self._groups):
+            group.configure(id=str(igroup), errorhandler=errorhandler)
 
         self._nullvalue = [None for p in self._parameters]
         # Cached values for groups to use in calculation at epoch
@@ -193,10 +193,6 @@ class GridList:
         for grid in self._searchOrder:
             if grid.contains(xy):
                 cgrid = grid.gridAt(xy) or grid
-                if self._ggxf._debug:
-                    self._ggxf._logger.debug(
-                        f"{self._name}: grid at {xy}: {cgrid.id()} {cgrid.name()}"
-                    )
                 return cgrid
         return None
 
@@ -301,6 +297,10 @@ class Group(GridList):
         grid = self.gridAt(xy)
         if grid is None:
             return None
+        if self._ggxf._debug:
+            self._ggxf._logger.debug(
+                f"{self._name}: grid at {xy}: {grid.id()} {grid.name()}"
+            )
         value = self._interpolator(grid, xy)
         if self._needEpoch:
             value *= self.timeFactorAt(epoch, refepoch)
@@ -338,6 +338,12 @@ class Grid(GridList):
     Note: Grid data is held as a numpy array of shape (ncol,nrow,nparam], so indexing is j,i,p
     """
 
+    # As extents are calculated from floating point calculations need a tolerance in
+    # containment and overlaps tests.  Tolerance is based on a multiple of the diagonal
+    # length across a grid cell.
+
+    TOLERANCE_RATIO = 0.00001
+
     def __init__(
         self, group: Group, gridname: str, metadata: dict, data: np.ndarray = None
     ):
@@ -366,6 +372,8 @@ class Grid(GridList):
                 self.calcxy([self._imax, self._jmax]),
             ]
         )
+        diff = self.calcxy([0.0, 1.0]) - self.calcxy([1.0, 0.0])
+        self._tolerance = np.sqrt(np.sum(diff * diff)) * self.TOLERANCE_RATIO
         self._xmin, self._ymin = range.min(axis=0)
         self._xmax, self._ymax = range.max(axis=0)
 
@@ -401,7 +409,10 @@ class Grid(GridList):
 
     def addGrid(self, grid: Grid):
         gextents = grid.extents()
-        if not self.contains(gextents[0]) or not self.contains(gextents[1]):
+        dtol = self._tolerance
+        gminxy = [gextents[0][0] + dtol, gextents[0][1] + dtol]
+        gmaxxy = [gextents[1][0] - dtol, gextents[1][1] - dtol]
+        if not self.contains(gminxy) or not self.contains(gmaxxy):
             raise Error(
                 f"Grid {grid.name()} is not fully contained in parent {self.name()}"
             )
@@ -437,11 +448,12 @@ class Grid(GridList):
         )
 
     def overlaps(self, grid: Grid):
+        dtol = min(self._tolerance, grid._tolerance)
         if (
-            self._xmin >= grid._xmax
-            or self._xmax <= grid._xmin
-            or self._ymin >= grid._ymax
-            or self._ymax <= grid._ymin
+            self._xmin >= grid._xmax - dtol
+            or self._xmax <= grid._xmin + dtol
+            or self._ymin >= grid._ymax - dtol
+            or self._ymax <= grid._ymin + dtol
         ):
             return False
         return True
