@@ -1,0 +1,106 @@
+netcdf alaska_velocity {
+
+// global attributes:
+		:Conventions = "GGXF-1.0, ACDD-1.3" ;
+		:source_file = "alaska-velocity.yaml" ;
+		:title = "Alaska velocity grid" ;
+		:summary = "Alaska velocity grid" ;
+		:content = "velocityModel" ;
+		:product_version = "Test_1.0" ;
+		:date_issued = "2022-09" ;
+		:institution = "Test developer" ;
+		:geospatial_lat_min = 40. ;
+		:geospatial_lon_min = -141. ;
+		:geospatial_lat_max = 60. ;
+		:geospatial_lon_max = -88. ;
+		:extent_description = "Alaska" ;
+		:interpolationCrsWkt = "GEOGCRS[\"ITRF2008\",DYNAMIC[FRAMEEPOCH[2005]],DATUM[\"International Terrestrial Reference Frame 2008\",ELLIPSOID[\"GRS 1980\",6378137,298.257222101,LENGTHUNIT[\"metre\",1]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433]],CS[ellipsoidal,3],AXIS[\"geodetic latitude (Lat)\",north,ORDER[1],ANGLEUNIT[\"degree\",0.0174532925199433]],AXIS[\"geodetic longitude (Lon)\",east,ORDER[2],ANGLEUNIT[\"degree\",0.0174532925199433]],AXIS[\"ellipsoidal height (h)\",up,ORDER[3],LENGTHUNIT[\"metre\",1]],USAGE[SCOPE[\"Geodesy.\"],AREA[\"World.\"],BBOX[-90,-180,90,180]],ID[\"EPSG\",7911]]\n" ;
+		:sourceCrsWkt = "GEOGCRS[\"ITRF2008\",DYNAMIC[FRAMEEPOCH[2005]],DATUM[\"International Terrestrial Reference Frame 2008\",ELLIPSOID[\"GRS 1980\",6378137,298.257222101,LENGTHUNIT[\"metre\",1]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433]],CS[ellipsoidal,3],AXIS[\"geodetic latitude (Lat)\",north,ORDER[1],ANGLEUNIT[\"degree\",0.0174532925199433]],AXIS[\"geodetic longitude (Lon)\",east,ORDER[2],ANGLEUNIT[\"degree\",0.0174532925199433]],AXIS[\"ellipsoidal height (h)\",up,ORDER[3],LENGTHUNIT[\"metre\",1]],USAGE[SCOPE[\"Geodesy.\"],AREA[\"World.\"],BBOX[-90,-180,90,180]],ID[\"EPSG\",7911]]\n" ;
+		:targetCrsWkt = "GEOGCRS[\"ITRF2008\",DYNAMIC[FRAMEEPOCH[2005]],DATUM[\"International Terrestrial Reference Frame 2008\",ELLIPSOID[\"GRS 1980\",6378137,298.257222101,LENGTHUNIT[\"metre\",1]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433]],CS[ellipsoidal,3],AXIS[\"geodetic latitude (Lat)\",north,ORDER[1],ANGLEUNIT[\"degree\",0.0174532925199433]],AXIS[\"geodetic longitude (Lon)\",east,ORDER[2],ANGLEUNIT[\"degree\",0.0174532925199433]],AXIS[\"ellipsoidal height (h)\",up,ORDER[3],LENGTHUNIT[\"metre\",1]],USAGE[SCOPE[\"Geodesy.\"],AREA[\"World.\"],BBOX[-90,-180,90,180]],ID[\"EPSG\",7911]]\n" ;
+		:parameters.count = 3LL ;
+		:parameters.0.parameterName = "velocityEast" ;
+		:parameters.0.parameterSet = "velocity" ;
+		:parameters.0.sourceCrsAxis = 1LL ;
+		:parameters.0.unit = "metre/year" ;
+		:parameters.0.unitSiRatio = 3.168808781e-08 ;
+		:parameters.1.parameterName = "velocityNorth" ;
+		:parameters.1.parameterSet = "velocity" ;
+		:parameters.1.sourceCrsAxis = 0LL ;
+		:parameters.1.unit = "metre/year" ;
+		:parameters.1.unitSiRatio = 3.168808781e-08 ;
+		:parameters.2.parameterName = "velocityUp" ;
+		:parameters.2.parameterSet = "velocity" ;
+		:parameters.2.sourceCrsAxis = 2LL ;
+		:parameters.2.unit = "metre/year" ;
+		:parameters.2.unitSiRatio = 3.168808781e-08 ;
+		:operationAccuracy = 0.001 ;
+		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
+		:_SuperblockVersion = 2 ;
+		:_IsNetcdf4 = 1 ;
+		:_Format = "netCDF-4" ;
+
+group: alaska-grids {
+  dimensions:
+  	velocityCount = 3 ;
+
+  // group attributes:
+  		string :groupParameters = "velocityEast", "velocityNorth", "velocityUp" ;
+  		:interpolationMethod = "bilinear" ;
+
+  group: Alaska-mainland {
+    dimensions:
+    	iNodeCount = 161 ;
+    	jNodeCount = 69 ;
+    variables:
+    	float velocity(jNodeCount, iNodeCount, velocityCount) ;
+    		velocity:_Storage = "contiguous" ;
+    		velocity:_Endianness = "little" ;
+
+    // group attributes:
+    		:gridPriority = 1LL ;
+    		:affineCoeffs = 56., 0., 0.25, -170., 0.25, 0. ;
+    } // group Alaska-mainland
+
+  group: Alaska-south-central {
+    dimensions:
+    	iNodeCount = 76 ;
+    	jNodeCount = 51 ;
+    variables:
+    	float velocity(jNodeCount, iNodeCount, velocityCount) ;
+    		velocity:_Storage = "contiguous" ;
+    		velocity:_Endianness = "little" ;
+
+    // group attributes:
+    		:gridPriority = 2LL ;
+    		:affineCoeffs = 53.25, 0., 0.25, -162., 0.25, 0. ;
+    } // group Alaska-south-central
+
+  group: Alaska-south-east {
+    dimensions:
+    	iNodeCount = 49 ;
+    	jNodeCount = 41 ;
+    variables:
+    	float velocity(jNodeCount, iNodeCount, velocityCount) ;
+    		velocity:_Storage = "contiguous" ;
+    		velocity:_Endianness = "little" ;
+
+    // group attributes:
+    		:gridPriority = 3LL ;
+    		:affineCoeffs = 54., 0., 0.25, -142., 0.25, 0. ;
+    } // group Alaska-south-east
+
+  group: Alaska-st-elias {
+    dimensions:
+    	iNodeCount = 41 ;
+    	jNodeCount = 27 ;
+    variables:
+    	float velocity(jNodeCount, iNodeCount, velocityCount) ;
+    		velocity:_Storage = "contiguous" ;
+    		velocity:_Endianness = "little" ;
+
+    // group attributes:
+    		:gridPriority = 4LL ;
+    		:affineCoeffs = 56.5, 0., 0.25, -150., 0.25, 0. ;
+    } // group Alaska-st-elias
+  } // group alaska-grids
+}

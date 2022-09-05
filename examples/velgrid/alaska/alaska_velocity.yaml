@@ -1,0 +1,83 @@
+ggxfVersion: "GGXF-1.0"
+filename: "alaska-velocity.yaml"
+title: "Alaska velocity grid"
+abstract: "Alaska velocity grid"
+content: velocityModel
+version: "Test_1.0"
+publicationDate: "2022-09"
+partyName:             "Test developer"
+contentApplicabilityExtent:
+  boundingBox:
+    southBoundLatitude: 40.0
+    westBoundLongitude: -141.0
+    northBoundLatitude: 60.0
+    eastBoundLongitude: -88.0
+  extentDescription: "Alaska"
+
+interpolationCrsWkt: &crs |
+  GEOGCRS["ITRF2008",DYNAMIC[FRAMEEPOCH[2005]],DATUM["International Terrestrial Reference Frame 2008",ELLIPSOID["GRS 1980",6378137,298.257222101,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,3],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],AXIS["ellipsoidal height (h)",up,ORDER[3],LENGTHUNIT["metre",1]],USAGE[SCOPE["Geodesy."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",7911]]
+sourceCrsWkt: *crs
+targetCrsWkt: *crs
+parameters:
+  - parameterName: velocityEast
+    parameterSet: velocity
+    sourceCrsAxis: 1
+    unit: metre/year
+    unitSiRatio: 3.168808781E-8
+  - parameterName: velocityNorth
+    parameterSet: velocity
+    sourceCrsAxis: 0
+    unit: metre/year
+    unitSiRatio: 3.168808781E-8
+  - parameterName: velocityUp
+    parameterSet: velocity
+    sourceCrsAxis: 2
+    unit: metre/year
+    unitSiRatio: 3.168808781E-8
+# What should operational accuracy be
+operationAccuracy: 0.001
+ggxfGroups:
+  - ggxfGroupName: "alaska-grids"
+    groupParameters: [velocityEast, velocityNorth, velocityUp]
+    interpolationMethod: bilinear
+    grids:
+      - gridName: Alaska-mainland
+        gridPriority: 1
+        affineCoeffs: [56.0, 0.0, 0.25, -170.0, 0.25, 0.0]
+        iNodeCount: 161
+        jNodeCount: 69
+        dataSource:
+          sourceType: CSV
+          csvFilename: alaska-mainland-velocity.csv
+          interpolationCoordFields: [ lat, lon ]
+          parameterFields: [de, dn, du]
+      - gridName: Alaska-south-central
+        gridPriority: 2
+        affineCoeffs: [53.25, 0.0, 0.25, -162.0, 0.25, 0.0]
+        iNodeCount: 76
+        jNodeCount: 51
+        dataSource:
+          sourceType: CSV
+          csvFilename: alaska-southcentral-velocity.csv
+          interpolationCoordFields: [lat, lon]
+          parameterFields: [de, dn, du]
+      - gridName: Alaska-south-east
+        gridPriority: 3
+        affineCoeffs: [54.0, 0.0, 0.25, -142.0, 0.25, 0.0]
+        iNodeCount: 49
+        jNodeCount: 41
+        dataSource:
+          sourceType: CSV
+          csvFilename: alaska-southeast-velocity.csv
+          interpolationCoordFields: [lat, lon]
+          parameterFields: [de, dn, du]
+      - gridName: Alaska-st-elias
+        gridPriority: 4
+        affineCoeffs: [56.5, 0.0, 0.25, -150.0, 0.25, 0.0]
+        iNodeCount: 41
+        jNodeCount: 27
+        dataSource:
+          sourceType: CSV
+          csvFilename: alaska-stelias-velocity.csv
+          interpolationCoordFields: [lat, lon]
+          parameterFields: [de, dn, du]
