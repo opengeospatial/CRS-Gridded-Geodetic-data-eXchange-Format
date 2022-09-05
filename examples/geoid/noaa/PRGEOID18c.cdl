@@ -20,7 +20,7 @@ netcdf PRGEOID18c {
 		:parameters.0.unit = "metre" ;
 		:parameters.0.unitSiRatio = 1. ;
 		:operationAccuracy = 0.015 ;
-		:organisationName = "National Geodetic Survey, National Oceanic and Atmospheric Administration." ;
+		:institution = "National Geodetic Survey, National Oceanic and Atmospheric Administration." ;
 		:deliveryPoint = "1315 East West Hwy" ;
 		:city = "Silver Spring" ;
 		:postalCode = "20910" ;

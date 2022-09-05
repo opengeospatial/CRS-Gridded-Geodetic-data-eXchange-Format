@@ -45,7 +45,7 @@ parameters:
     unit: "metre"
     unitSiRatio: 1.0
 operationAccuracy: 0.015
-organisationName: "National Geodetic Survey, National Oceanic and Atmospheric Administration."
+partyName: "National Geodetic Survey, National Oceanic and Atmospheric Administration."
 deliveryPoint: "1315 East West Hwy"
 city: "Silver Spring"
 postalCode: "20910"

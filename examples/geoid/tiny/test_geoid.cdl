@@ -20,7 +20,7 @@ netcdf test_geoid {
 		:parameters.0.unit = "metre" ;
 		:parameters.0.unitSiRatio = 1. ;
 		:operationAccuracy = 0.015 ;
-		:organisationName = "A Hypothetical National Geodetic Survey." ;
+		:institution = "A Hypothetical National Geodetic Survey." ;
 		:deliveryPoint = "Somewhere" ;
 		:city = "A city" ;
 		:postalCode = "99999" ;

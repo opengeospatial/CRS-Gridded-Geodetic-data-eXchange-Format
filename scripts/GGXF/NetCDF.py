@@ -68,6 +68,7 @@ ACDD_AttributeMapping = {
     "contentBox.northBoundLatitude": "north_bound_latitude",
     "contentBox.southBoundLatitude": "south_bound_latitude",
     "contentBox.westBoundLongitude": "west_bound_longitude",
+    "identifier.codeSpace": "DOI",
 }
 
 ReverseACCD_AttributeMapping = {v: k for k, v in ACDD_AttributeMapping.items()}

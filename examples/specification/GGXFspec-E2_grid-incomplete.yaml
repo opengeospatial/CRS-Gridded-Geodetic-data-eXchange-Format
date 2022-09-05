@@ -43,7 +43,7 @@ targetCrsWkt: |
 
 operationAccuracy:      0.07
 
-organisationName:       "Chief Directorate: National Geospatial Information"
+partyName:       "Chief Directorate: National Geospatial Information"
 deliveryPoint:          "Private Bag X10"
 city:                   "Mowbray"
 postalCode:             "7705"

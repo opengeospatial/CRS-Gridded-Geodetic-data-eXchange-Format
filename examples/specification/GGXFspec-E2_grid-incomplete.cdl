@@ -16,7 +16,7 @@ netcdf GGXFspec-E2_grid-incomplete {
 		:sourceCrsWkt = "GEOGCRS[\"ITRF2005\",\n  DYNAMIC[FRAMEEPOCH[2000.0]],\n    TRF[\"International Terrestrial Reference Frame 2005\",\n      ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]]]\n" ;
 		:targetCrsWkt = "VERTCRS[\"VI LLD height\",\n  VDATUM[\"South Africa Land Levelling Datum\"],\n  CS[vertical,1],\n  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n" ;
 		:operationAccuracy = 0.07 ;
-		:organisationName = "Chief Directorate: National Geospatial Information" ;
+		:institution = "Chief Directorate: National Geospatial Information" ;
 		:deliveryPoint = "Private Bag X10" ;
 		:city = "Mowbray" ;
 		:postalCode = "7705" ;

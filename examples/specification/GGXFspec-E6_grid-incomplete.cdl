@@ -11,7 +11,7 @@ netcdf GGXFspec-E6_grid-incomplete {
 		:geospatial_lon_min = -65.09 ;
 		:geospatial_lat_max = 18.42 ;
 		:geospatial_lon_max = -64.6 ;
-		:organisationName = "National Geodetic Survey, National Oceanic and Atmospheric Administration" ;
+		:institution = "National Geodetic Survey, National Oceanic and Atmospheric Administration" ;
 		:deliveryPoint = "1315 East West Hwy" ;
 		:city = "Silver Spring" ;
 		:postalCode = "20910" ;
