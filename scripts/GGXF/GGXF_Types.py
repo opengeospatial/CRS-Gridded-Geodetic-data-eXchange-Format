@@ -786,7 +786,7 @@ YamlAttributes = {
                 },
                 {
                     ATTRDEF_NAME: GRID_ATTR_DATA_SOURCE,
-                    ATTRDEF_TYPE: str,
+                    ATTRDEF_TYPE: dict,
                 },
             ],
         },

@@ -172,7 +172,7 @@ def loadGTiffGridData(source, sourceref=None, tiffdir=None):
         # comment=gmd.get('TIFFTAG_IMAGEDESCRIPTION')
         # if comment:
         #     gdata['comment']=comment
-        gdata["dataSource"] = sourceref or source
+        gdata["dataSource"] = {"sourceType": "GDAL", "gdalSource": sourceref or source}
         for k, v in md.get("SUBDATASETS", {}).items():
             if m := re.match(r"^SUBDATASET_(\d+)_NAME", k):
                 if m.group(1) != "1":
@@ -376,7 +376,7 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
         {
             "parameterName": p,
             "parameterSet": "displacement",
-            "lengthUnit": "metre",
+            "unit": "metre",
             "unitSiRatio": 1.0,
             "sourceCrsAxis": directionAxes[displacementAxisDirections[p]],
         }

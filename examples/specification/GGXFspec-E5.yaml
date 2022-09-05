@@ -98,15 +98,19 @@ ggxfGroups:
         affineCoeffs: [-25.0,0.0,-0.5,158.0,0.5,0.0]
         iNodeCount: 73
         jNodeCount: 67
-        dataSource: "GTIFF_DIR:1:nz_linz_nzgd2000-ndm-grid02.tif"
+        dataSource: 
+          sourceType: GDAL
+          gdalSource: "GTIFF_DIR:1:nz_linz_nzgd2000-ndm-grid02.tif"
         grids:
           - gridName: "ndm_grid_igns2011_nz"
             comment: "Secular deformation model derived from GNS model 2011 V4"
             affineCoeffs: [-33.0,0.0,-0.1,165.5,0.1,0.0]
             iNodeCount: 141
             jNodeCount: 151
-            dataSource: "GTIFF_DIR:2:nz_linz_nzgd2000-ndm-grid02.tif"
-  
+            dataSource:
+              sourceType: GDAL
+              gdalSource:  "GTIFF_DIR:2:nz_linz_nzgd2000-ndm-grid02.tif"
+      
   - ggxfGroupName: "nz_linz_nzgd2000-ds20090715-grid011"
     comment: "Dusky Sound (Fiordland) earthquake July 2009."
     interpolationMethod: bilinear
@@ -130,4 +134,6 @@ ggxfGroups:
         affineCoeffs: [-50.125,0.0,-0.125,165.4,0.15,0.0]
         iNodeCount: 11
         jNodeCount: 11
-        dataSource: "GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid011.tif"
+        dataSource:
+          sourceType: GDAL
+          gdalSource: "GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid011.tif"

@@ -4,7 +4,7 @@ netcdf GGXFspec-E4_grid-incomplete {
 		:Conventions = "GGXF-1.0, ACDD-1.3" ;
 		:title = "NZ hypothetical velocity grid" ;
 		:summary = "Hypotherical example to illustrate secular motion described through velocities." ;
-		:source_file = "NZ hypothetical velocity grid.gxt" ;
+		:source_file = "NZ hypothetical velocity grid.yaml" ;
 		:content = "velocityModel" ;
 		:product_version = "2011" ;
 		:comment = "The parent grid describes secular deformation derived from NUVEL-1A rotation rates.\nThe child grid describes secular deformation derived from the GNS model 2011 v4.\n" ;

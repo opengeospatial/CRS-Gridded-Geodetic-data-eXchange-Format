@@ -48,7 +48,7 @@ ACDD_AttributeMapping = {
     "abstract": "summary",
     "filename": "source_file",
     "electronicMailAddress": "creator_email",
-    "partyName": "publisher_institution",
+    "partyName": "institution",
     "publicationDate": "date_issued",
     "onlineResourceLinkage": "publisher_url",
     "version": "product_version",

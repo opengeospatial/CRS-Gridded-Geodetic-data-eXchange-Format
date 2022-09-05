@@ -7,7 +7,7 @@ netcdf GGXFspec-E5_parameterSet-removed {
 		:source_file = "nzgd2000-20180701-subset.yaml" ;
 		:content = "deformationModel" ;
 		:product_version = "20180701" ;
-		:publisher_institution = "Land Information New Zealand" ;
+		:institution = "Land Information New Zealand" ;
 		:deliveryPoint = "Level 7, Radio New Zealand House\n155 The Terrace\nPO Box 5501\n" ;
 		:addressCity = "Wellington" ;
 		:postalCode = "6145" ;

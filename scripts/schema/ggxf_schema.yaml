@@ -255,7 +255,7 @@ YamlAttributes:
             Type is "any" as gets converted to numpy grid. Tested specifically in
             implementation rather than depending on schema definition.
         - AttributeName: dataSource
-          Type: str
+          Type: dict
 
     YamlGridData:
     - AttributeName: gridName

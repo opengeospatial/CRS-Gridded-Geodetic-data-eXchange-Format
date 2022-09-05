@@ -61,4 +61,6 @@ ggxfGroups:
         iNodeCount: 301
         jNodeCount: 361
         comment: "grid starts in the top left (northwest) corner and works across (east) and down (south)"
-        dataSource: "g2018p0.bin"
+        dataSource: 
+          sourceType: "GDAL"
+          gdalSource: "g2018p0.bin"

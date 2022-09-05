@@ -50,8 +50,8 @@ def main():
         grids[name] = {
             "gridName": name,
             "affineCoeffs": coeffs,
-            "iNodeMaximum": dataset.RasterXSize - 1,
-            "jNodeMaximum": dataset.RasterYSize - 1,
+            "iNodeCount": dataset.RasterXSize,
+            "jNodCount": dataset.RasterYSize,
             "dataSource": description,
         }
         if parent != "NONE":
