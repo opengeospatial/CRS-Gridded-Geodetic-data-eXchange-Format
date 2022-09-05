@@ -11,7 +11,7 @@ netcdf GGXFspec-E1 {
 		:geospatial_lon_min = 7.6 ;
 		:geospatial_lat_max = 40.15 ;
 		:geospatial_lon_max = 7.87 ;
-		:geospatial_bounds = "exterior:\n  linearRing:\n    posList: [ 40.09, 7.72, 40.12, 7.71, 39.92, 7.84, 39.93, 7.64, 40.05, 7.64,\n               40.09, 7.72 ]\n" ;
+		:geospatial_bounds = "Polygon(( 40.09 7.72, 40.12 7.71, 39.92 7.84, 39.93 7.64, 40.05 7.64, 40.09 7.72 ))" ;
 		:interpolationCrsWkt = "GEOGCRS[\"ED50\",\n  DATUM[\"European Datum 1950\",\n    ELLIPSOID[\"International 1924\",6378388,297,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:sourceCrsWkt = "GEOGCRS[\"ED50\",\n  DATUM[\"European Datum 1950\",\n    ELLIPSOID[\"International 1924\",6378388,297,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:targetCrsWkt = "GEOGCRS[\"ETRF2000\",\n  DATUM[\"European Terrestrial Reference Frame 2000\",\n    ELLIPSOID[\"GRS 1980\",6378137,298.257222101,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
