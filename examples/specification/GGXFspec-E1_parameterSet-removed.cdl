@@ -11,20 +11,20 @@ netcdf GGXFspec-E1_parameterSet-removed {
 		:geospatial_lon_min = 7.6 ;
 		:geospatial_lat_max = 40.15 ;
 		:geospatial_lon_max = 7.87 ;
-		:geospatial_bounds = "exterior:\n  linearRing:\n    posList: [ 40.09, 7.72, 40.12, 7.71, 39.92, 7.84, 39.93, 7.64, 40.05, 7.64,\n               40.09, 7.72 ]\n" ;
+		:geospatial_bounds = "Polygon(( 40.09, 7.72, 40.12, 7.71, 39.92, 7.84, 39.93, 7.64, 40.05, 7.64, 40.09, 7.72 ))" ;
 		:interpolationCrsWkt = "GEOGCRS[\"ED50\",\n  DATUM[\"European Datum 1950\",\n    ELLIPSOID[\"International 1924\",6378388,297,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:sourceCrsWkt = "GEOGCRS[\"ED50\",\n  DATUM[\"European Datum 1950\",\n    ELLIPSOID[\"International 1924\",6378388,297,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:targetCrsWkt = "GEOGCRS[\"ETRF2000\",\n  DATUM[\"European Terrestrial Reference Frame 2000\",\n    ELLIPSOID[\"GRS 1980\",6378137,298.257222101,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:operationAccuracy = 2LL ;
 		:parameters.count = 2LL ;
-		:parameters.1.parameterName = "latitudeOffset" ;
-		:parameters.1.sourceCrsAxis = 0LL ;
+		:parameters.0.parameterName = "latitudeOffset" ;
+		:parameters.0.sourceCrsAxis = 0LL ;
+		:parameters.0.unit = "arc-second" ;
+		:parameters.0.unitSiRatio = 4.84813681109536e-06 ;
+		:parameters.1.parameterName = "longitudeOffset" ;
+		:parameters.1.sourceCrsAxis = 1LL ;
 		:parameters.1.unit = "arc-second" ;
 		:parameters.1.unitSiRatio = 4.84813681109536e-06 ;
-		:parameters.2.parameterName = "longitudeOffset" ;
-		:parameters.2.sourceCrsAxis = 1LL ;
-		:parameters.2.unit = "arc-second" ;
-		:parameters.2.unitSiRatio = 4.84813681109536e-06 ;
 		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
 		:_SuperblockVersion = 2 ;
 		:_IsNetcdf4 = 1 ;
@@ -49,7 +49,6 @@ group: Catalano_Canyon {
 
     // group attributes:
     		:affineCoeffs = 40., 0., -0.05, 7.6, 0.0666666666666667, 0. ;
-    		:gridPriority = 1LL ;
     } // group South
 
   group: North {
@@ -66,7 +65,6 @@ group: Catalano_Canyon {
 
     // group attributes:
     		:affineCoeffs = 40.15, 0., -0.05, 7.6, 0.1, 0. ;
-    		:gridPriority = 2LL ;
     } // group North
   } // group Catalano_Canyon
 }

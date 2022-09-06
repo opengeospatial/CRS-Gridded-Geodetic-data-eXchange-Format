@@ -218,26 +218,6 @@ CommonAttributes = {
             ATTRDEF_OPTIONAL: True,
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_UNCERTAINTY_MEASURE,
-            ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: GGXF_ATTR_UNCERTAINTY_MEASURE,
-                    ATTRDEF_TYPE: str,
-                },
-            ],
-            ATTRDEF_OPTIONAL: True,
-        },
-        {
-            ATTRDEF_NAME: GGXF_ATTR_UNCERTAINTY_DEFAULT,
-            ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: GGXF_ATTR_UNCERTAINTY_DEFAULT,
-                    ATTRDEF_TYPE: str,
-                },
-            ],
-            ATTRDEF_OPTIONAL: True,
-        },
-        {
             ATTRDEF_NAME: GGXF_ATTR_USER_DEFINED_METHOD_EXAMPLE,
             ATTRDEF_CHOICE: [
                 {
@@ -281,6 +261,17 @@ CommonAttributes = {
             ATTRDEF_OPTIONAL: True,
         },
         {
+            ATTRDEF_NAME: GROUP_ATTR_GROUP_DEFAULT_VALUES,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GROUP_ATTR_GROUP_DEFAULT_VALUES,
+                    ATTRDEF_TYPE: ATTRDEF_TYPE_PARAMETER_DEFAULT_VALUE,
+                    ATTRDEF_LIST: True,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
             ATTRDEF_NAME: GROUP_ATTR_INTERPOLATION_METHOD,
             ATTRDEF_CHOICE: [
                 {
@@ -313,16 +304,6 @@ CommonAttributes = {
             ],
             ATTRDEF_OPTIONAL: True,
         },
-        {
-            ATTRDEF_NAME: GROUP_ATTR_UNCERTAINTY_DEFAULT,
-            ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: GROUP_ATTR_UNCERTAINTY_DEFAULT,
-                    ATTRDEF_TYPE: str,
-                },
-            ],
-            ATTRDEF_OPTIONAL: True,
-        },
     ],
     ATTRDEF_TYPE_GRID: [
         {
@@ -348,6 +329,16 @@ CommonAttributes = {
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GRID_ATTR_K_NODE_COUNT,
+                    ATTRDEF_TYPE: int,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GRID_ATTR_GRID_PRIORITY,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GRID_ATTR_GRID_PRIORITY,
                     ATTRDEF_TYPE: int,
                 },
             ],
@@ -452,6 +443,46 @@ CommonAttributes = {
                 },
             ],
             ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: PARAM_ATTR_UNCERTAINTY_MEASURE,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: PARAM_ATTR_UNCERTAINTY_MEASURE,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: PARAM_ATTR_DEFAULT_VALUE,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: PARAM_ATTR_DEFAULT_VALUE,
+                    ATTRDEF_TYPE: float,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+    ],
+    ATTRDEF_TYPE_PARAMETER_DEFAULT_VALUE: [
+        {
+            ATTRDEF_NAME: GGXF_ATTR_PARAMETER_NAME,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_PARAMETER_NAME,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_DEFAULT_VALUE,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_DEFAULT_VALUE,
+                    ATTRDEF_TYPE: float,
+                },
+            ],
         },
     ],
     ATTRDEF_TYPE_EXTENTS: [
@@ -776,7 +807,7 @@ YamlAttributes = {
                 },
                 {
                     ATTRDEF_NAME: GRID_ATTR_DATA_SOURCE,
-                    ATTRDEF_TYPE: str,
+                    ATTRDEF_TYPE: dict,
                 },
             ],
         },
@@ -1195,27 +1226,27 @@ ContentTypes = {
                 GGXF_PARAMETER_DISPLACEMENT_EAST,
                 GGXF_PARAMETER_DISPLACEMENT_NORTH,
                 GGXF_PARAMETER_DISPLACEMENT_UP,
-                GGXF_PARAMETER_HORIZONTAL_DISPLACEMENT_UNCERTAINTY,
-                GGXF_PARAMETER_VERTICAL_DISPLACEMENT_UNCERTAINTY,
+                GGXF_PARAMETER_DISPLACEMENT_HORIZONTAL_UNCERTAINTY,
+                GGXF_PARAMETER_DISPLACEMENT_UP_UNCERTAINTY,
             },
             {GGXF_PARAMETER_DISPLACEMENT_EAST, GGXF_PARAMETER_DISPLACEMENT_NORTH},
             {
                 GGXF_PARAMETER_DISPLACEMENT_EAST,
                 GGXF_PARAMETER_DISPLACEMENT_NORTH,
-                GGXF_PARAMETER_HORIZONTAL_DISPLACEMENT_UNCERTAINTY,
+                GGXF_PARAMETER_DISPLACEMENT_HORIZONTAL_UNCERTAINTY,
             },
             {GGXF_PARAMETER_DISPLACEMENT_UP},
             {
                 GGXF_PARAMETER_DISPLACEMENT_UP,
-                GGXF_PARAMETER_VERTICAL_DISPLACEMENT_UNCERTAINTY,
+                GGXF_PARAMETER_DISPLACEMENT_UP_UNCERTAINTY,
             },
         ],
         ATTRDEF_PARAMSET_MAP: {
             GGXF_PARAMETER_DISPLACEMENT_EAST: GGXF_PARAMETER_SET_DISPLACEMENT,
+            GGXF_PARAMETER_DISPLACEMENT_HORIZONTAL_UNCERTAINTY: GGXF_PARAMETER_SET_DISPLACEMENT_UNCERTAINTY,
             GGXF_PARAMETER_DISPLACEMENT_NORTH: GGXF_PARAMETER_SET_DISPLACEMENT,
             GGXF_PARAMETER_DISPLACEMENT_UP: GGXF_PARAMETER_SET_DISPLACEMENT,
-            GGXF_PARAMETER_HORIZONTAL_DISPLACEMENT_UNCERTAINTY: GGXF_PARAMETER_SET_DISPLACEMENT_UNCERTAINTY,
-            GGXF_PARAMETER_VERTICAL_DISPLACEMENT_UNCERTAINTY: GGXF_PARAMETER_SET_DISPLACEMENT_UNCERTAINTY,
+            GGXF_PARAMETER_DISPLACEMENT_UP_UNCERTAINTY: GGXF_PARAMETER_SET_DISPLACEMENT_UNCERTAINTY,
         },
         ATTRDEF_ATTRIBUTES: {
             ATTRDEF_TYPE_GROUP: [

@@ -8,6 +8,7 @@ import logging
 import os.path
 import re
 import tempfile
+import importlib
 import yaml
 import numpy as np
 
@@ -45,6 +46,8 @@ The following options can apply to YAML format input (I) and output (O):
   "{YAML_OPTION_USE_GRIDDATA_SECTION}" (O) Use a gridData section for grid data (true or false, default true if more than one grid)
   "{YAML_OPTION_WRITE_HEADERS_ONLY} (O) Write headers only - omit the grid data"
 """
+
+YAML_ATTR_DATA_SOURCE_TYPE = "sourceType"
 
 
 class Reader(BaseReader):
@@ -149,11 +152,13 @@ class Reader(BaseReader):
         # and potentially the row and column count and the affine transformation
         #
         # Otherwise load the grid data into a numpy array
+
         if self._useDummyGridData:
             self.installDummyGrid(group, ygrid)
 
-        if GRID_ATTR_DATA_SOURCE in ygrid:
+        if GRID_ATTR_DATA_SOURCE in ygrid and GRID_ATTR_DATA not in ygrid:
             datasource = ygrid.pop(GRID_ATTR_DATA_SOURCE)
+            ygrid[GRID_ATTR_DATA] = None
             self.installGridFromSource(ygrid, datasource)
 
         if self.validator().validateGridAttributes(ygrid, context=context):
@@ -176,62 +181,55 @@ class Reader(BaseReader):
         try:
             # Currently only support GDAL grid.
             os.chdir(griddir)
-            self.installGdalGrid(ygrid, datasource)
+            self.loadExternalGrid(ygrid, datasource)
         finally:
             os.chdir(startdir)
 
-    def installGdalGrid(self, ygrid, datasource):
+    def loadExternalGrid(self, ygrid, datasource):
         # NOTE: This probably needs additional options for selecting bands,
-        # order of interpolation coordinates, etc.
-        from osgeo import gdal
+        # order of interpolation coordinates, etc
 
         gridname = ygrid.get(GRID_ATTR_GRID_NAME, "unnamed")
 
+        datasourceType = datasource.get(YAML_ATTR_DATA_SOURCE_TYPE)
+        if datasourceType is None:
+            self.error(
+                f"Grid {gridname}: {GRID_ATTR_DATA_SOURCE} needs a {YAML_ATTR_DATA_SOURCE_TYPE} attribute"
+            )
+            return
+
         try:
-            self._logger.debug(f"Loading GDAL data from {datasource}")
-            dataset = gdal.Open(datasource)
-            tfm = dataset.GetGeoTransform()
-            # NOTE: A lot of assumptions in this code about the relationship of the
-            # GDAL GeoTransform and coordinate axes to the GGXF interpolation CRS.
-            # Current implementation is based on
-            affine = [
-                float(c)
-                for c in [
-                    tfm[3] + tfm[5] / 2.0,
-                    tfm[4],
-                    tfm[5],
-                    tfm[0] + tfm[1] / 2.0,
-                    tfm[1],
-                    tfm[2],
-                ]
-            ]
+            if not re.match(r"^\w+$", datasourceType):
+                raise RuntimeError(f"Invalid {YAML_ATTR_DATA_SOURCE_TYPE}")
+            loader = importlib.import_module(f"..GridLoader.{datasourceType}", __name__)
+        except Exception as ex:
+            self.error(
+                f"Grid {gridname}: Cannot install loader for datatype {datasourceType}: {ex}"
+            )
+            return
 
-            inodemax = dataset.RasterXSize - 1
-            jnodemax = dataset.RasterYSize - 1
-            gridData = dataset.ReadAsArray()
-            if len(gridData.shape) == 2:
-                shape = (1, gridData.shape[0], gridData.shape[1])
-                gridData = gridData.reshape(shape)
-            gridData = np.moveaxis(gridData, 0, -1)
-            self._logger.debug(f"Loaded with dimensions {gridData.shape}")
+        try:
+            size, affine, gridData = loader.LoadGrid(datasource, self._logger)
+        except Exception as ex:
+            self.error(f"Grid {gridname}: Failed to load - {ex}")
+            return
 
+        try:
             if GRID_ATTR_I_NODE_COUNT in ygrid:
-                imax = ygrid[GRID_ATTR_I_NODE_COUNT] - 1
-                if imax != inodemax:
+                if ygrid[GRID_ATTR_I_NODE_COUNT] != size[0]:
                     self.error(
-                        f"{gridname} {GRID_ATTR_I_NODE_COUNT} {imax} differs from {inodemax} in {datasource}"
+                        f"{gridname} {GRID_ATTR_I_NODE_COUNT} {ygrid[GRID_ATTR_I_NODE_COUNT]} differs from {size[0]} in {datasource}"
                     )
             else:
-                ygrid[GRID_ATTR_I_NODE_COUNT] = inodemax + 1
+                ygrid[GRID_ATTR_I_NODE_COUNT] = size[0]
 
             if GRID_ATTR_J_NODE_COUNT in ygrid:
-                imax = ygrid[GRID_ATTR_J_NODE_COUNT] - 1
-                if imax != jnodemax:
+                if ygrid[GRID_ATTR_J_NODE_COUNT] != size[1]:
                     self.error(
-                        f"{gridname} {GRID_ATTR_J_NODE_COUNT} {imax} differs from {jnodemax} in {datasource}"
+                        f"{gridname} {GRID_ATTR_J_NODE_COUNT} {ygrid[GRID_ATTR_J_NODE_COUNT]} differs from {size[1]} in {datasource}"
                     )
             else:
-                ygrid[GRID_ATTR_J_NODE_COUNT] = jnodemax + 1
+                ygrid[GRID_ATTR_J_NODE_COUNT] = size[1]
 
             if GRID_ATTR_AFFINE_COEFFS in ygrid:
                 gaffine = [float(c) for c in ygrid[GRID_ATTR_AFFINE_COEFFS]]
@@ -254,7 +252,7 @@ class Reader(BaseReader):
 
             ygrid[GRID_ATTR_DATA] = gridData
         except Exception as ex:
-            self.error(f"Grid {gridname}: Failed to load {datasource}: {ex}")
+            self.error(f"Grid {gridname}: Failed to load - {ex}")
 
     def validateGridData(self, group, ygrid):
         gridname = ygrid.get(GRID_ATTR_GRID_NAME, "unnamed")
@@ -388,8 +386,8 @@ class Writer(BaseWriter):
         ydata[GRID_ATTR_AFFINE_COEFFS] = [
             float(c) for c in ydata[GRID_ATTR_AFFINE_COEFFS]
         ]
-        if len(grid.subgrids()) > 0:
-            ydata["grids"] = grid.subgrids()
+        if len(grid.grids()) > 0:
+            ydata["grids"] = grid.grids()
         ydata.pop(GRID_ATTR_DATA, None)
         if not self._useGridDataSection and not self._headerOnly:
             ydata[GRID_ATTR_DATA] = grid.data()

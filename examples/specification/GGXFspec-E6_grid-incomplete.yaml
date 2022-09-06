@@ -11,7 +11,7 @@ contentApplicabilityExtent:
         northBoundLatitude:  18.42
         eastBoundLongitude:  -64.6
 
-organisationName:      "National Geodetic Survey, National Oceanic and Atmospheric Administration"
+partyName:      "National Geodetic Survey, National Oceanic and Atmospheric Administration"
 deliveryPoint:         "1315 East West Hwy"
 city:                  "Silver Spring"
 postalCode:            "20910"

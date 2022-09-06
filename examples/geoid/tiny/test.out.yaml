@@ -1,5 +1,5 @@
 ggxfVersion: GGXF-1.0
-filename: tiny_geoid.gxt
+filename: tiny_geoid.yaml
 content: geoidModel
 title: hybrid geoid
 abstract: "Tiny geoid for testing GGXF implementation"
@@ -22,7 +22,7 @@ targetCrsWkt: "VERTCRS[\"Vertical datum height\",\n VDATUM[\"Imaginary vertical 
   \ height (H)\",up],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]\n ,ID[\"EPSG\",6642]]\
   \    \n"
 operationAccuracy: 0.015
-organisationName: "A Hypothetical National Geodetic Survey."
+partyName: "A Hypothetical National Geodetic Survey."
 deliveryPoint: Somewhere
 city: A city
 postalCode: '99999'

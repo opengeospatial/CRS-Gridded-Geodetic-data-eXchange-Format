@@ -26,14 +26,7 @@ contentApplicabilityExtent:
   temporalExtent:
     startDate: '1900-01-01'
     endDate: '2050-01-01'
-  boundingPolygon: |
-    <gml:Polygon srsName="EPSG:4167">
-      <gml:exterior>
-        <gml:LinearRing>
-          <gml:posList>-32.42 168.65 -34.98 168.10 -37.58 170.07 -40.60 167.30 -44.32 162.17 -51.17 160.62 -54.97 165.11 -55.94 168.78 -54.70 173.54 -53.26 174.64 -51.66 174.48 -53.04 178.46 -51.94 182.69 -50.45 183.84 -47.76 184.00 -46.81 187.31 -44.68 188.77 -42.93 188.53 -41.50 187.23 -40.26 182.07 -36.91 182.64 -34.59 180.22 -34.45 182.66 -33.12 184.50 -29.73 185.92 -27.47 185.34 -25.89 182.29 -27.22 179.01 -31.55 177.28 -34.32 179.37 -30.85 172.97 -30.88 171.22 -32.42 168.65</gml:posList>
-        </gml:LinearRing>
-      </gml:exterior>
-    </gml:Polygon>
+  boundingPolygon: Polygon ((-32.42 168.65, -34.98 168.10, -37.58 170.07, -40.60 167.30,  -44.32 162.17, -51.17 160.62, -54.97 165.11, -55.94 168.78, -54.70 173.54, -53.26 174.64, -51.66 174.48, -53.04 178.46, -51.94 182.69, -50.45 183.84, -47.76 184.00, -46.81 187.31, -44.68 188.77, -42.93 188.53, -41.50 187.23, -40.26 182.07, -36.91 182.64, -34.59 180.22, -34.45 182.66, -33.12 184.50, -29.73 185.92, -27.47 185.34, -25.89 182.29, -27.22 179.01, -31.55 177.28, -34.32 179.37, -30.85 172.97, -30.88 171.22, -32.42 168.65)
 sourceCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6167]],CS[ellipsoidal,3,ID["EPSG",6423]],AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]],ID["EPSG",4959]]
 targetCrsWkt: GEOGCRS["ITRF96", DYNAMIC[FRAMEEPOCH[1997.0]],DATUM["International Terrestrial Reference Frame 1996",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6654]],CS[ellipsoidal,3,ID["EPSG",6423]],AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]],ID["EPSG",7907]]
 interpolationCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6167]],CS[ellipsoidal,2,ID["EPSG",6422]],AXIS["Geodetic latitude (Lat)",north],AXIS["Geodetic longitude (Lon)",east],ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]],ID["EPSG",4167]]
@@ -54,7 +47,6 @@ parameters:
   unitSiRatio: 1.0
   sourceCrsAxis: 2
 operationAccuracy: 0.01
-uncertaintyMeasure: 2CEP 2SE
 ggxfGroups:
 - ggxfGroupName: nz_linz_nzgd2000-ndm-grid02
   comment: |
@@ -72,13 +64,17 @@ ggxfGroups:
     affineCoeffs: [-25.0,0.0,-0.5,158.0,0.5,0.0]
     iNodeCount: 73
     jNodeCount: 67
-    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ndm-grid02.tif
+    dataSource:
+      sourceType: GDAL
+      gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ndm-grid02.tif
     grids:
     - gridName: ndm_grid_igns2011_nz
       affineCoeffs: [-33.0,0.0,-0.1,165.5,0.1,0.0]
       iNodeCount: 141
       jNodeCount: 151
-      dataSource: GTIFF_DIR:2:nz_linz_nzgd2000-ndm-grid02.tif
+      dataSource:
+        sourceType: GDAL
+        gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-ndm-grid02.tif
 - ggxfGroupName: nz_linz_nzgd2000-ds20090715-grid011
   comment: Dusky Sound (Fiordland) earthquake
   groupParameters:
@@ -102,4 +98,6 @@ ggxfGroups:
     affineCoeffs: [-50.125,0.0,-0.125,165.4,0.15,0.0]
     iNodeCount: 11
     jNodeCount: 11
-    dataSource: GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid011.tif
+    dataSource:
+      sourceType: GDAL
+      gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid011.tif

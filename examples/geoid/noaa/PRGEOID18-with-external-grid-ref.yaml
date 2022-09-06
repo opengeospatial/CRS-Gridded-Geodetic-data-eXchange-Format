@@ -45,7 +45,7 @@ parameters:
     unit: "metre"
     unitSiRatio: 1.0
 operationAccuracy: 0.015
-organisationName: "National Geodetic Survey, National Oceanic and Atmospheric Administration."
+partyName: "National Geodetic Survey, National Oceanic and Atmospheric Administration."
 deliveryPoint: "1315 East West Hwy"
 city: "Silver Spring"
 postalCode: "20910"
@@ -61,4 +61,6 @@ ggxfGroups:
         iNodeCount: 301
         jNodeCount: 361
         comment: "grid starts in the top left (northwest) corner and works across (east) and down (south)"
-        dataSource: "g2018p0.bin"
+        dataSource: 
+          sourceType: "GDAL"
+          gdalSource: "g2018p0.bin"

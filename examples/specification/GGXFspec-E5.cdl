@@ -7,7 +7,7 @@ netcdf GGXFspec-E5 {
 		:source_file = "nzgd2000-20180701-subset.yaml" ;
 		:content = "deformationModel" ;
 		:product_version = "20180701" ;
-		:publisher_institution = "Land Information New Zealand" ;
+		:institution = "Land Information New Zealand" ;
 		:deliveryPoint = "Level 7, Radio New Zealand House\n155 The Terrace\nPO Box 5501\n" ;
 		:addressCity = "Wellington" ;
 		:postalCode = "6145" ;
@@ -20,28 +20,41 @@ netcdf GGXFspec-E5 {
 		:geospatial_lon_min = 160.62 ;
 		:geospatial_lat_max = -25.89 ;
 		:geospatial_lon_max = -171.23 ;
-		:geospatial_bounds = "<gml:Polygon srsName=\"EPSG:4167\"> <gml:exterior> <gml:LinearRing> <gml:posList>-32.42 168.65 -34.98 168.10 -37.58 170.07 -40.60 167.30 -44.32 162.17 -51.17 160.62 -54.97 165.11 -55.94 168.78 -54.70 173.54 -53.26 174.64 -51.66 174.48 -53.04 178.46 -51.94 182.69 -50.45 183.84 -47.76 184.00 -46.81 187.31 -44.68 188.77 -42.93 188.53 -41.50 187.23 -40.26 182.07 -36.91 182.64 -34.59 180.22 -34.45 182.66 -33.12 184.50 -29.73 185.92 -27.47 185.34 -25.89 182.29 -27.22 179.01 -31.55 177.28 -34.32 179.37 -30.85 172.97 -30.88 171.22 -32.42 168.65</gml:posList> </gml:LinearRing> </gml:exterior> </gml:Polygon>" ;
+		:geospatial_bounds = "Polygon ((-32.42 168.65, -34.98 168.10, -37.58 170.07, -40.60 167.30,  -44.32 162.17, -51.17 160.62, -54.97 165.11, -55.94 168.78, -54.70 173.54, -53.26 174.64, -51.66 174.48, -53.04 178.46, -51.94 182.69, -50.45 183.84, -47.76 184.00, -46.81 187.31, -44.68 188.77, -42.93 188.53, -41.50 187.23, -40.26 182.07, -36.91 182.64, -34.59 180.22, -34.45 182.66, -33.12 184.50, -29.73 185.92, -27.47 185.34, -25.89 182.29, -27.22 179.01, -31.55 177.28, -34.32 179.37, -30.85 172.97, -30.88 171.22, -32.42 168.65)\n" ;
 		:interpolationCrsWkt = "GEOGCRS[\"NZGD2000\",\n  DATUM[\"New Zealand Geodetic Datum 2000\",\n    ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433]],\nID[\"EPSG\",4167,URI[\"http://www.opengis.net/def/crs/epsg/0/4167\"]]]\n" ;
 		:sourceCrsWkt = "GEOGCRS[\"NZGD2000\",\n  DATUM[\"New Zealand Geodetic Datum 2000\",\n    ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]],\nID[\"EPSG\",4959,URI[\"http://www.opengis.net/def/crs/epsg/0/4959\"]]]\n" ;
 		:targetCrsWkt = "GEOGCRS[\"ITRF96\", \n  DYNAMIC[FRAMEEPOCH[1997.0]],\n  TRF[\"International Terrestrial Reference Frame 1996\",\n    ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]]]\n  ID[\"EPSG\",7907,URI[\"http://www.opengis.net/def/crs/epsg/0/7907\"]]]\n" ;
 		:operationAccuracy = 0.01 ;
-		:uncertaintyMeasure = "- horizontal: 2CEP\n- vertical: 2SE\n" ;
-		:parameters.count = 3LL ;
-		:parameters.1.parameterName = "displacementEast" ;
+		:parameters.count = 5LL ;
+		:parameters.0.parameterName = "displacementEast" ;
+		:parameters.0.parameterSet = "displacement" ;
+		:parameters.0.sourceCrsAxis = 1LL ;
+		:parameters.0.unit = "metre" ;
+		:parameters.0.unitSiRatio = 1. ;
+		:parameters.1.parameterName = "displacementNorth" ;
 		:parameters.1.parameterSet = "displacement" ;
-		:parameters.1.sourceCrsAxis = 1LL ;
+		:parameters.1.sourceCrsAxis = 0LL ;
 		:parameters.1.unit = "metre" ;
 		:parameters.1.unitSiRatio = 1. ;
-		:parameters.2.parameterName = "displacementNorth" ;
+		:parameters.2.parameterName = "displacementUp" ;
 		:parameters.2.parameterSet = "displacement" ;
-		:parameters.2.sourceCrsAxis = 0LL ;
+		:parameters.2.sourceCrsAxis = 2LL ;
 		:parameters.2.unit = "metre" ;
 		:parameters.2.unitSiRatio = 1. ;
-		:parameters.3.parameterName = "displacementUp" ;
-		:parameters.3.parameterSet = "displacement" ;
-		:parameters.3.sourceCrsAxis = 2LL ;
+		:parameters.3.parameterName = "displacementHorizontalUncertainty" ;
+		:parameters.3.parameterSet = "displacementUncertainty" ;
+		:parameters.3.sourceCrsAxis = 0LL ;
 		:parameters.3.unit = "metre" ;
 		:parameters.3.unitSiRatio = 1. ;
+		:parameters.3.uncertaintyMeasure = "2CEP" ;
+		:parameters.3.defaultValue = 0.01 ;
+		:parameters.4.parameterName = "displacementUpUncertainty" ;
+		:parameters.4.parameterSet = "displacementUncertainty" ;
+		:parameters.4.sourceCrsAxis = 2LL ;
+		:parameters.4.unit = "metre" ;
+		:parameters.4.unitSiRatio = 1. ;
+		:parameters.4.uncertaintyMeasure = "2SE" ;
+		:parameters.4.defaultValue = 0.01 ;
 		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
 		:_SuperblockVersion = 2 ;
 		:_IsNetcdf4 = 1 ;
@@ -55,9 +68,12 @@ group: nz_linz_nzgd2000-ndm-grid02 {
   		:comment = "Secular deformation model" ;
   		:interpolationMethod = "bilinear" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
+  		:groupDefaultValues.count = 1LL ;
+  		:groupDefaultValues.0.parameterName = "displacementHorizontalUncertainty" ;
+  		:groupDefaultValues.0.defaultValue = 0.001 ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "velocity" ;
-  		:timeFunctions.1.functionReferenceDate = "2000-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "velocity" ;
+  		:timeFunctions.0.functionReferenceDate = "2000-01-01T00:00:00Z" ;
 
   group: ndm_grid_nuvel1a_eez {
     dimensions:
@@ -71,7 +87,6 @@ group: nz_linz_nzgd2000-ndm-grid02 {
     // group attributes:
     		:comment = "Secular deformation model derived from NUVEL-1A rotation rates" ;
     		:affineCoeffs = -25., 0., -0.5, 158., 0.5, 0. ;
-    		:gridPriority = 1LL ;
 
     group: ndm_grid_igns2011_nz {
       dimensions:
@@ -85,7 +100,6 @@ group: nz_linz_nzgd2000-ndm-grid02 {
       // group attributes:
       		:comment = "Secular deformation model derived from GNS model 2011 V4" ;
       		:affineCoeffs = -33., 0., -0.1, 165.5, 0.1, 0. ;
-      		:gridPriority = 1LL ;
       } // group ndm_grid_igns2011_nz
     } // group ndm_grid_nuvel1a_eez
   } // group nz_linz_nzgd2000-ndm-grid02
@@ -99,16 +113,16 @@ group: nz_linz_nzgd2000-ds20090715-grid011 {
   		:interpolationMethod = "bilinear" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 2LL ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startEpoch = 2009.536 ;
+  		:timeFunctions.0.endEpoch = 2009.536 ;
+  		:timeFunctions.0.functionReferenceEpoch = 2011.666 ;
+  		:timeFunctions.0.scaleFactor = 1.05 ;
   		:timeFunctions.1.functionType = "ramp" ;
   		:timeFunctions.1.startEpoch = 2009.536 ;
-  		:timeFunctions.1.endEpoch = 2009.536 ;
+  		:timeFunctions.1.endEpoch = 2011.666 ;
   		:timeFunctions.1.functionReferenceEpoch = 2011.666 ;
-  		:timeFunctions.1.scaleFactor = 1.05 ;
-  		:timeFunctions.2.functionType = "ramp" ;
-  		:timeFunctions.2.startEpoch = 2009.536 ;
-  		:timeFunctions.2.endEpoch = 2011.666 ;
-  		:timeFunctions.2.functionReferenceEpoch = 2011.666 ;
-  		:timeFunctions.2.scaleFactor = 0.29 ;
+  		:timeFunctions.1.scaleFactor = 0.29 ;
 
   group: patch_ds_20090715_grid_ds_P0_L1 {
     dimensions:
@@ -121,7 +135,6 @@ group: nz_linz_nzgd2000-ds20090715-grid011 {
 
     // group attributes:
     		:affineCoeffs = -50.125, 0., -0.125, 165.4, 0.15, 0. ;
-    		:gridPriority = 1LL ;
     } // group patch_ds_20090715_grid_ds_P0_L1
   } // group nz_linz_nzgd2000-ds20090715-grid011
 }

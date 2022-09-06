@@ -2,7 +2,7 @@ netcdf test_geoid {
 
 // global attributes:
 		:Conventions = "GGXF-1.0, ACDD-1.3" ;
-		:source_file = "tiny_geoid.gxt" ;
+		:source_file = "tiny_geoid.yaml" ;
 		:content = "geoidModel" ;
 		:title = "hybrid geoid" ;
 		:summary = "Tiny geoid for testing GGXF implementation" ;
@@ -15,12 +15,12 @@ netcdf test_geoid {
 		:sourceCrsWkt = "GEOGCRS[\"WGS 84 (G2139)\", \n  DYNAMIC[FRAMEEPOCH[2016.0]],\n  DATUM[\"World Geodetic System 1984 (G2139)\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7030]],ID[\"EPSG\",1309]],\n  CS[ellipsoidal,3,ID[\"EPSG\",6423]],\n    AXIS[\"latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],\n    AXIS[\"longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],\n    AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]\n  ,ID[\"EPSG\",9754]]\n" ;
 		:targetCrsWkt = "VERTCRS[\"Vertical datum height\",\n VDATUM[\"Imaginary vertical datum\",ID[\"EPSG\",1124]],\n CS[vertical,1,ID[\"EPSG\",6499]],\n   AXIS[\"Gravity-related height (H)\",up],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]\n ,ID[\"EPSG\",6642]]    \n" ;
 		:parameters.count = 1LL ;
-		:parameters.1.parameterName = "geoidHeight" ;
-		:parameters.1.sourceCrsAxis = 2LL ;
-		:parameters.1.unit = "metre" ;
-		:parameters.1.unitSiRatio = 1. ;
+		:parameters.0.parameterName = "geoidHeight" ;
+		:parameters.0.sourceCrsAxis = 2LL ;
+		:parameters.0.unit = "metre" ;
+		:parameters.0.unitSiRatio = 1. ;
 		:operationAccuracy = 0.015 ;
-		:organisationName = "A Hypothetical National Geodetic Survey." ;
+		:institution = "A Hypothetical National Geodetic Survey." ;
 		:deliveryPoint = "Somewhere" ;
 		:city = "A city" ;
 		:postalCode = "99999" ;
@@ -46,7 +46,6 @@ group: default {
 
     // group attributes:
     		:affineCoeffs = 22.5, 0., 0.7, -69., 1., 0. ;
-    		:gridPriority = 1LL ;
     data:
 
      geoidHeight =

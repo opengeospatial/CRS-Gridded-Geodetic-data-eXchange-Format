@@ -7,7 +7,7 @@ netcdf nzgd2000-20180701 {
 		:content = "deformationModel" ;
 		:title = "New Zealand Deformation Model." ;
 		:summary = "Defines the secular model (National Deformation Model)\nand patches for significant deformation events since 2000.\n" ;
-		:publisher_institution = "Land Information New Zealand" ;
+		:institution = "Land Information New Zealand" ;
 		:deliveryPoint = "Level 7, Radio New Zealand House\n155 The Terrace\nPO Box 5501\n" ;
 		:city = "Wellington" ;
 		:postalCode = "6145" ;
@@ -21,28 +21,27 @@ netcdf nzgd2000-20180701 {
 		:geospatial_lon_max = -171.23 ;
 		:start_date = "1900-01-01" ;
 		:end_date = "2050-01-01" ;
-		:geospatial_bounds = "<gml:Polygon srsName=\"EPSG:4167\">\n  <gml:exterior>\n    <gml:LinearRing>\n      <gml:posList>-32.42 168.65 -34.98 168.10 -37.58 170.07 -40.60 167.30 -44.32 162.17 -51.17 160.62 -54.97 165.11 -55.94 168.78 -54.70 173.54 -53.26 174.64 -51.66 174.48 -53.04 178.46 -51.94 182.69 -50.45 183.84 -47.76 184.00 -46.81 187.31 -44.68 188.77 -42.93 188.53 -41.50 187.23 -40.26 182.07 -36.91 182.64 -34.59 180.22 -34.45 182.66 -33.12 184.50 -29.73 185.92 -27.47 185.34 -25.89 182.29 -27.22 179.01 -31.55 177.28 -34.32 179.37 -30.85 172.97 -30.88 171.22 -32.42 168.65</gml:posList>\n    </gml:LinearRing>\n  </gml:exterior>\n</gml:Polygon>\n" ;
+		:geospatial_bounds = "Polygon ((-32.42 168.65, -34.98 168.10, -37.58 170.07, -40.60 167.30,  -44.32 162.17, -51.17 160.62, -54.97 165.11, -55.94 168.78, -54.70 173.54, -53.26 174.64, -51.66 174.48, -53.04 178.46, -51.94 182.69, -50.45 183.84, -47.76 184.00, -46.81 187.31, -44.68 188.77, -42.93 188.53, -41.50 187.23, -40.26 182.07, -36.91 182.64, -34.59 180.22, -34.45 182.66, -33.12 184.50, -29.73 185.92, -27.47 185.34, -25.89 182.29, -27.22 179.01, -31.55 177.28, -34.32 179.37, -30.85 172.97, -30.88 171.22, -32.42 168.65)" ;
 		:sourceCrsWkt = "GEOGCRS[\"NZGD2000\",DATUM[\"New Zealand Geodetic Datum 2000\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6167]],CS[ellipsoidal,3,ID[\"EPSG\",6423]],AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],ID[\"EPSG\",4959]]" ;
 		:targetCrsWkt = "GEOGCRS[\"ITRF96\", DYNAMIC[FRAMEEPOCH[1997.0]],DATUM[\"International Terrestrial Reference Frame 1996\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6654]],CS[ellipsoidal,3,ID[\"EPSG\",6423]],AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],ID[\"EPSG\",7907]]" ;
 		:interpolationCrsWkt = "GEOGCRS[\"NZGD2000\",DATUM[\"New Zealand Geodetic Datum 2000\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6167]],CS[ellipsoidal,2,ID[\"EPSG\",6422]],AXIS[\"Geodetic latitude (Lat)\",north],AXIS[\"Geodetic longitude (Lon)\",east],ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]],ID[\"EPSG\",4167]]" ;
 		:parameters.count = 3LL ;
-		:parameters.1.parameterName = "displacementEast" ;
+		:parameters.0.parameterName = "displacementEast" ;
+		:parameters.0.parameterSet = "displacement" ;
+		:parameters.0.unit = "metre" ;
+		:parameters.0.unitSiRatio = 1. ;
+		:parameters.0.sourceCrsAxis = 1LL ;
+		:parameters.1.parameterName = "displacementNorth" ;
 		:parameters.1.parameterSet = "displacement" ;
 		:parameters.1.unit = "metre" ;
 		:parameters.1.unitSiRatio = 1. ;
-		:parameters.1.sourceCrsAxis = 1LL ;
-		:parameters.2.parameterName = "displacementNorth" ;
+		:parameters.1.sourceCrsAxis = 0LL ;
+		:parameters.2.parameterName = "displacementUp" ;
 		:parameters.2.parameterSet = "displacement" ;
 		:parameters.2.unit = "metre" ;
 		:parameters.2.unitSiRatio = 1. ;
-		:parameters.2.sourceCrsAxis = 0LL ;
-		:parameters.3.parameterName = "displacementUp" ;
-		:parameters.3.parameterSet = "displacement" ;
-		:parameters.3.unit = "metre" ;
-		:parameters.3.unitSiRatio = 1. ;
-		:parameters.3.sourceCrsAxis = 2LL ;
+		:parameters.2.sourceCrsAxis = 2LL ;
 		:operationAccuracy = 0.01 ;
-		:uncertaintyMeasure = "2CEP 2SE" ;
 		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
 		:_SuperblockVersion = 2 ;
 		:_IsNetcdf4 = 1 ;
@@ -56,8 +55,8 @@ group: nz_linz_nzgd2000-ndm-grid02 {
   		:comment = "Secular deformation model derived from NUVEL-1A rotation rates\nSecular deformation model derived from GNS model 2011 V4\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "velocity" ;
-  		:timeFunctions.1.functionReferenceDate = "2000-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "velocity" ;
+  		:timeFunctions.0.functionReferenceDate = "2000-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: ndm_grid_nuvel1a_eez {
@@ -71,7 +70,6 @@ group: nz_linz_nzgd2000-ndm-grid02 {
 
     // group attributes:
     		:affineCoeffs = -25., 0., -0.5, 158., 0.5, 0. ;
-    		:gridPriority = 1LL ;
 
     group: ndm_grid_igns2011_nz {
       dimensions:
@@ -84,7 +82,6 @@ group: nz_linz_nzgd2000-ndm-grid02 {
 
       // group attributes:
       		:affineCoeffs = -33., 0., -0.1, 165.5, 0.1, 0. ;
-      		:gridPriority = 1LL ;
       } // group ndm_grid_igns2011_nz
     } // group ndm_grid_nuvel1a_eez
   } // group nz_linz_nzgd2000-ndm-grid02
@@ -97,9 +94,9 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
   		:comment = "Secretary Island (Fiordland) earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2003-08-21T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2004-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2003-08-21T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2004-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_si_20030821_grid_si_l1 {
@@ -113,7 +110,6 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
 
     // group attributes:
     		:affineCoeffs = -43.5, 0., -0.125, 165.85, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_si_20030821_grid_si_l2 {
       dimensions:
@@ -126,7 +122,6 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
 
       // group attributes:
       		:affineCoeffs = -44.5, 0., -0.03125, 166.225, 0.0375, 0. ;
-      		:gridPriority = 1LL ;
 
       group: patch_si_20030821_grid_si_l3 {
         dimensions:
@@ -139,7 +134,6 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
 
         // group attributes:
         		:affineCoeffs = -44.828125, 0., -0.0078125, 166.5625, 0.009375, 0. ;
-        		:gridPriority = 1LL ;
         } // group patch_si_20030821_grid_si_l3
       } // group patch_si_20030821_grid_si_l2
     } // group patch_si_20030821_grid_si_l1
@@ -153,9 +147,9 @@ group: nz_linz_nzgd2000-mq20041223-grid011 {
   		:comment = "Macquarie Plate earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2004-12-23T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2005-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2004-12-23T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2005-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_mq_20041223_grid_mq_p0_l1 {
@@ -169,7 +163,6 @@ group: nz_linz_nzgd2000-mq20041223-grid011 {
 
     // group attributes:
     		:affineCoeffs = -52.125, 0., -0.125, 168.4, 0.15, 0. ;
-    		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p0_l1
   } // group nz_linz_nzgd2000-mq20041223-grid011
 
@@ -181,9 +174,9 @@ group: nz_linz_nzgd2000-mq20041223-grid012 {
   		:comment = "Macquarie Plate earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2004-12-23T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2005-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2004-12-23T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2005-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_mq_20041223_grid_mq_p1_sl2 {
@@ -197,7 +190,6 @@ group: nz_linz_nzgd2000-mq20041223-grid012 {
 
     // group attributes:
     		:affineCoeffs = -48.25, 0., -0.03125, 158.8, 0.0375, 0. ;
-    		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p1_sl2
   } // group nz_linz_nzgd2000-mq20041223-grid012
 
@@ -209,9 +201,9 @@ group: nz_linz_nzgd2000-mq20041223-grid013 {
   		:comment = "Macquarie Plate earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2004-12-23T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2005-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2004-12-23T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2005-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_mq_20041223_grid_mq_p2_l1 {
@@ -225,7 +217,6 @@ group: nz_linz_nzgd2000-mq20041223-grid013 {
 
     // group attributes:
     		:affineCoeffs = -50.125, 0., -0.125, 165.4, 0.15, 0. ;
-    		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p2_l1
   } // group nz_linz_nzgd2000-mq20041223-grid013
 
@@ -237,9 +228,9 @@ group: nz_linz_nzgd2000-mq20041223-grid014 {
   		:comment = "Macquarie Plate earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2004-12-23T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2005-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2004-12-23T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2005-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_mq_20041223_grid_mq_p3_l1 {
@@ -253,7 +244,6 @@ group: nz_linz_nzgd2000-mq20041223-grid014 {
 
     // group attributes:
     		:affineCoeffs = -49.25, 0., -0.125, 178.15, 0.15, 0. ;
-    		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p3_l1
   } // group nz_linz_nzgd2000-mq20041223-grid014
 
@@ -265,9 +255,9 @@ group: nz_linz_nzgd2000-mq20041223-grid015 {
   		:comment = "Macquarie Plate earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2004-12-23T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2005-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2004-12-23T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2005-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_mq_20041223_grid_mq_p4_l1 {
@@ -281,7 +271,6 @@ group: nz_linz_nzgd2000-mq20041223-grid015 {
 
     // group attributes:
     		:affineCoeffs = -40.125, 0., -0.125, 165.85, 0.15, 0. ;
-    		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p4_l1
   } // group nz_linz_nzgd2000-mq20041223-grid015
 
@@ -293,9 +282,9 @@ group: nz_linz_nzgd2000-mq20041223-grid016 {
   		:comment = "Macquarie Plate earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2004-12-23T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2005-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2004-12-23T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2005-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_mq_20041223_grid_mq_p5_l1 {
@@ -309,7 +298,6 @@ group: nz_linz_nzgd2000-mq20041223-grid016 {
 
     // group attributes:
     		:affineCoeffs = -47.375, 0., -0.125, 178.45, 0.15, 0. ;
-    		:gridPriority = 1LL ;
     } // group patch_mq_20041223_grid_mq_p5_l1
   } // group nz_linz_nzgd2000-mq20041223-grid016
 
@@ -321,9 +309,9 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
   		:comment = "Fiordland (George Sound) earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2007-10-16T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2008-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2007-10-16T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2008-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_gs_20071016_grid_gs_l1 {
@@ -337,7 +325,6 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
 
     // group attributes:
     		:affineCoeffs = -43.75, 0., -0.125, 165.85, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_gs_20071016_grid_gs_l2 {
       dimensions:
@@ -350,7 +337,6 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
 
       // group attributes:
       		:affineCoeffs = -44.28125, 0., -0.03125, 166.6375, 0.0375, 0. ;
-      		:gridPriority = 1LL ;
 
       group: patch_gs_20071016_grid_gs_l3 {
         dimensions:
@@ -363,7 +349,6 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
 
         // group attributes:
         		:affineCoeffs = -44.6171875, 0., -0.0078125, 167.0875, 0.009375, 0. ;
-        		:gridPriority = 1LL ;
         } // group patch_gs_20071016_grid_gs_l3
       } // group patch_gs_20071016_grid_gs_l2
     } // group patch_gs_20071016_grid_gs_l1
@@ -377,16 +362,16 @@ group: nz_linz_nzgd2000-ds20090715-grid011 {
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 2LL ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2011-09-01T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1.05 ;
   		:timeFunctions.1.functionType = "ramp" ;
   		:timeFunctions.1.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.1.endDate = "2011-09-01T00:00:00Z" ;
   		:timeFunctions.1.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1.05 ;
-  		:timeFunctions.2.functionType = "ramp" ;
-  		:timeFunctions.2.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.2.endDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.scaleFactor = 0.29 ;
+  		:timeFunctions.1.scaleFactor = 0.29 ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ds_20090715_grid_ds_p0_l1 {
@@ -400,7 +385,6 @@ group: nz_linz_nzgd2000-ds20090715-grid011 {
 
     // group attributes:
     		:affineCoeffs = -50.125, 0., -0.125, 165.4, 0.15, 0. ;
-    		:gridPriority = 1LL ;
     } // group patch_ds_20090715_grid_ds_p0_l1
   } // group nz_linz_nzgd2000-ds20090715-grid011
 
@@ -412,16 +396,16 @@ group: nz_linz_nzgd2000-ds20090715-grid012 {
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 2LL ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2011-09-01T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1.05 ;
   		:timeFunctions.1.functionType = "ramp" ;
   		:timeFunctions.1.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.1.endDate = "2011-09-01T00:00:00Z" ;
   		:timeFunctions.1.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1.05 ;
-  		:timeFunctions.2.functionType = "ramp" ;
-  		:timeFunctions.2.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.2.endDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.scaleFactor = 0.29 ;
+  		:timeFunctions.1.scaleFactor = 0.29 ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ds_20090715_grid_ds_p1_l1 {
@@ -435,7 +419,6 @@ group: nz_linz_nzgd2000-ds20090715-grid012 {
 
     // group attributes:
     		:affineCoeffs = -49.25, 0., -0.125, 178.15, 0.15, 0. ;
-    		:gridPriority = 1LL ;
     } // group patch_ds_20090715_grid_ds_p1_l1
   } // group nz_linz_nzgd2000-ds20090715-grid012
 
@@ -447,16 +430,16 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 2LL ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2011-09-01T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1.05 ;
   		:timeFunctions.1.functionType = "ramp" ;
   		:timeFunctions.1.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.1.endDate = "2011-09-01T00:00:00Z" ;
   		:timeFunctions.1.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1.05 ;
-  		:timeFunctions.2.functionType = "ramp" ;
-  		:timeFunctions.2.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.2.endDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.scaleFactor = 0.29 ;
+  		:timeFunctions.1.scaleFactor = 0.29 ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ds_20090715_grid_ds_p2_l1 {
@@ -470,7 +453,6 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
 
     // group attributes:
     		:affineCoeffs = -39.625, 0., -0.125, 164.65, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_ds_20090715_grid_ds_p2_l2 {
       dimensions:
@@ -483,7 +465,6 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
 
       // group attributes:
       		:affineCoeffs = -44.6875, 0., -0.03125, 165.2875, 0.0375, 0. ;
-      		:gridPriority = 1LL ;
 
       group: patch_ds_20090715_grid_ds_p2_l3 {
         dimensions:
@@ -496,7 +477,6 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
 
         // group attributes:
         		:affineCoeffs = -45.28125, 0., -0.0078125, 166.075, 0.009375, 0. ;
-        		:gridPriority = 1LL ;
         } // group patch_ds_20090715_grid_ds_p2_l3
       } // group patch_ds_20090715_grid_ds_p2_l2
     } // group patch_ds_20090715_grid_ds_p2_l1
@@ -510,16 +490,16 @@ group: nz_linz_nzgd2000-ds20090715-grid014 {
   		:comment = "Dusky Sound (Fiordland) earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 2LL ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2011-09-01T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1.05 ;
   		:timeFunctions.1.functionType = "ramp" ;
   		:timeFunctions.1.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2009-07-15T00:00:00Z" ;
+  		:timeFunctions.1.endDate = "2011-09-01T00:00:00Z" ;
   		:timeFunctions.1.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1.05 ;
-  		:timeFunctions.2.functionType = "ramp" ;
-  		:timeFunctions.2.startDate = "2009-07-15T00:00:00Z" ;
-  		:timeFunctions.2.endDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.functionReferenceDate = "2011-09-01T00:00:00Z" ;
-  		:timeFunctions.2.scaleFactor = 0.29 ;
+  		:timeFunctions.1.scaleFactor = 0.29 ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ds_20090715_grid_ds_p3_l1 {
@@ -533,7 +513,6 @@ group: nz_linz_nzgd2000-ds20090715-grid014 {
 
     // group attributes:
     		:affineCoeffs = -47.375, 0., -0.125, 178.45, 0.15, 0. ;
-    		:gridPriority = 1LL ;
     } // group patch_ds_20090715_grid_ds_p3_l1
   } // group nz_linz_nzgd2000-ds20090715-grid014
 
@@ -545,9 +524,9 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
   		:comment = "Darfield earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2010-09-04T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2011-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2010-09-04T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2011-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_c1_20100904_grid_c1_l1 {
@@ -561,7 +540,6 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
 
     // group attributes:
     		:affineCoeffs = -40.375, 0., -0.125, 168.1, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_c1_20100904_grid_c1_l2 {
       dimensions:
@@ -574,7 +552,6 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
 
       // group attributes:
       		:affineCoeffs = -42.8125, 0., -0.03125, 171.1, 0.0375, 0. ;
-      		:gridPriority = 1LL ;
 
       group: patch_c1_20100904_grid_c1_l3 {
         dimensions:
@@ -587,7 +564,6 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
 
         // group attributes:
         		:affineCoeffs = -43.25, 0., -0.0078125, 171.625, 0.009375, 0. ;
-        		:gridPriority = 1LL ;
 
         group: patch_c1_20100904_grid_c1_l4 {
           dimensions:
@@ -600,7 +576,6 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
 
           // group attributes:
           		:affineCoeffs = -43.423828125, 0., -0.001953125, 171.8125, 0.00234375, 0. ;
-          		:gridPriority = 1LL ;
           } // group patch_c1_20100904_grid_c1_l4
         } // group patch_c1_20100904_grid_c1_l3
       } // group patch_c1_20100904_grid_c1_l2
@@ -615,9 +590,9 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
   		:comment = "Christchurch February earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2011-02-22T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2012-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2011-02-22T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2012-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_c2_20110222_grid_c2_l1 {
@@ -631,7 +606,6 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
 
     // group attributes:
     		:affineCoeffs = -42.375, 0., -0.125, 170.8, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_c2_20110222_grid_c2_l2 {
       dimensions:
@@ -644,7 +618,6 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
 
       // group attributes:
       		:affineCoeffs = -43.03125, 0., -0.03125, 172., 0.0375, 0. ;
-      		:gridPriority = 1LL ;
 
       group: patch_c2_20110222_grid_c2_l3 {
         dimensions:
@@ -657,7 +630,6 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
 
         // group attributes:
         		:affineCoeffs = -43.3515625, 0., -0.0078125, 172.4125, 0.009375, 0. ;
-        		:gridPriority = 1LL ;
 
         group: patch_c2_20110222_grid_c2_l4 {
           dimensions:
@@ -670,7 +642,6 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
 
           // group attributes:
           		:affineCoeffs = -43.474609375, 0., -0.001953125, 172.56015625, 0.00234375, 0. ;
-          		:gridPriority = 1LL ;
           } // group patch_c2_20110222_grid_c2_l4
         } // group patch_c2_20110222_grid_c2_l3
       } // group patch_c2_20110222_grid_c2_l2
@@ -685,9 +656,9 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
   		:comment = "Christchurch June earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2011-06-13T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2012-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2011-06-13T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2012-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_c3_20110613_grid_c3_l1 {
@@ -701,7 +672,6 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
 
     // group attributes:
     		:affineCoeffs = -42.625, 0., -0.125, 171.4, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_c3_20110613_grid_c3_l2 {
       dimensions:
@@ -714,7 +684,6 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
 
       // group attributes:
       		:affineCoeffs = -43.09375, 0., -0.03125, 172.15, 0.0375, 0. ;
-      		:gridPriority = 1LL ;
 
       group: patch_c3_20110613_grid_c3_l3 {
         dimensions:
@@ -727,7 +696,6 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
 
         // group attributes:
         		:affineCoeffs = -43.375, 0., -0.0078125, 172.515625, 0.009375, 0. ;
-        		:gridPriority = 1LL ;
 
         group: patch_c3_20110613_grid_c3_l4 {
           dimensions:
@@ -740,7 +708,6 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
 
           // group attributes:
           		:affineCoeffs = -43.484375, 0., -0.001953125, 172.65390625, 0.00234375, 0. ;
-          		:gridPriority = 1LL ;
           } // group patch_c3_20110613_grid_c3_l4
         } // group patch_c3_20110613_grid_c3_l3
       } // group patch_c3_20110613_grid_c3_l2
@@ -755,9 +722,9 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
   		:comment = "Christchurch earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2011-12-23T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2012-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2011-12-23T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2012-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_c4_20111223_grid_c4_l1 {
@@ -771,7 +738,6 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
 
     // group attributes:
     		:affineCoeffs = -42.75, 0., -0.125, 171.55, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_c4_20111223_grid_c4_l2 {
       dimensions:
@@ -784,7 +750,6 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
 
       // group attributes:
       		:affineCoeffs = -43.03125, 0., -0.03125, 172.1875, 0.0375, 0. ;
-      		:gridPriority = 1LL ;
 
       group: patch_c4_20111223_grid_c4_l3 {
         dimensions:
@@ -797,7 +762,6 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
 
         // group attributes:
         		:affineCoeffs = -43.3125, 0., -0.0078125, 172.553125, 0.009375, 0. ;
-        		:gridPriority = 1LL ;
 
         group: patch_c4_20111223_grid_c4_l4 {
           dimensions:
@@ -810,7 +774,6 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
 
           // group attributes:
           		:affineCoeffs = -43.421875, 0., -0.001953125, 172.67734375, 0.00234375, 0. ;
-          		:gridPriority = 1LL ;
           } // group patch_c4_20111223_grid_c4_l4
         } // group patch_c4_20111223_grid_c4_l3
       } // group patch_c4_20111223_grid_c4_l2
@@ -825,9 +788,9 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
   		:comment = "Mw 6.6 Cook Strait earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2013-07-21T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2014-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2013-07-21T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2014-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_cs_20130721_grid_cs_20130721_l1 {
@@ -841,7 +804,6 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
 
     // group attributes:
     		:affineCoeffs = -39.5, 0., -0.125, 171.55, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_cs_20130721_grid_cs_20130721_l2 {
       dimensions:
@@ -854,7 +816,6 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
 
       // group attributes:
       		:affineCoeffs = -41.03125, 0., -0.03125, 173.5375, 0.0375, 0. ;
-      		:gridPriority = 1LL ;
 
       group: patch_cs_20130721_grid_cs_20130721_l3 {
         dimensions:
@@ -867,7 +828,6 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.3828125, 0., -0.0078125, 173.9875, 0.009375, 0. ;
-        		:gridPriority = 1LL ;
 
         group: patch_cs_20130721_grid_cs_20130721_l4 {
           dimensions:
@@ -880,7 +840,6 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
 
           // group attributes:
           		:affineCoeffs = -41.537109375, 0., -0.001953125, 174.28984375, 0.00234375, 0. ;
-          		:gridPriority = 1LL ;
           } // group patch_cs_20130721_grid_cs_20130721_l4
         } // group patch_cs_20130721_grid_cs_20130721_l3
       } // group patch_cs_20130721_grid_cs_20130721_l2
@@ -895,9 +854,9 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
   		:comment = "Mw 6.6 Lake Grassmere earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2013-08-16T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2014-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2013-08-16T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2014-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_lg_20130816_grid_lg_20130816_l1 {
@@ -911,7 +870,6 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
 
     // group attributes:
     		:affineCoeffs = -39.25, 0., -0.125, 170.95, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_lg_20130816_grid_lg_20130816_l2 {
       dimensions:
@@ -924,7 +882,6 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
 
       // group attributes:
       		:affineCoeffs = -41.09375, 0., -0.03125, 173.3875, 0.0375, 0. ;
-      		:gridPriority = 1LL ;
 
       group: patch_lg_20130816_grid_lg_20130816_l3 {
         dimensions:
@@ -937,7 +894,6 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.4609375, 0., -0.0078125, 173.809375, 0.009375, 0. ;
-        		:gridPriority = 1LL ;
 
         group: patch_lg_20130816_grid_lg_20130816_l4 {
           dimensions:
@@ -950,7 +906,6 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
 
           // group attributes:
           		:affineCoeffs = -41.60546875, 0., -0.001953125, 174.034375, 0.00234375, 0. ;
-          		:gridPriority = 1LL ;
           } // group patch_lg_20130816_grid_lg_20130816_l4
         } // group patch_lg_20130816_grid_lg_20130816_l3
       } // group patch_lg_20130816_grid_lg_20130816_l2
@@ -965,9 +920,9 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
   		:comment = "Christchurch Valentines Day earthquake" ;
   		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2016-02-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2017-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2016-02-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2017-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ch_20160214_grid_ch_20160214_l1 {
@@ -981,7 +936,6 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
 
     // group attributes:
     		:affineCoeffs = -42.875, 0., -0.125, 171.7, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_ch_20160214_grid_ch_20160214_l2 {
       dimensions:
@@ -994,7 +948,6 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
 
       // group attributes:
       		:affineCoeffs = -43.0625, 0., -0.03125, 172.225, 0.0375, 0. ;
-      		:gridPriority = 1LL ;
 
       group: patch_ch_20160214_grid_ch_20160214_l3 {
         dimensions:
@@ -1007,7 +960,6 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
 
         // group attributes:
         		:affineCoeffs = -43.3203125, 0., -0.0078125, 172.553125, 0.009375, 0. ;
-        		:gridPriority = 1LL ;
 
         group: patch_ch_20160214_grid_ch_20160214_l4 {
           dimensions:
@@ -1020,7 +972,6 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
 
           // group attributes:
           		:affineCoeffs = -43.408203125, 0., -0.001953125, 172.67265625, 0.00234375, 0. ;
-          		:gridPriority = 1LL ;
           } // group patch_ch_20160214_grid_ch_20160214_l4
         } // group patch_ch_20160214_grid_ch_20160214_l3
       } // group patch_ch_20160214_grid_ch_20160214_l2
@@ -1035,8 +986,8 @@ group: nz_linz_nzgd2000-ka20161114-grid01 {
   		:comment = "Event: Kaikoura earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2016-11-14T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114co_h_l1_f {
@@ -1050,7 +1001,6 @@ group: nz_linz_nzgd2000-ka20161114-grid01 {
 
     // group attributes:
     		:affineCoeffs = -34., 0., -0.125, 165.85, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114co_h_l2_f {
       dimensions:
@@ -1063,7 +1013,6 @@ group: nz_linz_nzgd2000-ka20161114-grid01 {
 
       // group attributes:
       		:affineCoeffs = -40.8125, 0., -0.03125, 171.925, 0.0375, 0. ;
-      		:gridPriority = 1LL ;
       } // group patch_ka_20161114_grid_ka_20161114co_h_l2_f
     } // group patch_ka_20161114_grid_ka_20161114co_h_l1_f
   } // group nz_linz_nzgd2000-ka20161114-grid01
@@ -1076,9 +1025,9 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
   		:comment = "Event: Kaikoura earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2017-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2017-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114co_h_l2_r {
@@ -1092,7 +1041,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
     // group attributes:
     		:affineCoeffs = -41.28125, 0., -0.03125, 172.525, 0.0375, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00 {
       dimensions:
@@ -1105,7 +1053,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
       // group attributes:
       		:affineCoeffs = -42.1484375, 0., -0.0078125, 172.571875, 0.009375, 0. ;
-      		:gridPriority = 1LL ;
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_00 {
         dimensions:
@@ -1118,7 +1065,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.484375, 0., -0.001953125, 172.7828125, 0.00234375, 0. ;
-        		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_00
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_01 {
@@ -1132,7 +1078,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.435546875, 0., -0.001953125, 173.00546875, 0.00234375, 0. ;
-        		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_01
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_02 {
@@ -1146,7 +1091,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.02890625, 0.00234375, 0. ;
-        		:gridPriority = 3LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_02
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_03 {
@@ -1160,7 +1104,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.38671875, 0., -0.001953125, 173.02890625, 0.00234375, 0. ;
-        		:gridPriority = 4LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_03
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_04 {
@@ -1174,7 +1117,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.275, 0.00234375, 0. ;
-        		:gridPriority = 5LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_04
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_05 {
@@ -1188,7 +1130,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.275, 0.00234375, 0. ;
-        		:gridPriority = 6LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_05
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_060 {
@@ -1202,7 +1143,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.47421875, 0.00234375, 0. ;
-        		:gridPriority = 7LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_060
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_080 {
@@ -1216,7 +1156,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
-        		:gridPriority = 8LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_080
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_090 {
@@ -1230,7 +1169,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
-        		:gridPriority = 9LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_090
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_100 {
@@ -1244,7 +1182,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
-        		:gridPriority = 10LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_100
       } // group patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
 
@@ -1259,7 +1196,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
       // group attributes:
       		:affineCoeffs = -41.4609375, 0., -0.0078125, 173.153125, 0.009375, 0. ;
-      		:gridPriority = 2LL ;
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_061 {
         dimensions:
@@ -1272,7 +1208,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.47421875, 0.00234375, 0. ;
-        		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_061
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_07 {
@@ -1286,7 +1221,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.044921875, 0., -0.001953125, 173.50234375, 0.0023437500000014, 0. ;
-        		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_07
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_101 {
@@ -1300,7 +1234,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
-        		:gridPriority = 3LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_101
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_110 {
@@ -1314,7 +1247,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 173.52109375, 0.00234375, 0. ;
-        		:gridPriority = 4LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_110
       } // group patch_ka_20161114_grid_ka_20161114co_h_l3_r_01
 
@@ -1329,7 +1261,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
       // group attributes:
       		:affineCoeffs = -42.1484375, 0., -0.0078125, 173.640625, 0.009375, 0. ;
-      		:gridPriority = 3LL ;
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_081 {
         dimensions:
@@ -1342,7 +1273,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.484375, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
-        		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_081
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_091 {
@@ -1356,7 +1286,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
-        		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_091
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_102 {
@@ -1370,7 +1299,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
-        		:gridPriority = 3LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_102
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_13 {
@@ -1384,7 +1312,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.26953125, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
-        		:gridPriority = 4LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_13
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_140 {
@@ -1398,7 +1325,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
-        		:gridPriority = 5LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_140
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_170 {
@@ -1412,7 +1338,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.1484375, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
-        		:gridPriority = 6LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_170
       } // group patch_ka_20161114_grid_ka_20161114co_h_l3_r_02
 
@@ -1427,7 +1352,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
       // group attributes:
       		:affineCoeffs = -41.421875, 0., -0.0078125, 173.640625, 0.009375, 0. ;
-      		:gridPriority = 4LL ;
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_103 {
         dimensions:
@@ -1440,7 +1364,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
-        		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_103
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_111 {
@@ -1454,7 +1377,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 173.640625, 0.00234375, 0. ;
-        		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_111
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_12 {
@@ -1468,7 +1390,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.822265625, 0., -0.001953125, 173.734375, 0.00234375, 0. ;
-        		:gridPriority = 3LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_12
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_141 {
@@ -1482,7 +1403,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
-        		:gridPriority = 4LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_141
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_15 {
@@ -1496,7 +1416,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
-        		:gridPriority = 5LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_15
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_16 {
@@ -1510,7 +1429,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.76171875, 0., -0.001953125, 173.7671875, 0.00234375, 0. ;
-        		:gridPriority = 6LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_16
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_171 {
@@ -1524,7 +1442,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
-        		:gridPriority = 7LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_171
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_18 {
@@ -1538,7 +1455,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
-        		:gridPriority = 8LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_18
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_19 {
@@ -1552,7 +1468,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.66015625, 0., -0.001953125, 174.01328125, 0.00234375, 0. ;
-        		:gridPriority = 9LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_19
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_20 {
@@ -1566,7 +1481,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.83984375, 0., -0.001953125, 174.259375, 0.00234375, 0. ;
-        		:gridPriority = 10LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_20
 
       group: patch_ka_20161114_grid_ka_20161114co_h_l4_r_21 {
@@ -1580,7 +1494,6 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
 
         // group attributes:
         		:affineCoeffs = -41.626953125, 0., -0.001953125, 174.259375, 0.00234375, 0. ;
-        		:gridPriority = 11LL ;
         } // group patch_ka_20161114_grid_ka_20161114co_h_l4_r_21
       } // group patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
     } // group patch_ka_20161114_grid_ka_20161114co_h_l2_r
@@ -1592,9 +1505,9 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
   		:comment = "Event: Kaikoura earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		:groupParameters = "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2017-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2017-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114co_v_l1 {
@@ -1608,7 +1521,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
     // group attributes:
     		:affineCoeffs = -34.25, 0., -0.125, 166.3, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114co_v_l2 {
       dimensions:
@@ -1621,7 +1533,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
       // group attributes:
       		:affineCoeffs = -41.0625, 0., -0.03125, 172.225, 0.0375, 0. ;
-      		:gridPriority = 1LL ;
 
       group: patch_ka_20161114_grid_ka_20161114co_v_l3_00 {
         dimensions:
@@ -1634,7 +1545,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
         // group attributes:
         		:affineCoeffs = -42.1171875, 0., -0.0078125, 172.65625, 0.009375, 0. ;
-        		:gridPriority = 1LL ;
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_00 {
           dimensions:
@@ -1647,7 +1557,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.490234375, 0., -0.001953125, 172.79921875, 0.00234375, 0. ;
-          		:gridPriority = 1LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_00
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_01 {
@@ -1661,7 +1570,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.03828125, 0.00234375, 0. ;
-          		:gridPriority = 2LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_01
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_02 {
@@ -1675,7 +1583,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.353515625, 0., -0.001953125, 173.07109375, 0.00234375, 0. ;
-          		:gridPriority = 3LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_02
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_03 {
@@ -1689,7 +1596,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.27734375, 0.00234375, 0. ;
-          		:gridPriority = 4LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_03
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_04 {
@@ -1703,7 +1609,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.28125, 0., -0.001953125, 173.27734375, 0.00234375, 0. ;
-          		:gridPriority = 5LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_04
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_050 {
@@ -1717,7 +1622,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.46953125, 0.00234375, 0. ;
-          		:gridPriority = 6LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_050
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_060 {
@@ -1731,7 +1635,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
-          		:gridPriority = 7LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_060
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_070 {
@@ -1745,7 +1648,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.24609375, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
-          		:gridPriority = 8LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_070
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_080 {
@@ -1759,7 +1661,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
-          		:gridPriority = 9LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_080
         } // group patch_ka_20161114_grid_ka_20161114co_v_l3_00
 
@@ -1774,7 +1675,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
         // group attributes:
         		:affineCoeffs = -41.578125, 0., -0.0078125, 173.209375, 0.009375, 0. ;
-        		:gridPriority = 2LL ;
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_051 {
           dimensions:
@@ -1787,7 +1687,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.0546875, 0., -0.001953125, 173.46953125, 0.00234375, 0. ;
-          		:gridPriority = 1LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_051
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_081 {
@@ -1801,7 +1700,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.51640625, 0.00234375, 0. ;
-          		:gridPriority = 2LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_081
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_090 {
@@ -1815,7 +1713,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -41.912109375, 0., -0.001953125, 173.58671875, 0.00234375, 0. ;
-          		:gridPriority = 3LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_090
         } // group patch_ka_20161114_grid_ka_20161114co_v_l3_01
 
@@ -1830,7 +1727,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
         // group attributes:
         		:affineCoeffs = -42.1171875, 0., -0.0078125, 173.6125, 0.009375, 0. ;
-        		:gridPriority = 3LL ;
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_061 {
           dimensions:
@@ -1843,7 +1739,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
-          		:gridPriority = 1LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_061
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_071 {
@@ -1857,7 +1752,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.24609375, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
-          		:gridPriority = 2LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_071
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_082 {
@@ -1871,7 +1765,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
-          		:gridPriority = 3LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_082
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_10 {
@@ -1885,7 +1778,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.453125, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
-          		:gridPriority = 4LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_10
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_11 {
@@ -1899,7 +1791,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.24609375, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
-          		:gridPriority = 5LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_11
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_120 {
@@ -1913,7 +1804,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
-          		:gridPriority = 6LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_120
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_140 {
@@ -1927,7 +1817,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.1171875, 0., -0.001953125, 173.99453125, 0.00234375, 0. ;
-          		:gridPriority = 7LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_140
         } // group patch_ka_20161114_grid_ka_20161114co_v_l3_02
 
@@ -1942,7 +1831,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
         // group attributes:
         		:affineCoeffs = -41.4375, 0., -0.0078125, 173.6125, 0.009375, 0. ;
-        		:gridPriority = 4LL ;
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_083 {
           dimensions:
@@ -1955,7 +1843,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
-          		:gridPriority = 1LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_083
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_091 {
@@ -1969,7 +1856,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -41.912109375, 0., -0.001953125, 173.6125, 0.00234375, 0. ;
-          		:gridPriority = 2LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_091
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_121 {
@@ -1983,7 +1869,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
-          		:gridPriority = 3LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_121
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_13 {
@@ -1997,7 +1882,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -41.859375, 0., -0.001953125, 173.75546875, 0.00234375, 0. ;
-          		:gridPriority = 4LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_13
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_141 {
@@ -2011,7 +1895,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -42.0390625, 0., -0.001953125, 173.99453125, 0.00234375, 0. ;
-          		:gridPriority = 5LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_141
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_15 {
@@ -2025,7 +1908,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -41.83203125, 0., -0.001953125, 173.99453125, 0.00234375, 0. ;
-          		:gridPriority = 6LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_15
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_16 {
@@ -2039,7 +1921,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -41.681640625, 0., -0.001953125, 174.0859375, 0.00234375, 0. ;
-          		:gridPriority = 7LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_16
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_17 {
@@ -2053,7 +1934,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -41.83203125, 0., -0.001953125, 174.23359375, 0.00234375, 0. ;
-          		:gridPriority = 8LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_17
 
         group: patch_ka_20161114_grid_ka_20161114co_v_l4_18 {
@@ -2067,7 +1947,6 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
 
           // group attributes:
           		:affineCoeffs = -41.626953125, 0., -0.001953125, 174.23359375, 0.00234375, 0. ;
-          		:gridPriority = 9LL ;
           } // group patch_ka_20161114_grid_ka_20161114co_v_l4_18
         } // group patch_ka_20161114_grid_ka_20161114co_v_l3_03
       } // group patch_ka_20161114_grid_ka_20161114co_v_l2
@@ -2082,11 +1961,11 @@ group: nz_linz_nzgd2000-ka20161114-grid04 {
   		:comment = "Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "ramp" ;
-  		:timeFunctions.1.startDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1. ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1. ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114pe1_h_l1_f {
@@ -2100,7 +1979,6 @@ group: nz_linz_nzgd2000-ka20161114-grid04 {
 
     // group attributes:
     		:affineCoeffs = -39., 0., -0.125, 169.6, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe1_h_l2_f {
       dimensions:
@@ -2113,7 +1991,6 @@ group: nz_linz_nzgd2000-ka20161114-grid04 {
 
       // group attributes:
       		:affineCoeffs = -41.125, 0., -0.03125, 172.6375, 0.0375, 0. ;
-      		:gridPriority = 1LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe1_h_l2_f
     } // group patch_ka_20161114_grid_ka_20161114pe1_h_l1_f
   } // group nz_linz_nzgd2000-ka20161114-grid04
@@ -2126,11 +2003,11 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
   		:comment = "Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "ramp" ;
-  		:timeFunctions.1.startDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1. ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1. ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114pe1_h_l2_r {
@@ -2144,7 +2021,6 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
 
     // group attributes:
     		:affineCoeffs = -41.28125, 0., -0.03125, 172.45, 0.0375, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_00 {
       dimensions:
@@ -2157,7 +2033,6 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
 
       // group attributes:
       		:affineCoeffs = -42.0546875, 0., -0.0078125, 172.834375, 0.009375, 0. ;
-      		:gridPriority = 1LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_00
 
     group: patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_01 {
@@ -2171,7 +2046,6 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
 
       // group attributes:
       		:affineCoeffs = -41.5703125, 0., -0.0078125, 173.696875, 0.009375, 0. ;
-      		:gridPriority = 2LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_01
     } // group patch_ka_20161114_grid_ka_20161114pe1_h_l2_r
   } // group nz_linz_nzgd2000-ka20161114-grid05
@@ -2182,11 +2056,11 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
   		:comment = "Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		:groupParameters = "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "ramp" ;
-  		:timeFunctions.1.startDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1. ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1. ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114pe1_v_l1 {
@@ -2200,7 +2074,6 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
 
     // group attributes:
     		:affineCoeffs = -40.5, 0., -0.125, 171.85, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe1_v_l2 {
       dimensions:
@@ -2213,7 +2086,6 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
 
       // group attributes:
       		:affineCoeffs = -40.75, 0., -0.03125, 172.675, 0.0375, 0. ;
-      		:gridPriority = 1LL ;
 
       group: patch_ka_20161114_grid_ka_20161114pe1_v_l3_00 {
         dimensions:
@@ -2226,7 +2098,6 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
 
         // group attributes:
         		:affineCoeffs = -42.0546875, 0., -0.0078125, 172.84375, 0.009375, 0. ;
-        		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114pe1_v_l3_00
 
       group: patch_ka_20161114_grid_ka_20161114pe1_v_l3_01 {
@@ -2240,7 +2111,6 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
 
         // group attributes:
         		:affineCoeffs = -41.609375, 0., -0.0078125, 173.696875, 0.009375, 0. ;
-        		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114pe1_v_l3_01
       } // group patch_ka_20161114_grid_ka_20161114pe1_v_l2
     } // group patch_ka_20161114_grid_ka_20161114pe1_v_l1
@@ -2254,8 +2124,8 @@ group: nz_linz_nzgd2000-ka20161114-grid10 {
   		:comment = "Event: Kaikoura earthquake,  14 November 2016\nRefinement for horizontal difference between observations and model\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2016-11-14T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_hor_refinement {
@@ -2269,7 +2139,6 @@ group: nz_linz_nzgd2000-ka20161114-grid10 {
 
     // group attributes:
     		:affineCoeffs = -38.625, 0., -0.125, 171.1, 0.15, 0. ;
-    		:gridPriority = 1LL ;
     } // group patch_ka_20161114_grid_hor_refinement
   } // group nz_linz_nzgd2000-ka20161114-grid10
 
@@ -2281,9 +2150,9 @@ group: nz_linz_nzgd2000-ka20161114-grid11 {
   		:comment = "Kaikoura earthquake second refinement grid - horizontal" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2017-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2017-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_hor_refinement2 {
@@ -2297,7 +2166,6 @@ group: nz_linz_nzgd2000-ka20161114-grid11 {
 
     // group attributes:
     		:affineCoeffs = -40.56, 0., -0.015, 171.5, 0.02, 0. ;
-    		:gridPriority = 1LL ;
     } // group patch_ka_20161114_grid_hor_refinement2
   } // group nz_linz_nzgd2000-ka20161114-grid11
 
@@ -2307,9 +2175,9 @@ group: nz_linz_nzgd2000-ka20161114-grid12 {
   		:comment = "Kaikoura earthquake second refinement grid -vertical" ;
   		:groupParameters = "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "step" ;
-  		:timeFunctions.1.eventDate = "2016-11-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2017-01-01T00:00:00Z" ;
+  		:timeFunctions.0.functionType = "step" ;
+  		:timeFunctions.0.eventDate = "2016-11-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2017-01-01T00:00:00Z" ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_vrt_refinement2 {
@@ -2323,7 +2191,6 @@ group: nz_linz_nzgd2000-ka20161114-grid12 {
 
     // group attributes:
     		:affineCoeffs = -40.395, 0., -0.015, 171.9, 0.02, 0. ;
-    		:gridPriority = 1LL ;
     } // group patch_ka_20161114_grid_vrt_refinement2
   } // group nz_linz_nzgd2000-ka20161114-grid12
 
@@ -2335,11 +2202,11 @@ group: nz_linz_nzgd2000-ka20161114-grid07 {
   		:comment = "Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "ramp" ;
-  		:timeFunctions.1.startDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2017-02-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1. ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2017-02-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1. ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114pe3_h_l1_f {
@@ -2353,7 +2220,6 @@ group: nz_linz_nzgd2000-ka20161114-grid07 {
 
     // group attributes:
     		:affineCoeffs = -38.875, 0., -0.125, 169.6, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe3_h_l2_f {
       dimensions:
@@ -2366,7 +2232,6 @@ group: nz_linz_nzgd2000-ka20161114-grid07 {
 
       // group attributes:
       		:affineCoeffs = -41.0625, 0., -0.03125, 172.525, 0.0375, 0. ;
-      		:gridPriority = 1LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe3_h_l2_f
     } // group patch_ka_20161114_grid_ka_20161114pe3_h_l1_f
   } // group nz_linz_nzgd2000-ka20161114-grid07
@@ -2379,11 +2244,11 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
   		:comment = "Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "ramp" ;
-  		:timeFunctions.1.startDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2017-02-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2017-02-14T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1. ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2017-02-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2017-02-14T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1. ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114pe3_h_l2_r {
@@ -2397,7 +2262,6 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
 
     // group attributes:
     		:affineCoeffs = -41.28125, 0., -0.03125, 172.45, 0.0375, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_00 {
       dimensions:
@@ -2410,7 +2274,6 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
 
       // group attributes:
       		:affineCoeffs = -42., 0., -0.0078125, 172.91875, 0.009375, 0. ;
-      		:gridPriority = 1LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_00
 
     group: patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_01 {
@@ -2424,7 +2287,6 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
 
       // group attributes:
       		:affineCoeffs = -41.5546875, 0., -0.0078125, 173.734375, 0.009375, 0. ;
-      		:gridPriority = 2LL ;
       } // group patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_01
     } // group patch_ka_20161114_grid_ka_20161114pe3_h_l2_r
   } // group nz_linz_nzgd2000-ka20161114-grid08
@@ -2435,11 +2297,11 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
   		:comment = "Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016\n Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; \n Version: Model 002, 23 June 2017\n" ;
   		:groupParameters = "displacementUp" ;
   		:timeFunctions.count = 1LL ;
-  		:timeFunctions.1.functionType = "ramp" ;
-  		:timeFunctions.1.startDate = "2016-12-14T00:00:00Z" ;
-  		:timeFunctions.1.endDate = "2017-02-14T00:00:00Z" ;
-  		:timeFunctions.1.functionReferenceDate = "2017-02-14T00:00:00Z" ;
-  		:timeFunctions.1.scaleFactor = 1. ;
+  		:timeFunctions.0.functionType = "ramp" ;
+  		:timeFunctions.0.startDate = "2016-12-14T00:00:00Z" ;
+  		:timeFunctions.0.endDate = "2017-02-14T00:00:00Z" ;
+  		:timeFunctions.0.functionReferenceDate = "2017-02-14T00:00:00Z" ;
+  		:timeFunctions.0.scaleFactor = 1. ;
   		:interpolationMethod = "bilinear" ;
 
   group: patch_ka_20161114_grid_ka_20161114pe3_v_l1 {
@@ -2453,7 +2315,6 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
 
     // group attributes:
     		:affineCoeffs = -40.25, 0., -0.125, 171.4, 0.15, 0. ;
-    		:gridPriority = 1LL ;
 
     group: patch_ka_20161114_grid_ka_20161114pe3_v_l2 {
       dimensions:
@@ -2466,7 +2327,6 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
 
       // group attributes:
       		:affineCoeffs = -40.65625, 0., -0.03125, 172.1875, 0.0375, 0. ;
-      		:gridPriority = 1LL ;
 
       group: patch_ka_20161114_grid_ka_20161114pe3_v_l3_00 {
         dimensions:
@@ -2479,7 +2339,6 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
 
         // group attributes:
         		:affineCoeffs = -42.0703125, 0., -0.0078125, 172.825, 0.009375, 0. ;
-        		:gridPriority = 1LL ;
         } // group patch_ka_20161114_grid_ka_20161114pe3_v_l3_00
 
       group: patch_ka_20161114_grid_ka_20161114pe3_v_l3_01 {
@@ -2493,7 +2352,6 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
 
         // group attributes:
         		:affineCoeffs = -41.5859375, 0., -0.0078125, 173.678125, 0.009375, 0. ;
-        		:gridPriority = 2LL ;
         } // group patch_ka_20161114_grid_ka_20161114pe3_v_l3_01
       } // group patch_ka_20161114_grid_ka_20161114pe3_v_l2
     } // group patch_ka_20161114_grid_ka_20161114pe3_v_l1

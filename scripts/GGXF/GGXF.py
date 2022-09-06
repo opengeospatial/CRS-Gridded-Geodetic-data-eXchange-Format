@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+from __future__ import annotations
 
 import csv
 import json
@@ -25,7 +26,7 @@ class GGXF:
         self._metadata = metadata
         self._content = metadata[GGXF_ATTR_CONTENT]
         if self._content not in ContentTypes:
-            raise Error("Invalid content type {self._content} for GGXF file")
+            raise Error(f"Invalid content type {self._content} for GGXF file")
         self._needEpoch = self._content in TimeDependentContentTypes
         self._groups = []
         self._configured = False
@@ -53,7 +54,7 @@ class GGXF:
                     f'Non-standard parameter set "{param.set()}" for parameter "{param.name()}"'
                 )
         for igroup, group in enumerate(self._groups):
-            group.configure(errorhandler=errorhandler, id=f"{igroup}")
+            group.configure(id=str(igroup), errorhandler=errorhandler)
 
         self._nullvalue = [None for p in self._parameters]
         # Cached values for groups to use in calculation at epoch
@@ -140,12 +141,75 @@ class GGXF:
         }
 
 
-class Group:
-    def __init__(self, ggxf, groupname, metadata):
-        self._ggxf = ggxf
+class GridList:
+    # A base class for Group and Grid, each of which may contain a list of grids.
+    def __init__(self, name, metadata):
         self._id = None
-        self._name = groupname
+        self._name = name
         self._metadata = metadata
+        self._configured = False
+        self._searchOrder = None
+        self._grids = []
+
+    def name(self):
+        return self._name
+
+    def id(self):
+        return self._id
+
+    def metadata(self):
+        return self._metadata
+
+    def addGrid(self, grid: Grid):
+        gridPriority = grid.priority()
+        for sibling in self._grids:
+            if sibling.overlaps(grid):
+                siblingPriority = sibling.priority()
+                if gridPriority is None or siblingPriority is None:
+                    raise Error(
+                        f"Overlapping sibling grids {sibling.name()} and {grid.name()} both need {GRID_ATTR_GRID_PRIORITY} defined"
+                    )
+                if grid.priority() == sibling.priority():
+                    raise Error(
+                        f"Sibling grids {sibling.name()} and {grid.name()} must have different {GRID_ATTR_GRID_PRIORITY}"
+                    )
+        self._grids.append(grid)
+        self._configured = False
+
+    def configure(self, id=None, errorhandler=None):
+        if id:
+            self._id = id
+        for igrid, grid in enumerate(self._grids):
+            grid.configure()
+            if self._id:
+                grid.setId(f"{self._id}:{igrid}")
+        self._searchOrder = self._grids.copy()
+        self._searchOrder.sort(key=lambda g: g.priority() or 0, reverse=True)
+        self._configured = True
+
+    def gridAt(self, xy):
+        if not self._configured:
+            raise Error("GGXF not configured")
+        for grid in self._searchOrder:
+            if grid.contains(xy):
+                cgrid = grid.gridAt(xy) or grid
+                return cgrid
+        return None
+
+    def grids(self):
+        return self._grids
+
+    def allgrids(self):
+        for basegrid in self._grids:
+            yield basegrid
+            for grid in basegrid.allgrids():
+                yield grid
+
+
+class Group(GridList):
+    def __init__(self, ggxf, groupname, metadata):
+        super().__init__(groupname, metadata)
+        self._ggxf = ggxf
         paramnames = metadata.get(GROUP_ATTR_GROUP_PARAMETERS)
         if paramnames is None:
             paramnames = [p.name() for p in ggxf.parameters()]
@@ -161,19 +225,9 @@ class Group:
             self._timeFunction = CompoundTimeFunction()
             for funcdef in funcdeflist:
                 self._timeFunction.addFunction(BaseTimeFunction.Create(funcdef))
-        self._configured = False
         self._needEpoch = ggxf.needEpoch()
         self._cacheEpoch = ()
         self._cacheFactor = None
-
-    def name(self):
-        return self._name
-
-    def id(self):
-        return self._id
-
-    def metadata(self):
-        return self._metadata
 
     def parameterNames(self):
         return self._parameterNames
@@ -181,25 +235,11 @@ class Group:
     def nparam(self):
         return len(self._parameterNames)
 
-    def grids(self):
-        if not self._configured:
-            raise Error("GGXF not configured")
-        return self._grids
-
     def ggxf(self):
         return self._ggxf
 
     def logger(self):
         return self._ggxf.logger()
-
-    def allgrids(self):
-        for basegrid in self._grids:
-            for grid in basegrid.allgrids():
-                yield grid
-
-    def addGrid(self, grid: "Grid"):
-        self._grids.append(grid)
-        self._configured = False
 
     def configureParameters(self, errorhandler=None):
         ok = True
@@ -244,34 +284,8 @@ class Group:
             self._zero = np.zeros((len(ggxfparams),))
         return ok
 
-    def _configureGrids(self, errorhandler=None):
-        ok = True
-        for igrid, grid in enumerate(self._grids):
-            if self._id:
-                grid.setId(f"{self._id}:{igrid}")
-        return ok
-
-    def configure(self, id=None, errorhandler=None):
-        if id:
-            self._id = id
-        ok = self._configureGrids(errorhandler)
-        self._configured = ok
-
-    def gridAt(self, xy):
-        if not self._configured:
-            raise Error("GGXF not configured")
-        for grid in self.grids():
-            if grid.contains(xy):
-                cgrid = grid.gridAt(xy)
-                if self._ggxf._debug:
-                    self._ggxf._logger.debug(
-                        f"{self._name}: grid at {xy}: {cgrid.id()} {cgrid.name()}"
-                    )
-                return cgrid
-        return None
-
     def parameters(self):
-        return self.parameters()
+        return self._parameters
 
     def paramSetIndices(self):
         return self._paramSetIndices
@@ -280,11 +294,13 @@ class Group:
         return self._parameterMap
 
     def valueAt(self, xy, epoch=None, refepoch=None):
-        if not self._configured:
-            raise Error("GGXF not configured")
         grid = self.gridAt(xy)
         if grid is None:
             return None
+        if self._ggxf._debug:
+            self._ggxf._logger.debug(
+                f"{self._name}: grid at {xy}: {grid.id()} {grid.name()}"
+            )
         value = self._interpolator(grid, xy)
         if self._needEpoch:
             value *= self.timeFactorAt(epoch, refepoch)
@@ -315,27 +331,31 @@ class Group:
         return summary
 
 
-class Grid:
+class Grid(GridList):
     """
     GGXF grid component
 
     Note: Grid data is held as a numpy array of shape (ncol,nrow,nparam], so indexing is j,i,p
     """
 
+    # As extents are calculated from floating point calculations need a tolerance in
+    # containment and overlaps tests.  Tolerance is based on a multiple of the diagonal
+    # length across a grid cell.
+
+    TOLERANCE_RATIO = 0.00001
+
     def __init__(
         self, group: Group, gridname: str, metadata: dict, data: np.ndarray = None
     ):
+        super().__init__(gridname, metadata)
         self._group = group
-        self._id = None
-        self._name = gridname
-        self._metadata = dict(metadata)
         if GRID_ATTR_DATA in self._metadata:
             if data is not None:
                 raise Error(f"Multiple definitions of data for grid {gridname}")
             data = self._metadata.pop(GRID_ATTR_DATA)
 
-        self._subgrids = []
         self._parent = None
+        self._priority = metadata.get(GRID_ATTR_GRID_PRIORITY)
         coeffs = np.array(metadata[GRID_ATTR_AFFINE_COEFFS]).reshape((2, 3))
         self._xy0 = coeffs[:, 0]
         self._tfm = coeffs[:, 1:]
@@ -352,21 +372,14 @@ class Grid:
                 self.calcxy([self._imax, self._jmax]),
             ]
         )
+        diff = self.calcxy([0.0, 1.0]) - self.calcxy([1.0, 0.0])
+        self._tolerance = np.sqrt(np.sum(diff * diff)) * self.TOLERANCE_RATIO
         self._xmin, self._ymin = range.min(axis=0)
         self._xmax, self._ymax = range.max(axis=0)
 
         self._data = None
         if data is not None:
             self.setData(data)
-
-    def id(self):
-        return self._id
-
-    def name(self) -> str:
-        return self._name
-
-    def metadata(self) -> dict:
-        return self._metadata
 
     def parent(self):
         return self._parent
@@ -380,8 +393,8 @@ class Grid:
     def data(self):
         return self._data
 
-    def subgrids(self):
-        return self._subgrids
+    def priority(self):
+        return self._priority
 
     def extents(self):
         return [[self._xmin, self._ymin], [self._xmax, self._ymax]]
@@ -391,17 +404,20 @@ class Grid:
 
     def setId(self, id):
         self._id = id
-        for igrid, subgrid in enumerate(self._subgrids):
+        for igrid, subgrid in enumerate(self.grids()):
             subgrid.setId(f"{id}:{igrid}")
 
-    def addGrid(self, grid):
+    def addGrid(self, grid: Grid):
         gextents = grid.extents()
-        if not self.contains(gextents[0]) or not self.contains(gextents[1]):
-            self.logger().warn(
+        dtol = self._tolerance
+        gminxy = [gextents[0][0] + dtol, gextents[0][1] + dtol]
+        gmaxxy = [gextents[1][0] - dtol, gextents[1][1] - dtol]
+        if not self.contains(gminxy) or not self.contains(gmaxxy):
+            raise Error(
                 f"Grid {grid.name()} is not fully contained in parent {self.name()}"
             )
         grid._parent = self
-        self._subgrids.append(grid)
+        super().addGrid(grid)
 
     def setData(self, data):
         data = np.array(data)
@@ -431,6 +447,17 @@ class Grid:
             and xy[1] <= self._ymax
         )
 
+    def overlaps(self, grid: Grid):
+        dtol = min(self._tolerance, grid._tolerance)
+        if (
+            self._xmin >= grid._xmax - dtol
+            or self._xmax <= grid._xmin + dtol
+            or self._ymin >= grid._ymax - dtol
+            or self._ymax <= grid._ymin + dtol
+        ):
+            return False
+        return True
+
     def maxij(self):
         return self._imax, self._jmax
 
@@ -439,21 +466,6 @@ class Grid:
         cij = np.maximum([0, 0], np.minimum(self._cellmax, np.floor(rij).astype(int)))
         cxy = rij - cij
         return cij, cxy
-
-    def gridAt(self, xy):
-        if self.contains(xy):
-            for g in self._subgrids:
-                grid = g.gridAt(xy)
-                if grid:
-                    return grid
-            return self
-        return None
-
-    def allgrids(self):
-        yield self
-        for subgrid in self._subgrids:
-            for g in subgrid.allgrids():
-                yield g
 
     def summary(self):
         "Returns a somewhat arbitrary summary of the grid contents"
