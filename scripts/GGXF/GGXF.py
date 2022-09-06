@@ -285,7 +285,7 @@ class Group(GridList):
         return ok
 
     def parameters(self):
-        return self.parameters()
+        return self._parameters
 
     def paramSetIndices(self):
         return self._paramSetIndices

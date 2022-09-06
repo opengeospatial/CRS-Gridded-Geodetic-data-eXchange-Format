@@ -383,7 +383,6 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
         for p in displacementParams["3d"]
     ]
     gmodel["operationAccuracy"] = 0.01
-    gmodel["uncertaintyMeasure"] = "2CEP 2SE"
     groups = []
     gmodel["ggxfGroups"] = groups
     for c in model["components"]:

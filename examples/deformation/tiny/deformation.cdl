@@ -24,7 +24,7 @@ netcdf deformation {
 		:sourceCrsWkt = "GEOGCRS[\"NZGD2000\",DATUM[\"New Zealand Geodetic Datum 2000\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6167]],CS[ellipsoidal,3,ID[\"EPSG\",6423]],AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],ID[\"EPSG\",4959]]" ;
 		:targetCrsWkt = "GEOGCRS[\"ITRF96\", DYNAMIC[FRAMEEPOCH[1997.0]],DATUM[\"International Terrestrial Reference Frame 1996\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6654]],CS[ellipsoidal,3,ID[\"EPSG\",6423]],AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],ID[\"EPSG\",7907]]" ;
 		:interpolationCrsWkt = "GEOGCRS[\"NZGD2000\",DATUM[\"New Zealand Geodetic Datum 2000\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6167]],CS[ellipsoidal,2,ID[\"EPSG\",6422]],AXIS[\"Geodetic latitude (Lat)\",north],AXIS[\"Geodetic longitude (Lon)\",east],ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]],ID[\"EPSG\",4167]]" ;
-		:parameters.count = 3LL ;
+		:parameters.count = 5LL ;
 		:parameters.0.parameterName = "displacementEast" ;
 		:parameters.0.parameterSet = "displacement" ;
 		:parameters.0.unit = "metre" ;
@@ -40,8 +40,19 @@ netcdf deformation {
 		:parameters.2.unit = "metre" ;
 		:parameters.2.unitSiRatio = 1. ;
 		:parameters.2.sourceCrsAxis = 2LL ;
+		:parameters.3.parameterName = "horizontalUncertainty" ;
+		:parameters.3.parameterSet = "uncertainty" ;
+		:parameters.3.unit = "metre" ;
+		:parameters.3.unitSiRatio = 1. ;
+		:parameters.3.uncertaintyMeasure = "2CEP" ;
+		:parameters.3.defaultValue = 0.01 ;
+		:parameters.4.parameterName = "verticalUncertainty" ;
+		:parameters.4.parameterSet = "uncertainty" ;
+		:parameters.4.unit = "metre" ;
+		:parameters.4.unitSiRatio = 1. ;
+		:parameters.4.uncertaintyMeasure = "2SE" ;
+		:parameters.4.defaultValue = 0.02 ;
 		:operationAccuracy = 0.01 ;
-		:uncertaintyMeasure = "2CEP 2SE" ;
 		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
 		:_SuperblockVersion = 2 ;
 		:_IsNetcdf4 = 1 ;
@@ -52,6 +63,9 @@ group: secular-vertical-velocity {
   // group attributes:
   		:interpolationMethod = "bilinear" ;
   		:groupParameters = "displacementUp" ;
+  		:groupDefaultValues.count = 1LL ;
+  		:groupDefaultValues.0.parameterName = "verticalUncertainty" ;
+  		:groupDefaultValues.0.defaultValue = 0.001 ;
   		:timeFunctions.count = 1LL ;
   		:timeFunctions.0.functionType = "velocity" ;
   		:timeFunctions.0.functionReferenceDate = "2000-01-01T00:00:00Z" ;

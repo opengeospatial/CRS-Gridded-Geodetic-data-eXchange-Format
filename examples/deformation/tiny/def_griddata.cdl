@@ -41,7 +41,6 @@ netcdf def_griddata {
 		:parameters.2.unitSiRatio = 1. ;
 		:parameters.2.sourceCrsAxis = 2LL ;
 		:operationAccuracy = 0.01 ;
-		:uncertaintyMeasure = "2CEP 2SE" ;
 		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
 		:_SuperblockVersion = 2 ;
 		:_IsNetcdf4 = 1 ;

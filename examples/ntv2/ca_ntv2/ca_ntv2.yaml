@@ -50,13 +50,14 @@ parameters:
     sourceCrsAxis: 0
     unit: metre
     unitSiRatio: 1.0
+    uncertaintyMeasure: 2SE
   - parameterName: longitudeOffsetUncertainty
     parameterSet: offsetUncertainty
     sourceCrsAxis: 1
     unit: metre
     unitSiRatio: 1.0
+    uncertaintyMeasure: 2SE
 operationAccuracy: 1.5
-uncertaintyMeasure: 2CEE
 ggxfGroups:
   - ggxfGroupName: "national_transformation_v2_0"
     interpolationMethod: bilinear

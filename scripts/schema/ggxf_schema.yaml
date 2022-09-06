@@ -63,13 +63,7 @@ CommonAttributes:
       Comment: What content types use this parameter.  Should it be contentType specific
       Type: str
       Optional: true
-    - AttributeName: uncertaintyMeasure
-      Type: str
-      Optional: true
-    - AttributeName: uncertaintyDefault
-      Type: str
-      Optional: true
-      Comment: What type should this be?
+
     - AttributeName: userDefinedMethodExample
       Type: str
       Optional: true
@@ -85,6 +79,9 @@ CommonAttributes:
     - AttributeName: groupParameters
       Type: list(str)
       Optional: true
+    - AttributeName: groupDefaultValues
+      Type: list(ParameterDefaultValue)
+      Optional: true
     - AttributeName: interpolationMethod
       Type: [bilinear, bicubic, biquadratic]
     - AttributeName: interpolationMethodCitation
@@ -93,9 +90,7 @@ CommonAttributes:
     - AttributeName: comment
       Type: str
       Optional: true
-    - AttributeName: uncertaintyDefault
-      Type: str
-      Optional: true
+
 
   Grid:
     - AttributeName: iNodeCount
@@ -138,6 +133,19 @@ CommonAttributes:
       Comment: Should this also be of type float?
       Type: any
       Optional: true
+    - AttributeName: uncertaintyMeasure
+      Type: str
+      Optional: true
+    - AttributeName: defaultValue
+      Type: float
+      Optional: true
+
+  ParameterDefaultValue:
+    - AttributeName: parameterName
+      Type: str
+    - AttributeName: defaultValue
+      Type: float
+
 
   Extents:
     - AttributeName: boundingBox

@@ -54,15 +54,16 @@ parameters:
     sourceCrsAxis: 0
     unit: metre
     unitSiRatio: 1.0
+    uncertaintyMeasure: "2SE"
   - parameterName: longitudeOffsetUncertainty
     parameterSet: "offsetUncertainty"
     sourceCrsAxis: 1
     unit: metre
     unitSiRatio: 1.0
+    uncertaintyMeasure: "2SE"
 
 ggxfGroups:
   - ggxfGroupName: "National Transformation v2_0"
-    uncertaintyMeasure: "2CEE"
     interpolationMethod: bilinear
     grids:
       - gridName: "CAwest"
@@ -95,7 +96,7 @@ ggxfGroups:
   0.165, 0.418, 0.025, 0.046, 0.164, 0.417, 0.018, 0.036, 0.200, 0.865, 0.014, 0.004 ]
 
         - gridName: "ONsarnia"
-          affineCoeffs: [ 43.41666666667, 0.0, -0.00833333333, -82.5833333333, 0.1, 0.00083333333 ]
+          affineCoeffs: [43.416666666666664, 0.0, -0.008333333333333333, -82.58333333333334, 0.008333333333333333, 0.0]
           iNodeCount: 101
           jNodeCount: 121
           data: [ 0.136, 0.304, 0.006, 0.003, 0.152, 0.388, 0.014, 0.007, 0.151, 0.389, 0.014, 0.007,

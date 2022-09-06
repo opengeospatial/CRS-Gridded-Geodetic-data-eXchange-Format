@@ -61,9 +61,6 @@ targetCrsWkt: |
       ID["EPSG",7907,URI["http://www.opengis.net/def/crs/epsg/0/7907"]]]
 
 operationAccuracy: 0.01
-uncertaintyMeasure:  |
-  - horizontal: 2CEP
-  - vertical: 2SE
 parameters:
       - parameterName: displacementEast
         parameterSet: "displacement"
@@ -80,7 +77,20 @@ parameters:
         sourceCrsAxis: 2
         unit: metre
         unitSiRatio: 1.0
-
+      - parameterName: horizontalDisplacementUncertainty
+        parameterSet: "displacementUncertainty"
+        sourceCrsAxis: 0
+        unit: metre
+        unitSiRatio: 1.0
+        uncertaintyMeasure: 2CEP
+        defaultValue: 0.01
+      - parameterName: verticalDisplacementUncertainty
+        parameterSet: "displacementUncertainty"
+        sourceCrsAxis: 2
+        unit: metre
+        unitSiRatio: 1.0
+        uncertaintyMeasure: 2SE
+        defaultValue: 0.01
 
 ggxfGroups:
   - ggxfGroupName: "nz_linz_nzgd2000-ndm-grid02"
@@ -89,6 +99,9 @@ ggxfGroups:
     groupParameters:
       - displacementEast
       - displacementNorth
+    groupDefaultValues:
+      - parameterName: horizontalDisplacementUncertainty
+        defaultValue: 0.001
     timeFunctions:
       - functionType: velocity
         functionReferenceDate: "2000-01-01T00:00:00Z"

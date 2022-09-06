@@ -45,13 +45,27 @@ parameters:
   unit: metre
   unitSiRatio: 1.0
   sourceCrsAxis: 2
+- parameterName: horizontalUncertainty
+  parameterSet: uncertainty
+  unit: metre
+  unitSiRatio: 1.0
+  uncertaintyMeasure: 2CEP
+  defaultValue: 0.01
+- parameterName: verticalUncertainty
+  parameterSet: uncertainty
+  unit: metre
+  unitSiRatio: 1.0
+  uncertaintyMeasure: 2SE
+  defaultValue: 0.02
 operationAccuracy: 0.01
-uncertaintyMeasure: 2CEP 2SE
 ggxfGroups:
   - ggxfGroupName: secular-vertical-velocity
     interpolationMethod: bilinear
     groupParameters:
       - displacementUp
+    groupDefaultValues:
+      - parameterName: verticalUncertainty
+        defaultValue: 0.001
     timeFunctions:
       - functionType: velocity
         functionReferenceDate: "2000-01-01T00:00:00Z"
