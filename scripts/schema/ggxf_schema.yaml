@@ -615,8 +615,8 @@ ContentTypes:
         - displacementUp
       displacementUncertainty:
         Parameters:
-        - horizontalDisplacementUncertainty
-        - verticalDisplacementUncertainty
+        - displacementHorizontalUncertainty
+        - displacementUpUncertainty
         Optional: true
   - ParameterSets:
       displacement:
@@ -625,7 +625,7 @@ ContentTypes:
         - displacementNorth
       displacementUncertainty:
         Parameters:
-        - horizontalDisplacementUncertainty
+        - displacementHorizontalUncertainty
         Optional: true
   - ParameterSets:
       displacement:
@@ -633,6 +633,6 @@ ContentTypes:
         - displacementUp
       displacementUncertainty:
         Parameters:
-        - verticalDisplacementUncertainty
+        - displacementUpUncertainty
         Optional: true
 

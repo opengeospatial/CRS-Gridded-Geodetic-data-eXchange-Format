@@ -77,14 +77,14 @@ parameters:
         sourceCrsAxis: 2
         unit: metre
         unitSiRatio: 1.0
-      - parameterName: horizontalDisplacementUncertainty
+      - parameterName: displacementHorizontalUncertainty
         parameterSet: "displacementUncertainty"
         sourceCrsAxis: 0
         unit: metre
         unitSiRatio: 1.0
         uncertaintyMeasure: 2CEP
         defaultValue: 0.01
-      - parameterName: verticalDisplacementUncertainty
+      - parameterName: displacementUpUncertainty
         parameterSet: "displacementUncertainty"
         sourceCrsAxis: 2
         unit: metre
@@ -100,7 +100,7 @@ ggxfGroups:
       - displacementEast
       - displacementNorth
     groupDefaultValues:
-      - parameterName: horizontalDisplacementUncertainty
+      - parameterName: displacementHorizontalUncertainty
         defaultValue: 0.001
     timeFunctions:
       - functionType: velocity

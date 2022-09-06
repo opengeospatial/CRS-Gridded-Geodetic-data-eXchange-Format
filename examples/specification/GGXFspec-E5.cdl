@@ -41,14 +41,14 @@ netcdf GGXFspec-E5 {
 		:parameters.2.sourceCrsAxis = 2LL ;
 		:parameters.2.unit = "metre" ;
 		:parameters.2.unitSiRatio = 1. ;
-		:parameters.3.parameterName = "horizontalDisplacementUncertainty" ;
+		:parameters.3.parameterName = "displacementHorizontalUncertainty" ;
 		:parameters.3.parameterSet = "displacementUncertainty" ;
 		:parameters.3.sourceCrsAxis = 0LL ;
 		:parameters.3.unit = "metre" ;
 		:parameters.3.unitSiRatio = 1. ;
 		:parameters.3.uncertaintyMeasure = "2CEP" ;
 		:parameters.3.defaultValue = 0.01 ;
-		:parameters.4.parameterName = "verticalDisplacementUncertainty" ;
+		:parameters.4.parameterName = "displacementUpUncertainty" ;
 		:parameters.4.parameterSet = "displacementUncertainty" ;
 		:parameters.4.sourceCrsAxis = 2LL ;
 		:parameters.4.unit = "metre" ;
@@ -69,7 +69,7 @@ group: nz_linz_nzgd2000-ndm-grid02 {
   		:interpolationMethod = "bilinear" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
   		:groupDefaultValues.count = 1LL ;
-  		:groupDefaultValues.0.parameterName = "horizontalDisplacementUncertainty" ;
+  		:groupDefaultValues.0.parameterName = "displacementHorizontalUncertainty" ;
   		:groupDefaultValues.0.defaultValue = 0.001 ;
   		:timeFunctions.count = 1LL ;
   		:timeFunctions.0.functionType = "velocity" ;
