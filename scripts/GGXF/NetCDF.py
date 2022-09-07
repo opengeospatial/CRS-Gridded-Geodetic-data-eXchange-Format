@@ -4,6 +4,8 @@
 #
 # Note: NetCDF is stored in column major order.  Ie dimensions ncol, nrow, nparam stores parameters for
 # ncol, nrow consecutively.
+#
+# Note: relying on Python API to handle implementation of missing_value, add_offset, and scale_factor
 
 import logging
 import os.path
@@ -16,12 +18,23 @@ from .GGXF import *
 NETCDF_OPTION_GRID_DTYPE = "grid_dtype"
 NETCDF_DTYPE_FLOAT32 = "float32"
 NETCDF_DTYPE_FLOAT64 = "float64"
+NETCDF_DTYPE_INT32 = "int32"
+NETCDF_DTYPE_INT16 = "int16"
+NETCDF_VALID_DTYPE_MAP = {
+    NETCDF_DTYPE_FLOAT64: np.float64,
+    NETCDF_DTYPE_FLOAT32: np.float32,
+    NETCDF_DTYPE_INT32: np.int32,
+    NETCDF_DTYPE_INT16: np.int16,
+}
+NETCDF_DEFAULT_WRITE_DTYPE = NETCDF_DTYPE_FLOAT32
+NETCDF_DEFAULT_READ_DTYPE = NETCDF_DTYPE_FLOAT64
 
 NETCDF_OPTION_USE_COMPOUND_TYPE = "use_compound_types"
 NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES = "use_snake_case_attributes"
-NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS = "simplify_1param_grids"
+# NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS = "simplify_1param_grids"
 NETCDF_OPTION_WRITE_CDL = "write_cdl"
 NETCDF_OPTION_WRITE_CDL_HEADER = "write_cdl_header"
+NETCDF_OPTION_PACK_PRECISION = "packing_precision"
 
 NETCDF_CONVENTIONS_ATTRIBUTE = "Conventions"
 NETCDF_CONVENTIONS_VALUE = "{ggxfVersion}, ACDD-1.3"
@@ -40,6 +53,14 @@ The following options apply to NetCDF input (I) and output (O):
   "{NETCDF_OPTION_WRITE_CDL}" (O) Generate an output CDL file as well as a NetCDF file (default false)
   "{NETCDF_OPTION_WRITE_CDL_HEADER}" (O) Only write the header information in the CDL file (default false)
   "{NETCDF_OPTION_USE_COMPOUND_TYPE}" (O) Use compound types (very limited test implementation) (default false)
+  "{NETCDF_OPTION_PACK_PRECISION}" (O) Specifies integer packing using specified number of decimal places
+  "{NETCDF_OPTION_GRID_DTYPE}" (I/O) Specifies the data type used for the grid ({", ".join(NETCDF_VALID_DTYPE_MAP.keys())})
+
+If {NETCDF_OPTION_PACK_PRECISION} is specified then {NETCDF_OPTION_GRID_DTYPE} is ignored and integer packing
+is attempted.  If an integer data type is specified then the data will be scaled to fill the range available
+with the integer type.  If neither is specified {NETCDF_DEFAULT_WRITE_DTYPE} is used.
+
+When reading a NetCDF file the default floating point is {NETCDF_DEFAULT_READ_DTYPE} to avoid rounding issues.
 """
 #  "{NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS}" (O) Grids with just one parameter are created with just 2 dimensions (default false)
 
@@ -102,12 +123,26 @@ class Reader(BaseReader):
         self._logger.debug(f"Loading GGXF file {ggxf_file}")
         self.setSource(ggxf_file)
         try:
+            dtypestr = self.getOption(
+                NETCDF_OPTION_GRID_DTYPE, NETCDF_DEFAULT_READ_DTYPE
+            )
+            self._dtype = NETCDF_VALID_DTYPE_MAP.get(dtypestr)
+            if self._dtype is None:
+                raise RuntimeError(
+                    f"Invalid {NETCDF_OPTION_GRID_DTYPE} option {dtypestr}"
+                )
+            if not np.issubdtype(self._dtype, np.floating):
+                raise RuntimeError(
+                    f"Data type {dtypestr} not a floating point type: invalid for reading a NetCDF "
+                )
+
             root = netCDF4.Dataset(ggxf_file, "r", format="NETCDF4")
             metadata = self.loadMetadata(NETCDF_ATTR_CONTEXT_GGXF, root)
             # Handle something in python/netcdf handling which doesn't distinguish
             # between a list of 1 element and a scalar.
             if isinstance(metadata.get(GGXF_ATTR_PARAMETERS), dict):
                 metadata[GGXF_ATTR_PARAMETERS] = [metadata[GGXF_ATTR_PARAMETERS]]
+
             if self.validator().validateRootAttributes(metadata, context="GGXF"):
                 ggxf = GGXF(metadata)
                 for groupname, ncgroup in root.groups.items():
@@ -153,29 +188,37 @@ class Reader(BaseReader):
         # approach.  Ultimately want parameter sets in GGXF definition
         # to support lazy loading of grids.
         data = None
-        indices = []
         try:
             for pset, pindices in group.paramSetIndices().items():
                 try:
-                    sdata = np.array(ncgrid[pset])
+                    ncdata = ncgrid[pset]
+                #                   sdata = np.ma.masked_array(ncdata)
                 except Exception as ex:
                     self.error(
                         f"Cannot load data for grid {gridname} parameter set {pset}: {ex}"
                     )
                     return
-                if len(sdata.shape) == 2:
-                    sdata = sdata.reshape([*sdata.shape, 1])
+                # if len(sdata.shape) == 2:
+                #     shape = [*data.shape, 1]
+                #     print(sdata)
+                #     rsdata = sdata.reshape(shape)
+                #     sdata = rsdata
                 if data is None:
-                    data = sdata
+                    data = np.ma.masked_all(
+                        (ncdata.shape[0], ncdata.shape[1], group.nparam()),
+                        dtype=self._dtype,
+                    )
+                if len(ncdata.shape) == 2:
+                    data[:, :, pindices[0]] = np.ma.masked_array(ncdata)
                 else:
-                    data = np.concatenate([data, sdata], axis=-1)
-                indices.extend(pindices)
-            irange = np.array(range(len(indices)))
-            reverseIndices = irange.copy()
-            reverseIndices[indices] = irange
-            data = data[:, :, reverseIndices]
+                    data[:, :, pindices] = np.ma.masked_array(ncdata)
+
         except Exception as ex:
             self.error(f"Cannot compile grid data for grid {gridname}: {ex}")
+
+        if np.count_nonzero(data.mask) == 0:
+            data = data.data
+
         metadata[GRID_ATTR_I_NODE_COUNT] = data.shape[1]
         metadata[GRID_ATTR_J_NODE_COUNT] = data.shape[0]
 
@@ -298,6 +341,10 @@ class Reader(BaseReader):
                 holder[item] = array
 
 
+class NetCdfWriterError(RuntimeError):
+    pass
+
+
 class Writer(BaseWriter):
     @staticmethod
     def Write(ggxf, ggxf_file, options=None):
@@ -315,7 +362,6 @@ class Writer(BaseWriter):
         self._useSnakeCase = self.getBoolOption(
             NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES, False
         )
-        # Not currently implemented.
         if self._useCompoundTypes:
             self._logger.warning("Using NetCDF4 compound types (experimental)")
         # self._simplify1ParamGrids = self.getBoolOption(
@@ -324,10 +370,26 @@ class Writer(BaseWriter):
         # self._logger.debug(
         #     f"Simplifying grids with just 1 param per node: {self._simplify1ParamGrids}"
         # )
-        dtype = self.getOption(NETCDF_OPTION_GRID_DTYPE, NETCDF_DTYPE_FLOAT32)
-        self._dtype = dtype = (
-            np.float64 if dtype == NETCDF_DTYPE_FLOAT64 else np.float32
-        )
+        dtypestr = self.getOption(NETCDF_OPTION_GRID_DTYPE, NETCDF_DEFAULT_WRITE_DTYPE)
+        self._dtype = NETCDF_VALID_DTYPE_MAP.get(dtypestr)
+        if self._dtype is None:
+            raise NetCdfWriterError(
+                f"Invalid {NETCDF_OPTION_GRID_DTYPE} option {dtypestr}"
+            )
+        self._autopackPrecision = None
+        self._autopackScale = None
+        precision = self.getOption(NETCDF_OPTION_PACK_PRECISION)
+        if precision is not None:
+            try:
+                precision = int(precision)
+                if precision > 20 or precision < 0:
+                    raise RuntimeError
+                self._autopackPrecision = precision
+                self._autopackScale = 10.0**precision
+            except:
+                raise NetCdfWriterError(
+                    f"Invalid value for {NETCDF_OPTION_PACK_PRECISION}"
+                )
 
         self._logger.debug(f"Saving NetCDF4 grid as {netcdf4_file}")
         if os.path.isfile(netcdf4_file):
@@ -452,19 +514,25 @@ class Writer(BaseWriter):
         # Store the grid data
 
         for pset, pindices in group.paramSetIndices().items():
+            vardata = grid.data()[:, :, pindices]
+            (vartype, varattr) = self.variableAttributes(vardata)
             dimensions = [NETCDF_DIMENSION_GRIDJ, NETCDF_DIMENSION_GRIDI]
             if len(pindices) > 1:
                 dimensions.append(f"{pset}Count")
 
             datavar = cdfgrid.createVariable(
                 pset,
-                self._dtype,
+                vartype,
                 dimensions,
             )
+            if varattr:
+                datavar.setncatts(varattr)
+
             if len(pindices) > 1:
-                datavar[:, :, :] = grid.data()[:, :, pindices]
+                datavar[:, :, :] = vardata
             else:
-                datavar[:, :] = grid.data()[:, :, pindices[0]]
+                datavar[:, :] = vardata[:, :, 0]
+
         metadata = grid.metadata()
         self.saveNetCdf4MetdataDot(
             NETCDF_ATTR_CONTEXT_GRID, cdfgrid, metadata, exclude=exclude
@@ -473,6 +541,52 @@ class Writer(BaseWriter):
         # Support for nested grid possibility
         for subgrid in grid.grids():
             self.saveGridNetCdf4(cdfgrid, group, subgrid, nctypes, nparam)
+
+    def variableAttributes(self, vardata):
+        masked = False
+        datacount = vardata.size
+        if isinstance(vardata, np.ma.masked_array):
+            maskcount = np.count_nonzero(vardata.mask)
+            datacount -= maskcount
+            masked = maskcount > 0
+        dtype = self._dtype
+        add_offset = None
+        scale_factor = None
+        if self._autopackPrecision is not None:
+            if datacount == 0:
+                dtype = np.int16
+            else:
+                range = np.max(vardata)
+                midrange = (range + np.min(vardata)) / 2.0
+                range -= midrange
+                range = range * self._autopackScale
+                for itype in (np.int16, np.int32):
+                    imax = np.iinfo(itype).max
+                    # Small tolerance to allow for a missing value
+                    if imax - 2 > range:
+                        dtype = itype
+                        scale_factor = self._autopackScale
+                        add_offset = round(midrange, self._autopackPrecision)
+                        break
+        elif np.issubdtype(dtype, np.integer) and datacount > 0:
+            range = np.max(vardata)
+            add_offset = (np.min(vardata) + range) / 2.0
+            range -= add_offset
+            nmax = np.iinfo(dtype).max
+            scale_factor = range / (nmax - 2)
+
+        varattr = {}
+        if add_offset is not None:
+            varattr["add_offset"] = add_offset
+        if scale_factor is not None:
+            varattr["scale_factor"] = 1.0 / scale_factor
+        if masked:
+            if np.issubdtype(dtype, np.integer):
+                varattr["missing_value"] = np.array([np.iinfo(dtype).max], dtype=dtype)
+            else:
+                varattr["missing_value"] = np.array([np.finfo(dtype).max], dtype=dtype)
+
+        return dtype, varattr
 
     def saveNetCdf4Attr(self, context: str, dataset: netCDF4.Dataset, name: str, value):
         if name == GGXF_ATTR_GGXF_VERSION:
@@ -522,4 +636,4 @@ class Writer(BaseWriter):
             try:
                 self.saveNetCdf4Attr(context, dataset, name, entity)
             except Exception as ex:
-                raise RuntimeError(f"Cannot save {name}: {ex}")
+                raise NetCdfWriterError(f"Cannot save {name}: {ex}")

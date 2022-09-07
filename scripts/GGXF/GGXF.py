@@ -344,9 +344,7 @@ class Grid(GridList):
 
     TOLERANCE_RATIO = 0.00001
 
-    def __init__(
-        self, group: Group, gridname: str, metadata: dict, data: np.ndarray = None
-    ):
+    def __init__(self, group: Group, gridname: str, metadata: dict, data=None):
         super().__init__(gridname, metadata)
         self._group = group
         if GRID_ATTR_DATA in self._metadata:
@@ -420,7 +418,8 @@ class Grid(GridList):
         super().addGrid(grid)
 
     def setData(self, data):
-        data = np.array(data)
+        if type(data) not in (np.array, np.ma.masked_array):
+            data = np.array(data)
         shape = (self._jmax + 1, self._imax + 1, self._nparam)
         if data.shape == shape[:2]:
             data = data.reshape(shape)

@@ -79,8 +79,8 @@ CommonAttributes:
     - AttributeName: groupParameters
       Type: list(str)
       Optional: true
-    - AttributeName: groupDefaultValues
-      Type: list(ParameterDefaultValue)
+    - AttributeName: groupConstantValues
+      Type: list(ParameterConstantValue)
       Optional: true
     - AttributeName: interpolationMethod
       Type: [bilinear, bicubic, biquadratic]
@@ -140,10 +140,10 @@ CommonAttributes:
       Type: float
       Optional: true
 
-  ParameterDefaultValue:
+  ParameterConstantValue:
     - AttributeName: parameterName
       Type: str
-    - AttributeName: defaultValue
+    - AttributeName: parameterValue
       Type: float
 
 
