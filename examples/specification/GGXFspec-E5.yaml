@@ -99,9 +99,9 @@ ggxfGroups:
     groupParameters:
       - displacementEast
       - displacementNorth
-    groupDefaultValues:
+    groupConstantValues:
       - parameterName: displacementHorizontalUncertainty
-        defaultValue: 0.001
+        parameterValue: 0.001
     timeFunctions:
       - functionType: velocity
         functionReferenceDate: "2000-01-01T00:00:00Z"

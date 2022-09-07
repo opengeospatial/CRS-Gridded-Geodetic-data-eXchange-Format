@@ -213,11 +213,12 @@ class App:
     def writeCsvGridSummary(ggxf, csv_summary_file, decimal_places=4):
         csvcols = [
             "id",
-            "group",
-            "grid",
-            "ngridi",
-            "ngridj",
-            "type",
+            "ggxfGroupName",
+            "ggxfGridName",
+            "parentId",
+            "gridPriority",
+            "iCodeCount",
+            "jNodeCount",
             "depth",
             "extent_wkt",
         ]
@@ -243,7 +244,7 @@ class App:
                     xmax = str(extents[1][0])
                     ymin = str(extents[0][1])
                     ymax = str(extents[1][1])
-                    # Assume X=lat, Y=lon
+                    # Assume X=lat, Y=lon so swap axes for preferred lon,lat!
                     wkt = f"POLYGON(({ymin} {xmin},{ymin} {xmax},{ymax} {xmax},{ymax} {xmin}, {ymin} { xmin}))"
                     depth = 1
                     pgrid = grid
@@ -252,13 +253,17 @@ class App:
                         pgrid = pgrid.parent()
                     summary = grid.summary()
                     gridparams = summary["parameters"]
+                    priority = grid.priority()
+                    priority = str(priority) if priority is not None else ""
+                    parentid = grid.parent().id() if grid.parent() else ""
                     csvrow = [
                         grid.id(),
                         groupname,
                         grid.name(),
+                        parentid,
+                        grid.priority(),
                         str(size[0]),
                         str(size[1]),
-                        summary["type"],
                         depth,
                         wkt,
                     ]

@@ -1,0 +1,5 @@
+id,ggxfGroupName,ggxfGridName,parentId,gridPriority,iCodeCount,jNodeCount,depth,extent_wkt,velocityEast-min,velocityEast-max,velocityNorth-min,velocityNorth-max,velocityUp-min,velocityUp-max
+0:0,alaska-grids,Alaska-mainland,,1,161,69,1,"POLYGON((-170.0 56.0,-170.0 73.0,-130.0 73.0,-130.0 56.0, -170.0 56.0))",-0.0341,0.0343,-0.0337,0.0012,0.0000,0.0000
+0:1,alaska-grids,Alaska-south-central,,2,76,51,1,"POLYGON((-162.0 53.25,-162.0 65.75,-143.25 65.75,-143.25 53.25, -162.0 53.25))",-0.0340,0.0600,-0.0479,0.0010,0.0000,0.0000
+0:2,alaska-grids,Alaska-south-east,,3,49,41,1,"POLYGON((-142.0 54.0,-142.0 64.0,-130.0 64.0,-130.0 54.0, -142.0 54.0))",-0.0200,0.0526,-0.0399,-0.0069,0.0000,0.0000
+0:3,alaska-grids,Alaska-st-elias,,4,41,27,1,"POLYGON((-150.0 56.5,-150.0 63.0,-140.0 63.0,-140.0 56.5, -150.0 56.5))",-0.0267,0.0382,-0.0328,-0.0091,0.0000,0.0000

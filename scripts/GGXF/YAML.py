@@ -286,7 +286,7 @@ class Reader(BaseReader):
                 data = data.reshape(shape)
             elif len(shape) == 2:
                 shape = (shape[0], shape[1], 1)
-                data.reshape(shape)
+                data = data.reshape(shape)
             elif len(shape) != 3:
                 gridok = False
                 self.error(
@@ -300,10 +300,27 @@ class Reader(BaseReader):
         if gridok:
             if data.dtype != self._dtype:
                 data = data.astype(self._dtype)
-            ygrid[GRID_ATTR_DATA] = data
             self._logger.debug(
                 f"Grid {gridname} loaded - dimensions {data.shape}, type {data.dtype}"
             )
+            # Mask the array if it contains missing values
+
+            mask = None
+            for iparam, param in enumerate(group.parameters()):
+                noDataFlag = param.noDataFlag()
+                if noDataFlag is not None:
+                    if mask is None:
+                        mask = np.zeros(data.shape, dtype=bool)
+                    mask[:, :, iparam] = data[:, :, iparam] == noDataFlag
+
+            if mask is not None:
+                nmissing = np.count_nonzero(mask)
+                self._logger.debug(
+                    f"Grid {gridname} - masking {nmissing} missing values"
+                )
+                if nmissing > 0:
+                    data = np.ma.masked_array(data, mask=mask)
+            ygrid[GRID_ATTR_DATA] = data
 
     def splitGridByParamSet(self, group, gdata):
         # Placeholder for representing data in sets rather than single grid
@@ -369,7 +386,10 @@ class Writer(BaseWriter):
         )
         if self._useGridDataSection and not self._headerOnly:
             griddata = [
-                {GRID_ATTR_GRID_NAME: grid.name(), GRID_ATTR_DATA: grid.data()}
+                {
+                    GRID_ATTR_GRID_NAME: grid.name(),
+                    GRID_ATTR_DATA: self._gridDataWithNoDataFlag(grid),
+                }
                 for grid in allgrids
             ]
             ydata[GGXF_ATTR_GRID_DATA] = griddata
@@ -390,14 +410,37 @@ class Writer(BaseWriter):
             ydata["grids"] = grid.grids()
         ydata.pop(GRID_ATTR_DATA, None)
         if not self._useGridDataSection and not self._headerOnly:
-            ydata[GRID_ATTR_DATA] = grid.data()
+            ydata[GRID_ATTR_DATA] = self._gridDataWithNoDataFlag(grid)
         return dumper.represent_mapping(YAML_GGXF_TAG, ydata)
+
+    def _gridDataWithNoDataFlag(self, grid):
+        data = grid.data()
+        if isinstance(data, np.ma.core.MaskedArray):
+            mask = data.mask
+            ydata = data.data
+            if np.count_nonzero(mask) == 0:
+                data = ydata
+            else:
+                data = data.copy()
+                for iparam, param in enumerate(grid.group().parameters()):
+                    noDataFlag = param.noDataFlag()
+                    if noDataFlag is not None:
+                        pdata = data[:, :, iparam]
+                        pdata[pdata.mask] = noDataFlag
+                        data[:, :, iparam] = pdata
+                    elif np.count_nonzero(data.mask[:, :, iparam]) > 0:
+                        self._logger.error(
+                            f"Error saving GGXF to YAML: noDataFlag not defined for {param.name()}"
+                        )
+            data = data.data
+        return data
 
     def _writeGridData(self, dumper, data):
         shape = data.shape
         ydata = data
         if len(shape) == 3 and shape[2] == 1:
             ydata = data.reshape(shape[:2])
+
         ydata = ydata.tolist()
         return dumper.represent_sequence(YAML_GRID_DATA_TAG, ydata)
 

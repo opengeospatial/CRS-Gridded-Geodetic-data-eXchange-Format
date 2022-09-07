@@ -68,9 +68,9 @@ group: nz_linz_nzgd2000-ndm-grid02 {
   		:comment = "Secular deformation model" ;
   		:interpolationMethod = "bilinear" ;
   		string :groupParameters = "displacementEast", "displacementNorth" ;
-  		:groupDefaultValues.count = 1LL ;
-  		:groupDefaultValues.0.parameterName = "displacementHorizontalUncertainty" ;
-  		:groupDefaultValues.0.defaultValue = 0.001 ;
+  		:groupConstantValues.count = 1LL ;
+  		:groupConstantValues.0.parameterName = "displacementHorizontalUncertainty" ;
+  		:groupConstantValues.0.parameterValue = 0.001 ;
   		:timeFunctions.count = 1LL ;
   		:timeFunctions.0.functionType = "velocity" ;
   		:timeFunctions.0.functionReferenceDate = "2000-01-01T00:00:00Z" ;

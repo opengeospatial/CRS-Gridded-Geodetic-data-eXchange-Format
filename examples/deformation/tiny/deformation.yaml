@@ -35,37 +35,42 @@ parameters:
   unit: metre
   unitSiRatio: 1.0
   sourceCrsAxis: 1
+  noDataFlag: 9999.0
 - parameterName: displacementNorth
   parameterSet: displacement
   unit: metre
   unitSiRatio: 1.0
   sourceCrsAxis: 0
+  noDataFlag: 9999.0
 - parameterName: displacementUp
   parameterSet: displacement
   unit: metre
   unitSiRatio: 1.0
   sourceCrsAxis: 2
-- parameterName: horizontalUncertainty
-  parameterSet: uncertainty
+  noDataFlag: 9999.0
+- parameterName: displacementHorizontalUncertainty
+  parameterSet: displacementUncertainty
   unit: metre
   unitSiRatio: 1.0
   uncertaintyMeasure: 2CEP
   defaultValue: 0.01
-- parameterName: verticalUncertainty
-  parameterSet: uncertainty
+  noDataFlag: 999.0
+- parameterName: displacementUpUncertainty
+  parameterSet: displacementUncertainty
   unit: metre
   unitSiRatio: 1.0
   uncertaintyMeasure: 2SE
   defaultValue: 0.02
+  noDataFlag: 999.0
 operationAccuracy: 0.01
 ggxfGroups:
   - ggxfGroupName: secular-vertical-velocity
     interpolationMethod: bilinear
     groupParameters:
       - displacementUp
-    groupDefaultValues:
-      - parameterName: verticalUncertainty
-        defaultValue: 0.001
+    groupConstantValues:
+      - parameterName: displacementUpUncertainty
+        parameterValue: 0.001
     timeFunctions:
       - functionType: velocity
         functionReferenceDate: "2000-01-01T00:00:00Z"
@@ -79,7 +84,7 @@ ggxfGroups:
             [0.44, 0.74, 0.64],
             [0.12, 0.42, 0.32],
             [-0.05, 0.25, 0.15],
-            [-0.08, 0.22, 0.12],
+            [-0.08, 0.22, 9999.0],
           ]
   - ggxfGroupName: co-and-post-seismic-deformation
     comment: Hypothetical earthquake
