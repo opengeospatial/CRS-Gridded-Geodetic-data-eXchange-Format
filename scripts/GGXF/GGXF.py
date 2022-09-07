@@ -476,7 +476,6 @@ class Grid(GridList):
             "ymax": float(self._ymax),
         }
         params = self.group().parameterNames()
-        dtype = str(self._data.dtype)
         pmin = self._data.min(axis=(0, 1))
         pmax = self._data.max(axis=(0, 1))
         pdata = {
@@ -486,7 +485,6 @@ class Grid(GridList):
         summary = {
             "name": self.name(),
             "size": size,
-            "type": dtype,
             "extents": extents,
             "parameters": pdata,
         }
