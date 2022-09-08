@@ -66,9 +66,9 @@ operationAccuracy: 0.01
 ggxfGroups:
   - ggxfGroupName: secular-vertical-velocity
     interpolationMethod: bilinear
-    groupParameters:
+    gridParameters:
       - displacementUp
-    groupConstantValues:
+    constantParameters:
       - parameterName: displacementUpUncertainty
         parameterValue: 0.001
     timeFunctions:
@@ -89,7 +89,7 @@ ggxfGroups:
   - ggxfGroupName: co-and-post-seismic-deformation
     comment: Hypothetical earthquake
     interpolationMethod: bilinear
-    groupParameters:
+    gridParameters:
       - displacementEast
       - displacementNorth
       - displacementUp

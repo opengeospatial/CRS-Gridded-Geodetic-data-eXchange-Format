@@ -52,7 +52,7 @@ ggxfGroups:
   comment: |
     Secular deformation model derived from NUVEL-1A rotation rates
     Secular deformation model derived from GNS model 2011 V4
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   timeFunctions:
@@ -77,7 +77,7 @@ ggxfGroups:
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-ndm-grid02.tif
 - ggxfGroupName: nz_linz_nzgd2000-ds20090715-grid011
   comment: Dusky Sound (Fiordland) earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp

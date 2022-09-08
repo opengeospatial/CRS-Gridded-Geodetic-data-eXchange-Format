@@ -38,7 +38,7 @@ parameters:
 operationAccuracy: 0.001
 ggxfGroups:
   - ggxfGroupName: "alaska-grids"
-    groupParameters: [velocityEast, velocityNorth, velocityUp]
+    gridParameters: [velocityEast, velocityNorth, velocityUp]
     interpolationMethod: bilinear
     grids:
       - gridName: Alaska-mainland

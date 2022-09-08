@@ -210,7 +210,7 @@ class Group(GridList):
     def __init__(self, ggxf, groupname, metadata):
         super().__init__(groupname, metadata)
         self._ggxf = ggxf
-        paramnames = metadata.get(GROUP_ATTR_GROUP_PARAMETERS)
+        paramnames = metadata.get(GROUP_ATTR_GRID_PARAMETERS)
         if paramnames is None:
             paramnames = [p.name() for p in ggxf.parameters()]
         self._parameterNames = paramnames
@@ -249,7 +249,7 @@ class Group(GridList):
         parammap = []
         for name in self._parameterNames:
             if name not in ggxfparams:
-                error = f'Invalid parameter "{name}" in {GROUP_ATTR_GROUP_PARAMETERS}'
+                error = f'Invalid parameter "{name}" in {GROUP_ATTR_GRID_PARAMETERS}'
                 if errorhandler:
                     errorhandler(error)
                 else:
@@ -326,7 +326,7 @@ class Group(GridList):
 
     def summary(self):
         summary = self.metadata().copy()
-        summary[GROUP_ATTR_GROUP_PARAMETERS] = self.parameterNames()
+        summary[GROUP_ATTR_GRID_PARAMETERS] = self.parameterNames()
         summary[GROUP_ATTR_GRIDS] = [grid.summary() for grid in self.allgrids()]
         return summary
 

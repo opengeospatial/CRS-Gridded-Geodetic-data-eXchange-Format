@@ -76,11 +76,11 @@ CommonAttributes:
       Comment: What type should this be?
 
   Group:
-    - AttributeName: groupParameters
+    - AttributeName: gridParameters
       Type: list(str)
       Optional: true
-    - AttributeName: groupConstantValues
-      Type: list(ParameterConstantValue)
+    - AttributeName: constantParameters
+      Type: list(ConstantParameterValue)
       Optional: true
     - AttributeName: interpolationMethod
       Type: [bilinear, bicubic, biquadratic]
@@ -136,16 +136,12 @@ CommonAttributes:
     - AttributeName: uncertaintyMeasure
       Type: str
       Optional: true
-    - AttributeName: defaultValue
-      Type: float
-      Optional: true
 
-  ParameterConstantValue:
+  ConstantParameterValue:
     - AttributeName: parameterName
       Type: str
     - AttributeName: parameterValue
       Type: float
-
 
   Extents:
     - AttributeName: boundingBox

@@ -67,10 +67,10 @@ group: secular-vertical-velocity {
 
   // group attributes:
   		:interpolationMethod = "bilinear" ;
-  		:groupParameters = "displacementUp" ;
-  		:groupConstantValues.count = 1LL ;
-  		:groupConstantValues.0.parameterName = "displacementUpUncertainty" ;
-  		:groupConstantValues.0.parameterValue = 0.001 ;
+  		:gridParameters = "displacementUp" ;
+  		:constantParameters.count = 1LL ;
+  		:constantParameters.0.parameterName = "displacementUpUncertainty" ;
+  		:constantParameters.0.parameterValue = 0.001 ;
   		:timeFunctions.count = 1LL ;
   		:timeFunctions.0.functionType = "velocity" ;
   		:timeFunctions.0.functionReferenceDate = "2000-01-01T00:00:00Z" ;
@@ -104,7 +104,7 @@ group: co-and-post-seismic-deformation {
   // group attributes:
   		:comment = "Hypothetical earthquake" ;
   		:interpolationMethod = "bilinear" ;
-  		string :groupParameters = "displacementEast", "displacementNorth", "displacementUp" ;
+  		string :gridParameters = "displacementEast", "displacementNorth", "displacementUp" ;
   		:timeFunctions.count = 2LL ;
   		:timeFunctions.0.functionType = "ramp" ;
   		:timeFunctions.0.startDate = "2009-07-15T00:00:00Z" ;
