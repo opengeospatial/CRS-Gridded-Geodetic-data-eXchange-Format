@@ -53,14 +53,12 @@ parameters:
   unit: metre
   unitSiRatio: 1.0
   uncertaintyMeasure: 2CEP
-  defaultValue: 0.01
   noDataFlag: 999.0
 - parameterName: displacementUpUncertainty
   parameterSet: displacementUncertainty
   unit: metre
   unitSiRatio: 1.0
   uncertaintyMeasure: 2SE
-  defaultValue: 0.02
   noDataFlag: 999.0
 operationAccuracy: 0.01
 ggxfGroups:
