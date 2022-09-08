@@ -44,7 +44,7 @@ group: alaska-grids {
   	velocityCount = 3 ;
 
   // group attributes:
-  		string :groupParameters = "velocityEast", "velocityNorth", "velocityUp" ;
+  		string :gridParameters = "velocityEast", "velocityNorth", "velocityUp" ;
   		:interpolationMethod = "bilinear" ;
 
   group: Alaska-mainland {

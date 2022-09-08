@@ -52,7 +52,7 @@ ggxfGroups:
   comment: |
     Secular deformation model derived from NUVEL-1A rotation rates
     Secular deformation model derived from GNS model 2011 V4
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   timeFunctions:
@@ -77,7 +77,7 @@ ggxfGroups:
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-ndm-grid02.tif
 - ggxfGroupName: nz_linz_nzgd2000-si20030821-grid01
   comment: Secretary Island (Fiordland) earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -112,7 +112,7 @@ ggxfGroups:
           gdalSource: GTIFF_DIR:3:nz_linz_nzgd2000-si20030821-grid01.tif
 - ggxfGroupName: nz_linz_nzgd2000-mq20041223-grid011
   comment: Macquarie Plate earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -131,7 +131,7 @@ ggxfGroups:
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-mq20041223-grid011.tif
 - ggxfGroupName: nz_linz_nzgd2000-mq20041223-grid012
   comment: Macquarie Plate earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -150,7 +150,7 @@ ggxfGroups:
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-mq20041223-grid012.tif
 - ggxfGroupName: nz_linz_nzgd2000-mq20041223-grid013
   comment: Macquarie Plate earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -169,7 +169,7 @@ ggxfGroups:
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-mq20041223-grid013.tif
 - ggxfGroupName: nz_linz_nzgd2000-mq20041223-grid014
   comment: Macquarie Plate earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -188,7 +188,7 @@ ggxfGroups:
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-mq20041223-grid014.tif
 - ggxfGroupName: nz_linz_nzgd2000-mq20041223-grid015
   comment: Macquarie Plate earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -207,7 +207,7 @@ ggxfGroups:
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-mq20041223-grid015.tif
 - ggxfGroupName: nz_linz_nzgd2000-mq20041223-grid016
   comment: Macquarie Plate earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -226,7 +226,7 @@ ggxfGroups:
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-mq20041223-grid016.tif
 - ggxfGroupName: nz_linz_nzgd2000-gs20071016-grid01
   comment: Fiordland (George Sound) earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -261,7 +261,7 @@ ggxfGroups:
           gdalSource: GTIFF_DIR:3:nz_linz_nzgd2000-gs20071016-grid01.tif
 - ggxfGroupName: nz_linz_nzgd2000-ds20090715-grid011
   comment: Dusky Sound (Fiordland) earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -287,7 +287,7 @@ ggxfGroups:
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid011.tif
 - ggxfGroupName: nz_linz_nzgd2000-ds20090715-grid012
   comment: Dusky Sound (Fiordland) earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -313,7 +313,7 @@ ggxfGroups:
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid012.tif
 - ggxfGroupName: nz_linz_nzgd2000-ds20090715-grid013
   comment: Dusky Sound (Fiordland) earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -355,7 +355,7 @@ ggxfGroups:
           gdalSource: GTIFF_DIR:3:nz_linz_nzgd2000-ds20090715-grid013.tif
 - ggxfGroupName: nz_linz_nzgd2000-ds20090715-grid014
   comment: Dusky Sound (Fiordland) earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -381,7 +381,7 @@ ggxfGroups:
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid014.tif
 - ggxfGroupName: nz_linz_nzgd2000-c120100904-grid01
   comment: Darfield earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -424,7 +424,7 @@ ggxfGroups:
             gdalSource: GTIFF_DIR:4:nz_linz_nzgd2000-c120100904-grid01.tif
 - ggxfGroupName: nz_linz_nzgd2000-c220110222-grid01
   comment: Christchurch February earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -467,7 +467,7 @@ ggxfGroups:
             gdalSource: GTIFF_DIR:4:nz_linz_nzgd2000-c220110222-grid01.tif
 - ggxfGroupName: nz_linz_nzgd2000-c320110613-grid01
   comment: Christchurch June earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -510,7 +510,7 @@ ggxfGroups:
             gdalSource: GTIFF_DIR:4:nz_linz_nzgd2000-c320110613-grid01.tif
 - ggxfGroupName: nz_linz_nzgd2000-c420111223-grid01
   comment: Christchurch earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -553,7 +553,7 @@ ggxfGroups:
             gdalSource: GTIFF_DIR:4:nz_linz_nzgd2000-c420111223-grid01.tif
 - ggxfGroupName: nz_linz_nzgd2000-cs20130721-grid02
   comment: Mw 6.6 Cook Strait earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -596,7 +596,7 @@ ggxfGroups:
             gdalSource: GTIFF_DIR:4:nz_linz_nzgd2000-cs20130721-grid02.tif
 - ggxfGroupName: nz_linz_nzgd2000-lg20130816-grid02
   comment: Mw 6.6 Lake Grassmere earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -639,7 +639,7 @@ ggxfGroups:
             gdalSource: GTIFF_DIR:4:nz_linz_nzgd2000-lg20130816-grid02.tif
 - ggxfGroupName: nz_linz_nzgd2000-ch20160214-grid01
   comment: Christchurch Valentines Day earthquake
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   - displacementUp
@@ -686,7 +686,7 @@ ggxfGroups:
      Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
      Version: Model 002, 23 June 2017
     
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   timeFunctions:
@@ -715,7 +715,7 @@ ggxfGroups:
      Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
      Version: Model 002, 23 June 2017
     
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   timeFunctions:
@@ -987,7 +987,7 @@ ggxfGroups:
      Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
      Version: Model 002, 23 June 2017
     
-  groupParameters:
+  gridParameters:
   - displacementUp
   timeFunctions:
   - functionType: step
@@ -1245,7 +1245,7 @@ ggxfGroups:
      Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
      Version: Model 002, 23 June 2017
     
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   timeFunctions:
@@ -1277,7 +1277,7 @@ ggxfGroups:
      Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
      Version: Model 002, 23 June 2017
     
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   timeFunctions:
@@ -1316,7 +1316,7 @@ ggxfGroups:
      Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
      Version: Model 002, 23 June 2017
     
-  groupParameters:
+  gridParameters:
   - displacementUp
   timeFunctions:
   - functionType: ramp
@@ -1360,7 +1360,7 @@ ggxfGroups:
   comment: |
     Event: Kaikoura earthquake,  14 November 2016
     Refinement for horizontal difference between observations and model
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   timeFunctions:
@@ -1377,7 +1377,7 @@ ggxfGroups:
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid10.tif
 - ggxfGroupName: nz_linz_nzgd2000-ka20161114-grid11
   comment: Kaikoura earthquake second refinement grid - horizontal
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   timeFunctions:
@@ -1395,7 +1395,7 @@ ggxfGroups:
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid11.tif
 - ggxfGroupName: nz_linz_nzgd2000-ka20161114-grid12
   comment: Kaikoura earthquake second refinement grid -vertical
-  groupParameters:
+  gridParameters:
   - displacementUp
   timeFunctions:
   - functionType: step
@@ -1416,7 +1416,7 @@ ggxfGroups:
      Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
      Version: Model 002, 23 June 2017
     
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   timeFunctions:
@@ -1448,7 +1448,7 @@ ggxfGroups:
      Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
      Version: Model 002, 23 June 2017
     
-  groupParameters:
+  gridParameters:
   - displacementEast
   - displacementNorth
   timeFunctions:
@@ -1487,7 +1487,7 @@ ggxfGroups:
      Source model: Geodetic source model, based on GPS, InSAR, and LiDAR data; elastic half-space assumption; 
      Version: Model 002, 23 June 2017
     
-  groupParameters:
+  gridParameters:
   - displacementUp
   timeFunctions:
   - functionType: ramp

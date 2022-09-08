@@ -162,8 +162,10 @@ class Reader(BaseReader):
         self._logger.debug(f"Loading group {groupname}")
         context = f"Group {groupname}"
         metadata = self.loadMetadata(NETCDF_ATTR_CONTEXT_GROUP, ncgroup)
-        if "groupParameters" in metadata and type(metadata["groupParameters"]) == str:
-            metadata["groupParameters"] = [metadata["groupParameters"]]
+        # gridParameters is expecting an array of values but NetCDF reader converts
+        # to scalar if there is only 1
+        if "gridParameters" in metadata and type(metadata["gridParameters"]) == str:
+            metadata["gridParameters"] = [metadata["gridParameters"]]
         if not self.validator().validateGroupAttributes(metadata, context=context):
             return
         group = Group(ggxf, groupname, metadata)

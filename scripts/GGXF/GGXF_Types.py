@@ -250,10 +250,10 @@ CommonAttributes = {
     ],
     ATTRDEF_TYPE_GROUP: [
         {
-            ATTRDEF_NAME: GROUP_ATTR_GROUP_PARAMETERS,
+            ATTRDEF_NAME: GROUP_ATTR_GRID_PARAMETERS,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GROUP_ATTR_GROUP_PARAMETERS,
+                    ATTRDEF_NAME: GROUP_ATTR_GRID_PARAMETERS,
                     ATTRDEF_TYPE: str,
                     ATTRDEF_LIST: True,
                 },
@@ -261,11 +261,11 @@ CommonAttributes = {
             ATTRDEF_OPTIONAL: True,
         },
         {
-            ATTRDEF_NAME: GROUP_ATTR_GROUP_CONSTANT_VALUES,
+            ATTRDEF_NAME: GROUP_ATTR_CONSTANT_PARAMETERS,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GROUP_ATTR_GROUP_CONSTANT_VALUES,
-                    ATTRDEF_TYPE: ATTRDEF_TYPE_PARAMETER_CONSTANT_VALUE,
+                    ATTRDEF_NAME: GROUP_ATTR_CONSTANT_PARAMETERS,
+                    ATTRDEF_TYPE: ATTRDEF_TYPE_CONSTANT_PARAMETER_VALUE,
                     ATTRDEF_LIST: True,
                 },
             ],
@@ -454,18 +454,8 @@ CommonAttributes = {
             ],
             ATTRDEF_OPTIONAL: True,
         },
-        {
-            ATTRDEF_NAME: PARAM_ATTR_DEFAULT_VALUE,
-            ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: PARAM_ATTR_DEFAULT_VALUE,
-                    ATTRDEF_TYPE: float,
-                },
-            ],
-            ATTRDEF_OPTIONAL: True,
-        },
     ],
-    ATTRDEF_TYPE_PARAMETER_CONSTANT_VALUE: [
+    ATTRDEF_TYPE_CONSTANT_PARAMETER_VALUE: [
         {
             ATTRDEF_NAME: GGXF_ATTR_PARAMETER_NAME,
             ATTRDEF_CHOICE: [

@@ -83,7 +83,7 @@ ggxfGroups:
   - ggxfGroupName: "nz_linz_nzgd2000-ndm-grid02"
     comment: "Secular deformation model"
     interpolationMethod: bilinear
-    groupParameters: 
+    gridParameters: 
       - displacementEast
       - displacementNorth
     timeFunctions:
@@ -107,7 +107,7 @@ ggxfGroups:
   - ggxfGroupName: "nz_linz_nzgd2000-ds20090715-grid011"
     comment: "Dusky Sound (Fiordland) earthquake July 2009."
     interpolationMethod: bilinear
-    groupParameters:
+    gridParameters:
       - displacementEast
       - displacementNorth
       - displacementUp

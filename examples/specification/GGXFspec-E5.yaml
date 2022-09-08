@@ -83,23 +83,21 @@ parameters:
         unit: metre
         unitSiRatio: 1.0
         uncertaintyMeasure: 2CEP
-        defaultValue: 0.01
       - parameterName: displacementUpUncertainty
         parameterSet: "displacementUncertainty"
         sourceCrsAxis: 2
         unit: metre
         unitSiRatio: 1.0
         uncertaintyMeasure: 2SE
-        defaultValue: 0.01
 
 ggxfGroups:
   - ggxfGroupName: "nz_linz_nzgd2000-ndm-grid02"
     comment: "Secular deformation model"
     interpolationMethod: bilinear
-    groupParameters:
+    gridParameters:
       - displacementEast
       - displacementNorth
-    groupConstantValues:
+    constantParameters:
       - parameterName: displacementHorizontalUncertainty
         parameterValue: 0.001
     timeFunctions:
@@ -127,7 +125,7 @@ ggxfGroups:
   - ggxfGroupName: "nz_linz_nzgd2000-ds20090715-grid011"
     comment: "Dusky Sound (Fiordland) earthquake July 2009."
     interpolationMethod: bilinear
-    groupParameters:
+    gridParameters:
       - displacementEast
       - displacementNorth
       - displacementUp

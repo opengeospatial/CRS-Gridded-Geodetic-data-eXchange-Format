@@ -397,7 +397,7 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
         if comment := c.get("description"):
             group["comment"] = comment
 
-        group["groupParameters"] = list(displacementParams[c["displacement_type"]])
+        group["gridParameters"] = list(displacementParams[c["displacement_type"]])
         group["timeFunctions"] = ggxfTimeFunction(c["time_function"])
         group["interpolationMethod"] = "bilinear"
         groups.append(group)
