@@ -2,7 +2,7 @@ netcdf test_geoid {
 
 // global attributes:
 		:Conventions = "GGXF-1.0, ACDD-1.3" ;
-		:source_file = "tiny_geoid.yaml" ;
+		:source_file = "test_geoid.ggxf" ;
 		:content = "geoidModel" ;
 		:title = "hybrid geoid" ;
 		:summary = "Tiny geoid for testing GGXF implementation" ;

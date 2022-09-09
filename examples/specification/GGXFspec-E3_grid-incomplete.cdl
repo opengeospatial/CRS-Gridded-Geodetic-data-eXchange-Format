@@ -4,7 +4,7 @@ netcdf GGXFspec-E3_grid-incomplete {
 		:Conventions = "GGXF-1.0, ACDD-1.3" ;
 		:title = "National Transformation v2_0" ;
 		:summary = "Transformation of geodetic latitude and longitude referenced to NAD27 to latitude and longitude referenced to NAD83(Original)." ;
-		:source_file = "27to83.yaml" ;
+		:source_file = "GGXFspec-E3_grid-incomplete.ggxf" ;
 		:content = "geographic2dOffsets" ;
 		:date_issued = "1995-02" ;
 		:institution = "Geodetic Survey Division, Natural Resources Canada" ;

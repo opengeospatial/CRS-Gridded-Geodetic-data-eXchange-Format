@@ -52,7 +52,6 @@ onlineResourceLinkage:  "ftp://ftp.trignet.co.za/South_African_Geoid"
 
 parameters:
     - parameterName: geoidHeight
-      parameterSet: "geoidHeight"
       sourceCrsAxis: 2
       unit: metre
       unitSiRatio: 1.0

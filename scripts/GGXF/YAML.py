@@ -355,6 +355,8 @@ class Writer(BaseWriter):
         loader.add_representer(np.ndarray, self._writeGridData)
         loader.add_representer(str, self._writeStr)
         self._headerOnly = self.getBoolOption(YAML_OPTION_WRITE_HEADERS_ONLY, False)
+        filename = os.path.basename(yaml_file)
+        ggxf.setFilename(filename)
 
         with tempfile.TemporaryFile("w+") as tmph, open(yaml_file, "w") as yamlh:
             yaml.safe_dump(ggxf, tmph, indent=2, sort_keys=False)

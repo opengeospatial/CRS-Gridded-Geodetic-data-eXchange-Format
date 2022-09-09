@@ -397,6 +397,8 @@ class Writer(BaseWriter):
         if os.path.isfile(netcdf4_file):
             os.remove(netcdf4_file)
         root = netCDF4.Dataset(netcdf4_file, "w", format="NETCDF4")
+        filename = os.path.basename(netcdf4_file)
+        ggxf.setFilename(filename)
         self.saveGgxfNetCdf4(root, ggxf)
         root.close()
         if self.getBoolOption(NETCDF_OPTION_WRITE_CDL) or self.getBoolOption(

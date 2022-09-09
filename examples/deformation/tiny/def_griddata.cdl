@@ -2,7 +2,7 @@ netcdf def_griddata {
 
 // global attributes:
 		:Conventions = "GGXF-1.0, ACDD-1.3" ;
-		:source_file = "nz_linz_nzgd2000-20180701.yaml" ;
+		:source_file = "def_griddata.ggxf" ;
 		:product_version = "20180701" ;
 		:content = "deformationModel" ;
 		:title = "New Zealand Deformation Model." ;

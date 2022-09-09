@@ -2,7 +2,7 @@ netcdf alaska_velocity {
 
 // global attributes:
 		:Conventions = "GGXF-1.0, ACDD-1.3" ;
-		:source_file = "alaska-velocity.yaml" ;
+		:source_file = "alaska_velocity.ggxf" ;
 		:title = "Alaska velocity grid" ;
 		:summary = "Alaska velocity grid" ;
 		:content = "velocityModel" ;

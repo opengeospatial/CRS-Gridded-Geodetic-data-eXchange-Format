@@ -5,7 +5,7 @@ netcdf GGXFspec-E6_grid-incomplete {
 		:title = "PRVI DOV 2018" ;
 		:summary = "PRVI hybrid deflection model. Deflections are at the Earth\'s surface" ;
 		:content = "deviationsOfTheVertical" ;
-		:source_file = "d2018prvi.yaml" ;
+		:source_file = "GGXFspec-E6_grid-incomplete.ggxf" ;
 		:extent_description = "US Puerto Rico and Virgin Islands - onshore." ;
 		:geospatial_lat_min = 17.67 ;
 		:geospatial_lon_min = -65.09 ;
@@ -50,21 +50,5 @@ group: Puerto\ Rico\ Virgin\ Islands\ DEFLEC18 {
     // group attributes:
     		:affineCoeffs = 15., 0., 0.01666666667, -69., 0.01666666667, 0. ;
     } // group Puerto\ Rico\ Virgin\ Islands\ DEFLEC18
-
-  group: North {
-    dimensions:
-    	iNodeCount = 3 ;
-    	jNodeCount = 4 ;
-    variables:
-    	float deviationEast(jNodeCount, iNodeCount) ;
-    		deviationEast:_Storage = "contiguous" ;
-    		deviationEast:_Endianness = "little" ;
-    	float deviationNorth(jNodeCount, iNodeCount) ;
-    		deviationNorth:_Storage = "contiguous" ;
-    		deviationNorth:_Endianness = "little" ;
-
-    // group attributes:
-    		:affineCoeffs = 40.15, 0., -0.05, 7.6, 0.1, 0. ;
-    } // group North
   } // group Puerto\ Rico\ Virgin\ Islands\ DEFLEC18
 }

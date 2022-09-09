@@ -4,7 +4,7 @@ netcdf GGXFspec-E1_alt_header {
 		:Conventions = "GGXF-1.0, ACDD-1.3" ;
 		:title = "Catalino Canyon transformation version 2022-06" ;
 		:summary = "Example transformation constructed for purposes of illustration." ;
-		:source_file = "Catalano_Canyon.yaml" ;
+		:source_file = "GGXFspec-E1_alt_header.ggxf" ;
 		:content = "geographic2dOffsets" ;
 		:extent_description = "Italy - Mediterranean Sea west of Sardinia - Catalano Canyon." ;
 		:geospatial_lat_min = 39.9 ;

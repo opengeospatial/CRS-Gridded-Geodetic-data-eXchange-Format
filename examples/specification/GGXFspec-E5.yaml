@@ -28,7 +28,7 @@ contentApplicabilityExtent:
     -51.66 174.48, -53.04 178.46, -51.94 182.69, -50.45 183.84, -47.76 184.00, -46.81 187.31,
     -44.68 188.77, -42.93 188.53, -41.50 187.23, -40.26 182.07, -36.91 182.64, -34.59 180.22,
     -34.45 182.66, -33.12 184.50, -29.73 185.92, -27.47 185.34, -25.89 182.29, -27.22 179.01,
-    -31.55 177.28, -34.32 179.37, -30.85 172.97, -30.88 171.22, -32.42 168.65)
+    -31.55 177.28, -34.32 179.37, -30.85 172.97, -30.88 171.22, -32.42 168.65))
 
 interpolationCrsWkt: |
     GEOGCRS["NZGD2000",
@@ -37,7 +37,7 @@ interpolationCrsWkt: |
       CS[ellipsoidal,2],
       AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433]],
       AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433]],
-    ID["EPSG",4167,URI["http://www.opengis.net/def/crs/epsg/0/4167"]]]
+      ID["EPSG",4167,URI["http://www.opengis.net/def/crs/epsg/0/4167"]]]
 
 sourceCrsWkt: |
     GEOGCRS["NZGD2000",
@@ -79,13 +79,11 @@ parameters:
         unitSiRatio: 1.0
       - parameterName: displacementHorizontalUncertainty
         parameterSet: "displacementUncertainty"
-        sourceCrsAxis: 0
         unit: metre
         unitSiRatio: 1.0
         uncertaintyMeasure: 2CEP
       - parameterName: displacementUpUncertainty
         parameterSet: "displacementUncertainty"
-        sourceCrsAxis: 2
         unit: metre
         unitSiRatio: 1.0
         uncertaintyMeasure: 2SE

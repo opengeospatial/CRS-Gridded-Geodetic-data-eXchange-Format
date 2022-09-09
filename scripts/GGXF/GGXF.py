@@ -91,6 +91,9 @@ class GGXF:
             for grid in group.allgrids():
                 yield grid
 
+    def setFilename(self, filename):
+        self._metadata["filename"] = filename
+
     def valueAt(self, xy, epoch=None, refepoch=None):
         if not self._configured:
             self.configure()
