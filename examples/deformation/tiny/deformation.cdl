@@ -48,14 +48,12 @@ netcdf deformation {
 		:parameters.3.unit = "metre" ;
 		:parameters.3.unitSiRatio = 1. ;
 		:parameters.3.uncertaintyMeasure = "2CEP" ;
-		:parameters.3.defaultValue = 0.01 ;
 		:parameters.3.noDataFlag = 999. ;
 		:parameters.4.parameterName = "displacementUpUncertainty" ;
 		:parameters.4.parameterSet = "displacementUncertainty" ;
 		:parameters.4.unit = "metre" ;
 		:parameters.4.unitSiRatio = 1. ;
 		:parameters.4.uncertaintyMeasure = "2SE" ;
-		:parameters.4.defaultValue = 0.02 ;
 		:parameters.4.noDataFlag = 999. ;
 		:operationAccuracy = 0.01 ;
 		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;

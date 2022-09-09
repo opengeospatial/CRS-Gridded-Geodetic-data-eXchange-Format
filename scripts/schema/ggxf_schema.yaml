@@ -153,11 +153,11 @@ CommonAttributes:
     - AttributeName: boundingPolygon
       Type: str
       Optional: true
-    - AttributeName: temporalExtent
-      Type: TemporalExtent
+    - AttributeName: extentTemporal
+      Type: extentTemporal
       Optional: true
-    - AttributeName: verticalExtent
-      Type: VerticalExtent
+    - AttributeName: extentVertical
+      Type: extentVertical
       Optional: true
 
   BoundingBox:
@@ -170,19 +170,19 @@ CommonAttributes:
     - AttributeName: eastBoundLongitude
       Type: float
 
-  TemporalExtent:
+  extentTemporal:
     - AttributeName: startDate
       Type: str
     - AttributeName: endDate
       Type: str
 
-  VerticalExtent:
-    - AttributeName: verticalExtentCrsWkt
+  extentVertical:
+    - AttributeName: extentVerticalCrsWkt
       Type: str
       Optional: true
-    - AttributeName: verticalExtentMinimum
+    - AttributeName: extentVerticalMinimum
       Type: float
-    - AttributeName: verticalExtentMaximum
+    - AttributeName: extentVerticalMaximum
       Type: float
 
   TimeFunction:

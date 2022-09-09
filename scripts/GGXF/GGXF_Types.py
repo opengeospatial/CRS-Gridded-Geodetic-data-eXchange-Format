@@ -506,21 +506,21 @@ CommonAttributes = {
             ATTRDEF_OPTIONAL: True,
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_TEMPORAL_EXTENT,
+            ATTRDEF_NAME: GGXF_ATTR_EXTENT_TEMPORAL,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GGXF_ATTR_TEMPORAL_EXTENT,
-                    ATTRDEF_TYPE: ATTRDEF_TYPE_TEMPORAL_EXTENT,
+                    ATTRDEF_NAME: GGXF_ATTR_EXTENT_TEMPORAL,
+                    ATTRDEF_TYPE: ATTRDEF_TYPE_EXTENT_TEMPORAL,
                 },
             ],
             ATTRDEF_OPTIONAL: True,
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT,
+            ATTRDEF_NAME: GGXF_ATTR_EXTENT_VERTICAL,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT,
-                    ATTRDEF_TYPE: ATTRDEF_TYPE_VERTICAL_EXTENT,
+                    ATTRDEF_NAME: GGXF_ATTR_EXTENT_VERTICAL,
+                    ATTRDEF_TYPE: ATTRDEF_TYPE_EXTENT_VERTICAL,
                 },
             ],
             ATTRDEF_OPTIONAL: True,
@@ -564,7 +564,7 @@ CommonAttributes = {
             ],
         },
     ],
-    ATTRDEF_TYPE_TEMPORAL_EXTENT: [
+    ATTRDEF_TYPE_EXTENT_TEMPORAL: [
         {
             ATTRDEF_NAME: GGXF_ATTR_START_DATE,
             ATTRDEF_CHOICE: [
@@ -584,31 +584,31 @@ CommonAttributes = {
             ],
         },
     ],
-    ATTRDEF_TYPE_VERTICAL_EXTENT: [
+    ATTRDEF_TYPE_EXTENT_VERTICAL: [
         {
-            ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_CRS_WKT,
+            ATTRDEF_NAME: GGXF_ATTR_EXTENT_VERTICAL_CRS_WKT,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_CRS_WKT,
+                    ATTRDEF_NAME: GGXF_ATTR_EXTENT_VERTICAL_CRS_WKT,
                     ATTRDEF_TYPE: str,
                 },
             ],
             ATTRDEF_OPTIONAL: True,
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_MINIMUM,
+            ATTRDEF_NAME: GGXF_ATTR_EXTENT_VERTICAL_MINIMUM,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_MINIMUM,
+                    ATTRDEF_NAME: GGXF_ATTR_EXTENT_VERTICAL_MINIMUM,
                     ATTRDEF_TYPE: float,
                 },
             ],
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_MAXIMUM,
+            ATTRDEF_NAME: GGXF_ATTR_EXTENT_VERTICAL_MAXIMUM,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GGXF_ATTR_VERTICAL_EXTENT_MAXIMUM,
+                    ATTRDEF_NAME: GGXF_ATTR_EXTENT_VERTICAL_MAXIMUM,
                     ATTRDEF_TYPE: float,
                 },
             ],

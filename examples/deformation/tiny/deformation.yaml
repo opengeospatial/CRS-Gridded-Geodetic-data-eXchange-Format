@@ -23,7 +23,7 @@ contentApplicabilityExtent:
     westBoundLongitude: 160.62
     northBoundLatitude: -25.89
     eastBoundLongitude: -171.23
-  temporalExtent:
+  extentTemporal:
     startDate: "1900-01-01"
     endDate: "2050-01-01"
 sourceCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]],ID["EPSG",7019]],ID["EPSG",6167]],CS[ellipsoidal,3,ID["EPSG",6423]],AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433,ID["EPSG",9102]]],AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1,ID["EPSG",9001]]],ID["EPSG",4959]]
