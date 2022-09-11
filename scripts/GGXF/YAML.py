@@ -164,7 +164,7 @@ class Reader(BaseReader):
         if self.validator().validateGridAttributes(ygrid, context=context):
             self.validateGridData(group, ygrid)
             gdata = ygrid.pop(GRID_ATTR_DATA, [])
-            cgrids = ygrid.pop(GRID_ATTR_GRIDS, [])
+            cgrids = ygrid.pop(GRID_ATTR_CHILD_GRIDS, [])
             gridname = ygrid.pop(GRID_ATTR_GRID_NAME)
             data = self.splitGridByParamSet(group, gdata)
             grid = Grid(group, gridname, ygrid, data)
@@ -400,7 +400,7 @@ class Writer(BaseWriter):
     def _writeGgxfGroup(self, dumper, group):
         ydata = group.metadata().copy()
         ydata[GROUP_ATTR_GGXF_GROUP_NAME] = group.name()
-        ydata["grids"] = group.grids()
+        ydata[GROUP_ATTR_GRIDS] = group.grids()
         return dumper.represent_mapping(YAML_GROUP_TAG, ydata)
 
     def _writeGgxfGrid(self, dumper, grid):
@@ -409,7 +409,7 @@ class Writer(BaseWriter):
             float(c) for c in ydata[GRID_ATTR_AFFINE_COEFFS]
         ]
         if len(grid.grids()) > 0:
-            ydata["grids"] = grid.grids()
+            ydata[GRID_ATTR_CHILD_GRIDS] = grid.grids()
         ydata.pop(GRID_ATTR_DATA, None)
         if not self._useGridDataSection and not self._headerOnly:
             ydata[GRID_ATTR_DATA] = self._gridDataWithNoDataFlag(grid)

@@ -23,7 +23,7 @@ contentApplicabilityExtent:
     westBoundLongitude: 160.62
     northBoundLatitude: -25.89
     eastBoundLongitude: -171.23
-  extentTemporal:
+  temporalExtent:
     startDate: '1900-01-01'
     endDate: '2050-01-01'
   boundingPolygon: Polygon ((-32.42 168.65, -34.98 168.10, -37.58 170.07, -40.60 167.30,  -44.32 162.17, -51.17 160.62, -54.97 165.11, -55.94 168.78, -54.70 173.54, -53.26 174.64, -51.66 174.48, -53.04 178.46, -51.94 182.69, -50.45 183.84, -47.76 184.00, -46.81 187.31, -44.68 188.77, -42.93 188.53, -41.50 187.23, -40.26 182.07, -36.91 182.64, -34.59 180.22, -34.45 182.66, -33.12 184.50, -29.73 185.92, -27.47 185.34, -25.89 182.29, -27.22 179.01, -31.55 177.28, -34.32 179.37, -30.85 172.97, -30.88 171.22, -32.42 168.65)
@@ -67,7 +67,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ndm-grid02.tif
-    grids:
+    childGrids:
     - gridName: ndm_grid_igns2011_nz
       affineCoeffs: [-33.0,0.0,-0.1,165.5,0.1,0.0]
       iNodeCount: 141
@@ -94,7 +94,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-si20030821-grid01.tif
-    grids:
+    childGrids:
     - gridName: patch_si_20030821_grid_si_l2
       affineCoeffs: [-44.5,0.0,-0.03125,166.225,0.0375,0.0]
       iNodeCount: 47
@@ -102,7 +102,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-si20030821-grid01.tif
-      grids:
+      childGrids:
       - gridName: patch_si_20030821_grid_si_l3
         affineCoeffs: [-44.828125,0.0,-0.0078125,166.5625,0.009375,0.0]
         iNodeCount: 93
@@ -243,7 +243,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-gs20071016-grid01.tif
-    grids:
+    childGrids:
     - gridName: patch_gs_20071016_grid_gs_l2
       affineCoeffs: [-44.28125,0.0,-0.03125,166.6375,0.0375,0.0]
       iNodeCount: 45
@@ -251,7 +251,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-gs20071016-grid01.tif
-      grids:
+      childGrids:
       - gridName: patch_gs_20071016_grid_gs_l3
         affineCoeffs: [-44.6171875,0.0,-0.0078125,167.0875,0.009375,0.0]
         iNodeCount: 54
@@ -337,7 +337,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid013.tif
-    grids:
+    childGrids:
     - gridName: patch_ds_20090715_grid_ds_p2_l2
       affineCoeffs: [-44.6875,0.0,-0.03125,165.2875,0.0375,0.0]
       iNodeCount: 67
@@ -345,7 +345,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-ds20090715-grid013.tif
-      grids:
+      childGrids:
       - gridName: patch_ds_20090715_grid_ds_p2_l3
         affineCoeffs: [-45.28125,0.0,-0.0078125,166.075,0.009375,0.0]
         iNodeCount: 83
@@ -398,7 +398,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-c120100904-grid01.tif
-    grids:
+    childGrids:
     - gridName: patch_c1_20100904_grid_c1_l2
       affineCoeffs: [-42.8125,0.0,-0.03125,171.1,0.0375,0.0]
       iNodeCount: 59
@@ -406,7 +406,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-c120100904-grid01.tif
-      grids:
+      childGrids:
       - gridName: patch_c1_20100904_grid_c1_l3
         affineCoeffs: [-43.25,0.0,-0.0078125,171.625,0.009375,0.0]
         iNodeCount: 118
@@ -414,7 +414,7 @@ ggxfGroups:
         dataSource:
           sourceType: GDAL
           gdalSource: GTIFF_DIR:3:nz_linz_nzgd2000-c120100904-grid01.tif
-        grids:
+        childGrids:
         - gridName: patch_c1_20100904_grid_c1_l4
           affineCoeffs: [-43.423828125,0.0,-0.001953125,171.8125,0.00234375,0.0]
           iNodeCount: 306
@@ -441,7 +441,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-c220110222-grid01.tif
-    grids:
+    childGrids:
     - gridName: patch_c2_20110222_grid_c2_l2
       affineCoeffs: [-43.03125,0.0,-0.03125,172.0,0.0375,0.0]
       iNodeCount: 38
@@ -449,7 +449,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-c220110222-grid01.tif
-      grids:
+      childGrids:
       - gridName: patch_c2_20110222_grid_c2_l3
         affineCoeffs: [-43.3515625,0.0,-0.0078125,172.4125,0.009375,0.0]
         iNodeCount: 62
@@ -457,7 +457,7 @@ ggxfGroups:
         dataSource:
           sourceType: GDAL
           gdalSource: GTIFF_DIR:3:nz_linz_nzgd2000-c220110222-grid01.tif
-        grids:
+        childGrids:
         - gridName: patch_c2_20110222_grid_c2_l4
           affineCoeffs: [-43.474609375,0.0,-0.001953125,172.56015625,0.00234375,0.0]
           iNodeCount: 118
@@ -484,7 +484,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-c320110613-grid01.tif
-    grids:
+    childGrids:
     - gridName: patch_c3_20110613_grid_c3_l2
       affineCoeffs: [-43.09375,0.0,-0.03125,172.15,0.0375,0.0]
       iNodeCount: 33
@@ -492,7 +492,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-c320110613-grid01.tif
-      grids:
+      childGrids:
       - gridName: patch_c3_20110613_grid_c3_l3
         affineCoeffs: [-43.375,0.0,-0.0078125,172.515625,0.009375,0.0]
         iNodeCount: 51
@@ -500,7 +500,7 @@ ggxfGroups:
         dataSource:
           sourceType: GDAL
           gdalSource: GTIFF_DIR:3:nz_linz_nzgd2000-c320110613-grid01.tif
-        grids:
+        childGrids:
         - gridName: patch_c3_20110613_grid_c3_l4
           affineCoeffs: [-43.484375,0.0,-0.001953125,172.65390625,0.00234375,0.0]
           iNodeCount: 88
@@ -527,7 +527,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-c420111223-grid01.tif
-    grids:
+    childGrids:
     - gridName: patch_c4_20111223_grid_c4_l2
       affineCoeffs: [-43.03125,0.0,-0.03125,172.1875,0.0375,0.0]
       iNodeCount: 32
@@ -535,7 +535,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-c420111223-grid01.tif
-      grids:
+      childGrids:
       - gridName: patch_c4_20111223_grid_c4_l3
         affineCoeffs: [-43.3125,0.0,-0.0078125,172.553125,0.009375,0.0]
         iNodeCount: 52
@@ -543,7 +543,7 @@ ggxfGroups:
         dataSource:
           sourceType: GDAL
           gdalSource: GTIFF_DIR:3:nz_linz_nzgd2000-c420111223-grid01.tif
-        grids:
+        childGrids:
         - gridName: patch_c4_20111223_grid_c4_l4
           affineCoeffs: [-43.421875,0.0,-0.001953125,172.67734375,0.00234375,0.0]
           iNodeCount: 87
@@ -570,7 +570,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-cs20130721-grid02.tif
-    grids:
+    childGrids:
     - gridName: patch_cs_20130721_grid_cs_20130721_l2
       affineCoeffs: [-41.03125,0.0,-0.03125,173.5375,0.0375,0.0]
       iNodeCount: 43
@@ -578,7 +578,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-cs20130721-grid02.tif
-      grids:
+      childGrids:
       - gridName: patch_cs_20130721_grid_cs_20130721_l3
         affineCoeffs: [-41.3828125,0.0,-0.0078125,173.9875,0.009375,0.0]
         iNodeCount: 73
@@ -586,7 +586,7 @@ ggxfGroups:
         dataSource:
           sourceType: GDAL
           gdalSource: GTIFF_DIR:3:nz_linz_nzgd2000-cs20130721-grid02.tif
-        grids:
+        childGrids:
         - gridName: patch_cs_20130721_grid_cs_20130721_l4
           affineCoeffs: [-41.537109375,0.0,-0.001953125,174.28984375,0.00234375,0.0]
           iNodeCount: 90
@@ -613,7 +613,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-lg20130816-grid02.tif
-    grids:
+    childGrids:
     - gridName: patch_lg_20130816_grid_lg_20130816_l2
       affineCoeffs: [-41.09375,0.0,-0.03125,173.3875,0.0375,0.0]
       iNodeCount: 44
@@ -621,7 +621,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-lg20130816-grid02.tif
-      grids:
+      childGrids:
       - gridName: patch_lg_20130816_grid_lg_20130816_l3
         affineCoeffs: [-41.4609375,0.0,-0.0078125,173.809375,0.009375,0.0]
         iNodeCount: 79
@@ -629,7 +629,7 @@ ggxfGroups:
         dataSource:
           sourceType: GDAL
           gdalSource: GTIFF_DIR:3:nz_linz_nzgd2000-lg20130816-grid02.tif
-        grids:
+        childGrids:
         - gridName: patch_lg_20130816_grid_lg_20130816_l4
           affineCoeffs: [-41.60546875,0.0,-0.001953125,174.034375,0.00234375,0.0]
           iNodeCount: 134
@@ -656,7 +656,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ch20160214-grid01.tif
-    grids:
+    childGrids:
     - gridName: patch_ch_20160214_grid_ch_20160214_l2
       affineCoeffs: [-43.0625,0.0,-0.03125,172.225,0.0375,0.0]
       iNodeCount: 29
@@ -664,7 +664,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-ch20160214-grid01.tif
-      grids:
+      childGrids:
       - gridName: patch_ch_20160214_grid_ch_20160214_l3
         affineCoeffs: [-43.3203125,0.0,-0.0078125,172.553125,0.009375,0.0]
         iNodeCount: 46
@@ -672,7 +672,7 @@ ggxfGroups:
         dataSource:
           sourceType: GDAL
           gdalSource: GTIFF_DIR:3:nz_linz_nzgd2000-ch20160214-grid01.tif
-        grids:
+        childGrids:
         - gridName: patch_ch_20160214_grid_ch_20160214_l4
           affineCoeffs: [-43.408203125,0.0,-0.001953125,172.67265625,0.00234375,0.0]
           iNodeCount: 79
@@ -701,7 +701,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid01.tif
-    grids:
+    childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114co_h_l2_f
       affineCoeffs: [-40.8125,0.0,-0.03125,171.925,0.0375,0.0]
       iNodeCount: 95
@@ -731,7 +731,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid02.tif
-    grids:
+    childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
       affineCoeffs: [-42.1484375,0.0,-0.0078125,172.571875,0.009375,0.0]
       iNodeCount: 115
@@ -739,7 +739,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid02.tif
-      grids:
+      childGrids:
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_00
         affineCoeffs: [-42.484375,0.0,-0.001953125,172.7828125,0.00234375,0.0]
         iNodeCount: 106
@@ -817,7 +817,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:3:nz_linz_nzgd2000-ka20161114-grid02.tif
-      grids:
+      childGrids:
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_061
         affineCoeffs: [-42.0546875,0.0,-0.001953125,173.47421875,0.00234375,0.0]
         iNodeCount: 21
@@ -853,7 +853,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:4:nz_linz_nzgd2000-ka20161114-grid02.tif
-      grids:
+      childGrids:
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_081
         affineCoeffs: [-42.484375,0.0,-0.001953125,173.640625,0.00234375,0.0]
         iNodeCount: 28
@@ -903,7 +903,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:5:nz_linz_nzgd2000-ka20161114-grid02.tif
-      grids:
+      childGrids:
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_103
         affineCoeffs: [-42.0546875,0.0,-0.001953125,173.640625,0.00234375,0.0]
         iNodeCount: 55
@@ -1002,7 +1002,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid03.tif
-    grids:
+    childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114co_v_l2
       affineCoeffs: [-41.0625,0.0,-0.03125,172.225,0.0375,0.0]
       iNodeCount: 74
@@ -1010,7 +1010,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid03.tif
-      grids:
+      childGrids:
       - gridName: patch_ka_20161114_grid_ka_20161114co_v_l3_00
         affineCoeffs: [-42.1171875,0.0,-0.0078125,172.65625,0.009375,0.0]
         iNodeCount: 103
@@ -1018,7 +1018,7 @@ ggxfGroups:
         dataSource:
           sourceType: GDAL
           gdalSource: GTIFF_DIR:3:nz_linz_nzgd2000-ka20161114-grid03.tif
-        grids:
+        childGrids:
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_00
           affineCoeffs: [-42.490234375,0.0,-0.001953125,172.79921875,0.00234375,0.0]
           iNodeCount: 103
@@ -1089,7 +1089,7 @@ ggxfGroups:
         dataSource:
           sourceType: GDAL
           gdalSource: GTIFF_DIR:4:nz_linz_nzgd2000-ka20161114-grid03.tif
-        grids:
+        childGrids:
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_051
           affineCoeffs: [-42.0546875,0.0,-0.001953125,173.46953125,0.00234375,0.0]
           iNodeCount: 21
@@ -1118,7 +1118,7 @@ ggxfGroups:
         dataSource:
           sourceType: GDAL
           gdalSource: GTIFF_DIR:5:nz_linz_nzgd2000-ka20161114-grid03.tif
-        grids:
+        childGrids:
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_061
           affineCoeffs: [-42.453125,0.0,-0.001953125,173.6125,0.00234375,0.0]
           iNodeCount: 62
@@ -1175,7 +1175,7 @@ ggxfGroups:
         dataSource:
           sourceType: GDAL
           gdalSource: GTIFF_DIR:6:nz_linz_nzgd2000-ka20161114-grid03.tif
-        grids:
+        childGrids:
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_083
           affineCoeffs: [-42.0390625,0.0,-0.001953125,173.6125,0.00234375,0.0]
           iNodeCount: 62
@@ -1263,7 +1263,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid04.tif
-    grids:
+    childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114pe1_h_l2_f
       affineCoeffs: [-41.125,0.0,-0.03125,172.6375,0.0375,0.0]
       iNodeCount: 74
@@ -1295,7 +1295,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid05.tif
-    grids:
+    childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_00
       affineCoeffs: [-42.0546875,0.0,-0.0078125,172.834375,0.009375,0.0]
       iNodeCount: 93
@@ -1333,7 +1333,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid06.tif
-    grids:
+    childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114pe1_v_l2
       affineCoeffs: [-40.75,0.0,-0.03125,172.675,0.0375,0.0]
       iNodeCount: 72
@@ -1341,7 +1341,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid06.tif
-      grids:
+      childGrids:
       - gridName: patch_ka_20161114_grid_ka_20161114pe1_v_l3_00
         affineCoeffs: [-42.0546875,0.0,-0.0078125,172.84375,0.009375,0.0]
         iNodeCount: 92
@@ -1434,7 +1434,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid07.tif
-    grids:
+    childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114pe3_h_l2_f
       affineCoeffs: [-41.0625,0.0,-0.03125,172.525,0.0375,0.0]
       iNodeCount: 66
@@ -1466,7 +1466,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid08.tif
-    grids:
+    childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_00
       affineCoeffs: [-42.0,0.0,-0.0078125,172.91875,0.009375,0.0]
       iNodeCount: 88
@@ -1504,7 +1504,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ka20161114-grid09.tif
-    grids:
+    childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114pe3_v_l2
       affineCoeffs: [-40.65625,0.0,-0.03125,172.1875,0.0375,0.0]
       iNodeCount: 82
@@ -1512,7 +1512,7 @@ ggxfGroups:
       dataSource:
         sourceType: GDAL
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-ka20161114-grid09.tif
-      grids:
+      childGrids:
       - gridName: patch_ka_20161114_grid_ka_20161114pe3_v_l3_00
         affineCoeffs: [-42.0703125,0.0,-0.0078125,172.825,0.009375,0.0]
         iNodeCount: 92

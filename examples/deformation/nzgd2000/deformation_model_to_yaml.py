@@ -114,9 +114,9 @@ def compileGrids(grids, maxdepth, maxwidth):
     for g in grids:
         if p := g.get("parentGridName"):
             g.pop("parentGridName")
-            grids = idx[p].get("grids", [])
+            grids = idx[p].get("childGrids", [])
             grids.append(g)
-            idx[p]["grids"] = grids
+            idx[p]["childGrids"] = grids
         else:
             rootgrids.append(g)
     if maxwidth:
@@ -125,13 +125,13 @@ def compileGrids(grids, maxdepth, maxwidth):
 
     def trimGrid(g, depth, maxdepth, maxwidth):
         usedgrids.append(g)
-        children = g.pop("grids") if "grids" in g else []
+        children = g.pop("childGrids") if "childGrids" in g else []
         if depth == maxdepth:
             children = []
         elif maxwidth:
             children = children[:maxwidth]
         if children:
-            g["grids"] = children
+            g["childGrids"] = children
         for c in children:
             trimGrid(c, depth + 1, maxdepth, maxwidth)
 
@@ -198,7 +198,7 @@ def loadJsonGeoTiff(jsonfile):
         for subgridref in subgrids:
             gdata, subgrids, crsdef = loadGTiffGridData(subgridref, tiffdir=tiffdir)
             grids.append(gdata)
-        sm["grids"] = grids
+        sm["childGrids"] = grids
     model["gridcrs"] = crsdef
     return model
 
@@ -289,8 +289,8 @@ def setHierarchyRank(grids, rank=1):
     for g in grids:
         g["hierarchyRank"] = rank
         rank += 1
-        if "grids" in g:
-            rank = setHierarchyRank(g["grids"])
+        if "childGrids" in g:
+            rank = setHierarchyRank(g["childGrids"])
     return rank
 
 
@@ -401,9 +401,9 @@ def ggxfModel(model, usegroups=None, maxwidth=None, maxdepth=None):
         group["timeFunctions"] = ggxfTimeFunction(c["time_function"])
         group["interpolationMethod"] = "bilinear"
         groups.append(group)
-        group["grids"] = compileGrids(sm["grids"], maxdepth, maxwidth)
+        group["grids"] = compileGrids(sm["childGrids"], maxdepth, maxwidth)
         # hierarchyRank removed from GGXF
-        # setHierarchyRank(group["grids"])
+        # setHierarchyRank(group["childGrids"])
     return gmodel
 
 

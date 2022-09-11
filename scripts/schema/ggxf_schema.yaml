@@ -247,7 +247,7 @@ YamlAttributes:
     Grid:
     - AttributeName: gridName
       Type: UnicodeIdentifier
-    - AttributeName: grids
+    - AttributeName: childGrids
       Type: list
       Optional: true
     - AttributeChoice:

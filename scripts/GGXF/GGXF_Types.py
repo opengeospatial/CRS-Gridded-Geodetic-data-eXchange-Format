@@ -778,10 +778,10 @@ YamlAttributes = {
             ],
         },
         {
-            ATTRDEF_NAME: GRID_ATTR_GRIDS,
+            ATTRDEF_NAME: GRID_ATTR_CHILD_GRIDS,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GRID_ATTR_GRIDS,
+                    ATTRDEF_NAME: GRID_ATTR_CHILD_GRIDS,
                     ATTRDEF_TYPE: None,
                     ATTRDEF_LIST: True,
                 },

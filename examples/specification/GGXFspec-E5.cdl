@@ -83,20 +83,14 @@ group: nz_linz_nzgd2000-ndm-grid02 {
     // group attributes:
     		:comment = "Secular deformation model derived from NUVEL-1A rotation rates" ;
     		:affineCoeffs = -25., 0., -0.5, 158., 0.5, 0. ;
-
-    group: ndm_grid_igns2011_nz {
-      dimensions:
-      	iNodeCount = 141 ;
-      	jNodeCount = 151 ;
-      variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
-      		displacement:_Storage = "contiguous" ;
-      		displacement:_Endianness = "little" ;
-
-      // group attributes:
-      		:comment = "Secular deformation model derived from GNS model 2011 V4" ;
-      		:affineCoeffs = -33., 0., -0.1, 165.5, 0.1, 0. ;
-      } // group ndm_grid_igns2011_nz
+    		:grids.count = 1LL ;
+    		:grids.0.gridName = "ndm_grid_igns2011_nz" ;
+    		:grids.0.comment = "Secular deformation model derived from GNS model 2011 V4" ;
+    		:grids.0.affineCoeffs = -33., 0., -0.1, 165.5, 0.1, 0. ;
+    		:grids.0.iNodeCount = 141LL ;
+    		:grids.0.jNodeCount = 151LL ;
+    		:grids.0.dataSource.sourceType = "GDAL" ;
+    		:grids.0.dataSource.gdalSource = "GTIFF_DIR:2:nz_linz_nzgd2000-ndm-grid02.tif" ;
     } // group ndm_grid_nuvel1a_eez
   } // group nz_linz_nzgd2000-ndm-grid02
 

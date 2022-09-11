@@ -51,19 +51,12 @@ group: national_velocity_model {
 
     // group attributes:
     		:affineCoeffs = -25., 0., -0.5, 158., 0.5, 0. ;
-
-    group: grid_igns2011_nz {
-      dimensions:
-      	iNodeCount = 141 ;
-      	jNodeCount = 151 ;
-      variables:
-      	float velocity(jNodeCount, iNodeCount, velocityCount) ;
-      		velocity:_Storage = "contiguous" ;
-      		velocity:_Endianness = "little" ;
-
-      // group attributes:
-      		:affineCoeffs = -33., 0., -0.1, 165.5, 0.1, 0. ;
-      } // group grid_igns2011_nz
+    		:grids.count = 1LL ;
+    		:grids.0.gridName = "grid_igns2011_nz" ;
+    		:grids.0.affineCoeffs = -33., 0., -0.1, 165.5, 0.1, 0. ;
+    		:grids.0.iNodeCount = 141LL ;
+    		:grids.0.jNodeCount = 151LL ;
+    		:grids.0.data = 0.01239, 0.04615, 0.00702, 0.03462, -0.02301, 0.03381, -0.03692, 0.03216 ;
     } // group grid_nuvel1a_eez
   } // group national_velocity_model
 }

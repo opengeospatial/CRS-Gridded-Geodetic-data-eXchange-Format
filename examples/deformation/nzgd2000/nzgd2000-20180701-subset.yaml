@@ -23,7 +23,7 @@ contentApplicabilityExtent:
     westBoundLongitude: 160.62
     northBoundLatitude: -25.89
     eastBoundLongitude: -171.23
-  extentTemporal:
+  temporalExtent:
     startDate: '1900-01-01'
     endDate: '2050-01-01'
   boundingPolygon: Polygon ((-32.42 168.65, -34.98 168.10, -37.58 170.07, -40.60 167.30,  -44.32 162.17, -51.17 160.62, -54.97 165.11, -55.94 168.78, -54.70 173.54, -53.26 174.64, -51.66 174.48, -53.04 178.46, -51.94 182.69, -50.45 183.84, -47.76 184.00, -46.81 187.31, -44.68 188.77, -42.93 188.53, -41.50 187.23, -40.26 182.07, -36.91 182.64, -34.59 180.22, -34.45 182.66, -33.12 184.50, -29.73 185.92, -27.47 185.34, -25.89 182.29, -27.22 179.01, -31.55 177.28, -34.32 179.37, -30.85 172.97, -30.88 171.22, -32.42 168.65)
@@ -67,7 +67,7 @@ ggxfGroups:
     dataSource:
       sourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ndm-grid02.tif
-    grids:
+    childGrids:
     - gridName: ndm_grid_igns2011_nz
       affineCoeffs: [-33.0,0.0,-0.1,165.5,0.1,0.0]
       iNodeCount: 141

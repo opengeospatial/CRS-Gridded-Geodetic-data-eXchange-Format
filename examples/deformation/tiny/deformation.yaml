@@ -157,7 +157,7 @@ ggxfGroups:
               [0.34, -1.2, -0.04],
             ],
           ]
-        grids:
+        childGrids:
           - gridName: near-field-deformation-grid
             affineCoeffs: [172.6, 0.3, 0.0, -41.2, 0.0, 0.2]
             iNodeCount: 5

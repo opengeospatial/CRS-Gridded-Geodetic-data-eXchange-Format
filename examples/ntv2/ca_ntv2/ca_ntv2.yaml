@@ -67,7 +67,7 @@ ggxfGroups:
         iNodeCount: 529
         jNodeCount: 241
         dataSource: {"sourceType": "GDAL", "gdalSource": "NTV2_0.GSB"}
-        grids:
+        childGrids:
           - gridName: NFstjohn
             affineCoeffs: [47.83333333333333, 0.0, -0.008333333333333333, -53.0, 0.008333333333333333, 0.0]
             iNodeCount: 81
@@ -113,7 +113,7 @@ ggxfGroups:
         iNodeCount: 649
         jNodeCount: 157
         dataSource: {"sourceType": "GDAL", "gdalSource": "NTv2:1:NTV2_0.GSB"}
-        grids:
+        childGrids:
           - gridName: ALbanff
             affineCoeffs: [51.25, 0.0, -0.008333333333333333, -115.58333333333334, 0.008333333333333333, 0.0]
             iNodeCount: 11
@@ -574,7 +574,7 @@ ggxfGroups:
         iNodeCount: 589
         jNodeCount: 181
         dataSource: {"sourceType": "GDAL", "gdalSource": "NTv2:2:NTV2_0.GSB"}
-        grids:
+        childGrids:
           - gridName: NWclyder
             affineCoeffs: [70.58333333333334, 0.0, -0.008333333333333333, -68.83333333333333, 0.016666666666666666, 0.0]
             iNodeCount: 31

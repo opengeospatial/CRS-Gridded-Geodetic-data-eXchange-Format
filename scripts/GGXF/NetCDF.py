@@ -503,7 +503,7 @@ class Writer(BaseWriter):
         cdfgrid = cdfgroup.createGroup(name)
         exclude = [
             GRID_ATTR_GRID_NAME,
-            GRID_ATTR_GRIDS,
+            GRID_ATTR_CHILD_GRIDS,
             GRID_ATTR_DATA,
             GRID_ATTR_DATA_SOURCE,
             GRID_ATTR_I_NODE_COUNT,
