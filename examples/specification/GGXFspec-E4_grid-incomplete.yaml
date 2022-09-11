@@ -69,7 +69,7 @@ ggxfGroups:
         jNodeCount: 67
         data: [ 0.023004, 0.051255, -0.059495, 0.033768,
                -0.017214, 0.026107, -0.033665, 0.033706 ]
-        grids:
+        childGrids:
             - gridName: "grid_igns2011_nz"
               affineCoeffs: [ -33.0, 0.0, -0.1, 165.5, 0.1, 0.0 ]
               iNodeCount: 141

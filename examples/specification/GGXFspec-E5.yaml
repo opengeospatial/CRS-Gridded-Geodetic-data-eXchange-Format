@@ -110,7 +110,7 @@ ggxfGroups:
         dataSource: 
           sourceType: GDAL
           gdalSource: "GTIFF_DIR:1:nz_linz_nzgd2000-ndm-grid02.tif"
-        grids:
+        childGrids:
           - gridName: "ndm_grid_igns2011_nz"
             comment: "Secular deformation model derived from GNS model 2011 V4"
             affineCoeffs: [-33.0,0.0,-0.1,165.5,0.1,0.0]
