@@ -3,6 +3,7 @@
 from osgeo import gdal
 import yaml
 import argparse
+import re
 
 help = """
 Utility script to compile YAML format GGXF grid headers corresponding to
@@ -26,6 +27,18 @@ def main():
 
     root = gdal.Open(grid_file)
     datasets = [root]
+    parameters = []
+    for band in range(root.RasterCount):
+        rb = root.GetRasterBand(band + 1)
+        name = rb.GetDescription()
+        name = name.strip()
+        name = re.sub(r"[^\w\s].*", "", name)
+        name = re.sub(r"\s+(\w)", lambda m: m.group(1).upper(), name.lower())
+        name = re.sub(r"\s+", "", name)
+        if name == "":
+            name = f"band{band}"
+        parameters.append(name)
+
     for fname, name in root.GetSubDatasets():
         subset = gdal.Open(fname)
         datasets.append(subset)
@@ -51,8 +64,8 @@ def main():
             "gridName": name,
             "affineCoeffs": coeffs,
             "iNodeCount": dataset.RasterXSize,
-            "jNodCount": dataset.RasterYSize,
-            "dataSource": description,
+            "jNodeCount": dataset.RasterYSize,
+            "dataSource": f'{{"sourceType": "GDAL", "gdalSource": "{description}"}}',
         }
         if parent != "NONE":
             parents[name] = parent
@@ -70,8 +83,14 @@ def main():
             pgrid["grids"].append(grid)
 
     with open(yaml_file, "w") as outh:
+        print("ggxfGroups:", file=outh)
+        print(f'  - ggxfGroupName: "{grid_file}"', file=outh)
+        print(f"    gridParameters:", file=outh)
+        for p in parameters:
+            print(f"     - {p}", file=outh)
+        print(f"    grids:", file=outh)
         for g in rootgrids:
-            printGrid(g, outh)
+            printGrid(g, outh, "      - ")
 
 
 def printGrid(g, outh, indent="  - "):
@@ -79,7 +98,7 @@ def printGrid(g, outh, indent="  - "):
         if key != "grids":
             print(f"{indent}{key}: {val}", file=outh)
         else:
-            print(f"{indent}grids:", file=outh)
+            print(f"{indent}childGrids:", file=outh)
             for grid in val:
                 printGrid(grid, outh, indent + "  - ")
         indent = indent.replace("-", " ")
