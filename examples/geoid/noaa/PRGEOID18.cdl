@@ -1,0 +1,53 @@
+netcdf PRGEOID18 {
+
+// global attributes:
+		:Conventions = "GGXF-1.0, ACDD-1.3" ;
+		:source_file = "PRGEOID18.ggxf" ;
+		:content = "geoidModel" ;
+		:title = "hybrid geoid" ;
+		:summary = "hybrid geoid" ;
+		:geospatial_lat_min = 17.87 ;
+		:geospatial_lon_min = -68. ;
+		:geospatial_lat_max = 18.53 ;
+		:geospatial_lon_max = -65. ;
+		:extent_description = "Puerto Rico - onshore." ;
+		:interpolationCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
+		:sourceCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]]]\n" ;
+		:targetCrsWkt = "VERTCRS[\"PRVD02 - NOHt\",\n  VDATUM[\"Puerto Rico Vertical Datum of 2002\"],\n  CS[vertical,1],\n  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n" ;
+		:parameters.count = 1LL ;
+		:parameters.0.parameterName = "geoidHeight" ;
+		:parameters.0.sourceCrsAxis = 2LL ;
+		:parameters.0.unit = "metre" ;
+		:parameters.0.unitSiRatio = 1. ;
+		:operationAccuracy = 0.015 ;
+		:institution = "National Geodetic Survey, National Oceanic and Atmospheric Administration." ;
+		:deliveryPoint = "1315 East West Hwy" ;
+		:city = "Silver Spring" ;
+		:postalCode = "20910" ;
+		:country = "United States of America" ;
+		:publisher_url = "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g2018p0.asc.zip" ;
+		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
+		:_SuperblockVersion = 2 ;
+		:_IsNetcdf4 = 1 ;
+		:_Format = "netCDF-4" ;
+
+group: puerto_rico_virgin_islands_geoid18 {
+
+  // group attributes:
+  		:interpolationMethod = "biquadratic" ;
+
+  group: puerto_rico_virgin_islands_geoid18 {
+    dimensions:
+    	iNodeCount = 301 ;
+    	jNodeCount = 361 ;
+    variables:
+    	float geoidHeight(jNodeCount, iNodeCount) ;
+    		geoidHeight:_Storage = "contiguous" ;
+    		geoidHeight:_Endianness = "little" ;
+
+    // group attributes:
+    		:affineCoeffs = 21., 0., -0.01666666667, -69., 0.01666666667, 0. ;
+    		:comment = "grid starts in the top left (northwest) corner and works across (east) and down (south)" ;
+    } // group puerto_rico_virgin_islands_geoid18
+  } // group puerto_rico_virgin_islands_geoid18
+}
