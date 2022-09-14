@@ -8,4 +8,4 @@ This is loaded using the dataSource YAML attribute from the NTV2_0.GSB file.  Th
 The file test_points.csv contains a few points to test the grid, including two different parent grids and a point on the Banff subgrid.
 
 <b>NOTE</b>  The output generated in testpoints.out differs from the correct value in that the longitudeOffset it calculates is for a west positive longitude, which is how the NTv2 file is constructed.  
-This could be handled in GGXF by either adding some capability to transform the offset when the grid is loaded into the GGXF file (as a dataSource parameter?), or by defining the parameter as a west positive longitude shift in the GGXF group. (CC: My inclination is to convert it to an east positive longitude shift in the GGXF file.)
+This could be handled in GGXF by either adding some capability to transform the offset when the grid is loaded into the GGXF file (as a dataSource parameter?), or by defining the parameter as a west positive longitude shift in the GGXF group.

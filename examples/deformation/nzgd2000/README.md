@@ -1,10 +1,11 @@
-deformation_model_to_yaml.py
-============================
+NZGD2000 deformation model
+==========================
 
-Taken from https://github.com/opengeospatial/CRS-Deformation-Models/tree/master/yaml_header
+The NZGD2000 deformation model GGXF dataset is compiled from the JSON/GeoTIFF implementation
+in the nzdm directory.  The build_yaml.sh script compiles the yaml file using the script
+in scripts/deformation_model_to_ggxf_yaml.py.  In addition to the deformation model in the
+nzdm directory it uses additional metadata from the nzgd2000_meta.yaml file.
 
-Work in progress on non-generallised JSON/GeoTIFF to GGXF text format 
-converter converting a JSON/GeoTIFF deformation model format file.  
-
-The current version has been used to build a subset of the LINZ deformation model,
-in nz_linz_nzgd2000-20180701.yaml.  The grids used by this are in nzdm/
+The script build_subset_yaml.sh can be used to build a relatively small subset of the full
+model by cutting most of the grids out of the model.  This is for demonstration/testing only,
+the subset it generates does not represent the true value of the NZGD2000 deformation model.
