@@ -44,7 +44,7 @@ The following options can apply to YAML format input (I) and output (O):
   "{YAML_OPTION_GRID_DIRECTORY}" (I) Base directory used for external grid source names
   "{YAML_OPTION_CHECK_DATASOURCE_AFFINE}" (I) Compare affine coeffs from data source with those defined in YAML (true or false)
   "{YAML_OPTION_USE_GRIDDATA_SECTION}" (O) Use a gridData section for grid data (true or false, default true if more than one grid)
-  "{YAML_OPTION_WRITE_HEADERS_ONLY} (O) Write headers only - omit the grid data"
+  "{YAML_OPTION_WRITE_HEADERS_ONLY} (O) Write headers only - omit the grid data
 """
 
 YAML_ATTR_DATA_SOURCE_TYPE = "sourceType"

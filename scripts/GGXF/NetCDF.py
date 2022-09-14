@@ -49,7 +49,7 @@ NETCDF_ATTR_CONTEXT_GRID = "grid"
 NETCDF_OPTIONS = f"""
 The following options apply to NetCDF input (I) and output (O):
 
-  "{NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES}" (O) Convert attributes to snake_case (default false)"
+  "{NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES}" (O) Convert attributes to snake_case (default false)
   "{NETCDF_OPTION_WRITE_CDL}" (O) Generate an output CDL file as well as a NetCDF file (default false)
   "{NETCDF_OPTION_WRITE_CDL_HEADER}" (O) Only write the header information in the CDL file (default false)
   "{NETCDF_OPTION_USE_COMPOUND_TYPE}" (O) Use compound types (very limited test implementation) (default false)
