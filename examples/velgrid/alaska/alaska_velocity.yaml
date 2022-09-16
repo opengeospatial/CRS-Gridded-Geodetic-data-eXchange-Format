@@ -43,9 +43,9 @@ ggxfGroups:
     grids:
       - gridName: Alaska-mainland
         gridPriority: 1
-        affineCoeffs: [56.0, 0.0, 0.25, -170.0, 0.25, 0.0]
-        iNodeCount: 161
-        jNodeCount: 69
+        iNodeCount: 69
+        jNodeCount: 161
+        affineCoeffs: [ 56.0, 0.25, 0.0, -170.0, 0.0, 0.25 ]
         dataSource:
           sourceType: CSV
           csvFilename: alaska-mainland-velocity.csv
@@ -53,9 +53,9 @@ ggxfGroups:
           parameterFields: [de, dn, du]
       - gridName: Alaska-south-central
         gridPriority: 2
-        affineCoeffs: [53.25, 0.0, 0.25, -162.0, 0.25, 0.0]
-        iNodeCount: 76
-        jNodeCount: 51
+        iNodeCount: 51
+        jNodeCount: 76
+        affineCoeffs: [ 53.25, 0.25, 0.0, -162.0, 0.0, 0.25 ]
         dataSource:
           sourceType: CSV
           csvFilename: alaska-southcentral-velocity.csv
@@ -63,9 +63,9 @@ ggxfGroups:
           parameterFields: [de, dn, du]
       - gridName: Alaska-south-east
         gridPriority: 3
-        affineCoeffs: [54.0, 0.0, 0.25, -142.0, 0.25, 0.0]
-        iNodeCount: 49
-        jNodeCount: 41
+        iNodeCount: 41
+        jNodeCount: 49
+        affineCoeffs: [ 54.0, 0.25, 0.0, -142.0, 0.0, 0.25 ]
         dataSource:
           sourceType: CSV
           csvFilename: alaska-southeast-velocity.csv
@@ -73,9 +73,9 @@ ggxfGroups:
           parameterFields: [de, dn, du]
       - gridName: Alaska-st-elias
         gridPriority: 4
-        affineCoeffs: [56.5, 0.0, 0.25, -150.0, 0.25, 0.0]
-        iNodeCount: 41
-        jNodeCount: 27
+        iNodeCount: 27
+        jNodeCount: 41
+        affineCoeffs: [ 56.5, 0.25, 0.0, -150.0, 0.0, 0.25 ]
         dataSource:
           sourceType: CSV
           csvFilename: alaska-stelias-velocity.csv

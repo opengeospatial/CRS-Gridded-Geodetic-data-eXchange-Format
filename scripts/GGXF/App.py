@@ -320,8 +320,8 @@ class App:
                 data = grid.data()
                 gridid = str(id)
                 valcols = [fieldid[pname] for pname in grid.group().parameterNames()]
-                for inode in range(imax + 1):
-                    for jnode in range(jmax + 1):
+                for jnode in range(jmax + 1):
+                    for inode in range(imax + 1):
                         xy = grid.calcxy([inode, jnode])
                         vals = data[jnode, inode]
                         row = [str(c) for c in xy]

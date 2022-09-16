@@ -1,5 +1,5 @@
 ggxfVersion: GGXF-1.0
-filename: test.out.yaml
+filename: test-out.yaml
 content: geoidModel
 title: hybrid geoid
 abstract: "Tiny geoid for testing GGXF implementation"

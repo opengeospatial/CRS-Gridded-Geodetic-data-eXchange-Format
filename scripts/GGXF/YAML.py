@@ -241,11 +241,11 @@ class Reader(BaseReader):
                     )
                     if gtest:
                         self.error(
-                            f"{gridname} affine coefficients from {datasource} don't match: {affine}"
+                            f"{gridname} affine coefficients from dataSource don't match: {affine}"
                         )
                     else:
                         self._logger.warning(
-                            f"{gridname} affine coefficients from {datasource} differ from grid definition (max diff {maxdiff})"
+                            f"{gridname} affine coefficients from dataSource {affine} differ from grid definition {affine} (max diff {maxdiff})"
                         )
             else:
                 ygrid[GRID_ATTR_AFFINE_COEFFS] = affine

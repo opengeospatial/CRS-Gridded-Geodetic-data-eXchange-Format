@@ -27,6 +27,10 @@ netcdf PRVI_DOV18 {
 		:postalCode = "20910" ;
 		:country = "United States of America" ;
 		:publisher_url = "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g2018p0.asc.zip" ;
+		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
+		:_SuperblockVersion = 2 ;
+		:_IsNetcdf4 = 1 ;
+		:_Format = "netCDF-4" ;
 
 group: Puerto\ Rico\ Virgin\ Islands\ DEFLEC18 {
   dimensions:
@@ -41,6 +45,8 @@ group: Puerto\ Rico\ Virgin\ Islands\ DEFLEC18 {
     	jNodeCount = 361 ;
     variables:
     	float deviation(jNodeCount, iNodeCount, deviationCount) ;
+    		deviation:_Storage = "contiguous" ;
+    		deviation:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = 15., 0., 0.01666666667, -69., 0.01666666667, 0. ;

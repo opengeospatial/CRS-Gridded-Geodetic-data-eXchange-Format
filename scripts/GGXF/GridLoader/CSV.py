@@ -55,18 +55,18 @@ def LoadGrid(datasource, logger):
                 fldids.append(fields.index(field))
 
             data = []
-            nrow = 0
+            nj = 0
             for row in csvr:
-                nrow += 1
+                nj += 1
                 try:
                     data.append([float(row[fld]) for fld in fldids])
                 except IndexError:
                     raise CsvLoaderError(
-                        f"Not enough columns at line {nrow} of CSV file {filename}"
+                        f"Not enough columns at line {nj} of CSV file {filename}"
                     )
                 except ValueError:
                     raise CsvLoaderError(
-                        f"Non numeric value at line {nrow} of CSV file {filename}"
+                        f"Non numeric value at line {nj} of CSV file {filename}"
                     )
     except CsvLoaderError:
         raise
@@ -77,21 +77,21 @@ def LoadGrid(datasource, logger):
     xy = data[:, :2]
     dxy = xy[1:, :] - xy[:-1, :]
     reverse = ((dxy[:, 0] * dxy[0, 0] + dxy[:, 1] * dxy[0, 1]) < 0.0).nonzero()[0] + 1
-    ncol = reverse[0]
-    nrow = reverse.size + 1
-    test = np.arange(1, nrow) * ncol
-    if any(reverse != test) or data.shape[0] != nrow * ncol:
+    ni = reverse[0]
+    nj = reverse.size + 1
+    test = np.arange(1, nj) * ni
+    if any(reverse != test) or data.shape[0] != nj * ni:
         raise CsvLoaderError(f"CSV file {filename} doesn't contain a regular grid")
 
     # Calculate affine coefficients assuming grid is aligned with axes
-    xy = xy.reshape(nrow, ncol, 2)
+    xy = xy.reshape(nj, ni, 2)
     xy0 = xy[0, 0]
-    ddj = (xy[nrow - 1, 0] - xy0) / (nrow - 1)
-    ddi = (xy[0, ncol - 1] - xy0) / (ncol - 1)
+    ddj = (xy[nj - 1, 0] - xy0) / (nj - 1)
+    ddi = (xy[0, ni - 1] - xy0) / (ni - 1)
 
     # Compare the node coordinates with the values calculated from the indices to
     # see if the nodes are on the inferred grid.
-    ij = np.indices((nrow, ncol))
+    ij = np.indices((nj, ni))
     tmat = np.vstack((ddj, ddi))
     calc = np.tensordot(tmat.T, ij, axes=[[1], [0]])
     calc = np.moveaxis(calc, 0, -1) + xy0
@@ -104,11 +104,10 @@ def LoadGrid(datasource, logger):
 
     # Compile the affine coefficients and grid nodes as expected by the YAML GGXF reader
 
-    affine = np.array([xy0[0], ddj[0], ddi[0], xy0[1], ddj[1], ddi[1]]).tolist()
+    affine = np.array([xy0[0], ddi[0], ddj[0], xy0[1], ddi[1], ddj[1]]).tolist()
     gridData = data[:, 2:]
-    gridData = gridData.reshape(nrow, ncol, gridData.shape[1])
-    gridData = np.moveaxis(gridData, 0, 1)
-    size = (int(nrow), int(ncol))
+    gridData = gridData.reshape(nj, ni, gridData.shape[1])
+    size = (int(ni), int(nj))
     logger.debug(f"CsvLoader: Loaded {filename}")
     logger.debug(f"CsvLoader: size {size}")
     logger.debug(f"CsvLoader: affine coeffs {affine}")
