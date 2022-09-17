@@ -44,10 +44,15 @@ The following options can apply to YAML format input (I) and output (O):
   "{YAML_OPTION_GRID_DIRECTORY}" (I) Base directory used for external grid source names
   "{YAML_OPTION_CHECK_DATASOURCE_AFFINE}" (I) Compare affine coeffs from data source with those defined in YAML (true or false)
   "{YAML_OPTION_USE_GRIDDATA_SECTION}" (O) Use a gridData section for grid data (true or false, default true if more than one grid)
-  "{YAML_OPTION_WRITE_HEADERS_ONLY} (O) Write headers only - omit the grid data
+  "{YAML_OPTION_WRITE_HEADERS_ONLY}" (O) Write headers only - omit the grid data
 """
 
-YAML_ATTR_DATA_SOURCE_TYPE = "sourceType"
+SOURCE_ATTR_SOURCE_TYPE = "sourceType"
+# Common data source attributes allowing transformation of parameters
+SOURCE_ATTR_PARAMETER_TRANSFORMATION = "parameterTransformation"
+SOURCE_XFORM_ATTR_PARAMETER_NAME = "parameterName"
+SOURCE_XFORM_ATTR_PARAMETER_SCALE = "scale"
+SOURCE_XFORM_ATTR_PARAMETER_OFFSET = "offset"
 
 
 class Reader(BaseReader):
@@ -160,6 +165,12 @@ class Reader(BaseReader):
             datasource = ygrid.pop(GRID_ATTR_DATA_SOURCE)
             ygrid[GRID_ATTR_DATA] = None
             self.installGridFromSource(ygrid, datasource)
+            if SOURCE_ATTR_PARAMETER_TRANSFORMATION in datasource:
+                self.applyParameterTransformation(
+                    group,
+                    ygrid[GRID_ATTR_DATA],
+                    datasource[SOURCE_ATTR_PARAMETER_TRANSFORMATION],
+                )
 
         if self.validator().validateGridAttributes(ygrid, context=context):
             self.validateGridData(group, ygrid)
@@ -191,16 +202,16 @@ class Reader(BaseReader):
 
         gridname = ygrid.get(GRID_ATTR_GRID_NAME, "unnamed")
 
-        datasourceType = datasource.get(YAML_ATTR_DATA_SOURCE_TYPE)
+        datasourceType = datasource.get(SOURCE_ATTR_SOURCE_TYPE)
         if datasourceType is None:
             self.error(
-                f"Grid {gridname}: {GRID_ATTR_DATA_SOURCE} needs a {YAML_ATTR_DATA_SOURCE_TYPE} attribute"
+                f"Grid {gridname}: {GRID_ATTR_DATA_SOURCE} needs a {SOURCE_ATTR_SOURCE_TYPE} attribute"
             )
             return
 
         try:
             if not re.match(r"^\w+$", datasourceType):
-                raise RuntimeError(f"Invalid {YAML_ATTR_DATA_SOURCE_TYPE}")
+                raise RuntimeError(f"Invalid {SOURCE_ATTR_SOURCE_TYPE}")
             loader = importlib.import_module(f"..GridLoader.{datasourceType}", __name__)
         except Exception as ex:
             self.error(
@@ -253,6 +264,25 @@ class Reader(BaseReader):
             ygrid[GRID_ATTR_DATA] = gridData
         except Exception as ex:
             self.error(f"Grid {gridname}: Failed to load - {ex}")
+
+    def applyParameterTransformation(self, group, grid, transforms):
+        if not isinstance(transforms, list):
+            self.error(
+                f"{SOURCE_ATTR_PARAMETER_TRANSFORMATION} must contain a list of transformations"
+            )
+            return
+        paramNames = list(group.parameterNames())
+        for transform in transforms:
+            try:
+                name = transform.get(SOURCE_XFORM_ATTR_PARAMETER_NAME)
+                if name not in paramNames:
+                    raise RuntimeError(f"{name} is not a valid parameter name")
+                nprm = paramNames.index(name)
+                scale = float(transform.get(SOURCE_XFORM_ATTR_PARAMETER_SCALE, 1.0))
+                offset = float(transform.get(SOURCE_XFORM_ATTR_PARAMETER_OFFSET, 0.0))
+                grid[:, :, nprm] = grid[:, :, nprm] * scale + offset
+            except Exception as ex:
+                self.error(f"Error in {SOURCE_ATTR_PARAMETER_TRANSFORMATION}: {ex}")
 
     def validateGridData(self, group, ygrid):
         gridname = ygrid.get(GRID_ATTR_GRID_NAME, "unnamed")

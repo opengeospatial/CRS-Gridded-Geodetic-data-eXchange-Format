@@ -13,6 +13,25 @@ CSV_PARAMETER_FIELDS_ATTR = "parameterFields"
 
 CSV_GRID_TOLERANCE_FACTOR = 0.00001
 
+HELP = f"""
+CSV grid loader for GGXF YAML format.  Assumes a comma separated CSV file
+with a header line containing the field names. 
+
+The data must be ordered following rows and columns in the grid.
+
+Datasource attributes:
+
+  {CSV_FILENAME_ATTR}: filename
+     The name of the CSV file to load
+
+  {CSV_INTERPOLATION_COORD_ATTR}: [ "latitude", "longitude" ]
+     Array specifying the fields containing the interpolation coordinate axes
+
+  {CSV_PARAMETER_FIELDS_ATTR}: ["param1", "param2" ]
+     Array specifying the names of fields defining parameters at grid nodes.
+
+"""
+
 
 class CsvLoaderError(RuntimeError):
     pass

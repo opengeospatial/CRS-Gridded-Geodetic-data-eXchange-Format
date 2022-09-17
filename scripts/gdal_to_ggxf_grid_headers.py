@@ -2,6 +2,7 @@
 
 from osgeo import gdal
 import yaml
+import json
 import argparse
 import re
 
@@ -21,6 +22,11 @@ def main():
         "output_grid_headers_file",
         help="Name of file to which YAML grid headers are written",
     )
+    parser.add_argument(
+        "-p",
+        "--parameters",
+        help="'/' delimited list of parameter names, optionally followed by :##.## scale factor",
+    )
     args = parser.parse_args()
     grid_file = args.grid_data_file
     yaml_file = args.output_grid_headers_file
@@ -38,6 +44,22 @@ def main():
         if name == "":
             name = f"band{band}"
         parameters.append(name)
+
+    transform = None
+    if args.parameters:
+        argparams = args.parameters.split("/")
+        if len(argparams) != len(parameters):
+            raise RuntimeError(
+                f"Parameters argument {args.parameters} must have {len(parameters)} / delimited values"
+            )
+        parameters = []
+        for param in argparams:
+            if ":" in param:
+                (param, scale) = param.rsplit(":", maxsplit=1)
+                scale = float(scale)
+                transform = transform or []
+                transform.append({"parameterName": param, "scale": scale})
+            parameters.append(param)
 
     for fname, name in root.GetSubDatasets():
         subset = gdal.Open(fname)
@@ -60,16 +82,21 @@ def main():
         ]
         if name in grids:
             raise RuntimeError(f"Grid name {name} is duplicated")
+        datasource = {"sourceType": "GDAL", "gdalSource": description}
+        if transform:
+            datasource["parameterTransformation"] = transform
         grids[name] = {
             "gridName": name,
-            "affineCoeffs": coeffs,
+            # Some shenanigans to bring coefficients onto one line
+            "affineCoeffs": json.dumps(coeffs),
             "iNodeCount": dataset.RasterXSize,
             "jNodeCount": dataset.RasterYSize,
-            "dataSource": f'{{"sourceType": "GDAL", "gdalSource": "{description}"}}',
+            "dataSource": datasource,
         }
         if parent != "NONE":
             parents[name] = parent
 
+    # Compile nested grid structure
     rootgrids = []
     for name, grid in grids.items():
         if name not in parents:
@@ -78,30 +105,25 @@ def main():
             pgrid = grids.get(parents[name])
             if pgrid is None:
                 raise RuntimeError(f"Parent grid {parents[name]} not defined")
-            if "grids" not in pgrid:
-                pgrid["grids"] = []
-            pgrid["grids"].append(grid)
+            if "childGrids" not in pgrid:
+                pgrid["childGrids"] = []
+            pgrid["childGrids"].append(grid)
+
+    ggxfgroup = {
+        "ggxfGroups": [
+            {
+                "ggxfGroupName": grid_file,
+                "gridParameters": parameters,
+                "interpolationMethod": "bilinear",
+                "grids": rootgrids,
+            }
+        ]
+    }
+    ggxfyaml = yaml.dump(ggxfgroup, Dumper=yaml.SafeDumper, indent=2)
+    ggxfyaml = re.sub(r"([\"\'])(\[[^\]]*\])\1", r"\2", ggxfyaml)
 
     with open(yaml_file, "w") as outh:
-        print("ggxfGroups:", file=outh)
-        print(f'  - ggxfGroupName: "{grid_file}"', file=outh)
-        print(f"    gridParameters:", file=outh)
-        for p in parameters:
-            print(f"     - {p}", file=outh)
-        print(f"    grids:", file=outh)
-        for g in rootgrids:
-            printGrid(g, outh, "      - ")
-
-
-def printGrid(g, outh, indent="  - "):
-    for key, val in g.items():
-        if key != "grids":
-            print(f"{indent}{key}: {val}", file=outh)
-        else:
-            print(f"{indent}childGrids:", file=outh)
-            for grid in val:
-                printGrid(grid, outh, indent + "  - ")
-        indent = indent.replace("-", " ")
+        outh.write(ggxfyaml)
 
 
 if __name__ == "__main__":
