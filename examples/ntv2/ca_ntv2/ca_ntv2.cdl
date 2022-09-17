@@ -54,6 +54,7 @@ group: national_transformation_v2_0 {
   	offsetUncertaintyCount = 2 ;
 
   // group attributes:
+  		string :gridParameters = "latitudeOffset", "longitudeOffset", "latitudeOffsetUncertainty", "longitudeOffsetUncertainty" ;
   		:interpolationMethod = "bilinear" ;
 
   group: CAeast {
