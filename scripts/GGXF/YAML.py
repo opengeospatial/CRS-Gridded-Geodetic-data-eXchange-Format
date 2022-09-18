@@ -49,7 +49,7 @@ The following options can apply to YAML format input (I) and output (O):
 
 SOURCE_ATTR_SOURCE_TYPE = "sourceType"
 # Common data source attributes allowing transformation of parameters
-SOURCE_ATTR_PARAMETER_TRANSFORMATION = "parameterTransformation"
+SOURCE_ATTR_PARAMETER_TRANSFORMATION = "parameterTransformations"
 SOURCE_XFORM_ATTR_PARAMETER_NAME = "parameterName"
 SOURCE_XFORM_ATTR_PARAMETER_SCALE = "scale"
 SOURCE_XFORM_ATTR_PARAMETER_OFFSET = "offset"

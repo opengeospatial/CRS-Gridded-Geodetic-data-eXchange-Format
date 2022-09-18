@@ -84,11 +84,11 @@ def main():
             raise RuntimeError(f"Grid name {name} is duplicated")
         datasource = {"sourceType": "GDAL", "gdalSource": description}
         if transform:
-            datasource["parameterTransformation"] = transform
+            datasource["parameterTransformations"] = transform
         grids[name] = {
             "gridName": name,
             # Some shenanigans to bring coefficients onto one line
-            "affineCoeffs": json.dumps(coeffs),
+            "affineCoeffs": str(coeffs),
             "iNodeCount": dataset.RasterXSize,
             "jNodeCount": dataset.RasterYSize,
             "dataSource": datasource,
@@ -119,8 +119,10 @@ def main():
             }
         ]
     }
-    ggxfyaml = yaml.dump(ggxfgroup, Dumper=yaml.SafeDumper, indent=2)
-    ggxfyaml = re.sub(r"([\"\'])(\[[^\]]*\])\1", r"\2", ggxfyaml)
+    ggxfyaml = yaml.dump(ggxfgroup, Dumper=yaml.SafeDumper, indent=2, sort_keys=False)
+    ggxfyaml = re.sub(
+        r"([\"\'])(\[[^\]]*\])\1", lambda m: re.sub(r"\s+", " ", m.group(2)), ggxfyaml
+    )
 
     with open(yaml_file, "w") as outh:
         outh.write(ggxfyaml)
