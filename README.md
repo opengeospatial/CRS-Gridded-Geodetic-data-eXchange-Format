@@ -14,7 +14,7 @@ The purpose of the Gridded Geodetic Data Exchange Format (GGXF) project team is 
 - Develop a strategy for encoding the file
 - Develop a strategy for promulgating the format as a standard for the geodetic community
 
-The work will be conducted under the auspices of the OGC CRS DWG in close collaboration with the CRS DWG project team developing the “Deformation Functional Model” (DFM). On completion of the work, a Standards Working Group shall be chartered and materials passed over to the SWG for finalising into a Standard.
+The work will be conducted under the auspices of the OGC CRS DWG.  The GGXF format is intended to support geodetic gridded data used in coordinate transformations including deformation models.  This team is working in close collaboration with the CRS DWG project team developing the “Deformation Functional Model” (DFM) that is specifying these requirements. On completion of the work, a Standards Working Group shall be chartered and materials passed over to the SWG for finalising into a Standard.
 
 # Contents
 
