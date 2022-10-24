@@ -43,7 +43,7 @@ and it is difficult to read arbitrary subsets of a text file.
 Binary files are more suitable to grids of any size, including large ones,
 and are easier to subdivide in tiles or chunks of constant size.
 
-In conclusion GGXF data should be distributed and used in a binary format,
+The group decided that GGXF data should be distributed and used in a binary format,
 but we need a utility to dump header records and small grid extracts in a text format.
 Adopting YAML gives a structure of the text format which may be used in file creation,
 and for end user human-readable summary.
@@ -109,10 +109,12 @@ It results in an heterogeneous set of formats either nested inside the TIFF file
 * GDAL-specific metadata as an XML document stored as a character string in TIFF tag `A480`.
 * PROJ-specific metadata about datum shifts stored as an auxiliary JSON file.
 * GeoTIFF keys (GeoKeys) are themselves a custom format stored in a few TIFF tags.
-  ** The values of some GeoKeys are themselves a third layer of format.
-     For example there is a key for the name of geographic CRS (`GeogCitation`) but no keys for its components.
-     Consequently some GeoTIFF files encode the names of all components in a single character string like below:
-     ```GCS Name = wgs84|Datum = unknown|Ellipsoid = WGS_1984|Primem = Greenwich|```
+  * The values of some GeoKeys are themselves a third layer of format.
+    For example there is a key for the name of geographic CRS (`GeogCitation`) but no keys for its components.
+    Consequently some GeoTIFF files encode the names of all components in a single character string like below:
+    ```
+    GCS Name = wgs84|Datum = unknown|Ellipsoid = WGS_1984|Primem = Greenwich|
+    ```
 
 The rigidity in GeoTIFF metadata causes restrictions described in following sections.
 Those restrictions can not be resolved with existing TIFF tags and GeoTIFF keys,
