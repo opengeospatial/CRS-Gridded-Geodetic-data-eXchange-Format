@@ -42,7 +42,7 @@ targetCrsWkt: |
 parameters:
   - parameterName: "geoidHeight"
     sourceCrsAxis: 2
-    unit: "metre"
+    unitName: "metre"
     unitSiRatio: 1.0
 operationAccuracy: 0.015
 partyName: "National Geodetic Survey, National Oceanic and Atmospheric Administration."

@@ -643,7 +643,7 @@ class Parameter:
         self._set = metadata.get(PARAM_ATTR_PARAMETER_SET, self._name)
         axis = metadata.get(PARAM_ATTR_SOURCE_CRS_AXIS)
         self._sourceCrsAxis = axis if axis is not None and axis >= 0 else None
-        self._unit = metadata.get(PARAM_ATTR_UNIT, "")
+        self._unitName = metadata.get(PARAM_ATTR_UNIT_NAME, "")
         self._siRatio = float(metadata.get(PARAM_ATTR_UNIT_SI_RATIO, 1.0))
         self._minValue = metadata.get(PARAM_ATTR_PARAMETER_MINIMUM_VALUE)
         self._maxValue = metadata.get(PARAM_ATTR_PARAMETER_MAXIMUM_VALUE)
@@ -658,8 +658,8 @@ class Parameter:
     def sourceCrsAxis(self):
         return self._sourceCrsAxis
 
-    def unit(self):
-        return self._unit
+    def unitName(self):
+        return self._unitName
 
     def siRatio(self):
         return self._siRatio

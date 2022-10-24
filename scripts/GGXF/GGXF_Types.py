@@ -396,10 +396,10 @@ CommonAttributes = {
             ],
         },
         {
-            ATTRDEF_NAME: PARAM_ATTR_UNIT,
+            ATTRDEF_NAME: PARAM_ATTR_UNIT_NAME,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: PARAM_ATTR_UNIT,
+                    ATTRDEF_NAME: PARAM_ATTR_UNIT_NAME,
                     ATTRDEF_TYPE: str,
                 },
             ],

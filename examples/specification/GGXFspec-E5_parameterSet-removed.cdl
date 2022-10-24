@@ -29,15 +29,15 @@ netcdf GGXFspec-E5_parameterSet-removed {
 		:parameters.count = 3LL ;
 		:parameters.0.parameterName = "displacementEast" ;
 		:parameters.0.sourceCrsAxis = 1LL ;
-		:parameters.0.unit = "metre" ;
+		:parameters.0.unitName = "metre" ;
 		:parameters.0.unitSiRatio = 1. ;
 		:parameters.1.parameterName = "displacementNorth" ;
 		:parameters.1.sourceCrsAxis = 0LL ;
-		:parameters.1.unit = "metre" ;
+		:parameters.1.unitName = "metre" ;
 		:parameters.1.unitSiRatio = 1. ;
 		:parameters.2.parameterName = "displacementUp" ;
 		:parameters.2.sourceCrsAxis = 2LL ;
-		:parameters.2.unit = "metre" ;
+		:parameters.2.unitName = "metre" ;
 		:parameters.2.unitSiRatio = 1. ;
 		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
 		:_SuperblockVersion = 2 ;

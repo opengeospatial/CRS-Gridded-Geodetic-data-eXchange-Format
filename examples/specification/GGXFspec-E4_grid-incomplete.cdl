@@ -21,12 +21,12 @@ netcdf GGXFspec-E4_grid-incomplete {
 		:parameters.0.parameterName = "velocityEast" ;
 		:parameters.0.parameterSet = "velocity" ;
 		:parameters.0.sourceCrsAxis = 1LL ;
-		:parameters.0.unit = "m/yr" ;
+		:parameters.0.unitName = "m/yr" ;
 		:parameters.0.unitSiRatio = 3.16887651727315e-08 ;
 		:parameters.1.parameterName = "velocityNorth" ;
 		:parameters.1.parameterSet = "velocity" ;
 		:parameters.1.sourceCrsAxis = 0LL ;
-		:parameters.1.unit = "m/yr" ;
+		:parameters.1.unitName = "m/yr" ;
 		:parameters.1.unitSiRatio = 3.16887651727315e-08 ;
 		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
 		:_SuperblockVersion = 2 ;

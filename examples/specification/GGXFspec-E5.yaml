@@ -65,26 +65,26 @@ parameters:
       - parameterName: displacementEast
         parameterSet: "displacement"
         sourceCrsAxis: 1
-        unit: metre
+        unitName: metre
         unitSiRatio: 1.0
       - parameterName: displacementNorth
         parameterSet: "displacement"
         sourceCrsAxis: 0
-        unit: metre
+        unitName: metre
         unitSiRatio: 1.0
       - parameterName: displacementUp
         parameterSet: "displacement"
         sourceCrsAxis: 2
-        unit: metre
+        unitName: metre
         unitSiRatio: 1.0
       - parameterName: displacementHorizontalUncertainty
         parameterSet: "displacementUncertainty"
-        unit: metre
+        unitName: metre
         unitSiRatio: 1.0
         uncertaintyMeasure: 2CEP
       - parameterName: displacementUpUncertainty
         parameterSet: "displacementUncertainty"
-        unit: metre
+        unitName: metre
         unitSiRatio: 1.0
         uncertaintyMeasure: 2SE
 

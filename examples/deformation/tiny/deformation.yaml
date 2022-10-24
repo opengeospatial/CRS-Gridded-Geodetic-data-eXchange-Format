@@ -32,31 +32,31 @@ interpolationCrsWkt: GEOGCRS["NZGD2000",DATUM["New Zealand Geodetic Datum 2000",
 parameters:
 - parameterName: displacementEast
   parameterSet: displacement
-  unit: metre
+  unitName: metre
   unitSiRatio: 1.0
   sourceCrsAxis: 1
   noDataFlag: 9999.0
 - parameterName: displacementNorth
   parameterSet: displacement
-  unit: metre
+  unitName: metre
   unitSiRatio: 1.0
   sourceCrsAxis: 0
   noDataFlag: 9999.0
 - parameterName: displacementUp
   parameterSet: displacement
-  unit: metre
+  unitName: metre
   unitSiRatio: 1.0
   sourceCrsAxis: 2
   noDataFlag: 9999.0
 - parameterName: displacementHorizontalUncertainty
   parameterSet: displacementUncertainty
-  unit: metre
+  unitName: metre
   unitSiRatio: 1.0
   uncertaintyMeasure: 2CEP
   noDataFlag: 999.0
 - parameterName: displacementUpUncertainty
   parameterSet: displacementUncertainty
-  unit: metre
+  unitName: metre
   unitSiRatio: 1.0
   uncertaintyMeasure: 2SE
   noDataFlag: 999.0

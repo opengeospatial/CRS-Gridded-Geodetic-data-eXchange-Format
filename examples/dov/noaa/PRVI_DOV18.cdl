@@ -15,11 +15,11 @@ netcdf PRVI_DOV18 {
 		:parameters.count = 2LL ;
 		:parameters.0.parameterName = "deviationEast" ;
 		:parameters.0.parameterSet = "deviation" ;
-		:parameters.0.unit = "arc-second" ;
+		:parameters.0.unitName = "arc-second" ;
 		:parameters.0.unitSiRatio = 4.84813681109536e-06 ;
 		:parameters.1.parameterName = "deviationNorth" ;
 		:parameters.1.parameterSet = "deviation" ;
-		:parameters.1.unit = "arc-second" ;
+		:parameters.1.unitName = "arc-second" ;
 		:parameters.1.unitSiRatio = 4.84813681109536e-60 ;
 		:institution = "National Geodetic Survey, National Oceanic and Atmospheric Administration." ;
 		:deliveryPoint = "1315 East West Hwy" ;

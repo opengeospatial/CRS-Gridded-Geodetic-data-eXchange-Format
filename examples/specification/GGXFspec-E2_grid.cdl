@@ -25,7 +25,7 @@ netcdf GGXFspec-E2_grid {
 		:parameters.count = 1LL ;
 		:parameters.0.parameterName = "geoidHeight" ;
 		:parameters.0.sourceCrsAxis = 2LL ;
-		:parameters.0.unit = "metre" ;
+		:parameters.0.unitName = "metre" ;
 		:parameters.0.unitSiRatio = 1. ;
 		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
 		:_SuperblockVersion = 2 ;

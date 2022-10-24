@@ -67,15 +67,15 @@ uncertaintyMeasure:  |
 parameters:
       - parameterName: displacementEast
         sourceCrsAxis: 1
-        unit: metre
+        unitName: metre
         unitSiRatio: 1.0
       - parameterName: displacementNorth
         sourceCrsAxis: 0
-        unit: metre
+        unitName: metre
         unitSiRatio: 1.0
       - parameterName: displacementUp
         sourceCrsAxis: 2
-        unit: metre
+        unitName: metre
         unitSiRatio: 1.0
 
 

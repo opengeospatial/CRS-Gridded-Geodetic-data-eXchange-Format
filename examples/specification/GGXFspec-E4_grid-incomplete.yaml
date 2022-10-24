@@ -51,12 +51,12 @@ parameters:
       - parameterName: velocityEast
         parameterSet: "velocity"
         sourceCrsAxis: 1
-        unit: m/yr
+        unitName: m/yr
         unitSiRatio: 3.16887651727315E-08
       - parameterName: velocityNorth
         parameterSet: "velocity"
         sourceCrsAxis: 0
-        unit: m/yr
+        unitName: m/yr
         unitSiRatio: 3.16887651727315E-08
 
 ggxfGroups:

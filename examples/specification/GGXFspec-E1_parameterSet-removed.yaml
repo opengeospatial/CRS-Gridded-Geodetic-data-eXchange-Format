@@ -35,11 +35,11 @@ operationAccuracy: 2
 parameters:
   - parameterName: latitudeOffset
     sourceCrsAxis: 0
-    unit: arc-second
+    unitName: arc-second
     unitSiRatio: 4.84813681109536E-06
   - parameterName: longitudeOffset
     sourceCrsAxis: 1
-    unit: arc-second
+    unitName: arc-second
     unitSiRatio: 4.84813681109536E-06
 
 

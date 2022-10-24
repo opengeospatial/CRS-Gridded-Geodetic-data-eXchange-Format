@@ -118,7 +118,7 @@ CommonAttributes:
       Optional: true
     - AttributeName: unitSiRatio
       Type: float
-    - AttributeName: unit
+    - AttributeName: unitName
       Type: str
     - AttributeName: sourceCrsAxis
       Type: int

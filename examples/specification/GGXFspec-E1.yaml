@@ -37,12 +37,12 @@ parameters:
   - parameterName: latitudeOffset
     parameterSet: "offset"
     sourceCrsAxis: 0
-    unit: arc-second
+    unitName: arc-second
     unitSiRatio: 4.84813681109536E-06
   - parameterName: longitudeOffset
     parameterSet: "offset"
     sourceCrsAxis: 1
-    unit: arc-second
+    unitName: arc-second
     unitSiRatio: 4.84813681109536E-06
 
 

@@ -17,7 +17,7 @@ netcdf test_geoid {
 		:parameters.count = 1LL ;
 		:parameters.0.parameterName = "geoidHeight" ;
 		:parameters.0.sourceCrsAxis = 2LL ;
-		:parameters.0.unit = "metre" ;
+		:parameters.0.unitName = "metre" ;
 		:parameters.0.unitSiRatio = 1. ;
 		:operationAccuracy = 0.015 ;
 		:institution = "A Hypothetical National Geodetic Survey." ;

@@ -20,12 +20,12 @@ netcdf GGXFspec-E1 {
 		:parameters.0.parameterName = "latitudeOffset" ;
 		:parameters.0.parameterSet = "offset" ;
 		:parameters.0.sourceCrsAxis = 0LL ;
-		:parameters.0.unit = "arc-second" ;
+		:parameters.0.unitName = "arc-second" ;
 		:parameters.0.unitSiRatio = 4.84813681109536e-06 ;
 		:parameters.1.parameterName = "longitudeOffset" ;
 		:parameters.1.parameterSet = "offset" ;
 		:parameters.1.sourceCrsAxis = 1LL ;
-		:parameters.1.unit = "arc-second" ;
+		:parameters.1.unitName = "arc-second" ;
 		:parameters.1.unitSiRatio = 4.84813681109536e-06 ;
 		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
 		:_SuperblockVersion = 2 ;

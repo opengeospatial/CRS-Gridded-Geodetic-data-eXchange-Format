@@ -29,10 +29,10 @@ interpolationCrsWkt: |
 
 parameters:
     - parameterName: deviationEast
-      unit: arc-second
+      unitName: arc-second
       unitSiRatio: 4.84813681109536E-06
     - parameterName: deviationNorth
-      unit: arc-second
+      unitName: arc-second
       unitSiRatio: 4.84813681109536E-06
 
 ggxfGroups:
