@@ -119,7 +119,9 @@ It results in an heterogeneous set of formats either nested inside the TIFF file
 The rigidity in GeoTIFF metadata causes restrictions described in following sections.
 Those restrictions can not be resolved with existing TIFF tags and GeoTIFF keys,
 and new tags or keys can not be easily added.
-New tags must be registered by sending a request to Adobe (owner of the TIFF specification).
+New TIFF tags must be registered by sending a request to Adobe (owner of the TIFF specification),
+and new GeoTIFF keys are workaround for the difficulty of adding TIFF tags
+(the workaround is to pack many key-value pairs in the same TIFF tags).
 Finally we note that GeoTIFF is not used by any geodetic data producers to our knowledge,
 except for exporting their grids to PROJ.
 
@@ -157,13 +159,13 @@ but there is no natural solution under TIFF framework.
 The tree structure would need to be defined in an auxiliary file, or in new GeoTIFF keys,
 or inferred by a (possibly error-prone) comparison of GeoKeys in each grid.
 
-The PROJ Geodetic TIFF grids (GTG) format uses a GDAL-specific TIFF tag (`GDAL_METADATA`)
-for encoding in a XML document the metadata not supported by GeoTIFF,
-which includes a `parent_grid_name` item.
-But PROJ itself ignores that item and rather infers grid relationships from their extents.
+PROJ infers grid relationships from the grid extents.
 That convention supports a single root grid, and requires strict nesting
 (child grids fully contained and not overlapping)
 to allow unambiguous resolution by extents.
+The relationship can be made more explicit with the addition of a `parent_grid_name` item
+in GDAL-specific metadata (see below), but this is specific to a particular implementation
+and PROJ itself ignores that metadata item at the time of writing this page.
 
 
 
@@ -183,23 +185,32 @@ A data structure not yet used but of potential interest in future GGXF versions 
 
 ### GDAL metadata
 
-The PROJ Geodetic TIFF grids (GTG) format workarounds TIFF limitations
-by storing an XML document in the `GDAL_METADATA` TIFF tag.
-Elements defined by GTG specifications are
+PROJ and GDAL uses a GDAL-specific TIFF tag (`GDAL_METADATA` at `A480`)
+for encoding in a XML document the metadata not supported by GeoTIFF.
+This is an unregistered tag used only by GDAL library and its ecosystem.
+It serves the same purpose as an auxiliary file but within the TIFF file.
+
+The [PROJ Geodetic TIFF grids (GTG)](https://proj.org/specifications/geodetictiffgrids.html)
+format uses `GDAL_METADATA` as the auxiliary document
+where to store metadata needed for the use of GTG files by PROJ library.
+`GDAL_METADATA` contains an XML document with schema and items defined by GDAL.
+PROJ GTG adds the following items to the GDAL set:
 `SCALE`, `OFFSET`, `TYPE`, `DESCRIPTION`, `UNITTYPE`,
 `target_crs_epsg_code`, `target_crs_wkt`,
 `source_crs_epsg_code`, `source_crs_wkt`,
 `interpolation_crs_wkt`, `recommended_interpolation_method`, `area_of_use`,
 `grid_name`, `parent_grid_name` and `number_of_nested_grids`.
-But that tag is specific to the GDAL project, and (at the time of writting this page)
+
+The `GDAL_METADATA` tag is specific to the GDAL project, and (at the time of writting this page)
 has not been registered by Adobe as a reserved TIFF tag.
-This tag is (at least informally) owned by the GDAL community,
-which implies that its content can not be defined by OGC except through collaboration with GDAL.
+While unlikely, there is no guarantee that no one will decide to use the `A480` tag for another purpose.
+Even if we consider this tag as _de facto_ reserved, it is (at least informally) owned by the GDAL community.
+Its content can not be defined by OGC except through collaboration with GDAL.
 
 In addition of `GDAL_METADATA`, PROJ also uses metadata stored in an auxiliary JSON file.
 The use of `GDAL_METADATA` and auxiliary JSON file are two ways to achieve the same goal:
 workaround TIFF limitations by attaching documents in other formats.
-Those two auxiliary documents are needed together for deformation models.
+Those two auxiliary documents are used together for deformation models.
 
 
 
@@ -213,9 +224,11 @@ a given netCDF file can easily contain metadata that most software do not know h
 But this is not different than XML or JSON:
 for enabling data exploitation, these formats must be completed by a schema.
 
-The CF-Conventions can been seen as a schema defined by the Climate and Forecast community for netCDF files.
+The [CF-Conventions](https://cfconventions.org/) can been seen as a
+schema defined by the Climate and Forecast community for netCDF files.
 It is the most widely used schema, but not the only one.
-For example the Attribute Convention for Dataset Discovery (ACDD)
+For example the
+[Attribute Convention for Dataset Discovery (ACDD)](https://wiki.esipfed.org/Attribute_Convention_for_Data_Discovery)
 is another set of conventions which complement the CF-Conventions.
 Highly specialized datasets using their own conventions are not rare
 (and contribute to the apparent lack of interoperability of netCDF format),
@@ -363,16 +376,26 @@ Most functionality can be added to any format with extensions,
 auxiliary files or command-line tools (`gzip`, `ncdump`…).
 But doing so requires more work for the specification and for implementers.
 
-|                                              | Text | NTv2 | ZARR | GeoTIFF | NetCDF |
-| :------------------------------------------- | :--: | :--: | :--: | :-----: | :----: |
-|Standardized by an international organization |      |      |      | X       | X      |
-|Human-readable                                | X    |      |      |         |        |
-|Supported by mainstream software              |      |      |      | X       | X      |
-|Can be decoded efficiently by software        |      | X    | X    | X       | X      |
-|Can store 3 or 4-dimensional arrays           |      |      | X    |         | X      |
-|Can organize data as trees of nested grids    |      | X    | X    |         | X      |
-|Can serialize data in tiles or chunks         |      |      | X    | X       | X      |
-|Allow downloading of only the required parts  |      |      | X    | X       | X      |
-|Capable to store rich metadata                | X    |      | X    |         | X      |
-|Fully self-descriptive                        | X    |      | X    |         | X      |
-|Distributed as a single file                  |      | X    |      |         | X      |
+|                                                    | Text               | NTv2               | ZARR               | GeoTIFF            | NetCDF             |
+| :------------------------------------------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
+|Standardized by an international organization       |                    |                    |                    | :heavy_check_mark: | :heavy_check_mark: |
+|Human-readable                                      | :heavy_check_mark: |                    |                    |                    |                    |
+|Supported by mainstream software                    |                    |                    |                    | :heavy_check_mark: | :heavy_check_mark: |
+|Can be decoded efficiently by software              |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|Can store 3 or 4-dimensional arrays                 |                    |                    | :heavy_check_mark: |                    | :heavy_check_mark: |
+|Can organize data as a tree of nested grids         |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|Can organize data as trees of overlapping grids[^1] |                    |                    | :heavy_check_mark: |                    | :heavy_check_mark: |
+|Can serialize data in tiles or chunks               |                    |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|Allow downloading of only the required parts        |                    |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|Capable to store rich metadata                      | :heavy_check_mark: |                    | :heavy_check_mark: |                    | :heavy_check_mark: |
+|Fully self-descriptive                              | :heavy_check_mark: |                    | :heavy_check_mark: |                    | :heavy_check_mark: |
+|Distributed as a single file[^2]                    |                    | :heavy_check_mark: |                    |                    | :heavy_check_mark: |
+
+[^1] The PROJ Geodetic TIFF grids (GTG) format does not include the extra level of "group"
+     that is in the GGXF specification, hierarchical grids, or multiple root grids.
+
+[^2] GeoTIFF alone is not sufficient for fully self-described GGXF files.
+     It needs to be completed by an auxiliary document.
+     The auxiliary document can technically be embedded in a TIFF tag,
+     but registering new TIFF tag is difficult and using the existing `GDAL_METADATA` tag
+     would interfer with current and future uses by GDAL community.
