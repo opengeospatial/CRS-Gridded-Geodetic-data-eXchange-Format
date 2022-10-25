@@ -391,11 +391,11 @@ But doing so requires more work for the specification and for implementers.
 |Fully self-descriptive                              | :heavy_check_mark: |                    | :heavy_check_mark: |                    | :heavy_check_mark: |
 |Distributed as a single file[^2]                    |                    | :heavy_check_mark: |                    |                    | :heavy_check_mark: |
 
-[^1] The PROJ Geodetic TIFF grids (GTG) format does not include the extra level of "group"
-     that is in the GGXF specification, hierarchical grids, or multiple root grids.
+[^1]: The PROJ Geodetic TIFF grids (GTG) format does not include the extra level of "group"
+      that is in the GGXF specification, hierarchical grids, or multiple root grids.
 
-[^2] GeoTIFF alone is not sufficient for fully self-described GGXF files.
-     It needs to be completed by an auxiliary document.
-     The auxiliary document can technically be embedded in a TIFF tag,
-     but registering new TIFF tag is difficult and using the existing `GDAL_METADATA` tag
-     would interfer with current and future uses by GDAL community.
+[^2]: GeoTIFF alone is not sufficient for fully self-described GGXF files.
+      It needs to be completed by an auxiliary document.
+      The auxiliary document can technically be embedded in a TIFF tag,
+      but registering new TIFF tag is difficult and using the existing `GDAL_METADATA` tag
+      would interfer with current and future uses by GDAL community.
