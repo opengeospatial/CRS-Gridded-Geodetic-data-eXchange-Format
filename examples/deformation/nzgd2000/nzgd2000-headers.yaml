@@ -38,9 +38,6 @@ contentApplicabilityExtent:
     westBoundLongitude: 160.62
     northBoundLatitude: -25.89
     eastBoundLongitude: -171.23
-  extentTemporal:
-    startDate: '1900-01-01'
-    endDate: '2050-01-01'
 parameters:
 - parameterName: displacementEast
   parameterSet: displacement
