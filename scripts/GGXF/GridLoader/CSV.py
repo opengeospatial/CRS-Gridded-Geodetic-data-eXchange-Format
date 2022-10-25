@@ -62,7 +62,7 @@ def LoadGrid(datasource, logger):
         )
 
     try:
-        with open(filename) as csvh:
+        with open(filename, "r", encoding="utf-8-sig") as csvh:
             csvr = csv.reader(csvh)
             fields = csvr.__next__()
             fldids = []
@@ -99,8 +99,18 @@ def LoadGrid(datasource, logger):
     ni = reverse[0]
     nj = reverse.size + 1
     test = np.arange(1, nj) * ni
-    if any(reverse != test) or data.shape[0] != nj * ni:
-        raise CsvLoaderError(f"CSV file {filename} doesn't contain a regular grid")
+    if any(reverse != test):
+        sr = set(reverse)
+        st = set(test)
+        badrow = min(sr ^ st)
+        raise CsvLoaderError(
+            f"CSV file {filename} doesn't contain a regular grid at line {badrow+2} - expecting new grid row every {ni} lines"
+        )
+
+    if data.shape[0] != nj * ni:
+        raise CsvLoaderError(
+            f"CSV file {filename} doesn't contain a regular grid - expect {ni}x{nj}={ni*nj} rows"
+        )
 
     # Calculate affine coefficients assuming grid is aligned with axes
     xy = xy.reshape(nj, ni, 2)
@@ -118,7 +128,7 @@ def LoadGrid(datasource, logger):
     tolerance = np.sqrt(np.sum(tmat * tmat)) * CSV_GRID_TOLERANCE_FACTOR
     if maxerr > tolerance:
         raise CsvLoaderError(
-            f"Grid nodes in {filename} are not ordered in a regular grid aligned with the coordinate axes"
+            f"Grid nodes in {filename} are not ordered in a regular grid aligned with the coordinate axes (maximum coordinate error {maxerr} units)"
         )
 
     # Compile the affine coefficients and grid nodes as expected by the YAML GGXF reader

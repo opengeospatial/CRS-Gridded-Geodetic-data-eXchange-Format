@@ -9,7 +9,7 @@ netcdf PRGEOID18 {
 		:geospatial_lat_min = 17.87 ;
 		:geospatial_lon_min = -68. ;
 		:geospatial_lat_max = 18.53 ;
-		:geospatial_lon_max = -65. ;
+		:geospatial_lon_max = -65.2 ;
 		:extent_description = "Puerto Rico - onshore." ;
 		:interpolationCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:sourceCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]]]\n" ;
@@ -46,8 +46,8 @@ group: puerto_rico_virgin_islands_geoid18 {
     		geoidHeight:_Endianness = "little" ;
 
     // group attributes:
-    		:affineCoeffs = 21., 0., -0.01666666667, -69., 0.01666666667, 0. ;
-    		:comment = "grid starts in the top left (northwest) corner and works across (east) and down (south)" ;
+    		:affineCoeffs = 15., 0., 0.01666666667, -69., 0.01666666667, 0. ;
+    		:comment = "grid starts in the bottom left (southwest) corner and works across (east) and up (north)" ;
     } // group puerto_rico_virgin_islands_geoid18
   } // group puerto_rico_virgin_islands_geoid18
 }
