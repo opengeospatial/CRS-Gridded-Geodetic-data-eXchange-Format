@@ -1,16 +1,16 @@
-netcdf PRGEOID18 {
+netcdf VIGEOID18 {
 
 // global attributes:
 		:Conventions = "GGXF-1.0, ACDD-1.3" ;
-		:source_file = "PRGEOID18.ggxf" ;
+		:source_file = "VIGEOID18.ggxf" ;
 		:content = "geoidModel" ;
-		:title = "Puerto Rico GEOID18" ;
-		:summary = "PRVI hybrid geoid 2018. This file applicable to Puerto Rico." ;
-		:geospatial_lat_min = 17.87 ;
-		:geospatial_lon_min = -67.97 ;
-		:geospatial_lat_max = 18.57 ;
-		:geospatial_lon_max = -65.19 ;
-		:extent_description = "Puerto Rico - onshore." ;
+		:title = "Virgin Islands GEOID18" ;
+		:summary = "PRVI hybrid geoid 2018. This file applicable to US Virgin Islands." ;
+		:geospatial_lat_min = 17.62 ;
+		:geospatial_lon_min = -65.09 ;
+		:geospatial_lat_max = 18.45 ;
+		:geospatial_lon_max = -64.51 ;
+		:extent_description = "US Virgin Islands - onshore - St Croix, St John and St Thomas." ;
 		:institution = "National Geodetic Survey, National Oceanic and Atmospheric Administration." ;
 		:deliveryPoint = "1315 East West Hwy" ;
 		:city = "Silver Spring" ;
@@ -19,7 +19,7 @@ netcdf PRGEOID18 {
 		:publisher_url = "https://geodesy.noaa.gov/PC_PROD/GEOID18/Format_ascii/g2018p0.asc.zip" ;
 		:interpolationCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:sourceCrsWkt = "GEOGCRS[\"NAD83 (2011)\",\n  DATUM[\"North American Datum 1983 (2011) epoch 2010.00\",\n      ELLIPSOID[\"GRS 1980\",6378137.0,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,3],\n  AXIS[\"Geodetic latitude (Lat)\",north,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Geodetic longitude (Lon)\",east,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\n  AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]]]\n" ;
-		:targetCrsWkt = "VERTCRS[\"PRVD02\",\n  VDATUM[\"Puerto Rico Vertical Datum of 2002\"],\n  CS[vertical,1],\n  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n" ;
+		:targetCrsWkt = "VERTCRS[\"VIVD09\",\n  VDATUM[\"Virgin Islands Vertical Datum of 2009\"],\n  CS[vertical,1],\n  AXIS[\"Gravity-related height (H)\",up],\n  LENGTHUNIT[\"metre\",1]]\n" ;
 		:operationAccuracy = 0.015 ;
 		:parameters.count = 1LL ;
 		:parameters.0.parameterName = "geoidHeight" ;

@@ -1,4 +1,4 @@
-﻿ggxfVersion: "GGXF-1.0"
+ggxfVersion: "GGXF-1.0"
 title: "New Zealand Deformation Model"
 abstract: "Defines the secular model (National Deformation Model) and patches for significant deformation events since 2000."
 filename: "nzgd2000-20180701-subset.yaml"
@@ -9,7 +9,7 @@ deliveryPoint: |
   Level 7, Radio New Zealand House
   155 The Terrace
   PO Box 5501
-addressCity: "Wellington"
+city: "Wellington"
 postalCode: "6145"
 electronicMailAddress: "customersupport@linz.govt.nz"
 onlineResourceLinkage: "http://www.linz.govt.nz/nzgd2000"

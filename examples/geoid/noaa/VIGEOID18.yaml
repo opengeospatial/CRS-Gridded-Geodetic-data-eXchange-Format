@@ -1,15 +1,15 @@
-ggxfVersion: "GGXF-1.0"
-filename: PRGEOID18.yaml
+﻿ggxfVersion: "GGXF-1.0"
+filename: VIGEOID18.yaml
 content: geoidModel
-title: "Puerto Rico GEOID18"
-abstract: "PRVI hybrid geoid 2018. This file applicable to Puerto Rico."
+title: "Virgin Islands GEOID18"
+abstract: "PRVI hybrid geoid 2018. This file applicable to US Virgin Islands."
 contentApplicabilityExtent:
   boundingBox:
-    southBoundLatitude: 17.87
-    westBoundLongitude: -67.97
-    northBoundLatitude: 18.57
-    eastBoundLongitude: -65.19
-  extentDescription: "Puerto Rico - onshore."
+    southBoundLatitude: 17.62
+    westBoundLongitude: -65.09
+    northBoundLatitude: 18.45
+    eastBoundLongitude: -64.51
+  extentDescription: "US Virgin Islands - onshore - St Croix, St John and St Thomas."
 partyName: "National Geodetic Survey, National Oceanic and Atmospheric Administration."
 deliveryPoint: "1315 East West Hwy"
 city: "Silver Spring"
@@ -38,8 +38,8 @@ sourceCrsWkt: |
     AXIS["Ellipsoidal height (h)",up,LENGTHUNIT["metre",1]]]
 
 targetCrsWkt: |
-  VERTCRS["PRVD02",
-    VDATUM["Puerto Rico Vertical Datum of 2002"],
+  VERTCRS["VIVD09",
+    VDATUM["Virgin Islands Vertical Datum of 2009"],
     CS[vertical,1],
     AXIS["Gravity-related height (H)",up],
     LENGTHUNIT["metre",1]]

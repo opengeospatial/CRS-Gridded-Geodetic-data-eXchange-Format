@@ -198,6 +198,36 @@ CommonAttributes = {
             ATTRDEF_OPTIONAL: True,
         },
         {
+            ATTRDEF_NAME: GGXF_ATTR_CITY,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_CITY,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_POSTAL_CODE,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_POSTAL_CODE,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_COUNTRY,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_COUNTRY,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
             ATTRDEF_NAME: GGXF_ATTR_COMMENT,
             ATTRDEF_CHOICE: [
                 {

@@ -56,6 +56,15 @@ CommonAttributes:
     - AttributeName: deliveryPoint
       Type: str
       Optional: true
+    - AttributeName: city
+      Type: str
+      Optional: true
+    - AttributeName: postalCode
+      Type: str
+      Optional: true
+    - AttributeName: country
+      Type: str
+      Optional: true                  
     - AttributeName: comment
       Type: str
       Optional: true
