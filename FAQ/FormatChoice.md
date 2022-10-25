@@ -376,20 +376,20 @@ Most functionality can be added to any format with extensions,
 auxiliary files or command-line tools (`gzip`, `ncdump`…).
 But doing so requires more work for the specification and for implementers.
 
-|                                                    | Text               | NTv2               | ZARR               | GeoTIFF            | NetCDF             |
-| :------------------------------------------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
-|Standardized by an international organization       |                    |                    |                    | :heavy_check_mark: | :heavy_check_mark: |
-|Human-readable                                      | :heavy_check_mark: |                    |                    |                    |                    |
-|Supported by mainstream software                    |                    |                    |                    | :heavy_check_mark: | :heavy_check_mark: |
-|Can be decoded efficiently by software              |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-|Can store 3 or 4-dimensional arrays                 |                    |                    | :heavy_check_mark: |                    | :heavy_check_mark: |
-|Can organize data as a tree of nested grids         |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-|Can organize data as trees of overlapping grids[^1] |                    |                    | :heavy_check_mark: |                    | :heavy_check_mark: |
-|Can serialize data in tiles or chunks               |                    |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-|Allow downloading of only the required parts        |                    |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-|Capable to store rich metadata                      | :heavy_check_mark: |                    | :heavy_check_mark: |                    | :heavy_check_mark: |
-|Fully self-descriptive                              | :heavy_check_mark: |                    | :heavy_check_mark: |                    | :heavy_check_mark: |
-|Distributed as a single file[^2]                    |                    | :heavy_check_mark: |                    |                    | :heavy_check_mark: |
+|                                                | Text               | NTv2               | ZARR               | GeoTIFF            | NetCDF             |
+| :--------------------------------------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
+|Standardized by an international organization   |                    |                    |                    | :heavy_check_mark: | :heavy_check_mark: |
+|Human-readable                                  | :heavy_check_mark: |                    |                    |                    |                    |
+|Supported by mainstream software                |                    |                    |                    | :heavy_check_mark: | :heavy_check_mark: |
+|Can be decoded efficiently by software          |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|Can store 3 or 4-dimensional arrays             |                    |                    | :heavy_check_mark: |                    | :heavy_check_mark: |
+|Can organize data as a tree of nested grids     |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|Can organize data as trees of overlapping grids |                    |                    | :heavy_check_mark: | [^1]               | :heavy_check_mark: |
+|Can serialize data in tiles or chunks           |                    |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|Allow downloading of only the required parts    |                    |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|Capable to store rich metadata                  | :heavy_check_mark: |                    | :heavy_check_mark: |                    | :heavy_check_mark: |
+|Fully self-descriptive                          | :heavy_check_mark: |                    | :heavy_check_mark: |                    | :heavy_check_mark: |
+|Distributed as a single file                    |                    | :heavy_check_mark: |                    | [^2]               | :heavy_check_mark: |
 
 [^1]: The PROJ Geodetic TIFF grids (GTG) format does not include the extra level of "group"
       that is in the GGXF specification, hierarchical grids, or multiple root grids.
