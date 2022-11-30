@@ -23,11 +23,9 @@ The example directories include:
 
 | Directory | Contents
 | --- | ---
-| specification | Example grids from the deformation model specification document.  Note these examples do not contain grid data.  The ggxf.py script is used to validate these examples and generated NetCDF cdl headers from them by populating grids with dummy data.
-| geoid/tiny | A minimal example of a simple geoid GGXF data set for demonstration/testing
-| deformation/tiny | A minimal example of a deformation model GGXF file including most features of the GGXF specification for demonstration/testing purposes.
-| deformation/nzgd2000 | The New Zealand NZGD2000 deformation model
-| dov/noaa | An example deviation of vertical data set based on a Puerto Rico data set to show a GGXF dataset not used for coordinate transformations
-| geoid/noaa | Full examples of a geoid datasets for Puerto Rico and the Virgin Islands.  This demonstrates alternative representation of the grid data in the GGXF file.
-| ntv2/ca_ntv2 | Full example of the Canadian NTv2 transformation grid demonstrating a nested grid data set.
-| velgrid/alaska | An example of a non-nested grid data set based on the Alaskan velocity grids of the US HTDP deformation model.  Warning: this does not exactly represent the Alaskan velocity model as in HTDP the St. Elias grid has a non-rectangular domain of validity.  To implement this in GGXF will required splitting the grid into two grids with different grid priorites relative to the South Central grid.
+| GGXF-specification-examples | Example grids from the deformation model specification document.  Note these examples do not contain grid data.  The ggxf.py script is used to validate these examples and generated NetCDF cdl headers from them by populating grids with dummy data.
+| deformationModel/LINZ-NewZealand-NZGD2000 | The New Zealand NZGD2000 deformation model
+| deviationsOfTheVertical/NGS-PRVI-DOV18 | An example deviation of vertical data set based on a Puerto Rico data set to show a GGXF dataset not used for coordinate transformations
+| geoidModel/NGS-PRVI-Geoid18 | Full examples of a geoid datasets for Puerto Rico and the Virgin Islands.  This demonstrates alternative representation of the grid data in the GGXF file.
+| geographic2dOffsets/NRCAN-Canada-NTv2 | Full example of the Canadian NTv2 transformation grid demonstrating a nested grid data set.
+| velocityModel/NGS-Alaska-HTDP | An example of a non-nested grid data set based on the Alaskan velocity grids of the US HTDP deformation model.  Warning: this does not exactly represent the Alaskan velocity model as in HTDP the St. Elias grid has a non-rectangular domain of validity.  To implement this in GGXF will required splitting the grid into two grids with different grid priorites relative to the South Central grid.
