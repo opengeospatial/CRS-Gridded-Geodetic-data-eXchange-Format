@@ -15,7 +15,7 @@ class CsvLoaderTest(unittest.TestCase):
         csvsource = {
             "gdalSource": tiffile,
         }
-        (size, affine, data) = GDAL.LoadGrid(csvsource, None)
+        (size, affine, data) = GDAL.LoadGrid({}, csvsource, None)
 
         self.assertEqual(size, (43, 40), f"Grid size - expected (43,40) but got {size}")
         affineExpected = [-38.625, 0.0, -0.125, 171.1, 0.15, 0.0]

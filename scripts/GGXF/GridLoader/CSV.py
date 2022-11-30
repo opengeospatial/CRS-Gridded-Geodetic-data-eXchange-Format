@@ -37,7 +37,7 @@ class CsvLoaderError(RuntimeError):
     pass
 
 
-def LoadGrid(datasource, logger):
+def LoadGrid(group, datasource, logger):
     if logger is None:
         logger = logging.getLogger()
     for attr in (

@@ -34,8 +34,8 @@ def createGrid(size, generators=None, data=None, affine=defaultAffine):
             size = [size[1], size[0], data.size // (size[0] * size[1])]
             data = data.reshape(size)
     metadata = {
-        GGXF.GRID_ATTR_I_NODE_MAXIMUM: size[1] - 1,
-        GGXF.GRID_ATTR_J_NODE_MAXIMUM: size[0] - 1,
+        GGXF.GRID_ATTR_I_NODE_COUNT: size[1],
+        GGXF.GRID_ATTR_J_NODE_COUNT: size[0],
         GGXF.GRID_ATTR_AFFINE_COEFFS: affine,
     }
     grid = Grid(dummyGroup(nparam=size[2]), "Test grid", metadata)

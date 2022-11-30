@@ -16,6 +16,14 @@ from .AttributeValidator import AttributeValidator
 
 JSON_METADATA_ATTR = "metadata"
 
+# Minimal mapping from CRSWKT direction to node coordinate. Mapping used
+# is the first entry for which the key is contained in the CRS type (eg GEOGCRS)
+
+NODE_COORDINATE_PARAMETERS = {
+    "GEOG": {"east": "nodeLongitude", "north": "nodeLatitude"},
+    "PROJ": {"east": "nodeEasting", "north": "nodeNorthing"},
+}
+
 
 class Error(RuntimeError):
     pass
@@ -142,6 +150,53 @@ class GGXF:
             JSON_METADATA_ATTR: metadata,
             GGXF_ATTR_GGXF_GROUPS: groups,
         }
+
+    def nodeCoordinateParameters(self):
+        # Returns the names of the node coordinate parameters based on the
+        # interpolation crs wkt
+        return GGXF.nodeCoordinateParametersFromCrsWkt(
+            self._metadata[GGXF_ATTR_INTERPOLATION_CRS_WKT]
+        )
+
+    @staticmethod
+    def nodeCoordinateParametersFromCrsWkt(crswkt):
+        # Crudely determine the node parameter names (in order) based on
+        # an interpolation CRS
+        #
+        # Currently only supports GEOGCRS and PROJCRS
+
+        try:
+            crstype = re.match(r"^\s*(\w+)", crswkt).group(1)
+            axis_directions = [
+                m.group("direction")
+                for m in re.finditer(
+                    r"AXIS\[\s*\"(?P<name>[^\"]*)\"\s*\,\s*(?P<direction>\w+)",
+                    crswkt,
+                    re.S,
+                )
+            ]
+        except:
+            raise Error(f"Failed to interpret CRS WKT axes")
+        axislookup = None
+        for ctype, caxes in NODE_COORDINATE_PARAMETERS.items():
+            if ctype in crstype.upper():
+                axislookup = caxes
+        if axislookup is None:
+            raise Error(
+                f"Failed to interpret CRS WKT: CRS type {crstype} not recognised"
+            )
+        # Currently only handling 2d interpolation CRS, but generously allow ignoring additional
+        # height axis.  Possibly not valid?
+        axis_directions = axis_directions[:2]
+        if len(axis_directions) != 2:
+            raise Error(f"Failed to interpret CRS WKT: WKT doesn't define two axes")
+        try:
+            nodeParams = [axislookup[d] for d in axis_directions]
+        except KeyError as ex:
+            raise Error(
+                f"Failed to interpret CRS WKT: Unrecognized axis direction {ex}"
+            )
+        return nodeParams
 
 
 class GridList:

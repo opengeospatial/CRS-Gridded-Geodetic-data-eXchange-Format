@@ -17,18 +17,25 @@ class CsvLoaderTest(unittest.TestCase):
             "interpolationCoordFields": ["X", "Y"],
             "parameterFields": ["displacementEast", "displacementNorth"],
         }
-        (size, affine, data) = CSV.LoadGrid(csvsource, None)
-
-        self.assertEqual(size, (43, 40), f"Grid size - expected (43,40) but got {size}")
-        affineExpected = [-38.625, 0.0, -0.125, 171.1, 0.15, 0.0]
+        (size, affine, data) = CSV.LoadGrid({}, csvsource, None)
+        shapeExpected = (40, 43)
+        self.assertEqual(
+            size,
+            shapeExpected,
+            f"Grid size - expected {shapeExpected} but got {size}",
+        )
+        affineExpected = [-38.625, -0.125, 0.0, 171.1, 0.0, 0.15]
         diff = max(np.abs(np.array(affine) - np.array(affineExpected)))
         self.assertTrue(
             diff < 0.000001,
             f"Affine transformation: expected {affineExpected} but got {affine}",
         )
         shape = tuple((int(n) for n in data.shape))
+        shapeExpected = (40, 43)
         self.assertEqual(
-            shape, (40, 43, 2), f"Grid dimensions: expected (40,43,2) but got {shape}"
+            size,
+            shapeExpected,
+            f"Grid size - expected {shapeExpected} but got {size}",
         )
 
 

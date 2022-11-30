@@ -164,7 +164,7 @@ class Reader(BaseReader):
         if GRID_ATTR_DATA_SOURCE in ygrid and GRID_ATTR_DATA not in ygrid:
             datasource = ygrid.pop(GRID_ATTR_DATA_SOURCE)
             ygrid[GRID_ATTR_DATA] = None
-            self.installGridFromSource(ygrid, datasource)
+            self.installGridFromSource(group, ygrid, datasource)
             if SOURCE_ATTR_PARAMETER_TRANSFORMATION in datasource:
                 self.applyParameterTransformation(
                     group,
@@ -186,17 +186,16 @@ class Reader(BaseReader):
             else:
                 group.addGrid(grid)
 
-    def installGridFromSource(self, ygrid: dict, datasource):
+    def installGridFromSource(self, group: Group, ygrid: dict, datasource: dict):
         startdir = os.getcwd()
         griddir = self.getOption(YAML_OPTION_GRID_DIRECTORY, startdir)
         try:
-            # Currently only support GDAL grid.
             os.chdir(griddir)
-            self.loadExternalGrid(ygrid, datasource)
+            self.loadExternalGrid(group, ygrid, datasource)
         finally:
             os.chdir(startdir)
 
-    def loadExternalGrid(self, ygrid, datasource):
+    def loadExternalGrid(self, group: Group, ygrid, datasource):
         # NOTE: This probably needs additional options for selecting bands,
         # order of interpolation coordinates, etc
 
@@ -210,7 +209,7 @@ class Reader(BaseReader):
             return
 
         try:
-            if not re.match(r"^\w+$", datasourceType):
+            if not re.match(r"^[\w\-]+$", datasourceType):
                 raise RuntimeError(f"Invalid {SOURCE_ATTR_SOURCE_TYPE}")
             loader = importlib.import_module(f"..GridLoader.{datasourceType}", __name__)
         except Exception as ex:
@@ -220,10 +219,24 @@ class Reader(BaseReader):
             return
 
         try:
-            size, affine, gridData = loader.LoadGrid(datasource, self._logger)
+            size, affine, gridData = loader.LoadGrid(group, datasource, self._logger)
         except Exception as ex:
             self.error(f"Grid {gridname}: Failed to load - {ex}")
             return
+        if affine is None:
+            affine = [float(c) for c in ygrid[GRID_ATTR_AFFINE_COEFFS]]
+        if size is None:
+            size = [
+                ygrid[GRID_ATTR_I_NODE_COUNT],
+                ygrid[GRID_ATTR_J_NODE_COUNT],
+                group.nparam(),
+            ]
+            if gridData.size != size[0] * size[1] * size[2]:
+                self.error((f"Grid {gridname} is the wrong size"))
+                return
+            # As size not set assume that grid dimensions are arbitrary, so set to
+            # expected dimensions
+            gridData = gridData.reshape((size[1], size[0], size[2]))
 
         try:
             if GRID_ATTR_I_NODE_COUNT in ygrid:

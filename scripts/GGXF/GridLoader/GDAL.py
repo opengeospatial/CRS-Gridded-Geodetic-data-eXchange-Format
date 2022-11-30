@@ -30,7 +30,7 @@ class GdalLoaderError(RuntimeError):
     pass
 
 
-def LoadGrid(datasource, logger):
+def LoadGrid(group, datasource, logger):
     if logger is None:
         logger = logging.getLogger()
     gdalsource = datasource.get(GDAL_SOURCE_ATTR)
