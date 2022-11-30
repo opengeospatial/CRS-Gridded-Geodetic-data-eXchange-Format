@@ -1,7 +1,7 @@
 ggxfVersion: "GGXF-1.0"
 filename: "alaska-velocity.yaml"
 title: "Alaska velocity grid"
-abstract: "Alaska velocity grid"
+abstract: "Alaska velocity model"
 content: velocityModel
 version: "Test_1.0"
 publicationDate: "2022-09"
@@ -38,7 +38,6 @@ parameters:
 operationAccuracy: 0.001
 ggxfGroups:
   - ggxfGroupName: "alaska-grids"
-    gridParameters: [velocityEast, velocityNorth, velocityUp]
     interpolationMethod: bilinear
     grids:
       - gridName: Alaska-mainland
@@ -47,37 +46,29 @@ ggxfGroups:
         jNodeCount: 161
         affineCoeffs: [ 56.0, 0.25, 0.0, -170.0, 0.0, 0.25 ]
         dataSource:
-          sourceType: CSV
-          csvFilename: alaska-mainland-velocity.csv
-          interpolationCoordFields: [ lat, lon ]
-          parameterFields: [de, dn, du]
+          sourceType: ggxf-csv
+          gridFilename: alaska-mainland-velocity.csv
       - gridName: Alaska-south-central
         gridPriority: 2
         iNodeCount: 51
         jNodeCount: 76
         affineCoeffs: [ 53.25, 0.25, 0.0, -162.0, 0.0, 0.25 ]
         dataSource:
-          sourceType: CSV
-          csvFilename: alaska-southcentral-velocity.csv
-          interpolationCoordFields: [lat, lon]
-          parameterFields: [de, dn, du]
+          sourceType: ggxf-csv
+          gridFilename: alaska-southcentral-velocity.csv
       - gridName: Alaska-south-east
         gridPriority: 3
         iNodeCount: 41
         jNodeCount: 49
         affineCoeffs: [ 54.0, 0.25, 0.0, -142.0, 0.0, 0.25 ]
         dataSource:
-          sourceType: CSV
-          csvFilename: alaska-southeast-velocity.csv
-          interpolationCoordFields: [lat, lon]
-          parameterFields: [de, dn, du]
+          sourceType: ggxf-csv
+          gridFilename: alaska-southeast-velocity.csv
       - gridName: Alaska-st-elias
         gridPriority: 4
         iNodeCount: 27
         jNodeCount: 41
         affineCoeffs: [ 56.5, 0.25, 0.0, -150.0, 0.0, 0.25 ]
         dataSource:
-          sourceType: CSV
-          csvFilename: alaska-stelias-velocity.csv
-          interpolationCoordFields: [lat, lon]
-          parameterFields: [de, dn, du]
+          sourceType: ggxf-csv
+          gridFilename: alaska-stelias-velocity.csv

@@ -1,4 +1,4 @@
-lat,lon,de,dn,du
+nodeLatitude,nodeLongitude,velocityEast,velocityNorth,velocityUp
 53.25,-162.0,-0.02061,-0.00441,0.0
 53.5,-162.0,-0.02053,-0.00444,0.0
 53.75,-162.0,-0.02223,-0.01143,0.0
