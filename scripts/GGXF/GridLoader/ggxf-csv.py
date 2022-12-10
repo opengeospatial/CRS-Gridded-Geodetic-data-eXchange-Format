@@ -168,6 +168,8 @@ def LoadGrid(group, datasource, logger):
 
     affine = np.array([xy0[0], ddi[0], ddj[0], xy0[1], ddi[1], ddj[1]]).tolist()
     gridData = data[:, 2:]
+
+    # Note: YAML reader expects axes in order j,i,p
     gridData = gridData.reshape(nj, ni, gridData.shape[1])
     size = (int(ni), int(nj))
     logger.debug(f"ggxf-csv loader: Loaded {filename}")
