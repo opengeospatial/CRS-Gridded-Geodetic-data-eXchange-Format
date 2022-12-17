@@ -1,8 +1,9 @@
-ggxfVersion: "GGXF-1.0"
+﻿ggxfVersion: "GGXF-1.0"
+content: deformationModel
 title: "New Zealand Deformation Model"
 abstract: "Defines the secular model (National Deformation Model) and patches for significant deformation events since 2000."
 filename: "nzgd2000-20180701-subset.yaml"
-content: deformationModel
+
 version: "20180701"
 partyName: "Land Information New Zealand"
 deliveryPoint: | 
@@ -37,7 +38,7 @@ interpolationCrsWkt: |
       CS[ellipsoidal,2],
       AXIS["Geodetic latitude (Lat)",north,ANGLEUNIT["degree",0.0174532925199433]],
       AXIS["Geodetic longitude (Lon)",east,ANGLEUNIT["degree",0.0174532925199433]],
-      ID["EPSG",4167,URI["http://www.opengis.net/def/crs/epsg/0/4167"]]]
+    ID["EPSG",4167,URI["http://www.opengis.net/def/crs/epsg/0/4167"]]]
 
 sourceCrsWkt: |
     GEOGCRS["NZGD2000",
@@ -61,6 +62,7 @@ targetCrsWkt: |
       ID["EPSG",7907,URI["http://www.opengis.net/def/crs/epsg/0/7907"]]]
 
 operationAccuracy: 0.01
+
 parameters:
       - parameterName: displacementEast
         parameterSet: "displacement"
@@ -88,6 +90,17 @@ parameters:
         unitSiRatio: 1.0
         uncertaintyMeasure: 2SE
 
+checkPoints:
+  - sourceCrsCoordinates: [ -50.757000000, 165.271000000, 49.2000 ]
+    sourceCoordinateEpoch: 2008.3
+    targetCrsCoordinates: [ -50.756997865, 165.270996670, 49.2000 ]
+    targetCoordinateEpoch: 2008.3
+
+  - sourceCrsCoordinates: [ -50.757000000, 165.271000000, 49.2000 ]
+    sourceCoordinateEpoch: 2018.3
+    targetCrsCoordinates: [ -50.756995292, 165.270992658, 49.2000 ]
+    targetCoordinateEpoch: 2018.3
+
 ggxfGroups:
   - ggxfGroupName: "nz_linz_nzgd2000-ndm-grid02"
     comment: "Secular deformation model"
@@ -108,18 +121,18 @@ ggxfGroups:
         iNodeCount: 73
         jNodeCount: 67
         dataSource: 
-          sourceType: GDAL
-          gdalSource: "GTIFF_DIR:1:nz_linz_nzgd2000-ndm-grid02.tif"
+           dataSourceType: GDAL
+           gdalSource: "GTIFF_DIR:1:nz_linz_nzgd2000-ndm-grid02.tif"
         childGrids:
           - gridName: "ndm_grid_igns2011_nz"
             comment: "Secular deformation model derived from GNS model 2011 V4"
             affineCoeffs: [-33.0,0.0,-0.1,165.5,0.1,0.0]
             iNodeCount: 141
             jNodeCount: 151
-            dataSource:
-              sourceType: GDAL
-              gdalSource:  "GTIFF_DIR:2:nz_linz_nzgd2000-ndm-grid02.tif"
-      
+            dataSource: 
+               dataSourceType: GDAL
+               gdalSource: "GTIFF_DIR:2:nz_linz_nzgd2000-ndm-grid02.tif"
+  
   - ggxfGroupName: "nz_linz_nzgd2000-ds20090715-grid011"
     comment: "Dusky Sound (Fiordland) earthquake July 2009."
     interpolationMethod: bilinear
@@ -144,5 +157,5 @@ ggxfGroups:
         iNodeCount: 11
         jNodeCount: 11
         dataSource:
-          sourceType: GDAL
-          gdalSource: "GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid011.tif"
+           dataSourceType: GDAL
+           gdalSource: "GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid011.tif"
