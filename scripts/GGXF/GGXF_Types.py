@@ -114,6 +114,10 @@ CommonAttributes = {
                     ATTRDEF_NAME: GGXF_ATTR_LICENSE,
                     ATTRDEF_TYPE: str,
                 },
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_LICENSE_U_R_L,
+                    ATTRDEF_TYPE: str,
+                },
             ],
             ATTRDEF_OPTIONAL: True,
         },
@@ -243,6 +247,17 @@ CommonAttributes = {
                 {
                     ATTRDEF_NAME: GGXF_ATTR_TIDE_SYSTEM,
                     ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_CHECK_POINTS,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_CHECK_POINTS,
+                    ATTRDEF_TYPE: ATTRDEF_TYPE_CHECK_POINT,
+                    ATTRDEF_LIST: True,
                 },
             ],
             ATTRDEF_OPTIONAL: True,
@@ -745,6 +760,66 @@ CommonAttributes = {
                 {
                     ATTRDEF_NAME: TIME_PARAM_FREQUENCY,
                     ATTRDEF_TYPE: float,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+    ],
+    ATTRDEF_TYPE_CHECK_POINT: [
+        {
+            ATTRDEF_NAME: GGXF_ATTR_SOURCE_CRS_COORDINATES,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_SOURCE_CRS_COORDINATES,
+                    ATTRDEF_TYPE: float,
+                    ATTRDEF_LIST: True,
+                },
+            ],
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_SOURCE_COORDINATE_EPOCH,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_SOURCE_COORDINATE_EPOCH,
+                    ATTRDEF_TYPE: float,
+                },
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_SOURCE_COORDINATE_DATE,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_TARGET_CRS_COORDINATES,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_TARGET_CRS_COORDINATES,
+                    ATTRDEF_TYPE: float,
+                    ATTRDEF_LIST: True,
+                },
+            ],
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_TARGET_COORDINATE_EPOCH,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_TARGET_COORDINATE_EPOCH,
+                    ATTRDEF_TYPE: float,
+                },
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_TARGET_COORDINATE_DATE,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_COMMENT,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_COMMENT,
+                    ATTRDEF_TYPE: str,
                 },
             ],
             ATTRDEF_OPTIONAL: True,

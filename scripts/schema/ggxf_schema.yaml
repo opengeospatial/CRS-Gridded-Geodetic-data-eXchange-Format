@@ -29,8 +29,13 @@ CommonAttributes:
     - AttributeName: targetCrsWkt
       Type: str
       Optional: true
-    - AttributeName: license
-      Type: str
+    - AttributeChoice:
+        AttributeChoiceName: license
+        Attributes:
+          - AttributeName: license
+            Type: str
+          - AttributeName: licenseURL
+            Type: str          
       Optional: true
     - AttributeName: operationAccuracy
       Type: float
@@ -71,6 +76,9 @@ CommonAttributes:
     - AttributeName: tideSystem
       Comment: What content types use this parameter.  Should it be contentType specific
       Type: str
+      Optional: true
+    - AttributeName: checkPoints
+      Type: list(CheckPoint)
       Optional: true
 
     - AttributeName: userDefinedMethodExample
@@ -163,10 +171,10 @@ CommonAttributes:
       Type: str
       Optional: true
     - AttributeName: extentTemporal
-      Type: extentTemporal
+      Type: ExtentTemporal
       Optional: true
     - AttributeName: extentVertical
-      Type: extentVertical
+      Type: ExtentVertical
       Optional: true
 
   BoundingBox:
@@ -179,13 +187,13 @@ CommonAttributes:
     - AttributeName: eastBoundLongitude
       Type: float
 
-  extentTemporal:
+  ExtentTemporal:
     - AttributeName: startDate
       Type: str
     - AttributeName: endDate
       Type: str
 
-  extentVertical:
+  ExtentVertical:
     - AttributeName: extentVerticalCrsWkt
       Type: str
       Optional: true
@@ -238,6 +246,31 @@ CommonAttributes:
     - AttributeName: frequency
       Type: float
       Optional: true
+
+  CheckPoint:
+    - AttributeName: sourceCrsCoordinates
+      Type: list(float)
+    - AttributeChoice:
+        AttributeChoiceName: sourceCoordinateEpoch
+        Attributes:
+        - AttributeName: sourceCoordinateEpoch
+          Type: float
+        - AttributeName: sourceCoordinateDate
+          Type: str
+      Optional: true
+    - AttributeName: targetCrsCoordinates
+      Type: list(float)
+    - AttributeChoice:
+        AttributeChoiceName: targetCoordinateEpoch
+        Attributes:
+        - AttributeName: targetCoordinateEpoch
+          Type: float
+        - AttributeName: targetCoordinateDate
+          Type: str 
+      Optional: true
+    - AttributeName: comment
+      Type: str
+      Optional: true   
 
 YamlAttributes:
     GGXF:
