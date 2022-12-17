@@ -1,13 +1,13 @@
 ﻿ggxfVersion: "GGXF-1.0"
+content: geographic2dOffsets 
 title: "National Transformation v2_0"
 abstract: "Transformation of geodetic latitude and longitude referenced to NAD27 to latitude and longitude referenced to NAD83(Original)." 
 filename: "27to83.yaml"
-content: geographic2dOffsets
 
 publicationDate: "1995-02"
 partyName:             "Geodetic Survey Division, Natural Resources Canada"
 onlineResourceLinkage: "https://webapp.geod.nrcan.gc.ca/geod/data-donnees/transformations.php"
-license:               "https://open.canada.ca/en/open-government-licence-canada"
+licenseURL:               "https://open.canada.ca/en/open-government-licence-canada"
 contentApplicabilityExtent:
   boundingBox:
     southBoundLatitude: 40.0

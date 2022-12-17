@@ -1,8 +1,9 @@
 ﻿ggxfVersion: "GGXF-1.0"
+content: geographic2dOffsets
 title: "Catalino Canyon transformation version 2022-06"
 abstract: "Example transformation constructed for purposes of illustration."
 filename: "Catalano_Canyon.yaml"
-content: geographic2dOffsets
+
 contentApplicabilityExtent:
   extentDescription: "Italy - Mediterranean Sea west of Sardinia - Catalano Canyon."
   boundingBox:
@@ -10,7 +11,8 @@ contentApplicabilityExtent:
     westBoundLongitude: 7.6
     northBoundLatitude: 40.15
     eastBoundLongitude: 7.87
-  boundingPolygon:  Polygon(( 40.09 7.72, 40.12 7.71, 39.92 7.84, 39.93 7.64, 40.05 7.64, 40.09 7.72 ))
+  boundingPolygon: Polygon(( 40.09, 7.72, 40.12, 7.71, 39.92, 7.84, 39.93, 7.64, 
+                             40.05, 7.64, 40.09, 7.72 ))
 
 interpolationCrsWkt: &crs |
     GEOGCRS["ED50",
@@ -45,8 +47,6 @@ parameters:
     unitName: arc-second
     unitSiRatio: 4.84813681109536E-06
 
-
-
 ggxfGroups:
     - ggxfGroupName: "Catalano_Canyon"
       interpolationMethod: bilinear
@@ -56,16 +56,15 @@ ggxfGroups:
           affineCoeffs: [ 40.0000000, 0.0, -0.05, 7.6000000, 0.0666666666666667, 0.0 ]
           iNodeCount: 5
           jNodeCount: 3
-          data: [ 1.00, -2.70, 1.20, -2.50, 1.40, -2.30, 1.60, -2.10, 1.80, -1.90, 
-                  1.20, -2.74, 1.40, -2.52, 1.65, -2.31, 1.83, -2.13, 2.00, -1.92, 
-                  1.40, -2.78, 1.80, -2.53, 2.00, -2.33, 2.10, -2.14, 2.20, -1.93 ] 
+          data: [ 1.00, -2.70, 1.20, -2.50, 1.40, -2.30, 1.60, -2.10, 1.80, -1.90,
+                  1.20, -2.74, 1.40, -2.52, 1.65, -2.31, 1.83, -2.13, 2.00, -1.92,
+                  1.40, -2.78, 1.80, -2.53, 2.00, -2.33, 2.10, -2.14, 2.20, -1.93 ]
 
         - gridName: "North"
           affineCoeffs: [ 40.15, 0.0, -0.05, 7.6, 0.1, 0.0 ]
           iNodeCount: 3
           jNodeCount: 4
-          data: [ 0.86, -2.62, 1.06, -2.34, 1.20, -2.04, 
-                  0.91, -2.64, 1.13, -2.36, 1.30, -2.06, 
-                  0.95, -2.66, 1.20, -2.38, 1.50, -2.08, 
+          data: [ 0.86, -2.62, 1.06, -2.34, 1.20, -2.04,
+                  0.91, -2.64, 1.13, -2.36, 1.30, -2.06,
+                  0.95, -2.66, 1.20, -2.38, 1.50, -2.08,
                   1.00, -2.70, 1.30, -2.40, 1.60, -2.10 ]
-

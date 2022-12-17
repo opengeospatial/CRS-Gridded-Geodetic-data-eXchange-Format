@@ -1,8 +1,8 @@
 ﻿ggxfVersion: "GGXF-1.0"
+content: velocityGrid
 title: "NZ hypothetical velocity grid"
 abstract: "Hypotherical example to illustrate secular motion described through velocities."
 filename: "NZ hypothetical velocity grid.yaml"
-content: velocityModel
 version: "2011"
 comment: |
     The parent grid describes secular deformation derived from NUVEL-1A rotation rates.

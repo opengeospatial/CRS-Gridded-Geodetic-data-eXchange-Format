@@ -1,8 +1,8 @@
 ggxfVersion: "GGXF-1.0"
+content: velocityGrid
 filename: "alaska-velocity.yaml"
 title: "Alaska velocity grid"
 abstract: "Alaska velocity model"
-content: velocityModel
 version: "Test_1.0"
 publicationDate: "2022-09"
 partyName:             "Test developer"
