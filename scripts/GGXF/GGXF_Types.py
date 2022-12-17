@@ -1257,7 +1257,7 @@ ContentTypes = {
             ],
         },
     },
-    GGXF_CONTENT_VELOCITY_MODEL: {
+    GGXF_CONTENT_VELOCITY_GRID: {
         ATTRDEF_PARAMETER_SETS: [
             {GGXF_PARAMETER_VELOCITY_EAST, GGXF_PARAMETER_VELOCITY_NORTH},
             {

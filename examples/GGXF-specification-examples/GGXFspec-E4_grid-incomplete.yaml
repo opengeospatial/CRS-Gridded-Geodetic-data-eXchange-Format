@@ -1,5 +1,5 @@
 ﻿ggxfVersion: "GGXF-1.0"
-content: velocityModel
+content: velocityGrid
 title: "NZ hypothetical velocity grid"
 abstract: "Hypotherical example to illustrate secular motion described through velocities."
 filename: "NZ hypothetical velocity grid.yaml"

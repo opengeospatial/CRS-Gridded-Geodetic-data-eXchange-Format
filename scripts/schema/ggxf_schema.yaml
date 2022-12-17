@@ -588,7 +588,7 @@ ContentTypes:
         Parameters:
         - heightOffsetUncertainty
         Optional: true
-- ContentType: velocityModel
+- ContentType: velocityGrid
   ParameterOptions:
   - ParameterSets:
       velocity:
