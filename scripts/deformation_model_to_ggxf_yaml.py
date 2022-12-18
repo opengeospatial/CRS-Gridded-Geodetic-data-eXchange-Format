@@ -181,7 +181,10 @@ def loadGTiffGridData(source, sourceref=None, tiffdir=None):
         # comment=gmd.get('TIFFTAG_IMAGEDESCRIPTION')
         # if comment:
         #     gdata['comment']=comment
-        gdata["dataSource"] = {"sourceType": "GDAL", "gdalSource": sourceref or source}
+        gdata["dataSource"] = {
+            "dataSourceType": "GDAL",
+            "gdalSource": sourceref or source,
+        }
         for k, v in md.get("SUBDATASETS", {}).items():
             if m := re.match(r"^SUBDATASET_(\d+)_NAME", k):
                 if m.group(1) != "1":

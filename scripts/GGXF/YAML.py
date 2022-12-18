@@ -47,7 +47,7 @@ The following options can apply to YAML format input (I) and output (O):
   "{YAML_OPTION_WRITE_HEADERS_ONLY}" (O) Write headers only - omit the grid data
 """
 
-SOURCE_ATTR_SOURCE_TYPE = "sourceType"
+SOURCE_ATTR_SOURCE_TYPE = "dataSourceType"
 # Common data source attributes allowing transformation of parameters
 SOURCE_ATTR_PARAMETER_TRANSFORMATION = "parameterTransformations"
 SOURCE_XFORM_ATTR_PARAMETER_NAME = "parameterName"

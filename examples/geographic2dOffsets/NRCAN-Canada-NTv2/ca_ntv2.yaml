@@ -67,7 +67,7 @@ ggxfGroups:
     iNodeCount: 529
     jNodeCount: 241
     dataSource:
-      sourceType: GDAL
+      dataSourceType: GDAL
       gdalSource: NTV2_0.GSB
       parameterTransformations: &id001
       - parameterName: longitudeOffset
@@ -78,7 +78,7 @@ ggxfGroups:
       iNodeCount: 81
       jNodeCount: 51
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:83:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONkinstn
@@ -86,7 +86,7 @@ ggxfGroups:
       iNodeCount: 321
       jNodeCount: 321
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:92:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONottawa
@@ -94,7 +94,7 @@ ggxfGroups:
       iNodeCount: 221
       jNodeCount: 201
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:93:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONsarnia
@@ -102,7 +102,7 @@ ggxfGroups:
       iNodeCount: 101
       jNodeCount: 121
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:94:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONsault
@@ -110,7 +110,7 @@ ggxfGroups:
       iNodeCount: 351
       jNodeCount: 71
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:95:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONtimins
@@ -118,7 +118,7 @@ ggxfGroups:
       iNodeCount: 101
       jNodeCount: 41
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:97:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONtronto
@@ -126,7 +126,7 @@ ggxfGroups:
       iNodeCount: 351
       jNodeCount: 511
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:98:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONwinsor
@@ -134,7 +134,7 @@ ggxfGroups:
       iNodeCount: 171
       jNodeCount: 61
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:99:NTV2_0.GSB
         parameterTransformations: *id001
   - gridName: CAwest
@@ -142,7 +142,7 @@ ggxfGroups:
     iNodeCount: 649
     jNodeCount: 157
     dataSource:
-      sourceType: GDAL
+      dataSourceType: GDAL
       gdalSource: NTv2:1:NTV2_0.GSB
       parameterTransformations: *id001
     childGrids:
@@ -151,7 +151,7 @@ ggxfGroups:
       iNodeCount: 11
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:4:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALbarhed
@@ -159,7 +159,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:5:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALbonvil
@@ -167,7 +167,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:6:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALbowisl
@@ -175,7 +175,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:7:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALbrooks
@@ -183,7 +183,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:8:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALcalgry
@@ -191,7 +191,7 @@ ggxfGroups:
       iNodeCount: 101
       jNodeCount: 101
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:9:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALcamros
@@ -199,7 +199,7 @@ ggxfGroups:
       iNodeCount: 41
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:10:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALcanmor
@@ -207,7 +207,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:11:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALcardst
@@ -215,7 +215,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:12:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALcarsta
@@ -223,7 +223,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:13:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALclarho
@@ -231,7 +231,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:14:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALcoldlk
@@ -239,7 +239,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:15:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALcrowps
@@ -247,7 +247,7 @@ ggxfGroups:
       iNodeCount: 71
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:16:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALdraytn
@@ -255,7 +255,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:17:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALdrumhl
@@ -263,7 +263,7 @@ ggxfGroups:
       iNodeCount: 61
       jNodeCount: 41
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:18:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALedmntn
@@ -271,7 +271,7 @@ ggxfGroups:
       iNodeCount: 131
       jNodeCount: 91
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:19:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALedson
@@ -279,7 +279,7 @@ ggxfGroups:
       iNodeCount: 41
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:20:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALfairvw
@@ -287,7 +287,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:21:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALftmacl
@@ -295,7 +295,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:22:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALftmcmr
@@ -303,7 +303,7 @@ ggxfGroups:
       iNodeCount: 61
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:23:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALgrcach
@@ -311,7 +311,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:24:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALgrimsh
@@ -319,7 +319,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:25:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALgrprar
@@ -327,7 +327,7 @@ ggxfGroups:
       iNodeCount: 41
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:26:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALhanna
@@ -335,7 +335,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:27:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALhilevl
@@ -343,7 +343,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:28:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALhinton
@@ -351,7 +351,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:29:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALhiprai
@@ -359,7 +359,7 @@ ggxfGroups:
       iNodeCount: 41
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:30:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALinnsfl
@@ -367,7 +367,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:31:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALjasper
@@ -375,7 +375,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:32:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALlacbic
@@ -383,7 +383,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:33:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALlacomb
@@ -391,7 +391,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:34:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALletbrg
@@ -399,7 +399,7 @@ ggxfGroups:
       iNodeCount: 61
       jNodeCount: 41
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:35:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALlkloui
@@ -407,7 +407,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:36:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALlydmin
@@ -415,7 +415,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:37:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALmedhat
@@ -423,7 +423,7 @@ ggxfGroups:
       iNodeCount: 41
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:38:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALolds
@@ -431,7 +431,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:39:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALoyen
@@ -439,7 +439,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:40:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALpeacer
@@ -447,7 +447,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:41:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALpinchr
@@ -455,7 +455,7 @@ ggxfGroups:
       iNodeCount: 11
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:42:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALponoka
@@ -463,7 +463,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:43:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALraymnd
@@ -471,7 +471,7 @@ ggxfGroups:
       iNodeCount: 51
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:44:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALredeer
@@ -479,7 +479,7 @@ ggxfGroups:
       iNodeCount: 41
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:45:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALrockmt
@@ -487,7 +487,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:46:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALslavlk
@@ -495,7 +495,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:47:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALstetlr
@@ -503,7 +503,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:48:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALstpaul
@@ -511,7 +511,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:49:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALstramr
@@ -519,7 +519,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:50:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALswanhi
@@ -527,7 +527,7 @@ ggxfGroups:
       iNodeCount: 41
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:51:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALtaber
@@ -535,7 +535,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:52:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALtrehil
@@ -543,7 +543,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:53:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALvegvil
@@ -551,7 +551,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:54:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALvermil
@@ -559,7 +559,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:55:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALwanwgt
@@ -567,7 +567,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:56:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALweslok
@@ -575,7 +575,7 @@ ggxfGroups:
       iNodeCount: 41
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:57:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALwetask
@@ -583,7 +583,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:58:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALwhitec
@@ -591,7 +591,7 @@ ggxfGroups:
       iNodeCount: 41
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:59:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCcambel
@@ -599,7 +599,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:60:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCcranbk
@@ -607,7 +607,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:61:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCdawson
@@ -615,7 +615,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:62:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCelkfrd
@@ -623,7 +623,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:63:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCfield
@@ -631,7 +631,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:64:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCgranil
@@ -639,7 +639,7 @@ ggxfGroups:
       iNodeCount: 11
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:65:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCkamlop
@@ -647,7 +647,7 @@ ggxfGroups:
       iNodeCount: 51
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:66:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCkelwna
@@ -655,7 +655,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:67:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BClogan
@@ -663,7 +663,7 @@ ggxfGroups:
       iNodeCount: 11
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:68:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCmacknz
@@ -671,7 +671,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:69:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCnanimo
@@ -679,7 +679,7 @@ ggxfGroups:
       iNodeCount: 61
       jNodeCount: 61
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:70:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCnelson
@@ -687,7 +687,7 @@ ggxfGroups:
       iNodeCount: 11
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:71:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCparkvl
@@ -695,7 +695,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:72:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCpentic
@@ -703,7 +703,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:73:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCportal
@@ -711,7 +711,7 @@ ggxfGroups:
       iNodeCount: 11
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:74:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCpowell
@@ -719,7 +719,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:75:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCprigeo
@@ -727,7 +727,7 @@ ggxfGroups:
       iNodeCount: 41
       jNodeCount: 41
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:76:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCroslnd
@@ -735,7 +735,7 @@ ggxfGroups:
       iNodeCount: 11
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:77:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCtrail
@@ -743,7 +743,7 @@ ggxfGroups:
       iNodeCount: 11
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:78:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCtumblr
@@ -751,7 +751,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:79:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCvancvr
@@ -759,7 +759,7 @@ ggxfGroups:
       iNodeCount: 131
       jNodeCount: 51
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:80:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCvernon
@@ -767,7 +767,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:81:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCvictor
@@ -775,7 +775,7 @@ ggxfGroups:
       iNodeCount: 41
       jNodeCount: 51
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:82:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONthundr
@@ -783,7 +783,7 @@ ggxfGroups:
       iNodeCount: 71
       jNodeCount: 51
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:96:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SAestvan
@@ -791,7 +791,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:100:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SAmelfrt
@@ -799,7 +799,7 @@ ggxfGroups:
       iNodeCount: 71
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:101:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SAmelvil
@@ -807,7 +807,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:102:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SAmosjaw
@@ -815,7 +815,7 @@ ggxfGroups:
       iNodeCount: 41
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:103:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SAnbatle
@@ -823,7 +823,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:104:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SApralbt
@@ -831,7 +831,7 @@ ggxfGroups:
       iNodeCount: 61
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:105:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SAregina
@@ -839,7 +839,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:106:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SAsatoon
@@ -847,7 +847,7 @@ ggxfGroups:
       iNodeCount: 51
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:107:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SAswiftc
@@ -855,7 +855,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:108:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SAweybrn
@@ -863,7 +863,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:109:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SAyorktn
@@ -871,7 +871,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:110:NTV2_0.GSB
         parameterTransformations: *id001
   - gridName: CAnorth
@@ -879,7 +879,7 @@ ggxfGroups:
     iNodeCount: 589
     jNodeCount: 181
     dataSource:
-      sourceType: GDAL
+      dataSourceType: GDAL
       gdalSource: NTv2:2:NTV2_0.GSB
       parameterTransformations: *id001
     childGrids:
@@ -888,7 +888,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 31
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:84:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: NWftgood
@@ -896,7 +896,7 @@ ggxfGroups:
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:85:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: NWhayriv
@@ -904,7 +904,7 @@ ggxfGroups:
       iNodeCount: 61
       jNodeCount: 61
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:86:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: NWinuvik
@@ -912,7 +912,7 @@ ggxfGroups:
       iNodeCount: 31
       jNodeCount: 41
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:87:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: NWiqulit
@@ -920,7 +920,7 @@ ggxfGroups:
       iNodeCount: 61
       jNodeCount: 61
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:88:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: NWpondin
@@ -928,7 +928,7 @@ ggxfGroups:
       iNodeCount: 41
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:89:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: NWrankin
@@ -936,7 +936,7 @@ ggxfGroups:
       iNodeCount: 11
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:90:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: NWyellow
@@ -944,7 +944,7 @@ ggxfGroups:
       iNodeCount: 11
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:91:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: YUdawson
@@ -952,7 +952,7 @@ ggxfGroups:
       iNodeCount: 11
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:111:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: YUrossri
@@ -960,7 +960,7 @@ ggxfGroups:
       iNodeCount: 11
       jNodeCount: 21
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:112:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: YUwhiteh
@@ -968,7 +968,7 @@ ggxfGroups:
       iNodeCount: 6
       jNodeCount: 11
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: NTv2:113:NTV2_0.GSB
         parameterTransformations: *id001
   - gridName: CAarctic
@@ -976,6 +976,6 @@ ggxfGroups:
     iNodeCount: 295
     jNodeCount: 109
     dataSource:
-      sourceType: GDAL
+      dataSourceType: GDAL
       gdalSource: NTv2:3:NTV2_0.GSB
       parameterTransformations: *id001
