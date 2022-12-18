@@ -82,7 +82,7 @@ def main():
         ]
         if name in grids:
             raise RuntimeError(f"Grid name {name} is duplicated")
-        datasource = {"sourceType": "GDAL", "gdalSource": description}
+        datasource = {"dataSourceType": "GDAL", "gdalSource": description}
         if transform:
             datasource["parameterTransformations"] = transform
         grids[name] = {

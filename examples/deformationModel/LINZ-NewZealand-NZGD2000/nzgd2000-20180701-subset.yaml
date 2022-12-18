@@ -62,7 +62,7 @@ ggxfGroups:
     iNodeCount: 73
     jNodeCount: 67
     dataSource:
-      sourceType: GDAL
+      dataSourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ndm-grid02.tif
     childGrids:
     - gridName: ndm_grid_igns2011_nz
@@ -70,7 +70,7 @@ ggxfGroups:
       iNodeCount: 141
       jNodeCount: 151
       dataSource:
-        sourceType: GDAL
+        dataSourceType: GDAL
         gdalSource: GTIFF_DIR:2:nz_linz_nzgd2000-ndm-grid02.tif
 - ggxfGroupName: nz_linz_nzgd2000-ds20090715-grid011
   comment: Dusky Sound (Fiordland) earthquake
@@ -96,5 +96,5 @@ ggxfGroups:
     iNodeCount: 11
     jNodeCount: 11
     dataSource:
-      sourceType: GDAL
+      dataSourceType: GDAL
       gdalSource: GTIFF_DIR:1:nz_linz_nzgd2000-ds20090715-grid011.tif
