@@ -839,17 +839,6 @@ YamlAttributes = {
                 },
             ],
         },
-        {
-            ATTRDEF_NAME: GGXF_ATTR_GRID_DATA,
-            ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: GGXF_ATTR_GRID_DATA,
-                    ATTRDEF_TYPE: ATTRDEF_TYPE_YAML_GRID_DATA,
-                    ATTRDEF_LIST: True,
-                },
-            ],
-            ATTRDEF_OPTIONAL: True,
-        },
     ],
     ATTRDEF_TYPE_GROUP: [
         {
@@ -903,30 +892,6 @@ YamlAttributes = {
                 {
                     ATTRDEF_NAME: GRID_ATTR_DATA_SOURCE,
                     ATTRDEF_TYPE: dict,
-                },
-            ],
-        },
-    ],
-    ATTRDEF_TYPE_YAML_GRID_DATA: [
-        {
-            ATTRDEF_NAME: GGXF_ATTR_GRID_NAME,
-            ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: GGXF_ATTR_GRID_NAME,
-                    ATTRDEF_TYPE: ATTRDEF_TYPE_UNICODE_IDENTIFIER,
-                },
-            ],
-        },
-        {
-            ATTRDEF_NAME: GGXF_ATTR_DATA_SOURCE,
-            ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: GGXF_ATTR_DATA,
-                    ATTRDEF_TYPE: None,
-                },
-                {
-                    ATTRDEF_NAME: GGXF_ATTR_DATA_SOURCE,
-                    ATTRDEF_TYPE: str,
                 },
             ],
         },

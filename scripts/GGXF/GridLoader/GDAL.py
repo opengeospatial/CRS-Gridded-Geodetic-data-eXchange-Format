@@ -38,7 +38,7 @@ def LoadGrid(group, datasource, logger):
         raise GdalLoaderError(f"{GDAL_SOURCE_ATTR} attribute is missing")
     logger.debug(f"Loading GDAL data from {gdalsource}")
     dataset = gdal.Open(gdalsource)
-    # Is the
+    
     if not dataset:
         raise GdalLoaderError(f"Failed to load GDAL data source {gdalsource}")
 
@@ -74,4 +74,4 @@ def LoadGrid(group, datasource, logger):
     logger.debug(f"GdalLoader: size {size}")
     logger.debug(f"GdalLoader: affine coeffs {affine}")
     logger.debug(f"GdalLoader: Grid loaded with shape {gridData.shape}")
-    return (size, affine, gridData)
+    return (gridData, size, affine)

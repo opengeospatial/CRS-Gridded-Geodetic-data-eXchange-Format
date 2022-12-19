@@ -413,7 +413,7 @@ class Writer(BaseWriter):
         nctypes = {}
 
         # NetCDF compound types
-        exclude = [GGXF_ATTR_GGXF_GROUPS, GGXF_ATTR_GRID_DATA]
+        exclude = [GGXF_ATTR_GGXF_GROUPS]
         converted = {}
         if self._useCompoundTypes:
             # This functionality was lost when refactoring GGXF into multiple modules

@@ -17,8 +17,9 @@ from . import GGXF_Types
 
 YAML_OPTION_GRID_DIRECTORY = "grid_directory"
 YAML_OPTION_CHECK_DATASOURCE_AFFINE = "check_datasource_affine_coeffs"
-YAML_OPTION_USE_GRIDDATA_SECTION = "use_griddata_section"
 YAML_OPTION_WRITE_HEADERS_ONLY = "write_headers_only"
+YAML_OPTION_WRITE_CSV_GRIDS = "write_csv_grids"
+YAML_OPTION_WRITE_CSV_COORDS = "write_csv_node_coordinates"
 # Option for testing yaml headers without requiring valid grid data
 YAML_OPTION_CREATE_DUMMY_GRID_DATA = "create_dummy_grid_data"
 YAML_AFFINE_COEFF_DIFFERENCE_TOLERANCE = 1.0e-6
@@ -43,11 +44,19 @@ The following options can apply to YAML format input (I) and output (O):
 
   "{YAML_OPTION_GRID_DIRECTORY}" (I) Base directory used for external grid source names
   "{YAML_OPTION_CHECK_DATASOURCE_AFFINE}" (I) Compare affine coeffs from data source with those defined in YAML (true or false)
-  "{YAML_OPTION_USE_GRIDDATA_SECTION}" (O) Use a gridData section for grid data (true or false, default true if more than one grid)
+  "{YAML_OPTION_WRITE_CSV_GRIDS}" (O) Write grids to external ggxf-csv grids (true or false, default true)
+  "{YAML_OPTION_WRITE_CSV_COORDS}" (O) Write node coordinates in CSV (true or false, default true)
   "{YAML_OPTION_WRITE_HEADERS_ONLY}" (O) Write headers only - omit the grid data
 """
 
+CSV_COORDINATE_FORMAT = ".12g"
+CSV_PARAMETER_FORMAT = ".12g"
+
 SOURCE_ATTR_SOURCE_TYPE = "dataSourceType"
+SOURCE_ATTR_GRID_FILENAME = "gridFilename"
+SOURCE_TYPE_GGXF_CSV = "ggxf-csv"
+
+# Custom extensions for external data source
 # Common data source attributes allowing transformation of parameters
 SOURCE_ATTR_PARAMETER_TRANSFORMATION = "parameterTransformations"
 SOURCE_XFORM_ATTR_PARAMETER_NAME = "parameterName"
@@ -91,11 +100,10 @@ class Reader(BaseReader):
                 raise Error(
                     f"GGXF YAML file {yaml_file} missing expected metadata fields"
                 )
-            gridDataSource = self.loadGridDataSection(ydata)
             ygroups = ydata.pop(GGXF_ATTR_GGXF_GROUPS, [])
             ggxf = GGXF(ydata)
             for ygroup in ygroups:
-                self.loadGroup(ggxf, ygroup, gridDataSource)
+                self.loadGroup(ggxf, ygroup)
             ggxf.configure(self.error)
             if not self._loadok:
                 ggxf = None
@@ -106,7 +114,7 @@ class Reader(BaseReader):
             ggxf = None
         return ggxf
 
-    def loadGroup(self, ggxf: GGXF, ygroup: dict, gridDataSource: dict):
+    def loadGroup(self, ggxf: GGXF, ygroup: dict):
         context = f"Group {ygroup.get(GROUP_ATTR_GGXF_GROUP_NAME,'unnamed')}"
         if self.validator().validateGroupAttributes(ygroup, context=context):
             groupname = ygroup.pop(GROUP_ATTR_GGXF_GROUP_NAME, None)
@@ -115,43 +123,22 @@ class Reader(BaseReader):
             group = Group(ggxf, groupname, ygroup)
             group.configureParameters(self.error)
             for ygrid in ygrids:
-                self.loadGrid(group, ygrid, gridDataSource)
+                self.loadGrid(group, ygrid)
             group.configure(self.error)
             ggxf.addGroup(group)
 
-    def loadGridDataSection(self, ydata: dict):
-        gridDataSource = {}
-        sources = ydata.get(GGXF_ATTR_GRID_DATA, [])
-        for gdata in sources:
-            griddata = gdata.copy()
-            gridname = griddata.pop(GGXF_ATTR_GRID_NAME)
-            gridDataSource[gridname] = griddata
-        return gridDataSource
-
     def installDummyGrid(self, group: Group, ygrid: dict):
         nparam = group.nparam()
-        ncol = ygrid.get(GRID_ATTR_J_NODE_COUNT, 1)
-        nrow = ygrid.get(GRID_ATTR_I_NODE_COUNT, 1)
+        ni = ygrid.get(GRID_ATTR_I_NODE_COUNT, 1)
+        nj = ygrid.get(GRID_ATTR_J_NODE_COUNT, 1)
         if GRID_ATTR_DATA_SOURCE in ygrid:
             ygrid.pop(GRID_ATTR_DATA_SOURCE)
-        ygrid[GRID_ATTR_DATA] = np.zeros((ncol, nrow, nparam))
+        ygrid[GRID_ATTR_DATA] = np.zeros((ni, nj, nparam))
 
-    def loadGrid(
-        self, group: Group, ygrid: dict, gridDataSource: dict, parent: Grid = None
-    ):
+    def loadGrid(self, group: Group, ygrid: dict, parent: Grid = None):
         gridname = ygrid.get(GRID_ATTR_GRID_NAME, "unnamed")
         context = f"Grid {gridname}"
         ygrid = ygrid.copy()
-
-        # Merge attributes from gridData section
-        if gridname in gridDataSource:
-            attr = gridDataSource.pop(gridname)
-            for key, value in attr.items():
-                if key in ygrid:
-                    self.error(
-                        f"{key} is defined in both {GGXF_ATTR_GRID_DATA} and in the group grid"
-                    )
-                ygrid[key] = value
 
         # Load grid data. This will amend the grid definition by adding the data element
         # and potentially the row and column count and the affine transformation
@@ -180,7 +167,7 @@ class Reader(BaseReader):
             data = self.splitGridByParamSet(group, gdata)
             grid = Grid(group, gridname, ygrid, data)
             for cgrid in cgrids:
-                self.loadGrid(group, cgrid, gridDataSource, grid)
+                self.loadGrid(group, cgrid, grid)
             if parent:
                 parent.addGrid(grid)
             else:
@@ -211,53 +198,48 @@ class Reader(BaseReader):
         try:
             if not re.match(r"^[\w\-]+$", datasourceType):
                 raise RuntimeError(f"Invalid {SOURCE_ATTR_SOURCE_TYPE}")
-            loader = importlib.import_module(f"..GridLoader.{datasourceType}", __name__)
+            datasourceModule = datasourceType.replace("-", "_")
+            loader = importlib.import_module(
+                f"..GridLoader.{datasourceModule}", __name__
+            )
         except Exception as ex:
             self.error(
                 f"Grid {gridname}: Cannot install loader for datatype {datasourceType}: {ex}"
             )
             return
 
+        # Try the external grid loader.  This should return
+        #   gridData - numpy array of the loaded data.  Maybe a full grid or a row-major reduction of
+        #        if (eg [ni.nj,nparam])
+        #   inferredSize - The grid size (ni,nj) if it can be inferred from the data source
+        #   inferredAffine - The affine transformation coeffs if they can be inferred from the data source
         try:
-            size, affine, gridData = loader.LoadGrid(group, datasource, self._logger)
+            gridData, inferredSize, inferredAffine = loader.LoadGrid(
+                group, datasource, self._logger
+            )
         except Exception as ex:
             self.error(f"Grid {gridname}: Failed to load - {ex}")
             return
-        if affine is None:
-            affine = [float(c) for c in ygrid[GRID_ATTR_AFFINE_COEFFS]]
-        if size is None:
-            size = [
-                ygrid[GRID_ATTR_I_NODE_COUNT],
-                ygrid[GRID_ATTR_J_NODE_COUNT],
-                group.nparam(),
-            ]
-            if gridData.size != size[0] * size[1] * size[2]:
-                self.error((f"Grid {gridname} is the wrong size"))
-                return
-            # As size not set assume that grid dimensions are arbitrary, so set to
-            # expected dimensions
-            gridData = gridData.reshape((size[1], size[0], size[2]))
 
-        try:
-            if GRID_ATTR_I_NODE_COUNT in ygrid:
-                if ygrid[GRID_ATTR_I_NODE_COUNT] != size[0]:
+        # Allow extension to GGXF to infer grid size if not explicitly provided
+        for axis, attr in enumerate((GRID_ATTR_I_NODE_COUNT, GRID_ATTR_J_NODE_COUNT)):
+            if attr in ygrid:
+                if inferredSize is not None and ygrid[attr] != inferredSize[axis]:
                     self.error(
-                        f"{gridname} {GRID_ATTR_I_NODE_COUNT} {ygrid[GRID_ATTR_I_NODE_COUNT]} differs from {size[0]} in {datasource}"
+                        f"Grid {gridname}: {attr} {ygrid[attr]} differs from {inferredSize[axis]} in {datasource}"
                     )
+            elif inferredSize[axis]:
+                ygrid[attr] = inferredSize[axis]
             else:
-                ygrid[GRID_ATTR_I_NODE_COUNT] = size[0]
+                self.error(
+                    f"Grid {gridname}: {attr} is not defined and not inferrable from data source"
+                )
 
-            if GRID_ATTR_J_NODE_COUNT in ygrid:
-                if ygrid[GRID_ATTR_J_NODE_COUNT] != size[1]:
-                    self.error(
-                        f"{gridname} {GRID_ATTR_J_NODE_COUNT} {ygrid[GRID_ATTR_J_NODE_COUNT]} differs from {size[1]} in {datasource}"
-                    )
-            else:
-                ygrid[GRID_ATTR_J_NODE_COUNT] = size[1]
-
-            if GRID_ATTR_AFFINE_COEFFS in ygrid:
-                gaffine = [float(c) for c in ygrid[GRID_ATTR_AFFINE_COEFFS]]
-                diff = np.array(gaffine) - affine
+        # Allow extension to GGXF to infer affine transformation if not explicitly provided
+        if GRID_ATTR_AFFINE_COEFFS in ygrid:
+            if inferredAffine is not None:
+                affine = [float(c) for c in ygrid[GRID_ATTR_AFFINE_COEFFS]]
+                diff = np.array(affine) - inferredAffine
                 maxdiff = np.max(np.abs(diff))
                 if maxdiff > YAML_AFFINE_COEFF_DIFFERENCE_TOLERANCE:
                     gtest = self.getBoolOption(
@@ -265,18 +247,20 @@ class Reader(BaseReader):
                     )
                     if gtest:
                         self.error(
-                            f"{gridname} affine coefficients from dataSource don't match: {affine}"
+                            f"{gridname} affine coefficients from dataSource don't match: {inferredAffine}"
                         )
                     else:
                         self._logger.warning(
-                            f"{gridname} affine coefficients from dataSource {affine} differ from grid definition {affine} (max diff {maxdiff})"
+                            f"{gridname} affine coefficients from dataSource {inferredAffine} differ from grid definition {affine} (max diff {maxdiff})"
                         )
-            else:
-                ygrid[GRID_ATTR_AFFINE_COEFFS] = affine
+        elif inferredAffine is not None:
+            ygrid[GRID_ATTR_AFFINE_COEFFS] = inferredAffine
+        else:
+            self.error(
+                f"Grid {gridname}: {GRID_ATTR_AFFINE_COEFFS} not defined and not inferrable from data source"
+            )
 
             ygrid[GRID_ATTR_DATA] = gridData
-        except Exception as ex:
-            self.error(f"Grid {gridname}: Failed to load - {ex}")
 
     def applyParameterTransformation(self, group, grid, transforms):
         if not isinstance(transforms, list):
@@ -303,19 +287,30 @@ class Reader(BaseReader):
         if data is None:
             return
         nparam = group.nparam()
-        ncol = ygrid.get(GRID_ATTR_J_NODE_COUNT)
-        nrow = ygrid.get(GRID_ATTR_I_NODE_COUNT)
+        ni = ygrid.get(GRID_ATTR_I_NODE_COUNT)
+        nj = ygrid.get(GRID_ATTR_J_NODE_COUNT)
         if not isinstance(data, np.ndarray):
             try:
                 data = np.array(data)
             except:
-                self.error("Failed to load grid {gridname} data into an array")
+                self.error(f"Failed to load grid {gridname} data into an array")
+                return
+            dtype = data.dtype
+            if dtype == dtype("object"):
+                self.error(
+                    f"Failed to load grid {gridname} - bracketing may be inconsistent"
+                )
+            if not (
+                np.issubdtype(dtype, np.integer) or np.issubdtype(dtype, np.floating)
+            ):
+                self.error(f"Failed to load grid {gridname} - not numeric data")
                 return
 
         size = data.size
         shape = data.shape
-        expectedSize = nparam * nrow * ncol
-        expectedShape = (ncol, nrow, nparam)
+        expectedSize = ni * nj * nparam
+        # YAML grid order expects row, column, param corresponding to nj,ni,nparam
+        expectedShape = (nj, ni, nparam)
 
         gridok = True
         if size != expectedSize:
@@ -323,23 +318,46 @@ class Reader(BaseReader):
             self.error(
                 f"Grid {gridname}: size {size} different to expected {expectedSize}"
             )
-        if gridok:
-            if len(shape) == 1:
-                shape = expectedShape
-                data = data.reshape(shape)
-            elif len(shape) == 2:
-                shape = (shape[0], shape[1], 1)
-                data = data.reshape(shape)
-            elif len(shape) != 3:
-                gridok = False
-                self.error(
-                    f"Grid {gridname} has the wrong number of dimensions {len(shape)}"
-                )
-        if gridok and shape != expectedShape:
+        # Valid option for number of dimensions
+        if gridok and len(shape) > len(expectedShape):
             gridok = False
             self.error(
-                f"Grid {gridname}: dimensions {data.shape} does not match expected {expectedShape} - likely transposed grid"
+                f"Grid {gridname}: more dimensions ({len(shape)}) than expected ({len(expectedShape)})"
             )
+        if gridok and shape != expectedShape:
+            # Is the grid transposed?
+            if (
+                gridok
+                and shape[0] != expectedShape[0]
+                and shape[0] == expectedShape[1]
+                and shape[1] == expectedShape[0]
+            ):
+                gridok = False
+                self.error(f"Grid {gridname}: grid dimension wrong - likely transposed")
+            # Check for flattening options of source grid.  This works because we already know the size is correct
+            if gridok:
+                shp = [*shape]
+                eshp = [*expectedShape]
+                while len(shp) > 0 and len(eshp) > 0:
+                    if shp[0] == eshp[0]:
+                        shp.pop(0)
+                        eshp.pop(0)
+                    elif shp[0] > eshp[0]:
+                        e0 = eshp.pop(0)
+                        eshp[0] *= e0
+                    else:
+                        gridok = False
+                        self.error(
+                            f"Grid {gridname}: YAML dimensions ({shape}) don't match expected {(expectedShape)}"
+                        )
+            # Grid shape is compatible, so can reshape the grid to match.  Relies on numpy using row major ordering
+            # internally for reshape.
+
+            # Swap axis order to i,j,k as matching GGXF internal order
+
+            if gridok:
+                data = data.reshape(expectedShape)
+                data = np.swapaxes(data, 0, 1)
         if gridok:
             if data.dtype != self._dtype:
                 data = data.astype(self._dtype)
@@ -366,7 +384,8 @@ class Reader(BaseReader):
             ygrid[GRID_ATTR_DATA] = data
 
     def splitGridByParamSet(self, group, gdata):
-        # Placeholder for representing data in sets rather than single grid
+        # Placeholder for representing data in sets rather than single grid.
+        # Future possibility to better align internal grid structure with NetCDF/binary structure
         return gdata
         # paramSetIndices = group.paramSetIndices()
         # return {pset: gdata[:, :, indices] for pset, indices in paramSetIndices.items()}
@@ -398,6 +417,13 @@ class Writer(BaseWriter):
         loader.add_representer(np.ndarray, self._writeGridData)
         loader.add_representer(str, self._writeStr)
         self._headerOnly = self.getBoolOption(YAML_OPTION_WRITE_HEADERS_ONLY, False)
+        self._csvGrids = self.getBoolOption(YAML_OPTION_WRITE_CSV_GRIDS, True)
+        self._csvCoords = self.getBoolOption(YAML_OPTION_WRITE_CSV_COORDS, True)
+        self._csvFileTemplate = os.path.splitext(yaml_file)[0] + "-{csvid}.csv"
+        self._csvFileGridNames = {}
+        self._crdFormat = f"{{:{CSV_COORDINATE_FORMAT}}}".format
+        self._prmFormat = f"{{:{CSV_PARAMETER_FORMAT}}}".format
+        self._yamlFileDir = os.path.dirname(yaml_file)
         filename = os.path.basename(yaml_file)
         ggxf.setFilename(filename)
 
@@ -424,39 +450,73 @@ class Writer(BaseWriter):
     def _writeGgxfHeader(self, dumper, ggxf):
         ydata = ggxf.metadata().copy()
         ydata[GGXF_ATTR_GGXF_GROUPS] = ggxf._groups
-        allgrids = list(ggxf.allgrids())
-        multipleGrids = len(allgrids) > 1
-        self._useGridDataSection = self.getBoolOption(
-            YAML_OPTION_USE_GRIDDATA_SECTION, multipleGrids
-        )
-        if self._useGridDataSection and not self._headerOnly:
-            griddata = [
-                {
-                    GRID_ATTR_GRID_NAME: grid.name(),
-                    GRID_ATTR_DATA: self._gridDataWithNoDataFlag(grid),
-                }
-                for grid in allgrids
-            ]
-            ydata[GGXF_ATTR_GRID_DATA] = griddata
         return dumper.represent_mapping(YAML_GGXF_TAG, ydata)
 
     def _writeGgxfGroup(self, dumper, group):
-        ydata = group.metadata().copy()
-        ydata[GROUP_ATTR_GGXF_GROUP_NAME] = group.name()
+        ydata = {GROUP_ATTR_GGXF_GROUP_NAME: group.name()}
+        ydata.update(group.metadata())
         ydata[GROUP_ATTR_GRIDS] = group.grids()
         return dumper.represent_mapping(YAML_GROUP_TAG, ydata)
 
     def _writeGgxfGrid(self, dumper, grid):
-        ydata = grid.metadata().copy()
+        ydata = {GRID_ATTR_GRID_NAME: grid.name()}
+        ydata.update(grid.metadata())
         ydata[GRID_ATTR_AFFINE_COEFFS] = [
             float(c) for c in ydata[GRID_ATTR_AFFINE_COEFFS]
         ]
+        ydata.pop(GRID_ATTR_DATA, None)
+        if not self._headerOnly:
+            data = self._gridDataWithNoDataFlag(grid)
+            if self._csvGrids:
+                gridfile = self._writeCsvGrid(grid, data)
+                ydata[GRID_ATTR_DATA_SOURCE] = {
+                    SOURCE_ATTR_SOURCE_TYPE: SOURCE_TYPE_GGXF_CSV,
+                    SOURCE_ATTR_GRID_FILENAME: gridfile,
+                }
+            else:
+                ydata[GRID_ATTR_DATA] = data
         if len(grid.grids()) > 0:
             ydata[GRID_ATTR_CHILD_GRIDS] = grid.grids()
         ydata.pop(GRID_ATTR_DATA, None)
-        if not self._useGridDataSection and not self._headerOnly:
+        if not self._headerOnly:
             ydata[GRID_ATTR_DATA] = self._gridDataWithNoDataFlag(grid)
         return dumper.represent_mapping(YAML_GGXF_TAG, ydata)
+
+    def _writeCsvGrid(self, grid, data):
+        # Construct a unique grid name
+        name = grid.name()
+        name = re.sub(r"\W", "", name)[:YAML_MAX_SIMPLE_STRING_LEN].lower()
+        gridid = self._csvFileGridNames.get(name, 1)
+        self._csvFileGridNames[name] = gridid + 1
+        filename = self._csvFileTemplate.replace("{csvid}", f"{name}{gridid:02d}")
+
+        nodeCoordParams = grid.group().ggxf().nodeCoordinateParameters()
+        groupParams = grid.group().parameterNames()
+
+        try:
+            # Consider using numpy.savetxt in the future...
+            with open(filename, "w") as csvh:
+                csvw = csv.writer(csvh)
+                header = (
+                    grid.group().ggxf().nodeCoordinateParameters()
+                    if self._csvCoords
+                    else []
+                )
+                csvw.writerow((*header, *grid.group().parameterNames()))
+                shape = data.shape
+                crd = []
+                for jnode in range(shape[1]):
+                    for inode in range(shape[0]):
+                        if self._csvCoords:
+                            xy = grid.calcxy([inode, jnode])
+                            crd = [self._crdFormat(c) for c in xy]
+                        prm = [self._prmFormat(p) for p in data[inode, jnode]]
+                        csvw.writerow([*crd, *prm])
+        except Exception as ex:
+            self._logger.error(f"Error saving CSV grid file {filename}: {ex}")
+
+        gridfile = os.path.relpath(filename, self._yamlFileDir)
+        return gridfile
 
     def _gridDataWithNoDataFlag(self, grid):
         data = grid.data()
@@ -485,6 +545,8 @@ class Writer(BaseWriter):
         ydata = data
         if len(shape) == 3 and shape[2] == 1:
             ydata = data.reshape(shape[:2])
+        if len(shape) > 1:
+            ydata = np.swapaxes(ydata, 0, 1)
 
         ydata = ydata.tolist()
         return dumper.represent_sequence(YAML_GRID_DATA_TAG, ydata)

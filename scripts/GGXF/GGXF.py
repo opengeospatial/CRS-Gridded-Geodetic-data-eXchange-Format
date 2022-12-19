@@ -478,7 +478,7 @@ class Grid(GridList):
     def setData(self, data):
         if type(data) not in (np.array, np.ma.masked_array):
             data = np.array(data)
-        shape = (self._jmax + 1, self._imax + 1, self._nparam)
+        shape = (self._imax + 1, self._jmax + 1, self._nparam)
         if data.shape == shape[:2]:
             data = data.reshape(shape)
         elif data.shape != shape:
