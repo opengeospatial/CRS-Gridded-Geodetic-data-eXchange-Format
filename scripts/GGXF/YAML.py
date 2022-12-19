@@ -15,13 +15,13 @@ import numpy as np
 from .GGXF import *
 from . import GGXF_Types
 
-YAML_OPTION_GRID_DIRECTORY = "grid_directory"
-YAML_OPTION_CHECK_DATASOURCE_AFFINE = "check_datasource_affine_coeffs"
-YAML_OPTION_WRITE_HEADERS_ONLY = "write_headers_only"
-YAML_OPTION_WRITE_CSV_GRIDS = "write_csv_grids"
-YAML_OPTION_WRITE_CSV_COORDS = "write_csv_node_coordinates"
+YAML_OPTION_GRID_DIRECTORY = "grid-directory"
+YAML_OPTION_CHECK_DATASOURCE_AFFINE = "check-datasource-affine-coeffs"
+YAML_OPTION_WRITE_HEADERS_ONLY = "write-headers-only"
+YAML_OPTION_WRITE_CSV_GRIDS = "write-csv-grids"
+YAML_OPTION_WRITE_CSV_COORDS = "write-csv-node-coordinates"
 # Option for testing yaml headers without requiring valid grid data
-YAML_OPTION_CREATE_DUMMY_GRID_DATA = "create_dummy_grid_data"
+YAML_OPTION_CREATE_DUMMY_GRID_DATA = "create-dummy-grid-data"
 YAML_AFFINE_COEFF_DIFFERENCE_TOLERANCE = 1.0e-6
 
 YAML_OPTION_GRID_DTYPE = "grid_dtype"
@@ -35,7 +35,7 @@ YAML_GRID_TAG = "!ggxfgrid"
 YAML_GRID_DATA_TAG = "!ggxfgriddata"
 
 
-YAML_MAX_SIMPLE_STRING_LEN = 32
+YAML_MAX_SIMPLE_STRING_LEN = 64
 YAML_STR_SCALAR_TAG = "tag:yaml.org,2002:str"
 
 
@@ -164,6 +164,7 @@ class Reader(BaseReader):
             gdata = ygrid.pop(GRID_ATTR_DATA, [])
             cgrids = ygrid.pop(GRID_ATTR_CHILD_GRIDS, [])
             gridname = ygrid.pop(GRID_ATTR_GRID_NAME)
+            gdata = np.swapaxes(gdata, 0, 1)
             data = self.splitGridByParamSet(group, gdata)
             grid = Grid(group, gridname, ygrid, data)
             for cgrid in cgrids:
@@ -260,7 +261,7 @@ class Reader(BaseReader):
                 f"Grid {gridname}: {GRID_ATTR_AFFINE_COEFFS} not defined and not inferrable from data source"
             )
 
-            ygrid[GRID_ATTR_DATA] = gridData
+        ygrid[GRID_ATTR_DATA] = gridData
 
     def applyParameterTransformation(self, group, grid, transforms):
         if not isinstance(transforms, list):
@@ -296,7 +297,7 @@ class Reader(BaseReader):
                 self.error(f"Failed to load grid {gridname} data into an array")
                 return
             dtype = data.dtype
-            if dtype == dtype("object"):
+            if dtype == np.dtype("object"):
                 self.error(
                     f"Failed to load grid {gridname} - bracketing may be inconsistent"
                 )
@@ -348,16 +349,13 @@ class Reader(BaseReader):
                     else:
                         gridok = False
                         self.error(
-                            f"Grid {gridname}: YAML dimensions ({shape}) don't match expected {(expectedShape)}"
+                            f"Grid {gridname}: YAML dimensions ({shape}) don't match expected {(expectedShape)} (nj,ni,np)"
                         )
             # Grid shape is compatible, so can reshape the grid to match.  Relies on numpy using row major ordering
             # internally for reshape.
 
-            # Swap axis order to i,j,k as matching GGXF internal order
-
             if gridok:
                 data = data.reshape(expectedShape)
-                data = np.swapaxes(data, 0, 1)
         if gridok:
             if data.dtype != self._dtype:
                 data = data.astype(self._dtype)
@@ -461,9 +459,9 @@ class Writer(BaseWriter):
     def _writeGgxfGrid(self, dumper, grid):
         ydata = {GRID_ATTR_GRID_NAME: grid.name()}
         ydata.update(grid.metadata())
-        ydata[GRID_ATTR_AFFINE_COEFFS] = [
-            float(c) for c in ydata[GRID_ATTR_AFFINE_COEFFS]
-        ]
+        ydata[GRID_ATTR_AFFINE_COEFFS] = np.array(
+            [float(c) for c in ydata[GRID_ATTR_AFFINE_COEFFS]]
+        )
         ydata.pop(GRID_ATTR_DATA, None)
         if not self._headerOnly:
             data = self._gridDataWithNoDataFlag(grid)
@@ -477,9 +475,6 @@ class Writer(BaseWriter):
                 ydata[GRID_ATTR_DATA] = data
         if len(grid.grids()) > 0:
             ydata[GRID_ATTR_CHILD_GRIDS] = grid.grids()
-        ydata.pop(GRID_ATTR_DATA, None)
-        if not self._headerOnly:
-            ydata[GRID_ATTR_DATA] = self._gridDataWithNoDataFlag(grid)
         return dumper.represent_mapping(YAML_GGXF_TAG, ydata)
 
     def _writeCsvGrid(self, grid, data):
@@ -549,11 +544,11 @@ class Writer(BaseWriter):
             ydata = np.swapaxes(ydata, 0, 1)
 
         ydata = ydata.tolist()
-        return dumper.represent_sequence(YAML_GRID_DATA_TAG, ydata)
+        return dumper.represent_sequence(YAML_GRID_DATA_TAG, ydata, flow_style=True)
 
     # This attempts to improve the format of output YAML strings (eg WKT).  Hasn't
     # worked :-(
     def _writeStr(self, dumper, data):
         if "\n" in data or '"' in data or len(data) > YAML_MAX_SIMPLE_STRING_LEN:
-            return dumper.represent_scalar(YAML_STR_SCALAR_TAG, data, style="literal")
+            return dumper.represent_scalar(YAML_STR_SCALAR_TAG, data, style="|")
         return dumper.represent_scalar(YAML_STR_SCALAR_TAG, data)
