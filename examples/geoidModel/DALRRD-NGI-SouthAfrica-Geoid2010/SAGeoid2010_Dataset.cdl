@@ -42,7 +42,7 @@ group: SA\ geoid\ 2010 {
     	iNodeCount = 409 ;
     	jNodeCount = 313 ;
     variables:
-    	float geoidHeight(jNodeCount, iNodeCount) ;
+    	float geoidHeight(iNodeCount, jNodeCount) ;
     		geoidHeight:_Storage = "contiguous" ;
     		geoidHeight:_Endianness = "little" ;
 

@@ -1,6 +1,6 @@
 import sys, os
 
-testdir = os.path.dirname(__file__)
+testdir = os.path.dirname(os.path.dirname(__file__))
 srcdir = ".."
 sys.path.insert(0, os.path.abspath(os.path.join(testdir, srcdir)))
 
@@ -13,11 +13,11 @@ class CsvLoaderTest(unittest.TestCase):
     def testCsvLoader(self):
         csvfile = os.path.join(testdir, "data", "test.csv")
         csvsource = {
-            "csvFilename": csvfile,
+            "gridFilename": csvfile,
             "interpolationCoordFields": ["X", "Y"],
             "parameterFields": ["displacementEast", "displacementNorth"],
         }
-        (size, affine, data) = CSV.LoadGrid({}, csvsource, None)
+        (data, size, affine) = CSV.LoadGrid({}, csvsource, None)
         shapeExpected = (40, 43)
         self.assertEqual(
             size,

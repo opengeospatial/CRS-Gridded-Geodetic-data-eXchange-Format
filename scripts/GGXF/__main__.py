@@ -184,7 +184,7 @@ def calculateCsvPoints(
                 ycol = ncol
         if xcol is None or ycol is None:
             logging.error(
-                f"Input CSV {input_csv} does not have {'and'.join(ordinates)} columns"
+                f"Input CSV {input_csv} does not have {' and '.join(ordinates)} columns"
             )
             return
         missingval = []

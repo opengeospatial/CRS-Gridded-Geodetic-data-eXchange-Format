@@ -40,10 +40,10 @@ group: Catalano_Canyon {
     	iNodeCount = 5 ;
     	jNodeCount = 3 ;
     variables:
-    	float latitudeOffset(jNodeCount, iNodeCount) ;
+    	float latitudeOffset(iNodeCount, jNodeCount) ;
     		latitudeOffset:_Storage = "contiguous" ;
     		latitudeOffset:_Endianness = "little" ;
-    	float longitudeOffset(jNodeCount, iNodeCount) ;
+    	float longitudeOffset(iNodeCount, jNodeCount) ;
     		longitudeOffset:_Storage = "contiguous" ;
     		longitudeOffset:_Endianness = "little" ;
 
@@ -56,10 +56,10 @@ group: Catalano_Canyon {
     	iNodeCount = 3 ;
     	jNodeCount = 4 ;
     variables:
-    	float latitudeOffset(jNodeCount, iNodeCount) ;
+    	float latitudeOffset(iNodeCount, jNodeCount) ;
     		latitudeOffset:_Storage = "contiguous" ;
     		latitudeOffset:_Endianness = "little" ;
-    	float longitudeOffset(jNodeCount, iNodeCount) ;
+    	float longitudeOffset(iNodeCount, jNodeCount) ;
     		longitudeOffset:_Storage = "contiguous" ;
     		longitudeOffset:_Endianness = "little" ;
 

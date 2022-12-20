@@ -61,7 +61,7 @@ ggxfGroups:
         comment: "grid starts in the bottom left (southwest) corner and works across (east) and up (north)"
         dataSource: 
           dataSourceType: "CSV"
-          csvFilename: "PRVIGEOID18.csv"
+          gridFilename: "PRVIGEOID18.csv"
           interpolationCoordFields: 
             - latitude
             - longitude

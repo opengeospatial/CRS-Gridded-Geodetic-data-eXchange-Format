@@ -1,4 +1,4 @@
-Y,X,velocityEast,velocityNorth,velocityUp
+nodeLongitude,nodeLatitude,velocityEast,velocityNorth,velocityUp
 -162.994475138122,69.3611878453039,-0.0239,-0.0034,0.0000
 -158.237569060773,59.9053867403315,-0.0252,-0.0025,0.0000
 -144.604972375691,57.875,0.0326,-0.0281,0.0000

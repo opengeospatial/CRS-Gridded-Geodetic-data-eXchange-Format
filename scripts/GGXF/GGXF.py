@@ -615,7 +615,7 @@ class GridInterpolator:
         )
         nodes = crnr + cellij
         # Multiply the values at the nodes by the interpolation factor
-        nodeprm = data[nodes[:, 1], nodes[:, 0]]
+        nodeprm = data[nodes[:, 0], nodes[:, 1]]
         # Sum the scaled values to get the value at the evaluation point.
         val = (nodef * nodeprm).sum(axis=0)
         return val
@@ -672,7 +672,7 @@ class GridInterpolator:
         )
         nodes = crnr + cellij
         # Multiply the values at the nodes by the interpolation factor
-        nodeprm = data[nodes[:, 1], nodes[:, 0]]
+        nodeprm = data[nodes[:, 0], nodes[:, 1]]
         # Sum the scaled values to get the value at the evaluation point.
         val = (nodef * nodeprm).sum(axis=0)
         return val

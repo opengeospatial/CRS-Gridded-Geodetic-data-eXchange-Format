@@ -1,6 +1,6 @@
 import sys, os
 
-testdir = os.path.dirname(__file__)
+testdir = os.path.dirname(os.path.dirname(__file__))
 srcdir = ".."
 sys.path.insert(0, os.path.abspath(os.path.join(testdir, srcdir)))
 
@@ -15,7 +15,7 @@ class CsvLoaderTest(unittest.TestCase):
         csvsource = {
             "gdalSource": tiffile,
         }
-        (size, affine, data) = GDAL.LoadGrid({}, csvsource, None)
+        (data, size, affine) = GDAL.LoadGrid({}, csvsource, None)
 
         self.assertEqual(size, (43, 40), f"Grid size - expected (43,40) but got {size}")
         affineExpected = [-38.625, 0.0, -0.125, 171.1, 0.15, 0.0]

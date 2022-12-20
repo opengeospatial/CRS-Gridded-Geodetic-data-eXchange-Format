@@ -62,7 +62,7 @@ group: nz_linz_nzgd2000-ndm-grid02 {
     	iNodeCount = 73 ;
     	jNodeCount = 67 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -74,7 +74,7 @@ group: nz_linz_nzgd2000-ndm-grid02 {
       	iNodeCount = 141 ;
       	jNodeCount = 151 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -102,7 +102,7 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
     	iNodeCount = 44 ;
     	jNodeCount = 34 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -114,7 +114,7 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
       	iNodeCount = 47 ;
       	jNodeCount = 45 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -126,7 +126,7 @@ group: nz_linz_nzgd2000-si20030821-grid01 {
         	iNodeCount = 93 ;
         	jNodeCount = 81 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -155,7 +155,7 @@ group: nz_linz_nzgd2000-mq20041223-grid011 {
     	iNodeCount = 10 ;
     	jNodeCount = 8 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -182,7 +182,7 @@ group: nz_linz_nzgd2000-mq20041223-grid012 {
     	iNodeCount = 105 ;
     	jNodeCount = 137 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -209,7 +209,7 @@ group: nz_linz_nzgd2000-mq20041223-grid013 {
     	iNodeCount = 11 ;
     	jNodeCount = 11 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -236,7 +236,7 @@ group: nz_linz_nzgd2000-mq20041223-grid014 {
     	iNodeCount = 9 ;
     	jNodeCount = 8 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -263,7 +263,7 @@ group: nz_linz_nzgd2000-mq20041223-grid015 {
     	iNodeCount = 70 ;
     	jNodeCount = 68 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -290,7 +290,7 @@ group: nz_linz_nzgd2000-mq20041223-grid016 {
     	iNodeCount = 8 ;
     	jNodeCount = 7 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -317,7 +317,7 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
     	iNodeCount = 37 ;
     	jNodeCount = 27 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -329,7 +329,7 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
       	iNodeCount = 45 ;
       	jNodeCount = 37 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -341,7 +341,7 @@ group: nz_linz_nzgd2000-gs20071016-grid01 {
         	iNodeCount = 54 ;
         	jNodeCount = 52 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -377,7 +377,7 @@ group: nz_linz_nzgd2000-ds20090715-grid011 {
     	iNodeCount = 11 ;
     	jNodeCount = 11 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -411,7 +411,7 @@ group: nz_linz_nzgd2000-ds20090715-grid012 {
     	iNodeCount = 6 ;
     	jNodeCount = 7 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -445,7 +445,7 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
     	iNodeCount = 85 ;
     	jNodeCount = 72 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -457,7 +457,7 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
       	iNodeCount = 67 ;
       	jNodeCount = 73 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -469,7 +469,7 @@ group: nz_linz_nzgd2000-ds20090715-grid013 {
         	iNodeCount = 83 ;
         	jNodeCount = 138 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -505,7 +505,7 @@ group: nz_linz_nzgd2000-ds20090715-grid014 {
     	iNodeCount = 8 ;
     	jNodeCount = 7 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -532,7 +532,7 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
     	iNodeCount = 55 ;
     	jNodeCount = 52 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -544,7 +544,7 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
       	iNodeCount = 59 ;
       	jNodeCount = 50 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -556,7 +556,7 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
         	iNodeCount = 118 ;
         	jNodeCount = 84 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -568,7 +568,7 @@ group: nz_linz_nzgd2000-c120100904-grid01 {
           	iNodeCount = 306 ;
           	jNodeCount = 141 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+          	float displacement(iNodeCount, jNodeCount, displacementCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -598,7 +598,7 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
     	iNodeCount = 21 ;
     	jNodeCount = 18 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -610,7 +610,7 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
       	iNodeCount = 38 ;
       	jNodeCount = 34 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -622,7 +622,7 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
         	iNodeCount = 62 ;
         	jNodeCount = 52 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -634,7 +634,7 @@ group: nz_linz_nzgd2000-c220110222-grid01 {
           	iNodeCount = 118 ;
           	jNodeCount = 81 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+          	float displacement(iNodeCount, jNodeCount, displacementCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -664,7 +664,7 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
     	iNodeCount = 16 ;
     	jNodeCount = 15 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -676,7 +676,7 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
       	iNodeCount = 33 ;
       	jNodeCount = 31 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -688,7 +688,7 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
         	iNodeCount = 51 ;
         	jNodeCount = 48 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -700,7 +700,7 @@ group: nz_linz_nzgd2000-c320110613-grid01 {
           	iNodeCount = 88 ;
           	jNodeCount = 84 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+          	float displacement(iNodeCount, jNodeCount, displacementCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -730,7 +730,7 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
     	iNodeCount = 15 ;
     	jNodeCount = 13 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -742,7 +742,7 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
       	iNodeCount = 32 ;
       	jNodeCount = 30 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -754,7 +754,7 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
         	iNodeCount = 52 ;
         	jNodeCount = 44 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -766,7 +766,7 @@ group: nz_linz_nzgd2000-c420111223-grid01 {
           	iNodeCount = 87 ;
           	jNodeCount = 61 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+          	float displacement(iNodeCount, jNodeCount, displacementCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -796,7 +796,7 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
     	iNodeCount = 34 ;
     	jNodeCount = 32 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -808,7 +808,7 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
       	iNodeCount = 43 ;
       	jNodeCount = 37 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -820,7 +820,7 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
         	iNodeCount = 73 ;
         	jNodeCount = 57 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -832,7 +832,7 @@ group: nz_linz_nzgd2000-cs20130721-grid02 {
           	iNodeCount = 90 ;
           	jNodeCount = 68 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+          	float displacement(iNodeCount, jNodeCount, displacementCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -862,7 +862,7 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
     	iNodeCount = 39 ;
     	jNodeCount = 39 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -874,7 +874,7 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
       	iNodeCount = 44 ;
       	jNodeCount = 40 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -886,7 +886,7 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
         	iNodeCount = 79 ;
         	jNodeCount = 63 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -898,7 +898,7 @@ group: nz_linz_nzgd2000-lg20130816-grid02 {
           	iNodeCount = 134 ;
           	jNodeCount = 104 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+          	float displacement(iNodeCount, jNodeCount, displacementCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -928,7 +928,7 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
     	iNodeCount = 14 ;
     	jNodeCount = 11 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -940,7 +940,7 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
       	iNodeCount = 29 ;
       	jNodeCount = 27 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -952,7 +952,7 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
         	iNodeCount = 46 ;
         	jNodeCount = 38 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -964,7 +964,7 @@ group: nz_linz_nzgd2000-ch20160214-grid01 {
           	iNodeCount = 79 ;
           	jNodeCount = 61 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+          	float displacement(iNodeCount, jNodeCount, displacementCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -993,7 +993,7 @@ group: nz_linz_nzgd2000-ka20161114-grid01 {
     	iNodeCount = 89 ;
     	jNodeCount = 110 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -1005,7 +1005,7 @@ group: nz_linz_nzgd2000-ka20161114-grid01 {
       	iNodeCount = 95 ;
       	jNodeCount = 82 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -1033,7 +1033,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
     	iNodeCount = 65 ;
     	jNodeCount = 53 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -1045,7 +1045,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
       	iNodeCount = 115 ;
       	jNodeCount = 94 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -1057,7 +1057,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 106 ;
         	jNodeCount = 107 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1070,7 +1070,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 11 ;
         	jNodeCount = 26 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1083,7 +1083,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 106 ;
         	jNodeCount = 111 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1096,7 +1096,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 106 ;
         	jNodeCount = 51 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1109,7 +1109,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 106 ;
         	jNodeCount = 88 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1122,7 +1122,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 106 ;
         	jNodeCount = 111 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1135,7 +1135,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 21 ;
         	jNodeCount = 63 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1148,7 +1148,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 52 ;
         	jNodeCount = 30 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1161,7 +1161,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 52 ;
         	jNodeCount = 111 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1174,7 +1174,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 52 ;
         	jNodeCount = 63 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1188,7 +1188,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
       	iNodeCount = 53 ;
       	jNodeCount = 89 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -1200,7 +1200,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 21 ;
         	jNodeCount = 49 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1213,7 +1213,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 9 ;
         	jNodeCount = 6 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1226,7 +1226,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 52 ;
         	jNodeCount = 49 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1239,7 +1239,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 52 ;
         	jNodeCount = 111 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1253,7 +1253,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
       	iNodeCount = 73 ;
       	jNodeCount = 63 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -1265,7 +1265,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 28 ;
         	jNodeCount = 30 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1278,7 +1278,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 55 ;
         	jNodeCount = 111 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1291,7 +1291,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 55 ;
         	jNodeCount = 63 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1304,7 +1304,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 87 ;
         	jNodeCount = 95 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1317,7 +1317,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 106 ;
         	jNodeCount = 63 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1330,7 +1330,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 62 ;
         	jNodeCount = 41 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1344,7 +1344,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
       	iNodeCount = 114 ;
       	jNodeCount = 94 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -1356,7 +1356,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 55 ;
         	jNodeCount = 49 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1369,7 +1369,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 55 ;
         	jNodeCount = 111 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1382,7 +1382,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 15 ;
         	jNodeCount = 10 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1395,7 +1395,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 106 ;
         	jNodeCount = 49 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1408,7 +1408,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 106 ;
         	jNodeCount = 111 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1421,7 +1421,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 106 ;
         	jNodeCount = 41 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1434,7 +1434,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 62 ;
         	jNodeCount = 49 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1447,7 +1447,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 106 ;
         	jNodeCount = 111 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1460,7 +1460,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 106 ;
         	jNodeCount = 93 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1473,7 +1473,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 59 ;
         	jNodeCount = 35 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1486,7 +1486,7 @@ group: nz_linz_nzgd2000-ka20161114-grid02 {
         	iNodeCount = 104 ;
         	jNodeCount = 110 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+        	float displacement(iNodeCount, jNodeCount, displacementCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1513,7 +1513,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
     	iNodeCount = 86 ;
     	jNodeCount = 108 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount) ;
+    	float displacement(iNodeCount, jNodeCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -1525,7 +1525,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
       	iNodeCount = 74 ;
       	jNodeCount = 67 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount) ;
+      	float displacement(iNodeCount, jNodeCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -1537,7 +1537,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
         	iNodeCount = 103 ;
         	jNodeCount = 89 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount) ;
+        	float displacement(iNodeCount, jNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1549,7 +1549,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 103 ;
           	jNodeCount = 88 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1562,7 +1562,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 103 ;
           	jNodeCount = 105 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1575,7 +1575,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 89 ;
           	jNodeCount = 52 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1588,7 +1588,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 103 ;
           	jNodeCount = 100 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1601,7 +1601,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 103 ;
           	jNodeCount = 89 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1614,7 +1614,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 21 ;
           	jNodeCount = 67 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1627,7 +1627,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 42 ;
           	jNodeCount = 34 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1640,7 +1640,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 42 ;
           	jNodeCount = 107 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1653,7 +1653,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 42 ;
           	jNodeCount = 67 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1667,7 +1667,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
         	iNodeCount = 44 ;
         	jNodeCount = 70 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount) ;
+        	float displacement(iNodeCount, jNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1679,7 +1679,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 21 ;
           	jNodeCount = 33 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1692,7 +1692,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 42 ;
           	jNodeCount = 41 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1705,7 +1705,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 12 ;
           	jNodeCount = 66 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1719,7 +1719,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
         	iNodeCount = 79 ;
         	jNodeCount = 60 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount) ;
+        	float displacement(iNodeCount, jNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1731,7 +1731,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 62 ;
           	jNodeCount = 34 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1744,7 +1744,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 62 ;
           	jNodeCount = 107 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1757,7 +1757,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 62 ;
           	jNodeCount = 67 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1770,7 +1770,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 7 ;
           	jNodeCount = 4 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1783,7 +1783,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 93 ;
           	jNodeCount = 107 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1796,7 +1796,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 103 ;
           	jNodeCount = 67 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1809,7 +1809,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 40 ;
           	jNodeCount = 59 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1823,7 +1823,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
         	iNodeCount = 103 ;
         	jNodeCount = 88 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount) ;
+        	float displacement(iNodeCount, jNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -1835,7 +1835,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 62 ;
           	jNodeCount = 41 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1848,7 +1848,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 62 ;
           	jNodeCount = 66 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1861,7 +1861,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 103 ;
           	jNodeCount = 41 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1874,7 +1874,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 103 ;
           	jNodeCount = 93 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1887,7 +1887,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 40 ;
           	jNodeCount = 41 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1900,7 +1900,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 103 ;
           	jNodeCount = 107 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1913,7 +1913,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 64 ;
           	jNodeCount = 78 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1926,7 +1926,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 56 ;
           	jNodeCount = 45 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1939,7 +1939,7 @@ group: nz_linz_nzgd2000-ka20161114-grid03 {
           	iNodeCount = 101 ;
           	jNodeCount = 106 ;
           variables:
-          	float displacement(jNodeCount, iNodeCount) ;
+          	float displacement(iNodeCount, jNodeCount) ;
           		displacement:_Storage = "contiguous" ;
           		displacement:_Endianness = "little" ;
 
@@ -1971,7 +1971,7 @@ group: nz_linz_nzgd2000-ka20161114-grid04 {
     	iNodeCount = 46 ;
     	jNodeCount = 39 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -1983,7 +1983,7 @@ group: nz_linz_nzgd2000-ka20161114-grid04 {
       	iNodeCount = 74 ;
       	jNodeCount = 59 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2013,7 +2013,7 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
     	iNodeCount = 67 ;
     	jNodeCount = 56 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2025,7 +2025,7 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
       	iNodeCount = 93 ;
       	jNodeCount = 83 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2038,7 +2038,7 @@ group: nz_linz_nzgd2000-ka20161114-grid05 {
       	iNodeCount = 92 ;
       	jNodeCount = 125 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2066,7 +2066,7 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
     	iNodeCount = 29 ;
     	jNodeCount = 27 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount) ;
+    	float displacement(iNodeCount, jNodeCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2078,7 +2078,7 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
       	iNodeCount = 72 ;
       	jNodeCount = 74 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount) ;
+      	float displacement(iNodeCount, jNodeCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2090,7 +2090,7 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
         	iNodeCount = 92 ;
         	jNodeCount = 82 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount) ;
+        	float displacement(iNodeCount, jNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -2103,7 +2103,7 @@ group: nz_linz_nzgd2000-ka20161114-grid06 {
         	iNodeCount = 91 ;
         	jNodeCount = 119 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount) ;
+        	float displacement(iNodeCount, jNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -2131,7 +2131,7 @@ group: nz_linz_nzgd2000-ka20161114-grid10 {
     	iNodeCount = 43 ;
     	jNodeCount = 40 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2158,7 +2158,7 @@ group: nz_linz_nzgd2000-ka20161114-grid11 {
     	iNodeCount = 214 ;
     	jNodeCount = 192 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2183,7 +2183,7 @@ group: nz_linz_nzgd2000-ka20161114-grid12 {
     	iNodeCount = 216 ;
     	jNodeCount = 199 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount) ;
+    	float displacement(iNodeCount, jNodeCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2212,7 +2212,7 @@ group: nz_linz_nzgd2000-ka20161114-grid07 {
     	iNodeCount = 46 ;
     	jNodeCount = 40 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2224,7 +2224,7 @@ group: nz_linz_nzgd2000-ka20161114-grid07 {
       	iNodeCount = 66 ;
       	jNodeCount = 60 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2254,7 +2254,7 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
     	iNodeCount = 67 ;
     	jNodeCount = 56 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+    	float displacement(iNodeCount, jNodeCount, displacementCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2266,7 +2266,7 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
       	iNodeCount = 88 ;
       	jNodeCount = 91 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2279,7 +2279,7 @@ group: nz_linz_nzgd2000-ka20161114-grid08 {
       	iNodeCount = 88 ;
       	jNodeCount = 122 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount, displacementCount) ;
+      	float displacement(iNodeCount, jNodeCount, displacementCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2307,7 +2307,7 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
     	iNodeCount = 31 ;
     	jNodeCount = 28 ;
     variables:
-    	float displacement(jNodeCount, iNodeCount) ;
+    	float displacement(iNodeCount, jNodeCount) ;
     		displacement:_Storage = "contiguous" ;
     		displacement:_Endianness = "little" ;
 
@@ -2319,7 +2319,7 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
       	iNodeCount = 82 ;
       	jNodeCount = 76 ;
       variables:
-      	float displacement(jNodeCount, iNodeCount) ;
+      	float displacement(iNodeCount, jNodeCount) ;
       		displacement:_Storage = "contiguous" ;
       		displacement:_Endianness = "little" ;
 
@@ -2331,7 +2331,7 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
         	iNodeCount = 92 ;
         	jNodeCount = 80 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount) ;
+        	float displacement(iNodeCount, jNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 
@@ -2344,7 +2344,7 @@ group: nz_linz_nzgd2000-ka20161114-grid09 {
         	iNodeCount = 92 ;
         	jNodeCount = 121 ;
         variables:
-        	float displacement(jNodeCount, iNodeCount) ;
+        	float displacement(iNodeCount, jNodeCount) ;
         		displacement:_Storage = "contiguous" ;
         		displacement:_Endianness = "little" ;
 

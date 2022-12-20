@@ -1,0 +1,2 @@
+files="geoid/test-ggxf-csv.yaml  geoid/test-ggxf-csv.csv"
+command="test-ggxf-csv.yaml -y write-csv-grids=no -o test-ggxf-csv-out.yaml"

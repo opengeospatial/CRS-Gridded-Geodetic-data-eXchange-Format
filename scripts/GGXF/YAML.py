@@ -20,23 +20,20 @@ YAML_OPTION_CHECK_DATASOURCE_AFFINE = "check-datasource-affine-coeffs"
 YAML_OPTION_WRITE_HEADERS_ONLY = "write-headers-only"
 YAML_OPTION_WRITE_CSV_GRIDS = "write-csv-grids"
 YAML_OPTION_WRITE_CSV_COORDS = "write-csv-node-coordinates"
+
 # Option for testing yaml headers without requiring valid grid data
 YAML_OPTION_CREATE_DUMMY_GRID_DATA = "create-dummy-grid-data"
+
 YAML_AFFINE_COEFF_DIFFERENCE_TOLERANCE = 1.0e-6
 
 YAML_OPTION_GRID_DTYPE = "grid_dtype"
 YAML_DTYPE_FLOAT32 = "float32"
 YAML_DTYPE_FLOAT64 = "float64"
 
-# Yaml writer creates these tags then cleanses the YAML to remove them
-YAML_GGXF_TAG = "!ggxf"
-YAML_GROUP_TAG = "!ggxfgroup"
-YAML_GRID_TAG = "!ggxfgrid"
-YAML_GRID_DATA_TAG = "!ggxfgriddata"
-
-
 YAML_MAX_SIMPLE_STRING_LEN = 64
-YAML_STR_SCALAR_TAG = "tag:yaml.org,2002:str"
+YAML_STR_TAG = "tag:yaml.org,2002:str"
+YAML_MAP_TAG = "tag:yaml.org,2002:map"
+YAML_SEQ_TAG = "tag:yaml.org,2002:seq"
 
 
 YAML_OPTIONS = f"""
@@ -133,7 +130,7 @@ class Reader(BaseReader):
         nj = ygrid.get(GRID_ATTR_J_NODE_COUNT, 1)
         if GRID_ATTR_DATA_SOURCE in ygrid:
             ygrid.pop(GRID_ATTR_DATA_SOURCE)
-        ygrid[GRID_ATTR_DATA] = np.zeros((ni, nj, nparam))
+        ygrid[GRID_ATTR_DATA] = np.zeros((nj, ni, nparam))
 
     def loadGrid(self, group: Group, ygrid: dict, parent: Grid = None):
         gridname = ygrid.get(GRID_ATTR_GRID_NAME, "unnamed")
@@ -408,12 +405,12 @@ class Writer(BaseWriter):
 
     def write(self, ggxf, yaml_file):
         # Not sure about this code - changes the YAML module I think?
-        loader = yaml.SafeDumper
-        loader.add_representer(GGXF, self._writeGgxfHeader)
-        loader.add_representer(Group, self._writeGgxfGroup)
-        loader.add_representer(Grid, self._writeGgxfGrid)
-        loader.add_representer(np.ndarray, self._writeGridData)
-        loader.add_representer(str, self._writeStr)
+        dumper = yaml.SafeDumper
+        dumper.add_representer(GGXF, self._writeGgxfHeader)
+        dumper.add_representer(Group, self._writeGgxfGroup)
+        dumper.add_representer(Grid, self._writeGgxfGrid)
+        dumper.add_representer(np.ndarray, self._writeGridData)
+        dumper.add_representer(str, self._writeStr)
         self._headerOnly = self.getBoolOption(YAML_OPTION_WRITE_HEADERS_ONLY, False)
         self._csvGrids = self.getBoolOption(YAML_OPTION_WRITE_CSV_GRIDS, True)
         self._csvCoords = self.getBoolOption(YAML_OPTION_WRITE_CSV_COORDS, True)
@@ -425,36 +422,19 @@ class Writer(BaseWriter):
         filename = os.path.basename(yaml_file)
         ggxf.setFilename(filename)
 
-        with tempfile.TemporaryFile("w+") as tmph, open(yaml_file, "w") as yamlh:
-            yaml.safe_dump(ggxf, tmph, indent=2, sort_keys=False)
-            tmph.seek(0)
-            tags = [
-                re.escape(t)
-                for t in (
-                    YAML_GGXF_TAG,
-                    YAML_GROUP_TAG,
-                    YAML_GRID_TAG,
-                    YAML_GRID_DATA_TAG,
-                )
-            ]
-            tagpattern = r"(" + "|".join(tags) + r")\b *"
-            tagre = re.compile(tagpattern)
-            blank = re.compile(r"^\s*$")
-            for line in tmph:
-                line = tagre.sub("", line)
-                if not blank.match(line):
-                    yamlh.write(line)
+        with open(yaml_file, "w") as yamlh:
+            yaml.safe_dump(ggxf, yamlh, indent=2, sort_keys=False)
 
     def _writeGgxfHeader(self, dumper, ggxf):
         ydata = ggxf.metadata().copy()
         ydata[GGXF_ATTR_GGXF_GROUPS] = ggxf._groups
-        return dumper.represent_mapping(YAML_GGXF_TAG, ydata)
+        return dumper.represent_mapping(YAML_MAP_TAG, ydata)
 
     def _writeGgxfGroup(self, dumper, group):
         ydata = {GROUP_ATTR_GGXF_GROUP_NAME: group.name()}
         ydata.update(group.metadata())
         ydata[GROUP_ATTR_GRIDS] = group.grids()
-        return dumper.represent_mapping(YAML_GROUP_TAG, ydata)
+        return dumper.represent_mapping(YAML_MAP_TAG, ydata)
 
     def _writeGgxfGrid(self, dumper, grid):
         ydata = {GRID_ATTR_GRID_NAME: grid.name()}
@@ -474,7 +454,7 @@ class Writer(BaseWriter):
                 ydata[GRID_ATTR_DATA] = data
         if len(grid.grids()) > 0:
             ydata[GRID_ATTR_CHILD_GRIDS] = grid.grids()
-        return dumper.represent_mapping(YAML_GGXF_TAG, ydata)
+        return dumper.represent_mapping(YAML_MAP_TAG, ydata)
 
     def _writeCsvGrid(self, grid, data):
         # Construct a unique grid name
@@ -543,11 +523,13 @@ class Writer(BaseWriter):
             ydata = np.swapaxes(ydata, 0, 1)
 
         ydata = ydata.tolist()
-        return dumper.represent_sequence(YAML_GRID_DATA_TAG, ydata, flow_style=True)
+        return dumper.represent_sequence(YAML_SEQ_TAG, ydata, flow_style=True)
 
-    # This attempts to improve the format of output YAML strings (eg WKT).  Hasn't
-    # worked :-(
     def _writeStr(self, dumper, data):
         if "\n" in data or '"' in data or len(data) > YAML_MAX_SIMPLE_STRING_LEN:
-            return dumper.represent_scalar(YAML_STR_SCALAR_TAG, data, style="|")
-        return dumper.represent_scalar(YAML_STR_SCALAR_TAG, data)
+            # Discard trailing spaces as these are not supported in flow style and
+            # not significant in this context
+            style = "|" if "\n" in data else ">"
+            data = re.sub("\s+\n", "\n", data, flags=re.S)
+            return dumper.represent_scalar(YAML_STR_TAG, data, style=style)
+        return dumper.represent_scalar(YAML_STR_TAG, data)

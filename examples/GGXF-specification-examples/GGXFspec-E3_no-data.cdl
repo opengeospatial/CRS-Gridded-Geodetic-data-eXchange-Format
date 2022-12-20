@@ -1,11 +1,11 @@
-netcdf GGXFspec-E3_grid-incomplete {
+netcdf GGXFspec-E3_no-data {
 
 // global attributes:
 		:Conventions = "GGXF-1.0, ACDD-1.3" ;
 		:content = "geographic2dOffsets" ;
 		:title = "National Transformation v2_0" ;
 		:summary = "Transformation of geodetic latitude and longitude referenced to NAD27 to latitude and longitude referenced to NAD83(Original)." ;
-		:source_file = "GGXFspec-E3_grid-incomplete.ggxf" ;
+		:source_file = "GGXFspec-E3_no-data.ggxf" ;
 		:date_issued = "1995-02" ;
 		:institution = "Geodetic Survey Division, Natural Resources Canada" ;
 		:publisher_url = "https://webapp.geod.nrcan.gc.ca/geod/data-donnees/transformations.php" ;
@@ -60,10 +60,10 @@ group: National\ Transformation\ v2_0 {
     	iNodeCount = 649 ;
     	jNodeCount = 157 ;
     variables:
-    	float offset(jNodeCount, iNodeCount, offsetCount) ;
+    	float offset(iNodeCount, jNodeCount, offsetCount) ;
     		offset:_Storage = "contiguous" ;
     		offset:_Endianness = "little" ;
-    	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
+    	float offsetUncertainty(iNodeCount, jNodeCount, offsetUncertaintyCount) ;
     		offsetUncertainty:_Storage = "contiguous" ;
     		offsetUncertainty:_Endianness = "little" ;
 
@@ -76,10 +76,10 @@ group: National\ Transformation\ v2_0 {
     	iNodeCount = 529 ;
     	jNodeCount = 241 ;
     variables:
-    	float offset(jNodeCount, iNodeCount, offsetCount) ;
+    	float offset(iNodeCount, jNodeCount, offsetCount) ;
     		offset:_Storage = "contiguous" ;
     		offset:_Endianness = "little" ;
-    	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
+    	float offsetUncertainty(iNodeCount, jNodeCount, offsetUncertaintyCount) ;
     		offsetUncertainty:_Storage = "contiguous" ;
     		offsetUncertainty:_Endianness = "little" ;
 
@@ -91,10 +91,10 @@ group: National\ Transformation\ v2_0 {
       	iNodeCount = 351 ;
       	jNodeCount = 511 ;
       variables:
-      	float offset(jNodeCount, iNodeCount, offsetCount) ;
+      	float offset(iNodeCount, jNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
+      	float offsetUncertainty(iNodeCount, jNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -107,10 +107,10 @@ group: National\ Transformation\ v2_0 {
       	iNodeCount = 101 ;
       	jNodeCount = 121 ;
       variables:
-      	float offset(jNodeCount, iNodeCount, offsetCount) ;
+      	float offset(iNodeCount, jNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
+      	float offsetUncertainty(iNodeCount, jNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
@@ -123,10 +123,10 @@ group: National\ Transformation\ v2_0 {
       	iNodeCount = 171 ;
       	jNodeCount = 61 ;
       variables:
-      	float offset(jNodeCount, iNodeCount, offsetCount) ;
+      	float offset(iNodeCount, jNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
       		offset:_Endianness = "little" ;
-      	float offsetUncertainty(jNodeCount, iNodeCount, offsetUncertaintyCount) ;
+      	float offsetUncertainty(iNodeCount, jNodeCount, offsetUncertaintyCount) ;
       		offsetUncertainty:_Storage = "contiguous" ;
       		offsetUncertainty:_Endianness = "little" ;
 
