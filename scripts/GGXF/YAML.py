@@ -459,9 +459,8 @@ class Writer(BaseWriter):
     def _writeGgxfGrid(self, dumper, grid):
         ydata = {GRID_ATTR_GRID_NAME: grid.name()}
         ydata.update(grid.metadata())
-        ydata[GRID_ATTR_AFFINE_COEFFS] = np.array(
-            [float(c) for c in ydata[GRID_ATTR_AFFINE_COEFFS]]
-        )
+        # Convert to numpy array so that they get picked up by representer with [] style of sequence.
+        ydata[GRID_ATTR_AFFINE_COEFFS] = np.array(ydata[GRID_ATTR_AFFINE_COEFFS])
         ydata.pop(GRID_ATTR_DATA, None)
         if not self._headerOnly:
             data = self._gridDataWithNoDataFlag(grid)

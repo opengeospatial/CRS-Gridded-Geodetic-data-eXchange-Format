@@ -1,4 +1,4 @@
 #!/usr/bin/python3
-from GGXF.App import App
+from GGXF import __main__
 
-App.main()
+__main__.main()

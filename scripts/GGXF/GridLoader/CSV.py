@@ -34,8 +34,6 @@ Datasource attributes:
 """
 
 
-
-
 def LoadGrid(group, datasource, logger):
     for attr in (
         CSV_FILENAME_ATTR,
@@ -68,4 +66,4 @@ def LoadGrid(group, datasource, logger):
 
     return LoadCsvGrid(
         filename, datafields, xyfields=xyfields, xyoptional=xyoptional, logger=logger
-                    )
+    )
