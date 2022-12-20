@@ -29,12 +29,9 @@ NETCDF_VALID_DTYPE_MAP = {
 NETCDF_DEFAULT_WRITE_DTYPE = NETCDF_DTYPE_FLOAT32
 NETCDF_DEFAULT_READ_DTYPE = NETCDF_DTYPE_FLOAT64
 
-NETCDF_OPTION_USE_COMPOUND_TYPE = "use_compound_types"
-NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES = "use_snake_case_attributes"
-# NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS = "simplify_1param_grids"
-NETCDF_OPTION_WRITE_CDL = "write_cdl"
-NETCDF_OPTION_WRITE_CDL_HEADER = "write_cdl_header"
-NETCDF_OPTION_PACK_PRECISION = "packing_precision"
+NETCDF_OPTION_WRITE_CDL = "write-cdl"
+NETCDF_OPTION_WRITE_CDL_HEADER = "write-cdl-header"
+NETCDF_OPTION_PACK_PRECISION = "packing-precision"
 
 NETCDF_CONVENTIONS_ATTRIBUTE = "Conventions"
 NETCDF_CONVENTIONS_VALUE = "{ggxfVersion}, ACDD-1.3"
@@ -49,10 +46,8 @@ NETCDF_ATTR_CONTEXT_GRID = "grid"
 NETCDF_OPTIONS = f"""
 The following options apply to NetCDF input (I) and output (O):
 
-  "{NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES}" (O) Convert attributes to snake_case (default false)
   "{NETCDF_OPTION_WRITE_CDL}" (O) Generate an output CDL file as well as a NetCDF file (default false)
   "{NETCDF_OPTION_WRITE_CDL_HEADER}" (O) Only write the header information in the CDL file (default false)
-  "{NETCDF_OPTION_USE_COMPOUND_TYPE}" (O) Use compound types (very limited test implementation) (default false)
   "{NETCDF_OPTION_PACK_PRECISION}" (O) Specifies integer packing using specified number of decimal places
   "{NETCDF_OPTION_GRID_DTYPE}" (I/O) Specifies the data type used for the grid ({", ".join(NETCDF_VALID_DTYPE_MAP.keys())})
 
@@ -93,13 +88,6 @@ ACDD_AttributeMapping = {
 }
 
 ReverseACCD_AttributeMapping = {v: k for k, v in ACDD_AttributeMapping.items()}
-
-
-def _snakeCase(attr):
-    attr = re.sub(
-        r"([a-z0-9])([A-Z])", lambda m: m.group(1) + "_" + m.group(2).lower(), attr
-    )
-    return attr.lower()
 
 
 def _camelCase(attr):
@@ -221,8 +209,8 @@ class Reader(BaseReader):
         if np.count_nonzero(data.mask) == 0:
             data = data.data
 
-        metadata[GRID_ATTR_I_NODE_COUNT] = data.shape[1]
-        metadata[GRID_ATTR_J_NODE_COUNT] = data.shape[0]
+        metadata[GRID_ATTR_I_NODE_COUNT] = data.shape[0]
+        metadata[GRID_ATTR_J_NODE_COUNT] = data.shape[1]
 
         if self.validator().validateGridAttributes(metadata, context=context):
             grid = Grid(group, gridname, metadata, data)
@@ -358,20 +346,6 @@ class Writer(BaseWriter):
         self._logger = logging.getLogger("GGXF.NetCdfWriter")
 
     def write(self, ggxf, netcdf4_file: str):
-        self._useCompoundTypes = self.getBoolOption(
-            NETCDF_OPTION_USE_COMPOUND_TYPE, False
-        )
-        self._useSnakeCase = self.getBoolOption(
-            NETCDF_OPTION_USE_SNAKE_CASE_ATTRIBUTES, False
-        )
-        if self._useCompoundTypes:
-            self._logger.warning("Using NetCDF4 compound types (experimental)")
-        # self._simplify1ParamGrids = self.getBoolOption(
-        #     NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS, False
-        # )
-        # self._logger.debug(
-        #     f"Simplifying grids with just 1 param per node: {self._simplify1ParamGrids}"
-        # )
         dtypestr = self.getOption(NETCDF_OPTION_GRID_DTYPE, NETCDF_DEFAULT_WRITE_DTYPE)
         self._dtype = NETCDF_VALID_DTYPE_MAP.get(dtypestr)
         if self._dtype is None:
@@ -411,53 +385,8 @@ class Writer(BaseWriter):
 
     def saveGgxfNetCdf4(self, root, ggxf):
         nctypes = {}
-
-        # NetCDF compound types
-        exclude = [GGXF_ATTR_GGXF_GROUPS, GGXF_ATTR_GRID_DATA]
+        exclude = [GGXF_ATTR_GGXF_GROUPS]
         converted = {}
-        if self._useCompoundTypes:
-            # This functionality was lost when refactoring GGXF into multiple modules
-            # It was split between creating the compound type in the root group and
-            # the variable in the GGXF group in saveGroupNetCdf4.  The code has been
-            # moved here as parameters in GGXF are now in the root group.
-            #
-            # However this isn't working yet.  This implementation is using a variable
-            # to hold parameters, but the NetCDF data model implies that they can be held
-            # in an attribute.  However this hasn't been tested yet with the python API.
-            #
-            # Note: tried i2 for sourceCrsAxis but it seemed to be packed to 4 byte quanta
-            # so failed to read back correctly
-            #
-            paramtype = np.dtype(
-                [
-                    ("parameterName", "S32"),
-                    ("parameterSet", "S32"),
-                    ("unitName", "S16"),
-                    ("unitSiRatio", "f8"),
-                    ("sourceCrsAxis", "i4"),
-                    ("parameterMinimumValue", self._dtype),
-                    ("parameterMaximumValue", self._dtype),
-                    ("noDataFlag", self._dtype),
-                ]
-            )
-            ncparamtype = root.createCompoundType(paramtype, "ggxfParameterType")
-            parameters = ggxf.parameters()
-            typeinfo = np.finfo(self._dtype)
-            paramdata = [
-                (
-                    p.name().encode("utf8"),
-                    (p.set() or "").encode("utf8"),
-                    p.unit(),
-                    p.siRatio(),
-                    p.sourceCrsAxis() if p.sourceCrsAxis() is not None else -1,
-                    p.minValue() or typeinfo.min,
-                    p.maxValue() or typeinfo.min,
-                    p.noDataFlag() or typeinfo.min,
-                )
-                for p in parameters
-            ]
-            paramdata = np.array(paramdata, dtype=paramtype)
-            converted[GGXF_ATTR_PARAMETERS] = paramdata
         self.saveNetCdf4MetdataDot(
             NETCDF_ATTR_CONTEXT_GGXF,
             root,
@@ -520,7 +449,7 @@ class Writer(BaseWriter):
         for pset, pindices in group.paramSetIndices().items():
             vardata = grid.data()[:, :, pindices]
             (vartype, varattr) = self.variableAttributes(vardata)
-            dimensions = [NETCDF_DIMENSION_GRIDJ, NETCDF_DIMENSION_GRIDI]
+            dimensions = [NETCDF_DIMENSION_GRIDI, NETCDF_DIMENSION_GRIDJ]
             if len(pindices) > 1:
                 dimensions.append(f"{pset}Count")
 
@@ -598,8 +527,6 @@ class Writer(BaseWriter):
             value = NETCDF_CONVENTIONS_VALUE.replace("{ggxfVersion}", value)
         elif context == NETCDF_ATTR_CONTEXT_GGXF and name in ACDD_AttributeMapping:
             name = ACDD_AttributeMapping[name]
-        elif self._useSnakeCase:
-            name = _snakeCase(name)
         if type(value) == str:
             value = value.encode("utf8")
         dataset.setncattr(name, value)

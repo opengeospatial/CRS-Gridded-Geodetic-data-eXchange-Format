@@ -51,7 +51,7 @@ group: alaska-grids {
     	iNodeCount = 69 ;
     	jNodeCount = 161 ;
     variables:
-    	float velocity(jNodeCount, iNodeCount, velocityCount) ;
+    	float velocity(iNodeCount, jNodeCount, velocityCount) ;
     		velocity:_Storage = "contiguous" ;
     		velocity:_Endianness = "little" ;
 
@@ -65,7 +65,7 @@ group: alaska-grids {
     	iNodeCount = 51 ;
     	jNodeCount = 76 ;
     variables:
-    	float velocity(jNodeCount, iNodeCount, velocityCount) ;
+    	float velocity(iNodeCount, jNodeCount, velocityCount) ;
     		velocity:_Storage = "contiguous" ;
     		velocity:_Endianness = "little" ;
 
@@ -79,7 +79,7 @@ group: alaska-grids {
     	iNodeCount = 41 ;
     	jNodeCount = 49 ;
     variables:
-    	float velocity(jNodeCount, iNodeCount, velocityCount) ;
+    	float velocity(iNodeCount, jNodeCount, velocityCount) ;
     		velocity:_Storage = "contiguous" ;
     		velocity:_Endianness = "little" ;
 
@@ -93,7 +93,7 @@ group: alaska-grids {
     	iNodeCount = 27 ;
     	jNodeCount = 41 ;
     variables:
-    	float velocity(jNodeCount, iNodeCount, velocityCount) ;
+    	float velocity(iNodeCount, jNodeCount, velocityCount) ;
     		velocity:_Storage = "contiguous" ;
     		velocity:_Endianness = "little" ;
 

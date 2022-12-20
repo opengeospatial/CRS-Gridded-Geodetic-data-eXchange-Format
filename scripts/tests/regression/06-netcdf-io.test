@@ -1,0 +1,2 @@
+files=geoid/test-netcdf.ggxf
+command="test-netcdf.ggxf -y write-csv-grids=no -o test-netcdf-out.yaml"

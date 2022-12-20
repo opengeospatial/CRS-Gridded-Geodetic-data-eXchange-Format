@@ -478,7 +478,7 @@ class Grid(GridList):
     def setData(self, data):
         if type(data) not in (np.array, np.ma.masked_array):
             data = np.array(data)
-        shape = (self._jmax + 1, self._imax + 1, self._nparam)
+        shape = (self._imax + 1, self._jmax + 1, self._nparam)
         if data.shape == shape[:2]:
             data = data.reshape(shape)
         elif data.shape != shape:
@@ -570,7 +570,7 @@ class GridInterpolator:
         # Get the node indices of the corner cells
         nodes = crnr + cellij
         # Multiply the values at the nodes by the interpolation factor
-        nodeprm = data[nodes[:, 1], nodes[:, 0]]
+        nodeprm = data[nodes[:, 0], nodes[:, 1]]
         # Sum the scaled values to get the value at the evaluation point.
         val = (nodef * nodeprm).sum(axis=0)
         return val
@@ -615,7 +615,7 @@ class GridInterpolator:
         )
         nodes = crnr + cellij
         # Multiply the values at the nodes by the interpolation factor
-        nodeprm = data[nodes[:, 1], nodes[:, 0]]
+        nodeprm = data[nodes[:, 0], nodes[:, 1]]
         # Sum the scaled values to get the value at the evaluation point.
         val = (nodef * nodeprm).sum(axis=0)
         return val
@@ -672,7 +672,7 @@ class GridInterpolator:
         )
         nodes = crnr + cellij
         # Multiply the values at the nodes by the interpolation factor
-        nodeprm = data[nodes[:, 1], nodes[:, 0]]
+        nodeprm = data[nodes[:, 0], nodes[:, 1]]
         # Sum the scaled values to get the value at the evaluation point.
         val = (nodef * nodeprm).sum(axis=0)
         return val

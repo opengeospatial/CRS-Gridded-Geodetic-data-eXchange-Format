@@ -44,7 +44,7 @@ group: Catalano_Canyon {
     	iNodeCount = 5 ;
     	jNodeCount = 3 ;
     variables:
-    	float offset(jNodeCount, iNodeCount, offsetCount) ;
+    	float offset(iNodeCount, jNodeCount, offsetCount) ;
     		offset:_Storage = "contiguous" ;
     		offset:_Endianness = "little" ;
 
@@ -57,7 +57,7 @@ group: Catalano_Canyon {
     	iNodeCount = 3 ;
     	jNodeCount = 4 ;
     variables:
-    	float offset(jNodeCount, iNodeCount, offsetCount) ;
+    	float offset(iNodeCount, jNodeCount, offsetCount) ;
     		offset:_Storage = "contiguous" ;
     		offset:_Endianness = "little" ;
 

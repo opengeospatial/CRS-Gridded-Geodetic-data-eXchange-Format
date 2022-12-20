@@ -44,7 +44,7 @@ group: Puerto\ Rico\ Virgin\ Islands\ DEFLEC18 {
     	iNodeCount = 301 ;
     	jNodeCount = 361 ;
     variables:
-    	float deviation(jNodeCount, iNodeCount, deviationCount) ;
+    	float deviation(iNodeCount, jNodeCount, deviationCount) ;
     		deviation:_Storage = "contiguous" ;
     		deviation:_Endianness = "little" ;
 

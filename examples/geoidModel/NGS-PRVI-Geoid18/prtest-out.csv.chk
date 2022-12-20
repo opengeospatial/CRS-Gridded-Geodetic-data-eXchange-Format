@@ -1,2 +1,2 @@
-X,Y,gHeight,uncertainty,comment,geoidHeight
+nodeLatitude,nodeLongitude,gHeight,uncertainty,comment,geoidHeight
 18.28887, -66.43780,-39.704,0.075,https://geodesy.noaa.gov/cgi-bin/GEOID_STUFF/geoid18_single.prl,-39.7021

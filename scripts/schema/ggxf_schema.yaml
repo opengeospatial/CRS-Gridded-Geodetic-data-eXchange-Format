@@ -276,9 +276,6 @@ YamlAttributes:
     GGXF:
     - AttributeName: ggxfGroups
       Type: list
-    - AttributeName: gridData
-      Type: list(YamlGridData)
-      Optional: true
 
     Group:
     - AttributeName: ggxfGroupName
@@ -302,17 +299,6 @@ YamlAttributes:
             implementation rather than depending on schema definition.
         - AttributeName: dataSource
           Type: dict
-
-    YamlGridData:
-    - AttributeName: gridName
-      Type: UnicodeIdentifier
-    - AttributeChoice:
-        AttributeChoiceName: dataSource
-        Attributes:
-        - AttributeName: data
-          Type: any
-        - AttributeName: dataSource
-          Type: str
 
 ContentTypes:
 - ContentType: Cartesian2dOffsets

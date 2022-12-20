@@ -41,7 +41,7 @@ group: puerto_rico_virgin_islands_geoid18 {
     	iNodeCount = 301 ;
     	jNodeCount = 361 ;
     variables:
-    	float geoidHeight(jNodeCount, iNodeCount) ;
+    	float geoidHeight(iNodeCount, jNodeCount) ;
     		geoidHeight:_Storage = "contiguous" ;
     		geoidHeight:_Endianness = "little" ;
 

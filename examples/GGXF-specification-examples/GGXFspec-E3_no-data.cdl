@@ -1,0 +1,138 @@
+netcdf GGXFspec-E3_no-data {
+
+// global attributes:
+		:Conventions = "GGXF-1.0, ACDD-1.3" ;
+		:content = "geographic2dOffsets" ;
+		:title = "National Transformation v2_0" ;
+		:summary = "Transformation of geodetic latitude and longitude referenced to NAD27 to latitude and longitude referenced to NAD83(Original)." ;
+		:source_file = "GGXFspec-E3_no-data.ggxf" ;
+		:date_issued = "1995-02" ;
+		:institution = "Geodetic Survey Division, Natural Resources Canada" ;
+		:publisher_url = "https://webapp.geod.nrcan.gc.ca/geod/data-donnees/transformations.php" ;
+		:licenseURL = "https://open.canada.ca/en/open-government-licence-canada" ;
+		:geospatial_lat_min = 40. ;
+		:geospatial_lon_min = -141. ;
+		:geospatial_lat_max = 60. ;
+		:geospatial_lon_max = -88. ;
+		:extent_description = "Canada south of 60°N" ;
+		:interpolationCrsWkt = "GEOGCRS[\"NAD27\",\n  DATUM[\"North American Datum 1927\",\n    ELLIPSOID[\"Clarke 1866\",6378206.4,294.9786982,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
+		:sourceCrsWkt = "GEOGCRS[\"NAD27\",\n  DATUM[\"North American Datum 1927\",\n    ELLIPSOID[\"Clarke 1866\",6378206.4,294.9786982,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
+		:targetCrsWkt = "GEOGCRS[\"NAD83(Original)\",\n  DATUM[\"North American Datum 1983\",\n    ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
+		:operationAccuracy = 1.5 ;
+		:parameters.count = 4LL ;
+		:parameters.0.parameterName = "latitudeOffset" ;
+		:parameters.0.parameterSet = "offset" ;
+		:parameters.0.sourceCrsAxis = 0LL ;
+		:parameters.0.unitName = "arc-second" ;
+		:parameters.0.unitSiRatio = 4.84813681109536e-06 ;
+		:parameters.1.parameterName = "longitudeOffset" ;
+		:parameters.1.parameterSet = "offset" ;
+		:parameters.1.sourceCrsAxis = 1LL ;
+		:parameters.1.unitName = "arc-second" ;
+		:parameters.1.unitSiRatio = 4.84813681109536e-06 ;
+		:parameters.2.parameterName = "latitudeOffsetUncertainty" ;
+		:parameters.2.parameterSet = "offsetUncertainty" ;
+		:parameters.2.sourceCrsAxis = 0LL ;
+		:parameters.2.unitName = "metre" ;
+		:parameters.2.unitSiRatio = 1. ;
+		:parameters.2.uncertaintyMeasure = "2SE" ;
+		:parameters.3.parameterName = "longitudeOffsetUncertainty" ;
+		:parameters.3.parameterSet = "offsetUncertainty" ;
+		:parameters.3.sourceCrsAxis = 1LL ;
+		:parameters.3.unitName = "metre" ;
+		:parameters.3.unitSiRatio = 1. ;
+		:parameters.3.uncertaintyMeasure = "2SE" ;
+		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
+		:_SuperblockVersion = 2 ;
+		:_IsNetcdf4 = 1 ;
+		:_Format = "netCDF-4" ;
+
+group: National\ Transformation\ v2_0 {
+  dimensions:
+  	offsetCount = 2 ;
+  	offsetUncertaintyCount = 2 ;
+
+  // group attributes:
+  		:interpolationMethod = "bilinear" ;
+
+  group: CAwest {
+    dimensions:
+    	iNodeCount = 649 ;
+    	jNodeCount = 157 ;
+    variables:
+    	float offset(iNodeCount, jNodeCount, offsetCount) ;
+    		offset:_Storage = "contiguous" ;
+    		offset:_Endianness = "little" ;
+    	float offsetUncertainty(iNodeCount, jNodeCount, offsetUncertaintyCount) ;
+    		offsetUncertainty:_Storage = "contiguous" ;
+    		offsetUncertainty:_Endianness = "little" ;
+
+    // group attributes:
+    		:affineCoeffs = 60., 0., -0.083333333333333, -142., 0.083333333333333, 0. ;
+    } // group CAwest
+
+  group: CAeast {
+    dimensions:
+    	iNodeCount = 529 ;
+    	jNodeCount = 241 ;
+    variables:
+    	float offset(iNodeCount, jNodeCount, offsetCount) ;
+    		offset:_Storage = "contiguous" ;
+    		offset:_Endianness = "little" ;
+    	float offsetUncertainty(iNodeCount, jNodeCount, offsetUncertaintyCount) ;
+    		offsetUncertainty:_Storage = "contiguous" ;
+    		offsetUncertainty:_Endianness = "little" ;
+
+    // group attributes:
+    		:affineCoeffs = 60., 0., -0.083333333333333, -88., 0.083333333333333, 0. ;
+
+    group: ONtronto {
+      dimensions:
+      	iNodeCount = 351 ;
+      	jNodeCount = 511 ;
+      variables:
+      	float offset(iNodeCount, jNodeCount, offsetCount) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(iNodeCount, jNodeCount, offsetUncertaintyCount) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
+
+      // group attributes:
+      		:affineCoeffs = 46.6666666666667, 0., -0.00833333333333333, -81.75, 0.00833333333333333, 0. ;
+      } // group ONtronto
+
+    group: ONsarnia {
+      dimensions:
+      	iNodeCount = 101 ;
+      	jNodeCount = 121 ;
+      variables:
+      	float offset(iNodeCount, jNodeCount, offsetCount) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(iNodeCount, jNodeCount, offsetUncertaintyCount) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
+
+      // group attributes:
+      		:affineCoeffs = 43.4166666666667, 0., -0.00833333333333333, -82.5833333333333, 0.00833333333333333, 0. ;
+      } // group ONsarnia
+
+    group: ONwinsor {
+      dimensions:
+      	iNodeCount = 171 ;
+      	jNodeCount = 61 ;
+      variables:
+      	float offset(iNodeCount, jNodeCount, offsetCount) ;
+      		offset:_Storage = "contiguous" ;
+      		offset:_Endianness = "little" ;
+      	float offsetUncertainty(iNodeCount, jNodeCount, offsetUncertaintyCount) ;
+      		offsetUncertainty:_Storage = "contiguous" ;
+      		offsetUncertainty:_Endianness = "little" ;
+
+      // group attributes:
+      		:affineCoeffs = 42.41666666667, 0., -0.00833333333, -83.1666666667, 0.1, 0.00833333333 ;
+      } // group ONwinsor
+    } // group CAeast
+  } // group National\ Transformation\ v2_0
+}

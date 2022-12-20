@@ -1,0 +1,2 @@
+files=geoid/test-inline.yaml
+command="test-inline.yaml -o test-inline-csv-out.yaml"
