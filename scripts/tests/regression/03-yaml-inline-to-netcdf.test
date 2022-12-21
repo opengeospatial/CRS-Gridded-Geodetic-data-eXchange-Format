@@ -1,2 +1,2 @@
 files=geoid/test-inline.yaml
-command="test-inline.yaml -n write-cdl=yes -o test-inline-out.ggxf"
+command="convert test-inline.yaml -n write-cdl=full test-inline-out.ggxf"

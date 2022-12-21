@@ -30,8 +30,11 @@ NETCDF_DEFAULT_WRITE_DTYPE = NETCDF_DTYPE_FLOAT32
 NETCDF_DEFAULT_READ_DTYPE = NETCDF_DTYPE_FLOAT64
 
 NETCDF_OPTION_WRITE_CDL = "write-cdl"
-NETCDF_OPTION_WRITE_CDL_HEADER = "write-cdl-header"
 NETCDF_OPTION_PACK_PRECISION = "packing-precision"
+
+NETCDF_CDL_OPTION_FULL = "full"
+NETCDF_CDL_OPTION_HEADER = "header"
+NETCDF_CDL_OPTION_NONE = "none"
 
 NETCDF_CONVENTIONS_ATTRIBUTE = "Conventions"
 NETCDF_CONVENTIONS_VALUE = "{ggxfVersion}, ACDD-1.3"
@@ -43,19 +46,20 @@ NETCDF_ATTR_CONTEXT_GGXF = "ggxf"
 NETCDF_ATTR_CONTEXT_GROUP = "group"
 NETCDF_ATTR_CONTEXT_GRID = "grid"
 
-NETCDF_OPTIONS = f"""
-The following options apply to NetCDF input (I) and output (O):
+NETCDF_READ_OPTIONS = f"""
+  "{NETCDF_OPTION_GRID_DTYPE}" Specifies the data type used for the grid ({", ".join(NETCDF_VALID_DTYPE_MAP.keys())})
 
-  "{NETCDF_OPTION_WRITE_CDL}" (O) Generate an output CDL file as well as a NetCDF file (default false)
-  "{NETCDF_OPTION_WRITE_CDL_HEADER}" (O) Only write the header information in the CDL file (default false)
-  "{NETCDF_OPTION_PACK_PRECISION}" (O) Specifies integer packing using specified number of decimal places
-  "{NETCDF_OPTION_GRID_DTYPE}" (I/O) Specifies the data type used for the grid ({", ".join(NETCDF_VALID_DTYPE_MAP.keys())})
+  When reading a NetCDF file the default floating point is {NETCDF_DEFAULT_READ_DTYPE} to avoid rounding issues.
+"""
 
-If {NETCDF_OPTION_PACK_PRECISION} is specified then {NETCDF_OPTION_GRID_DTYPE} is ignored and integer packing
-is attempted.  If an integer data type is specified then the data will be scaled to fill the range available
-with the integer type.  If neither is specified {NETCDF_DEFAULT_WRITE_DTYPE} is used.
+NETCDF_WRITE_OPTIONS = f"""
+  "{NETCDF_OPTION_GRID_DTYPE}" Specifies the data type in the NetCDF file ({", ".join(NETCDF_VALID_DTYPE_MAP.keys())})
+  "{NETCDF_OPTION_WRITE_CDL}" Generate an output CDL file as well as a NetCDF file ({NETCDF_CDL_OPTION_FULL}, {NETCDF_CDL_OPTION_HEADER}, or {NETCDF_CDL_OPTION_NONE})
+  "{NETCDF_OPTION_PACK_PRECISION}" Specifies integer packing using specified number of decimal places
 
-When reading a NetCDF file the default floating point is {NETCDF_DEFAULT_READ_DTYPE} to avoid rounding issues.
+  If {NETCDF_OPTION_PACK_PRECISION} is specified then {NETCDF_OPTION_GRID_DTYPE} is ignored and integer packing
+  is attempted.  If an integer data type is specified then the data will be scaled to fill the range available
+  with the integer type.  If neither is specified {NETCDF_DEFAULT_WRITE_DTYPE} is used.
 """
 #  "{NETCDF_OPTION_SIMPLIFY_1PARAM_GRIDS}" (O) Grids with just one parameter are created with just 2 dimensions (default false)
 
@@ -375,12 +379,11 @@ class Writer(BaseWriter):
         ggxf.setFilename(filename)
         self.saveGgxfNetCdf4(root, ggxf)
         root.close()
-        if self.getBoolOption(NETCDF_OPTION_WRITE_CDL) or self.getBoolOption(
-            NETCDF_OPTION_WRITE_CDL_HEADER
-        ):
+        cdloption = self.getOption(NETCDF_OPTION_WRITE_CDL).lower()
+        if cdloption == NETCDF_CDL_OPTION_FULL or cdloption == NETCDF_CDL_OPTION_HEADER:
             root = netCDF4.Dataset(netcdf4_file, "r", format="NETCDF4")
             cdl_file = os.path.splitext(netcdf4_file)[0] + ".cdl"
-            data = not self.getBoolOption(NETCDF_OPTION_WRITE_CDL_HEADER)
+            data = cdloption == NETCDF_CDL_OPTION_FULL
             root.tocdl(data=data, outfile=cdl_file)
 
     def saveGgxfNetCdf4(self, root, ggxf):

@@ -5,6 +5,6 @@ for yaml in *.yaml; do
     echo "Loading ${yaml}"
     dummy="-y create-dummy-grid-data=y"
     if [[ $yaml != *"no-data.yaml" ]]; then dummy=''; fi
-    echo python3 ../../scripts/ggxf.py -v $dummy -n write-cdl-header=true "${yaml}" -o "${ggxf}"
-    python3 ../../scripts/ggxf.py -v $dummy -n write-cdl-header=true "${yaml}" -o "${ggxf}"
+    echo python3 ../../scripts/ggxf.py convert -v $dummy -n write-cdl=header "${yaml}" "${ggxf}"
+    python3 ../../scripts/ggxf.py convert -v $dummy -n write-cdl=header "${yaml}" "${ggxf}"
 done

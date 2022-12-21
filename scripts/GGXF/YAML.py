@@ -36,14 +36,16 @@ YAML_MAP_TAG = "tag:yaml.org,2002:map"
 YAML_SEQ_TAG = "tag:yaml.org,2002:seq"
 
 
-YAML_OPTIONS = f"""
-The following options can apply to YAML format input (I) and output (O):
+YAML_READ_OPTIONS = f"""
+  "{YAML_OPTION_GRID_DIRECTORY}" Base directory (relative to YAML file) used for grid files
+  "{YAML_OPTION_CHECK_DATASOURCE_AFFINE}" Compare affine coeffs from data source with those defined in YAML (true or false)
+  """
 
-  "{YAML_OPTION_GRID_DIRECTORY}" (I) Base directory used for external grid source names
-  "{YAML_OPTION_CHECK_DATASOURCE_AFFINE}" (I) Compare affine coeffs from data source with those defined in YAML (true or false)
-  "{YAML_OPTION_WRITE_CSV_GRIDS}" (O) Write grids to external ggxf-csv grids (true or false, default true)
-  "{YAML_OPTION_WRITE_CSV_COORDS}" (O) Write node coordinates in CSV (true or false, default true)
-  "{YAML_OPTION_WRITE_HEADERS_ONLY}" (O) Write headers only - omit the grid data
+YAML_WRITE_OPTIONS = f"""
+  "{YAML_OPTION_GRID_DIRECTORY}" Base directory (relative to YAML file) used for grid files
+  "{YAML_OPTION_WRITE_CSV_GRIDS}" Write grids to external ggxf-csv grids (true or false, default true)
+  "{YAML_OPTION_WRITE_CSV_COORDS}" Write node coordinates in CSV (true or false, default true)
+  "{YAML_OPTION_WRITE_HEADERS_ONLY}" Write headers only - omit the grid data
 """
 
 CSV_COORDINATE_FORMAT = ".12g"
