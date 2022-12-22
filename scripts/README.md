@@ -17,7 +17,7 @@ This is the main utility built for processing GGXF files. It has four basic func
 * ggxf.py convert - Converts files between YAML and NetCDF GGXF formats
 * ggxf.py describe - Briefly describes the content of a GGXF file
 * ggxf.py calculate - Evaluates the parameters of the GGXF file at CSV file of test locations.  (Note this does not apply the coordinate operation, just calculates the values it would use)
-* ggxf.py import - Imports data from a GDAL supported grid file to a GGXF YAML.  This may include placeholders for missing attributes, or maybe supplied attributes from a YAML template.
+* ggxf.py import - Imports data from a [GDAL supported](https://gdal.org/drivers/raster/index.html)  grid file to a GGXF YAML.  This may include placeholders for missing attributes, or maybe supplied attributes from a YAML template.
 
 Each of these options includes some online help available with the --help option (eg ggxf.py import --help).
 
