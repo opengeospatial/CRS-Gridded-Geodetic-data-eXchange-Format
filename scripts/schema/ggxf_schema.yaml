@@ -1,78 +1,101 @@
-  # Attributes required for all content types:
+  # Attributes required for all content types
+  #
+  #
+  # Metadata: identifies user metadata that can be supplied from a template
+  # for creating a GGXF file.
 
 CommonAttributes:
   GGXF:
     - AttributeName: ggxfVersion
       Type: ["GGXF-1.0"]
-    - AttributeName: content
-      Type: str
-    - AttributeName: title
-      Type: str
-      Optional: false
-    - AttributeName: abstract
-      Type: str
-      Optional: false
     - AttributeName: filename
       Type: str
+    - AttributeName: content
+      Type: str
+      Metadata: Content type (mandatory) - eg geographic2dOffsets
+    - AttributeName: title
+      Type: str
+      Metadata: Dataset title (mandatory)
+    - AttributeName: abstract
+      Type: str
+      Metadata: Dataset abstract (mandatory)
+    - AttributeName: comment
+      Type: str
+      Optional: true
+      Metadata: Comment on the dataset      
     - AttributeName: contentApplicabilityExtent
       Type: Extents
+      Metadata: Placeholder for applicability extent - put a description here if required
     - AttributeName: contentBox
       Type: BoundingBox
       Optional: true
     - AttributeName: parameters
       Type: list(Parameter)
+      Metadata: Placeholder for list of parameters
     - AttributeName: interpolationCrsWkt
       Type: str
+      Metadata: "EPSG:0000"
     - AttributeName: sourceCrsWkt
       Type: str
       Optional: true
+      Metadata: "EPSG:0000"
     - AttributeName: targetCrsWkt
       Type: str
       Optional: true
+      Metadata: "EPSG:0000"
     - AttributeChoice:
         AttributeChoiceName: license
         Attributes:
           - AttributeName: license
             Type: str
           - AttributeName: licenseURL
-            Type: str          
+            Type: str
+            Metadata: URL of license
       Optional: true
     - AttributeName: operationAccuracy
       Type: float
       Optional: true
+      Metadata: Representative accuracy of coordinate operation (replace with a number)
     - AttributeName: publicationDate
       Type: str
       Optional: true
+      Metadata: Publication date of dataset
     - AttributeName: version
       Type: str
       Optional: true
+      Metadata: Version of the dataset
     - AttributeName: digitalObjectIdentifier
       Type: str
       Optional: true
+      Metadata: Digital object identifier of the dataset
     - AttributeName: partyName
       Type: str
       Optional: true
+      Metadata: Organisation name of the producer/publisher
     - AttributeName: electronicMailAddress
       Type: str
       Optional: true
+      Metadata: Email address of the producer/publisher
     - AttributeName: onlineResourceLinkage
       Type: str
       Optional: true
+      Metadata: URL of producer/publisher website (or specific page about the dataset)
     - AttributeName: deliveryPoint
       Type: str
       Optional: true
+      Metadata: Street address of the producer/publisher
     - AttributeName: city
       Type: str
       Optional: true
+      Metadata: City of the producers/publisher's address
     - AttributeName: postalCode
       Type: str
       Optional: true
+      Metadata: Postal code of the producer/publisher's address
     - AttributeName: country
       Type: str
-      Optional: true                  
-    - AttributeName: comment
-      Type: str
       Optional: true
+      Metadata: Country of the producer/publisher's address
     - AttributeName: tideSystem
       Comment: What content types use this parameter.  Should it be contentType specific
       Type: str
@@ -133,13 +156,14 @@ CommonAttributes:
     - AttributeName: parameterSet
       Type: str
       Optional: true
-    - AttributeName: unitSiRatio
-      Type: float
     - AttributeName: unitName
       Type: str
+    - AttributeName: unitSiRatio
+      Type: float
+      Optional: true
     - AttributeName: sourceCrsAxis
       Type: int
-      Optional: true      
+      Optional: true
     - AttributeName: parameterMinimumValue
       Type: float
       Optional: true
@@ -266,11 +290,11 @@ CommonAttributes:
         - AttributeName: targetCoordinateEpoch
           Type: float
         - AttributeName: targetCoordinateDate
-          Type: str 
+          Type: str
       Optional: true
     - AttributeName: comment
       Type: str
-      Optional: true   
+      Optional: true
 
 YamlAttributes:
     GGXF:

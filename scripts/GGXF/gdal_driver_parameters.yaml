@@ -1,0 +1,30 @@
+ISG:
+  content: geoidModel
+  parameters:
+    - parameterName: geoidHeight
+      unitName: metre
+NTv2:
+  content: geographic2dOffsets
+  parameters:
+    - parameterName: latitudeOffset
+      parameterSet: offset
+      sourceCrsAxis: 0
+      unitName: arc-second
+      unitSiRatio: 4.84813681109536E-06
+    - parameterName: longitudeOffset
+      parameterSet: offset
+      sourceCrsAxis: 1
+      unitName: arc-second
+      unitSiRatio: 4.84813681109536E-06
+    - parameterName: latitudeOffsetUncertainty
+      parameterSet: offsetUncertainty
+      sourceCrsAxis: 0
+      unitName: metre
+      unitSiRatio: 1.0
+      uncertaintyMeasure: 2SE
+    - parameterName: longitudeOffsetUncertainty
+      parameterSet: offsetUncertainty
+      sourceCrsAxis: 1
+      unitName: metre
+      unitSiRatio: 1.0
+      uncertaintyMeasure: 2SE    

@@ -14,6 +14,15 @@ CommonAttributes = {
             ],
         },
         {
+            ATTRDEF_NAME: GGXF_ATTR_FILENAME,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_FILENAME,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+        },
+        {
             ATTRDEF_NAME: GGXF_ATTR_CONTENT,
             ATTRDEF_CHOICE: [
                 {
@@ -41,13 +50,14 @@ CommonAttributes = {
             ],
         },
         {
-            ATTRDEF_NAME: GGXF_ATTR_FILENAME,
+            ATTRDEF_NAME: GGXF_ATTR_COMMENT,
             ATTRDEF_CHOICE: [
                 {
-                    ATTRDEF_NAME: GGXF_ATTR_FILENAME,
+                    ATTRDEF_NAME: GGXF_ATTR_COMMENT,
                     ATTRDEF_TYPE: str,
                 },
             ],
+            ATTRDEF_OPTIONAL: True,
         },
         {
             ATTRDEF_NAME: GGXF_ATTR_CONTENT_APPLICABILITY_EXTENT,
@@ -226,16 +236,6 @@ CommonAttributes = {
             ATTRDEF_CHOICE: [
                 {
                     ATTRDEF_NAME: GGXF_ATTR_COUNTRY,
-                    ATTRDEF_TYPE: str,
-                },
-            ],
-            ATTRDEF_OPTIONAL: True,
-        },
-        {
-            ATTRDEF_NAME: GGXF_ATTR_COMMENT,
-            ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: GGXF_ATTR_COMMENT,
                     ATTRDEF_TYPE: str,
                 },
             ],
@@ -432,15 +432,6 @@ CommonAttributes = {
             ATTRDEF_OPTIONAL: True,
         },
         {
-            ATTRDEF_NAME: PARAM_ATTR_UNIT_SI_RATIO,
-            ATTRDEF_CHOICE: [
-                {
-                    ATTRDEF_NAME: PARAM_ATTR_UNIT_SI_RATIO,
-                    ATTRDEF_TYPE: float,
-                },
-            ],
-        },
-        {
             ATTRDEF_NAME: PARAM_ATTR_UNIT_NAME,
             ATTRDEF_CHOICE: [
                 {
@@ -448,6 +439,16 @@ CommonAttributes = {
                     ATTRDEF_TYPE: str,
                 },
             ],
+        },
+        {
+            ATTRDEF_NAME: PARAM_ATTR_UNIT_SI_RATIO,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: PARAM_ATTR_UNIT_SI_RATIO,
+                    ATTRDEF_TYPE: float,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
         },
         {
             ATTRDEF_NAME: PARAM_ATTR_SOURCE_CRS_AXIS,

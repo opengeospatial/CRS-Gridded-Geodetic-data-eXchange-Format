@@ -77,10 +77,11 @@ GGXF_PARAMETER_WESTING_OFFSET = "westingOffset"
 GGXF_PARAMETER_WESTING_OFFSET_UNCERTAINTY = "westingOffsetUncertainty"
 
 GGXF_ATTR_GGXF_VERSION = "ggxfVersion"
+GGXF_ATTR_FILENAME = "filename"
 GGXF_ATTR_CONTENT = "content"
 GGXF_ATTR_TITLE = "title"
 GGXF_ATTR_ABSTRACT = "abstract"
-GGXF_ATTR_FILENAME = "filename"
+GGXF_ATTR_COMMENT = "comment"
 GGXF_ATTR_CONTENT_APPLICABILITY_EXTENT = "contentApplicabilityExtent"
 GGXF_ATTR_CONTENT_BOX = "contentBox"
 GGXF_ATTR_PARAMETERS = "parameters"
@@ -100,7 +101,6 @@ GGXF_ATTR_DELIVERY_POINT = "deliveryPoint"
 GGXF_ATTR_CITY = "city"
 GGXF_ATTR_POSTAL_CODE = "postalCode"
 GGXF_ATTR_COUNTRY = "country"
-GGXF_ATTR_COMMENT = "comment"
 GGXF_ATTR_TIDE_SYSTEM = "tideSystem"
 GGXF_ATTR_CHECK_POINTS = "checkPoints"
 GGXF_ATTR_USER_DEFINED_METHOD_EXAMPLE = "userDefinedMethodExample"
@@ -150,8 +150,8 @@ GRID_ATTR_DATA_SOURCE = "dataSource"
 GRID_ATTR_DATA = "data"
 PARAM_ATTR_PARAMETER_NAME = "parameterName"
 PARAM_ATTR_PARAMETER_SET = "parameterSet"
-PARAM_ATTR_UNIT_SI_RATIO = "unitSiRatio"
 PARAM_ATTR_UNIT_NAME = "unitName"
+PARAM_ATTR_UNIT_SI_RATIO = "unitSiRatio"
 PARAM_ATTR_SOURCE_CRS_AXIS = "sourceCrsAxis"
 PARAM_ATTR_PARAMETER_MINIMUM_VALUE = "parameterMinimumValue"
 PARAM_ATTR_PARAMETER_MAXIMUM_VALUE = "parameterMaximumValue"
@@ -224,3 +224,27 @@ ATTRDEF_TYPE_EXTENT_TEMPORAL = "ExtentTemporal"
 ATTRDEF_TYPE_EXTENT_VERTICAL = "ExtentVertical"
 ATTRDEF_TYPE_TIME_FUNCTION = "TimeFunction"
 ATTRDEF_TYPE_UNICODE_IDENTIFIER = "UnicodeIdentifier"
+
+MetadataTemplate = {
+    GGXF_ATTR_CONTENT: "Content type (mandatory) - eg geographic2dOffsets",
+    GGXF_ATTR_TITLE: "Dataset title (mandatory)",
+    GGXF_ATTR_ABSTRACT: "Dataset abstract (mandatory)",
+    GGXF_ATTR_COMMENT: "Comment on the dataset",
+    GGXF_ATTR_CONTENT_APPLICABILITY_EXTENT: "Placeholder for applicability extent - put a description here if required",
+    GGXF_ATTR_PARAMETERS: "Placeholder for list of parameters",
+    GGXF_ATTR_INTERPOLATION_CRS_WKT: "EPSG:0000",
+    GGXF_ATTR_SOURCE_CRS_WKT: "EPSG:0000",
+    GGXF_ATTR_TARGET_CRS_WKT: "EPSG:0000",
+    GGXF_ATTR_LICENSE_U_R_L: "URL of license",
+    GGXF_ATTR_OPERATION_ACCURACY: "Representative accuracy of coordinate operation (replace with a number)",
+    GGXF_ATTR_PUBLICATION_DATE: "Publication date of dataset",
+    GGXF_ATTR_VERSION: "Version of the dataset",
+    GGXF_ATTR_DIGITAL_OBJECT_IDENTIFIER: "Digital object identifier of the dataset",
+    GGXF_ATTR_PARTY_NAME: "Organisation name of the producer/publisher",
+    GGXF_ATTR_ELECTRONIC_MAIL_ADDRESS: "Email address of the producer/publisher",
+    GGXF_ATTR_ONLINE_RESOURCE_LINKAGE: "URL of producer/publisher website (or specific page about the dataset)",
+    GGXF_ATTR_DELIVERY_POINT: "Street address of the producer/publisher",
+    GGXF_ATTR_CITY: "City of the producers/publisher's address",
+    GGXF_ATTR_POSTAL_CODE: "Postal code of the producer/publisher's address",
+    GGXF_ATTR_COUNTRY: "Country of the producer/publisher's address",
+}

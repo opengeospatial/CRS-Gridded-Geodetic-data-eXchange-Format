@@ -379,7 +379,9 @@ class Writer(BaseWriter):
         ggxf.setFilename(filename)
         self.saveGgxfNetCdf4(root, ggxf)
         root.close()
-        cdloption = self.getOption(NETCDF_OPTION_WRITE_CDL).lower()
+        cdloption = self.getOption(
+            NETCDF_OPTION_WRITE_CDL, NETCDF_CDL_OPTION_NONE
+        ).lower()
         if cdloption == NETCDF_CDL_OPTION_FULL or cdloption == NETCDF_CDL_OPTION_HEADER:
             root = netCDF4.Dataset(netcdf4_file, "r", format="NETCDF4")
             cdl_file = os.path.splitext(netcdf4_file)[0] + ".cdl"

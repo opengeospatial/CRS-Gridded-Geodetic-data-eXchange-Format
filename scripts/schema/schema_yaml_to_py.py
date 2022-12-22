@@ -65,7 +65,7 @@ def ucaseName(name):
     return name.upper()
 
 
-def readAttributes(source):
+def readAttributes(source, metadata_attributes):
     global ggxfAttrs, groupAttgrs, gridAttrs, listVars
     attributes = {}
     usedtypes = set()
@@ -96,6 +96,8 @@ def readAttributes(source):
                     context = attrdef
                     namestr = attrdef.get("AttributeName")
                     name = f"{aprefix}{ucaseName(namestr)}"
+                    if "Metadata" in attrdef:
+                        metadata_attributes[name] = attrdef["Metadata"]
                     attrs[aprefix][name] = namestr
                     atype = attrdef.get("Type")
                     qualifiers = {}
@@ -172,13 +174,15 @@ with open(infile) as yh, open(typefile, "w") as pyh:
     ggxftypes = yaml.load(yh, Loader=yaml.Loader)
     pyh.write("# GGXF content types\n\n")
     pyh.write("from .Constants import *\n")
+    metadata_attributes = {}
     for attrlist in ("CommonAttributes", "YamlAttributes"):
-        attributes = readAttributes(ggxftypes.get(attrlist, {}))
+        attributes = readAttributes(ggxftypes.get(attrlist, {}), metadata_attributes)
         pyh.write(f"\n{attrlist}=")
         writeAttributes(pyh, attributes, "  ")
         pyh.write("\n")
 
     pyh.write("\nContentTypes={\n")
+    meta_attributes = {}
     for cdata in ggxftypes["ContentTypes"]:
         ctypestr = cdata.get("ContentType")
         ctype = f"{contentTypePrefix}{ucaseName(ctypestr)}"
@@ -214,7 +218,7 @@ with open(infile) as yh, open(typefile, "w") as pyh:
             pyh.write(f"        {p}: {parameterSetMap[p]},\n")
         pyh.write("        },\n")
         if "Attributes" in cdata:
-            attributes = readAttributes(cdata["Attributes"])
+            attributes = readAttributes(cdata["Attributes"], metadata_attributes)
             pyh.write("    ATTRDEF_ATTRIBUTES: ")
             writeAttributes(pyh, attributes, "      ")
             pyh.write(",\n")
@@ -239,3 +243,7 @@ with open("Constants.py", "w") as pyh:
     pyh.write("\n")
     for attrdef in attrdefs:
         pyh.write(f"{attrdef}={repr(attrdefs[attrdef])}\n")
+    pyh.write("\nMetadataTemplate={\n")
+    for key, value in metadata_attributes.items():
+        pyh.write(f"    {key}: {repr(value)},\n")
+    pyh.write("}\n")

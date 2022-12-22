@@ -20,6 +20,13 @@ from .YAML import (
     YAML_WRITE_OPTIONS,
 )
 
+from .GdalImport import (
+    GdalImporter,
+    EpsgCacheFileEnv,
+    GdalDriverConfigFileEnv,
+    GdalDriverConfigFile,
+)
+
 from .Constants import *
 
 CMDARG_CONVERT = "convert"
@@ -40,33 +47,26 @@ def main():
         help="Subcommand help", dest="command", required=True
     )
 
-    addConvertArguments(subparsers)
-
-    addDescribeArguments(subparsers)
-
-    addCalculateArguments(subparsers)
-
-    addImportArguments(subparsers)
+    for addparser in (
+        addConvertParser,
+        addDescribeParser,
+        addCalculateParser,
+        addImportParser,
+    ):
+        parser = addparser(subparsers)
+        addLoggingArguments(parser)
 
     try:
         args = rootParser.parse_args()
         setLogLevel(args)
-        command = args.command
-        if command == CMDARG_CONVERT:
-            convertGgxf(args)
-        elif command == CMDARG_IMPORT:
-            importGgxf(args)
-        elif command == CMDARG_DESCRIBE:
-            describeGgxf(args)
-        elif command == CMDARG_CALCULATE:
-            calculateGgxf(args)
+        args.function(args)
     except Exception as ex:
         print(f"Failed: {ex}")
         sys.exit(1)
 
 
 #####################################################################################
-# Add input GGXF options
+# Common arguments and handlers
 
 
 def addInputGgxfArguments(parser):
@@ -181,7 +181,7 @@ def setLogLevel(args):
 # Convert a GGXF file
 
 
-def addConvertArguments(subparsers):
+def addConvertParser(subparsers):
     parser = subparsers.add_parser(
         CMDARG_CONVERT,
         description="Convert between YAML and NetCDF formats",
@@ -191,7 +191,8 @@ def addConvertArguments(subparsers):
     addInputGgxfArguments(parser)
     addOutputGgxfArguments(parser)
     addFormatOptionArguments(parser)
-    addLoggingArguments(parser)
+    parser.set_defaults(function=convertGgxf)
+    return parser
 
 
 def convertGgxf(args):
@@ -203,7 +204,7 @@ def convertGgxf(args):
 # Describe a GGXF file
 
 
-def addDescribeArguments(subparsers):
+def addDescribeParser(subparsers):
     parser = subparsers.add_parser(
         CMDARG_DESCRIBE,
         description="Describe a GGXF file",
@@ -234,7 +235,8 @@ def addDescribeArguments(subparsers):
         metavar="#",
         help="Number of decimal places for values in summary file",
     )
-    addLoggingArguments(parser)
+    parser.set_defaults(function=describeGgxf)
+    return parser
 
 
 def describeGgxf(args):
@@ -374,7 +376,7 @@ def writeCsvGridSummary(ggxf, csv_summary_file, coord_ndp=8, param_ndp=4):
 # Calculate parameters on a GGXF file
 
 
-def addCalculateArguments(subparsers):
+def addCalculateParser(subparsers):
     parser = subparsers.add_parser(
         CMDARG_CALCULATE,
         description="Calculate parameters from a GGXF file",
@@ -417,7 +419,8 @@ interpolationCrs is a projection CRS then nodeEasting, nodeNorthing.
         help="Base epoch in years for calculating change between epochs",
         metavar="####.#",
     )
-    addLoggingArguments(parser)
+    parser.set_defaults(function=calculateGgxf)
+    return parser
 
 
 def calculateGgxf(args):
@@ -481,16 +484,108 @@ def calculateCsvPoints(
 #####################################################################################
 # Import gridded data to a GGXF file
 
+ImportHelp = f"""
+Basic usage:
+    ggxf {CMDARG_IMPORT} meta_template.yaml
+        Creates a metadata template file meta_template.yaml
 
-def addImportArguments(subparsers):
+    ggxf {CMDARG_IMPORT} -w meta_file.yaml grid_file
+        Includes metadata template including attributes from grid file.
+
+    ggxf {CMDARG_IMPORT} ggxf_file.yaml grid_file
+        Creates a GGXF file to import data from the grid file.
+
+    ggxf {CMDARG_CONVERT} ggxf_file.yaml ggxf_file.ggxf
+        Convert the YAML GGXF file to NetCDF
+
+The {CMDARG_IMPORT} may include one or more input template files using
+the -m option.  Each of these will be used in turn to update attributes 
+in the output YAML file. After these are applied any attributes specified
+by -a will be applied.  If -p is specified then attributes not explicitly 
+set will be included in the ggxf_file.yaml with placeholder values, otherwise
+they are omitted.
+
+Some GDAL drivers have specific content types and parameter definitions (eg
+NTv2).  These may be configured in a YAML file identified by an environment
+variable {GdalDriverConfigFileEnv}.
+
+The interpolation, source, and target CRS may be specified as EPSG:####.  The 
+EPSG API will be queried to retrieve the full CRS WKT specification.  The 
+WKT strings can be cached in a JSON file specified by environment 
+variable {EpsgCacheFileEnv}.
+
+GDAL driver config file: {GdalDriverConfigFile}
+"""
+
+
+def addImportParser(subparsers):
     parser = subparsers.add_parser(
-        CMDARG_IMPORT, description="Import other grid formats to GGXF"
+        CMDARG_IMPORT,
+        description="Import GDAL supported grid formats to GGXF",
+        epilog=ImportHelp,
+        formatter_class=argparse.RawTextHelpFormatter,
     )
-    addLoggingArguments(parser)
+    parser.add_argument(
+        "yaml_file", help="Output YAML file - GGXF or metadata template"
+    )
+    parser.add_argument(
+        "grid_file",
+        nargs="?",
+        help="Grid file to import (if not supplied just write a template)",
+    )
+    parser.add_argument(
+        "-m",
+        "--metadata-file",
+        action="append",
+        help="Input file of metadata (may be repeated)",
+    )
+    parser.add_argument("-c", "--content-type", help="GGXF content type of grid")
+    parser.add_argument(
+        "-a",
+        "--attribute",
+        action="append",
+        help="GGXF file attribute written as attribute=value",
+    )
+    parser.add_argument(
+        "-w",
+        "--write-template",
+        action="store_true",
+        help="Write metadata template to YAML file instead of GGXF",
+    )
+    parser.add_argument(
+        "-p",
+        "--include-placeholders",
+        action="store_true",
+        help="Include placeholder metadata in output GGXF YAML",
+    )
+    parser.set_defaults(function=importGgxf)
+    return parser
 
 
 def importGgxf(args):
-    raise NotImplementedError("import function not implemented")
+    yaml_file = args.yaml_file
+    if not yaml_file.endswith(".yaml"):
+        raise RuntimeError(f'YAML filename ({yaml_file}) must end with ".yaml"')
+
+    attrargs = args.attribute or []
+    attributes = {}
+    for attr in attrargs:
+        match = re.match(r"(\w+)\=(.+)", attr)
+        if not match:
+            raise RuntimeError(
+                f'--attribute parameter {attr} must be formatted as "attribute=value"'
+            )
+        attributes[match.group(1)] = match.group(2)
+
+    GdalImporter.Import(
+        args.yaml_file,
+        args.grid_file,
+        args.metadata_file,
+        attributes=attributes,
+        write_template=args.write_template,
+        content_type=args.content_type,
+        include_placeholders=args.include_placeholders,
+    )
 
 
 if __name__ == "__main__":

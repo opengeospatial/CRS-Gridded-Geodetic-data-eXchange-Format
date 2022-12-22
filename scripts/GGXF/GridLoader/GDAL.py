@@ -64,23 +64,14 @@ def LoadGrid(group, datasource, logger):
         if not dataset:
             raise GdalLoaderError(f"Failed to load GDAL data source {gdalsource}")
 
-        size = (int(dataset.RasterXSize), int(dataset.RasterYSize))
+        size, affine = GdalDatasetMapping(dataset)
+
         if gridsize is None:
             gridsize = size
         elif size != gridsize:
             raise GdalLoaderError(
                 f"Listed grid data sources have different row/col counts"
             )
-
-        affine = [float(c) for c in dataset.GetGeoTransform()]
-        # Convert raster to point georeferencing
-        affine[0] += affine[1] / 2.0
-        affine[3] += affine[5] / 2.0
-        # Check the data to CRS mapping and adjust affine if swapped.
-        mapping = dataset.GetSpatialRef().GetDataAxisToSRSAxisMapping()
-
-        if mapping[0] == 2:  # Assume starts either 1,2 or 2,1
-            affine = [*affine[3:6], *affine[0:3]]
 
         if gridaffine is None:
             gridaffine = affine
@@ -122,3 +113,22 @@ def LoadGrid(group, datasource, logger):
     logger.debug(f"GdalLoader: affine coeffs {gridaffine}")
     logger.debug(f"GdalLoader: Grid loaded with shape {data.shape}")
     return (data, gridsize, gridaffine)
+
+
+def GdalDatasetMapping(dataset):
+    # Get grid size
+    size = (int(dataset.RasterXSize), int(dataset.RasterYSize))
+
+    # Get transformation affine coefficients
+    affine = [float(c) for c in dataset.GetGeoTransform()]
+    # Convert raster to point georeferencing
+    affine[0] += affine[1] / 2.0
+    affine[3] += affine[5] / 2.0
+    # Check the data to CRS mapping and adjust affine if swapped.
+    mapping = dataset.GetSpatialRef().GetDataAxisToSRSAxisMapping()
+
+    if mapping[0] == 2:  # Assume starts either 1,2 or 2,1
+        affine = [*affine[3:6], *affine[0:3]]
+    affine = np.array(affine)
+
+    return size, affine
