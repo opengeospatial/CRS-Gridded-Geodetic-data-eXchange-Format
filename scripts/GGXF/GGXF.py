@@ -71,7 +71,9 @@ class GGXF:
         self._zero = np.zeros((len(self._parameters),))
         self._configured = True
 
-    def metadata(self):
+    def metadata(self, key=None):
+        if key is not None:
+            return self._metadata.get(key)
         return self._metadata
 
     def contentType(self):

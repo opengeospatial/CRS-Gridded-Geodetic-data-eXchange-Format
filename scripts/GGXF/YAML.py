@@ -36,14 +36,16 @@ YAML_MAP_TAG = "tag:yaml.org,2002:map"
 YAML_SEQ_TAG = "tag:yaml.org,2002:seq"
 
 
-YAML_OPTIONS = f"""
-The following options can apply to YAML format input (I) and output (O):
+YAML_READ_OPTIONS = f"""
+  "{YAML_OPTION_GRID_DIRECTORY}" Base directory (relative to YAML file) used for grid files
+  "{YAML_OPTION_CHECK_DATASOURCE_AFFINE}" Compare affine coeffs from data source with those defined in YAML (true or false)
+  """
 
-  "{YAML_OPTION_GRID_DIRECTORY}" (I) Base directory used for external grid source names
-  "{YAML_OPTION_CHECK_DATASOURCE_AFFINE}" (I) Compare affine coeffs from data source with those defined in YAML (true or false)
-  "{YAML_OPTION_WRITE_CSV_GRIDS}" (O) Write grids to external ggxf-csv grids (true or false, default true)
-  "{YAML_OPTION_WRITE_CSV_COORDS}" (O) Write node coordinates in CSV (true or false, default true)
-  "{YAML_OPTION_WRITE_HEADERS_ONLY}" (O) Write headers only - omit the grid data
+YAML_WRITE_OPTIONS = f"""
+  "{YAML_OPTION_GRID_DIRECTORY}" Base directory (relative to YAML file) used for grid files
+  "{YAML_OPTION_WRITE_CSV_GRIDS}" Write grids to external ggxf-csv grids (true or false, default true)
+  "{YAML_OPTION_WRITE_CSV_COORDS}" Write node coordinates in CSV (true or false, default true)
+  "{YAML_OPTION_WRITE_HEADERS_ONLY}" Write headers only - omit the grid data
 """
 
 CSV_COORDINATE_FORMAT = ".12g"
@@ -409,8 +411,8 @@ class Writer(BaseWriter):
         dumper.add_representer(GGXF, self._writeGgxfHeader)
         dumper.add_representer(Group, self._writeGgxfGroup)
         dumper.add_representer(Grid, self._writeGgxfGrid)
-        dumper.add_representer(np.ndarray, self._writeGridData)
-        dumper.add_representer(str, self._writeStr)
+        dumper.add_representer(np.ndarray, Util.dumpNdArray)
+        dumper.add_representer(str, Util.dumpString)
         self._headerOnly = self.getBoolOption(YAML_OPTION_WRITE_HEADERS_ONLY, False)
         self._csvGrids = self.getBoolOption(YAML_OPTION_WRITE_CSV_GRIDS, True)
         self._csvCoords = self.getBoolOption(YAML_OPTION_WRITE_CSV_COORDS, True)
@@ -451,7 +453,12 @@ class Writer(BaseWriter):
                     SOURCE_ATTR_GRID_FILENAME: gridfile,
                 }
             else:
-                ydata[GRID_ATTR_DATA] = data
+                ygrid = data
+                shape = ygrid.shape
+                if len(shape) == 3 and shape[2] == 1:
+                    ygrid = data.reshape(shape[:2])
+                ygrid = np.swapaxes(ygrid, 0, 1)
+                ydata[GRID_ATTR_DATA] = ygrid
         if len(grid.grids()) > 0:
             ydata[GRID_ATTR_CHILD_GRIDS] = grid.grids()
         return dumper.represent_mapping(YAML_MAP_TAG, ydata)
@@ -463,9 +470,6 @@ class Writer(BaseWriter):
         gridid = self._csvFileGridNames.get(name, 1)
         self._csvFileGridNames[name] = gridid + 1
         filename = self._csvFileTemplate.replace("{csvid}", f"{name}{gridid:02d}")
-
-        nodeCoordParams = grid.group().ggxf().nodeCoordinateParameters()
-        groupParams = grid.group().parameterNames()
 
         try:
             # Consider using numpy.savetxt in the future...
@@ -514,18 +518,14 @@ class Writer(BaseWriter):
             data = data.data
         return data
 
-    def _writeGridData(self, dumper, data):
-        shape = data.shape
-        ydata = data
-        if len(shape) == 3 and shape[2] == 1:
-            ydata = data.reshape(shape[:2])
-        if len(shape) > 1:
-            ydata = np.swapaxes(ydata, 0, 1)
 
-        ydata = ydata.tolist()
-        return dumper.represent_sequence(YAML_SEQ_TAG, ydata, flow_style=True)
+class Util:
+    @staticmethod
+    def dumpNdArray(dumper, data):
+        return dumper.represent_sequence(YAML_SEQ_TAG, data.tolist(), flow_style=True)
 
-    def _writeStr(self, dumper, data):
+    @staticmethod
+    def dumpString(dumper, data):
         if "\n" in data or '"' in data or len(data) > YAML_MAX_SIMPLE_STRING_LEN:
             # Discard trailing spaces as these are not supported in flow style and
             # not significant in this context

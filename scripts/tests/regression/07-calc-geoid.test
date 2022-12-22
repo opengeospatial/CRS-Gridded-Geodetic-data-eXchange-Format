@@ -1,2 +1,2 @@
 files="geoid/test-inline.yaml  geoid/test-points.csv"
-command="test-inline.yaml -c test-points.csv --output-csv-file test-points-out.csv"
+command="calculate test-inline.yaml test-points.csv test-points-out.csv"

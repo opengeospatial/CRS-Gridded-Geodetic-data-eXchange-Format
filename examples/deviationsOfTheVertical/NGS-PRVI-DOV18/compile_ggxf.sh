@@ -1,2 +1,2 @@
 #!/bin/sh
-ggxf PRVI_DOV18.yaml -n write-cdl-header=true -o PRVI_DOV18.ggxf
+ggxf convert PRVI_DOV18.yaml -n write-cdl=header PRVI_DOV18.ggxf

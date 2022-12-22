@@ -1,2 +1,2 @@
 files="geoid/test-gdal.yaml  geoid/test-gdal.tif"
-command="test-gdal.yaml -y write-csv-grids=no -o test-gdal-out.yaml"
+command="convert test-gdal.yaml -y write-csv-grids=no test-gdal-out.yaml"
