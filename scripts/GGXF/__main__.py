@@ -525,67 +525,9 @@ def addImportParser(subparsers):
         epilog=ImportHelp,
         formatter_class=argparse.RawTextHelpFormatter,
     )
-    parser.add_argument(
-        "yaml_file", help="Output YAML file - GGXF or metadata template"
-    )
-    parser.add_argument(
-        "grid_file",
-        nargs="?",
-        help="Grid file to import (if not supplied just write a template)",
-    )
-    parser.add_argument(
-        "-m",
-        "--metadata-file",
-        action="append",
-        help="Input file of metadata (may be repeated)",
-    )
-    parser.add_argument("-c", "--content-type", help="GGXF content type of grid")
-    parser.add_argument(
-        "-a",
-        "--attribute",
-        action="append",
-        help="GGXF file attribute written as attribute=value",
-    )
-    parser.add_argument(
-        "-w",
-        "--write-template",
-        action="store_true",
-        help="Write metadata template to YAML file instead of GGXF",
-    )
-    parser.add_argument(
-        "-p",
-        "--include-placeholders",
-        action="store_true",
-        help="Include placeholder metadata in output GGXF YAML",
-    )
-    parser.set_defaults(function=importGgxf)
+    GdalImporter.AddImporterArguments(parser)
+    parser.set_defaults(function=GdalImporter.ProcessImporterArguments)
     return parser
-
-
-def importGgxf(args):
-    yaml_file = args.yaml_file
-    if not yaml_file.endswith(".yaml"):
-        raise RuntimeError(f'YAML filename ({yaml_file}) must end with ".yaml"')
-
-    attrargs = args.attribute or []
-    attributes = {}
-    for attr in attrargs:
-        match = re.match(r"(\w+)\=(.+)", attr)
-        if not match:
-            raise RuntimeError(
-                f'--attribute parameter {attr} must be formatted as "attribute=value"'
-            )
-        attributes[match.group(1)] = match.group(2)
-
-    GdalImporter.Import(
-        args.yaml_file,
-        args.grid_file,
-        args.metadata_file,
-        attributes=attributes,
-        write_template=args.write_template,
-        content_type=args.content_type,
-        include_placeholders=args.include_placeholders,
-    )
 
 
 if __name__ == "__main__":

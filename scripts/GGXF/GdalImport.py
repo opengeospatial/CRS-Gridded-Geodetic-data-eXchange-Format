@@ -35,6 +35,74 @@ class GdalImportError(Exception):
 
 class GdalImporter:
     @staticmethod
+    def AddImporterArguments(parser):
+        parser.add_argument(
+            "yaml_file", help="Output YAML file - GGXF or metadata template"
+        )
+        parser.add_argument(
+            "grid_file",
+            nargs="?",
+            help="Grid file to import (if not supplied just write a template)",
+        )
+        parser.add_argument(
+            "-m",
+            "--metadata-file",
+            action="append",
+            help="Input file of metadata (may be repeated)",
+        )
+        parser.add_argument("-c", "--content-type", help="GGXF content type of grid")
+        parser.add_argument(
+            "-a",
+            "--attribute",
+            action="append",
+            help="GGXF file attribute written as attribute=value",
+        )
+        parser.add_argument(
+            "-w",
+            "--write-template",
+            action="store_true",
+            help="Write metadata template to YAML file instead of GGXF",
+        )
+        parser.add_argument(
+            "-p",
+            "--include-placeholders",
+            action="store_true",
+            help="Include placeholder metadata in output GGXF YAML",
+        )
+        parser.add_argument(
+            "--ignore-errors",
+            action="store_true",
+            help="Less rigorous checking of GGXF YAML file",
+        )
+
+    @staticmethod
+    def ProcessImporterArguments(args):
+        yaml_file = args.yaml_file
+        if not yaml_file.endswith(".yaml"):
+            raise GdalImportError(f'YAML filename ({yaml_file}) must end with ".yaml"')
+
+        attrargs = args.attribute or []
+        attributes = {}
+        for attr in attrargs:
+            match = re.match(r"(\w+)\=(.+)", attr)
+            if not match:
+                raise GdalImportError(
+                    f'--attribute parameter {attr} must be formatted as "attribute=value"'
+                )
+            attributes[match.group(1)] = match.group(2)
+
+        GdalImporter.Import(
+            args.yaml_file,
+            args.grid_file,
+            args.metadata_file,
+            attributes=attributes,
+            write_template=args.write_template,
+            content_type=args.content_type,
+            include_placeholders=args.include_placeholders,
+            ignore_errors=args.ignore_errors,
+        )
+
+    @staticmethod
     def Import(
         yaml_file,
         grid_file=None,
@@ -43,6 +111,7 @@ class GdalImporter:
         write_template=False,
         content_type=None,
         include_placeholders=False,
+        ignore_errors=False,
     ):
         # Build up the metadata that will form the template.  This will
         # end up either creating a new metadata file, or providing the
@@ -153,9 +222,13 @@ class GdalImporter:
         parameters = template.get(GGXF_ATTR_PARAMETERS, [])
         paramset = set([p.get(PARAM_ATTR_PARAMETER_NAME, "") for p in parameters])
         if paramset not in contentdef.get(ATTRDEF_PARAMETER_SETS, []):
-            raise GdalImportError(
+            message = (
                 f"Parameters ({','.join(paramset)}) are not valid for {content_type}"
             )
+            if ignore_errors:
+                logging.warn(message)
+            else:
+                raise GdalImportError(message)
         paramsets = contentdef[ATTRDEF_PARAMSET_MAP]
         for param in parameters:
             pname = param[PARAM_ATTR_PARAMETER_NAME]
@@ -276,7 +349,7 @@ class GdalImporter:
             else:
                 pgrid = grids.get(parents[name])
                 if pgrid is None:
-                    raise RuntimeError(f"Parent grid {parents[name]} not defined")
+                    raise GdalImportError(f"Parent grid {parents[name]} not defined")
                 if GRID_ATTR_CHILD_GRIDS not in pgrid:
                     pgrid[GRID_ATTR_CHILD_GRIDS] = []
                 pgrid[GRID_ATTR_CHILD_GRIDS].append(grid)
@@ -364,5 +437,16 @@ class GdalImporter:
         return cache.get(epsgid, crdsysid)
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    import sys
+    import argparse
+    import os.path
+
+    parser = argparse.ArgumentParser(
+        description="Import GDAL compatible grid file to GGXF YAML format"
+    )
+    GdalImporter.AddImporterArguments(parser)
+    args = parser.parse_args()
+    GdalImporter.ProcessImporterArguments(args)
+
+    main()
