@@ -33,4 +33,4 @@ Also once you have a github id you are encouraged to click the "Watch" button at
 
 # Existing Work
 
-Two efforts to date have produced potential models for a GGXF, one initiated by Esri and another by PROJ. The Esri GGXF model is built on [NetCDF](https://www.unidata.ucar.edu/software/netcdf/); more information can be found at [Esri GGXF](https://github.com/Esri/ggxf). The PROJ model is built on GeoTIFF and hase been implemented in [PROJ 7.0](https://proj.org/index.html); more information  can be found at [PROJ RFC 4: Remote access to grids and GeoTIFF grids.](https://proj.org/community/rfc/rfc-4.html#rfc4)
+This work is based on the Esri GGXF model built on [NetCDF](https://www.unidata.ucar.edu/software/netcdf/); more information can be found at [Esri GGXF](https://github.com/Esri/ggxf).
