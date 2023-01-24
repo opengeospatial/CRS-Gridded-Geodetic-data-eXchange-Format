@@ -34,6 +34,14 @@ CMDARG_IMPORT = "import"
 CMDARG_DESCRIBE = "describe"
 CMDARG_CALCULATE = "calculate"
 
+SubcommandHelp = f"""Action to perform, one of:
+  {CMDARG_CONVERT}: Convert between YAML and NetCDF GGXF formats
+  {CMDARG_IMPORT}: Import data from a GDAL supported grid format
+  {CMDARG_DESCRIBE}: Describe the contents of a GGXF file
+  {CMDARG_CALCULATE}: Calculate parameter values using data in GGXF file
+For more help on an option use the action followed by -h.
+"""
+
 # Other possible arguments are "validate", "extract"
 
 
@@ -44,7 +52,7 @@ def main():
     )
 
     subparsers = rootParser.add_subparsers(
-        help="Subcommand help", dest="command", required=True
+        help=SubcommandHelp, metavar="action", dest="command", required=True
     )
 
     for addparser in (
@@ -61,6 +69,7 @@ def main():
         setLogLevel(args)
         args.function(args)
     except Exception as ex:
+        raise
         print(f"Failed: {ex}")
         sys.exit(1)
 
@@ -313,7 +322,7 @@ def writeCsvGridSummary(ggxf, csv_summary_file, coord_ndp=8, param_ndp=4):
     ]
     param0 = len(csvcols)
     params = {}
-    empty = []
+    empty = [""]
     for param in ggxf.parameters():
         name = param.name()
         params[name] = param0
@@ -322,8 +331,8 @@ def writeCsvGridSummary(ggxf, csv_summary_file, coord_ndp=8, param_ndp=4):
         csvcols.append(f"{name}-max")
         empty.extend(["", ""])
     csvcols.append("extent_wkt")
-    formatcrd = f"{0:.{coord_ndp}}".format
-    formatprm = f"{0:.{param_ndp}}".format
+    formatcrd = f"{{0:.{coord_ndp}f}}".format
+    formatprm = f"{{0:.{param_ndp}f}}".format
     with open(csv_summary_file, "w") as csvh:
         csvw = csv.writer(csvh)
         csvw.writerow(csvcols)
@@ -367,7 +376,7 @@ def writeCsvGridSummary(ggxf, csv_summary_file, coord_ndp=8, param_ndp=4):
                     if param in params:
                         csvrow[params[param]] = formatprm(minmax["min"])
                         csvrow[params[param] + 1] = formatprm(minmax["max"])
-                csvrow.append(wkt)
+                csvrow[-1] = wkt
                 csvw.writerow(csvrow)
     print(f"Grid summary written to {csv_summary_file}")
 
@@ -393,10 +402,12 @@ interpolationCrs is a projection CRS then nodeEasting, nodeNorthing.
     addFormatOptionArguments(parser)
     parser.add_argument(
         "csv_points_file",
-        metavar="filename",
+        metavar="input_csv_filename",
         help="Input CSV file of point coordinates",
     )
-    parser.add_argument("csv_results_file", metavar="filename", help="Results CSV file")
+    parser.add_argument(
+        "csv_results_file", metavar="output_csv_filename", help="Results CSV file"
+    )
     parser.add_argument(
         "-d",
         "--csv-decimal-places",

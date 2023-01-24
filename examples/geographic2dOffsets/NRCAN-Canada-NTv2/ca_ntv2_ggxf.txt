@@ -1,0 +1,12 @@
+
+GGXF file: ca_ntv2.ggxf
+Content type: geographic2dOffsets
+Parameters: latitudeOffset, longitudeOffset, latitudeOffsetUncertainty, longitudeOffsetUncertainty
+interpolation CRS: NAD27
+source CRS: NAD27
+target CRS: NAD83(Original)
+extent: Latitude 40.0 - 60.0, Longitude -88.0 - -141.0
+ggxfGroups: 1
+grids: 114
+
+Grid summary written to ca_ntv2_grids.csv

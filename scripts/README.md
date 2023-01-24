@@ -21,9 +21,13 @@ This is the main utility built for processing GGXF files. It has four basic func
 
 Each of these options includes some online help available with the --help option (eg ggxf.py import --help).
 
-### Convert arguments
+### Convert a file between YAML and NetCDF formats
 
+```shell
+ggxf convert -h
 ```
+
+```text
 usage: ggxf convert [-h] [-n option=value] [-y option=value] [-g] [-v]
                     input_ggxf_file output_ggxf_file
 
@@ -71,12 +75,21 @@ Format options for writing a NetCDF4 GGXF file can be:
   is attempted.  If an integer data type is specified then the data will be scaled to fill the range available
   with the integer type.  If neither is specified float32 is used.
 
-
 ```
 
-### Describe arguments
+Example:
 
+```shell
+python3 gxf.py convert -v PRGEOID18.yaml PRGEOID18.ggxf -n write-cdl=header
 ```
+
+### Describe the contents of a GGXF file
+
+```shell
+ggxf describe -h
+```
+
+```text
 Describe a GGXF file
 
 positional arguments:
@@ -110,19 +123,32 @@ Format options for reading a NetCDF4 GGXF file can be
   When reading a NetCDF file the default floating point is float64 to avoid rounding issues.
 ```
 
-### Calculate arguments
+Example:
 
+```shell
+python3 ggxf.py describe -v ca_ntv2.ggxf --csv-grid-summary ca_ntv2_grids.csv > ca_ntv2_ggxf.txt
 ```
+
+This will create a text file ca_ntv2_ggxf.txt containing a brief description of the contents of the file
+and a CSV file ca_ntv2_grids.csv with one row for each grid in the data file.
+
+### Calculate parameters values at a set of locations
+
+```shell
+ggxf calculate -h
+```
+
+```text
 usage: ggxf calculate [-h] [-n option=value] [-y option=value] [-d #]
                       [-e ####.#] [-b ####.#] [-g] [-v]
-                      input_ggxf_file filename filename
+                      input_ggxf_file input_csv_filename output_csv_filename
 
 Calculate parameters from a GGXF file
 
 positional arguments:
   input_ggxf_file       Input GGXF file, either .yaml or .ggxf
-  filename              Input CSV file of point coordinates
-  filename              Results CSV file
+  input_csv_filename    Input CSV file of point coordinates
+  output_csv_filename   Results CSV file
 
 options:
   -h, --help            show this help message and exit
@@ -157,17 +183,45 @@ Format options for reading a NetCDF4 GGXF file can be
 
 ```
 
-### Import arguments
+Example:
 
+```shell
+python3 ggxf.py calculate nzgd2000-20180701.ggxf test_points.csv test_output.csv -e 2015.0 --csv-decimal-places=4
 ```
+
+This takes in input file test_points.csv of points at which the deformation model in nzgd2000-20180701.ggxf is to be evaluated.
+For example this file could contain
+
+```csv
+nodeLongitude,nodeLatitude
+175.052,-41.05747
+...
+```
+
+Because this is a deformation model it requires an epoch to evaluate the parameters, given by `-e 2015.0`.
+
+The output file test_output.csv is:
+
+```csv
+nodeLongitude,nodeLatitude,displacementEast,displacementNorth,displacementUp
+175.052,-41.05747,-0.2939,0.4986,-0.0013
+```
+
+### Import a GDAL compatible grid file into GGXF format
+
+```shell
+ggxf import -h
+```
+
+```text
 usage: ggxf import [-h] [-m METADATA_FILE] [-c CONTENT_TYPE] [-a ATTRIBUTE]
                    [-w] [-p] [--ignore-errors] [-g] [-v]
-                   yaml_file [grid_file]
+                   ggxf_file [grid_file]
 
 Import GDAL supported grid formats to GGXF
 
 positional arguments:
-  yaml_file             Output YAML file - GGXF or metadata template
+  ggxf_file             Output YAML file - GGXF or metadata template
   grid_file             Grid file to import (if not supplied just write a template)
 
 options:
@@ -207,10 +261,59 @@ they are omitted.
 
 Some GDAL drivers have specific content types and parameter definitions (eg
 NTv2).  These may be configured in a YAML file identified by an environment
-variable GDAL_DRIVER_PARAMETER_CONFIG.
+variable GDAL_DRIVER_PARAMETER_CONFIG. 
 
 The interpolation, source, and target CRS may be specified as EPSG:nnnn.  The EPSG API will be queried to retrieve the full CRS WKT specification.  The WKT strings can be cached in a JSON file specified by environment variable EPSG_CACHE_FILE.
 
+```
+
+Most GDAL grids do not contain all the metdata required by the GGXF format, so the import function provides some tools for adding this metadata.
+
+Some GDAL grid formats are associated with specific content types.  For example NTv2 is associated with geographic2dOffsets, and ISG is associated with geoidHeight.  These can be defined in a YAML file such as [gdal_driver_parameters.yaml](https://github.com/opengeospatial/CRS-Gridded-Geodetic-data-eXchange-Format/blob/master/scripts/GGXF/gdal_driver_parameters.yaml) which will preset some of the metadata of the GGXF file.  
+
+The import function can also use additional YAML metadata files to define attributes that the GGXF file requires.  For example, a producer
+organisation may create a YAML file containing the organisation metadata that GGXF files require, or a file defining the licence with which data is published.
+
+A good start to creating a metadata file is to use ggxf.py to create a template:
+
+```shell
+python3 ggxf.py import -w orgmeta.yaml
+```
+
+This will create a template file orgmeta.yaml which contains:
+
+```yaml
+content: Content type (mandatory) - eg geographic2dOffsets
+title: Dataset title (mandatory)
+abstract: Dataset abstract (mandatory)
+comment: Comment on the dataset
+contentApplicabilityExtent: Placeholder for applicability extent - put a description here if required
+parameters: Placeholder for list of parameters
+interpolationCrsWkt: EPSG:0000
+sourceCrsWkt: EPSG:0000
+targetCrsWkt: EPSG:0000
+licenseURL: URL of license
+operationAccuracy: Representative accuracy of coordinate operation (replace with a number)
+publicationDate: Publication date of dataset
+version: Version of the dataset
+digitalObjectIdentifier: Digital object identifier of the dataset
+partyName: Organisation name of the producer/publisher
+electronicMailAddress: Email address of the producer/publisher
+onlineResourceLinkage: URL of producer/publisher website (or specific page about the dataset)
+deliveryPoint: Street address of the producer/publisher
+city: City of the producers/publisher's address
+postalCode: Postal code of the producer/publisher's address
+country: Country of the producer/publisher's address
+interpolationMethod: bilinear
+```
+
+Each line in this can be updated with the required value, or deleted from the file.  For example, an organisation metadata file
+might just include `partyName`, `electronicMailAddress`, and `onlineResourceLinkage`.
+
+A source file can then be converted to GGXF (either YAML or NetCDF) with a command such as:
+
+```shell
+python3 ggxf.py nzvd2016.ggxf NZGEOID2016_20161102.isg -m linz.yaml -m licence.yaml -a interpolationCrsWkt=epsg:4167 -a sourceCrsWkt=epsg:4959 -a targetCrsWkt=epsg:7839
 ```
 
 ## GGXF module
