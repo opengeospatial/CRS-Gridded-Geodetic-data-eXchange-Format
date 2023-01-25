@@ -206,7 +206,8 @@ def addConvertParser(subparsers):
 
 def convertGgxf(args):
     ggxf = loadGgxfInputFile(args)
-    saveGgxfOutputFile(ggxf, args)
+    if ggxf is not None:
+        saveGgxfOutputFile(ggxf, args)
 
 
 #####################################################################################

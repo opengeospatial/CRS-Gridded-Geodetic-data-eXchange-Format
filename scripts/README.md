@@ -24,7 +24,7 @@ Each of these options includes some online help available with the --help option
 ### Convert a file between YAML and NetCDF formats
 
 ```shell
-ggxf convert -h
+python3 ggxf.py convert -h
 ```
 
 ```text
@@ -86,7 +86,7 @@ python3 gxf.py convert -v PRGEOID18.yaml PRGEOID18.ggxf -n write-cdl=header
 ### Describe the contents of a GGXF file
 
 ```shell
-ggxf describe -h
+python3 ggxf.py describe -h
 ```
 
 ```text
@@ -135,7 +135,7 @@ and a CSV file ca_ntv2_grids.csv with one row for each grid in the data file.
 ### Calculate parameters values at a set of locations
 
 ```shell
-ggxf calculate -h
+python3 ggxf.py calculate -h
 ```
 
 ```text
@@ -210,18 +210,18 @@ nodeLongitude,nodeLatitude,displacementEast,displacementNorth,displacementUp
 ### Import a GDAL compatible grid file into GGXF format
 
 ```shell
-ggxf import -h
+python3 ggxf.py import -h
 ```
 
 ```text
 usage: ggxf import [-h] [-m METADATA_FILE] [-c CONTENT_TYPE] [-a ATTRIBUTE]
-                   [-w] [-p] [--ignore-errors] [-g] [-v]
-                   ggxf_file [grid_file]
+                   [-p] [--ignore-errors] [-g] [-v]
+                   yaml_file [grid_file]
 
 Import GDAL supported grid formats to GGXF
 
 positional arguments:
-  ggxf_file             Output YAML file - GGXF or metadata template
+  yaml_file             Output YAML file - GGXF or metadata template
   grid_file             Grid file to import (if not supplied just write a template)
 
 options:
@@ -232,6 +232,8 @@ options:
                         GGXF content type of grid
   -a ATTRIBUTE, --attribute ATTRIBUTE
                         GGXF file attribute written as attribute=value
+  -e EPSG_CODES, --epsg-codes EPSG_CODES
+                        Interpolation, source, and target EPSG codes separated by /                        
   -w, --write-template  Write metadata template to YAML file instead of GGXF
   -p, --include-placeholders
                         Include placeholder metadata in output GGXF YAML
@@ -243,8 +245,8 @@ Basic usage:
     ggxf import meta_template.yaml
         Creates a metadata template file meta_template.yaml
 
-    ggxf import -w meta_file.yaml grid_file
-        Includes metadata template including attributes from grid file.
+    ggxf import meta_file.yaml grid_file
+        Includes metadata template.
 
     ggxf import ggxf_file.yaml grid_file
         Creates a GGXF file to import data from the grid file.
@@ -314,6 +316,39 @@ A source file can then be converted to GGXF (either YAML or NetCDF) with a comma
 
 ```shell
 python3 ggxf.py nzvd2016.ggxf NZGEOID2016_20161102.isg -m linz.yaml -m licence.yaml -a interpolationCrsWkt=epsg:4167 -a sourceCrsWkt=epsg:4959 -a targetCrsWkt=epsg:7839
+```
+
+Alternatively the -p option can be used to create a YAML GGXF file containing placeholders for the metadata attributes, for example:
+
+```shell
+python3 ggxf.py import -p nzvd2016-template.yaml NZGEOID2016_20161102.isg -e 4167/4959/7839
+```
+
+(Note: this example is using the shorter -e option for specifying EPSG codes)
+
+The nzvd2016-template.yaml file can then be edited to insert the correct metadata.  Note that some metadata must be replaced (eg operationAccuracy metadata attribute must be deleted or replaced with a numeric value).  
+
+It is recommended that the EPSG codes for the interpolation, source,
+and target crs are specified so that they can be replaced with the full WKT specification required by GGXF.
+
+Note that the import function creates a GGXF YAML which references the source grid file for the grid data.  That
+is, the grid definition in the YAML file is something like:
+
+```yaml
+  - gridName: NZGEOID2016_20161102.isg
+    affineCoeffs: [-24.983333333333334, 0.0, -0.016666666666666666, 159.98333333333332,
+      0.016666666666666666, 0.0]
+    iNodeCount: 1801
+    jNodeCount: 2101
+    dataSource:
+      dataSourceType: GDAL
+      gdalSource: NZGEOID2016_20161102.isg
+```
+
+The `ggxf convert` option can be used to load the grid data from the external GDAL format into into either a NetCDF file or a "native" GGXF YAML file.
+
+```shell
+python3 ggxf.py convert nzvd2016-template.yaml nzvd2016.yaml 
 ```
 
 ## GGXF module

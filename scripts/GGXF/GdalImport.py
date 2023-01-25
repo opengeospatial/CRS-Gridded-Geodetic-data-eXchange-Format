@@ -29,6 +29,13 @@ GdalDriverConfigFile = os.environ.get(
 )
 
 
+CrsAttributes = (
+    GGXF_ATTR_INTERPOLATION_CRS_WKT,
+    GGXF_ATTR_SOURCE_CRS_WKT,
+    GGXF_ATTR_TARGET_CRS_WKT,
+)
+
+
 class GdalImportError(Exception):
     pass
 
@@ -58,16 +65,21 @@ class GdalImporter:
             help="GGXF file attribute written as attribute=value",
         )
         parser.add_argument(
+            "-p",
+            "--include-placeholders",
+            action="store_true",
+            help="Include placeholder metadata in output GGXF YAML",
+        )
+        parser.add_argument(
             "-w",
             "--write-template",
             action="store_true",
             help="Write metadata template to YAML file instead of GGXF",
         )
         parser.add_argument(
-            "-p",
-            "--include-placeholders",
-            action="store_true",
-            help="Include placeholder metadata in output GGXF YAML",
+            "-e",
+            "--epsg-codes",
+            help="Interpolation, source, and target EPSG codes separated by /",
         )
         parser.add_argument(
             "--ignore-errors",
@@ -95,6 +107,7 @@ class GdalImporter:
             args.yaml_file,
             args.grid_file,
             args.metadata_file,
+            epsg_codes=args.epsg_codes,
             attributes=attributes,
             write_template=args.write_template,
             content_type=args.content_type,
@@ -108,6 +121,7 @@ class GdalImporter:
         grid_file=None,
         metadata_files=None,
         attributes=None,
+        epsg_codes=None,
         write_template=False,
         content_type=None,
         include_placeholders=False,
@@ -143,6 +157,17 @@ class GdalImporter:
                 if key not in MetadataTemplate:
                     raise GdalImportError(f"Invalid attribute {key} specified")
                 template[key] = value
+
+        if epsg_codes is not None:
+            codes = epsg_codes.split("/")
+            if len(codes) != 3:
+                raise GdalImportError(
+                    f"epsg_codes must be formatted interpolation_code/source_code/target_code"
+                )
+            for attr, code in zip(CrsAttributes, codes):
+                if not re.match(r"^\d+$", code):
+                    raise GdalImportError(f"Invalid epsg_code {code} for {attr}")
+                template[attr] = f"EPSG:{code}"
 
         # Handle content type
         if content_type is not None:
@@ -190,11 +215,7 @@ class GdalImporter:
 
             # Expand EPSG:id CRS definitions from the template by retrieving CRSWKT
             # from the EPSG API
-            for key in (
-                GGXF_ATTR_SOURCE_CRS_WKT,
-                GGXF_ATTR_TARGET_CRS_WKT,
-                GGXF_ATTR_INTERPOLATION_CRS_WKT,
-            ):
+            for key in CrsAttributes:
                 if key in template and template[key] != MetadataTemplate[key]:
                     template[key] = GdalImporter.GetEpsgCrdsysWkt(template[key])
 
@@ -438,7 +459,6 @@ class GdalImporter:
 
 
 if __name__ == "__main__":
-    import sys
     import argparse
     import os.path
 
@@ -448,5 +468,3 @@ if __name__ == "__main__":
     GdalImporter.AddImporterArguments(parser)
     args = parser.parse_args()
     GdalImporter.ProcessImporterArguments(args)
-
-    main()
