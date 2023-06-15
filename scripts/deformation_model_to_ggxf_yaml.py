@@ -3,14 +3,16 @@
 import json
 import os
 import os.path
+import sys
+import math
 
 # import sys
 import argparse
 import yaml
 import re
-import subprocess
 from urllib import request
 
+from osgeo import gdal
 
 displacementParams = {
     "none": [],
@@ -149,33 +151,40 @@ def compileGrids(grids, maxdepth, maxwidth):
     return rootgrids
 
 
+def GdalDatasetMapping(dataset):
+    # Get grid size
+    size = (int(dataset.RasterXSize), int(dataset.RasterYSize))
+
+    # Get transformation affine coefficients
+    affine = [float(c) for c in dataset.GetGeoTransform()]
+    # Convert raster to point georeferencing
+    affine[0] += affine[1] / 2.0
+    affine[3] += affine[5] / 2.0
+    # Check the data to CRS mapping and adjust affine if swapped.
+    mapping = dataset.GetSpatialRef().GetDataAxisToSRSAxisMapping()
+
+    if mapping[0] == 2:  # Assume starts either 1,2 or 2,1
+        affine = [*affine[3:6], *affine[0:3]]
+    return size, affine
+
+
 def loadGTiffGridData(source, sourceref=None, tiffdir=None):
+    startdir=os.getcwd()
+    tiffdir=tiffdir or startdir
     print(f"Loading {source}")
-    result = subprocess.run(
-        ["gdalinfo", "-json", source], capture_output=True, cwd=tiffdir or None
-    )
-    if result.returncode != 0:
-        raise RuntimeError(
-            f"Failed to load GeoTiff {result.returncode}: {result.stderr}"
-        )
     gdata = {}
     subgrids = []
     crsdef = ""
     try:
-        griddata = json.loads(result.stdout)
-        md = griddata["metadata"]
-        gmd = md[""]
+        os.chdir(tiffdir)
+        dataset=gdal.Open(source)
+        gmd = dataset.GetMetadata()
         gdata["gridName"] = makeNameValidIdentifier(gmd["grid_name"])
         parent = gmd.get("parent_grid_name")
         if parent:
             gdata["parentGridName"] = makeNameValidIdentifier(parent)
-        affine = list(griddata["geoTransform"])
-        affine[0] += affine[1] / 2.0
-        affine[3] += affine[5] / 2.0
-        coeffs = affine[3:]
-        coeffs.extend(affine[:3])
-        gdata["affineCoeffs"] = coeffs
-        size = griddata["size"]
+        size,affine=GdalDatasetMapping(dataset)
+        gdata["affineCoeffs"] = [round_sf(c,12) for c in affine]
         gdata["iNodeCount"] = size[0]
         gdata["jNodeCount"] = size[1]
         # comment=gmd.get('TIFFTAG_IMAGEDESCRIPTION')
@@ -185,15 +194,16 @@ def loadGTiffGridData(source, sourceref=None, tiffdir=None):
             "dataSourceType": "GDAL",
             "gdalSource": sourceref or source,
         }
-        for k, v in md.get("SUBDATASETS", {}).items():
-            if m := re.match(r"^SUBDATASET_(\d+)_NAME", k):
-                if m.group(1) != "1":
-                    subgrids.append(v)
-        crsdef = griddata["coordinateSystem"]["wkt"]
+        subgrids=[sd[0] for sd in dataset.GetSubDatasets()]
+        # The first subgrid is the root grid
+        if len(subgrids) > 0:
+            subgrids.pop(0)
+        crsdef = dataset.GetSpatialRef().ExportToWkt()
     except Exception as ex:
         raise RuntimeError(f"Failed to load {source}: {ex}")
+    finally:
+        os.chdir(startdir)
     return gdata, subgrids, crsdef
-
 
 def loadJsonGeoTiff(jsonfile):
     model = json.loads(open(jsonfile).read())
@@ -221,6 +231,11 @@ def _nextYear(epoch):
         return f"{year:04d}-01-01T00:00:00Z"
     return epoch
 
+def round_sf(x, n):
+    """Return 'x' rounded to 'n' significant digits."""
+    y=abs(x)
+    if y <= sys.float_info.min: return 0.0
+    return round( x, int( n-math.ceil(math.log10(y)) ) )
 
 def ggxfTimeFunction(tf):
     global useramp
