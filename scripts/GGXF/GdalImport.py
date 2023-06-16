@@ -1,17 +1,18 @@
-from osgeo import gdal
+import json
+import logging
 import os
 import os.path
-import json
-import yaml
 import re
 from urllib import request
+
 import numpy as np
-import logging
+import yaml
+from osgeo import gdal
+
 from .Constants import *
 from .GGXF_Types import *
-from .GridLoader.GDAL import GdalDatasetMapping, GDAL_SOURCE_ATTR, MetadataTemplate
-from .YAML import Util, SOURCE_ATTR_SOURCE_TYPE
-
+from .GridLoader.GDAL import GDAL_SOURCE_ATTR, GdalDatasetMapping, MetadataTemplate
+from .YAML import SOURCE_ATTR_SOURCE_TYPE, Util
 
 EpsgApiUrlEnv = "EPSG_API_URL"
 EpsgCacheFileEnv = "EPSG_CACHE_FILE"

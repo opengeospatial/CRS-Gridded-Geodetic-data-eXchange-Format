@@ -4,30 +4,22 @@ import argparse
 import csv
 import logging
 import os.path
-import sys
 import re
-
-from .NetCDF import (
-    Reader as NetCdfReader,
-    Writer as NetCdfWriter,
-    NETCDF_READ_OPTIONS,
-    NETCDF_WRITE_OPTIONS,
-)
-from .YAML import (
-    Reader as YamlReader,
-    Writer as YamlWriter,
-    YAML_READ_OPTIONS,
-    YAML_WRITE_OPTIONS,
-)
-
-from .GdalImport import (
-    GdalImporter,
-    EpsgCacheFileEnv,
-    GdalDriverConfigFileEnv,
-    GdalDriverConfigFile,
-)
+import sys
 
 from .Constants import *
+from .GdalImport import (
+    EpsgCacheFileEnv,
+    GdalDriverConfigFile,
+    GdalDriverConfigFileEnv,
+    GdalImporter,
+)
+from .NetCDF import NETCDF_READ_OPTIONS, NETCDF_WRITE_OPTIONS
+from .NetCDF import Reader as NetCdfReader
+from .NetCDF import Writer as NetCdfWriter
+from .YAML import YAML_READ_OPTIONS, YAML_WRITE_OPTIONS
+from .YAML import Reader as YamlReader
+from .YAML import Writer as YamlWriter
 
 CMDARG_CONVERT = "convert"
 CMDARG_IMPORT = "import"

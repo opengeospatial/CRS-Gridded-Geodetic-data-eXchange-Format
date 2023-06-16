@@ -1,4 +1,5 @@
-import sys, os
+import os
+import sys
 
 #!! NOTE These tests are not complete.  Not testing points off the grid.  Also because test grids exactly match
 # interpolation method (eg cubic for bicubic interpolation) this doesn't confirm that the correct grid cells are
@@ -10,11 +11,12 @@ sys.path.insert(0, testdir)
 sys.path.insert(0, os.path.abspath(os.path.join(testdir, srcdir)))
 
 import unittest
+
 import numpy as np
 from DummyGGXF import dummyGroup
-from GGXF import GGXF
-from GGXF.GGXF import GridInterpolator, Grid
 
+from GGXF import GGXF
+from GGXF.GGXF import Grid, GridInterpolator
 
 defaultAffine = [172.0, 0.3, 0.0, 41.5, 0.0, 0.4]
 

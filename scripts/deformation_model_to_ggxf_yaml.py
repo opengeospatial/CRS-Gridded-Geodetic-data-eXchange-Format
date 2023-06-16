@@ -1,17 +1,15 @@
 #!/usr/bin/python3
 
+import argparse
 import json
+import math
 import os
 import os.path
-import sys
-import math
-
-# import sys
-import argparse
-import yaml
 import re
+import sys
 from urllib import request
 
+import yaml
 from osgeo import gdal
 
 displacementParams = {
@@ -169,22 +167,22 @@ def GdalDatasetMapping(dataset):
 
 
 def loadGTiffGridData(source, sourceref=None, tiffdir=None):
-    startdir=os.getcwd()
-    tiffdir=tiffdir or startdir
+    startdir = os.getcwd()
+    tiffdir = tiffdir or startdir
     print(f"Loading {source}")
     gdata = {}
     subgrids = []
     crsdef = ""
     try:
         os.chdir(tiffdir)
-        dataset=gdal.Open(source)
+        dataset = gdal.Open(source)
         gmd = dataset.GetMetadata()
         gdata["gridName"] = makeNameValidIdentifier(gmd["grid_name"])
         parent = gmd.get("parent_grid_name")
         if parent:
             gdata["parentGridName"] = makeNameValidIdentifier(parent)
-        size,affine=GdalDatasetMapping(dataset)
-        gdata["affineCoeffs"] = [round_sf(c,12) for c in affine]
+        size, affine = GdalDatasetMapping(dataset)
+        gdata["affineCoeffs"] = [round_sf(c, 12) for c in affine]
         gdata["iNodeCount"] = size[0]
         gdata["jNodeCount"] = size[1]
         # comment=gmd.get('TIFFTAG_IMAGEDESCRIPTION')
@@ -194,7 +192,7 @@ def loadGTiffGridData(source, sourceref=None, tiffdir=None):
             "dataSourceType": "GDAL",
             "gdalSource": sourceref or source,
         }
-        subgrids=[sd[0] for sd in dataset.GetSubDatasets()]
+        subgrids = [sd[0] for sd in dataset.GetSubDatasets()]
         # The first subgrid is the root grid
         if len(subgrids) > 0:
             subgrids.pop(0)
@@ -204,6 +202,7 @@ def loadGTiffGridData(source, sourceref=None, tiffdir=None):
     finally:
         os.chdir(startdir)
     return gdata, subgrids, crsdef
+
 
 def loadJsonGeoTiff(jsonfile):
     model = json.loads(open(jsonfile).read())
@@ -231,11 +230,14 @@ def _nextYear(epoch):
         return f"{year:04d}-01-01T00:00:00Z"
     return epoch
 
+
 def round_sf(x, n):
     """Return 'x' rounded to 'n' significant digits."""
-    y=abs(x)
-    if y <= sys.float_info.min: return 0.0
-    return round( x, int( n-math.ceil(math.log10(y)) ) )
+    y = abs(x)
+    if y <= sys.float_info.min:
+        return 0.0
+    return round(x, int(n - math.ceil(math.log10(y))))
+
 
 def ggxfTimeFunction(tf):
     global useramp

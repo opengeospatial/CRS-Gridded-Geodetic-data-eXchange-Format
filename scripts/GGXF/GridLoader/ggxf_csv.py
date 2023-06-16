@@ -3,10 +3,12 @@
 # ggxf-csv loader for GGXF.  Expected to return an array of (nj,ni,np) or a column major flattening of it.
 # (ie (rows,cols, params))
 
-import numpy as np
-import os.path
-import logging
 import csv
+import logging
+import os.path
+
+import numpy as np
+
 from ..Constants import *
 
 # from ..Constants import *

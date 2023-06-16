@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 
-from osgeo import gdal
-import numpy as np
 import logging
+
+import numpy as np
+from osgeo import gdal
+
 from ..Constants import *
 
 GDAL_SOURCE_LIST_ATTR = "gdalSourceList"

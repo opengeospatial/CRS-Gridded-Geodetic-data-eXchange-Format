@@ -7,12 +7,13 @@ import logging
 import os.path
 import re
 import tempfile
+
 import numpy as np
 
+from .AttributeValidator import AttributeValidator
 from .Constants import *
 from .GGXF_Types import CommonAttributes, ContentTypes
 from .TimeFunction import BaseTimeFunction, CompoundTimeFunction
-from .AttributeValidator import AttributeValidator
 
 JSON_METADATA_ATTR = "metadata"
 

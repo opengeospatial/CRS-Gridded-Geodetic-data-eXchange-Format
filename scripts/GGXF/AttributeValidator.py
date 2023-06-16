@@ -1,8 +1,9 @@
+import re
+from collections import namedtuple
 from re import S
+
 from .Constants import *
 from .GGXF_Types import ContentTypes
-from collections import namedtuple
-import re
 
 
 class AttributeValidator:

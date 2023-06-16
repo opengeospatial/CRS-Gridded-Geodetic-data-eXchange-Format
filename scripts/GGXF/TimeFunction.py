@@ -4,10 +4,11 @@
 
 import datetime
 import logging
-import re
 import math
+import re
 
 import numpy as np
+
 from .Constants import *
 
 
@@ -136,7 +137,7 @@ class VelocityTimeFunction(BaseTimeFunction):
         return epoch - self._refEpoch
 
 
-class AccelerationTimeFunction( BaseTimeFunction ):
+class AccelerationTimeFunction(BaseTimeFunction):
     Params = (TIME_PARAM_FUNCTION_REFERENCE_EPOCH,)
 
     def __init__(self, definition):
@@ -274,7 +275,7 @@ class HyperbolicTangentTimeFunction(BaseTimeFunction):
         self._timeFactor = self._params[TIME_PARAM_TIME_CONSTANT]
 
     def refFunc(self, epoch):
-        return (1.0+math.tanh((epoch - self._epoch) / self._timeFactor))/2.0
+        return (1.0 + math.tanh((epoch - self._epoch) / self._timeFactor)) / 2.0
 
 
 class CompoundTimeFunction:

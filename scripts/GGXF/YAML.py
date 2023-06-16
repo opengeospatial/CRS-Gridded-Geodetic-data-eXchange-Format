@@ -4,16 +4,17 @@
 #
 # YAML grid data in column major order corresponding to ncol,nrow,nparam numpy array.
 
+import importlib
 import logging
 import os.path
 import re
 import tempfile
-import importlib
-import yaml
-import numpy as np
 
-from .GGXF import *
+import numpy as np
+import yaml
+
 from . import GGXF_Types
+from .GGXF import *
 
 YAML_OPTION_GRID_DIRECTORY = "grid-directory"
 YAML_OPTION_CHECK_DATASOURCE_AFFINE = "check-datasource-affine-coeffs"

@@ -1,7 +1,36 @@
 # Overview
 
-This directory contains experimental python 3.8+ script to test NetCDF4 encoding options for a GGXF.
-These scripts are intended for experimenting with the GGXF format - they are not "production ready".  
+This directory contains experimental python 3.8+ script to prototype working with GGXF datasets.
+
+# Requirements
+
+Running these scripts requires a Python 3.8+ environment with the following modules installed:
+
+* numpy
+* NetCDF4
+* PyYAML
+* GDAL (optional - provides extra capabilities and tools for importing data sets to GGXF)
+
+Installing NetCDF4 and GDAL into the python environment can be difficult!  
+
+In Windows a python environment manager such as [anaconda](https://anaconda.com) may be the simplest approach.  To install GDAL into an anaconda  enviroment use the conda command,
+
+```shell
+(myenv)$> pip install numpy netcdf4 pyyaml
+(myenv)$> conda install -c conda-forge gdal
+```
+
+On Linux operating systems such as ubuntu the package management tool (eg apt) may provide the required python libraries.  
+
+To install these modules into a virtual environment on linux may require first installing the NetCDF and GDAL development libraries into the operating system with the system package manager, and then installing the python modules into the development environment with pip.  This may require care to ensure that the version of the python module matches the installed development libraries:
+
+For example:
+
+```shell
+$> gdalinfo --version
+GDAL 3.4.1, released 2021/12/27
+pip install GDAL==3.4.1
+```
 
 # Scripts
 

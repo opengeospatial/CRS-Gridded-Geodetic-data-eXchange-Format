@@ -6,9 +6,10 @@
 #   GGXF_Types.py defines attributes and parameters required for various GGXF content types
 # This is a long way from a full schema validation, but provides some validation of GGXF attributes.
 
-from sys import pycache_prefix
-import yaml
 import re
+from sys import pycache_prefix
+
+import yaml
 
 infile = "ggxf_schema.yaml"
 ctfile = "ggxf_content_types.yaml"

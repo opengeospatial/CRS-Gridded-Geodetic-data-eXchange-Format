@@ -4,7 +4,8 @@
 # field names.
 
 import os.path
-from .ggxf_csv import LoadCsvGrid, CsvLoaderError, GGXF_CSV_FILENAME_ATTR
+
+from .ggxf_csv import GGXF_CSV_FILENAME_ATTR, CsvLoaderError, LoadCsvGrid
 
 # from ..Constants import *
 
