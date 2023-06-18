@@ -9,6 +9,7 @@
 
 import logging
 import os.path
+import subprocess
 
 import netCDF4
 import numpy as np
@@ -386,7 +387,15 @@ class Writer(BaseWriter):
             root = netCDF4.Dataset(netcdf4_file, "r", format="NETCDF4")
             cdl_file = os.path.splitext(netcdf4_file)[0] + ".cdl"
             data = cdloption == NETCDF_CDL_OPTION_FULL
-            root.tocdl(data=data, outfile=cdl_file)
+            createcdl=False
+            try:
+                # See if ncdump is installed and available - used by NetCDF module to create CDL
+                subprocess.run(['ncdump'],capture_output=True)
+                createcdl=True
+            except FileNotFoundError:
+                self._logger.warning(f"Cannot create NetCDF4 CDL file - ncdump program not found")
+            if createcdl:
+                root.tocdl(data=data, outfile=cdl_file)
 
     def saveGgxfNetCdf4(self, root, ggxf):
         nctypes = {}
