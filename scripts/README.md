@@ -32,6 +32,9 @@ GDAL 3.4.1, released 2021/12/27
 pip install GDAL==3.4.1
 ```
 
+The ggxf script has an option to create .CDL files (a NetCDF ASCII dump format) which can be useful for understanding the contents of a NetCDF4 file (a GGXF binary file).
+This requires installing the NetCDF4 ncdump utility, which can be obtained from the [NetCDF4 download page](https://downloads.unidata.ucar.edu/netcdf/).
+
 # Scripts
 
 This directory contains three scripts to support generating and experimenting with GGXF format files.
@@ -360,8 +363,7 @@ The nzvd2016-template.yaml file can then be edited to insert the correct metadat
 It is recommended that the EPSG codes for the interpolation, source,
 and target crs are specified so that they can be replaced with the full WKT specification required by GGXF.
 
-Note that the import function creates a GGXF YAML which references the source grid file for the grid data.  That
-is, the grid definition in the YAML file is something like:
+Note that the import function creates a GGXF YAML which references the source grid file for the grid data.  The ggxf script will read the grid parameters from the source grid file.  An example of the grid definition in the template file is:
 
 ```yaml
   - gridName: NZGEOID2016_20161102.isg
@@ -377,7 +379,7 @@ is, the grid definition in the YAML file is something like:
 The `ggxf convert` option can be used to load the grid data from the external GDAL format into into either a NetCDF file or a "native" GGXF YAML file.
 
 ```shell
-python3 ggxf.py convert nzvd2016-template.yaml nzvd2016.yaml 
+python3 ggxf.py convert nzvd2016-template-edited.yaml nzvd2016.yaml 
 ```
 
 ## GGXF module
