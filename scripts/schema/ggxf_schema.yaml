@@ -228,7 +228,7 @@ CommonAttributes:
 
   TimeFunction:
     - AttributeName: functionType
-      Type: [velocity, step, ramp, acceleration, exponential, logarithmic, hyperbolicTangent, cyclic]
+      Type: [velocity, step, ramp, acceleration, exponential, logBaseE, logBase10, hyperbolicTangent, cyclic]
     - AttributeChoice:
           AttributeChoiceName: startEpoch
           Attributes:

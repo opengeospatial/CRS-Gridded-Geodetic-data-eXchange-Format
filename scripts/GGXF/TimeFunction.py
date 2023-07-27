@@ -53,7 +53,8 @@ class BaseTimeFunction:
             TIME_FUNCTION_TYPE_CYCLIC: CyclicTimeFunction,
             TIME_FUNCTION_TYPE_EXPONENTIAL: ExponentialTimeFunction,
             TIME_FUNCTION_TYPE_HYPERBOLIC_TANGENT: HyperbolicTangentTimeFunction,
-            TIME_FUNCTION_TYPE_LOGARITHMIC: LogarithmicTimeFunction,
+            TIME_FUNCTION_TYPE_LOG_BASE_E: LogBaseETimeFunction,
+            TIME_FUNCTION_TYPE_LOG_BASE_10: LogBase10TimeFunction,
             TIME_FUNCTION_TYPE_RAMP: RampTimeFunction,
             TIME_FUNCTION_TYPE_STEP: StepTimeFunction,
             TIME_FUNCTION_TYPE_VELOCITY: VelocityTimeFunction,
@@ -189,7 +190,7 @@ class ExponentialTimeFunction(BaseTimeFunction):
         return 1.0 - math.exp(-epoch / self._decay)
 
 
-class LogarithmicTimeFunction(BaseTimeFunction):
+class LogBaseETimeFunction(BaseTimeFunction):
     Params = (
         TIME_PARAM_EVENT_EPOCH,
         TIME_PARAM_TIME_CONSTANT,
@@ -198,7 +199,7 @@ class LogarithmicTimeFunction(BaseTimeFunction):
     def __init__(self, definition):
         BaseTimeFunction.__init__(
             self,
-            TIME_FUNCTION_TYPE_LOGARITHMIC,
+            TIME_FUNCTION_TYPE_LOG_BASE_E,
             definition,
             self.Params,
         )
@@ -211,6 +212,28 @@ class LogarithmicTimeFunction(BaseTimeFunction):
             return 0.0
         return math.log(1.0 + epoch / self._decay)
 
+class LogBase10TimeFunction(BaseTimeFunction):
+    Params = (
+        TIME_PARAM_EVENT_EPOCH,
+        TIME_PARAM_TIME_CONSTANT,
+    )
+    log10=lambda t: math.log(t)/math.log(10)
+
+    def __init__(self, definition):
+        BaseTimeFunction.__init__(
+            self,
+            TIME_FUNCTION_TYPE_LOG_BASE_10,
+            definition,
+            self.Params,
+        )
+        self._epoch = self._params[TIME_PARAM_EVENT_EPOCH]
+        self._decay = self._params[TIME_PARAM_TIME_CONSTANT]
+
+    def refFunc(self, epoch):
+        epoch -= self._epoch
+        if epoch < 0.0:
+            return 0.0
+        return self.log10(1.0 + epoch / self._decay)
 
 class RampTimeFunction(BaseTimeFunction):
     Params = (
