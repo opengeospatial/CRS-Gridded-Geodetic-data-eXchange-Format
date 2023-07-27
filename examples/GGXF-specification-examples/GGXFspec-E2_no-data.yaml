@@ -2,6 +2,7 @@
 content: geoidModel
 comment: "hybrid geoid"
 title: "South_African_geoid_2010"
+version: "2010"
 abstract: "Model for converting ellipsoidal heights determined using NGI's TrigNet to orthometric heights on the South African Land Levelling Datum, to an accuracy of 10 cm (design requirements). Accuracy is 7cm absolute and relative <2cm + GNSS related error."
 filename: "SAGEOID2010.yaml"
 

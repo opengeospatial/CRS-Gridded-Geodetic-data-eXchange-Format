@@ -22,18 +22,18 @@ parameters:
   - parameterName: velocityEast
     parameterSet: velocity
     sourceCrsAxis: 1
-    unitName: metre/year
-    unitSiRatio: 3.168808781E-8
+    unitName: m/yr
+    unitSiRatio: 3.16887651727315E-08
   - parameterName: velocityNorth
     parameterSet: velocity
     sourceCrsAxis: 0
-    unitName: metre/year
-    unitSiRatio: 3.168808781E-8
+    unitName: m/yr
+    unitSiRatio: 3.16887651727315E-08
   - parameterName: velocityUp
     parameterSet: velocity
     sourceCrsAxis: 2
-    unitName: metre/year
-    unitSiRatio: 3.168808781E-8
+    unitName: m/yr
+    unitSiRatio: 3.16887651727315E-08
 # What should operational accuracy be
 operationAccuracy: 0.001
 ggxfGroups:

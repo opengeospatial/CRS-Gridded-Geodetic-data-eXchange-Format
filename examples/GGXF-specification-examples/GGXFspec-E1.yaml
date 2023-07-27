@@ -1,8 +1,10 @@
 ﻿ggxfVersion: "GGXF-1.0"
 content: geographic2dOffsets
-title: "Catalino Canyon transformation version 2022-06"
+title: "Catalino Canyon transformation"
+version: "2022-06"
 abstract: "Example transformation constructed for purposes of illustration."
 filename: "Catalano_Canyon.yaml"
+digitalObjectIdentifier: "https://doi.org/10.1000/182"
 
 contentApplicabilityExtent:
   extentDescription: "Italy - Mediterranean Sea west of Sardinia - Catalano Canyon."

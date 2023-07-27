@@ -3,7 +3,8 @@ netcdf GGXFspec-E3_no-data {
 // global attributes:
 		:Conventions = "GGXF-1.0, ACDD-1.3" ;
 		:content = "geographic2dOffsets" ;
-		:title = "National Transformation v2_0" ;
+		:title = "National Transformation v2" ;
+		:product_version = "2_0" ;
 		:summary = "Transformation of geodetic latitude and longitude referenced to NAD27 to latitude and longitude referenced to NAD83(Original)." ;
 		:source_file = "GGXFspec-E3_no-data.ggxf" ;
 		:date_issued = "1995-02" ;

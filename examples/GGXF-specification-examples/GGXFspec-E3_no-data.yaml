@@ -1,6 +1,7 @@
 ﻿ggxfVersion: "GGXF-1.0"
 content: geographic2dOffsets 
-title: "National Transformation v2_0"
+title: "National Transformation v2"
+version: "2_0"
 abstract: "Transformation of geodetic latitude and longitude referenced to NAD27 to latitude and longitude referenced to NAD83(Original)." 
 filename: "27to83.yaml"
 

@@ -2,6 +2,7 @@ ggxfVersion: "GGXF-1.0"
 filename: PRGEOID18.yaml
 content: geoidModel
 title: "Puerto Rico GEOID18"
+version: "2018"
 abstract: "PRVI hybrid geoid 2018. This file applicable to Puerto Rico."
 contentApplicabilityExtent:
   boundingBox:

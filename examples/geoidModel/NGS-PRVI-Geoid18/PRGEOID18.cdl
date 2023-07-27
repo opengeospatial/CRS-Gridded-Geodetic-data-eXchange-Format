@@ -5,6 +5,7 @@ netcdf PRGEOID18 {
 		:source_file = "PRGEOID18.ggxf" ;
 		:content = "geoidModel" ;
 		:title = "Puerto Rico GEOID18" ;
+		:product_version = "2018" ;
 		:summary = "PRVI hybrid geoid 2018. This file applicable to Puerto Rico." ;
 		:geospatial_lat_min = 17.87 ;
 		:geospatial_lon_min = -67.97 ;

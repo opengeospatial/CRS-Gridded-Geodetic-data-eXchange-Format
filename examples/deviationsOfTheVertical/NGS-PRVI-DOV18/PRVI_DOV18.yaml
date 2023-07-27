@@ -1,8 +1,9 @@
 ggxfVersion: "GGXF-1.0"
 filename:    d2018prvi.yaml
 content:     deviationsOfTheVertical
-title:      "hybrid defelection of the vertical model"
-abstract:      "hybrid defelection of the vertical model"
+version:    "2018"
+title:      "hybrid deflection of the vertical model"
+abstract:      "hybrid deflection of the vertical model"
 contentApplicabilityExtent:
     boundingBox:
         southBoundLatitude:  17.67

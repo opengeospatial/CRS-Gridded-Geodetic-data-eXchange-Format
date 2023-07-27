@@ -4,8 +4,9 @@ netcdf PRVI_DOV18 {
 		:Conventions = "GGXF-1.0, ACDD-1.3" ;
 		:source_file = "PRVI_DOV18.ggxf" ;
 		:content = "deviationsOfTheVertical" ;
-		:title = "hybrid defelection of the vertical model" ;
-		:summary = "hybrid defelection of the vertical model" ;
+		:product_version = "2018" ;
+		:title = "hybrid deflection of the vertical model" ;
+		:summary = "hybrid deflection of the vertical model" ;
 		:geospatial_lat_min = 17.67 ;
 		:geospatial_lon_min = -65.09 ;
 		:geospatial_lat_max = 18.42 ;

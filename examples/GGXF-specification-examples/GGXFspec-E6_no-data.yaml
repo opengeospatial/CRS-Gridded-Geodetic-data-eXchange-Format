@@ -1,6 +1,7 @@
 ﻿ggxfVersion: "GGXF-1.0"
 content:     deviationsOfTheVertical
 title:       "PRVI DOV 2018"
+version:     "2018"
 abstract:    "PRVI hybrid deflection model. Deflections are at the Earth's surface"
 filename:    d2018prvi.yaml
 contentApplicabilityExtent:
