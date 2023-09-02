@@ -9,10 +9,10 @@ netcdf alaska_velocity {
 		:product_version = "Test_1.0" ;
 		:date_issued = "2022-09" ;
 		:institution = "Test developer" ;
-		:geospatial_lat_min = 40. ;
-		:geospatial_lon_min = -141. ;
-		:geospatial_lat_max = 60. ;
-		:geospatial_lon_max = -88. ;
+		:geospatial_lat_min = 53.25 ;
+		:geospatial_lon_min = -170. ;
+		:geospatial_lat_max = 73. ;
+		:geospatial_lon_max = -130. ;
 		:extent_description = "Alaska" ;
 		:interpolationCrsWkt = "GEOGCRS[\"ITRF2008\",DYNAMIC[FRAMEEPOCH[2005]],DATUM[\"International Terrestrial Reference Frame 2008\",ELLIPSOID[\"GRS 1980\",6378137,298.257222101,LENGTHUNIT[\"metre\",1]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433]],CS[ellipsoidal,3],AXIS[\"geodetic latitude (Lat)\",north,ORDER[1],ANGLEUNIT[\"degree\",0.0174532925199433]],AXIS[\"geodetic longitude (Lon)\",east,ORDER[2],ANGLEUNIT[\"degree\",0.0174532925199433]],AXIS[\"ellipsoidal height (h)\",up,ORDER[3],LENGTHUNIT[\"metre\",1]],USAGE[SCOPE[\"Geodesy.\"],AREA[\"World.\"],BBOX[-90,-180,90,180]],ID[\"EPSG\",7911]]\n" ;
 		:sourceCrsWkt = "GEOGCRS[\"ITRF2008\",DYNAMIC[FRAMEEPOCH[2005]],DATUM[\"International Terrestrial Reference Frame 2008\",ELLIPSOID[\"GRS 1980\",6378137,298.257222101,LENGTHUNIT[\"metre\",1]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433]],CS[ellipsoidal,3],AXIS[\"geodetic latitude (Lat)\",north,ORDER[1],ANGLEUNIT[\"degree\",0.0174532925199433]],AXIS[\"geodetic longitude (Lon)\",east,ORDER[2],ANGLEUNIT[\"degree\",0.0174532925199433]],AXIS[\"ellipsoidal height (h)\",up,ORDER[3],LENGTHUNIT[\"metre\",1]],USAGE[SCOPE[\"Geodesy.\"],AREA[\"World.\"],BBOX[-90,-180,90,180]],ID[\"EPSG\",7911]]\n" ;

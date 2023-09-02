@@ -8,10 +8,10 @@ publicationDate: "2022-09"
 partyName:             "Test developer"
 contentApplicabilityExtent:
   boundingBox:
-    southBoundLatitude: 40.0
-    westBoundLongitude: -141.0
-    northBoundLatitude: 60.0
-    eastBoundLongitude: -88.0
+    southBoundLatitude: 53.25
+    westBoundLongitude: -170.0
+    northBoundLatitude: 73.0
+    eastBoundLongitude: -130.0
   extentDescription: "Alaska"
 
 interpolationCrsWkt: &crs |

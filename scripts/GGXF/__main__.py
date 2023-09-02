@@ -311,7 +311,6 @@ def writeCsvGridSummary(ggxf, csv_summary_file, coord_ndp=8, param_ndp=4):
         "xmax",
         "ymin",
         "ymax",
-        "extent_wkt",
     ]
     param0 = len(csvcols)
     params = {}
