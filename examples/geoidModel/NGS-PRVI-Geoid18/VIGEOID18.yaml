@@ -61,10 +61,6 @@ ggxfGroups:
         jNodeCount: 361
         comment: "grid starts in the bottom left (southwest) corner and works across (east) and up (north)"
         dataSource: 
-          dataSourceType: "CSV"
+          dataSourceType: "ggxf-csv"
           gridFilename: "PRVIGEOID18.csv"
-          interpolationCoordFields: 
-            - latitude
-            - longitude
-          parameterFields:
-            - geoidHeight
+
