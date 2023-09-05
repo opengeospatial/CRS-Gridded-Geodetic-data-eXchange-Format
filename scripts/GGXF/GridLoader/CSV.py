@@ -10,7 +10,7 @@ from .ggxf_csv import GGXF_CSV_FILENAME_ATTR, CsvLoaderError, LoadCsvGrid
 # from ..Constants import *
 
 CSV_FILENAME_ATTR = GGXF_CSV_FILENAME_ATTR
-CSV_INTERPOLATION_COORD_ATTR = "interpolationCoordFields"
+CSV_INTERPOLATION_COORD_ATTR = "nodeCoordinateFields"
 CSV_PARAMETER_FIELDS_ATTR = "parameterFields"
 
 CSV_GRID_TOLERANCE_FACTOR = 0.00001

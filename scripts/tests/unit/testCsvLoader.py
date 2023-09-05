@@ -17,7 +17,7 @@ class CsvLoaderTest(unittest.TestCase):
         csvfile = os.path.join(testdir, "data", "test.csv")
         csvsource = {
             "gridFilename": csvfile,
-            "interpolationCoordFields": ["X", "Y"],
+            "nodeCoordinateFields": ["X", "Y"],
             "parameterFields": ["displacementEast", "displacementNorth"],
         }
         (data, size, affine) = CSV.LoadGrid({}, csvsource, None)
