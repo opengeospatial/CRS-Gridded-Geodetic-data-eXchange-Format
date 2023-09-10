@@ -48,9 +48,10 @@ CommonAttributes:
         Attributes:
           - AttributeName: license
             Type: str
+            Metadata: Text of license (optionally specify this or licenseURL)
           - AttributeName: licenseURL
             Type: str
-            Metadata: URL of license
+            Metadata: URL of license (optionally specify this or license)
       Optional: true
     - AttributeName: operationAccuracy
       Type: float
@@ -194,6 +195,7 @@ CommonAttributes:
     - AttributeName: boundingPolygon
       Type: str
       Optional: true
+      Metadata: WKT polygon definition of spatial extents within which the GGXF file is applicable
     - AttributeName: extentTemporal
       Type: ExtentTemporal
       Optional: true
@@ -204,12 +206,16 @@ CommonAttributes:
   BoundingBox:
     - AttributeName: southBoundLatitude
       Type: float
+      Metadata: Southmost latitude of applicability
     - AttributeName: westBoundLongitude
       Type: float
+      Metadata: Westmost longitude of applicability
     - AttributeName: northBoundLatitude
       Type: float
+      Metadata: Northmost latitude of applicability
     - AttributeName: eastBoundLongitude
       Type: float
+      Metadata: Eastmost longitude of applicability
 
   ExtentTemporal:
     - AttributeName: startDate

@@ -116,7 +116,7 @@ group: National\ Transformation\ v2_0 {
       		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
-      		:affineCoeffs = 43.4166666666667, 0., -0.00833333333333333, -82.5833333333333, 0.00833333333333333, 0. ;
+      		:affineCoeffs = 43.416666666667, 0., -0.00833333333333333, -82.5833333333333, 0.00833333333333333, 0. ;
       } // group ONsarnia
 
     group: ONwinsor {
@@ -132,7 +132,7 @@ group: National\ Transformation\ v2_0 {
       		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
-      		:affineCoeffs = 42.41666666667, 0., -0.00833333333, -83.1666666667, 0.1, 0.00833333333 ;
+      		:affineCoeffs = 42.4166666666667, 0., -0.00833333333333333, -83.1666666666667, 0.1, 0.00833333333333333 ;
       } // group ONwinsor
     } // group CAeast
   } // group National\ Transformation\ v2_0

@@ -42,7 +42,7 @@ ggxfGroups:
       interpolationMethod: biquadratic
       grids:
           - gridName: "Puerto Rico Virgin Islands DEFLEC18"
-            affineCoeffs: [15.0, 0.0, 0.01666666667, -69.0, 0.01666666667, 0.0]
+            affineCoeffs: [15.0, 0.0, 0.016666666666667, -69.0, 0.016666666666667, 0.0]
             iNodeCount:  301
             jNodeCount: 361
             data: [
