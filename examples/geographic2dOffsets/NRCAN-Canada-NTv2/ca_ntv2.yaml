@@ -12,9 +12,9 @@ contentApplicabilityExtent:
   boundingBox:
     southBoundLatitude: 40.0
     westBoundLongitude: -141.0
-    northBoundLatitude: 60.0
-    eastBoundLongitude: -88.0
-  extentDescription: "Canada south of 60°N"
+    northBoundLatitude: 84.0
+    eastBoundLongitude: -44.0
+  extentDescription: "Canada south of 84°N"
 
 interpolationCrsWkt: &crs |
     GEOGCRS["NAD27",

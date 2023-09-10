@@ -13,9 +13,9 @@ netcdf ca_ntv2 {
 		:license = "https://open.canada.ca/en/open-government-licence-canada" ;
 		:geospatial_lat_min = 40. ;
 		:geospatial_lon_min = -141. ;
-		:geospatial_lat_max = 60. ;
-		:geospatial_lon_max = -88. ;
-		:extent_description = "Canada south of 60°N" ;
+		:geospatial_lat_max = 84. ;
+		:geospatial_lon_max = -44. ;
+		:extent_description = "Canada south of 84°N" ;
 		:interpolationCrsWkt = "GEOGCRS[\"NAD27\",\n  DATUM[\"North American Datum 1927\",\n    ELLIPSOID[\"Clarke 1866\",6378206.4,294.9786982,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:sourceCrsWkt = "GEOGCRS[\"NAD27\",\n  DATUM[\"North American Datum 1927\",\n    ELLIPSOID[\"Clarke 1866\",6378206.4,294.9786982,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
 		:targetCrsWkt = "GEOGCRS[\"NAD83(Original)\",\n  DATUM[\"North American Datum 1983\",\n    ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1]]],\n  CS[ellipsoidal,2],\n  AXIS[\"Geodetic latitude (Lat)\",north],\n  AXIS[\"Geodetic longitude (Lon)\",east],\n  ANGLEUNIT[\"degree\",0.0174532925199433]]\n" ;
