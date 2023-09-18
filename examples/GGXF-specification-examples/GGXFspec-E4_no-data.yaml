@@ -64,16 +64,16 @@ ggxfGroups:
     interpolationMethod: bilinear
     grids:
       - gridName: "grid_nuvel1a_eez"
-        affineCoeffs: [ -25.0, 0.0, -0.5, 158.0, 0.5, 0.0 ]
-        iNodeCount: 73
-        jNodeCount: 67
+        affineCoeffs: [ -25.0, -0.5, 0.0, 158.0, 0.0, 0.5 ]
+        iNodeCount: 67
+        jNodeCount: 73
         data: [ 0.023004, 0.051255, -0.059495, 0.033768,
                -0.017214, 0.026107, -0.033665, 0.033706 ]
         childGrids:
             - gridName: "grid_igns2011_nz"
-              affineCoeffs: [ -33.0, 0.0, -0.1, 165.5, 0.1, 0.0 ]
-              iNodeCount: 141
-              jNodeCount: 151
+              affineCoeffs: [ -33.0, -0.1, 0.0, 165.5, 0.0, 0.1 ]
+              iNodeCount: 151
+              jNodeCount: 141
               data: [ 0.01239, 0.04615,  0.00702, 0.03462,
                       -0.02301, 0.03381, -0.03692, 0.03216 ]
 

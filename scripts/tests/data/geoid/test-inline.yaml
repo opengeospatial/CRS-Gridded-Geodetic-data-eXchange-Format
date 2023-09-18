@@ -53,9 +53,9 @@ ggxfGroups:
     interpolationMethod: bilinear
     grids:
       - gridName: "geoid_grid"
-        affineCoeffs: [22.5, 0.0, 0.7, -69.0, 1.0, 0.0]
-        iNodeCount: 3
-        jNodeCount: 4
+        affineCoeffs: [22.5, 0.7, 0.0, -69.0, 0.0, 1.0]
+        iNodeCount: 4
+        jNodeCount: 3
         data:
           [
             -10.5,

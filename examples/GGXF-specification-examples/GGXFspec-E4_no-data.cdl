@@ -42,27 +42,27 @@ group: national_velocity_model {
 
   group: grid_nuvel1a_eez {
     dimensions:
-    	iNodeCount = 73 ;
-    	jNodeCount = 67 ;
+    	iNodeCount = 67 ;
+    	jNodeCount = 73 ;
     variables:
     	float velocity(iNodeCount, jNodeCount, velocityCount) ;
     		velocity:_Storage = "contiguous" ;
     		velocity:_Endianness = "little" ;
 
     // group attributes:
-    		:affineCoeffs = -25., 0., -0.5, 158., 0.5, 0. ;
+    		:affineCoeffs = -25., -0.5, 0., 158., 0., 0.5 ;
 
     group: grid_igns2011_nz {
       dimensions:
-      	iNodeCount = 141 ;
-      	jNodeCount = 151 ;
+      	iNodeCount = 151 ;
+      	jNodeCount = 141 ;
       variables:
       	float velocity(iNodeCount, jNodeCount, velocityCount) ;
       		velocity:_Storage = "contiguous" ;
       		velocity:_Endianness = "little" ;
 
       // group attributes:
-      		:affineCoeffs = -33., 0., -0.1, 165.5, 0.1, 0. ;
+      		:affineCoeffs = -33., -0.1, 0., 165.5, 0., 0.1 ;
       } // group grid_igns2011_nz
     } // group grid_nuvel1a_eez
   } // group national_velocity_model

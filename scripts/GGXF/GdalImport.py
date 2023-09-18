@@ -11,7 +11,8 @@ from osgeo import gdal
 
 from .Constants import *
 from .GGXF_Types import *
-from .GridLoader.GDAL import GDAL_SOURCE_ATTR, GdalDatasetMapping, MetadataTemplate
+from .GridLoader.GDAL import (GDAL_SOURCE_ATTR, GdalDatasetMapping,
+                              MetadataTemplate)
 from .YAML import SOURCE_ATTR_SOURCE_TYPE, Util
 
 EpsgApiUrlEnv = "EPSG_API_URL"

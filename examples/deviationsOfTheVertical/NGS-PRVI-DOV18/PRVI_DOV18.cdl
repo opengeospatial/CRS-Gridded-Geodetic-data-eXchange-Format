@@ -42,15 +42,15 @@ group: Puerto\ Rico\ Virgin\ Islands\ DEFLEC18 {
 
   group: Puerto\ Rico\ Virgin\ Islands\ DEFLEC18 {
     dimensions:
-    	iNodeCount = 301 ;
-    	jNodeCount = 361 ;
+    	iNodeCount = 361 ;
+    	jNodeCount = 301 ;
     variables:
     	float deviation(iNodeCount, jNodeCount, deviationCount) ;
     		deviation:_Storage = "contiguous" ;
     		deviation:_Endianness = "little" ;
 
     // group attributes:
-    		:affineCoeffs = 15., 0., 0.016666666666667, -69., 0.016666666666667, 0. ;
+    		:affineCoeffs = 15., 0.016666666666667, 0., -69., 0., 0.016666666666667 ;
     } // group Puerto\ Rico\ Virgin\ Islands\ DEFLEC18
   } // group Puerto\ Rico\ Virgin\ Islands\ DEFLEC18
 }

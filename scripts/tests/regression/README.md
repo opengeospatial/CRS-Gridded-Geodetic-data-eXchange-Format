@@ -5,6 +5,9 @@ a list of files to use for the test (sourced from ../data) and the ggxf command 
 the test.  The test is run in a directory out/<testname> and the resultant files are compared with
 the check directory check/<testname>.
 
+Note: This is currently an incomplete list of tests.  In particular it is does not include the deformation
+model examples which include multiple grids, and more than one parameter in each grid.
+
 ## Basic tests with a single parameter (geoid file)
 
  Test | Description

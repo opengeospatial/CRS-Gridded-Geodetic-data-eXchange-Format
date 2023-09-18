@@ -39,15 +39,15 @@ group: puerto_rico_virgin_islands_geoid18 {
 
   group: puerto_rico_virgin_islands_geoid18 {
     dimensions:
-    	iNodeCount = 301 ;
-    	jNodeCount = 361 ;
+    	iNodeCount = 361 ;
+    	jNodeCount = 301 ;
     variables:
     	float geoidHeight(iNodeCount, jNodeCount) ;
     		geoidHeight:_Storage = "contiguous" ;
     		geoidHeight:_Endianness = "little" ;
 
     // group attributes:
-    		:affineCoeffs = 15., 0., 0.016666666666667, -69., 0.016666666666667, 0. ;
+    		:affineCoeffs = 15., 0.016666666666667, 0., -69., 0., 0.016666666666667 ;
     		:comment = "grid starts in the bottom left (southwest) corner and works across (east) and up (north)" ;
     } // group puerto_rico_virgin_islands_geoid18
   } // group puerto_rico_virgin_islands_geoid18

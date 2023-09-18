@@ -58,8 +58,8 @@ group: National\ Transformation\ v2_0 {
 
   group: CAwest {
     dimensions:
-    	iNodeCount = 649 ;
-    	jNodeCount = 157 ;
+    	iNodeCount = 157 ;
+    	jNodeCount = 649 ;
     variables:
     	float offset(iNodeCount, jNodeCount, offsetCount) ;
     		offset:_Storage = "contiguous" ;
@@ -69,13 +69,13 @@ group: National\ Transformation\ v2_0 {
     		offsetUncertainty:_Endianness = "little" ;
 
     // group attributes:
-    		:affineCoeffs = 60., 0., -0.083333333333333, -142., 0.083333333333333, 0. ;
+    		:affineCoeffs = 60., -0.083333333333333, 0., -142., 0., 0.083333333333333 ;
     } // group CAwest
 
   group: CAeast {
     dimensions:
-    	iNodeCount = 529 ;
-    	jNodeCount = 241 ;
+    	iNodeCount = 241 ;
+    	jNodeCount = 529 ;
     variables:
     	float offset(iNodeCount, jNodeCount, offsetCount) ;
     		offset:_Storage = "contiguous" ;
@@ -85,12 +85,12 @@ group: National\ Transformation\ v2_0 {
     		offsetUncertainty:_Endianness = "little" ;
 
     // group attributes:
-    		:affineCoeffs = 60., 0., -0.083333333333333, -88., 0.083333333333333, 0. ;
+    		:affineCoeffs = 60., -0.083333333333333, 0., -88., 0., 0.083333333333333 ;
 
     group: ONtronto {
       dimensions:
-      	iNodeCount = 351 ;
-      	jNodeCount = 511 ;
+      	iNodeCount = 511 ;
+      	jNodeCount = 351 ;
       variables:
       	float offset(iNodeCount, jNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
@@ -100,13 +100,13 @@ group: National\ Transformation\ v2_0 {
       		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
-      		:affineCoeffs = 46.6666666666667, 0., -0.00833333333333333, -81.75, 0.00833333333333333, 0. ;
+      		:affineCoeffs = 46.6666666666667, -0.00833333333333333, 0., -81.75, 0., 0.00833333333333333 ;
       } // group ONtronto
 
     group: ONsarnia {
       dimensions:
-      	iNodeCount = 101 ;
-      	jNodeCount = 121 ;
+      	iNodeCount = 121 ;
+      	jNodeCount = 101 ;
       variables:
       	float offset(iNodeCount, jNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
@@ -116,13 +116,13 @@ group: National\ Transformation\ v2_0 {
       		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
-      		:affineCoeffs = 43.416666666667, 0., -0.00833333333333333, -82.5833333333333, 0.00833333333333333, 0. ;
+      		:affineCoeffs = 43.416666666667, -0.00833333333333333, 0., -82.5833333333333, 0., 0.00833333333333333 ;
       } // group ONsarnia
 
     group: ONwinsor {
       dimensions:
-      	iNodeCount = 171 ;
-      	jNodeCount = 61 ;
+      	iNodeCount = 61 ;
+      	jNodeCount = 171 ;
       variables:
       	float offset(iNodeCount, jNodeCount, offsetCount) ;
       		offset:_Storage = "contiguous" ;
@@ -132,7 +132,7 @@ group: National\ Transformation\ v2_0 {
       		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
-      		:affineCoeffs = 42.4166666666667, 0., -0.00833333333333333, -83.1666666666667, 0.1, 0.00833333333333333 ;
+      		:affineCoeffs = 42.4166666666667, -0.00833333333333333, 0., -83.1666666666667, 0.00833333333333333, 0.1 ;
       } // group ONwinsor
     } // group CAeast
   } // group National\ Transformation\ v2_0

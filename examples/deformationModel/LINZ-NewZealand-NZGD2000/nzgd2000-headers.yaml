@@ -67,14 +67,14 @@ ggxfGroups:
     functionReferenceDate: '2000-01-01T00:00:00Z'
   grids:
   - gridName: ndm_grid_nuvel1a_eez
-    affineCoeffs: [-25.0, 0.0, -0.5, 158.0, 0.5, 0.0]
-    iNodeCount: 73
-    jNodeCount: 67
+    affineCoeffs: [-25.0, -0.5, 0.0, 158.0, 0.0, 0.5]
+    iNodeCount: 67
+    jNodeCount: 73
     childGrids:
     - gridName: ndm_grid_igns2011_nz
-      affineCoeffs: [-33.0, 0.0, -0.1, 165.5, 0.1, 0.0]
-      iNodeCount: 141
-      jNodeCount: 151
+      affineCoeffs: [-33.0, -0.1, 0.0, 165.5, 0.0, 0.1]
+      iNodeCount: 151
+      jNodeCount: 141
 - ggxfGroupName: nz_linz_nzgd2000-si20030821-grid01
   comment: Secretary Island (Fiordland) earthquake
   gridParameters:
@@ -88,19 +88,19 @@ ggxfGroups:
     functionReferenceDate: '2004-01-01T00:00:00Z'
   grids:
   - gridName: patch_si_20030821_grid_si_l1
-    affineCoeffs: [-43.5, 0.0, -0.125, 165.85, 0.15, 0.0]
-    iNodeCount: 44
-    jNodeCount: 34
+    affineCoeffs: [-43.5, -0.125, 0.0, 165.85, 0.0, 0.15]
+    iNodeCount: 34
+    jNodeCount: 44
     childGrids:
     - gridName: patch_si_20030821_grid_si_l2
-      affineCoeffs: [-44.5, 0.0, -0.03125, 166.225, 0.0375, 0.0]
-      iNodeCount: 47
-      jNodeCount: 45
+      affineCoeffs: [-44.5, -0.03125, 0.0, 166.225, 0.0, 0.0375]
+      iNodeCount: 45
+      jNodeCount: 47
       childGrids:
       - gridName: patch_si_20030821_grid_si_l3
-        affineCoeffs: [-44.828125, 0.0, -0.0078125, 166.5625, 0.009375, 0.0]
-        iNodeCount: 93
-        jNodeCount: 81
+        affineCoeffs: [-44.828125, -0.0078125, 0.0, 166.5625, 0.0, 0.009375]
+        iNodeCount: 81
+        jNodeCount: 93
 - ggxfGroupName: nz_linz_nzgd2000-mq20041223-grid011
   comment: Macquarie Plate earthquake
   gridParameters:
@@ -114,9 +114,9 @@ ggxfGroups:
     functionReferenceDate: '2005-01-01T00:00:00Z'
   grids:
   - gridName: patch_mq_20041223_grid_mq_p0_l1
-    affineCoeffs: [-52.125, 0.0, -0.125, 168.4, 0.15, 0.0]
-    iNodeCount: 10
-    jNodeCount: 8
+    affineCoeffs: [-52.125, -0.125, 0.0, 168.4, 0.0, 0.15]
+    iNodeCount: 8
+    jNodeCount: 10
 - ggxfGroupName: nz_linz_nzgd2000-mq20041223-grid012
   comment: Macquarie Plate earthquake
   gridParameters:
@@ -130,9 +130,9 @@ ggxfGroups:
     functionReferenceDate: '2005-01-01T00:00:00Z'
   grids:
   - gridName: patch_mq_20041223_grid_mq_p1_sl2
-    affineCoeffs: [-48.25, 0.0, -0.03125, 158.8, 0.0375, 0.0]
-    iNodeCount: 105
-    jNodeCount: 137
+    affineCoeffs: [-48.25, -0.03125, 0.0, 158.8, 0.0, 0.0375]
+    iNodeCount: 137
+    jNodeCount: 105
 - ggxfGroupName: nz_linz_nzgd2000-mq20041223-grid013
   comment: Macquarie Plate earthquake
   gridParameters:
@@ -146,7 +146,7 @@ ggxfGroups:
     functionReferenceDate: '2005-01-01T00:00:00Z'
   grids:
   - gridName: patch_mq_20041223_grid_mq_p2_l1
-    affineCoeffs: [-50.125, 0.0, -0.125, 165.4, 0.15, 0.0]
+    affineCoeffs: [-50.125, -0.125, 0.0, 165.4, 0.0, 0.15]
     iNodeCount: 11
     jNodeCount: 11
 - ggxfGroupName: nz_linz_nzgd2000-mq20041223-grid014
@@ -162,9 +162,9 @@ ggxfGroups:
     functionReferenceDate: '2005-01-01T00:00:00Z'
   grids:
   - gridName: patch_mq_20041223_grid_mq_p3_l1
-    affineCoeffs: [-49.25, 0.0, -0.125, 178.15, 0.15, 0.0]
-    iNodeCount: 9
-    jNodeCount: 8
+    affineCoeffs: [-49.25, -0.125, 0.0, 178.15, 0.0, 0.15]
+    iNodeCount: 8
+    jNodeCount: 9
 - ggxfGroupName: nz_linz_nzgd2000-mq20041223-grid015
   comment: Macquarie Plate earthquake
   gridParameters:
@@ -178,9 +178,9 @@ ggxfGroups:
     functionReferenceDate: '2005-01-01T00:00:00Z'
   grids:
   - gridName: patch_mq_20041223_grid_mq_p4_l1
-    affineCoeffs: [-40.125, 0.0, -0.125, 165.85, 0.15, 0.0]
-    iNodeCount: 70
-    jNodeCount: 68
+    affineCoeffs: [-40.125, -0.125, 0.0, 165.85, 0.0, 0.15]
+    iNodeCount: 68
+    jNodeCount: 70
 - ggxfGroupName: nz_linz_nzgd2000-mq20041223-grid016
   comment: Macquarie Plate earthquake
   gridParameters:
@@ -194,9 +194,9 @@ ggxfGroups:
     functionReferenceDate: '2005-01-01T00:00:00Z'
   grids:
   - gridName: patch_mq_20041223_grid_mq_p5_l1
-    affineCoeffs: [-47.375, 0.0, -0.125, 178.45, 0.15, 0.0]
-    iNodeCount: 8
-    jNodeCount: 7
+    affineCoeffs: [-47.375, -0.125, 0.0, 178.45, 0.0, 0.15]
+    iNodeCount: 7
+    jNodeCount: 8
 - ggxfGroupName: nz_linz_nzgd2000-gs20071016-grid01
   comment: Fiordland (George Sound) earthquake
   gridParameters:
@@ -210,19 +210,19 @@ ggxfGroups:
     functionReferenceDate: '2008-01-01T00:00:00Z'
   grids:
   - gridName: patch_gs_20071016_grid_gs_l1
-    affineCoeffs: [-43.75, 0.0, -0.125, 165.85, 0.15, 0.0]
-    iNodeCount: 37
-    jNodeCount: 27
+    affineCoeffs: [-43.75, -0.125, 0.0, 165.85, 0.0, 0.15]
+    iNodeCount: 27
+    jNodeCount: 37
     childGrids:
     - gridName: patch_gs_20071016_grid_gs_l2
-      affineCoeffs: [-44.28125, 0.0, -0.03125, 166.6375, 0.0375, 0.0]
-      iNodeCount: 45
-      jNodeCount: 37
+      affineCoeffs: [-44.28125, -0.03125, 0.0, 166.6375, 0.0, 0.0375]
+      iNodeCount: 37
+      jNodeCount: 45
       childGrids:
       - gridName: patch_gs_20071016_grid_gs_l3
-        affineCoeffs: [-44.6171875, 0.0, -0.0078125, 167.0875, 0.009375, 0.0]
-        iNodeCount: 54
-        jNodeCount: 52
+        affineCoeffs: [-44.6171875, -0.0078125, 0.0, 167.0875, 0.0, 0.009375]
+        iNodeCount: 52
+        jNodeCount: 54
 - ggxfGroupName: nz_linz_nzgd2000-ds20090715-grid011
   comment: Dusky Sound (Fiordland) earthquake
   gridParameters:
@@ -243,7 +243,7 @@ ggxfGroups:
     scaleFactor: 0.29
   grids:
   - gridName: patch_ds_20090715_grid_ds_p0_l1
-    affineCoeffs: [-50.125, 0.0, -0.125, 165.4, 0.15, 0.0]
+    affineCoeffs: [-50.125, -0.125, 0.0, 165.4, 0.0, 0.15]
     iNodeCount: 11
     jNodeCount: 11
 - ggxfGroupName: nz_linz_nzgd2000-ds20090715-grid012
@@ -266,9 +266,9 @@ ggxfGroups:
     scaleFactor: 0.29
   grids:
   - gridName: patch_ds_20090715_grid_ds_p1_l1
-    affineCoeffs: [-49.25, 0.0, -0.125, 178.15, 0.15, 0.0]
-    iNodeCount: 6
-    jNodeCount: 7
+    affineCoeffs: [-49.25, -0.125, 0.0, 178.15, 0.0, 0.15]
+    iNodeCount: 7
+    jNodeCount: 6
 - ggxfGroupName: nz_linz_nzgd2000-ds20090715-grid013
   comment: Dusky Sound (Fiordland) earthquake
   gridParameters:
@@ -289,19 +289,19 @@ ggxfGroups:
     scaleFactor: 0.29
   grids:
   - gridName: patch_ds_20090715_grid_ds_p2_l1
-    affineCoeffs: [-39.625, 0.0, -0.125, 164.65, 0.15, 0.0]
-    iNodeCount: 85
-    jNodeCount: 72
+    affineCoeffs: [-39.625, -0.125, 0.0, 164.65, 0.0, 0.15]
+    iNodeCount: 72
+    jNodeCount: 85
     childGrids:
     - gridName: patch_ds_20090715_grid_ds_p2_l2
-      affineCoeffs: [-44.6875, 0.0, -0.03125, 165.2875, 0.0375, 0.0]
-      iNodeCount: 67
-      jNodeCount: 73
+      affineCoeffs: [-44.6875, -0.03125, 0.0, 165.2875, 0.0, 0.0375]
+      iNodeCount: 73
+      jNodeCount: 67
       childGrids:
       - gridName: patch_ds_20090715_grid_ds_p2_l3
-        affineCoeffs: [-45.28125, 0.0, -0.0078125, 166.075, 0.009375, 0.0]
-        iNodeCount: 83
-        jNodeCount: 138
+        affineCoeffs: [-45.28125, -0.0078125, 0.0, 166.075, 0.0, 0.009375]
+        iNodeCount: 138
+        jNodeCount: 83
 - ggxfGroupName: nz_linz_nzgd2000-ds20090715-grid014
   comment: Dusky Sound (Fiordland) earthquake
   gridParameters:
@@ -322,9 +322,9 @@ ggxfGroups:
     scaleFactor: 0.29
   grids:
   - gridName: patch_ds_20090715_grid_ds_p3_l1
-    affineCoeffs: [-47.375, 0.0, -0.125, 178.45, 0.15, 0.0]
-    iNodeCount: 8
-    jNodeCount: 7
+    affineCoeffs: [-47.375, -0.125, 0.0, 178.45, 0.0, 0.15]
+    iNodeCount: 7
+    jNodeCount: 8
 - ggxfGroupName: nz_linz_nzgd2000-c120100904-grid01
   comment: Darfield earthquake
   gridParameters:
@@ -338,24 +338,24 @@ ggxfGroups:
     functionReferenceDate: '2011-01-01T00:00:00Z'
   grids:
   - gridName: patch_c1_20100904_grid_c1_l1
-    affineCoeffs: [-40.375, 0.0, -0.125, 168.1, 0.15, 0.0]
-    iNodeCount: 55
-    jNodeCount: 52
+    affineCoeffs: [-40.375, -0.125, 0.0, 168.1, 0.0, 0.15]
+    iNodeCount: 52
+    jNodeCount: 55
     childGrids:
     - gridName: patch_c1_20100904_grid_c1_l2
-      affineCoeffs: [-42.8125, 0.0, -0.03125, 171.1, 0.0375, 0.0]
-      iNodeCount: 59
-      jNodeCount: 50
+      affineCoeffs: [-42.8125, -0.03125, 0.0, 171.1, 0.0, 0.0375]
+      iNodeCount: 50
+      jNodeCount: 59
       childGrids:
       - gridName: patch_c1_20100904_grid_c1_l3
-        affineCoeffs: [-43.25, 0.0, -0.0078125, 171.625, 0.009375, 0.0]
-        iNodeCount: 118
-        jNodeCount: 84
+        affineCoeffs: [-43.25, -0.0078125, 0.0, 171.625, 0.0, 0.009375]
+        iNodeCount: 84
+        jNodeCount: 118
         childGrids:
         - gridName: patch_c1_20100904_grid_c1_l4
-          affineCoeffs: [-43.423828125, 0.0, -0.001953125, 171.8125, 0.00234375, 0.0]
-          iNodeCount: 306
-          jNodeCount: 141
+          affineCoeffs: [-43.423828125, -0.001953125, 0.0, 171.8125, 0.0, 0.00234375]
+          iNodeCount: 141
+          jNodeCount: 306
 - ggxfGroupName: nz_linz_nzgd2000-c220110222-grid01
   comment: Christchurch February earthquake
   gridParameters:
@@ -369,25 +369,25 @@ ggxfGroups:
     functionReferenceDate: '2012-01-01T00:00:00Z'
   grids:
   - gridName: patch_c2_20110222_grid_c2_l1
-    affineCoeffs: [-42.375, 0.0, -0.125, 170.8, 0.15, 0.0]
-    iNodeCount: 21
-    jNodeCount: 18
+    affineCoeffs: [-42.375, -0.125, 0.0, 170.8, 0.0, 0.15]
+    iNodeCount: 18
+    jNodeCount: 21
     childGrids:
     - gridName: patch_c2_20110222_grid_c2_l2
-      affineCoeffs: [-43.03125, 0.0, -0.03125, 172.0, 0.0375, 0.0]
-      iNodeCount: 38
-      jNodeCount: 34
+      affineCoeffs: [-43.03125, -0.03125, 0.0, 172.0, 0.0, 0.0375]
+      iNodeCount: 34
+      jNodeCount: 38
       childGrids:
       - gridName: patch_c2_20110222_grid_c2_l3
-        affineCoeffs: [-43.3515625, 0.0, -0.0078125, 172.4125, 0.009375, 0.0]
-        iNodeCount: 62
-        jNodeCount: 52
+        affineCoeffs: [-43.3515625, -0.0078125, 0.0, 172.4125, 0.0, 0.009375]
+        iNodeCount: 52
+        jNodeCount: 62
         childGrids:
         - gridName: patch_c2_20110222_grid_c2_l4
-          affineCoeffs: [-43.474609375, 0.0, -0.001953125, 172.56015625, 0.00234375,
-            0.0]
-          iNodeCount: 118
-          jNodeCount: 81
+          affineCoeffs: [-43.474609375, -0.001953125, 0.0, 172.56015625, 0.0,
+            0.00234375]
+          iNodeCount: 81
+          jNodeCount: 118
 - ggxfGroupName: nz_linz_nzgd2000-c320110613-grid01
   comment: Christchurch June earthquake
   gridParameters:
@@ -401,25 +401,25 @@ ggxfGroups:
     functionReferenceDate: '2012-01-01T00:00:00Z'
   grids:
   - gridName: patch_c3_20110613_grid_c3_l1
-    affineCoeffs: [-42.625, 0.0, -0.125, 171.4, 0.15, 0.0]
-    iNodeCount: 16
-    jNodeCount: 15
+    affineCoeffs: [-42.625, -0.125, 0.0, 171.4, 0.0, 0.15]
+    iNodeCount: 15
+    jNodeCount: 16
     childGrids:
     - gridName: patch_c3_20110613_grid_c3_l2
-      affineCoeffs: [-43.09375, 0.0, -0.03125, 172.15, 0.0375, 0.0]
-      iNodeCount: 33
-      jNodeCount: 31
+      affineCoeffs: [-43.09375, -0.03125, 0.0, 172.15, 0.0, 0.0375]
+      iNodeCount: 31
+      jNodeCount: 33
       childGrids:
       - gridName: patch_c3_20110613_grid_c3_l3
-        affineCoeffs: [-43.375, 0.0, -0.0078125, 172.515625, 0.009375, 0.0]
-        iNodeCount: 51
-        jNodeCount: 48
+        affineCoeffs: [-43.375, -0.0078125, 0.0, 172.515625, 0.0, 0.009375]
+        iNodeCount: 48
+        jNodeCount: 51
         childGrids:
         - gridName: patch_c3_20110613_grid_c3_l4
-          affineCoeffs: [-43.484375, 0.0, -0.001953125, 172.65390625, 0.00234375,
-            0.0]
-          iNodeCount: 88
-          jNodeCount: 84
+          affineCoeffs: [-43.484375, -0.001953125, 0.0, 172.65390625, 0.0,
+            0.00234375]
+          iNodeCount: 84
+          jNodeCount: 88
 - ggxfGroupName: nz_linz_nzgd2000-c420111223-grid01
   comment: Christchurch earthquake
   gridParameters:
@@ -433,25 +433,25 @@ ggxfGroups:
     functionReferenceDate: '2012-01-01T00:00:00Z'
   grids:
   - gridName: patch_c4_20111223_grid_c4_l1
-    affineCoeffs: [-42.75, 0.0, -0.125, 171.55, 0.15, 0.0]
-    iNodeCount: 15
-    jNodeCount: 13
+    affineCoeffs: [-42.75, -0.125, 0.0, 171.55, 0.0, 0.15]
+    iNodeCount: 13
+    jNodeCount: 15
     childGrids:
     - gridName: patch_c4_20111223_grid_c4_l2
-      affineCoeffs: [-43.03125, 0.0, -0.03125, 172.1875, 0.0375, 0.0]
-      iNodeCount: 32
-      jNodeCount: 30
+      affineCoeffs: [-43.03125, -0.03125, 0.0, 172.1875, 0.0, 0.0375]
+      iNodeCount: 30
+      jNodeCount: 32
       childGrids:
       - gridName: patch_c4_20111223_grid_c4_l3
-        affineCoeffs: [-43.3125, 0.0, -0.0078125, 172.553125, 0.009375, 0.0]
-        iNodeCount: 52
-        jNodeCount: 44
+        affineCoeffs: [-43.3125, -0.0078125, 0.0, 172.553125, 0.0, 0.009375]
+        iNodeCount: 44
+        jNodeCount: 52
         childGrids:
         - gridName: patch_c4_20111223_grid_c4_l4
-          affineCoeffs: [-43.421875, 0.0, -0.001953125, 172.67734375, 0.00234375,
-            0.0]
-          iNodeCount: 87
-          jNodeCount: 61
+          affineCoeffs: [-43.421875, -0.001953125, 0.0, 172.67734375, 0.0,
+            0.00234375]
+          iNodeCount: 61
+          jNodeCount: 87
 - ggxfGroupName: nz_linz_nzgd2000-cs20130721-grid02
   comment: Mw 6.6 Cook Strait earthquake
   gridParameters:
@@ -465,25 +465,25 @@ ggxfGroups:
     functionReferenceDate: '2014-01-01T00:00:00Z'
   grids:
   - gridName: patch_cs_20130721_grid_cs_20130721_l1
-    affineCoeffs: [-39.5, 0.0, -0.125, 171.55, 0.15, 0.0]
-    iNodeCount: 34
-    jNodeCount: 32
+    affineCoeffs: [-39.5, -0.125, 0.0, 171.55, 0.0, 0.15]
+    iNodeCount: 32
+    jNodeCount: 34
     childGrids:
     - gridName: patch_cs_20130721_grid_cs_20130721_l2
-      affineCoeffs: [-41.03125, 0.0, -0.03125, 173.5375, 0.0375, 0.0]
-      iNodeCount: 43
-      jNodeCount: 37
+      affineCoeffs: [-41.03125, -0.03125, 0.0, 173.5375, 0.0, 0.0375]
+      iNodeCount: 37
+      jNodeCount: 43
       childGrids:
       - gridName: patch_cs_20130721_grid_cs_20130721_l3
-        affineCoeffs: [-41.3828125, 0.0, -0.0078125, 173.9875, 0.009375, 0.0]
-        iNodeCount: 73
-        jNodeCount: 57
+        affineCoeffs: [-41.3828125, -0.0078125, 0.0, 173.9875, 0.0, 0.009375]
+        iNodeCount: 57
+        jNodeCount: 73
         childGrids:
         - gridName: patch_cs_20130721_grid_cs_20130721_l4
-          affineCoeffs: [-41.537109375, 0.0, -0.001953125, 174.28984375, 0.00234375,
-            0.0]
-          iNodeCount: 90
-          jNodeCount: 68
+          affineCoeffs: [-41.537109375, -0.001953125, 0.0, 174.28984375, 0.0,
+            0.00234375]
+          iNodeCount: 68
+          jNodeCount: 90
 - ggxfGroupName: nz_linz_nzgd2000-lg20130816-grid02
   comment: Mw 6.6 Lake Grassmere earthquake
   gridParameters:
@@ -497,25 +497,25 @@ ggxfGroups:
     functionReferenceDate: '2014-01-01T00:00:00Z'
   grids:
   - gridName: patch_lg_20130816_grid_lg_20130816_l1
-    affineCoeffs: [-39.25, 0.0, -0.125, 170.95, 0.15, 0.0]
+    affineCoeffs: [-39.25, -0.125, 0.0, 170.95, 0.0, 0.15]
     iNodeCount: 39
     jNodeCount: 39
     childGrids:
     - gridName: patch_lg_20130816_grid_lg_20130816_l2
-      affineCoeffs: [-41.09375, 0.0, -0.03125, 173.3875, 0.0375, 0.0]
-      iNodeCount: 44
-      jNodeCount: 40
+      affineCoeffs: [-41.09375, -0.03125, 0.0, 173.3875, 0.0, 0.0375]
+      iNodeCount: 40
+      jNodeCount: 44
       childGrids:
       - gridName: patch_lg_20130816_grid_lg_20130816_l3
-        affineCoeffs: [-41.4609375, 0.0, -0.0078125, 173.809375, 0.009375, 0.0]
-        iNodeCount: 79
-        jNodeCount: 63
+        affineCoeffs: [-41.4609375, -0.0078125, 0.0, 173.809375, 0.0, 0.009375]
+        iNodeCount: 63
+        jNodeCount: 79
         childGrids:
         - gridName: patch_lg_20130816_grid_lg_20130816_l4
-          affineCoeffs: [-41.60546875, 0.0, -0.001953125, 174.034375, 0.00234375,
-            0.0]
-          iNodeCount: 134
-          jNodeCount: 104
+          affineCoeffs: [-41.60546875, -0.001953125, 0.0, 174.034375, 0.0,
+            0.00234375]
+          iNodeCount: 104
+          jNodeCount: 134
 - ggxfGroupName: nz_linz_nzgd2000-ch20160214-grid01
   comment: Christchurch Valentines Day earthquake
   gridParameters:
@@ -529,25 +529,25 @@ ggxfGroups:
     functionReferenceDate: '2017-01-01T00:00:00Z'
   grids:
   - gridName: patch_ch_20160214_grid_ch_20160214_l1
-    affineCoeffs: [-42.875, 0.0, -0.125, 171.7, 0.15, 0.0]
-    iNodeCount: 14
-    jNodeCount: 11
+    affineCoeffs: [-42.875, -0.125, 0.0, 171.7, 0.0, 0.15]
+    iNodeCount: 11
+    jNodeCount: 14
     childGrids:
     - gridName: patch_ch_20160214_grid_ch_20160214_l2
-      affineCoeffs: [-43.0625, 0.0, -0.03125, 172.225, 0.0375, 0.0]
-      iNodeCount: 29
-      jNodeCount: 27
+      affineCoeffs: [-43.0625, -0.03125, 0.0, 172.225, 0.0, 0.0375]
+      iNodeCount: 27
+      jNodeCount: 29
       childGrids:
       - gridName: patch_ch_20160214_grid_ch_20160214_l3
-        affineCoeffs: [-43.3203125, 0.0, -0.0078125, 172.553125, 0.009375, 0.0]
-        iNodeCount: 46
-        jNodeCount: 38
+        affineCoeffs: [-43.3203125, -0.0078125, 0.0, 172.553125, 0.0, 0.009375]
+        iNodeCount: 38
+        jNodeCount: 46
         childGrids:
         - gridName: patch_ch_20160214_grid_ch_20160214_l4
-          affineCoeffs: [-43.408203125, 0.0, -0.001953125, 172.67265625, 0.00234375,
-            0.0]
-          iNodeCount: 79
-          jNodeCount: 61
+          affineCoeffs: [-43.408203125, -0.001953125, 0.0, 172.67265625, 0.0,
+            0.00234375]
+          iNodeCount: 61
+          jNodeCount: 79
 - ggxfGroupName: nz_linz_nzgd2000-ka20161114-grid01
   comment: |
     Event: Kaikoura earthquake,  14 November 2016
@@ -562,14 +562,14 @@ ggxfGroups:
     eventDate: '2016-11-14T00:00:00Z'
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114co_h_l1_f
-    affineCoeffs: [-34.0, 0.0, -0.125, 165.85, 0.15, 0.0]
-    iNodeCount: 89
-    jNodeCount: 110
+    affineCoeffs: [-34.0, -0.125, 0.0, 165.85, 0.0, 0.15]
+    iNodeCount: 110
+    jNodeCount: 89
     childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114co_h_l2_f
-      affineCoeffs: [-40.8125, 0.0, -0.03125, 171.925, 0.0375, 0.0]
-      iNodeCount: 95
-      jNodeCount: 82
+      affineCoeffs: [-40.8125, -0.03125, 0.0, 171.925, 0.0, 0.0375]
+      iNodeCount: 82
+      jNodeCount: 95
 - ggxfGroupName: nz_linz_nzgd2000-ka20161114-grid02
   comment: |
     Event: Kaikoura earthquake,  14 November 2016
@@ -585,161 +585,161 @@ ggxfGroups:
     functionReferenceDate: '2017-01-01T00:00:00Z'
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114co_h_l2_r
-    affineCoeffs: [-41.28125, 0.0, -0.03125, 172.525, 0.0375, 0.0]
-    iNodeCount: 65
-    jNodeCount: 53
+    affineCoeffs: [-41.28125, -0.03125, 0.0, 172.525, 0.0, 0.0375]
+    iNodeCount: 53
+    jNodeCount: 65
     childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_00
-      affineCoeffs: [-42.1484375, 0.0, -0.0078125, 172.571875, 0.009375, 0.0]
-      iNodeCount: 115
-      jNodeCount: 94
+      affineCoeffs: [-42.1484375, -0.0078125, 0.0, 172.571875, 0.0, 0.009375]
+      iNodeCount: 94
+      jNodeCount: 115
       childGrids:
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_00
-        affineCoeffs: [-42.484375, 0.0, -0.001953125, 172.7828125, 0.00234375, 0.0]
-        iNodeCount: 106
-        jNodeCount: 107
+        affineCoeffs: [-42.484375, -0.001953125, 0.0, 172.7828125, 0.0, 0.00234375]
+        iNodeCount: 107
+        jNodeCount: 106
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_01
-        affineCoeffs: [-42.435546875, 0.0, -0.001953125, 173.00546875, 0.00234375,
-          0.0]
-        iNodeCount: 11
-        jNodeCount: 26
+        affineCoeffs: [-42.435546875, -0.001953125, 0.0, 173.00546875, 0.0,
+          0.00234375]
+        iNodeCount: 26
+        jNodeCount: 11
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_02
-        affineCoeffs: [-42.484375, 0.0, -0.001953125, 173.02890625, 0.00234375, 0.0]
-        iNodeCount: 106
-        jNodeCount: 111
+        affineCoeffs: [-42.484375, -0.001953125, 0.0, 173.02890625, 0.0, 0.00234375]
+        iNodeCount: 111
+        jNodeCount: 106
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_03
-        affineCoeffs: [-42.38671875, 0.0, -0.001953125, 173.02890625, 0.00234375,
-          0.0]
-        iNodeCount: 106
-        jNodeCount: 51
+        affineCoeffs: [-42.38671875, -0.001953125, 0.0, 173.02890625, 0.0,
+          0.00234375]
+        iNodeCount: 51
+        jNodeCount: 106
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_04
-        affineCoeffs: [-42.484375, 0.0, -0.001953125, 173.275, 0.00234375, 0.0]
-        iNodeCount: 106
-        jNodeCount: 88
+        affineCoeffs: [-42.484375, -0.001953125, 0.0, 173.275, 0.0, 0.00234375]
+        iNodeCount: 88
+        jNodeCount: 106
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_05
-        affineCoeffs: [-42.26953125, 0.0, -0.001953125, 173.275, 0.00234375, 0.0]
-        iNodeCount: 106
-        jNodeCount: 111
+        affineCoeffs: [-42.26953125, -0.001953125, 0.0, 173.275, 0.0, 0.00234375]
+        iNodeCount: 111
+        jNodeCount: 106
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_060
-        affineCoeffs: [-42.1484375, 0.0, -0.001953125, 173.47421875, 0.00234375, 0.0]
-        iNodeCount: 21
-        jNodeCount: 63
+        affineCoeffs: [-42.1484375, -0.001953125, 0.0, 173.47421875, 0.0, 0.00234375]
+        iNodeCount: 63
+        jNodeCount: 21
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_080
-        affineCoeffs: [-42.484375, 0.0, -0.001953125, 173.52109375, 0.00234375, 0.0]
-        iNodeCount: 52
-        jNodeCount: 30
+        affineCoeffs: [-42.484375, -0.001953125, 0.0, 173.52109375, 0.0, 0.00234375]
+        iNodeCount: 30
+        jNodeCount: 52
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_090
-        affineCoeffs: [-42.26953125, 0.0, -0.001953125, 173.52109375, 0.00234375,
-          0.0]
-        iNodeCount: 52
-        jNodeCount: 111
+        affineCoeffs: [-42.26953125, -0.001953125, 0.0, 173.52109375, 0.0,
+          0.00234375]
+        iNodeCount: 111
+        jNodeCount: 52
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_100
-        affineCoeffs: [-42.1484375, 0.0, -0.001953125, 173.52109375, 0.00234375, 0.0]
-        iNodeCount: 52
-        jNodeCount: 63
+        affineCoeffs: [-42.1484375, -0.001953125, 0.0, 173.52109375, 0.0, 0.00234375]
+        iNodeCount: 63
+        jNodeCount: 52
     - gridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_01
-      affineCoeffs: [-41.4609375, 0.0, -0.0078125, 173.153125, 0.009375, 0.0]
-      iNodeCount: 53
-      jNodeCount: 89
+      affineCoeffs: [-41.4609375, -0.0078125, 0.0, 173.153125, 0.0, 0.009375]
+      iNodeCount: 89
+      jNodeCount: 53
       childGrids:
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_061
-        affineCoeffs: [-42.0546875, 0.0, -0.001953125, 173.47421875, 0.00234375, 0.0]
-        iNodeCount: 21
-        jNodeCount: 49
+        affineCoeffs: [-42.0546875, -0.001953125, 0.0, 173.47421875, 0.0, 0.00234375]
+        iNodeCount: 49
+        jNodeCount: 21
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_07
-        affineCoeffs: [-42.044921875, 0.0, -0.001953125, 173.50234375, 0.0023437500000014,
-          0.0]
-        iNodeCount: 9
-        jNodeCount: 6
+        affineCoeffs: [-42.044921875, -0.001953125, 0.0, 173.50234375, 0.0,
+          0.0023437500000014]
+        iNodeCount: 6
+        jNodeCount: 9
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_101
-        affineCoeffs: [-42.0546875, 0.0, -0.001953125, 173.52109375, 0.00234375, 0.0]
-        iNodeCount: 52
-        jNodeCount: 49
+        affineCoeffs: [-42.0546875, -0.001953125, 0.0, 173.52109375, 0.0, 0.00234375]
+        iNodeCount: 49
+        jNodeCount: 52
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_110
-        affineCoeffs: [-41.83984375, 0.0, -0.001953125, 173.52109375, 0.00234375,
-          0.0]
-        iNodeCount: 52
-        jNodeCount: 111
+        affineCoeffs: [-41.83984375, -0.001953125, 0.0, 173.52109375, 0.0,
+          0.00234375]
+        iNodeCount: 111
+        jNodeCount: 52
     - gridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_02
-      affineCoeffs: [-42.1484375, 0.0, -0.0078125, 173.640625, 0.009375, 0.0]
-      iNodeCount: 73
-      jNodeCount: 63
+      affineCoeffs: [-42.1484375, -0.0078125, 0.0, 173.640625, 0.0, 0.009375]
+      iNodeCount: 63
+      jNodeCount: 73
       childGrids:
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_081
-        affineCoeffs: [-42.484375, 0.0, -0.001953125, 173.640625, 0.00234375, 0.0]
-        iNodeCount: 28
-        jNodeCount: 30
+        affineCoeffs: [-42.484375, -0.001953125, 0.0, 173.640625, 0.0, 0.00234375]
+        iNodeCount: 30
+        jNodeCount: 28
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_091
-        affineCoeffs: [-42.26953125, 0.0, -0.001953125, 173.640625, 0.00234375, 0.0]
-        iNodeCount: 55
-        jNodeCount: 111
+        affineCoeffs: [-42.26953125, -0.001953125, 0.0, 173.640625, 0.0, 0.00234375]
+        iNodeCount: 111
+        jNodeCount: 55
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_102
-        affineCoeffs: [-42.1484375, 0.0, -0.001953125, 173.640625, 0.00234375, 0.0]
-        iNodeCount: 55
-        jNodeCount: 63
+        affineCoeffs: [-42.1484375, -0.001953125, 0.0, 173.640625, 0.0, 0.00234375]
+        iNodeCount: 63
+        jNodeCount: 55
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_13
-        affineCoeffs: [-42.26953125, 0.0, -0.001953125, 173.7671875, 0.00234375, 0.0]
-        iNodeCount: 87
-        jNodeCount: 95
+        affineCoeffs: [-42.26953125, -0.001953125, 0.0, 173.7671875, 0.0, 0.00234375]
+        iNodeCount: 95
+        jNodeCount: 87
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_140
-        affineCoeffs: [-42.1484375, 0.0, -0.001953125, 173.7671875, 0.00234375, 0.0]
-        iNodeCount: 106
-        jNodeCount: 63
+        affineCoeffs: [-42.1484375, -0.001953125, 0.0, 173.7671875, 0.0, 0.00234375]
+        iNodeCount: 63
+        jNodeCount: 106
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_170
-        affineCoeffs: [-42.1484375, 0.0, -0.001953125, 174.01328125, 0.00234375, 0.0]
-        iNodeCount: 62
-        jNodeCount: 41
+        affineCoeffs: [-42.1484375, -0.001953125, 0.0, 174.01328125, 0.0, 0.00234375]
+        iNodeCount: 41
+        jNodeCount: 62
     - gridName: patch_ka_20161114_grid_ka_20161114co_h_l3_r_03
-      affineCoeffs: [-41.421875, 0.0, -0.0078125, 173.640625, 0.009375, 0.0]
-      iNodeCount: 114
-      jNodeCount: 94
+      affineCoeffs: [-41.421875, -0.0078125, 0.0, 173.640625, 0.0, 0.009375]
+      iNodeCount: 94
+      jNodeCount: 114
       childGrids:
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_103
-        affineCoeffs: [-42.0546875, 0.0, -0.001953125, 173.640625, 0.00234375, 0.0]
-        iNodeCount: 55
-        jNodeCount: 49
+        affineCoeffs: [-42.0546875, -0.001953125, 0.0, 173.640625, 0.0, 0.00234375]
+        iNodeCount: 49
+        jNodeCount: 55
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_111
-        affineCoeffs: [-41.83984375, 0.0, -0.001953125, 173.640625, 0.00234375, 0.0]
-        iNodeCount: 55
-        jNodeCount: 111
+        affineCoeffs: [-41.83984375, -0.001953125, 0.0, 173.640625, 0.0, 0.00234375]
+        iNodeCount: 111
+        jNodeCount: 55
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_12
-        affineCoeffs: [-41.822265625, 0.0, -0.001953125, 173.734375, 0.00234375, 0.0]
-        iNodeCount: 15
-        jNodeCount: 10
+        affineCoeffs: [-41.822265625, -0.001953125, 0.0, 173.734375, 0.0, 0.00234375]
+        iNodeCount: 10
+        jNodeCount: 15
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_141
-        affineCoeffs: [-42.0546875, 0.0, -0.001953125, 173.7671875, 0.00234375, 0.0]
-        iNodeCount: 106
-        jNodeCount: 49
+        affineCoeffs: [-42.0546875, -0.001953125, 0.0, 173.7671875, 0.0, 0.00234375]
+        iNodeCount: 49
+        jNodeCount: 106
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_15
-        affineCoeffs: [-41.83984375, 0.0, -0.001953125, 173.7671875, 0.00234375, 0.0]
-        iNodeCount: 106
-        jNodeCount: 111
+        affineCoeffs: [-41.83984375, -0.001953125, 0.0, 173.7671875, 0.0, 0.00234375]
+        iNodeCount: 111
+        jNodeCount: 106
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_16
-        affineCoeffs: [-41.76171875, 0.0, -0.001953125, 173.7671875, 0.00234375, 0.0]
-        iNodeCount: 106
-        jNodeCount: 41
+        affineCoeffs: [-41.76171875, -0.001953125, 0.0, 173.7671875, 0.0, 0.00234375]
+        iNodeCount: 41
+        jNodeCount: 106
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_171
-        affineCoeffs: [-42.0546875, 0.0, -0.001953125, 174.01328125, 0.00234375, 0.0]
-        iNodeCount: 62
-        jNodeCount: 49
+        affineCoeffs: [-42.0546875, -0.001953125, 0.0, 174.01328125, 0.0, 0.00234375]
+        iNodeCount: 49
+        jNodeCount: 62
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_18
-        affineCoeffs: [-41.83984375, 0.0, -0.001953125, 174.01328125, 0.00234375,
-          0.0]
-        iNodeCount: 106
-        jNodeCount: 111
+        affineCoeffs: [-41.83984375, -0.001953125, 0.0, 174.01328125, 0.0,
+          0.00234375]
+        iNodeCount: 111
+        jNodeCount: 106
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_19
-        affineCoeffs: [-41.66015625, 0.0, -0.001953125, 174.01328125, 0.00234375,
-          0.0]
-        iNodeCount: 106
-        jNodeCount: 93
+        affineCoeffs: [-41.66015625, -0.001953125, 0.0, 174.01328125, 0.0,
+          0.00234375]
+        iNodeCount: 93
+        jNodeCount: 106
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_20
-        affineCoeffs: [-41.83984375, 0.0, -0.001953125, 174.259375, 0.00234375, 0.0]
-        iNodeCount: 59
-        jNodeCount: 35
+        affineCoeffs: [-41.83984375, -0.001953125, 0.0, 174.259375, 0.0, 0.00234375]
+        iNodeCount: 35
+        jNodeCount: 59
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_21
-        affineCoeffs: [-41.626953125, 0.0, -0.001953125, 174.259375, 0.00234375, 0.0]
-        iNodeCount: 104
-        jNodeCount: 110
+        affineCoeffs: [-41.626953125, -0.001953125, 0.0, 174.259375, 0.0, 0.00234375]
+        iNodeCount: 110
+        jNodeCount: 104
 - ggxfGroupName: nz_linz_nzgd2000-ka20161114-grid03
   comment: |
     Event: Kaikoura earthquake,  14 November 2016
@@ -754,169 +754,169 @@ ggxfGroups:
     functionReferenceDate: '2017-01-01T00:00:00Z'
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114co_v_l1
-    affineCoeffs: [-34.25, 0.0, -0.125, 166.3, 0.15, 0.0]
-    iNodeCount: 86
-    jNodeCount: 108
+    affineCoeffs: [-34.25, -0.125, 0.0, 166.3, 0.0, 0.15]
+    iNodeCount: 108
+    jNodeCount: 86
     childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114co_v_l2
-      affineCoeffs: [-41.0625, 0.0, -0.03125, 172.225, 0.0375, 0.0]
-      iNodeCount: 74
-      jNodeCount: 67
+      affineCoeffs: [-41.0625, -0.03125, 0.0, 172.225, 0.0, 0.0375]
+      iNodeCount: 67
+      jNodeCount: 74
       childGrids:
       - gridName: patch_ka_20161114_grid_ka_20161114co_v_l3_00
-        affineCoeffs: [-42.1171875, 0.0, -0.0078125, 172.65625, 0.009375, 0.0]
-        iNodeCount: 103
-        jNodeCount: 89
+        affineCoeffs: [-42.1171875, -0.0078125, 0.0, 172.65625, 0.0, 0.009375]
+        iNodeCount: 89
+        jNodeCount: 103
         childGrids:
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_00
-          affineCoeffs: [-42.490234375, 0.0, -0.001953125, 172.79921875, 0.00234375,
-            0.0]
-          iNodeCount: 103
-          jNodeCount: 88
+          affineCoeffs: [-42.490234375, -0.001953125, 0.0, 172.79921875, 0.0,
+            0.00234375]
+          iNodeCount: 88
+          jNodeCount: 103
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_01
-          affineCoeffs: [-42.453125, 0.0, -0.001953125, 173.03828125, 0.00234375,
-            0.0]
-          iNodeCount: 103
-          jNodeCount: 105
+          affineCoeffs: [-42.453125, -0.001953125, 0.0, 173.03828125, 0.0,
+            0.00234375]
+          iNodeCount: 105
+          jNodeCount: 103
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_02
-          affineCoeffs: [-42.353515625, 0.0, -0.001953125, 173.07109375, 0.00234375,
-            0.0]
-          iNodeCount: 89
-          jNodeCount: 52
-        - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_03
-          affineCoeffs: [-42.453125, 0.0, -0.001953125, 173.27734375, 0.00234375,
-            0.0]
-          iNodeCount: 103
-          jNodeCount: 100
-        - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_04
-          affineCoeffs: [-42.28125, 0.0, -0.001953125, 173.27734375, 0.00234375, 0.0]
-          iNodeCount: 103
+          affineCoeffs: [-42.353515625, -0.001953125, 0.0, 173.07109375, 0.0,
+            0.00234375]
+          iNodeCount: 52
           jNodeCount: 89
+        - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_03
+          affineCoeffs: [-42.453125, -0.001953125, 0.0, 173.27734375, 0.0,
+            0.00234375]
+          iNodeCount: 100
+          jNodeCount: 103
+        - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_04
+          affineCoeffs: [-42.28125, -0.001953125, 0.0, 173.27734375, 0.0, 0.00234375]
+          iNodeCount: 89
+          jNodeCount: 103
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_050
-          affineCoeffs: [-42.1171875, 0.0, -0.001953125, 173.46953125, 0.00234375,
-            0.0]
-          iNodeCount: 21
-          jNodeCount: 67
+          affineCoeffs: [-42.1171875, -0.001953125, 0.0, 173.46953125, 0.0,
+            0.00234375]
+          iNodeCount: 67
+          jNodeCount: 21
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_060
-          affineCoeffs: [-42.453125, 0.0, -0.001953125, 173.51640625, 0.00234375,
-            0.0]
-          iNodeCount: 42
-          jNodeCount: 34
+          affineCoeffs: [-42.453125, -0.001953125, 0.0, 173.51640625, 0.0,
+            0.00234375]
+          iNodeCount: 34
+          jNodeCount: 42
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_070
-          affineCoeffs: [-42.24609375, 0.0, -0.001953125, 173.51640625, 0.00234375,
-            0.0]
-          iNodeCount: 42
-          jNodeCount: 107
+          affineCoeffs: [-42.24609375, -0.001953125, 0.0, 173.51640625, 0.0,
+            0.00234375]
+          iNodeCount: 107
+          jNodeCount: 42
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_080
-          affineCoeffs: [-42.1171875, 0.0, -0.001953125, 173.51640625, 0.00234375,
-            0.0]
-          iNodeCount: 42
-          jNodeCount: 67
+          affineCoeffs: [-42.1171875, -0.001953125, 0.0, 173.51640625, 0.0,
+            0.00234375]
+          iNodeCount: 67
+          jNodeCount: 42
       - gridName: patch_ka_20161114_grid_ka_20161114co_v_l3_01
-        affineCoeffs: [-41.578125, 0.0, -0.0078125, 173.209375, 0.009375, 0.0]
-        iNodeCount: 44
-        jNodeCount: 70
+        affineCoeffs: [-41.578125, -0.0078125, 0.0, 173.209375, 0.0, 0.009375]
+        iNodeCount: 70
+        jNodeCount: 44
         childGrids:
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_051
-          affineCoeffs: [-42.0546875, 0.0, -0.001953125, 173.46953125, 0.00234375,
-            0.0]
-          iNodeCount: 21
-          jNodeCount: 33
+          affineCoeffs: [-42.0546875, -0.001953125, 0.0, 173.46953125, 0.0,
+            0.00234375]
+          iNodeCount: 33
+          jNodeCount: 21
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_081
-          affineCoeffs: [-42.0390625, 0.0, -0.001953125, 173.51640625, 0.00234375,
-            0.0]
-          iNodeCount: 42
-          jNodeCount: 41
+          affineCoeffs: [-42.0390625, -0.001953125, 0.0, 173.51640625, 0.0,
+            0.00234375]
+          iNodeCount: 41
+          jNodeCount: 42
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_090
-          affineCoeffs: [-41.912109375, 0.0, -0.001953125, 173.58671875, 0.00234375,
-            0.0]
-          iNodeCount: 12
-          jNodeCount: 66
+          affineCoeffs: [-41.912109375, -0.001953125, 0.0, 173.58671875, 0.0,
+            0.00234375]
+          iNodeCount: 66
+          jNodeCount: 12
       - gridName: patch_ka_20161114_grid_ka_20161114co_v_l3_02
-        affineCoeffs: [-42.1171875, 0.0, -0.0078125, 173.6125, 0.009375, 0.0]
-        iNodeCount: 79
-        jNodeCount: 60
+        affineCoeffs: [-42.1171875, -0.0078125, 0.0, 173.6125, 0.0, 0.009375]
+        iNodeCount: 60
+        jNodeCount: 79
         childGrids:
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_061
-          affineCoeffs: [-42.453125, 0.0, -0.001953125, 173.6125, 0.00234375, 0.0]
-          iNodeCount: 62
-          jNodeCount: 34
+          affineCoeffs: [-42.453125, -0.001953125, 0.0, 173.6125, 0.0, 0.00234375]
+          iNodeCount: 34
+          jNodeCount: 62
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_071
-          affineCoeffs: [-42.24609375, 0.0, -0.001953125, 173.6125, 0.00234375, 0.0]
-          iNodeCount: 62
-          jNodeCount: 107
+          affineCoeffs: [-42.24609375, -0.001953125, 0.0, 173.6125, 0.0, 0.00234375]
+          iNodeCount: 107
+          jNodeCount: 62
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_082
-          affineCoeffs: [-42.1171875, 0.0, -0.001953125, 173.6125, 0.00234375, 0.0]
-          iNodeCount: 62
-          jNodeCount: 67
+          affineCoeffs: [-42.1171875, -0.001953125, 0.0, 173.6125, 0.0, 0.00234375]
+          iNodeCount: 67
+          jNodeCount: 62
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_10
-          affineCoeffs: [-42.453125, 0.0, -0.001953125, 173.75546875, 0.00234375,
-            0.0]
-          iNodeCount: 7
-          jNodeCount: 4
+          affineCoeffs: [-42.453125, -0.001953125, 0.0, 173.75546875, 0.0,
+            0.00234375]
+          iNodeCount: 4
+          jNodeCount: 7
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_11
-          affineCoeffs: [-42.24609375, 0.0, -0.001953125, 173.75546875, 0.00234375,
-            0.0]
-          iNodeCount: 93
-          jNodeCount: 107
+          affineCoeffs: [-42.24609375, -0.001953125, 0.0, 173.75546875, 0.0,
+            0.00234375]
+          iNodeCount: 107
+          jNodeCount: 93
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_120
-          affineCoeffs: [-42.1171875, 0.0, -0.001953125, 173.75546875, 0.00234375,
-            0.0]
-          iNodeCount: 103
-          jNodeCount: 67
+          affineCoeffs: [-42.1171875, -0.001953125, 0.0, 173.75546875, 0.0,
+            0.00234375]
+          iNodeCount: 67
+          jNodeCount: 103
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_140
-          affineCoeffs: [-42.1171875, 0.0, -0.001953125, 173.99453125, 0.00234375,
-            0.0]
-          iNodeCount: 40
-          jNodeCount: 59
+          affineCoeffs: [-42.1171875, -0.001953125, 0.0, 173.99453125, 0.0,
+            0.00234375]
+          iNodeCount: 59
+          jNodeCount: 40
       - gridName: patch_ka_20161114_grid_ka_20161114co_v_l3_03
-        affineCoeffs: [-41.4375, 0.0, -0.0078125, 173.6125, 0.009375, 0.0]
-        iNodeCount: 103
-        jNodeCount: 88
+        affineCoeffs: [-41.4375, -0.0078125, 0.0, 173.6125, 0.0, 0.009375]
+        iNodeCount: 88
+        jNodeCount: 103
         childGrids:
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_083
-          affineCoeffs: [-42.0390625, 0.0, -0.001953125, 173.6125, 0.00234375, 0.0]
-          iNodeCount: 62
-          jNodeCount: 41
+          affineCoeffs: [-42.0390625, -0.001953125, 0.0, 173.6125, 0.0, 0.00234375]
+          iNodeCount: 41
+          jNodeCount: 62
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_091
-          affineCoeffs: [-41.912109375, 0.0, -0.001953125, 173.6125, 0.00234375, 0.0]
-          iNodeCount: 62
-          jNodeCount: 66
+          affineCoeffs: [-41.912109375, -0.001953125, 0.0, 173.6125, 0.0, 0.00234375]
+          iNodeCount: 66
+          jNodeCount: 62
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_121
-          affineCoeffs: [-42.0390625, 0.0, -0.001953125, 173.75546875, 0.00234375,
-            0.0]
-          iNodeCount: 103
-          jNodeCount: 41
+          affineCoeffs: [-42.0390625, -0.001953125, 0.0, 173.75546875, 0.0,
+            0.00234375]
+          iNodeCount: 41
+          jNodeCount: 103
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_13
-          affineCoeffs: [-41.859375, 0.0, -0.001953125, 173.75546875, 0.00234375,
-            0.0]
-          iNodeCount: 103
-          jNodeCount: 93
+          affineCoeffs: [-41.859375, -0.001953125, 0.0, 173.75546875, 0.0,
+            0.00234375]
+          iNodeCount: 93
+          jNodeCount: 103
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_141
-          affineCoeffs: [-42.0390625, 0.0, -0.001953125, 173.99453125, 0.00234375,
-            0.0]
-          iNodeCount: 40
-          jNodeCount: 41
+          affineCoeffs: [-42.0390625, -0.001953125, 0.0, 173.99453125, 0.0,
+            0.00234375]
+          iNodeCount: 41
+          jNodeCount: 40
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_15
-          affineCoeffs: [-41.83203125, 0.0, -0.001953125, 173.99453125, 0.00234375,
-            0.0]
-          iNodeCount: 103
-          jNodeCount: 107
+          affineCoeffs: [-41.83203125, -0.001953125, 0.0, 173.99453125, 0.0,
+            0.00234375]
+          iNodeCount: 107
+          jNodeCount: 103
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_16
-          affineCoeffs: [-41.681640625, 0.0, -0.001953125, 174.0859375, 0.00234375,
-            0.0]
-          iNodeCount: 64
-          jNodeCount: 78
+          affineCoeffs: [-41.681640625, -0.001953125, 0.0, 174.0859375, 0.0,
+            0.00234375]
+          iNodeCount: 78
+          jNodeCount: 64
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_17
-          affineCoeffs: [-41.83203125, 0.0, -0.001953125, 174.23359375, 0.00234375,
-            0.0]
-          iNodeCount: 56
-          jNodeCount: 45
+          affineCoeffs: [-41.83203125, -0.001953125, 0.0, 174.23359375, 0.0,
+            0.00234375]
+          iNodeCount: 45
+          jNodeCount: 56
         - gridName: patch_ka_20161114_grid_ka_20161114co_v_l4_18
-          affineCoeffs: [-41.626953125, 0.0, -0.001953125, 174.23359375, 0.00234375,
-            0.0]
-          iNodeCount: 101
-          jNodeCount: 106
+          affineCoeffs: [-41.626953125, -0.001953125, 0.0, 174.23359375, 0.0,
+            0.00234375]
+          iNodeCount: 106
+          jNodeCount: 101
 - ggxfGroupName: nz_linz_nzgd2000-ka20161114-grid04
   comment: |
     Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016
@@ -934,14 +934,14 @@ ggxfGroups:
     scaleFactor: 1.0
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114pe1_h_l1_f
-    affineCoeffs: [-39.0, 0.0, -0.125, 169.6, 0.15, 0.0]
-    iNodeCount: 46
-    jNodeCount: 39
+    affineCoeffs: [-39.0, -0.125, 0.0, 169.6, 0.0, 0.15]
+    iNodeCount: 39
+    jNodeCount: 46
     childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114pe1_h_l2_f
-      affineCoeffs: [-41.125, 0.0, -0.03125, 172.6375, 0.0375, 0.0]
-      iNodeCount: 74
-      jNodeCount: 59
+      affineCoeffs: [-41.125, -0.03125, 0.0, 172.6375, 0.0, 0.0375]
+      iNodeCount: 59
+      jNodeCount: 74
 - ggxfGroupName: nz_linz_nzgd2000-ka20161114-grid05
   comment: |
     Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016
@@ -959,18 +959,18 @@ ggxfGroups:
     scaleFactor: 1.0
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114pe1_h_l2_r
-    affineCoeffs: [-41.28125, 0.0, -0.03125, 172.45, 0.0375, 0.0]
-    iNodeCount: 67
-    jNodeCount: 56
+    affineCoeffs: [-41.28125, -0.03125, 0.0, 172.45, 0.0, 0.0375]
+    iNodeCount: 56
+    jNodeCount: 67
     childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_00
-      affineCoeffs: [-42.0546875, 0.0, -0.0078125, 172.834375, 0.009375, 0.0]
-      iNodeCount: 93
-      jNodeCount: 83
+      affineCoeffs: [-42.0546875, -0.0078125, 0.0, 172.834375, 0.0, 0.009375]
+      iNodeCount: 83
+      jNodeCount: 93
     - gridName: patch_ka_20161114_grid_ka_20161114pe1_h_l3_r_01
-      affineCoeffs: [-41.5703125, 0.0, -0.0078125, 173.696875, 0.009375, 0.0]
-      iNodeCount: 92
-      jNodeCount: 125
+      affineCoeffs: [-41.5703125, -0.0078125, 0.0, 173.696875, 0.0, 0.009375]
+      iNodeCount: 125
+      jNodeCount: 92
 - ggxfGroupName: nz_linz_nzgd2000-ka20161114-grid06
   comment: |
     Event: Kaikoura earthquake postearthquake month 0-1,  14 November 2016
@@ -987,23 +987,23 @@ ggxfGroups:
     scaleFactor: 1.0
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114pe1_v_l1
-    affineCoeffs: [-40.5, 0.0, -0.125, 171.85, 0.15, 0.0]
-    iNodeCount: 29
-    jNodeCount: 27
+    affineCoeffs: [-40.5, -0.125, 0.0, 171.85, 0.0, 0.15]
+    iNodeCount: 27
+    jNodeCount: 29
     childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114pe1_v_l2
-      affineCoeffs: [-40.75, 0.0, -0.03125, 172.675, 0.0375, 0.0]
-      iNodeCount: 72
-      jNodeCount: 74
+      affineCoeffs: [-40.75, -0.03125, 0.0, 172.675, 0.0, 0.0375]
+      iNodeCount: 74
+      jNodeCount: 72
       childGrids:
       - gridName: patch_ka_20161114_grid_ka_20161114pe1_v_l3_00
-        affineCoeffs: [-42.0546875, 0.0, -0.0078125, 172.84375, 0.009375, 0.0]
-        iNodeCount: 92
-        jNodeCount: 82
+        affineCoeffs: [-42.0546875, -0.0078125, 0.0, 172.84375, 0.0, 0.009375]
+        iNodeCount: 82
+        jNodeCount: 92
       - gridName: patch_ka_20161114_grid_ka_20161114pe1_v_l3_01
-        affineCoeffs: [-41.609375, 0.0, -0.0078125, 173.696875, 0.009375, 0.0]
-        iNodeCount: 91
-        jNodeCount: 119
+        affineCoeffs: [-41.609375, -0.0078125, 0.0, 173.696875, 0.0, 0.009375]
+        iNodeCount: 119
+        jNodeCount: 91
 - ggxfGroupName: nz_linz_nzgd2000-ka20161114-grid10
   comment: |
     Event: Kaikoura earthquake,  14 November 2016
@@ -1017,9 +1017,9 @@ ggxfGroups:
     eventDate: '2016-11-14T00:00:00Z'
   grids:
   - gridName: patch_ka_20161114_grid_hor_refinement
-    affineCoeffs: [-38.625, 0.0, -0.125, 171.1, 0.15, 0.0]
-    iNodeCount: 43
-    jNodeCount: 40
+    affineCoeffs: [-38.625, -0.125, 0.0, 171.1, 0.0, 0.15]
+    iNodeCount: 40
+    jNodeCount: 43
 - ggxfGroupName: nz_linz_nzgd2000-ka20161114-grid11
   comment: Kaikoura earthquake second refinement grid - horizontal
   gridParameters:
@@ -1032,9 +1032,9 @@ ggxfGroups:
     functionReferenceDate: '2017-01-01T00:00:00Z'
   grids:
   - gridName: patch_ka_20161114_grid_hor_refinement2
-    affineCoeffs: [-40.56, 0.0, -0.015, 171.5, 0.02, 0.0]
-    iNodeCount: 214
-    jNodeCount: 192
+    affineCoeffs: [-40.56, -0.015, 0.0, 171.5, 0.0, 0.02]
+    iNodeCount: 192
+    jNodeCount: 214
 - ggxfGroupName: nz_linz_nzgd2000-ka20161114-grid12
   comment: Kaikoura earthquake second refinement grid -vertical
   gridParameters:
@@ -1046,9 +1046,9 @@ ggxfGroups:
     functionReferenceDate: '2017-01-01T00:00:00Z'
   grids:
   - gridName: patch_ka_20161114_grid_vrt_refinement2
-    affineCoeffs: [-40.395, 0.0, -0.015, 171.9, 0.02, 0.0]
-    iNodeCount: 216
-    jNodeCount: 199
+    affineCoeffs: [-40.395, -0.015, 0.0, 171.9, 0.0, 0.02]
+    iNodeCount: 199
+    jNodeCount: 216
 - ggxfGroupName: nz_linz_nzgd2000-ka20161114-grid07
   comment: |
     Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016
@@ -1066,14 +1066,14 @@ ggxfGroups:
     scaleFactor: 1.0
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114pe3_h_l1_f
-    affineCoeffs: [-38.875, 0.0, -0.125, 169.6, 0.15, 0.0]
-    iNodeCount: 46
-    jNodeCount: 40
+    affineCoeffs: [-38.875, -0.125, 0.0, 169.6, 0.0, 0.15]
+    iNodeCount: 40
+    jNodeCount: 46
     childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114pe3_h_l2_f
-      affineCoeffs: [-41.0625, 0.0, -0.03125, 172.525, 0.0375, 0.0]
-      iNodeCount: 66
-      jNodeCount: 60
+      affineCoeffs: [-41.0625, -0.03125, 0.0, 172.525, 0.0, 0.0375]
+      iNodeCount: 60
+      jNodeCount: 66
 - ggxfGroupName: nz_linz_nzgd2000-ka20161114-grid08
   comment: |
     Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016
@@ -1091,18 +1091,18 @@ ggxfGroups:
     scaleFactor: 1.0
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114pe3_h_l2_r
-    affineCoeffs: [-41.28125, 0.0, -0.03125, 172.45, 0.0375, 0.0]
-    iNodeCount: 67
-    jNodeCount: 56
+    affineCoeffs: [-41.28125, -0.03125, 0.0, 172.45, 0.0, 0.0375]
+    iNodeCount: 56
+    jNodeCount: 67
     childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_00
-      affineCoeffs: [-42.0, 0.0, -0.0078125, 172.91875, 0.009375, 0.0]
-      iNodeCount: 88
-      jNodeCount: 91
+      affineCoeffs: [-42.0, -0.0078125, 0.0, 172.91875, 0.0, 0.009375]
+      iNodeCount: 91
+      jNodeCount: 88
     - gridName: patch_ka_20161114_grid_ka_20161114pe3_h_l3_r_01
-      affineCoeffs: [-41.5546875, 0.0, -0.0078125, 173.734375, 0.009375, 0.0]
-      iNodeCount: 88
-      jNodeCount: 122
+      affineCoeffs: [-41.5546875, -0.0078125, 0.0, 173.734375, 0.0, 0.009375]
+      iNodeCount: 122
+      jNodeCount: 88
 - ggxfGroupName: nz_linz_nzgd2000-ka20161114-grid09
   comment: |
     Event: Kaikoura earthquake months1-3 post-earthquake,  14 November 2016
@@ -1119,20 +1119,20 @@ ggxfGroups:
     scaleFactor: 1.0
   grids:
   - gridName: patch_ka_20161114_grid_ka_20161114pe3_v_l1
-    affineCoeffs: [-40.25, 0.0, -0.125, 171.4, 0.15, 0.0]
-    iNodeCount: 31
-    jNodeCount: 28
+    affineCoeffs: [-40.25, -0.125, 0.0, 171.4, 0.0, 0.15]
+    iNodeCount: 28
+    jNodeCount: 31
     childGrids:
     - gridName: patch_ka_20161114_grid_ka_20161114pe3_v_l2
-      affineCoeffs: [-40.65625, 0.0, -0.03125, 172.1875, 0.0375, 0.0]
-      iNodeCount: 82
-      jNodeCount: 76
+      affineCoeffs: [-40.65625, -0.03125, 0.0, 172.1875, 0.0, 0.0375]
+      iNodeCount: 76
+      jNodeCount: 82
       childGrids:
       - gridName: patch_ka_20161114_grid_ka_20161114pe3_v_l3_00
-        affineCoeffs: [-42.0703125, 0.0, -0.0078125, 172.825, 0.009375, 0.0]
-        iNodeCount: 92
-        jNodeCount: 80
+        affineCoeffs: [-42.0703125, -0.0078125, 0.0, 172.825, 0.0, 0.009375]
+        iNodeCount: 80
+        jNodeCount: 92
       - gridName: patch_ka_20161114_grid_ka_20161114pe3_v_l3_01
-        affineCoeffs: [-41.5859375, 0.0, -0.0078125, 173.678125, 0.009375, 0.0]
-        iNodeCount: 92
-        jNodeCount: 121
+        affineCoeffs: [-41.5859375, -0.0078125, 0.0, 173.678125, 0.0, 0.009375]
+        iNodeCount: 121
+        jNodeCount: 92

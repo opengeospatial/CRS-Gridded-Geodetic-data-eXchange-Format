@@ -133,7 +133,7 @@ class Reader(BaseReader):
         nj = ygrid.get(GRID_ATTR_J_NODE_COUNT, 1)
         if GRID_ATTR_DATA_SOURCE in ygrid:
             ygrid.pop(GRID_ATTR_DATA_SOURCE)
-        ygrid[GRID_ATTR_DATA] = np.zeros((nj, ni, nparam))
+        ygrid[GRID_ATTR_DATA] = np.zeros((ni, nj, nparam))
 
     def loadGrid(self, group: Group, ygrid: dict, parent: Grid = None):
         gridname = ygrid.get(GRID_ATTR_GRID_NAME, "unnamed")
@@ -164,7 +164,6 @@ class Reader(BaseReader):
             gdata = ygrid.pop(GRID_ATTR_DATA, [])
             cgrids = ygrid.pop(GRID_ATTR_CHILD_GRIDS, [])
             gridname = ygrid.pop(GRID_ATTR_GRID_NAME)
-            gdata = np.swapaxes(gdata, 0, 1)
             data = self.splitGridByParamSet(group, gdata)
             grid = Grid(group, gridname, ygrid, data)
             for cgrid in cgrids:
@@ -311,7 +310,7 @@ class Reader(BaseReader):
         shape = data.shape
         expectedSize = ni * nj * nparam
         # YAML grid order expects row, column, param corresponding to nj,ni,nparam
-        expectedShape = (nj, ni, nparam)
+        expectedShape = (ni, nj, nparam)
 
         gridok = True
         if size != expectedSize:
@@ -349,8 +348,9 @@ class Reader(BaseReader):
                     else:
                         gridok = False
                         self.error(
-                            f"Grid {gridname}: YAML dimensions ({shape}) don't match expected {(expectedShape)} (nj,ni,np)"
+                            f"Grid {gridname}: YAML dimensions ({shape}) don't match expected {(expectedShape)} (ni,nj,np)"
                         )
+                        break
             # Grid shape is compatible, so can reshape the grid to match.  Relies on numpy using row major ordering
             # internally for reshape.
 
@@ -458,7 +458,6 @@ class Writer(BaseWriter):
                 shape = ygrid.shape
                 if len(shape) == 3 and shape[2] == 1:
                     ygrid = data.reshape(shape[:2])
-                ygrid = np.swapaxes(ygrid, 0, 1)
                 ydata[GRID_ATTR_DATA] = ygrid
         if len(grid.grids()) > 0:
             ydata[GRID_ATTR_CHILD_GRIDS] = grid.grids()
@@ -484,8 +483,8 @@ class Writer(BaseWriter):
                 csvw.writerow((*header, *grid.group().parameterNames()))
                 shape = data.shape
                 crd = []
-                for jnode in range(shape[1]):
-                    for inode in range(shape[0]):
+                for inode in range(shape[0]):
+                    for jnode in range(shape[1]):
                         if self._csvCoords:
                             xy = grid.calcxy([inode, jnode])
                             crd = [self._crdFormat(c) for c in xy]

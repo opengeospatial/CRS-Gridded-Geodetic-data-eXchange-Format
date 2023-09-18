@@ -128,18 +128,18 @@ def LoadCsvGrid(
                 fldids.append(fields.index(field))
 
             data = []
-            nj = 0
+            ni = 0
             for row in csvr:
-                nj += 1
+                ni += 1
                 try:
                     data.append([float(row[fld]) for fld in fldids])
                 except IndexError:
                     raise CsvLoaderError(
-                        f"Not enough columns at line {nj} of CSV file {filename}"
+                        f"Not enough columns at line {ni} of CSV file {filename}"
                     )
                 except ValueError:
                     raise CsvLoaderError(
-                        f"Non numeric value at line {nj} of CSV file {filename}"
+                        f"Non numeric value at line {ni} of CSV file {filename}"
                     )
     except CsvLoaderError:
         raise
@@ -163,31 +163,31 @@ def LoadCsvGrid(
     xy = data[:, :2]
     dxy = xy[1:, :] - xy[:-1, :]
     reverse = ((dxy[:, 0] * dxy[0, 0] + dxy[:, 1] * dxy[0, 1]) < 0.0).nonzero()[0] + 1
-    ni = reverse[0]
-    nj = reverse.size + 1
-    test = np.arange(1, nj) * ni
+    nj = reverse[0]
+    ni = reverse.size + 1
+    test = np.arange(1, ni) * nj
     if any(reverse != test):
         sr = set(reverse)
         st = set(test)
         badrow = min(sr ^ st)
         raise CsvLoaderError(
-            f"CSV file {filename} doesn't contain a regular grid at line {badrow+2} - expecting new grid row every {ni} lines"
+            f"CSV file {filename} doesn't contain a regular grid at line {badrow+2} - expecting new grid row every {nj} lines"
         )
 
-    if data.shape[0] != nj * ni:
+    if data.shape[0] != ni * nj:
         raise CsvLoaderError(
-            f"CSV file {filename} doesn't contain a regular grid - expect {ni}x{nj}={ni*nj} rows"
+            f"CSV file {filename} doesn't contain a regular grid - expect {nj}x{ni}={nj*ni} rows"
         )
 
     # Calculate affine coefficients assuming grid is aligned with axes
     xy0 = xy[0]
-    ddi = (xy[ni - 1] - xy0) / (ni - 1)
-    ddj = (xy[(nj - 1) * ni] - xy0) / (nj - 1)
+    ddi = (xy[(ni - 1) * nj] - xy0) / (ni - 1)
+    ddj = (xy[nj - 1] - xy0) / (nj - 1)
 
     # Compare the node coordinates with the values calculated from the indices to
     # see if the nodes are on the inferred grid.
-    ij = np.indices((nj, ni)).reshape((2, ni * nj)).T[:, [1, 0]]
-    tmat = np.vstack((ddi, ddj))
+    ij = np.indices((ni, nj)).reshape((2, nj * ni)).T[:, [1, 0]]
+    tmat = np.vstack((ddj, ddi))
     calc = ij.dot(tmat) + xy0
     maxerr = np.max(np.abs(xy - calc))
     tolerance = np.sqrt(np.sum(tmat * tmat)) * GGXF_CSV_GRID_TOLERANCE_FACTOR
@@ -200,7 +200,7 @@ def LoadCsvGrid(
 
     affine = np.array([xy0[0], ddi[0], ddj[0], xy0[1], ddi[1], ddj[1]]).tolist()
     gridData = data[:, 2:]
-    gridData = gridData.reshape(nj, ni, gridData.shape[1])
+    gridData = gridData.reshape(ni, nj, gridData.shape[1])
     shape = (ni, nj)
 
     # Calculated shape of grid (ni,nj)

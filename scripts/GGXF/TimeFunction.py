@@ -212,12 +212,13 @@ class LogBaseETimeFunction(BaseTimeFunction):
             return 0.0
         return math.log(1.0 + epoch / self._decay)
 
+
 class LogBase10TimeFunction(BaseTimeFunction):
     Params = (
         TIME_PARAM_EVENT_EPOCH,
         TIME_PARAM_TIME_CONSTANT,
     )
-    log10=lambda t: math.log(t)/math.log(10)
+    log10 = lambda t: math.log(t) / math.log(10)
 
     def __init__(self, definition):
         BaseTimeFunction.__init__(
@@ -234,6 +235,7 @@ class LogBase10TimeFunction(BaseTimeFunction):
         if epoch < 0.0:
             return 0.0
         return self.log10(1.0 + epoch / self._decay)
+
 
 class RampTimeFunction(BaseTimeFunction):
     Params = (

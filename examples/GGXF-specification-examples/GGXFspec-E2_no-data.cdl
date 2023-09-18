@@ -40,15 +40,15 @@ group: SA\ geoid\ 2010 {
 
   group: SA\ geoid\ 2010 {
     dimensions:
-    	iNodeCount = 409 ;
-    	jNodeCount = 313 ;
+    	iNodeCount = 313 ;
+    	jNodeCount = 409 ;
     variables:
     	float geoidHeight(iNodeCount, jNodeCount) ;
     		geoidHeight:_Storage = "contiguous" ;
     		geoidHeight:_Endianness = "little" ;
 
     // group attributes:
-    		:affineCoeffs = -35., 0., 0.04166666666667, 16., 0.04166666666667, 0. ;
+    		:affineCoeffs = -35., 0.04166666666667, 0., 16., 0., 0.04166666666667 ;
     } // group SA\ geoid\ 2010
   } // group SA\ geoid\ 2010
 }
