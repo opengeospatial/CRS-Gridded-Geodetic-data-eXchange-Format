@@ -82,7 +82,7 @@ ggxfGroups:
         gdalSource: NTv2:83:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONkinstn
-      affineCoeffs: [46.5, 0.0, -0.008333333333333333, -78.83333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [46.5, 0.0, -0.008333333333333333, -78.83333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 321
       jNodeCount: 321
       dataSource:
@@ -90,7 +90,7 @@ ggxfGroups:
         gdalSource: NTv2:92:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONottawa
-      affineCoeffs: [45.916666666666664, 0.0, -0.008333333333333333, -76.16666666666667, 0.008333333333333333, 0.0]
+      affineCoeffs: [45.916666666666667, 0.0, -0.008333333333333333, -76.16666666666667, 0.008333333333333333, 0.0]
       iNodeCount: 221
       jNodeCount: 201
       dataSource:
@@ -98,7 +98,7 @@ ggxfGroups:
         gdalSource: NTv2:93:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONsarnia
-      affineCoeffs: [43.416666666666664, 0.0, -0.008333333333333333, -82.58333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [43.416666666666667, 0.0, -0.008333333333333333, -82.58333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 101
       jNodeCount: 121
       dataSource:
@@ -106,7 +106,7 @@ ggxfGroups:
         gdalSource: NTv2:94:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONsault
-      affineCoeffs: [46.666666666666664, 0.0, -0.008333333333333333, -84.66666666666667, 0.008333333333333333, 0.0]
+      affineCoeffs: [46.666666666666667, 0.0, -0.008333333333333333, -84.66666666666667, 0.008333333333333333, 0.0]
       iNodeCount: 351
       jNodeCount: 71
       dataSource:
@@ -114,7 +114,7 @@ ggxfGroups:
         gdalSource: NTv2:95:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONtimins
-      affineCoeffs: [48.666666666666664, 0.0, -0.008333333333333333, -81.66666666666667, 0.008333333333333333, 0.0]
+      affineCoeffs: [48.666666666666667, 0.0, -0.008333333333333333, -81.66666666666667, 0.008333333333333333, 0.0]
       iNodeCount: 101
       jNodeCount: 41
       dataSource:
@@ -122,7 +122,7 @@ ggxfGroups:
         gdalSource: NTv2:97:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONtronto
-      affineCoeffs: [46.666666666666664, 0.0, -0.008333333333333333, -81.75, 0.008333333333333333, 0.0]
+      affineCoeffs: [46.666666666666667, 0.0, -0.008333333333333333, -81.75, 0.008333333333333333, 0.0]
       iNodeCount: 351
       jNodeCount: 511
       dataSource:
@@ -130,7 +130,7 @@ ggxfGroups:
         gdalSource: NTv2:98:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONwinsor
-      affineCoeffs: [42.416666666666664, 0.0, -0.008333333333333333, -83.16666666666667, 0.008333333333333333, 0.0]
+      affineCoeffs: [42.416666666666667, 0.0, -0.008333333333333333, -83.16666666666667, 0.008333333333333333, 0.0]
       iNodeCount: 171
       jNodeCount: 61
       dataSource:
@@ -147,7 +147,7 @@ ggxfGroups:
       parameterTransformations: *id001
     childGrids:
     - gridName: ALbanff
-      affineCoeffs: [51.25, 0.0, -0.008333333333333333, -115.58333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [51.25, 0.0, -0.008333333333333333, -115.58333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 11
       jNodeCount: 21
       dataSource:
@@ -155,7 +155,7 @@ ggxfGroups:
         gdalSource: NTv2:4:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALbarhed
-      affineCoeffs: [54.166666666666664, 0.0, -0.008333333333333333, -114.5, 0.008333333333333333, 0.0]
+      affineCoeffs: [54.166666666666667, 0.0, -0.008333333333333333, -114.5, 0.008333333333333333, 0.0]
       iNodeCount: 21
       jNodeCount: 11
       dataSource:
@@ -163,7 +163,7 @@ ggxfGroups:
         gdalSource: NTv2:5:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALbonvil
-      affineCoeffs: [54.33333333333333, 0.0, -0.008333333333333333, -110.83333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [54.33333333333333, 0.0, -0.008333333333333333, -110.83333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
@@ -171,7 +171,7 @@ ggxfGroups:
         gdalSource: NTv2:6:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALbowisl
-      affineCoeffs: [49.916666666666664, 0.0, -0.008333333333333333, -111.5, 0.008333333333333333, 0.0]
+      affineCoeffs: [49.916666666666667, 0.0, -0.008333333333333333, -111.5, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 11
       dataSource:
@@ -179,7 +179,7 @@ ggxfGroups:
         gdalSource: NTv2:7:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALbrooks
-      affineCoeffs: [50.666666666666664, 0.0, -0.008333333333333333, -112.0, 0.008333333333333333, 0.0]
+      affineCoeffs: [50.666666666666667, 0.0, -0.008333333333333333, -112.0, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
@@ -187,7 +187,7 @@ ggxfGroups:
         gdalSource: NTv2:8:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALcalgry
-      affineCoeffs: [51.33333333333333, 0.0, -0.008333333333333333, -114.58333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [51.33333333333333, 0.0, -0.008333333333333333, -114.58333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 101
       jNodeCount: 101
       dataSource:
@@ -203,7 +203,7 @@ ggxfGroups:
         gdalSource: NTv2:10:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALcanmor
-      affineCoeffs: [51.166666666666664, 0.0, -0.008333333333333333, -115.5, 0.008333333333333333, 0.0]
+      affineCoeffs: [51.166666666666667, 0.0, -0.008333333333333333, -115.5, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
@@ -219,7 +219,7 @@ ggxfGroups:
         gdalSource: NTv2:12:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALcarsta
-      affineCoeffs: [51.666666666666664, 0.0, -0.008333333333333333, -114.25, 0.008333333333333333, 0.0]
+      affineCoeffs: [51.666666666666667, 0.0, -0.008333333333333333, -114.25, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
@@ -235,7 +235,7 @@ ggxfGroups:
         gdalSource: NTv2:14:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALcoldlk
-      affineCoeffs: [54.58333333333333, 0.0, -0.008333333333333333, -110.33333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [54.58333333333333, 0.0, -0.008333333333333333, -110.33333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 31
       dataSource:
@@ -251,7 +251,7 @@ ggxfGroups:
         gdalSource: NTv2:16:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALdraytn
-      affineCoeffs: [53.33333333333333, 0.0, -0.008333333333333333, -115.08333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [53.33333333333333, 0.0, -0.008333333333333333, -115.08333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 31
       dataSource:
@@ -267,7 +267,7 @@ ggxfGroups:
         gdalSource: NTv2:18:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALedmntn
-      affineCoeffs: [53.916666666666664, 0.0, -0.008333333333333333, -114.16666666666667, 0.008333333333333333, 0.0]
+      affineCoeffs: [53.916666666666667, 0.0, -0.008333333333333333, -114.16666666666667, 0.008333333333333333, 0.0]
       iNodeCount: 131
       jNodeCount: 91
       dataSource:
@@ -275,7 +275,7 @@ ggxfGroups:
         gdalSource: NTv2:19:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALedson
-      affineCoeffs: [53.666666666666664, 0.0, -0.008333333333333333, -116.58333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [53.666666666666667, 0.0, -0.008333333333333333, -116.58333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 41
       jNodeCount: 21
       dataSource:
@@ -283,7 +283,7 @@ ggxfGroups:
         gdalSource: NTv2:20:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALfairvw
-      affineCoeffs: [56.166666666666664, 0.0, -0.008333333333333333, -118.5, 0.008333333333333333, 0.0]
+      affineCoeffs: [56.166666666666667, 0.0, -0.008333333333333333, -118.5, 0.008333333333333333, 0.0]
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
@@ -299,7 +299,7 @@ ggxfGroups:
         gdalSource: NTv2:22:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALftmcmr
-      affineCoeffs: [56.83333333333333, 0.0, -0.008333333333333333, -111.58333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [56.83333333333333, 0.0, -0.008333333333333333, -111.58333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 61
       jNodeCount: 31
       dataSource:
@@ -331,7 +331,7 @@ ggxfGroups:
         gdalSource: NTv2:26:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALhanna
-      affineCoeffs: [51.75, 0.0, -0.008333333333333333, -112.08333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [51.75, 0.0, -0.008333333333333333, -112.08333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
@@ -363,7 +363,7 @@ ggxfGroups:
         gdalSource: NTv2:30:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALinnsfl
-      affineCoeffs: [52.166666666666664, 0.0, -0.008333333333333333, -114.0, 0.008333333333333333, 0.0]
+      affineCoeffs: [52.166666666666667, 0.0, -0.008333333333333333, -114.0, 0.008333333333333333, 0.0]
       iNodeCount: 21
       jNodeCount: 31
       dataSource:
@@ -371,7 +371,7 @@ ggxfGroups:
         gdalSource: NTv2:31:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALjasper
-      affineCoeffs: [52.916666666666664, 0.0, -0.008333333333333333, -118.16666666666667, 0.008333333333333333, 0.0]
+      affineCoeffs: [52.916666666666667, 0.0, -0.008333333333333333, -118.16666666666667, 0.008333333333333333, 0.0]
       iNodeCount: 21
       jNodeCount: 11
       dataSource:
@@ -379,7 +379,7 @@ ggxfGroups:
         gdalSource: NTv2:32:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALlacbic
-      affineCoeffs: [54.83333333333333, 0.0, -0.008333333333333333, -112.08333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [54.83333333333333, 0.0, -0.008333333333333333, -112.08333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
@@ -387,7 +387,7 @@ ggxfGroups:
         gdalSource: NTv2:33:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALlacomb
-      affineCoeffs: [52.58333333333333, 0.0, -0.008333333333333333, -113.83333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [52.58333333333333, 0.0, -0.008333333333333333, -113.83333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 11
       dataSource:
@@ -395,7 +395,7 @@ ggxfGroups:
         gdalSource: NTv2:34:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALletbrg
-      affineCoeffs: [49.916666666666664, 0.0, -0.008333333333333333, -113.0, 0.008333333333333333, 0.0]
+      affineCoeffs: [49.916666666666667, 0.0, -0.008333333333333333, -113.0, 0.008333333333333333, 0.0]
       iNodeCount: 61
       jNodeCount: 41
       dataSource:
@@ -419,7 +419,7 @@ ggxfGroups:
         gdalSource: NTv2:37:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALmedhat
-      affineCoeffs: [50.166666666666664, 0.0, -0.008333333333333333, -110.83333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [50.166666666666667, 0.0, -0.008333333333333333, -110.83333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 41
       jNodeCount: 31
       dataSource:
@@ -427,7 +427,7 @@ ggxfGroups:
         gdalSource: NTv2:38:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALolds
-      affineCoeffs: [51.916666666666664, 0.0, -0.008333333333333333, -114.25, 0.008333333333333333, 0.0]
+      affineCoeffs: [51.916666666666667, 0.0, -0.008333333333333333, -114.25, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
@@ -435,7 +435,7 @@ ggxfGroups:
         gdalSource: NTv2:39:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALoyen
-      affineCoeffs: [51.416666666666664, 0.0, -0.008333333333333333, -110.58333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [51.416666666666667, 0.0, -0.008333333333333333, -110.58333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
@@ -475,7 +475,7 @@ ggxfGroups:
         gdalSource: NTv2:44:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALredeer
-      affineCoeffs: [52.416666666666664, 0.0, -0.008333333333333333, -113.91666666666667, 0.008333333333333333, 0.0]
+      affineCoeffs: [52.416666666666667, 0.0, -0.008333333333333333, -113.91666666666667, 0.008333333333333333, 0.0]
       iNodeCount: 41
       jNodeCount: 31
       dataSource:
@@ -499,7 +499,7 @@ ggxfGroups:
         gdalSource: NTv2:47:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALstetlr
-      affineCoeffs: [52.416666666666664, 0.0, -0.008333333333333333, -112.83333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [52.416666666666667, 0.0, -0.008333333333333333, -112.83333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
@@ -515,7 +515,7 @@ ggxfGroups:
         gdalSource: NTv2:49:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALstramr
-      affineCoeffs: [51.166666666666664, 0.0, -0.008333333333333333, -113.5, 0.008333333333333333, 0.0]
+      affineCoeffs: [51.166666666666667, 0.0, -0.008333333333333333, -113.5, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
@@ -523,7 +523,7 @@ ggxfGroups:
         gdalSource: NTv2:50:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALswanhi
-      affineCoeffs: [54.83333333333333, 0.0, -0.008333333333333333, -115.58333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [54.83333333333333, 0.0, -0.008333333333333333, -115.58333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 41
       jNodeCount: 21
       dataSource:
@@ -531,7 +531,7 @@ ggxfGroups:
         gdalSource: NTv2:51:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALtaber
-      affineCoeffs: [49.916666666666664, 0.0, -0.008333333333333333, -112.25, 0.008333333333333333, 0.0]
+      affineCoeffs: [49.916666666666667, 0.0, -0.008333333333333333, -112.25, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
@@ -539,7 +539,7 @@ ggxfGroups:
         gdalSource: NTv2:52:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALtrehil
-      affineCoeffs: [51.75, 0.0, -0.008333333333333333, -113.33333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [51.75, 0.0, -0.008333333333333333, -113.33333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
@@ -555,7 +555,7 @@ ggxfGroups:
         gdalSource: NTv2:54:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALvermil
-      affineCoeffs: [53.416666666666664, 0.0, -0.008333333333333333, -111.0, 0.008333333333333333, 0.0]
+      affineCoeffs: [53.416666666666667, 0.0, -0.008333333333333333, -111.0, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
@@ -563,7 +563,7 @@ ggxfGroups:
         gdalSource: NTv2:55:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALwanwgt
-      affineCoeffs: [52.916666666666664, 0.0, -0.008333333333333333, -111.0, 0.008333333333333333, 0.0]
+      affineCoeffs: [52.916666666666667, 0.0, -0.008333333333333333, -111.0, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
@@ -587,7 +587,7 @@ ggxfGroups:
         gdalSource: NTv2:58:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ALwhitec
-      affineCoeffs: [54.166666666666664, 0.0, -0.008333333333333333, -115.83333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [54.166666666666667, 0.0, -0.008333333333333333, -115.83333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 41
       jNodeCount: 11
       dataSource:
@@ -595,7 +595,7 @@ ggxfGroups:
         gdalSource: NTv2:59:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCcambel
-      affineCoeffs: [50.08333333333333, 0.0, -0.008333333333333333, -125.33333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [50.08333333333333, 0.0, -0.008333333333333333, -125.33333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
@@ -603,7 +603,7 @@ ggxfGroups:
         gdalSource: NTv2:60:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCcranbk
-      affineCoeffs: [49.58333333333333, 0.0, -0.008333333333333333, -115.83333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [49.58333333333333, 0.0, -0.008333333333333333, -115.83333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
@@ -611,7 +611,7 @@ ggxfGroups:
         gdalSource: NTv2:61:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCdawson
-      affineCoeffs: [55.83333333333333, 0.0, -0.008333333333333333, -120.33333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [55.83333333333333, 0.0, -0.008333333333333333, -120.33333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
@@ -627,7 +627,7 @@ ggxfGroups:
         gdalSource: NTv2:63:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCfield
-      affineCoeffs: [51.416666666666664, 0.0, -0.008333333333333333, -116.58333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [51.416666666666667, 0.0, -0.008333333333333333, -116.58333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 21
       jNodeCount: 11
       dataSource:
@@ -635,7 +635,7 @@ ggxfGroups:
         gdalSource: NTv2:64:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCgranil
-      affineCoeffs: [54.916666666666664, 0.0, -0.008333333333333333, -126.25, 0.008333333333333333, 0.0]
+      affineCoeffs: [54.916666666666667, 0.0, -0.008333333333333333, -126.25, 0.008333333333333333, 0.0]
       iNodeCount: 11
       jNodeCount: 11
       dataSource:
@@ -651,7 +651,7 @@ ggxfGroups:
         gdalSource: NTv2:66:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCkelwna
-      affineCoeffs: [50.08333333333333, 0.0, -0.008333333333333333, -119.58333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [50.08333333333333, 0.0, -0.008333333333333333, -119.58333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 31
       dataSource:
@@ -659,7 +659,7 @@ ggxfGroups:
         gdalSource: NTv2:67:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BClogan
-      affineCoeffs: [50.5, 0.0, -0.008333333333333333, -120.83333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [50.5, 0.0, -0.008333333333333333, -120.83333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 11
       jNodeCount: 11
       dataSource:
@@ -667,7 +667,7 @@ ggxfGroups:
         gdalSource: NTv2:68:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCmacknz
-      affineCoeffs: [55.416666666666664, 0.0, -0.008333333333333333, -123.16666666666667, 0.008333333333333333, 0.0]
+      affineCoeffs: [55.416666666666667, 0.0, -0.008333333333333333, -123.16666666666667, 0.008333333333333333, 0.0]
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
@@ -675,7 +675,7 @@ ggxfGroups:
         gdalSource: NTv2:69:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCnanimo
-      affineCoeffs: [49.25, 0.0, -0.008333333333333333, -124.08333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [49.25, 0.0, -0.008333333333333333, -124.08333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 61
       jNodeCount: 61
       dataSource:
@@ -683,7 +683,7 @@ ggxfGroups:
         gdalSource: NTv2:70:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCnelson
-      affineCoeffs: [49.58333333333333, 0.0, -0.008333333333333333, -117.33333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [49.58333333333333, 0.0, -0.008333333333333333, -117.33333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 11
       jNodeCount: 21
       dataSource:
@@ -707,7 +707,7 @@ ggxfGroups:
         gdalSource: NTv2:73:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCportal
-      affineCoeffs: [49.33333333333333, 0.0, -0.008333333333333333, -124.83333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [49.33333333333333, 0.0, -0.008333333333333333, -124.83333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 11
       jNodeCount: 21
       dataSource:
@@ -715,7 +715,7 @@ ggxfGroups:
         gdalSource: NTv2:74:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCpowell
-      affineCoeffs: [49.916666666666664, 0.0, -0.008333333333333333, -124.58333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [49.916666666666667, 0.0, -0.008333333333333333, -124.58333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
@@ -731,7 +731,7 @@ ggxfGroups:
         gdalSource: NTv2:76:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCroslnd
-      affineCoeffs: [49.08333333333333, 0.0, -0.008333333333333333, -117.83333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [49.08333333333333, 0.0, -0.008333333333333333, -117.83333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 11
       jNodeCount: 11
       dataSource:
@@ -739,7 +739,7 @@ ggxfGroups:
         gdalSource: NTv2:77:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCtrail
-      affineCoeffs: [49.166666666666664, 0.0, -0.008333333333333333, -117.75, 0.008333333333333333, 0.0]
+      affineCoeffs: [49.166666666666667, 0.0, -0.008333333333333333, -117.75, 0.008333333333333333, 0.0]
       iNodeCount: 11
       jNodeCount: 11
       dataSource:
@@ -747,7 +747,7 @@ ggxfGroups:
         gdalSource: NTv2:78:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCtumblr
-      affineCoeffs: [55.166666666666664, 0.0, -0.008333333333333333, -121.08333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [55.166666666666667, 0.0, -0.008333333333333333, -121.08333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 21
       jNodeCount: 11
       dataSource:
@@ -755,7 +755,7 @@ ggxfGroups:
         gdalSource: NTv2:79:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCvancvr
-      affineCoeffs: [49.416666666666664, 0.0, -0.008333333333333333, -123.25, 0.008333333333333333, 0.0]
+      affineCoeffs: [49.416666666666667, 0.0, -0.008333333333333333, -123.25, 0.008333333333333333, 0.0]
       iNodeCount: 131
       jNodeCount: 51
       dataSource:
@@ -763,7 +763,7 @@ ggxfGroups:
         gdalSource: NTv2:80:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCvernon
-      affineCoeffs: [50.33333333333333, 0.0, -0.008333333333333333, -119.33333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [50.33333333333333, 0.0, -0.008333333333333333, -119.33333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
@@ -771,7 +771,7 @@ ggxfGroups:
         gdalSource: NTv2:81:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: BCvictor
-      affineCoeffs: [48.75, 0.0, -0.008333333333333333, -123.58333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [48.75, 0.0, -0.008333333333333333, -123.58333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 41
       jNodeCount: 51
       dataSource:
@@ -779,7 +779,7 @@ ggxfGroups:
         gdalSource: NTv2:82:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: ONthundr
-      affineCoeffs: [48.58333333333333, 0.0, -0.008333333333333333, -89.58333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [48.58333333333333, 0.0, -0.008333333333333333, -89.58333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 71
       jNodeCount: 51
       dataSource:
@@ -787,7 +787,7 @@ ggxfGroups:
         gdalSource: NTv2:96:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SAestvan
-      affineCoeffs: [49.25, 0.0, -0.008333333333333333, -103.08333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [49.25, 0.0, -0.008333333333333333, -103.08333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
@@ -795,7 +795,7 @@ ggxfGroups:
         gdalSource: NTv2:100:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SAmelfrt
-      affineCoeffs: [52.916666666666664, 0.0, -0.008333333333333333, -104.66666666666667, 0.008333333333333333, 0.0]
+      affineCoeffs: [52.916666666666667, 0.0, -0.008333333333333333, -104.66666666666667, 0.008333333333333333, 0.0]
       iNodeCount: 71
       jNodeCount: 21
       dataSource:
@@ -843,7 +843,7 @@ ggxfGroups:
         gdalSource: NTv2:106:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SAsatoon
-      affineCoeffs: [52.25, 0.0, -0.008333333333333333, -106.83333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [52.25, 0.0, -0.008333333333333333, -106.83333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 51
       jNodeCount: 31
       dataSource:
@@ -851,7 +851,7 @@ ggxfGroups:
         gdalSource: NTv2:107:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SAswiftc
-      affineCoeffs: [50.416666666666664, 0.0, -0.008333333333333333, -107.91666666666667, 0.008333333333333333, 0.0]
+      affineCoeffs: [50.416666666666667, 0.0, -0.008333333333333333, -107.91666666666667, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 31
       dataSource:
@@ -867,7 +867,7 @@ ggxfGroups:
         gdalSource: NTv2:109:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: SAyorktn
-      affineCoeffs: [51.33333333333333, 0.0, -0.008333333333333333, -102.58333333333334, 0.008333333333333333, 0.0]
+      affineCoeffs: [51.33333333333333, 0.0, -0.008333333333333333, -102.58333333333333, 0.008333333333333333, 0.0]
       iNodeCount: 31
       jNodeCount: 21
       dataSource:
@@ -875,7 +875,7 @@ ggxfGroups:
         gdalSource: NTv2:110:NTV2_0.GSB
         parameterTransformations: *id001
   - gridName: CAnorth
-    affineCoeffs: [75.0, 0.0, -0.08333333333333333, -142.0, 0.16666666666666666, 0.0]
+    affineCoeffs: [75.0, 0.0, -0.08333333333333333, -142.0, 0.16666666666666667, 0.0]
     iNodeCount: 589
     jNodeCount: 181
     dataSource:
@@ -884,7 +884,7 @@ ggxfGroups:
       parameterTransformations: *id001
     childGrids:
     - gridName: NWclyder
-      affineCoeffs: [70.58333333333334, 0.0, -0.008333333333333333, -68.83333333333333, 0.016666666666666666, 0.0]
+      affineCoeffs: [70.58333333333333, 0.0, -0.008333333333333333, -68.83333333333333, 0.016666666666666667, 0.0]
       iNodeCount: 31
       jNodeCount: 31
       dataSource:
@@ -892,7 +892,7 @@ ggxfGroups:
         gdalSource: NTv2:84:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: NWftgood
-      affineCoeffs: [66.33333333333334, 0.0, -0.008333333333333333, -128.83333333333334, 0.016666666666666666, 0.0]
+      affineCoeffs: [66.33333333333333, 0.0, -0.008333333333333333, -128.83333333333333, 0.016666666666666667, 0.0]
       iNodeCount: 21
       jNodeCount: 21
       dataSource:
@@ -900,7 +900,7 @@ ggxfGroups:
         gdalSource: NTv2:85:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: NWhayriv
-      affineCoeffs: [61.0, 0.0, -0.008333333333333333, -116.5, 0.016666666666666666, 0.0]
+      affineCoeffs: [61.0, 0.0, -0.008333333333333333, -116.5, 0.016666666666666667, 0.0]
       iNodeCount: 61
       jNodeCount: 61
       dataSource:
@@ -908,7 +908,7 @@ ggxfGroups:
         gdalSource: NTv2:86:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: NWinuvik
-      affineCoeffs: [68.5, 0.0, -0.008333333333333333, -133.83333333333334, 0.016666666666666666, 0.0]
+      affineCoeffs: [68.5, 0.0, -0.008333333333333333, -133.83333333333333, 0.016666666666666667, 0.0]
       iNodeCount: 31
       jNodeCount: 41
       dataSource:
@@ -916,7 +916,7 @@ ggxfGroups:
         gdalSource: NTv2:87:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: NWiqulit
-      affineCoeffs: [63.99999999999999, 0.0, -0.008333333333333333, -69.0, 0.016666666666666666, 0.0]
+      affineCoeffs: [63.99999999999999, 0.0, -0.008333333333333333, -69.0, 0.016666666666666667, 0.0]
       iNodeCount: 61
       jNodeCount: 61
       dataSource:
@@ -924,7 +924,7 @@ ggxfGroups:
         gdalSource: NTv2:88:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: NWpondin
-      affineCoeffs: [72.75, 0.0, -0.008333333333333333, -78.16666666666666, 0.016666666666666666, 0.0]
+      affineCoeffs: [72.75, 0.0, -0.008333333333333333, -78.16666666666667, 0.016666666666666667, 0.0]
       iNodeCount: 41
       jNodeCount: 21
       dataSource:
@@ -932,7 +932,7 @@ ggxfGroups:
         gdalSource: NTv2:89:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: NWrankin
-      affineCoeffs: [62.916666666666664, 0.0, -0.008333333333333333, -92.16666666666666, 0.016666666666666666, 0.0]
+      affineCoeffs: [62.916666666666667, 0.0, -0.008333333333333333, -92.16666666666667, 0.016666666666666667, 0.0]
       iNodeCount: 11
       jNodeCount: 21
       dataSource:
@@ -940,7 +940,7 @@ ggxfGroups:
         gdalSource: NTv2:90:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: NWyellow
-      affineCoeffs: [62.5, 0.0, -0.008333333333333333, -114.5, 0.016666666666666666, 0.0]
+      affineCoeffs: [62.5, 0.0, -0.008333333333333333, -114.5, 0.016666666666666667, 0.0]
       iNodeCount: 11
       jNodeCount: 11
       dataSource:
@@ -948,7 +948,7 @@ ggxfGroups:
         gdalSource: NTv2:91:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: YUdawson
-      affineCoeffs: [64.16666666666667, 0.0, -0.008333333333333333, -139.5, 0.016666666666666666, 0.0]
+      affineCoeffs: [64.16666666666667, 0.0, -0.008333333333333333, -139.5, 0.016666666666666667, 0.0]
       iNodeCount: 11
       jNodeCount: 21
       dataSource:
@@ -956,7 +956,7 @@ ggxfGroups:
         gdalSource: NTv2:111:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: YUrossri
-      affineCoeffs: [62.08333333333333, 0.0, -0.008333333333333333, -132.58333333333334, 0.016666666666666666, 0.0]
+      affineCoeffs: [62.08333333333333, 0.0, -0.008333333333333333, -132.58333333333333, 0.016666666666666667, 0.0]
       iNodeCount: 11
       jNodeCount: 21
       dataSource:
@@ -964,7 +964,7 @@ ggxfGroups:
         gdalSource: NTv2:112:NTV2_0.GSB
         parameterTransformations: *id001
     - gridName: YUwhiteh
-      affineCoeffs: [60.75, 0.0, -0.008333333333333333, -135.08333333333334, 0.016666666666666666, 0.0]
+      affineCoeffs: [60.75, 0.0, -0.008333333333333333, -135.08333333333333, 0.016666666666666667, 0.0]
       iNodeCount: 6
       jNodeCount: 11
       dataSource:
