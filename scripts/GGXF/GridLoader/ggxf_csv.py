@@ -57,8 +57,11 @@ class SpaceDelimitedFile:
     def __init__(self, fh):
         self._fh = fh
 
+    def __iter__(self):
+        return self
+    
     def __next__(self):
-        data = self.readline()
+        data = next(self._fh)
         if data == "":
             raise StopIteration
         return data.split()
