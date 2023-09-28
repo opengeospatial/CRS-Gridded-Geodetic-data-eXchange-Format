@@ -56,9 +56,9 @@ ggxfGroups:
     interpolationMethod: biquadratic
     grids:
       - gridName: "puerto_rico_virgin_islands_geoid18"
-        affineCoeffs: [15.0, 0.0, 0.016666666666667, -69.0, 0.016666666666667, 0.0]
-        iNodeCount: 301
-        jNodeCount: 361
+        affineCoeffs: [15.0, 0.016666666666667, 0.0, -69.0, 0.0, 0.016666666666667]
+        iNodeCount: 361
+        jNodeCount: 301
         comment: "grid starts in the bottom left (southwest) corner and works across (east) and up (north)"
         dataSource: 
           dataSourceType: "ggxf-csv"

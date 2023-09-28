@@ -1,0 +1,71 @@
+ggxfVersion: GGXF-1.0
+content: geographic2dOffsets
+title: Catalino Canyon transformation
+version: 2022-06
+abstract: Example transformation constructed for purposes of illustration.
+filename: GGXFspec-E1.3.yaml
+digitalObjectIdentifier: https://doi.org/10.1000/182
+contentApplicabilityExtent:
+  extentDescription: Italy - Mediterranean Sea west of Sardinia - Catalano Canyon.
+  boundingBox:
+    southBoundLatitude: 39.9
+    westBoundLongitude: 7.6
+    northBoundLatitude: 40.15
+    eastBoundLongitude: 7.87
+  boundingPolygon: >-
+    Polygon(( 40.09, 7.72, 40.12, 7.71, 39.92, 7.84, 39.93, 7.64, 40.05, 7.64, 40.09,
+    7.72 ))
+interpolationCrsWkt: |
+  GEOGCRS["ED50",
+    DATUM["European Datum 1950",
+      ELLIPSOID["International 1924",6378388,297,LENGTHUNIT["metre",1]]],
+    CS[ellipsoidal,2],
+    AXIS["Geodetic latitude (Lat)",north],AXIS["Geodetic longitude (Lon)",east],
+    ANGLEUNIT["degree",0.0174532925199433]]
+sourceCrsWkt: |
+  GEOGCRS["ED50",
+    DATUM["European Datum 1950",
+      ELLIPSOID["International 1924",6378388,297,LENGTHUNIT["metre",1]]],
+    CS[ellipsoidal,2],
+    AXIS["Geodetic latitude (Lat)",north],AXIS["Geodetic longitude (Lon)",east],
+    ANGLEUNIT["degree",0.0174532925199433]]
+targetCrsWkt: |
+  GEOGCRS["ETRF2000",
+    DATUM["European Terrestrial Reference Frame 2000",
+      ELLIPSOID["GRS 1980",6378137,298.257222101,LENGTHUNIT["metre",1]]],
+    CS[ellipsoidal,2],
+    AXIS["Geodetic latitude (Lat)",north],
+    AXIS["Geodetic longitude (Lon)",east],
+    ANGLEUNIT["degree",0.0174532925199433]]
+operationAccuracy: 2
+parameters:
+- parameterName: latitudeOffset
+  parameterSet: offset
+  sourceCrsAxis: 0
+  unitName: arc-second
+  unitSiRatio: 4.84813681109536e-06
+- parameterName: longitudeOffset
+  parameterSet: offset
+  sourceCrsAxis: 1
+  unitName: arc-second
+  unitSiRatio: 4.84813681109536e-06
+ggxfGroups:
+- ggxfGroupName: Catalano_Canyon
+  interpolationMethod: bilinear
+  grids:
+  - gridName: South
+    affineCoeffs: [40.0, -0.05, 0.0, 7.6, 0.0, 0.0666666666666667]
+    iNodeCount: 3
+    jNodeCount: 5
+    dataSource:
+      dataSourceType: ggxf-csv
+      gridFilename: Catalano_Canyon_South.csv
+      separator: comma
+  - gridName: North
+    affineCoeffs: [40.15, -0.05, 0.0, 7.6, 0.0, 0.1]
+    iNodeCount: 4
+    jNodeCount: 3
+    dataSource:
+      dataSourceType: ggxf-csv
+      gridFilename: Catalano_Canyon_North.txt
+      separator: space

@@ -63,9 +63,9 @@ ggxfGroups:
       interpolationMethod: bilinear
       grids:
           - gridName: "SA geoid 2010"
-            iNodeCount: 409
-            jNodeCount: 313
-            affineCoeffs: [-35.0, 0.0, 0.04166666666667, 16.0, 0.04166666666667, 0.0]
+            iNodeCount: 313
+            jNodeCount: 409
+            affineCoeffs: [-35.0, 0.04166666666667, 0.0, 16.0, 0.0, 0.04166666666667]
             data: [ 26.055, 26.121, 3.866,  3.826 ]
 
 

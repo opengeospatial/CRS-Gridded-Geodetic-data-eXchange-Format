@@ -43,7 +43,20 @@ group: Catalano_Canyon {
 
   group: South {
     dimensions:
-    	iNodeCount = 5 ;
+    	iNodeCount = 3 ;
+    	jNodeCount = 5 ;
+    variables:
+    	float offset(iNodeCount, jNodeCount, offsetCount) ;
+    		offset:_Storage = "contiguous" ;
+    		offset:_Endianness = "little" ;
+
+    // group attributes:
+    		:affineCoeffs = 40., -0.05, 0., 7.6, 0., 0.0666666666666667 ;
+    } // group South
+
+  group: North {
+    dimensions:
+    	iNodeCount = 4 ;
     	jNodeCount = 3 ;
     variables:
     	float offset(iNodeCount, jNodeCount, offsetCount) ;
@@ -51,20 +64,7 @@ group: Catalano_Canyon {
     		offset:_Endianness = "little" ;
 
     // group attributes:
-    		:affineCoeffs = 40., 0., -0.05, 7.6, 0.0666666666666667, 0. ;
-    } // group South
-
-  group: North {
-    dimensions:
-    	iNodeCount = 3 ;
-    	jNodeCount = 4 ;
-    variables:
-    	float offset(iNodeCount, jNodeCount, offsetCount) ;
-    		offset:_Storage = "contiguous" ;
-    		offset:_Endianness = "little" ;
-
-    // group attributes:
-    		:affineCoeffs = 40.15, 0., -0.05, 7.6, 0.1, 0. ;
+    		:affineCoeffs = 40.15, -0.05, 0., 7.6, 0., 0.1 ;
     } // group North
   } // group Catalano_Canyon
 }

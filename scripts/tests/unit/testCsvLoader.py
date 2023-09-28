@@ -21,20 +21,20 @@ class CsvLoaderTest(unittest.TestCase):
             "parameterFields": ["displacementEast", "displacementNorth"],
         }
         (data, size, affine) = CSV.LoadGrid({}, csvsource, None)
-        shapeExpected = (40, 43)
+        shapeExpected = (43, 40)
         self.assertEqual(
             size,
             shapeExpected,
             f"Grid size - expected {shapeExpected} but got {size}",
         )
-        affineExpected = [-38.625, -0.125, 0.0, 171.1, 0.0, 0.15]
+        affineExpected = [-38.625, 0.0, -0.125, 171.1, 0.15, 0.0]
         diff = max(np.abs(np.array(affine) - np.array(affineExpected)))
         self.assertTrue(
             diff < 0.000001,
             f"Affine transformation: expected {affineExpected} but got {affine}",
         )
         shape = tuple((int(n) for n in data.shape))
-        shapeExpected = (40, 43)
+        shapeExpected = (43, 40)
         self.assertEqual(
             size,
             shapeExpected,

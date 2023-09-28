@@ -62,9 +62,9 @@ ggxfGroups:
       interpolationMethod: bilinear
       grids:
           - gridName: "SA geoid 2010"
-            affineCoeffs: [-35.0, 0.0, 0.04166666666667, 16.0, 0.04166666666667, 0.0]
-            iNodeCount: 409
-            jNodeCount: 313
+            affineCoeffs: [-35.0, 0.04166666666667, 0.0, 16.0, 0.0, 0.04166666666667]
+            iNodeCount: 313
+            jNodeCount: 409
             dataSource: 
               gridFilename: "SAGeoid2010_Dataset.csv"
               dataSourceType: ggxf-csv

@@ -823,7 +823,7 @@ ggxfGroups:
           dataSourceType: GDAL
           gdalSource: GTIFF_DIR:13:nz_linz_nzgd2000-ka20161114-grid02.tif
       - gridName: patch_ka_20161114_grid_ka_20161114co_h_l4_r_07
-        affineCoeffs: [-42.044921875,0.0,-0.001953125,173.50234375,0.0023437500000014,0.0]
+        affineCoeffs: [-42.044921875,0.0,-0.001953125,173.50234375,0.00234375,0.0]
         iNodeCount: 9
         jNodeCount: 6
         dataSource:

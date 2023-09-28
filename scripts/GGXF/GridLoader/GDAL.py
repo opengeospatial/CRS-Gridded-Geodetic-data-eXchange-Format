@@ -105,10 +105,8 @@ def LoadGrid(group, datasource, logger):
         raise GdalLoaderError("No GDAL grid source specified")
     elif len(griddata) == 1:
         data = np.vstack(griddata)
-
-    # The YAML Reader expects axes in order j,i,p so shift parameter axis
-    # tothe back
-    data = np.moveaxis(data, 0, -1)
+    # Convert from GDAL ordering to GGXF ordering
+    data = np.swapaxes(data, 0, 2)
 
     logger.debug(f"GdalLoader: Loaded {gdalsource}")
     logger.debug(f"GdalLoader: size {gridsize}")
@@ -124,8 +122,8 @@ def GdalDatasetMapping(dataset):
     # Get transformation affine coefficients
     affine = [float(c) for c in dataset.GetGeoTransform()]
     # Convert raster to point georeferencing
-    affine[0] += affine[1] / 2.0
-    affine[3] += affine[5] / 2.0
+    affine[0] += (affine[1] + affine[2]) / 2.0
+    affine[3] += (affine[4] + affine[5]) / 2.0
     # Check the data to CRS mapping and adjust affine if swapped.
     mapping = dataset.GetSpatialRef().GetDataAxisToSRSAxisMapping()
 
