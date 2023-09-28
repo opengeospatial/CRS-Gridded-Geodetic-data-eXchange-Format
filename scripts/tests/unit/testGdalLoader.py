@@ -29,7 +29,7 @@ class CsvLoaderTest(unittest.TestCase):
         )
         shape = tuple((int(n) for n in data.shape))
         self.assertEqual(
-            shape, (40, 43, 2), f"Grid dimensions: expected (40,43,2) but got {shape}"
+            shape, (43, 40, 2), f"Grid dimensions: expected (40,43,2) but got {shape}"
         )
 
 

@@ -25,10 +25,6 @@ netcdf test-inline-out {
 		:city = "A city" ;
 		:postalCode = "99999" ;
 		:country = "United States of America" ;
-		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
-		:_SuperblockVersion = 2 ;
-		:_IsNetcdf4 = 1 ;
-		:_Format = "netCDF-4" ;
 
 group: default {
 
@@ -41,8 +37,6 @@ group: default {
     	jNodeCount = 3 ;
     variables:
     	float geoidHeight(iNodeCount, jNodeCount) ;
-    		geoidHeight:_Storage = "contiguous" ;
-    		geoidHeight:_Endianness = "little" ;
 
     // group attributes:
     		:affineCoeffs = 22.5, 0.7, 0., -69., 0., 1. ;

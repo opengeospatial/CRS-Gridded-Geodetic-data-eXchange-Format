@@ -36,6 +36,12 @@ for testfile in "$prefix"*.test; do (
         done
         # Remove binary ggxf files - will use CDL for confirmation of content
         rm -f *.ggxf
+        # Remove potentially incompatible NetCDF generated attributes from cdl
+        for f in *.cdl; do
+            if [ "$f" != "*.cdl" ]; then
+                sed -i '/:_/ d' $f
+            fi
+        done
     )
 
     # Check the output files match the check
