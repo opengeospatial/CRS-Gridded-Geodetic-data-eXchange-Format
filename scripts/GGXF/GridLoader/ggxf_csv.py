@@ -59,7 +59,7 @@ class SpaceDelimitedFile:
 
     def __iter__(self):
         return self
-    
+
     def __next__(self):
         data = next(self._fh)
         if data == "":
@@ -179,7 +179,7 @@ def LoadCsvGrid(
 
     if data.shape[0] != ni * nj:
         raise CsvLoaderError(
-            f"CSV file {filename} doesn't contain a regular grid - expect {nj}x{ni}={nj*ni} rows"
+            f"CSV file {filename} doesn't contain a regular grid - expect {ni}x{nj}={ni*nj} rows"
         )
 
     # Calculate affine coefficients assuming grid is aligned with axes
