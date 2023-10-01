@@ -144,6 +144,8 @@ def loadGgxfInputFile(args):
         raise RuntimeError(
             f"GGXF filename {ggxf_file} must have extension .yaml or .ggxf (NetCDF)"
         )
+    if args.debug:
+        ggxf.setDebug()
     return ggxf
 
 
