@@ -1,0 +1,151 @@
+ggxfVersion: GGXF-1.0
+filename: def2.yaml
+version: '20180701'
+content: deformationModel
+title: New Zealand Deformation Model.
+abstract: "Defines the secular model (National Deformation Model)\nand patches for\
+  \ significant deformation events since 2000.\n"
+partyName: Land Information New Zealand
+deliveryPoint: "Level 7, Radio New Zealand House\n155 The Terrace\nPO Box 5501\n"
+city: Wellington
+postalCode: '6145'
+electronicMailAddress: customersupport@linz.govt.nz
+onlineResourceLinkage: "https://www.linz.govt.nz/nzgd2000"
+publicationDate: '2018-07-01'
+contentApplicabilityExtent:
+  extentDescription: New Zealand EEZ
+  boundingBox:
+    southBoundLatitude: -55.94
+    westBoundLongitude: 160.62
+    northBoundLatitude: -25.89
+    eastBoundLongitude: -171.23
+  extentTemporal:
+    startDate: '1900-01-01'
+    endDate: '2050-01-01'
+sourceCrsWkt: "GEOGCRS[\"NZGD2000\",DATUM[\"New Zealand Geodetic Datum 2000\",ELLIPSOID[\"\
+  GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\"\
+  ,7019]],ID[\"EPSG\",6167]],CS[ellipsoidal,3,ID[\"EPSG\",6423]],AXIS[\"Geodetic latitude\
+  \ (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9102]]],AXIS[\"\
+  Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\"\
+  ,9102]]],AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],ID[\"\
+  EPSG\",4959]]"
+targetCrsWkt: "GEOGCRS[\"ITRF96\", DYNAMIC[FRAMEEPOCH[1997.0]],DATUM[\"International\
+  \ Terrestrial Reference Frame 1996\",ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"\
+  metre\",1,ID[\"EPSG\",9001]],ID[\"EPSG\",7019]],ID[\"EPSG\",6654]],CS[ellipsoidal,3,ID[\"\
+  EPSG\",6423]],AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"\
+  EPSG\",9102]]],AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"\
+  EPSG\",9102]]],AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1,ID[\"EPSG\"\
+  ,9001]]],ID[\"EPSG\",7907]]"
+interpolationCrsWkt: "GEOGCRS[\"NZGD2000\",DATUM[\"New Zealand Geodetic Datum 2000\"\
+  ,ELLIPSOID[\"GRS 1980\",6378137,298.2572221,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]],ID[\"\
+  EPSG\",7019]],ID[\"EPSG\",6167]],CS[ellipsoidal,2,ID[\"EPSG\",6422]],AXIS[\"Geodetic\
+  \ latitude (Lat)\",north],AXIS[\"Geodetic longitude (Lon)\",east],ANGLEUNIT[\"degree\"\
+  ,0.0174532925199433,ID[\"EPSG\",9102]],ID[\"EPSG\",4167]]"
+parameters:
+- parameterName: displacementEast
+  parameterSet: displacement
+  unitName: metre
+  unitSiRatio: 1.0
+  sourceCrsAxis: 1
+  noDataFlag: 9999.0
+- parameterName: displacementNorth
+  parameterSet: displacement
+  unitName: metre
+  unitSiRatio: 1.0
+  sourceCrsAxis: 0
+  noDataFlag: 9999.0
+- parameterName: displacementUp
+  parameterSet: displacement
+  unitName: metre
+  unitSiRatio: 1.0
+  sourceCrsAxis: 2
+  noDataFlag: 9999.0
+- parameterName: "displacementHorizontalUncertainty"
+  parameterSet: displacementUncertainty
+  unitName: metre
+  unitSiRatio: 1.0
+  uncertaintyMeasure: 2CEP
+  noDataFlag: 999.0
+- parameterName: displacementUpUncertainty
+  parameterSet: displacementUncertainty
+  unitName: metre
+  unitSiRatio: 1.0
+  uncertaintyMeasure: 2SE
+  noDataFlag: 999.0
+operationAccuracy: 0.01
+ggxfGroups:
+- 
+  ggxfGroupName: secular-vertical-velocity
+  interpolationMethod: bilinear
+  gridParameters:
+  - displacementUp
+  constantParameters:
+  - parameterName: displacementUpUncertainty
+    parameterValue: 0.001
+  timeFunctions:
+  - functionType: velocity
+    functionReferenceDate: '2000-01-01T00:00:00Z'
+  grids:
+  - 
+    gridName: national-vertical-velocity-grid
+    affineCoeffs:
+    - -41.6
+    - 0.0
+    - 0.4
+    - 172.6
+    - 0.6
+    - 0.0
+    iNodeCount: 4
+    jNodeCount: 3
+    dataSource:
+      dataSourceType: ggxf-csv
+      gridFilename: "def2-nationalverticalvelocitygrid01.csv"
+- 
+  ggxfGroupName: co-and-post-seismic-deformation
+  comment: Hypothetical earthquake
+  interpolationMethod: bilinear
+  gridParameters:
+  - displacementEast
+  - displacementNorth
+  - displacementUp
+  timeFunctions:
+  - functionType: ramp
+    startDate: '2009-07-15T00:00:00Z'
+    endDate: '2009-07-15T00:00:00Z'
+    functionReferenceDate: '2011-09-01T00:00:00Z'
+    scaleFactor: 1.05
+  - functionType: ramp
+    startDate: '2009-07-15T00:00:00Z'
+    endDate: '2011-09-01T00:00:00Z'
+    functionReferenceDate: '2011-09-01T00:00:00Z'
+    scaleFactor: 0.29
+  grids:
+  - 
+    gridName: far-field-deformation-grid
+    affineCoeffs:
+    - -40.6
+    - 0.0
+    - 0.4
+    - 171.6
+    - 0.6
+    - 0.0
+    iNodeCount: 6
+    jNodeCount: 5
+    dataSource:
+      dataSourceType: ggxf-csv
+      gridFilename: "def2-farfielddeformationgrid01.csv"
+    childGrids:
+    - 
+      gridName: near-field-deformation-grid
+      affineCoeffs:
+      - -40.2
+      - 0.0
+      - 0.2
+      - 172.2
+      - 0.2
+      - 0.0
+      iNodeCount: 3
+      jNodeCount: 5
+      dataSource:
+        dataSourceType: ggxf-csv
+        gridFilename: "def2-nearfielddeformationgrid01.csv"

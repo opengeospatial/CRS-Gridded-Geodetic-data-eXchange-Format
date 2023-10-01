@@ -53,6 +53,8 @@ class GGXF:
     def setDebug(self, debug: bool = True):
         self._debug = debug
         self._logger.setLevel(logging.DEBUG if debug else logging.WARNING)
+        for group in self._groups:
+            group.setDebug(debug)
 
     def configure(self, errorhandler=None):
         self._singleGroup = len(self._groups) == 1
@@ -221,6 +223,11 @@ class GridList:
     def metadata(self):
         return self._metadata
 
+    def setDebug(self, debug: bool = True):
+        self._debug = debug
+        for grid in self._grids:
+            grid.setDebug(debug)
+
     def addGrid(self, grid: Grid):
         gridPriority = grid.priority()
         for sibling in self._grids:
@@ -289,6 +296,7 @@ class Group(GridList):
         self._needEpoch = ggxf.needEpoch()
         self._cacheEpoch = ()
         self._cacheFactor = None
+        self._debug = False
 
     def parameterNames(self):
         return self._parameterNames
@@ -358,13 +366,20 @@ class Group(GridList):
         grid = self.gridAt(xy)
         if grid is None:
             return None
-        if self._ggxf._debug:
+        if self._debug:
             self._ggxf._logger.debug(
                 f"{self._name}: grid at {xy}: {grid.id()} {grid.name()}"
             )
         value = self._interpolator(grid, xy)
+        if self._debug:
+            self._ggxf._logger.debug(f"{self._name}: value at {xy}: {value}")
         if self._needEpoch:
-            value *= self.timeFactorAt(epoch, refepoch)
+            timeFactor = self.timeFactorAt(epoch, refepoch)
+            if self._debug:
+                self._ggxf._logger._debug(
+                    f"{self.name}: time factor at {epoch} {refepoch}: {timeFactor:.4f}"
+                )
+            value *= timeFactor
         result = self._zero.copy()
         result[self._parameterMap] = value
         return result
@@ -435,6 +450,7 @@ class Grid(GridList):
         self._tolerance = np.sqrt(np.sum(diff * diff)) * self.TOLERANCE_RATIO
         self._xmin, self._ymin = range.min(axis=0)
         self._xmax, self._ymax = range.max(axis=0)
+        self._debug = False
 
         self._data = None
         if data is not None:
@@ -563,6 +579,10 @@ class GridInterpolator:
         # - determine which cell the point is in and the position cellxy of the point in the cell
         # (x,y coordinates ranging from 0 to 1)
         cellij, cellxy = grid.cellij(xy)
+        if grid._debug:
+            grid._group._ggxf._logger.debug(
+                f"{grid._name}: i,j={cellij[0]+cellxy[0]:.02f},{cellij[1]+cellxy[1]:.02f}"
+            )
         data = grid.data()
         crnr = np.array([[0, 0], [0, 1], [1, 1], [1, 0]])
         # Determine the interpolation factors to multiply each node values by
@@ -584,6 +604,10 @@ class GridInterpolator:
         # - determine which cell the point is in and the position cellxy of the point in the cell
         # (x,y coordinates ranging from 0 to 1)
         cellij, cellxy = grid.cellij(xy)
+        if grid._debug:
+            grid._group._ggxf._logger.debug(
+                f"{grid._name}: i,j={cellij[0]+cellxy[0]:.02f},{cellij[1]+cellxy[1]:.02f}"
+            )
         gridsize = grid.size()
         data = grid.data()
         if gridsize[0] < 3 or gridsize[1] < 3:
@@ -629,6 +653,10 @@ class GridInterpolator:
         # - determine which cell the point is in and the position cellxy of the point in the cell
         # (x,y coordinates ranging from 0 to 1)
         cellij, cellxy = grid.cellij(xy)
+        if grid._debug:
+            grid._group._ggxf._logger.debug(
+                f"{grid._name}: i,j={cellij[0]+cellxy[0]:.02f},{cellij[1]+cellxy[1]:.02f}"
+            )
         gridsize = grid.size()
         data = grid.data()
         if gridsize[0] < 4 or gridsize[1] < 4:

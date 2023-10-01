@@ -36,6 +36,7 @@ NETCDF_OPTION_PACK_PRECISION = "packing-precision"
 NETCDF_CDL_OPTION_FULL = "full"
 NETCDF_CDL_OPTION_HEADER = "header"
 NETCDF_CDL_OPTION_NONE = "none"
+NETCDF_CDL_CLEAN_SUFFIX = "-clean" # Version for testing, header then remove NetCDF generated attributes
 
 NETCDF_CONVENTIONS_ATTRIBUTE = "Conventions"
 NETCDF_CONVENTIONS_VALUE = "{ggxfVersion}, ACDD-1.3"
@@ -399,6 +400,10 @@ class Writer(BaseWriter):
         cdloption = self.getOption(
             NETCDF_OPTION_WRITE_CDL, NETCDF_CDL_OPTION_NONE
         ).lower()
+        cleancdl=False
+        if cdloption.endswith(NETCDF_CDL_CLEAN_SUFFIX):
+            cdloption = cdloption[:-len(NETCDF_CDL_CLEAN_SUFFIX)]
+            cleancdl=True
         if cdloption == NETCDF_CDL_OPTION_FULL or cdloption == NETCDF_CDL_OPTION_HEADER:
             root = netCDF4.Dataset(netcdf4_file, "r", format="NETCDF4")
             cdl_file = os.path.splitext(netcdf4_file)[0] + ".cdl"
@@ -414,6 +419,14 @@ class Writer(BaseWriter):
                 )
             if createcdl:
                 root.tocdl(data=data, outfile=cdl_file)
+                if cleancdl and os.path.exists(cdl_file):
+                    cdldata=[]
+                    for line in open(cdl_file):
+                        if not re.match(r"^\s+\:_[A-Z]",line):
+                            cdldata.append(line)
+                    with open(cdl_file,"w") as cdlh:
+                        for line in cdldata:
+                            cdlh.write(line)
 
     def saveGgxfNetCdf4(self, root, ggxf):
         nctypes = {}

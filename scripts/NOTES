@@ -1,0 +1,28 @@
+ggxf utility plan
+
+
+ggxf convert
+ggxf import
+ggxf metadata-template
+ggxf describe
+ggxf calculate
+ggxf validate?
+ggxf extract?
+
+import uses 
+import-formats.yaml, defining 
+    * specific formats, ntv2, isg, ... with description, GDAL driver, parameters, metadata if possible, 
+import-config.yaml 
+    * default parameters for content types
+    * parameters with default units
+    * units with si conversion
+    created from ggxf schema
+metadata.yaml
+  import uses metadata.yaml with template discovery metadata.  Can be exported for user to amend with metadata-template.  
+  metadata content created from ggxf-schema (metadata field in GGXF entries).  Possibly generate some of import-config
+ 
+Import can use --metadata user-file to set metadata.
+
+implement import as another GGXF Reader module
+
+describe includes option for --grid-extent-csv
