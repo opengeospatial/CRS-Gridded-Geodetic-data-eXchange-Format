@@ -21,6 +21,8 @@ YAML_OPTION_CHECK_DATASOURCE_AFFINE = "check-datasource-affine-coeffs"
 YAML_OPTION_WRITE_HEADERS_ONLY = "write-headers-only"
 YAML_OPTION_WRITE_CSV_GRIDS = "write-csv-grids"
 YAML_OPTION_WRITE_CSV_COORDS = "write-csv-node-coordinates"
+YAML_OPTION_WRITE_CSV_NODE_INDICES = "write-csv-node-indices"
+
 
 # Option for testing yaml headers without requiring valid grid data
 YAML_OPTION_CREATE_DUMMY_GRID_DATA = "create-dummy-grid-data"
@@ -30,12 +32,23 @@ YAML_AFFINE_COEFF_DIFFERENCE_TOLERANCE = 1.0e-6
 YAML_OPTION_GRID_DTYPE = "grid_dtype"
 YAML_DTYPE_FLOAT32 = "float32"
 YAML_DTYPE_FLOAT64 = "float64"
+YAML_DTYPE_DEFAULT = "float32"
 
 YAML_MAX_SIMPLE_STRING_LEN = 64
 YAML_STR_TAG = "tag:yaml.org,2002:str"
 YAML_MAP_TAG = "tag:yaml.org,2002:map"
 YAML_SEQ_TAG = "tag:yaml.org,2002:seq"
 
+YAML_ALL_OPTIONS = {
+    YAML_OPTION_GRID_DIRECTORY,
+    YAML_OPTION_CHECK_DATASOURCE_AFFINE,
+    YAML_OPTION_WRITE_HEADERS_ONLY,
+    YAML_OPTION_WRITE_CSV_GRIDS,
+    YAML_OPTION_WRITE_CSV_COORDS,
+    YAML_OPTION_WRITE_CSV_NODE_INDICES,
+    YAML_OPTION_CREATE_DUMMY_GRID_DATA,
+    YAML_OPTION_GRID_DTYPE,
+}
 
 YAML_READ_OPTIONS = f"""
   "{YAML_OPTION_GRID_DIRECTORY}" Base directory (relative to YAML file) used for grid files
@@ -46,6 +59,7 @@ YAML_WRITE_OPTIONS = f"""
   "{YAML_OPTION_GRID_DIRECTORY}" Base directory (relative to YAML file) used for grid files
   "{YAML_OPTION_WRITE_CSV_GRIDS}" Write grids to external ggxf-csv grids (true or false, default true)
   "{YAML_OPTION_WRITE_CSV_COORDS}" Write node coordinates in CSV (true or false, default true)
+  "{YAML_OPTION_WRITE_CSV_NODE_INDICES}" Write node indices in CSV (true or false, default false)
   "{YAML_OPTION_WRITE_HEADERS_ONLY}" Write headers only - omit the grid data
 """
 
@@ -75,7 +89,14 @@ class Reader(BaseReader):
 
     def __init__(self, options=None):
         BaseReader.__init__(self, options)
-        dtype = self.getOption(YAML_OPTION_GRID_DTYPE, YAML_DTYPE_FLOAT32)
+        invalid = [option for option in self._options if option not in YAML_ALL_OPTIONS]
+        if invalid:
+            raise Error(f"Invalid YAML option {','.join(invalid)}")
+        dtype = self.getOption(YAML_OPTION_GRID_DTYPE, YAML_DTYPE_DEFAULT)
+        if dtype not in (YAML_DTYPE_FLOAT32, YAML_DTYPE_FLOAT64):
+            raise Error(
+                f"Invalid value {dtype} for {YAML_OPTION_GRID_DTYPE}: must be {YAML_DTYPE_FLOAT32} or {YAML_DTYPE_FLOAT64}"
+            )
         self._dtype = dtype = np.float64 if dtype == YAML_DTYPE_FLOAT64 else np.float32
         self._useDummyGridData = self.getBoolOption(
             YAML_OPTION_CREATE_DUMMY_GRID_DATA, False
@@ -404,6 +425,9 @@ class Writer(BaseWriter):
 
     def __init__(self, options=None):
         BaseWriter.__init__(self, options)
+        invalid = [option for option in self._options if option not in YAML_ALL_OPTIONS]
+        if invalid:
+            raise Error(f"Invalid YAML option {','.join(invalid)}")
         self._logger = logging.getLogger("GGXF.YamlWriter")
 
     def write(self, ggxf, yaml_file):
@@ -417,6 +441,7 @@ class Writer(BaseWriter):
         self._headerOnly = self.getBoolOption(YAML_OPTION_WRITE_HEADERS_ONLY, False)
         self._csvGrids = self.getBoolOption(YAML_OPTION_WRITE_CSV_GRIDS, True)
         self._csvCoords = self.getBoolOption(YAML_OPTION_WRITE_CSV_COORDS, True)
+        self._csvIndices = self.getBoolOption(YAML_OPTION_WRITE_CSV_NODE_INDICES, False)
         self._csvFileTemplate = os.path.splitext(yaml_file)[0] + "-{csvid}.csv"
         self._csvFileGridNames = {}
         self._crdFormat = f"{{:{CSV_COORDINATE_FORMAT}}}".format
@@ -475,21 +500,24 @@ class Writer(BaseWriter):
             # Consider using numpy.savetxt in the future...
             with open(filename, "w") as csvh:
                 csvw = csv.writer(csvh)
-                header = (
-                    grid.group().ggxf().nodeCoordinateParameters()
-                    if self._csvCoords
-                    else []
-                )
+                header = []
+                if self._csvIndices:
+                    header.extend(("i", "j"))
+                if self._csvCoords:
+                    header.extend(grid.group().ggxf().nodeCoordinateParameters())
                 csvw.writerow((*header, *grid.group().parameterNames()))
                 shape = data.shape
                 crd = []
+                indices = []
                 for inode in range(shape[0]):
                     for jnode in range(shape[1]):
+                        if self._csvIndices:
+                            indices = [str(inode), str(jnode)]
                         if self._csvCoords:
                             xy = grid.calcxy([inode, jnode])
                             crd = [self._crdFormat(c) for c in xy]
                         prm = [self._prmFormat(p) for p in data[inode, jnode]]
-                        csvw.writerow([*crd, *prm])
+                        csvw.writerow([*indices, *crd, *prm])
         except Exception as ex:
             self._logger.error(f"Error saving CSV grid file {filename}: {ex}")
 

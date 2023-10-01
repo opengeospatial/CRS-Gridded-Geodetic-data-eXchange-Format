@@ -47,6 +47,12 @@ NETCDF_ATTR_CONTEXT_GGXF = "ggxf"
 NETCDF_ATTR_CONTEXT_GROUP = "group"
 NETCDF_ATTR_CONTEXT_GRID = "grid"
 
+NETCDF_ALL_OPTIONS = {
+    NETCDF_OPTION_GRID_DTYPE,
+    NETCDF_OPTION_PACK_PRECISION,
+    NETCDF_OPTION_WRITE_CDL,
+}
+
 NETCDF_READ_OPTIONS = f"""
   "{NETCDF_OPTION_GRID_DTYPE}" Specifies the data type used for the grid ({", ".join(NETCDF_VALID_DTYPE_MAP.keys())})
 
@@ -110,6 +116,11 @@ class Reader(BaseReader):
 
     def __init__(self, options=None):
         BaseReader.__init__(self, options)
+        invalid = [
+            option for option in self._options if option not in NETCDF_ALL_OPTIONS
+        ]
+        if invalid:
+            raise Error(f"Invalid NetCDF option {','.join(invalid)}")
         self._logger = logging.getLogger("GGXF.NetCdfReader")
 
     def read(self, ggxf_file):
@@ -348,6 +359,11 @@ class Writer(BaseWriter):
 
     def __init__(self, options=None):
         BaseWriter.__init__(self, options)
+        invalid = [
+            option for option in self._options if option not in NETCDF_ALL_OPTIONS
+        ]
+        if invalid:
+            raise Error(f"Invalid NetCDF option {','.join(invalid)}")
         self._logger = logging.getLogger("GGXF.NetCdfWriter")
 
     def write(self, ggxf, netcdf4_file: str):
