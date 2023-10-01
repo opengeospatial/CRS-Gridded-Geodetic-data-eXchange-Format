@@ -43,10 +43,6 @@ netcdf GGXFspec-E3_no-data {
 		:parameters.3.unitName = "metre" ;
 		:parameters.3.unitSiRatio = 1. ;
 		:parameters.3.uncertaintyMeasure = "2SE" ;
-		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
-		:_SuperblockVersion = 2 ;
-		:_IsNetcdf4 = 1 ;
-		:_Format = "netCDF-4" ;
 
 group: National\ Transformation\ v2_0 {
   dimensions:
@@ -116,7 +112,7 @@ group: National\ Transformation\ v2_0 {
       		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
-      		:affineCoeffs = 43.416666666667, 0., -0.00833333333333333, -82.5833333333333, 0.00833333333333333, 0. ;
+      		:affineCoeffs = 43.4166666666667, 0., -0.00833333333333333, -82.5833333333333, 0.00833333333333333, 0. ;
       } // group ONsarnia
 
     group: ONwinsor {
@@ -132,7 +128,7 @@ group: National\ Transformation\ v2_0 {
       		offsetUncertainty:_Endianness = "little" ;
 
       // group attributes:
-      		:affineCoeffs = 42.4166666666667, 0., -0.00833333333333333, -83.1666666666667, 0.1, 0.00833333333333333 ;
+      		:affineCoeffs = 42.4166666666667, 0., -0.00833333333333333, -83.1666666666667, 0.00833333333333333, 0. ;
       } // group ONwinsor
     } // group CAeast
   } // group National\ Transformation\ v2_0

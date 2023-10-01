@@ -29,10 +29,6 @@ netcdf GGXFspec-E1 {
 		:parameters.1.sourceCrsAxis = 1LL ;
 		:parameters.1.unitName = "arc-second" ;
 		:parameters.1.unitSiRatio = 4.84813681109536e-06 ;
-		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
-		:_SuperblockVersion = 2 ;
-		:_IsNetcdf4 = 1 ;
-		:_Format = "netCDF-4" ;
 
 group: Catalano_Canyon {
   dimensions:

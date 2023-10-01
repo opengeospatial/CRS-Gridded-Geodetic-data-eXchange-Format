@@ -60,10 +60,6 @@ netcdf GGXFspec-E5_no-data {
 		:checkPoints.1.sourceCoordinateEpoch = 2018.3 ;
 		:checkPoints.1.targetCrsCoordinates = -50.756995292, 165.270992658, 49.2 ;
 		:checkPoints.1.targetCoordinateEpoch = 2018.3 ;
-		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
-		:_SuperblockVersion = 2 ;
-		:_IsNetcdf4 = 1 ;
-		:_Format = "netCDF-4" ;
 
 group: nz_linz_nzgd2000-ndm-grid02 {
   dimensions:

@@ -43,10 +43,6 @@ netcdf ca_ntv2 {
 		:parameters.3.unitSiRatio = 1. ;
 		:parameters.3.uncertaintyMeasure = "2SE" ;
 		:operationAccuracy = 1.5 ;
-		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
-		:_SuperblockVersion = 2 ;
-		:_IsNetcdf4 = 1 ;
-		:_Format = "netCDF-4" ;
 
 group: national_transformation_v2_0 {
   dimensions:

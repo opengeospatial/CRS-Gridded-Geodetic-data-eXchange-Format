@@ -48,10 +48,6 @@ netcdf GGXFspec-E5_parameterSet-removed_no-data {
 		:parameters.4.unitName = "metre" ;
 		:parameters.4.unitSiRatio = 1. ;
 		:parameters.4.uncertaintyMeasure = "2SE" ;
-		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
-		:_SuperblockVersion = 2 ;
-		:_IsNetcdf4 = 1 ;
-		:_Format = "netCDF-4" ;
 
 group: nz_linz_nzgd2000-ndm-grid02 {
 

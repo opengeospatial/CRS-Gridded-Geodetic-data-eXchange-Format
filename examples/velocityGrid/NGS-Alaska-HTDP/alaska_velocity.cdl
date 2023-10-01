@@ -34,10 +34,6 @@ netcdf alaska_velocity {
 		:parameters.2.unitName = "m/yr" ;
 		:parameters.2.unitSiRatio = 3.16887651727315e-08 ;
 		:operationAccuracy = 0.001 ;
-		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
-		:_SuperblockVersion = 2 ;
-		:_IsNetcdf4 = 1 ;
-		:_Format = "netCDF-4" ;
 
 group: alaska-grids {
   dimensions:

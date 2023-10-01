@@ -28,10 +28,6 @@ netcdf GGXFspec-E4_no-data {
 		:parameters.1.sourceCrsAxis = 0LL ;
 		:parameters.1.unitName = "m/yr" ;
 		:parameters.1.unitSiRatio = 3.16887651727315e-08 ;
-		:_NCProperties = "version=2,netcdf=4.9.0,hdf5=1.12.2" ;
-		:_SuperblockVersion = 2 ;
-		:_IsNetcdf4 = 1 ;
-		:_Format = "netCDF-4" ;
 
 group: national_velocity_model {
   dimensions:
