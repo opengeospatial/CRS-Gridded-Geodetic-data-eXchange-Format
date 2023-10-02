@@ -13,8 +13,7 @@ contentApplicabilityExtent:
     northBoundLatitude: 40.15
     eastBoundLongitude: 7.87
   boundingPolygon: >-
-    Polygon(( 40.09, 7.72, 40.12, 7.71, 39.92, 7.84, 39.93, 7.64, 40.05, 7.64, 40.09,
-    7.72 ))
+    Polygon(( 40.09 7.72, 40.12 7.71, 39.92 7.84, 39.93 7.64, 40.05 7.64, 40.09 7.72 ))
 interpolationCrsWkt: |
   GEOGCRS["ED50",
     DATUM["European Datum 1950",
