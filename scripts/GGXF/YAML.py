@@ -250,7 +250,7 @@ class Reader(BaseReader):
                         f"Grid {gridname}: {attr} {ygrid[attr]} differs from {inferredSize[axis]} in {datasource}"
                     )
             elif inferredSize[axis]:
-                ygrid[attr] = inferredSize[axis]
+                ygrid[attr] = int(inferredSize[axis])
             else:
                 self.error(
                     f"Grid {gridname}: {attr} is not defined and not inferrable from data source"
