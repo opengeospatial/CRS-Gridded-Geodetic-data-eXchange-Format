@@ -146,6 +146,10 @@ class GGXF:
                 result += value
         return result
 
+    def extents( self ):
+        grpext=np.array([g.extents() for g in self.groups()])
+        return [[grpext[:,0,0].min(),grpext[:,0,1].min()],[grpext[:,1,0].max(),grpext[:,1,1].max()]]
+
     def summary(self):
         metadata = self.metadata().copy()
         content = metadata.pop(GGXF_ATTR_CONTENT, "undefined")
@@ -399,6 +403,10 @@ class Group(GridList):
         self._cacheEpoch = calcepoch
         self._cacheFactor = factor
         return factor
+
+    def extents( self ):
+        grdext=np.array([g.extents() for g in self.grids()])
+        return [[grdext[:,0,0].min(),grdext[:,0,1].min()],[grdext[:,1,0].max(),grdext[:,1,1].max()]]
 
     def summary(self):
         summary = self.metadata().copy()

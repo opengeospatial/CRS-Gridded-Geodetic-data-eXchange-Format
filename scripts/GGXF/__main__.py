@@ -264,12 +264,16 @@ Parameters: {", ".join((p.name() for p in ggxf.parameters()))}
 interpolation CRS: {crsWktSummary(ggxf.metadata(GGXF_ATTR_INTERPOLATION_CRS_WKT))}
 source CRS: {crsWktSummary(ggxf.metadata(GGXF_ATTR_SOURCE_CRS_WKT))}
 target CRS: {crsWktSummary(ggxf.metadata(GGXF_ATTR_TARGET_CRS_WKT))}
-extent: {extentDescription(ggxf)}
+applicableExtent: {extentDescription(ggxf)}
+gridExtents: {totalGridExtents(ggxf)}
 ggxfGroups: {len(list(ggxf.groups()))}
 grids: {len(list(ggxf.allgrids()))}
 """
     )
 
+def totalGridExtents(ggxf):
+    ext=ggxf.extents()
+    return f"X {ext[0][0]:.3f} - {ext[1][0]:.3f},  Y {ext[0][1]:.3f} - {ext[1][1]:.3f}"
 
 def extentDescription(ggxf):
     extents = ggxf.metadata(GGXF_ATTR_CONTENT_APPLICABILITY_EXTENT)
