@@ -23,7 +23,9 @@ SEPARATOR_TAB = "tab"
 GGXF_CSV_DEFAULT_SEPARATOR = SEPARATOR_COMMA
 
 GGXF_CSV_SEPARATORS = {SEPARATOR_COMMA: ",", SEPARATOR_SPACE: " ", SEPARATOR_TAB: "\t"}
-
+GGXF_CSV_SEPARATORS_TEXT = (
+    f'"{SEPARATOR_COMMA}", "{SEPARATOR_SPACE}", or "{SEPARATOR_TAB}"'
+)
 
 GGXF_CSV_GRID_TOLERANCE_FACTOR = 0.00001
 
@@ -38,7 +40,7 @@ Datasource attributes:
   {GGXF_CSV_FILENAME_ATTR}: filename
      The name of the ggxf-csv file to load
 
-  {GGXF_CSV_SEPARATOR_ATTR}: "{SEPARATOR_COMMA}", "{SEPARATOR_SPACE}", or "{SEPARATOR_TAB}"
+  {GGXF_CSV_SEPARATOR_ATTR}: {GGXF_CSV_SEPARATORS_TEXT}
      Definition of the separator character used in the ggxf-csv file
 
 """
@@ -95,7 +97,14 @@ def LoadGrid(group, datasource, logger):
 
 
 def LoadCsvGrid(
-    filename, datafields, xyfields=None, xyoptional=False, logger=None, delimiter=","
+    filename,
+    datafields,
+    xyfields=None,
+    xyoptional=False,
+    logger=None,
+    delimiter=",",
+    headerlines=None,
+    fieldnames=None,
 ):
     if logger is None:
         logger = logging.getLogger()
@@ -109,7 +118,13 @@ def LoadCsvGrid(
                 csvr = SpaceDelimitedFile(csvh)
             else:
                 csvr = csv.reader(csvh, delimiter=delimiter)
-            fields = csvr.__next__()
+            if headerlines is not None:
+                while headerlines > 0:
+                    headerlines -= 1
+                    csvr.__next__()
+            fields = fieldnames
+            if fields is None:
+                fields = csvr.__next__()
 
             # If xyfields are optional then ignore missing ordinates if they are not supplied.
             if xyoptional:
