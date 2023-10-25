@@ -56,6 +56,8 @@ ctypes = {}
 params = {}
 attrs = {}
 listVars = {}
+attrMetadata = {}
+reverseTypeLookup = {}
 objecttypes = set(("UnicodeIdentifier",))
 
 
@@ -65,9 +67,12 @@ def ucaseName(name):
         name = re.sub(r"[^\w]", "_", name)
     return name.upper()
 
+def objectTypeId( objtype ):
+    return f"ATTRDEF_TYPE_{ucaseName(objtype)}"
 
-def readAttributes(source, metadata_attributes):
-    global ggxfAttrs, groupAttgrs, gridAttrs, listVars
+
+def readAttributes(source):
+    global ggxfAttrs, groupAttgrs, gridAttrs, listVars, reverseTypeLookup, attrMetadata
     attributes = {}
     usedtypes = set()
     basetypes = ("int", "float", "str", "dict", "any")
@@ -79,6 +84,7 @@ def readAttributes(source, metadata_attributes):
         try:
             context = attrlist
             typeattrs = []
+            objtypeid = objectTypeId(objtype)
             for attr in attrlist:
                 context = attr
                 optional = bool(attr.pop("Optional", False))
@@ -98,7 +104,9 @@ def readAttributes(source, metadata_attributes):
                     namestr = attrdef.get("AttributeName")
                     name = f"{aprefix}{ucaseName(namestr)}"
                     if "Metadata" in attrdef:
-                        metadata_attributes[name] = attrdef["Metadata"]
+                        if objtypeid not in attrMetadata:
+                            attrMetadata[objtypeid] = {}
+                        attrMetadata[objtypeid][name]=attrdef["Metadata"]
                     attrs[aprefix][name] = namestr
                     atype = attrdef.get("Type")
                     qualifiers = {}
@@ -125,9 +133,13 @@ def readAttributes(source, metadata_attributes):
                         qualifiers = {"ATTRDEF_LIST": True}
                         if match.group(2):
                             qualifiers["ATTRDEF_COUNT"] = int(match.group(2))
+                    elif atype not in basetypes:
+                        # Where possible record a reverse lookup from type to parent type and attribute
+                        # to create metadata template
+                        reverseTypeLookup[ objectTypeId(atype)] = (objtypeid, choicename)                            
                     if atype not in basetypes and not choicetype:
                         usedtypes.add(atype)
-                        atypeid = f"ATTRDEF_TYPE_{ucaseName(atype)}"
+                        atypeid = objectTypeId(atype)
                         attrdefs[atypeid] = atype
                         atype = atypeid
                     elif atype == "any":
@@ -138,7 +150,6 @@ def readAttributes(source, metadata_attributes):
                 choicedef = {"ATTRDEF_NAME": choicename, "ATTRDEF_CHOICE": typedefs}
                 choicedef["ATTRDEF_OPTIONAL"] = optional
                 typeattrs.append(choicedef)
-            objtypeid = f"ATTRDEF_TYPE_{ucaseName(objtype)}"
             attrdefs[objtypeid] = objtype
             attributes[objtypeid] = typeattrs
             objecttypes.add(objtype)
@@ -171,19 +182,53 @@ def writeAttributes(pyh, attributes, prefix):
     pyh.write(f"{prefix}}}")
 
 
+def metaTemplateString( typemeta, prefix ):
+    strings=[]
+    prefix2=prefix+"  "
+    for attrid, metadata in typemeta.items():
+        if isinstance(metadata,str):
+            strings.append(f"{prefix2}{attrid}: {repr(metadata)}")
+        elif isinstance(metadata,dict):
+            strings.append(f"{prefix2}{attrid}: {metaTemplateString(metadata,prefix2)}")
+    return "{\n"+f",\n".join(strings)+f"{prefix}}}"
+
+def compileMetadataTemplate(commontypeattrs,prefix):
+    global attrMetadata, reverseTypeLookup
+    # Compile typeattrs, attribute metadata for each type.  For types in children
+    # of the GGXF object the type metadata is installed in the attribute of the 
+    # parent object type in which it is defined.  
+    typeattrs={}
+    for objtypeid,attrlist in commontypeattrs.items():
+        typeattrs[objtypeid]={attrdef["ATTRDEF_NAME"]: None for attrdef in attrlist}
+
+    for objtypeid, attrmeta in attrMetadata.items():
+        typemeta=typeattrs[objtypeid]
+        for attrid,metadata in attrmeta.items():
+            if attrid in typemeta and typemeta[attrid] is None:
+                typemeta[attrid]=metadata
+        metatypeid=objtypeid
+        while metatypeid in reverseTypeLookup:
+            parenttypeid,parentattr=reverseTypeLookup[metatypeid]
+            typeattrs[parenttypeid][parentattr]=typeattrs[metatypeid]
+            metatypeid=parenttypeid
+
+    return metaTemplateString(typeattrs[objectTypeId("GGXF")],prefix)
+
+
 with open(infile) as yh, open(typefile, "w") as pyh:
     ggxftypes = yaml.load(yh, Loader=yaml.Loader)
     pyh.write("# GGXF content types\n\n")
     pyh.write("from .Constants import *\n")
-    metadata_attributes = {}
+    commontypeattrs=None
     for attrlist in ("CommonAttributes", "YamlAttributes"):
-        attributes = readAttributes(ggxftypes.get(attrlist, {}), metadata_attributes)
+        attributes = readAttributes(ggxftypes.get(attrlist, {}))
+        if commontypeattrs is None:
+            commontypeattrs=attributes
         pyh.write(f"\n{attrlist}=")
         writeAttributes(pyh, attributes, "  ")
         pyh.write("\n")
 
     pyh.write("\nContentTypes={\n")
-    meta_attributes = {}
     for cdata in ggxftypes["ContentTypes"]:
         ctypestr = cdata.get("ContentType")
         ctype = f"{contentTypePrefix}{ucaseName(ctypestr)}"
@@ -219,12 +264,14 @@ with open(infile) as yh, open(typefile, "w") as pyh:
             pyh.write(f"        {p}: {parameterSetMap[p]},\n")
         pyh.write("        },\n")
         if "Attributes" in cdata:
-            attributes = readAttributes(cdata["Attributes"], metadata_attributes)
+            attributes = readAttributes(cdata["Attributes"])
             pyh.write("    ATTRDEF_ATTRIBUTES: ")
             writeAttributes(pyh, attributes, "      ")
             pyh.write(",\n")
         pyh.write("    },\n")
     pyh.write("  }\n")
+
+
 
 with open("Constants.py", "w") as pyh:
     pyh.write("# GGXF constants\n\n")
@@ -244,7 +291,6 @@ with open("Constants.py", "w") as pyh:
     pyh.write("\n")
     for attrdef in attrdefs:
         pyh.write(f"{attrdef}={repr(attrdefs[attrdef])}\n")
-    pyh.write("\nMetadataTemplate={\n")
-    for key, value in metadata_attributes.items():
-        pyh.write(f"    {key}: {repr(value)},\n")
-    pyh.write("}\n")
+    pyh.write("\nMetadataTemplate=")
+    pyh.write(compileMetadataTemplate(commontypeattrs,""))
+    pyh.write("\n")

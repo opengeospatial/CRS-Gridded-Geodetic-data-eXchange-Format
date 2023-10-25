@@ -25,7 +25,6 @@ CommonAttributes:
       Metadata: Comment on the dataset      
     - AttributeName: contentApplicabilityExtent
       Type: Extents
-      Metadata: Placeholder for applicability extent - put a description here if required
     - AttributeName: contentBox
       Type: BoundingBox
       Optional: true
@@ -192,6 +191,7 @@ CommonAttributes:
       Comment: Should this be optional
       Type: str
       Optional: true
+      Metadata: Placeholder for applicability extent - put a description here if required
     - AttributeName: boundingPolygon
       Type: str
       Optional: true

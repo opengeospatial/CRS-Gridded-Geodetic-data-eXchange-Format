@@ -1,3 +1,4 @@
+import copy
 import json
 import logging
 import os
@@ -117,6 +118,30 @@ class GdalImporter:
         )
 
     @staticmethod
+    def _flattenDict(sourcedict):
+        flattened={}
+        for k, v in sourcedict.items():
+            if isinstance(v, dict):
+                v = GdalImporter._flattenDict(v)
+                for vk,vv in v.items():
+                    flattened[f"{k}.{vk}"]=vv
+            else:
+                flattened[k]=v
+        return flattened
+    
+    @staticmethod
+    def _unflattenDict( sourcedict ):
+        fulldict={}
+        for k, v in sourcedict.items():
+            subkeys=k.split('.')
+            target=fulldict
+            for key in subkeys[:-1]:
+                target[key]={}
+                target=target[key]
+            target[subkeys[-1]]=v
+        return fulldict
+
+    @staticmethod
     def Import(
         yaml_file,
         grid_file=None,
@@ -136,15 +161,16 @@ class GdalImporter:
         # just has prompts for each attribute, don't copy these into the compiled
         # template
 
-        template = MetadataTemplate.copy()
+        template = GdalImporter._flattenDict(MetadataTemplate)
+        metasource = template.copy()
         for metafile in metadata_files or []:
             if not os.path.exists(metafile):
                 raise GdalImportError(f"Cannot find metadata file {metafile}")
             try:
                 with open(metafile) as mfh:
                     metadata = yaml.safe_load(mfh)
-                for key, value in metadata.items():
-                    if key not in MetadataTemplate or value != MetadataTemplate[key]:
+                for key, value in GdalImporter._flattenDict(metadata).items():
+                    if key not in metasource or value != metasource[key]:
                         template[key] = value
 
             except Exception as ex:
@@ -155,9 +181,11 @@ class GdalImporter:
         # Add attributes from command line
         if attributes is not None:
             for key, value in attributes.items():
-                if key not in MetadataTemplate:
+                if key not in metasource:
                     raise GdalImportError(f"Invalid attribute {key} specified")
                 template[key] = value
+
+        template = GdalImporter._unflattenDict(MetadataTemplate)
 
         if epsg_codes is not None:
             codes = epsg_codes.split("/")
