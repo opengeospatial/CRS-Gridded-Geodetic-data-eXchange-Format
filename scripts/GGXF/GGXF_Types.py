@@ -777,6 +777,18 @@ CommonAttributes = {
                     ATTRDEF_LIST: True,
                 },
             ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_INTERPOLATION_CRS_COORDINATES,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_INTERPOLATION_CRS_COORDINATES,
+                    ATTRDEF_TYPE: float,
+                    ATTRDEF_LIST: True,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
         },
         {
             ATTRDEF_NAME: GGXF_ATTR_SOURCE_COORDINATE_EPOCH,
@@ -812,6 +824,16 @@ CommonAttributes = {
                 {
                     ATTRDEF_NAME: GGXF_ATTR_TARGET_COORDINATE_DATE,
                     ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
+            ATTRDEF_NAME: GGXF_ATTR_PARAMETER_CHECK_VALUES,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_PARAMETER_CHECK_VALUES,
+                    ATTRDEF_TYPE: dict,
                 },
             ],
             ATTRDEF_OPTIONAL: True,

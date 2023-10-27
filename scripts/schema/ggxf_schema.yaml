@@ -280,6 +280,10 @@ CommonAttributes:
   CheckPoint:
     - AttributeName: sourceCrsCoordinates
       Type: list(float)
+      Optional: true
+    - AttributeName: interpolationCrsCoordinates
+      Type: list(float)
+      Optional: true   
     - AttributeChoice:
         AttributeChoiceName: sourceCoordinateEpoch
         Attributes:
@@ -297,6 +301,9 @@ CommonAttributes:
           Type: float
         - AttributeName: targetCoordinateDate
           Type: str
+      Optional: true
+    - AttributeName: parameterCheckValues
+      Type: dict
       Optional: true
     - AttributeName: comment
       Type: str
