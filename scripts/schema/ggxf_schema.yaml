@@ -294,6 +294,7 @@ CommonAttributes:
       Optional: true
     - AttributeName: targetCrsCoordinates
       Type: list(float)
+      Optional: true
     - AttributeChoice:
         AttributeChoiceName: targetCoordinateEpoch
         Attributes:

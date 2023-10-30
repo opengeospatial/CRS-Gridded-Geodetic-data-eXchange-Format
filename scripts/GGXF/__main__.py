@@ -61,7 +61,6 @@ def main():
         setLogLevel(args)
         args.function(args)
     except Exception as ex:
-        raise
         print(f"Failed: {ex}")
         sys.exit(1)
 

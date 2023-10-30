@@ -813,6 +813,7 @@ CommonAttributes = {
                     ATTRDEF_LIST: True,
                 },
             ],
+            ATTRDEF_OPTIONAL: True,
         },
         {
             ATTRDEF_NAME: GGXF_ATTR_TARGET_COORDINATE_EPOCH,
