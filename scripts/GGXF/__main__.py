@@ -282,8 +282,8 @@ def extentDescription(ggxf):
         for k in (
             GGXF_ATTR_SOUTH_BOUND_LATITUDE,
             GGXF_ATTR_NORTH_BOUND_LATITUDE,
-            GGXF_ATTR_EAST_BOUND_LONGITUDE,
             GGXF_ATTR_WEST_BOUND_LONGITUDE,
+            GGXF_ATTR_EAST_BOUND_LONGITUDE,
         )
     ]
     description = extents.get(GGXF_ATTR_EXTENT_DESCRIPTION, "")
