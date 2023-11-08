@@ -3,7 +3,11 @@
 import logging
 
 import numpy as np
-from osgeo import gdal
+
+try:
+    from osgeo import gdal
+except ImportError:
+    gdal=None
 
 from ..Constants import *
 
@@ -44,6 +48,8 @@ class GdalLoaderError(RuntimeError):
 
 
 def LoadGrid(group, datasource, logger):
+    if gdal is None:
+        raise GdalLoaderError("Python gdal module is not available: try \"pip install gdal\"")
     if logger is None:
         logger = logging.getLogger()
     if GDAL_SOURCE_LIST_ATTR in datasource:

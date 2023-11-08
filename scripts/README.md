@@ -2,6 +2,26 @@
 
 This directory contains experimental python 3.8+ script to prototype working with GGXF datasets.
 
+# Installation
+
+The main program provided by these scripts is "ggxf", which may be used to convert between the YAML and NetCDF GGXF formats,
+to give a very basic description of the contents of a GGXF file, and to calculate the parameters defined in the GGXF file at 
+a set of points.
+
+This script can be installed into a local environment using the python pip module.  Download the scripts module into a local
+directory and then in that directory run 
+
+```
+python -m pip install .
+```
+
+This will install the scripts into the local Python environment.  Note that on Windows this may require adding the python 
+local scripts directory to the PATH environment variable.  If this is required the installation will show a warning message 
+advising that this is required.
+
+Note that this installation does not include the python gdal module that is required for some of the functions of the ggxf script.
+(See below for more information).
+
 # Requirements
 
 Running these scripts requires a Python 3.8+ environment with the following modules installed:
@@ -11,7 +31,7 @@ Running these scripts requires a Python 3.8+ environment with the following modu
 * PyYAML
 * GDAL (optional - provides extra capabilities and tools for importing data sets to GGXF)
 
-Installing NetCDF4 and GDAL into the python environment can be difficult!  
+Installing GDAL into the python environment can be difficult!  
 
 In Windows a python environment manager such as [anaconda](https://anaconda.com) may be the simplest approach.  To install GDAL into an anaconda  enviroment use the conda command,
 
@@ -19,7 +39,6 @@ In Windows a python environment manager such as [anaconda](https://anaconda.com)
 (myenv)$> pip install numpy netcdf4 pyyaml
 (myenv)$> conda install -c conda-forge gdal
 ```
-
 On Linux operating systems such as ubuntu the package management tool (eg apt) may provide the required python libraries.  
 
 To install these modules into a virtual environment on linux may require first installing the NetCDF and GDAL development libraries into the operating system with the system package manager, and then installing the python modules into the development environment with pip.  This may require care to ensure that the version of the python module matches the installed development libraries:
@@ -37,7 +56,7 @@ This requires installing the NetCDF4 ncdump utility, which can be obtained from 
 
 # Scripts
 
-This directory contains three scripts to support generating and experimenting with GGXF format files.
+This directory contains two scripts to support generating and experimenting with GGXF format files.
 
 * ggxf.py - converts GGXF YAML <-> NetCDF, Calculate values from GGXF dataset, dumps GGXF summary data
 * deformation_model_to_ggxf_yaml.py - compiles a GGXF YAML file from a JSON/GeoTIFF encoded deformation model
@@ -240,6 +259,8 @@ nodeLongitude,nodeLatitude,displacementEast,displacementNorth,displacementUp
 ```
 
 ### Import a GDAL compatible grid file into GGXF format
+
+Note: The ggxf import function requires the Python gdal module to be installed in order to convert import GDAL grids.
 
 ```shell
 python3 ggxf.py import -h

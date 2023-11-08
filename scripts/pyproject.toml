@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["GGXF","GGXF.GridLoader"]
+
+[project]
+name = "GGXF"
+version = "1.0.0"
+authors = [
+    {name = "Chris Crook", email = "ccrook@linz.govt.nz"},
+]
+description = "Proof of concept GGXF implementation"
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ["GGXF", "datum conversion"]
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "requests",
+    "numpy",
+    "NetCDF4",
+    "PyYAML"
+]
+# Not including GDAL as fails build :-(
+
+
+[project.scripts]
+ggxf = "GGXF.__main__:main"
+
+
+[project.urls]
+Repository = "https://github.com/opengeospatial/CRS-Gridded-Geodetic-data-eXchange-Format.git"

@@ -8,7 +8,12 @@ from urllib import request
 
 import numpy as np
 import yaml
-from osgeo import gdal
+
+try:
+    from osgeo import gdal
+except ImportError:
+    gdal=None
+
 
 from .Constants import *
 from .GGXF_Types import *
@@ -91,6 +96,8 @@ class GdalImporter:
 
     @staticmethod
     def ProcessImporterArguments(args):
+        if gdal is None:
+            raise GdalImportError("Python gdal module is not available: try \"pip install gdal\"")
         yaml_file = args.yaml_file
         if not yaml_file.endswith(".yaml"):
             raise GdalImportError(f'YAML filename ({yaml_file}) must end with ".yaml"')
