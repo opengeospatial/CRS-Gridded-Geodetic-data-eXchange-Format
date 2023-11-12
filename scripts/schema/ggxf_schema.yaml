@@ -292,6 +292,14 @@ CommonAttributes:
         - AttributeName: sourceCoordinateDate
           Type: str
       Optional: true
+    - AttributeChoice:
+        AttributeChoiceName: interpolationCoordinateEpoch
+        Attributes:
+        - AttributeName: interpolationCoordinateEpoch
+          Type: float
+        - AttributeName: interpolationCoordinateDate
+          Type: str
+      Optional: true      
     - AttributeName: targetCrsCoordinates
       Type: list(float)
       Optional: true

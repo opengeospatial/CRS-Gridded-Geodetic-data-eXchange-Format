@@ -20,17 +20,20 @@ from .NetCDF import Writer as NetCdfWriter
 from .YAML import YAML_READ_OPTIONS, YAML_WRITE_OPTIONS
 from .YAML import Reader as YamlReader
 from .YAML import Writer as YamlWriter
+from .TimeFunction import DateToEpoch
 
 CMDARG_CONVERT = "convert"
 CMDARG_IMPORT = "import"
 CMDARG_DESCRIBE = "describe"
 CMDARG_CALCULATE = "calculate"
+CMDARG_CHECK = "check"
 
 SubcommandHelp = f"""Action to perform, one of:
   {CMDARG_CONVERT}: Convert between YAML and NetCDF GGXF formats
   {CMDARG_IMPORT}: Import data from a GDAL supported grid format
   {CMDARG_DESCRIBE}: Describe the contents of a GGXF file
   {CMDARG_CALCULATE}: Calculate parameter values using data in GGXF file
+  {CMDARG_CHECK}: Check interpolated parameter values at embedded check points
 For more help on an option use the action followed by -h.
 """
 
@@ -51,6 +54,7 @@ def main():
         addConvertParser,
         addDescribeParser,
         addCalculateParser,
+        addCheckParser,
         addImportParser,
     ):
         parser = addparser(subparsers)
@@ -70,7 +74,6 @@ def main():
 
 
 def addInputGgxfArguments(parser):
-
     parser.add_argument(
         "input_ggxf_file", help="Input GGXF file, either .yaml or .ggxf"
     )
@@ -118,7 +121,7 @@ Format options for reading a YAML GGXF file can be
 
 Format options for reading a NetCDF4 GGXF file can be
 {NETCDF_READ_OPTIONS}
-    """
+"""
 
 
 def outputFileOptions():
@@ -128,7 +131,7 @@ Format options for writing a YAML GGXF file can be:
 
 Format options for writing a NetCDF4 GGXF file can be:
 {NETCDF_WRITE_OPTIONS}
-    """
+"""
 
 
 def loadGgxfInputFile(args):
@@ -270,9 +273,11 @@ grids: {len(list(ggxf.allgrids()))}
 """
     )
 
+
 def totalGridExtents(ggxf):
-    ext=ggxf.extents()
+    ext = ggxf.extents()
     return f"X {ext[0][0]:.3f} - {ext[1][0]:.3f},  Y {ext[0][1]:.3f} - {ext[1][1]:.3f}"
+
 
 def extentDescription(ggxf):
     extents = ggxf.metadata(GGXF_ATTR_CONTENT_APPLICABILITY_EXTENT)
@@ -391,7 +396,7 @@ The input CSV file must have a header row of field names.  The input
 coordinate are in columns nodeLatitude, nodeLongitude, or if the 
 interpolationCrs is a projection CRS then nodeEasting, nodeNorthing.
 
-{inputFileOptions()}"
+{inputFileOptions()}
 """,
         formatter_class=argparse.RawTextHelpFormatter,
     )
@@ -487,6 +492,108 @@ def calculateCsvPoints(
                 output.extend(missingval)
                 output.append(f"{ex}")
             csvout.writerow(output)
+
+
+#####################################################################################
+# Check interpolated values at check points in a GGXF file
+
+
+def addCheckParser(subparsers):
+    parser = subparsers.add_parser(
+        CMDARG_CHECK,
+        description="Check calculation of parameters at check points embedded in the GGXF file",
+        epilog=f"""
+Currently this option only test checkPoints in a GGXF file which have
+interpolationCrsCoordinate, parameterCheckValue attributes, and optionally
+interpolationCoordinateEpoch or interpolationCoordinateDate attributes.  
+
+{inputFileOptions()}
+""",
+        formatter_class=argparse.RawTextHelpFormatter,
+    )
+    addInputGgxfArguments(parser)
+    addFormatOptionArguments(parser)
+    parser.add_argument(
+        "-t",
+        "--tolerance",
+        type=float,
+        default=0.0001,
+        help="Tolerance used in matching check parameter values",
+    )
+    parser.set_defaults(function=testGgxfCheckPoints)
+    return parser
+
+
+def testGgxfCheckPoints(args):
+    ggxf = loadGgxfInputFile(args)
+    tolerance = args.tolerance
+    verbose = args.verbose
+    checkPoints = ggxf.metadata(GGXF_ATTR_CHECK_POINTS)
+    if checkPoints is None:
+        print("No check points defined in GGXF file")
+        return
+    noCheck = 0
+    noInterpCoord = 0
+    noInterpEpoch = 0
+    noParamValues = 0
+    noUnusableChecks = 0
+    noPassed = 0
+    parameters = [p.name() for p in ggxf.parameters()]
+    for checkPoint in checkPoints:
+        noCheck += 1
+        try:
+            coordinate = checkPoint.get(GGXF_ATTR_INTERPOLATION_CRS_COORDINATES)
+            if coordinate is None:
+                noInterpCoord += 1
+                continue
+            coordEpoch = None
+            if ggxf.needEpoch():
+                coordEpoch = checkPoint.get(GGXF_ATTR_INTERPOLATION_COORDINATE_EPOCH)
+                if coordEpoch is None:
+                    noInterpEpoch += 1
+                    continue
+                coordEpoch = DateToEpoch(coordEpoch)
+            paramValues = checkPoint.get(GGXF_ATTR_PARAMETER_CHECK_VALUES)
+            if paramValues is None:
+                noParamValues += 1
+                continue
+
+            calcval = ggxf.valueAt(coordinate, epoch=coordEpoch)
+            calcprm = {prm: val for prm, val in zip(parameters, calcval)}
+            calcprmok = True
+            for prm, val in paramValues.items():
+                if prm not in calcprm:
+                    print(f"Unrecognized parameter {prm} in check point")
+                elif abs(val - calcprm[prm]) > tolerance:
+                    print(
+                        f"Check point parameter error at ({coordinate[0],coordinate[1]}): {prm} {calcprm[prm]:.4f} doesn't match expected {val:.4f}"
+                    )
+                    calprmok = False
+            if calcprmok and verbose:
+                noPassed += 1
+                print(
+                    f"Check point ({coordinate[0],coordinate[1]}) parameter values are correct"
+                )
+        except Exception as ex:
+            noUnusableChecks += 1
+            print(f"Error trying to process check point {noCheck}: {ex}")
+
+    if noInterpCoord > 0:
+        print(
+            f"{noInterpCoord} check points did not have {GGXF_ATTR_INTERPOLATION_CRS_COORDINATES} coordinates"
+        )
+    if noInterpEpoch > 0:
+        print(
+            f"{noInterpEpoch} check points did not have {GGXF_ATTR_INTERPOLATION_COORDINATE_EPOCH} or {GGXF_ATTR_INTERPOLATION_COORDINATE_DATE} attributes"
+        )
+    if noParamValues:
+        print(
+            f"{noParamValues} check points did not have {GGXF_ATTR_PARAMETER_CHECK_VALUES} attributes"
+        )
+    if noUnusableChecks:
+        print(f"{noUnusableChecks} check points attributes could not be processed.")
+    if noCheck > 0:
+        print(f"Check tolerance met at  {noPassed} of {noCheck} check points")
 
 
 #####################################################################################

@@ -805,6 +805,20 @@ CommonAttributes = {
             ATTRDEF_OPTIONAL: True,
         },
         {
+            ATTRDEF_NAME: GGXF_ATTR_INTERPOLATION_COORDINATE_EPOCH,
+            ATTRDEF_CHOICE: [
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_INTERPOLATION_COORDINATE_EPOCH,
+                    ATTRDEF_TYPE: float,
+                },
+                {
+                    ATTRDEF_NAME: GGXF_ATTR_INTERPOLATION_COORDINATE_DATE,
+                    ATTRDEF_TYPE: str,
+                },
+            ],
+            ATTRDEF_OPTIONAL: True,
+        },
+        {
             ATTRDEF_NAME: GGXF_ATTR_TARGET_CRS_COORDINATES,
             ATTRDEF_CHOICE: [
                 {
