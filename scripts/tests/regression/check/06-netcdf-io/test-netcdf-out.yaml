@@ -3,6 +3,13 @@ filename: test-netcdf-out.yaml
 content: geoidModel
 title: hybrid geoid
 abstract: Tiny geoid for testing GGXF implementation
+contentApplicabilityExtent:
+  boundingBox:
+    southBoundLatitude: 22.5
+    westBoundLongitude: -69.0
+    northBoundLatitude: 24.6
+    eastBoundLongitude: -67.0
+  extentDescription: Tiny example geoid.
 interpolationCrsWkt: |
   GEOGCRS["WGS 84 (G2139)",
     DYNAMIC[FRAMEEPOCH[2016.0]],
@@ -27,23 +34,17 @@ targetCrsWkt: |
    CS[vertical,1,ID["EPSG",6499]],
      AXIS["Gravity-related height (H)",up],LENGTHUNIT["metre",1,ID["EPSG",9001]]
    ,ID["EPSG",6642]]
+parameters:
+- parameterName: geoidHeight
+  sourceCrsAxis: 2
+  unitName: metre
+  unitSiRatio: 1.0
 operationAccuracy: 0.015
 partyName: A Hypothetical National Geodetic Survey.
 deliveryPoint: Somewhere
 city: A city
 postalCode: '99999'
 country: United States of America
-contentApplicabilityExtent:
-  boundingBox:
-    southBoundLatitude: 22.5
-    westBoundLongitude: -69.0
-    northBoundLatitude: 24.6
-    eastBoundLongitude: -67.0
-parameters:
-- parameterName: geoidHeight
-  sourceCrsAxis: 2
-  unitName: metre
-  unitSiRatio: 1.0
 ggxfGroups:
 - ggxfGroupName: default
   interpolationMethod: bilinear

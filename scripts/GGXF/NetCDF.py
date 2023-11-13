@@ -244,7 +244,7 @@ class Reader(BaseReader):
             attrs[key] = value
         attrs = self._convertNumpyAttributesToNative(attrs)
         attrs = self._mapAttributesToDotted(context, attrs)
-        self._interpretDotMetadata(attrs)
+        attrs = self._interpretDotMetadata(attrs)
         return attrs
 
     def _mapAttributesToDotted(self, context: str, attrs):
@@ -302,52 +302,57 @@ class Reader(BaseReader):
 
     def _interpretDotMetadata(self, attrs):
         arrays = []
-        while True:
-            compiled = {}
-            for key, value in attrs.items():
-                if "." not in key:
-                    continue
+        rootkeys = []
+        attrs = attrs.copy()
+        metadata = {}
+        attrkeys = list(attrs.keys())
+
+        for key in attrkeys:
+            while "." in key:
+                value = attrs[key]
                 basekey, subkey = key.rsplit(".", maxsplit=1)
-                compiled[basekey] = compiled.get(basekey, {})
-                compiled[basekey][subkey] = value
-            if not compiled:
-                break
-            for basekey, keyval in compiled.items():
-                for subkey in keyval:
-                    attrs.pop(basekey + "." + subkey)
-                if "count" in keyval:
-                    try:
-                        arrsize = int(keyval["count"])
-                        arrays.append((basekey, arrsize))
-                    except:
-                        self.error(f"Array {basekey} count is not an integer")
-
-                if basekey in attrs and not isinstance(attrs[basekey], dict):
-                    self.error(
-                        f"Invalid duplicate attribute {basekey} and {basekey}.xxx"
-                    )
+                if basekey in attrs:
+                    if not isinstance(attrs[basekey], dict):
+                        self.error(
+                            f"Metadata error: {basekey} has both attributes and a value"
+                        )
+                        break
                 else:
-                    attrs[basekey] = keyval
+                    attrs[basekey] = {}
+                attrs[basekey][subkey] = value
+                if subkey == "count":
+                    arrays.append(basekey)
+                key = basekey
+            rootkeys.append(key)
 
-        # Process array in reverse order so always get embedded arrays before
-        # enclosing array.  Convert from x={'count':n,'1':v1, ...} to x=[v1,...]
-        for arrkey, arrsize in sorted(arrays, reverse=True):
-            holder = attrs
-            path = arrkey.split(".")
-            item = path.pop()
-            for key in path:
-                holder = holder.get(key, {})
-            if item not in holder:
-                self.error(f"Cannot find array {arrkey}")
-                continue
-            arrval = holder[item]
-            array = [arrval[str(i)] for i in range(arrsize + 1) if str(i) in arrval]
-            if len(array) != arrsize:
+        # Compile the arrays
+
+        for arrkey in arrays:
+            arrdict = attrs[arrkey]
+            arrsize = arrdict.pop("count")
+            if not isinstance(arrsize, int):
                 self.error(
-                    f"Array {arrkey} does not have the correct number of items: expect {arrsize}, got {len(array)}"
+                    f"Metadata count {arrkey}.count is not an integer ({arrsize})"
                 )
-            else:
-                holder[item] = array
+                continue
+            if len(arrdict) != arrsize:
+                self.error(
+                    f"Metadata array {arrkey} has the wrong number of items (expected {arrsize})"
+                )
+                continue
+            data = []
+            for i in range(arrsize):
+                stri = str(i)
+                if stri not in arrdict:
+                    self.error(f"Metadata array item {arrkey}.{stri} is missing")
+                    continue
+                data.append(arrdict[stri])
+            attrs[arrkey] = data
+
+        # Return metadata - values of root keys
+
+        metadata = {rk: attrs[rk] for rk in rootkeys}
+        return metadata
 
 
 class NetCdfWriterError(RuntimeError):
@@ -369,7 +374,7 @@ class Writer(BaseWriter):
             raise Error(f"Invalid NetCDF option {','.join(invalid)}")
         self._logger = logging.getLogger("GGXF.NetCdfWriter")
 
-    def write(self, ggxf, netcdf4_file: str):
+    def write(self, ggxf, netcdf4_file):
         dtypestr = self.getOption(NETCDF_OPTION_GRID_DTYPE, NETCDF_DEFAULT_WRITE_DTYPE)
         self._dtype = NETCDF_VALID_DTYPE_MAP.get(dtypestr)
         if self._dtype is None:
