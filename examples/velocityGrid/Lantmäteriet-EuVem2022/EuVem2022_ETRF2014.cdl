@@ -1,0 +1,100 @@
+netcdf EuVem2022_ETRF2014 {
+
+// global attributes:
+		:Conventions = "GGXF-1.0, ACDD-1.3" ;
+		:content = "velocityGrid" ;
+		:title = "European Velocity Model 2022 (EuVem2022)" ;
+		:product_version = "ETRF2014" ;
+		:date_issued = "2023-05" ;
+		:summary = "A 3D European velocity field calculated with the HV-LSC-ex2 extended least-squares collocation method (Steffen et al., 2022) from the EPOS velocity field EPND D2150 provided by the EUREF Permanent Network Densification (Kenyeres et al., 2019), see EUREF Permanent Network Densification Product Portal for more information.\n\nHorizontal velocities are from the approach HV-LSC-ex (without moving variance) and vertical velocities are from the approach LSC-ex2 (including moving variance).\n\nMost parts of Russia, Syria and the Norwegian Sea are not well constrained due to limited access to GNSS station velocities.\n\nAny questions can be directed to geodesi@lm.se.\n\nReferences:\n  Kenyeres, A., Bellet, J.G., Bruyninx C., Caporali, A., De Doncker, F., Droscak, B., Duret, A., Franke, P., Georgiev, I., Bingley, R., Huisman, L., Jivall, L., Khoda, O., Kollo, K., Kurt, A.I., Lahtinen, S., Legrand, J., Magyar, B., Mesmaker, D., Morozova, K., Nagl, J., Özdemir, S., Papanikolaouo, X., Parseliunas, E., Stangl, G., Tangen, O.B., Valdes, M., Ryczywolski, M., Zurutuza, J., Weber, M. (2019): Regional integration of long-term national dense GNSS network solutions. GPS Solutions, 23:122, doi:10.1007/s10291-019-0902-7.\n  Steffen, R., Legrand, J., Ågren, J., Steffen, H., and Lidberg, M. (2022). HV-LSC-ex2: Velocity field interpolation using extended least-squares collocation. Journal of Geodesy, 96:15, doi:10.1007/s00190-022-01601-4.\"\n" ;
+		:comment = "The EuVem2022 model is also available in the ETRF2000 and ITRF2014 reference frames and with alternative approaches for variance." ;
+		:source_file = "EuVem2022_ETRF2014.ggxf" ;
+		:digitalObjectIdentifier = "https://doi.org/10.23701/euvem2022" ;
+		:institution = "Lantmäteriet, the Swedish mapping, cadastral and land registration authority." ;
+		:creator_email = "geodesi@lm.se" ;
+		:publisher_url = "https://www.lantmateriet.se/en/geodata/gps-geodesi-och-swepos/geodesy/reports-and-publications/lantmateriets-doi-objects/euvem2022/" ;
+		:license = "CC-BY" ;
+		:geospatial_lat_min = 33. ;
+		:geospatial_lon_min = -12. ;
+		:geospatial_lat_max = 73. ;
+		:geospatial_lon_max = 40. ;
+		:extent_description = "Europe: 12°W to 40°E, 33°N to 73°N" ;
+		:interpolationCrsWkt = "GEOGCRS[\"ETRF2014\",DATUM[\"European Terrestrial Reference Frame 2014\",ELLIPSOID[\"GRS 1980\",6378137,298.257222101,LENGTHUNIT[\"metre\",1]]],CS[ellipsoidal,2],AXIS[\"Geodetic latitude (Lat)\",north],AXIS[\"Geodetic longitude (Lon)\",east],ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",9069]]\n" ;
+		:sourceCrsWkt = "GEOGCRS[\"ETRF2014\",DATUM[\"European Terrestrial Reference Frame 2014\",ELLIPSOID[\"GRS 1980\",6378137,298.257222101,LENGTHUNIT[\"metre\",1]]],CS[ellipsoidal,3],AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433]],AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433]],AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",8403]]\n" ;
+		:targetCrsWkt = "GEOGCRS[\"ETRF2014\",DATUM[\"European Terrestrial Reference Frame 2014\",ELLIPSOID[\"GRS 1980\",6378137,298.257222101,LENGTHUNIT[\"metre\",1]]],CS[ellipsoidal,3],AXIS[\"Geodetic latitude (Lat)\",north,ANGLEUNIT[\"degree\",0.0174532925199433]],AXIS[\"Geodetic longitude (Lon)\",east,ANGLEUNIT[\"degree\",0.0174532925199433]],AXIS[\"Ellipsoidal height (h)\",up,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",8403]]\n" ;
+		:operationAccuracy = 0.001 ;
+		:parameters.count = 6LL ;
+		:parameters.0.parameterName = "velocityEast" ;
+		:parameters.0.parameterSet = "velocity" ;
+		:parameters.0.sourceCrsAxis = 1LL ;
+		:parameters.0.unitName = "mm/yr" ;
+		:parameters.0.unitSiRatio = 3.16887651727315e-11 ;
+		:parameters.1.parameterName = "velocityNorth" ;
+		:parameters.1.parameterSet = "velocity" ;
+		:parameters.1.sourceCrsAxis = 0LL ;
+		:parameters.1.unitName = "mm/yr" ;
+		:parameters.1.unitSiRatio = 3.16887651727315e-11 ;
+		:parameters.2.parameterName = "velocityUp" ;
+		:parameters.2.parameterSet = "velocity" ;
+		:parameters.2.sourceCrsAxis = 2LL ;
+		:parameters.2.unitName = "mm/yr" ;
+		:parameters.2.unitSiRatio = 3.16887651727315e-11 ;
+		:parameters.3.parameterName = "velocityEastUncertainty" ;
+		:parameters.3.parameterSet = "velocityUncertainty" ;
+		:parameters.3.sourceCrsAxis = 1LL ;
+		:parameters.3.unitName = "mm/yr" ;
+		:parameters.3.unitSiRatio = 3.16887651727315e-11 ;
+		:parameters.3.uncertaintyMeasure = "1SE" ;
+		:parameters.4.parameterName = "velocityNorthUncertainty" ;
+		:parameters.4.parameterSet = "velocityUncertainty" ;
+		:parameters.4.sourceCrsAxis = 0LL ;
+		:parameters.4.unitName = "mm/yr" ;
+		:parameters.4.unitSiRatio = 3.16887651727315e-11 ;
+		:parameters.4.uncertaintyMeasure = "1SE" ;
+		:parameters.5.parameterName = "velocityUpUncertainty" ;
+		:parameters.5.parameterSet = "velocityUncertainty" ;
+		:parameters.5.sourceCrsAxis = 2LL ;
+		:parameters.5.unitName = "mm/yr" ;
+		:parameters.5.unitSiRatio = 3.16887651727315e-11 ;
+		:parameters.5.uncertaintyMeasure = "1SE" ;
+		:checkPoints.count = 2LL ;
+		:checkPoints.0.interpolationCrsCoordinates = 49.05, 20.3333333333333 ;
+		:checkPoints.0.parameterCheckValues.velocityEast = 0.0085 ;
+		:checkPoints.0.parameterCheckValues.velocityNorth = 0.2683 ;
+		:checkPoints.0.parameterCheckValues.velocityUp = 0.1585 ;
+		:checkPoints.0.parameterCheckValues.velocityEastUncertainty = 0.7868 ;
+		:checkPoints.0.parameterCheckValues.velocityNorthUncertainty = 0.7745 ;
+		:checkPoints.0.parameterCheckValues.velocityUpUncertainty = 0.5832 ;
+		:checkPoints.1.interpolationCrsCoordinates = 39.85, 32.75 ;
+		:checkPoints.1.parameterCheckValues.velocityEast = -22.9578 ;
+		:checkPoints.1.parameterCheckValues.velocityNorth = -1.0688 ;
+		:checkPoints.1.parameterCheckValues.velocityUp = 0.9008 ;
+		:checkPoints.1.parameterCheckValues.velocityEastUncertainty = 0.5385 ;
+		:checkPoints.1.parameterCheckValues.velocityNorthUncertainty = 0.595 ;
+		:checkPoints.1.parameterCheckValues.velocityUpUncertainty = 0.528 ;
+
+group: EuVem2022_ETRF2014 {
+  dimensions:
+  	velocityCount = 3 ;
+  	velocityUncertaintyCount = 3 ;
+
+  // group attributes:
+  		:interpolationMethod = "bilinear" ;
+
+  group: EuVem2022_ETRF2014 {
+    dimensions:
+    	iNodeCount = 401 ;
+    	jNodeCount = 521 ;
+    variables:
+    	float velocity(iNodeCount, jNodeCount, velocityCount) ;
+    		velocity:_Storage = "contiguous" ;
+    		velocity:_Endianness = "little" ;
+    	float velocityUncertainty(iNodeCount, jNodeCount, velocityUncertaintyCount) ;
+    		velocityUncertainty:_Storage = "contiguous" ;
+    		velocityUncertainty:_Endianness = "little" ;
+
+    // group attributes:
+    		:affineCoeffs = 33., 0.1, 0., -12., 0., 0.1 ;
+    } // group EuVem2022_ETRF2014
+  } // group EuVem2022_ETRF2014
+}
