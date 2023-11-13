@@ -568,12 +568,13 @@ def testGgxfCheckPoints(args):
                     print(
                         f"Check point parameter error at ({coordinate[0],coordinate[1]}): {prm} {calcprm[prm]:.4f} doesn't match expected {val:.4f}"
                     )
-                    calprmok = False
-            if calcprmok and verbose:
+                    calcprmok = False
+            if calcprmok:
                 noPassed += 1
-                print(
-                    f"Check point ({coordinate[0],coordinate[1]}) parameter values are correct"
-                )
+                if verbose:
+                    print(
+                        f"Check point ({coordinate[0],coordinate[1]}) parameter values are correct"
+                    )
         except Exception as ex:
             noUnusableChecks += 1
             print(f"Error trying to process check point {noCheck}: {ex}")
@@ -593,7 +594,9 @@ def testGgxfCheckPoints(args):
     if noUnusableChecks:
         print(f"{noUnusableChecks} check points attributes could not be processed.")
     if noCheck > 0:
-        print(f"Check tolerance met at  {noPassed} of {noCheck} check points")
+        print(
+            f"Parameter values matched within tolerance at  {noPassed} of {noCheck} check points"
+        )
 
 
 #####################################################################################

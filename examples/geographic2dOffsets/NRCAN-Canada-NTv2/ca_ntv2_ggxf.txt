@@ -5,7 +5,7 @@ Parameters: latitudeOffset, longitudeOffset, latitudeOffsetUncertainty, longitud
 interpolation CRS: NAD27
 source CRS: NAD27
 target CRS: NAD83(Original)
-applicableExtent: Latitude 40.0 - 84.0, Longitude -141.0 - -44.0
+applicableExtent: Canada south of 84°N Latitude 40.0 - 84.0, Longitude -141.0 - -44.0
 gridExtents: X 40.000 - 84.000,  Y -142.000 - -44.000
 ggxfGroups: 1
 grids: 114
