@@ -39,43 +39,43 @@ class TimeTest(unittest.TestCase):
             DateToEpoch("1998-12-31T23:59:59"), 1999.0, msg="Convert datetime date"
         )
 
-    def test_VelocityTimeFunction(self):
+    def test_LinearTimeFunction(self):
         metadata = {
-            "functionType": "velocity",
+            "functionType": "linear",
             "functionReferenceEpoch": 2003.0,
         }
         self._runtimetest(
-            "basic velocity function",
+            "basic linear function",
             metadata,
             ((2003.0, 0.0), (2013.0, 10.0), (1999.5, -3.5)),
         )
         metadata = {
-            "functionType": "velocity",
+            "functionType": "linear",
             "functionReferenceDate": "2003-01-01",
         }
         self._runtimetest(
-            "basic velocity function using date",
+            "basic linear function using date",
             metadata,
             ((2003.0, 0.0), (2013.0, 10.0), (1999.5, -3.5)),
         )
         metadata = {
-            "functionType": "velocity",
+            "functionType": "linear",
             "functionReferenceEpoch": "2003.0",
             "startEpoch": "2001.5",
         }
         self._runtimetest(
-            "velocity function with start epoch",
+            "linear function with start epoch",
             metadata,
             ((2003.0, 0.0), (2013.0, 10.0), (1999.5, -1.5)),
         )
         metadata = {
-            "functionType": "velocity",
+            "functionType": "linear",
             "functionReferenceEpoch": "2003.0",
             "startEpoch": "2001.5",
             "endEpoch": "2005.5",
         }
         self._runtimetest(
-            "velocity function with start epoch",
+            "linear function with start epoch",
             metadata,
             ((2003.0, 0.0), (2013.0, 2.5), (1999.5, -1.5)),
         )

@@ -49,15 +49,15 @@ class BaseTimeFunction:
     @staticmethod
     def Create(definition: dict):
         constructors = {
-            TIME_FUNCTION_TYPE_ACCELERATION: AccelerationTimeFunction,
             TIME_FUNCTION_TYPE_CYCLIC: CyclicTimeFunction,
             TIME_FUNCTION_TYPE_EXPONENTIAL: ExponentialTimeFunction,
             TIME_FUNCTION_TYPE_HYPERBOLIC_TANGENT: HyperbolicTangentTimeFunction,
-            TIME_FUNCTION_TYPE_LOG_BASE_E: LogBaseETimeFunction,
+            TIME_FUNCTION_TYPE_LINEAR: LinearTimeFunction,
             TIME_FUNCTION_TYPE_LOG_BASE_10: LogBase10TimeFunction,
+            TIME_FUNCTION_TYPE_LOG_BASE_E: LogBaseETimeFunction,
+            TIME_FUNCTION_TYPE_QUADRATIC: QuadraticTimeFunction,
             TIME_FUNCTION_TYPE_RAMP: RampTimeFunction,
             TIME_FUNCTION_TYPE_STEP: StepTimeFunction,
-            TIME_FUNCTION_TYPE_VELOCITY: VelocityTimeFunction,
         }
         if TIME_PARAM_FUNCTION_TYPE not in definition:
             raise Error(
@@ -122,14 +122,13 @@ class BaseTimeFunction:
         return value - self._refValue
 
 
-class VelocityTimeFunction(BaseTimeFunction):
-
+class LinearTimeFunction(BaseTimeFunction):
     Params = (TIME_PARAM_FUNCTION_REFERENCE_EPOCH,)
 
     def __init__(self, definition):
         BaseTimeFunction.__init__(
             self,
-            TIME_FUNCTION_TYPE_VELOCITY,
+            TIME_FUNCTION_TYPE_LINEAR,
             definition,
             self.Params,
         )
@@ -138,13 +137,13 @@ class VelocityTimeFunction(BaseTimeFunction):
         return epoch - self._refEpoch
 
 
-class AccelerationTimeFunction(BaseTimeFunction):
+class QuadraticTimeFunction(BaseTimeFunction):
     Params = (TIME_PARAM_FUNCTION_REFERENCE_EPOCH,)
 
     def __init__(self, definition):
         BaseTimeFunction.__init__(
             self,
-            TIME_FUNCTION_TYPE_ACCELERATION,
+            TIME_FUNCTION_TYPE_QUADRATIC,
             definition,
             self.Params,
         )

@@ -667,10 +667,10 @@ CommonAttributes = {
                 {
                     ATTRDEF_NAME: TIME_PARAM_FUNCTION_TYPE,
                     ATTRDEF_TYPE: [
-                        TIME_FUNCTION_TYPE_VELOCITY,
+                        TIME_FUNCTION_TYPE_LINEAR,
                         TIME_FUNCTION_TYPE_STEP,
                         TIME_FUNCTION_TYPE_RAMP,
-                        TIME_FUNCTION_TYPE_ACCELERATION,
+                        TIME_FUNCTION_TYPE_QUADRATIC,
                         TIME_FUNCTION_TYPE_EXPONENTIAL,
                         TIME_FUNCTION_TYPE_LOG_BASE_E,
                         TIME_FUNCTION_TYPE_LOG_BASE_10,

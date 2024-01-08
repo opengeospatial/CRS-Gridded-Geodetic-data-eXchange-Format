@@ -234,7 +234,7 @@ CommonAttributes:
 
   TimeFunction:
     - AttributeName: functionType
-      Type: [velocity, step, ramp, acceleration, exponential, logBaseE, logBase10, hyperbolicTangent, cyclic]
+      Type: [linear, step, ramp, quadratic, exponential, logBaseE, logBase10, hyperbolicTangent, cyclic]
     - AttributeChoice:
           AttributeChoiceName: startEpoch
           Attributes:

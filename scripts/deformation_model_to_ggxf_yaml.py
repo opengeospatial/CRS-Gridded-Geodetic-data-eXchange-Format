@@ -247,7 +247,7 @@ def ggxfTimeFunction(tf):
     functions = []
     if tftype == "velocity":
         bf = {}
-        bf["functionType"] = "velocity"
+        bf["functionType"] = "linear"
         bf["functionReferenceDate"] = params["reference_epoch"]
         functions.append(bf)
     elif tftype == "step":

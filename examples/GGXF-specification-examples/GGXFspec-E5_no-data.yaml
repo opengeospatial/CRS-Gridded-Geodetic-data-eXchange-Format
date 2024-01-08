@@ -114,7 +114,7 @@ ggxfGroups:
     - parameterName: displacementVerticalUncertainty
       parameterValue: 0.0
   timeFunctions:
-  - functionType: velocity
+  - functionType: linear
     functionReferenceDate: '2000-01-01T00:00:00Z'
   interpolationMethod: bilinear
   grids:
