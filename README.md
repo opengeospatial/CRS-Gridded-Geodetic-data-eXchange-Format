@@ -18,7 +18,7 @@ The work will be conducted under the auspices of the OGC CRS DWG.  The GGXF form
 
 # Contents
 
-The [current draft of the GGXF specification](https://github.com/opengeospatial/CRS-Gridded-Geodetic-data-eXchange-Format/raw/master/specification/GGXF%20v1-0%20OGC-22-051r2_2023-01-09.pdf)
+The [current draft of the GGXF specification](https://github.com/opengeospatial/CRS-Gridded-Geodetic-data-eXchange-Format/raw/master/specification/GGXF%20v1-0%20OGC-22-051r7_2024-01-08.pdf)
 is available for download as a PDF from the specification directory in this repository.
 
 The [examples](https://github.com/opengeospatial/CRS-Gridded-Geodetic-data-eXchange-Format/tree/master/examples) directory contains examples of GGXF data sets in both YAML (text) and NetCDF (binary) formats.
