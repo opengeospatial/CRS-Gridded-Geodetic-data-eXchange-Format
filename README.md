@@ -1,5 +1,7 @@
 # GGXF : Gridded Geodetic data eXchange Format
 
+This repository holds the artefacts of the GGXF project team.  This work has culminated in the adoption of the standard [OGC GGXF geodetic data grid exchange format](https://docs.ogc.org/is/22-051r7/22-051r7.pdf) which is maintained on the [OGC Standards](https://www.ogc.org/standards/) page.
+
 The purpose of the Gridded Geodetic Data Exchange Format (GGXF) project team is to design a file structure and computer storage mechanism for the efficient exchange of regularly gridded geodetic data. There are several open issues that need to be refined in an open collaborative environment. This will be achieved by:
 
 - Defining what is meant by “gridded geodetic data”
