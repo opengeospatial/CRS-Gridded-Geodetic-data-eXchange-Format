@@ -1,0 +1,150 @@
+= OGC Document Editorial Guidance
+
+== Overview
+
+This document provides editorial guidance for the writing of OGC documents per the http://docs.opengeospatial.org/pol/05-020r26/05-020r26.html[OGC Technical Committee Policies and Procedures] and http://portal.opengeospatial.org/public_ogc/directives/directives.php[OGC Policy Directives] as well as other conventions agreed upon in the Document Subcommittee (DocTeam) or Technical Committee. This document is not itself a formal policy, but will assist editors in writing documents that meet both good technical writing practices and OGC document policies.
+
+[[basics]]
+== Basics
+
+There are two fundamental rules to consider:
+
+. the official language for OGC documents is American English; and
+. writing generally follows the https://www.apastyle.org/[APA Style] (with a few minor conventions from the https://www.chicagomanualofstyle.org/home.html[Chicago Manual of Style]).
+
+== Details
+
+The OGC has member-approved templates for all OGC document types. These templates provide the organizational structure and overall document formatting rules. The template formatting takes precedence over APA Style conventions (in fact, those few "minor conventions" from the Chicago Manual of Style appear in the template structure). Speaking of the APA Style, the remainder of this document provides guidance on the most common style issues for editors: read this guidance document, and you likely won't ever have to read the APA Style guide.
+
+=== Clarity
+
+Always write in clear, easy to understand sentences. Try to avoid super-long sentences filled with commas. While very long sentences can still be grammatically correct, the sentences can become difficult to read. If you have not already done so, read Ernest Hemingway's https://en.wikipedia.org/wiki/For_Whom_the_Bell_Tolls[_For Whom the Bell Tolls_] to get an idea of how to write short, clear sentences.
+
+=== Language
+
+The OGC uses American English for all documents. The language choice is not a political statement, a commentary on colonialism, or a convenience for the TC Chair. Rather the OGC is incorporated in the United States of America,  follows the APA Style, and at its founding agreed to use American English. This mostly means "z" instead of "s" in many words (e.g., "standardize" is correct) and a whole lot less use of "u" ("color"). If you really want to use the word "whilst," go ahead, it's not illegal. American English also uses less "Frenglish," so "center" is correct, not "centre."
+
+Be sure to install American English dictionaries in your editing environments. Microsoft Word lets you set the dictionary for single documents or even just parts of documents. Atom (used by many editors for AsciiDoc) uses the operating system dictionary, if available, and can also permit additional dictionaries.
+
+=== Person
+
+All documents shall be written in third-person. That means you use pronouns such as "it, they, he, she" and not "I, we" (first-person) or "you" (second-person). Please ignore the fact that *this* document is written in second-person because it is addressed directly to *you*, the reader. All OGC technical documents should address the topic discussed, not a particular editor or reader. A super short explanation can be found on https://www.grammarly.com/blog/first-second-and-third-person/[Grammarly].
+
+=== Voice
+
+Active voice should be used for the majority of text. Passive voice is appropriate for some statements.
+
+.Active vs. Passive voice
+****
+*ACTIVE:* A mountain lion attacked the trail runner.
+
+*PASSIVE:* The trail runner was attacked by a mountain lion.
+****
+
+Active voice tends to be much more direct and clear in sentence structure and leads to less ambiguity in meaning. However, Passive voice is best when describing a situation where the "actor" is unknown or when emphasizing an action.
+
+.Examples of acceptable Passive voice use
+****
+_Hundreds of Web Map Server (WMS) instances were created last year._
+There is no specific actor in the sentence above, just a statement of fact referring to some generic actors who actually stood up the WMS instances.
+
+_This Engineering Report was approved by the Defense and Intelligence DWG._
+In the sentence above, the action of approving the Engineering Report is the most important information; who approved the report is also important, but less so than the action of approving.
+****
+
+Great summaries of Active vs. Passive voice usage can be found https://www.aje.com/arc/writing-with-active-or-passive-voice/[here] and https://writing.wisc.edu/handbook/style/ccs_activevoice/[here].
+
+=== Tense
+
+Use the appropriate tense to provide the context for parts of the document. Tense can be mixed in a document. For instance, a standard describes a repeatable means to do something and thus should generally be in Present tense (each reader will be doing something in the present time). An Engineering Report that describes the activities that occurred in an Innovation Program initiative should generally be in Past tense (the document is reporting on something that happened in the past). However, an Engineering Report that provides a preliminary specification based on work done in an experiment should mostly be in Present tense as the specification is like a standard in that it is read to be implemented in the present. Finally, a document section describing future work should obviously be written in Future tense.
+
+=== Weird grammar rules you have always been taught (and sometimes should ignore)
+
+*Prepositions*
+
+Many English speakers are taught in school to never end a sentence with a proposition. So the sentence "Where do you come from?" is supposed to be less correct than "From where do you come?" But let's just admit, the first one sounds normal and the second one sounds terrible. Don't worry too much about ending sentences in prepositions if the alternative is awkward, but using the preposition earlier in the sentence will often sound more professional and results in a more clear sentence structure. We could debate use of prepositions forever: the consensus amongst most grammar experts these days is to give up the fight and just accept that sometimes a preposition can be at the end of the sentence, despite what your teacher told you when you were growing up. Look at the previous sentence: how could "up" appear anywhere else and still make sense?
+
+*Contractions*
+
+Contracted words such as "don't" for "do not" are generally thought to be unsuitable for technical publications. Try to use the full words and save the contractions for informal documents such as this one. Artificial contractions (e.g., "int'l" for "international") are sometimes used in written form, but should never appear in an OGC document. "It's" is forbidden - the contraction means "it is" and *is not* the possessive of "it" (the possessive of "it" is "its").
+
+*Numbers*
+
+Various style guides specify when numbers used as enumeration (count of something) should be written as words and when they should be presented as numerals. APA Style suggests spelling out numbers less than 10. Use the APA Style as a default, but in a document with many enumerations ranging from small to large numbers, consistent use of just numerals may make the document easier to read.
+
+=== Expanding abbreviations
+
+All abbreviations must be presented in expanded form the first time they are used. Every subsequent occurrence of the abbreviated words can then just be the abbreviation.
+
+.Example
+****
+_The University of Antarctica offers penguin population geostatistics via a Web Map Server (WMS). This WMS can be found at the following URL._
+****
+
+=== It, this, that
+
+The word "it" is the most abused word in OGC document drafts. Using "it" often leads to confusion when the reader cannot determine what "it" refers to.
+
+.Example
+****
+_This standard was developed by the Institute for Good Standards. It provides models for standardizing important things._
+
+What does "it" refer to? The "standard" or the "Institute for Good Standards?" One can argue that either "provides models." Instead, use one of the following sentence structures.
+
+_This standard was developed by the Institute for Good Standards. The standard provides models for standardizing important things._
+
+or
+
+_The Institute for Good Standards developed this standard, which provides models for standardizing important things._
+****
+
+So use "it" sparingly. The same applies to "this, that, these, those...." It should come as no surprise that readers do not like to be confused ("it" was used correctly in this sentence... and so was "that").
+
+=== Punctuation
+
+*Placement*
+
+Periods, commas, colons, and semicolons always are found inside a closing quotation mark, but outside a closing bracket.
+
+.Example
+****
+_OGC has developed this Best Practice document to illustrate connectivity between the "edge" and the "fog."_
+
+_OGC has developed this Best Practice document to illustrate connectivity between the "edge" and the "fog" (where "fog" is defined as that stuff between the "edge" and the "cloud")._
+
+Note from the second example that brackets enclosing a clause stay outside the closing quote, but inside the ending period.
+****
+
+Of course, some punctuation marks have special meaning in AsciiDoc, so the rules for placement of punctuation may be overridden by document markup conventions.
+
+*Commas/Semicolons in lists*
+
+Two words: Oxford Comma. Always use the Oxford Comma, which means that when writing a list, put a comma between the second-to-last entry and the word "and." Without this comma, more complex sentences become very difficult to read as it becomes difficult to tell where a list ends and a new thought begins.
+
+.Example
+****
+_This Engineering Report highlights the provision of geoprocessing services on a stand-alone server, the cloud, and handheld devices._
+****
+
+*Bulleted or numbered lists*
+
+If a list includes entries that each do not make more than one sentence, each item in the list is separated by a comma (for single words or simple phrases) or a semicolon (for partial or complete sentences) and the sentence preceding the list can end in a colon. For the comma/semicolon punctuated list, always put a conjunction ("and" or "or") between the last two items in the list. If the list items include multiple sentences in one or more items, then each item in the list must be at complete sentence (or sentences) and the preceding sentence to the list must end in a period.
+
+.Examples
+****
+_The Secret Stuff DWG is chartered to discuss:_
+
+* _secret things that are classified;_
+* _secret things that are part of secret society practices; and_
+* _secret things found in satellite images._
+
+_The Secret Stuff DWG has been given requirements by the following organizations._
+
+* _The Brazilian Society of Secrets has provided the locations of Brazilian diamond mines._
+* _ISO / TC 9999 expects harmonization of all values for "null" used in international standard. ISO understands that some null values are secret._
+* _The Mystery Spot in Santa Cruz, California requires encoding of gravity anomalies using secret values._
+****
+
+*i.e. and e.g.*
+
+"I.e." and "e.g." always have a comma after the abbreviation. So the correct use is "Features represent real world objects (e.g., a road can be a linear feature)."
